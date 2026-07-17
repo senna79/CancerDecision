@@ -11,11 +11,11 @@ export function JourneyStepNav({
   return (
     <section className="mt-8 rounded-lg border border-[var(--line)] bg-white/85 p-5">
       <h2 className="font-heading text-xl font-semibold text-[var(--ink)]">
-        Keep moving along the path
+        Continue your decision path
       </h2>
       <p className="mt-1 text-sm text-[var(--muted)]">
-        Suggested next step, previous checkpoint, or another branch from here —
-        cancer decisions can fork.
+        After your next actions above, move to the suggested checkpoint — or
+        take another branch. Cancer decisions can fork.
       </p>
 
       <div className="mt-5 grid gap-3 md:grid-cols-2">

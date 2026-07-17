@@ -112,7 +112,7 @@ export default async function CancerDecisionCenterPage({
             moments={LUNG_DECISION_MOMENTS}
             activeId={activeMoment?.id}
             title="Where are you in this decision?"
-            subtitle="Choose the moment that matches you now. Each path opens a guided question with a Decision Workspace — so you know what to do next."
+            subtitle="Choose the moment that matches you now. Each path opens What to do next — concrete actions before the longer reading."
             footer={
               decisionMap ? (
                 <>

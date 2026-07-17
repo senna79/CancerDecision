@@ -2,6 +2,21 @@ import Link from "next/link";
 import type { DecisionMap, DecisionMapNode } from "@/types/database";
 import { outgoingNodes, sortedNodes } from "@/lib/journey/engine";
 
+const WHY_THIS_MATTERS: Record<string, string> = {
+  "node-diagnosis":
+    "This matters because early sequencing mistakes are hard to undo — you need to know which tests change the first plan.",
+  "node-biomarkers":
+    "This matters because some results may change which treatments are considered first.",
+  "node-compare":
+    "This matters because surgery-led and systemic paths can both be reasonable — the trade-offs are personal and clinical.",
+  "node-second-opinion":
+    "This matters before irreversible steps — another review can confirm pathology, staging, or sequencing.",
+  "node-global":
+    "This matters only when a specific capability is missing locally — not as a default upgrade.",
+  "node-costs":
+    "This matters because the full episode cost often differs from the headline procedure or drug fee.",
+};
+
 function NodeCard({
   node,
   map,
@@ -37,6 +52,12 @@ function NodeCard({
       <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
         {node.summary}
       </p>
+      {WHY_THIS_MATTERS[node.id] ? (
+        <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
+          <span className="font-semibold text-[var(--ink)]">Why this matters: </span>
+          {WHY_THIS_MATTERS[node.id]}
+        </p>
+      ) : null}
 
       {node.question_slugs.length > 0 ? (
         <div className="mt-4">
@@ -147,9 +168,9 @@ export function DecisionMapView({
         {map.intro}
       </p>
       <p className="mt-3 max-w-3xl text-sm text-[var(--ink-soft)]">
-        Cancer decisions are rarely a straight line. After the first checkpoint,
-        paths can fork — you may need biomarkers, treatment comparison, and a
-        second-opinion review in parallel, not only in sequence.
+        Use this map to answer three questions: Where am I? Why does this node
+        matter? What can I choose next? Paths can fork — not only run in a
+        straight line.
       </p>
 
       {entry ? (

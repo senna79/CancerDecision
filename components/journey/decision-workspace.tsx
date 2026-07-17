@@ -1,86 +1,84 @@
+import Link from "next/link";
 import type { Question } from "@/types/database";
 import type { JourneyContext } from "@/lib/journey/engine";
+import { buildNextActionBundle } from "@/lib/journey/next-actions";
 
 export function DecisionWorkspace({
   question,
   journey,
+  cancerSlug,
 }: {
   question: Question;
-  journey: JourneyContext;
+  journey: JourneyContext | null;
+  cancerSlug?: string | null;
 }) {
-  const stillNeed =
-    question.records_to_prepare.length > 0
-      ? question.records_to_prepare
-      : question.key_factors.slice(0, 4);
-  const nextActions =
-    question.next_steps.length > 0
-      ? question.next_steps
-      : [
-          "Write down what is still unknown",
-          "Ask which next result would change the plan",
-          `Continue to: ${journey.next?.node.label ?? "the decision map"}`,
-        ];
+  const bundle = buildNextActionBundle(question, journey, cancerSlug);
 
   return (
-    <aside className="my-8 rounded-lg border border-[var(--accent)]/30 bg-[var(--paper-deep)]/80 p-5 md:p-6">
+    <aside
+      id="what-to-do-next"
+      className="my-6 scroll-mt-24 rounded-lg border-2 border-[var(--accent)]/40 bg-[var(--paper-deep)]/90 p-5 md:p-6"
+    >
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-        Decision workspace
+        Your next step · 3-minute focus
       </p>
-      <h2 className="mt-1 font-heading text-2xl font-semibold text-[var(--ink)]">
-        Organize this step
+      <h2 className="mt-1 font-heading text-2xl font-semibold text-[var(--ink)] md:text-3xl">
+        What to do next
       </h2>
       <p className="mt-2 text-sm text-[var(--muted)]">
-        Use this panel to prepare — not just to read.
+        Leave this page with actions — not only information.
       </p>
+
+      <div className="mt-5 rounded-md border border-[var(--line)] bg-white/80 px-4 py-3">
+        <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
+          You are here
+        </p>
+        <p className="mt-1 font-semibold text-[var(--ink)]">{bundle.hereLabel}</p>
+        <p className="mt-1 text-sm text-[var(--ink-soft)]">{bundle.hereSummary}</p>
+      </div>
 
       <div className="mt-5 grid gap-5 md:grid-cols-2">
         <div>
           <h3 className="text-sm font-semibold text-[var(--ink)]">
-            Current stage
+            Before deciding
           </h3>
-          <p className="mt-1 text-sm text-[var(--ink-soft)]">
-            {journey.currentNode.state_label ?? journey.currentNode.label}
-          </p>
-          <p className="mt-1 text-sm text-[var(--muted)]">
-            {journey.currentNode.summary}
-          </p>
+          <ol className="mt-2 list-decimal space-y-2 pl-5 text-sm text-[var(--ink-soft)]">
+            {bundle.beforeDeciding.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ol>
         </div>
         <div>
           <h3 className="text-sm font-semibold text-[var(--ink)]">
-            Things I still need
+            Ask your doctor
           </h3>
-          <ul className="mt-2 list-disc space-y-1 pl-4 text-sm text-[var(--ink-soft)]">
-            {stillNeed.map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-sm font-semibold text-[var(--ink)]">
-            Questions for my doctor
-          </h3>
-          <ul className="mt-2 list-disc space-y-1 pl-4 text-sm text-[var(--ink-soft)]">
-            {question.doctor_questions.slice(0, 4).map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-        </div>
-        <div>
-          <h3 className="text-sm font-semibold text-[var(--ink)]">
-            After this step
-          </h3>
-          <ul className="mt-2 list-disc space-y-1 pl-4 text-sm text-[var(--ink-soft)]">
-            {nextActions.slice(0, 4).map((item) => (
-              <li key={item}>{item}</li>
-            ))}
-          </ul>
-          {journey.next ? (
-            <p className="mt-3 text-sm font-medium text-[var(--accent)]">
-              Suggested next: {journey.next.node.label}
+          {bundle.askDoctor.length > 0 ? (
+            <ol className="mt-2 list-decimal space-y-2 pl-5 text-sm text-[var(--ink-soft)]">
+              {bundle.askDoctor.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ol>
+          ) : (
+            <p className="mt-2 text-sm text-[var(--muted)]">
+              Write one question that would change your next appointment.
             </p>
-          ) : null}
+          )}
         </div>
       </div>
+
+      {bundle.continueHref && bundle.continueLabel ? (
+        <div className="mt-5 border-t border-[var(--line)] pt-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
+            Continue
+          </p>
+          <Link
+            href={bundle.continueHref}
+            className="mt-2 inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
+          >
+            Next: {bundle.continueLabel} →
+          </Link>
+        </div>
+      ) : null}
     </aside>
   );
 }

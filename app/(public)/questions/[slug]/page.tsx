@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
 import { DecisionWorkspace } from "@/components/journey/decision-workspace";
+import { NextActionClose } from "@/components/journey/next-action-close";
 import { JourneyProgressRail } from "@/components/journey/progress-rail";
 import { JourneyStepNav } from "@/components/journey/step-nav";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
@@ -149,11 +150,13 @@ export default async function QuestionPage({
         {question.title}
       </h1>
 
-      <SummaryPanel summary={question.summary} />
+      <DecisionWorkspace
+        question={question}
+        journey={journey}
+        cancerSlug={cancer?.slug}
+      />
 
-      {journey ? (
-        <DecisionWorkspace question={question} journey={journey} />
-      ) : null}
+      <SummaryPanel summary={question.summary} />
 
       <Section title="Why patients ask this">
         <Markdown content={question.why_patients_ask} />
@@ -184,6 +187,12 @@ export default async function QuestionPage({
       ) : null}
 
       <SourcesList sources={sources} />
+
+      <NextActionClose
+        question={question}
+        journey={journey}
+        cancerSlug={cancer?.slug}
+      />
 
       {journey && cancer ? (
         <JourneyStepNav journey={journey} cancerSlug={cancer.slug} />

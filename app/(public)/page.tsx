@@ -54,7 +54,7 @@ export default async function HomePage() {
             <DecisionMomentRouter
               moments={LUNG_DECISION_MOMENTS}
               title="Where are you right now?"
-              subtitle="Any stage counts — newly diagnosed, comparing treatments, second opinion, or care abroad. Start with our complete lung cancer journey (flagship path)."
+              subtitle="Any stage counts — newly diagnosed, comparing options, second opinion, recurrence, or care abroad. Each choice opens What to do next on our lung cancer flagship path."
               footer={
                 <>
                   Facing another cancer type?{" "}
