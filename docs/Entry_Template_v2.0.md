@@ -23,14 +23,22 @@ Do not delete depth for SEO/AI. Collapse it for anxious human readers.
 4. **One-minute answer** — Direct Answer / citation block  
 5. **Quick actions** — jump to doctor questions + next step  
 6. **Why this matters** — one module, no triple restatement  
-7. **Highest-anxiety timing question** (when relevant) — e.g. delay fear  
-8. **When this decision usually appears** — 2–3 situations  
-9. **What it can / cannot decide alone** — boundaries  
-10. **Questions to ask your doctor** — core output card  
-11. **Your next step** — 3 concrete actions (brand-critical)  
-12. **Continue journey** — related Moments  
-13. **More about this decision** — `<details>`: examples, mistakes, deeper modules  
-14. **Sources & Review** — trust footer  
+7. **Does everyone need the same thing?** — trust + personalization (when relevant)  
+8. **Highest-anxiety timing question** — e.g. will waiting delay care?  
+9. **When this decision usually appears** — 2–3 situations  
+10. **How is it done / another procedure?** — practical prep (sample source, biopsy?, risks)  
+11. **What it can / cannot decide alone** — including “no actionable finding”  
+12. **Questions you can ask your doctor** — core output card  
+13. **Your next step** — 3 concrete actions (brand-critical)  
+14. **Continue journey** — related Moments  
+15. **More about this decision** — `<details>`: cost/insurance principles, examples, mistakes, deeper modules  
+16. **Sources & Review** — trust footer  
+
+### Practical reality layer (Biomarker sample)
+
+- Main path: who needs it · delay · how done · another biopsy? · procedure risks  
+- Folded: cost & insurance **principles only** (no fixed prices)  
+- Out of scope for this Entry: stage-by-stage nursing care (belongs on Journey Overview / other Moments)  
 
 ## What not to put first
 

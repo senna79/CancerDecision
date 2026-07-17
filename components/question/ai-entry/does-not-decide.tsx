@@ -29,6 +29,18 @@ export function DoesNotDecide({
           </ul>
         </>
       ) : null}
+      {modules.doesNotDecideNotes?.length ? (
+        <ul className="mt-4 space-y-2">
+          {modules.doesNotDecideNotes.map((note) => (
+            <li
+              key={note}
+              className="rounded-md border border-[var(--line)] bg-white/70 px-4 py-3 text-[var(--ink-soft)]"
+            >
+              {note}
+            </li>
+          ))}
+        </ul>
+      ) : null}
       {modules.doesNotDecideClose ? (
         <p className="mt-4 font-medium text-[var(--ink)]">
           {modules.doesNotDecideClose}

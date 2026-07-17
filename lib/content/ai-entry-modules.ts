@@ -159,6 +159,33 @@ export type AiEntryFlagshipModules = {
   doesNotDecideLead?: string;
   doesNotDecideItems?: string[];
   doesNotDecideClose?: string;
+  /** Extra boundary notes (e.g. no actionable finding) */
+  doesNotDecideNotes?: string[];
+
+  /** Decision prep — who typically needs this discussion */
+  whoNeedsTitle?: string;
+  whoNeedsLead?: string;
+  whoNeedsBody?: string[];
+  whoNeedsDependsIntro?: string;
+  whoNeedsDependsOn?: string[];
+  whoNeedsClose?: string;
+
+  /** Decision prep — how testing is done + biopsy risk boundary */
+  howDoneTitle?: string;
+  howDoneLead?: string;
+  howDoneSources?: AiEntryAffectBlock[];
+  howDoneBiopsyTitle?: string;
+  howDoneBiopsyBody?: string[];
+  howDoneRisksTitle?: string;
+  howDoneRisksLead?: string;
+  howDoneRisksItems?: string[];
+  howDoneRisksClose?: string;
+
+  /** Real-world planning — cost/insurance principles (no fixed prices) */
+  costTitle?: string;
+  costLead?: string;
+  costItems?: string[];
+  costClose?: string;
 
   /** Entry #4/#5 — start with goal / problem to solve */
   goalFrameworkTitle?: string;
@@ -929,6 +956,56 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     "Ask your care team whether testing is complete and whether results could change the options you should discuss.",
   ],
 
+  whoNeedsTitle: "Does everyone need the same biomarker testing?",
+  whoNeedsLead:
+    "No. Not every person with lung cancer needs the same tests at the same time — and asking about testing is not the same as being “upsold.”",
+  whoNeedsBody: [
+    "What is useful depends on your cancer type, stage, the treatment decision in front of you, and what information is already available.",
+  ],
+  whoNeedsDependsIntro: "Your care team may weigh factors such as:",
+  whoNeedsDependsOn: [
+    "Cancer type and subtype",
+    "Stage and how quickly a first treatment decision is needed",
+    "Whether results could change the options under discussion",
+    "What testing has already been completed",
+  ],
+  whoNeedsClose:
+    "A useful question: “For my situation, which tests matter before we choose a plan — and which can wait?”",
+
+  howDoneTitle: "How is biomarker testing done?",
+  howDoneLead:
+    "Biomarker testing is laboratory analysis of cancer features. It is not the same thing as a biopsy — though it often uses tissue or other samples already collected, or sometimes a new sample.",
+  howDoneSources: [
+    {
+      title: "Tissue already collected",
+      body: "Many tests use pathology samples from a prior biopsy or surgery, if enough usable material remains.",
+    },
+    {
+      title: "Blood-based testing (liquid biopsy)",
+      body: "In some situations, doctors discuss blood tests that look for cancer-related signals. Availability and usefulness depend on the clinical context.",
+    },
+    {
+      title: "A new sample, if needed",
+      body: "If prior tissue is insufficient or outdated for the decision at hand, another biopsy may be discussed. That is a separate procedure decision.",
+    },
+  ],
+  howDoneBiopsyTitle: "Will I need another biopsy?",
+  howDoneBiopsyBody: [
+    "Not always. Ask whether existing samples can be used first.",
+    "If a new biopsy is recommended, ask why it is needed now, what it would change, and what the alternatives are if waiting or using other sample types.",
+  ],
+  howDoneRisksTitle: "What are the risks if another biopsy is needed?",
+  howDoneRisksLead:
+    "The main risks usually come from obtaining new tissue — not from the laboratory biomarker analysis itself. Procedure risks depend on how and where a sample would be taken.",
+  howDoneRisksItems: [
+    "Bleeding or bruising at the procedure site",
+    "Infection (uncommon, but possible with invasive procedures)",
+    "Pain or discomfort during recovery",
+    "Procedure-specific risks your team should explain for the planned approach",
+  ],
+  howDoneRisksClose:
+    "Ask: “If we need new tissue, what are the risks in my case, and how do those trade off against the information we might gain?”",
+
   infoGapTitle:
     "Before making treatment decisions, ask whether the picture is complete",
   infoGapKnownIntro: "After diagnosis, you may already know:",
@@ -979,8 +1056,24 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     "Potential benefits and trade-offs",
     "Personal preferences",
   ],
+  doesNotDecideNotes: [
+    "If no “actionable” finding is reported, that does not mean there are no options — it means this particular information did not point to a specific matched approach. Ask what the next discussion should focus on.",
+    "Results may support discussions about certain therapies, comparisons among options, or clinical trials — or they may mainly confirm that the current plan still fits the information available.",
+  ],
   doesNotDecideClose:
     "Testing improves the information for discussion — it does not replace a conversation with your care team.",
+
+  costTitle: "Cost and insurance considerations",
+  costLead:
+    "Costs vary widely by test type, laboratory, country or region, and insurance rules. This page does not list prices because a single number would often be misleading.",
+  costItems: [
+    "Ask which tests are being ordered and why each one matters for your decision",
+    "Ask what is typically covered, what may require prior authorization, and what out-of-pocket costs to expect",
+    "Ask how long results usually take in your setting — timing can matter as much as cost",
+    "If cost is a barrier, ask whether a narrower panel, existing tissue, or sequencing options can still answer the key question",
+  ],
+  costClose:
+    "Before testing is ordered, a practical question is: “What will this cost us, and will the result change what we discuss next?”",
 
   valueTitle: "Situations where additional testing may be especially important",
   valueSituations: [
@@ -1042,28 +1135,33 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     },
   ],
 
-  doctorTitle: "Questions to discuss about biomarker testing",
+  doctorTitle: "Questions you can ask your doctor",
   doctorGroups: [
     {
       heading: "About testing",
       questions: [
-        "Do I need biomarker testing?",
+        "Do I need biomarker testing for my situation?",
         "What tests are recommended for my type of lung cancer?",
-        "Are the results complete?",
+        "Can you use tissue or samples we already have?",
+        "Are the results complete for the decision we are making now?",
       ],
     },
     {
-      heading: "About timing",
+      heading: "About biopsy and timing",
       questions: [
+        "Will I need another biopsy — and why?",
+        "What are the risks of getting new tissue in my case?",
         "Should testing happen before choosing treatment?",
         "Could waiting for results change my options?",
       ],
     },
     {
-      heading: "About decisions",
+      heading: "About results, cost, and next steps",
       questions: [
-        "What treatment choices could be affected?",
-        "How would the results influence the next step?",
+        "What treatment choices could be affected by the results?",
+        "What if there is no actionable finding?",
+        "What should we expect for cost, insurance, and turnaround time?",
+        "How would the results influence our next step?",
       ],
     },
   ],
@@ -1090,13 +1188,16 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
   nextStepLead: "Before you leave this page, focus on three actions:",
   nextStepActions: [
     {
-      label: "Ask whether biomarker testing has been completed for your cancer.",
+      label:
+        "Ask whether biomarker testing is complete — and whether existing samples can be used.",
     },
     {
-      label: "Ask whether results could affect the treatment options you discuss.",
+      label:
+        "Ask whether results (or waiting for them) could change the options you discuss.",
     },
     {
-      label: "Discuss timing with your care team if you are worried about delay.",
+      label:
+        "If a new biopsy or cost is a concern, ask about risks, alternatives, coverage, and timing before anything is ordered.",
     },
   ],
   nextStepCtaLabel: "Compare Lung Cancer Treatment Options",
