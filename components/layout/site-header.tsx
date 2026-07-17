@@ -12,9 +12,9 @@ export function SiteHeader() {
       <div className="mx-auto flex w-full max-w-6xl items-center justify-between px-5 py-4 md:px-8">
         <Link href="/" className="group flex flex-col">
           <span className="font-heading text-lg font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-xl">
-            Global Cancer Decision
+            Cancer Next Step
           </span>
-          <span className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] transition group-hover:text-[var(--accent)]">
+          <span className="text-[11px] uppercase tracking-[0.14em] text-[var(--muted)] transition group-hover:text-[var(--accent)]">
             Decision Navigation
           </span>
         </Link>

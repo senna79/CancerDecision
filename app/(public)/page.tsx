@@ -5,11 +5,12 @@ import { getCancers, getStories } from "@/lib/queries";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildMetadata({
-  title: "Know Your Next Step in a Cancer Decision",
+  title: "Navigate Cancer Treatment Decisions",
   description:
-    "A patient navigation system that helps you understand options, prepare better questions, and find the right next step. Start with lung cancer — the first complete cancer decision journey.",
+    "Cancer Next Step helps you understand options, prepare better questions, and know what to do next. Start with lung cancer — the first complete cancer decision journey.",
   path: "/",
   keywords: [
+    "cancer next step",
     "cancer decision",
     "cancer navigation",
     "second opinion",
@@ -40,7 +41,10 @@ export default async function HomePage() {
         />
         <div className="relative mx-auto w-full max-w-6xl px-5 py-14 md:px-8 md:py-20">
           <p className="animate-rise font-heading text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl md:text-6xl lg:text-7xl">
-            Global Cancer Decision
+            Cancer Next Step
+          </p>
+          <p className="animate-rise-delay mt-3 max-w-2xl text-base font-medium tracking-[-0.01em] text-[var(--ink-soft)] md:text-lg">
+            Understand your options. Know your next step.
           </p>
           <h1 className="animate-rise-delay mt-5 max-w-3xl font-heading text-2xl font-medium tracking-[-0.02em] text-[var(--ink-soft)] md:text-3xl">
             Know your next step in a cancer decision

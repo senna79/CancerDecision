@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "Trust & Disclaimer",
   description:
-    "Learn what Global Cancer Decision Platform is, what it is not, and how educational content is prepared and checked.",
+    "Learn what Cancer Next Step is, what it is not, and how educational content is prepared and checked.",
   path: "/about",
 });
 
@@ -17,9 +17,9 @@ export default function AboutPage() {
       </h1>
       <div className="mt-8 space-y-6 text-[var(--ink-soft)] leading-relaxed">
         <p>
-          Global Cancer Decision Platform helps patients understand diagnosis
-          context, compare treatment options, explore international care
-          questions, and learn from structured decision scenarios. It is
+          Cancer Next Step helps patients understand diagnosis context, compare
+          treatment options, explore care questions, and learn from structured
+          decision scenarios — so you can know what to do next. It is
           educational guidance for conversations with clinicians — not a care
           service.
         </p>

@@ -1,4 +1,4 @@
-import { absoluteUrl } from "./metadata";
+import { absoluteUrl, SITE_NAME } from "./metadata";
 
 export function breadcrumbJsonLd(
   items: Array<{ name: string; path: string }>
@@ -32,7 +32,7 @@ export function articleJsonLd(input: {
     datePublished: input.datePublished ?? undefined,
     author: {
       "@type": "Organization",
-      name: "Global Cancer Decision Platform",
+      name: SITE_NAME,
     },
   };
 }
@@ -141,7 +141,7 @@ export function medicalWebPageJsonLd(input: {
       : undefined,
     publisher: {
       "@type": "Organization",
-      name: "Global Cancer Decision Platform",
+      name: SITE_NAME,
     },
   };
 }

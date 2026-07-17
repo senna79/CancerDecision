@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 
-const SITE_NAME = "Global Cancer Decision Platform";
+const SITE_NAME = "Cancer Next Step";
 const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000";
 
 export function absoluteUrl(path: string): string {
