@@ -21,7 +21,17 @@ async function ensureStoreFile(): Promise<void> {
 function normalizeStore(store: KnowledgeGraphStore): KnowledgeGraphStore {
   return {
     ...store,
-    decision_maps: store.decision_maps ?? [],
+    decision_maps: (store.decision_maps ?? []).map((map) => ({
+      ...map,
+      nodes: (map.nodes ?? []).map((node) => ({
+        ...node,
+        state_label: node.state_label ?? undefined,
+        next_node_ids: node.next_node_ids ?? undefined,
+        question_slugs: node.question_slugs ?? [],
+        treatment_slugs: node.treatment_slugs ?? [],
+        story_slugs: node.story_slugs ?? [],
+      })),
+    })),
     questions: (store.questions ?? []).map((q) => ({
       ...q,
       decision_context: q.decision_context ?? null,

@@ -34,11 +34,20 @@ export default async function CancersPage({
     <div className="mx-auto w-full max-w-6xl px-5 py-10 md:px-8">
       <Breadcrumbs items={[{ label: "Home", href: "/" }, { label: "Cancers" }]} />
       <h1 className="font-heading text-4xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-        Cancer Library
+        Cancer Decision Centers
       </h1>
       <p className="mt-3 max-w-2xl text-[var(--muted)]">
-        Each cancer guide brings together common questions, treatment
-        comparisons, international options, and illustrative decision journeys.
+        Pick a cancer type, then choose the decision moment you are in — so you
+        know your next step, not only background information. Lung cancer is the
+        complete flagship journey today.
+      </p>
+      <p className="mt-3">
+        <Link
+          href="/cancers/lung-cancer#decision-moment"
+          className="text-sm font-semibold text-[var(--accent)] hover:underline"
+        >
+          Start with lung cancer — where are you now? →
+        </Link>
       </p>
 
       {activeTopic ? (

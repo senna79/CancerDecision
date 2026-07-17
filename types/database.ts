@@ -75,7 +75,11 @@ export interface DecisionMapNode {
   question_slugs: string[];
   treatment_slugs: string[];
   story_slugs: string[];
-  /** Optional branch — shown as optional, not required next */
+  /** Patient-state language for progress UI (e.g. "Biomarker testing") */
+  state_label?: string;
+  /** Explicit branching edges; when omitted, engine falls back to sort order */
+  next_node_ids?: string[];
+  /** Optional branch — not required on the core path */
   optional?: boolean;
 }
 

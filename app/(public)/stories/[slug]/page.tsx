@@ -42,7 +42,15 @@ export default async function StoryPage({
   const { slug } = await params;
   const data = await getStoryPage(slug);
   if (!data) notFound();
-  const { story, cancer, treatments, sources, journeyLoop } = data;
+  const {
+    story,
+    cancer,
+    treatments,
+    sources,
+    journeyLoop,
+    questionTitles,
+    treatmentNames,
+  } = data;
 
   return (
     <div className="mx-auto w-full max-w-3xl px-5 py-10 md:px-8">
@@ -162,6 +170,8 @@ export default async function StoryPage({
           currentNode={journeyLoop.currentNode}
           nextNode={journeyLoop.nextNode}
           nextQuestionSlug={journeyLoop.nextQuestionSlug}
+          questionTitles={questionTitles}
+          treatmentNames={treatmentNames}
         />
       ) : cancer ? (
         <section className="mt-10 rounded-lg border border-[var(--line)] bg-white/80 p-5">

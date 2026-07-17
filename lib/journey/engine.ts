@@ -6,6 +6,8 @@ export type JourneyStep = {
   node: DecisionMapNode;
   status: JourneyStepStatus;
   primaryQuestionSlug: string | null;
+  /** Patient-facing status language for the rail */
+  stateLabel: string;
 };
 
 export type JourneyContext = {
@@ -21,9 +23,11 @@ export type JourneyContext = {
     node: DecisionMapNode;
     questionSlug: string | null;
   } | null;
+  /** Parallel or optional paths reachable from the current node */
   optionalBranches: Array<{
     node: DecisionMapNode;
     questionSlug: string | null;
+    kind: "parallel" | "optional";
   }>;
 };
 
@@ -31,8 +35,59 @@ function primarySlug(node: DecisionMapNode): string | null {
   return node.question_slugs[0] ?? null;
 }
 
-function sortedNodes(map: DecisionMap): DecisionMapNode[] {
+function stateLabel(node: DecisionMapNode): string {
+  return node.state_label?.trim() || node.label.replace(/^\d+\.\s*/, "");
+}
+
+export function sortedNodes(map: DecisionMap): DecisionMapNode[] {
   return [...map.nodes].sort((a, b) => a.sort_order - b.sort_order);
+}
+
+function nodeById(
+  map: DecisionMap,
+  nodeId: string
+): DecisionMapNode | undefined {
+  return map.nodes.find((n) => n.id === nodeId);
+}
+
+/** Outgoing edges — explicit next_node_ids, else linear fallback by sort_order. */
+export function outgoingNodes(
+  map: DecisionMap,
+  node: DecisionMapNode
+): DecisionMapNode[] {
+  if (node.next_node_ids && node.next_node_ids.length > 0) {
+    return node.next_node_ids
+      .map((id) => nodeById(map, id))
+      .filter((n): n is DecisionMapNode => Boolean(n));
+  }
+  const nodes = sortedNodes(map);
+  const index = nodes.findIndex((n) => n.id === node.id);
+  if (index < 0 || index >= nodes.length - 1) return [];
+  return [nodes[index + 1]];
+}
+
+function incomingNodes(
+  map: DecisionMap,
+  nodeId: string
+): DecisionMapNode[] {
+  return sortedNodes(map).filter((n) =>
+    outgoingNodes(map, n).some((t) => t.id === nodeId)
+  );
+}
+
+/** Nodes that can reach `nodeId` via reverse edges (decision ancestors). */
+function ancestorIds(map: DecisionMap, nodeId: string): Set<string> {
+  const seen = new Set<string>();
+  const queue = [nodeId];
+  while (queue.length > 0) {
+    const current = queue.shift()!;
+    for (const parent of incomingNodes(map, current)) {
+      if (seen.has(parent.id)) continue;
+      seen.add(parent.id);
+      queue.push(parent.id);
+    }
+  }
+  return seen;
 }
 
 export function findNodeByQuestionSlug(
@@ -55,6 +110,18 @@ export function findNodeByStorySlug(
   return { node: nodes[index], index };
 }
 
+function pickPreferred(
+  candidates: DecisionMapNode[],
+  preferRequired: boolean
+): DecisionMapNode | null {
+  if (candidates.length === 0) return null;
+  if (preferRequired) {
+    const required = candidates.find((n) => !n.optional);
+    if (required) return required;
+  }
+  return candidates[0];
+}
+
 export function buildJourneyContext(
   map: DecisionMap,
   questionSlug: string
@@ -64,80 +131,52 @@ export function buildJourneyContext(
   if (!found) return null;
 
   const { node: currentNode, index: currentIndex } = found;
-  const required = nodes.filter((n) => !n.optional);
+  const doneIds = ancestorIds(map, currentNode.id);
+  const outs = outgoingNodes(map, currentNode);
+  const nextNode = pickPreferred(outs, true);
+  const prevNode = pickPreferred(incomingNodes(map, currentNode.id), true);
 
-  const steps: JourneyStep[] = nodes.map((node, index) => {
-    if (node.optional && index !== currentIndex) {
-      return {
-        node,
-        status: "optional",
-        primaryQuestionSlug: primarySlug(node),
-      };
-    }
-    if (index === currentIndex) {
+  const steps: JourneyStep[] = nodes.map((node) => {
+    const slug = primarySlug(node);
+    const label = stateLabel(node);
+    if (node.id === currentNode.id) {
       return {
         node,
         status: "current",
-        primaryQuestionSlug: primarySlug(node),
+        primaryQuestionSlug: slug,
+        stateLabel: label,
       };
     }
-    if (!node.optional && index < currentIndex) {
+    if (doneIds.has(node.id)) {
       return {
         node,
         status: "done",
-        primaryQuestionSlug: primarySlug(node),
+        primaryQuestionSlug: slug,
+        stateLabel: label,
       };
     }
-    // For optional current, mark earlier required as done if before
-    if (currentNode.optional) {
-      const requiredBefore = required.filter(
-        (n) => n.sort_order < currentNode.sort_order
-      );
-      if (requiredBefore.some((n) => n.id === node.id)) {
-        return {
-          node,
-          status: "done",
-          primaryQuestionSlug: primarySlug(node),
-        };
-      }
+    if (node.optional) {
+      return {
+        node,
+        status: "optional",
+        primaryQuestionSlug: slug,
+        stateLabel: label,
+      };
     }
     return {
       node,
       status: "upcoming",
-      primaryQuestionSlug: primarySlug(node),
+      primaryQuestionSlug: slug,
+      stateLabel: label,
     };
   });
 
-  // Previous / next among required path when possible
-  const requiredIndex = required.findIndex((n) => n.id === currentNode.id);
-  let previous: JourneyContext["previous"] = null;
-  let next: JourneyContext["next"] = null;
-
-  if (requiredIndex >= 0) {
-    if (requiredIndex > 0) {
-      const prevNode = required[requiredIndex - 1];
-      previous = { node: prevNode, questionSlug: primarySlug(prevNode) };
-    }
-    if (requiredIndex < required.length - 1) {
-      const nextNode = required[requiredIndex + 1];
-      next = { node: nextNode, questionSlug: primarySlug(nextNode) };
-    }
-  } else if (currentNode.optional) {
-    // From optional branch, previous = last required before it; next = next required after it
-    const before = [...required]
-      .reverse()
-      .find((n) => n.sort_order < currentNode.sort_order);
-    const after = required.find((n) => n.sort_order > currentNode.sort_order);
-    if (before) previous = { node: before, questionSlug: primarySlug(before) };
-    if (after) next = { node: after, questionSlug: primarySlug(after) };
-    // If no required after, next can be null (journey core complete)
-  }
-
-  const optionalBranches = nodes
-    .filter((n) => n.optional && n.id !== currentNode.id)
+  const optionalBranches = outs
+    .filter((n) => n.id !== nextNode?.id)
     .map((node) => ({
       node,
       questionSlug: primarySlug(node),
+      kind: (node.optional ? "optional" : "parallel") as "optional" | "parallel",
     }));
 
   return {
@@ -145,8 +184,12 @@ export function buildJourneyContext(
     currentNode,
     currentIndex,
     steps,
-    previous,
-    next,
+    previous: prevNode
+      ? { node: prevNode, questionSlug: primarySlug(prevNode) }
+      : null,
+    next: nextNode
+      ? { node: nextNode, questionSlug: primarySlug(nextNode) }
+      : null,
     optionalBranches,
   };
 }
@@ -158,25 +201,20 @@ export function buildStoryJourneyLoop(
   currentNode: DecisionMapNode;
   nextQuestionSlug: string | null;
   nextNode: DecisionMapNode | null;
+  connectedQuestionSlugs: string[];
+  connectedTreatmentSlugs: string[];
   mapCancerSlugHint: string;
 } | null {
   const found = findNodeByStorySlug(map, storySlug);
   if (!found) return null;
-  const nodes = sortedNodes(map);
-  const required = nodes.filter((n) => !n.optional);
-  const requiredIndex = required.findIndex((n) => n.id === found.node.id);
-  let nextNode: DecisionMapNode | null = null;
-  if (requiredIndex >= 0 && requiredIndex < required.length - 1) {
-    nextNode = required[requiredIndex + 1];
-  } else {
-    // story may sit on a node; advance to next node in full list
-    const next = nodes[found.index + 1] ?? null;
-    nextNode = next;
-  }
+  const outs = outgoingNodes(map, found.node);
+  const nextNode = pickPreferred(outs, true);
   return {
     currentNode: found.node,
     nextNode,
     nextQuestionSlug: nextNode ? primarySlug(nextNode) : null,
+    connectedQuestionSlugs: found.node.question_slugs,
+    connectedTreatmentSlugs: found.node.treatment_slugs,
     mapCancerSlugHint: "lung-cancer",
   };
 }

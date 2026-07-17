@@ -33,13 +33,13 @@ export function JourneySections({ question }: { question: Question }) {
   return (
     <>
       {question.decision_context ? (
-        <Section title="What this decision depends on">
+        <Section title="Decision context">
           <p>{question.decision_context}</p>
         </Section>
       ) : null}
 
       {question.when_this_may_help.length > 0 ? (
-        <Section title="When this may be worth exploring">
+        <Section title="This question matters most when">
           <BulletBlock items={question.when_this_may_help} />
         </Section>
       ) : null}
@@ -51,7 +51,7 @@ export function JourneySections({ question }: { question: Question }) {
       ) : null}
 
       {question.options_and_tradeoffs.length > 0 ? (
-        <Section title="Main options and trade-offs">
+        <Section title="Options, benefits, and trade-offs">
           <BulletBlock items={question.options_and_tradeoffs} />
         </Section>
       ) : null}

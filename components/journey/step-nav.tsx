@@ -14,8 +14,8 @@ export function JourneyStepNav({
         Keep moving along the path
       </h2>
       <p className="mt-1 text-sm text-[var(--muted)]">
-        This is navigation, not a reading list. Choose previous, next, or an
-        optional branch.
+        Suggested next step, previous checkpoint, or another branch from here —
+        cancer decisions can fork.
       </p>
 
       <div className="mt-5 grid gap-3 md:grid-cols-2">
@@ -25,15 +25,16 @@ export function JourneyStepNav({
             className="rounded-lg border border-[var(--line)] bg-[var(--paper)] px-4 py-3 transition hover:border-[var(--accent)]"
           >
             <p className="text-xs uppercase tracking-[0.12em] text-[var(--muted)]">
-              Previous step
+              Previous checkpoint
             </p>
             <p className="mt-1 font-semibold text-[var(--ink)]">
-              {journey.previous.node.label}
+              {journey.previous.node.state_label ??
+                journey.previous.node.label.replace(/^\d+\.\s*/, "")}
             </p>
           </Link>
         ) : (
           <div className="rounded-lg border border-dashed border-[var(--line)] px-4 py-3 text-sm text-[var(--muted)]">
-            You are at the start of the core path.
+            You are at an entry checkpoint on this map.
           </div>
         )}
 
@@ -43,10 +44,11 @@ export function JourneyStepNav({
             className="rounded-lg border border-[var(--accent)] bg-[rgba(15,118,110,0.08)] px-4 py-3 transition hover:bg-[rgba(15,118,110,0.12)]"
           >
             <p className="text-xs uppercase tracking-[0.12em] text-[var(--accent)]">
-              Next step
+              Suggested next
             </p>
             <p className="mt-1 font-semibold text-[var(--ink)]">
-              {journey.next.node.label}
+              {journey.next.node.state_label ??
+                journey.next.node.label.replace(/^\d+\.\s*/, "")}
             </p>
           </Link>
         ) : (
@@ -55,10 +57,10 @@ export function JourneyStepNav({
             className="rounded-lg border border-[var(--accent)] bg-[rgba(15,118,110,0.08)] px-4 py-3"
           >
             <p className="text-xs uppercase tracking-[0.12em] text-[var(--accent)]">
-              Core path complete
+              Review the map
             </p>
             <p className="mt-1 font-semibold text-[var(--ink)]">
-              Review the full decision map →
+              Open the full decision map →
             </p>
           </Link>
         )}
@@ -67,7 +69,7 @@ export function JourneyStepNav({
       {journey.optionalBranches.length > 0 ? (
         <div className="mt-5">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-            Optional branches
+            Other paths from here
           </p>
           <ul className="mt-2 flex flex-wrap gap-2">
             {journey.optionalBranches.map((branch) =>
@@ -77,7 +79,9 @@ export function JourneyStepNav({
                     href={`/questions/${branch.questionSlug}`}
                     className="inline-block rounded-md border border-dashed border-[var(--line)] px-3 py-1.5 text-sm text-[var(--ink-soft)] hover:border-[var(--accent)]"
                   >
-                    {branch.node.label}
+                    {branch.node.state_label ??
+                      branch.node.label.replace(/^\d+\.\s*/, "")}
+                    {branch.kind === "optional" ? " (optional)" : ""}
                   </Link>
                 </li>
               ) : null

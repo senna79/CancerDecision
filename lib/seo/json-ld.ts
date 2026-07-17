@@ -77,7 +77,22 @@ export function medicalWebPageJsonLd(input: {
   path: string;
   dateModified?: string | null;
   aboutName?: string | null;
+  mentions?: string[];
+  relatedTreatmentNames?: string[];
+  partOfName?: string | null;
+  partOfUrl?: string | null;
 }) {
+  const mentions = [
+    ...(input.mentions ?? []).map((name) => ({
+      "@type": "Thing" as const,
+      name,
+    })),
+    ...(input.relatedTreatmentNames ?? []).map((name) => ({
+      "@type": "MedicalTherapy" as const,
+      name,
+    })),
+  ];
+
   return {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
@@ -95,6 +110,15 @@ export function medicalWebPageJsonLd(input: {
           name: input.aboutName,
         }
       : undefined,
+    mentions: mentions.length > 0 ? mentions : undefined,
+    isPartOf:
+      input.partOfName && input.partOfUrl
+        ? {
+            "@type": "WebPage",
+            name: input.partOfName,
+            url: absoluteUrl(input.partOfUrl),
+          }
+        : undefined,
     publisher: {
       "@type": "Organization",
       name: "Global Cancer Decision Platform",

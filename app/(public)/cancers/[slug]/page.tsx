@@ -3,10 +3,15 @@ import { notFound } from "next/navigation";
 import { DecisionMapView } from "@/components/cancer/decision-map";
 import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
+import { DecisionMomentRouter } from "@/components/journey/decision-moment-router";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
 import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
 import { TrustStrip } from "@/components/trust/trust-strip";
+import {
+  getDecisionMoment,
+  LUNG_DECISION_MOMENTS,
+} from "@/lib/journey/decision-moments";
 import { getCancerDecisionCenter, getCancers } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -35,10 +40,13 @@ export async function generateMetadata({
 
 export default async function CancerDecisionCenterPage({
   params,
+  searchParams,
 }: {
   params: Promise<{ slug: string }>;
+  searchParams: Promise<{ moment?: string }>;
 }) {
   const { slug } = await params;
+  const { moment: momentParam } = await searchParams;
   const data = await getCancerDecisionCenter(slug);
   if (!data) notFound();
 
@@ -60,6 +68,8 @@ export default async function CancerDecisionCenterPage({
     treatments.map((t) => [t.slug, t.name])
   );
   const storyTitles = Object.fromEntries(stories.map((s) => [s.slug, s.title]));
+  const isLung = cancer.slug === "lung-cancer";
+  const activeMoment = isLung ? getDecisionMoment(momentParam) : null;
 
   return (
     <div className="mx-auto w-full max-w-6xl px-5 py-10 md:px-8">
@@ -91,23 +101,40 @@ export default async function CancerDecisionCenterPage({
         {cancer.name} Decision Center
       </h1>
       <p className="mt-3 max-w-3xl text-[var(--muted)]">
-        Follow the decision journey below, then open the step that matches where
-        you are now.
+        {isLung
+          ? "Any stage — newly diagnosed, comparing options, second opinion, or care abroad. Pick where you are now; leave knowing your next step."
+          : "Start from the decision you are facing, then explore questions, treatments, and illustrative journeys for this cancer type."}
       </p>
-      {decisionMap ? (
-        <p className="mt-3">
-          <a
-            href="#decision-map"
-            className="text-sm font-semibold text-[var(--accent)] hover:underline"
-          >
-            Jump to decision map →
-          </a>
-        </p>
+
+      {isLung ? (
+        <div className="mt-8 max-w-3xl">
+          <DecisionMomentRouter
+            moments={LUNG_DECISION_MOMENTS}
+            activeId={activeMoment?.id}
+            title="Where are you in this decision?"
+            subtitle="Choose the moment that matches you now. Each path opens a guided question with a Decision Workspace — so you know what to do next."
+            footer={
+              decisionMap ? (
+                <>
+                  Prefer the full graph?{" "}
+                  <a
+                    href="#decision-map"
+                    className="font-semibold text-[var(--accent)] hover:underline"
+                  >
+                    Jump to the Decision Map
+                  </a>
+                </>
+              ) : null
+            }
+          />
+        </div>
       ) : null}
 
-      <Section title="Cancer Overview">
-        <Markdown content={cancer.overview} />
-      </Section>
+      {!isLung ? (
+        <Section title="Cancer Overview">
+          <Markdown content={cancer.overview} />
+        </Section>
+      ) : null}
 
       {decisionMap ? (
         <DecisionMapView
@@ -116,6 +143,12 @@ export default async function CancerDecisionCenterPage({
           treatmentNames={treatmentNames}
           storyTitles={storyTitles}
         />
+      ) : null}
+
+      {isLung ? (
+        <Section title="About this decision center">
+          <Markdown content={cancer.overview} />
+        </Section>
       ) : null}
 
       <Section title="Common Patient Decisions">
@@ -190,7 +223,10 @@ export default async function CancerDecisionCenterPage({
             </li>
           ))}
           <li>
-            <Link href="/global-care" className="text-[var(--accent)] hover:underline">
+            <Link
+              href="/global-care"
+              className="text-[var(--accent)] hover:underline"
+            >
               International medical guide
             </Link>
           </li>
@@ -209,7 +245,9 @@ export default async function CancerDecisionCenterPage({
               href={`/stories/${story.slug}`}
               className="rounded-lg border border-[var(--line)] bg-white/70 p-4 hover:border-[var(--accent)]"
             >
-              <h3 className="font-heading text-lg font-semibold">{story.title}</h3>
+              <h3 className="font-heading text-lg font-semibold">
+                {story.title}
+              </h3>
               <p className="mt-1 text-sm text-[var(--muted)]">
                 Illustrative · {story.country} · {story.age_range}
               </p>
@@ -218,22 +256,10 @@ export default async function CancerDecisionCenterPage({
         </div>
       </Section>
 
-      <Section title="Related Questions">
-        <ul className="space-y-2">
-          {questions.slice(0, 8).map((q) => (
-            <li key={q.id}>
-              <Link
-                href={`/questions/${q.slug}`}
-                className="text-[var(--accent)] hover:underline"
-              >
-                {q.title}
-              </Link>
-            </li>
-          ))}
-        </ul>
-      </Section>
-
-      <MedicalDisclaimer reviewedAt={cancer.content_reviewed_at} sources={sources} />
+      <MedicalDisclaimer
+        reviewedAt={cancer.content_reviewed_at}
+        sources={sources}
+      />
     </div>
   );
 }

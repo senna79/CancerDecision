@@ -15,7 +15,7 @@ export function SiteHeader() {
             Global Cancer Decision
           </span>
           <span className="text-[11px] uppercase tracking-[0.18em] text-[var(--muted)] transition group-hover:text-[var(--accent)]">
-            Knowledge Platform
+            Decision Navigation
           </span>
         </Link>
         <nav className="flex items-center gap-5 text-sm text-[var(--ink-soft)]">

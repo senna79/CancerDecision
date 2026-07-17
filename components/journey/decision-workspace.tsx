@@ -39,7 +39,7 @@ export function DecisionWorkspace({
             Current stage
           </h3>
           <p className="mt-1 text-sm text-[var(--ink-soft)]">
-            {journey.currentNode.label}
+            {journey.currentNode.state_label ?? journey.currentNode.label}
           </p>
           <p className="mt-1 text-sm text-[var(--muted)]">
             {journey.currentNode.summary}

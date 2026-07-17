@@ -2,6 +2,13 @@ import Link from "next/link";
 import type { JourneyContext } from "@/lib/journey/engine";
 import { cn } from "@/lib/utils";
 
+function statusMarker(status: JourneyContext["steps"][number]["status"]) {
+  if (status === "done") return "✓";
+  if (status === "current") return "?";
+  if (status === "optional") return "◇";
+  return "?";
+}
+
 export function JourneyProgressRail({
   journey,
   cancerSlug,
@@ -14,7 +21,7 @@ export function JourneyProgressRail({
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div>
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-            Decision journey
+            Your decision status
           </p>
           <p className="mt-1 font-heading text-lg font-semibold text-[var(--ink)]">
             {journey.map.title}
@@ -28,9 +35,10 @@ export function JourneyProgressRail({
         </Link>
       </div>
       <p className="mt-2 text-sm text-[var(--ink-soft)]">
-        You are here:{" "}
+        Focusing on:{" "}
         <span className="font-semibold text-[var(--ink)]">
-          {journey.currentNode.label}
+          {journey.currentNode.state_label ??
+            journey.currentNode.label.replace(/^\d+\.\s*/, "")}
         </span>
       </p>
       <ol className="mt-4 flex flex-wrap gap-2">
@@ -44,7 +52,7 @@ export function JourneyProgressRail({
               <Link
                 href={href}
                 className={cn(
-                  "inline-flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs transition",
+                  "inline-flex items-center gap-1.5 rounded-md border px-2.5 py-1.5 text-xs transition",
                   isCurrent &&
                     "border-[var(--accent)] bg-[var(--accent)] text-white",
                   step.status === "done" &&
@@ -58,20 +66,24 @@ export function JourneyProgressRail({
               >
                 <span
                   className={cn(
-                    "size-1.5 rounded-full",
-                    isCurrent && "bg-white",
-                    step.status === "done" && "bg-[var(--accent)]",
-                    step.status === "upcoming" && "bg-[var(--line)]",
-                    step.status === "optional" && "bg-[var(--muted)]/50"
+                    "font-semibold",
+                    isCurrent && "text-white",
+                    step.status === "done" && "text-[var(--accent)]"
                   )}
-                />
-                {step.node.label.replace(/^\d+\.\s*/, "")}
+                  aria-hidden
+                >
+                  {statusMarker(step.status)}
+                </span>
+                {step.stateLabel}
                 {step.status === "optional" ? " (optional)" : ""}
               </Link>
             </li>
           );
         })}
       </ol>
+      <p className="mt-3 text-[11px] text-[var(--muted)]">
+        ✓ earlier on this path · ? open decision · ◇ optional branch
+      </p>
     </div>
   );
 }

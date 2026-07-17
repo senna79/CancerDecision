@@ -417,8 +417,8 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "should-i-get-second-opinion-after-lung-cancer-diagnosis",
       category: "second_opinion",
       summary:
-        "A second opinion can help confirm pathology, staging, and treatment sequencing before irreversible choices. It is especially useful when surgery versus systemic therapy is unclear, biomarker results are incomplete, specialists disagree, or you want a multidisciplinary review. Seeking another opinion is not rejecting your current team—it is a structured way to reduce uncertainty. Many second opinions can start with remote records review so care is not delayed unnecessarily.",
-      why: "A lung cancer diagnosis is overwhelming. Patients often fear missing alternative approaches, feel pressure to decide quickly, or wonder whether their local center has the right specialist mix. Plans can change based on staging details, molecular findings, and how different teams interpret the same records.",
+        "A second opinion is a decision tool — not a loyalty test. It helps most when diagnosis is complex, treatment has multiple reasonable paths, major surgery is being considered, or specialists disagree. Benefits can include confirming pathology, discovering alternatives, and clarifying sequencing. Trade-offs include time, cost, and emotional burden. Many reviews can start remotely so local care is not abandoned.",
+      why: "Patients fear missing a better path, feel pressure to decide quickly, or wonder whether their local team has the right specialty mix. The useful question is not “should everyone get a second opinion?” but “when is the review likely to change the plan — and when is it unlikely to?”",
       factors: [
         "Whether staging and pathology workup are complete",
         "Availability and turnaround of molecular or biomarker results",
@@ -997,7 +997,7 @@ export function createSeedData(): KnowledgeGraphStore {
     ]),
   }));
 
-  // Flagship lung-cancer journey fields (pilot)
+  // Flagship lung-cancer journey fields — decision-choice framing
   const lungFlagship: Record<
     number,
     {
@@ -1008,61 +1008,74 @@ export function createSeedData(): KnowledgeGraphStore {
       records_to_prepare: string[];
       next_steps: string[];
       if_opinions_conflict: string[];
+      body: string;
     }
   > = {
     2: {
       decision_context:
-        "This is usually the first decision cluster after a lung cancer diagnosis: confirm what is known, what tests are still needed, and which choices are time-sensitive versus deliberately paced.",
+        "After a new lung cancer diagnosis, the job is not to learn every fact at once — it is to sequence the decisions that change the first treatment plan. Confirm what is already known, which tests are still outstanding, and which choices are time-sensitive versus deliberately paced. Biomarker workup, treatment comparison, and a second-opinion review can run in parallel once the foundation is clear.",
       when_this_may_help: [
-        "You are newly diagnosed and appointments feel overwhelming",
+        "Diagnosis is new and appointments feel chaotic or conflicting",
         "Pathology, staging, or biomarker results are still incomplete",
-        "You are unsure which next test would actually change the first treatment plan",
+        "You cannot tell which next test would actually change first-line therapy",
         "Different clinicians emphasize different first steps",
+        "You need a shared checklist with caregivers before major choices",
       ],
       when_it_may_not_help: [
         "Acute symptoms require immediate stabilization before elective sequencing",
-        "A clearly time-critical intervention has already been explained and agreed",
+        "A clearly time-critical intervention has already been explained, agreed, and started",
       ],
       options_and_tradeoffs: [
-        "Finish staging first — reduces guesswork, may briefly delay treatment start",
-        "Start local therapy sooner — may help symptoms or anxiety, but can precede incomplete molecular data",
-        "Prioritize biomarker tissue adequacy — can redirect systemic options, may need repeat biopsy",
+        "Benefit — Finish staging first: reduces guesswork before locking a path",
+        "Trade-off — Finish staging first: may briefly delay treatment start",
+        "Benefit — Start local therapy sooner: can ease symptoms or anxiety",
+        "Trade-off — Start sooner: may precede incomplete molecular data",
+        "Benefit — Prioritize tissue adequacy for biomarkers: can redirect systemic options",
+        "Trade-off — Repeat biopsy or wait: added procedures and calendar delay",
       ],
       records_to_prepare: [
         "Pathology report and slides if available",
         "Imaging reports and disks/links (CT, PET, MRI as applicable)",
         "Operative or biopsy procedure notes",
         "Current medication list and major comorbidities",
+        "A one-page list of what each clinician has recommended so far",
       ],
       next_steps: [
         "List every outstanding test and its due date",
-        "Ask which result would change the first treatment decision",
+        "Ask which single result would change the first treatment decision",
         "Confirm whether tissue is adequate for the recommended biomarker panel",
         "Decide whether a brief second-opinion records review should run in parallel",
+        "Open the Decision Map forks: biomarkers, treatment comparison, second opinion",
       ],
       if_opinions_conflict: [
         "Ask each clinician to name the exact disagreement (staging, resectability, sequencing, or drug choice)",
         "Request a multidisciplinary tumor-board framing of the conflict",
         "Clarify which decision is reversible versus irreversible",
       ],
+      body: "Think in checkpoints, not in panic. Diagnosis confirmation, staging completeness, and biomarker readiness are foundation decisions. Treatment comparison and second opinion are often parallel forks — not a forced queue you must finish before thinking about alternatives.",
     },
     21: {
       decision_context:
-        "For many non-small cell lung cancers, biomarker results can redirect first-line therapy. The decision is whether waiting for results is safer than starting immediately.",
+        "For many non-small cell lung cancers, biomarker results can redirect first-line therapy. The real choice is whether waiting for results is safer than starting immediately — and what would change if a targetable alteration or immunotherapy marker is found.",
       when_this_may_help: [
         "Non-small cell histology is confirmed or strongly suspected",
-        "Tissue adequacy is uncertain",
+        "Tissue adequacy is uncertain or the panel is incomplete",
         "Targeted therapy or immunotherapy pathways may depend on markers",
         "You want to avoid locking a first line before molecular data returns",
+        "Surgery versus systemic sequencing might change with results",
       ],
       when_it_may_not_help: [
-        "Disease pace or symptoms require urgent systemic therapy before results",
+        "Disease pace or symptoms require urgent systemic therapy before results — and your team explains why",
         "Your care team already has a complete panel with actionable results",
+        "Small-cell pathways where the biomarker decision frame differs",
       ],
       options_and_tradeoffs: [
-        "Wait for tissue-based panel — more complete matching, short delay",
-        "Add liquid biopsy if tissue is limited — faster in some settings, may miss alterations",
-        "Start therapy now for clinical urgency — may need later adjustment if markers arrive",
+        "Benefit — Wait for tissue-based panel: more complete matching of first-line options",
+        "Trade-off — Wait: short calendar delay and anxiety while results return",
+        "Benefit — Add liquid biopsy if tissue is limited: may return faster in some settings",
+        "Trade-off — Liquid biopsy: can miss alterations that tissue would catch",
+        "Benefit — Start therapy now for clinical urgency: addresses immediate risk",
+        "Trade-off — Start now: may need later adjustment when markers arrive",
       ],
       records_to_prepare: [
         "Pathology diagnosis and specimen adequacy notes",
@@ -1075,30 +1088,36 @@ export function createSeedData(): KnowledgeGraphStore {
         "Ask whether liquid biopsy is useful if tissue is limited",
         "Document what would change if a targetable alteration is found",
         "Agree on a date to revisit the plan if results are delayed",
+        "If results may change surgery sequencing, loop in surgical oncology early",
       ],
       if_opinions_conflict: [
         "Ask whether the disagreement is about waiting versus starting, or about which panel to order",
         "Request the clinical risk of a short wait in plain language",
         "If needed, get a thoracic oncology second review focused only on sequencing",
       ],
+      body: "Biomarker testing is a decision about information value versus delay. Ask what result would change the plan — if nothing would change, waiting may have less value. If a positive EGFR, ALK, ROS1, or other finding would redirect therapy, protecting that information can be worth a managed wait.",
     },
     3: {
       decision_context:
-        "This decision compares local surgical control with systemic strategies (targeted therapy, immunotherapy, chemotherapy), including whether systemic therapy should come before surgery.",
+        "This decision compares local surgical control with systemic strategies (targeted therapy, immunotherapy, chemotherapy), including whether systemic therapy should come before surgery. Stage, resectability, biomarkers, and personal priorities all matter — not which specialty speaks first.",
       when_this_may_help: [
         "Stage and resectability are still being interpreted",
-        "Biomarkers may change sequencing",
+        "Biomarkers may change sequencing (neoadjuvant vs surgery-first)",
         "You are hearing different recommendations from surgery and medical oncology",
         "Recovery, lung function, and durability all matter to you",
+        "Major surgery is on the table and you want trade-offs in plain language",
       ],
       when_it_may_not_help: [
         "Emergency complications require immediate intervention",
         "Disease extent already clearly places you outside surgical pathways",
       ],
       options_and_tradeoffs: [
-        "Surgery-led path — strong local control in selected cases; recovery and functional impact vary",
-        "Systemic-first / neoadjuvant path — may improve selection or response; delays resection",
-        "Systemic-led non-surgical path — appropriate when resection is not the goal; different side-effect profile",
+        "Benefit — Surgery-led path: strong local control in selected cases",
+        "Trade-off — Surgery-led: recovery time, lung-function impact, operative risk",
+        "Benefit — Systemic-first / neoadjuvant path: may improve selection or response before resection",
+        "Trade-off — Systemic-first: delays resection; side effects may affect operability timing",
+        "Benefit — Systemic-led non-surgical path: appropriate when resection is not the goal",
+        "Trade-off — Non-surgical path: different side-effect profile and follow-up intensity",
       ],
       records_to_prepare: [
         "Staging imaging and multidisciplinary notes",
@@ -1115,28 +1134,34 @@ export function createSeedData(): KnowledgeGraphStore {
       if_opinions_conflict: [
         "Write down each specialty's goal (cure, control, symptom relief)",
         "Ask what evidence would change each recommendation",
-        "Use tumor board or a second opinion focused on sequencing, not brand of hospital",
+        "Use tumor board or a second opinion focused on sequencing, not hospital brand",
       ],
+      body: "Treatment comparison is a fork, not a verdict. Two reasonable teams can disagree when stage interpretation, biomarker timing, or risk tolerance differ. Your job is to make the disagreement concrete: what is the goal, what information is missing, and which step is irreversible.",
     },
     1: {
       decision_context:
-        "A second opinion is a structured review of pathology, staging, and treatment sequencing. It can be remote and parallel to local care when timing is managed carefully.",
+        "A second opinion is a structured review of pathology, staging, and treatment sequencing. It matters most when the diagnosis is complex, multiple treatment options exist, major surgery is being considered, or a rare subtype is involved. It is less useful when data are already complete and multidisciplinary advice is concordant — or when delay clearly increases clinical risk.",
       when_this_may_help: [
-        "Surgery versus systemic therapy is unclear",
-        "Biomarker results are incomplete or contested",
-        "Specialists disagree on sequencing",
-        "You want a multidisciplinary review before an irreversible step",
-        "A rare subtype or complex anatomy is involved",
+        "Diagnosis is complex or pathology interpretation is uncertain",
+        "Treatment has multiple reasonable options (surgery vs systemic paths)",
+        "Major surgery or another irreversible step is being considered",
+        "A rare subtype, complex anatomy, or incomplete biomarkers is involved",
+        "Specialists disagree on sequencing and you need a structured comparison",
       ],
       when_it_may_not_help: [
         "Delay would clearly worsen urgent clinical risk and your team explains why",
         "You already have concordant multidisciplinary recommendations with complete data",
+        "The only disagreement is preference/style with no material outcome difference",
       ],
       options_and_tradeoffs: [
-        "Remote records review first — low travel burden; depends on complete records",
-        "In-person specialty visit — richer exam/context; more time and cost",
-        "Pathology-only re-review — focused; may not address full treatment sequencing",
-        "Full treatment-plan second opinion — broader; needs more preparation",
+        "Benefit — Remote records review: confirm diagnosis and alternatives with low travel burden",
+        "Trade-off — Remote review: depends on complete records; limited exam context",
+        "Benefit — In-person specialty visit: richer exam and team access",
+        "Trade-off — In-person: more time, cost, and scheduling friction",
+        "Benefit — Pathology-only re-review: focused check on diagnosis/subtype",
+        "Trade-off — Pathology-only: may not resolve full treatment sequencing",
+        "Benefit — Full treatment-plan second opinion: broader comparison before irreversible steps",
+        "Trade-off — Full plan review: heavier preparation and emotional load",
       ],
       records_to_prepare: [
         "Pathology report and slides if requested",
@@ -1156,14 +1181,16 @@ export function createSeedData(): KnowledgeGraphStore {
         "Separate facts (stage, markers) from judgment (preferred sequence)",
         "Consider a third multidisciplinary review only if conflict remains high-stakes",
       ],
+      body: "Trust comes from honesty about when a second opinion is worth it — and when it may not change the decision. Use it to reduce uncertainty before irreversible steps, not as a default upgrade or a rejection of your current team.",
     },
     5: {
       decision_context:
-        "International options are a branch of the decision path when a specific capability, trial, or second-opinion expertise is missing locally — not a default upgrade.",
+        "International care is a branch of the decision path when a specific capability, trial, or second-opinion expertise is missing locally — not a default upgrade. Define the capability gap first, then compare remote review versus travel, total episode cost, and home follow-up continuity.",
       when_this_may_help: [
         "A defined technique, trial, or specialty review is unavailable locally",
         "Remote second opinion suggests a capability gap worth exploring",
-        "You can sustain travel, lodging, and follow-up logistics",
+        "You can sustain travel, lodging, companion support, and follow-up logistics",
+        "Local and foreign recommendations differ on a material clinical point",
       ],
       when_it_may_not_help: [
         "Local care already offers an equivalent evidence-aligned option",
@@ -1171,13 +1198,16 @@ export function createSeedData(): KnowledgeGraphStore {
         "No home follow-up plan exists after return",
       ],
       options_and_tradeoffs: [
-        "Remote international review only — lower cost/burden; limited exam",
-        "Travel for a specific procedure or trial — potential access gain; continuity risk",
-        "Stay local with clarified sequencing — continuity strength; may lack niche capability",
+        "Benefit — Remote international review only: lower cost/burden; clarifies whether travel is needed",
+        "Trade-off — Remote only: limited exam; may still leave logistics unanswered",
+        "Benefit — Travel for a specific procedure or trial: potential access gain",
+        "Trade-off — Travel: continuity risk, cost, and complication coverage abroad",
+        "Benefit — Stay local with clarified sequencing: strongest continuity",
+        "Trade-off — Stay local: may lack a niche capability if the gap is real",
       ],
       records_to_prepare: [
         "Complete imaging and pathology package",
-        "Written question you want the foreign center to answer",
+        "Written one-sentence question you want the foreign center to answer",
         "Insurance / self-pay estimate worksheet",
         "Home-team follow-up contact plan",
       ],
@@ -1192,6 +1222,7 @@ export function createSeedData(): KnowledgeGraphStore {
         "Have your local team respond to the foreign plan in writing",
         "Do not travel until continuity and emergency coverage are clear",
       ],
+      body: "Cross-border care should answer a specific clinical question. If you cannot name the capability gap, pause before booking flights. Continuity after return is part of the decision — not an afterthought.",
     },
   };
 
@@ -1238,6 +1269,82 @@ export function createSeedData(): KnowledgeGraphStore {
         "Lung Cancer Decision Story: Second Opinion Before Surgery",
         "A patient decision journey about seeking a second opinion before lung cancer surgery.",
         ["lung cancer story", "second opinion", "decision journey"]
+      ),
+    },
+    {
+      id: id("story", 6),
+      cancer_id: id("cancer", 1),
+      title: "When a biomarker result changed the first treatment plan",
+      slug: "biomarker-result-changed-lung-cancer-treatment-plan",
+      country: "Singapore",
+      age_range: "50-59",
+      decision_topic: "biomarker-guided sequencing",
+      background:
+        "A patient with newly diagnosed non-small cell lung cancer was offered a surgery-first plan before molecular results returned.",
+      initial_diagnosis:
+        "Suspected resectable NSCLC after staging imaging, with tissue sent for a broad biomarker panel that had not yet resulted.",
+      decision_challenge:
+        "Whether to schedule resection immediately or wait a short, defined window for biomarker results that might favor systemic therapy first.",
+      options_considered: [
+        "Proceed to surgery on the original calendar",
+        "Wait for the tissue biomarker panel before locking sequencing",
+        "Add liquid biopsy while waiting if turnaround was uncertain",
+      ],
+      why_compared:
+        "The team explained that a targetable alteration could redirect first-line therapy and possibly change whether systemic treatment should come before surgery.",
+      final_decision:
+        "Paused surgery for a time-boxed wait. An actionable alteration was found, and the plan shifted to a systemic-first sequence with surgery reconsidered after response assessment.",
+      lessons_learned: [
+        "Ask what result would actually change the plan before agreeing to wait",
+        "A short, dated pause is different from an open-ended delay",
+        "Biomarker timing can turn a surgery-versus-systemic fork into a clearer sequence",
+      ],
+      status: "published" as const,
+      content_reviewed_at: reviewed,
+      created_at: ts,
+      updated_at: ts,
+      ...seo(
+        "Lung Cancer Decision Story: Biomarker Changed Treatment Plan",
+        "An illustrative journey where biomarker results redirected lung cancer treatment sequencing.",
+        ["lung cancer story", "biomarker testing", "decision journey"]
+      ),
+    },
+    {
+      id: id("story", 7),
+      cancer_id: id("cancer", 1),
+      title: "Comparing local treatment with an international option",
+      slug: "comparing-local-and-international-lung-cancer-options",
+      country: "United Arab Emirates",
+      age_range: "45-54",
+      decision_topic: "local vs international care",
+      background:
+        "A family was considering travel abroad after reading about a specialized technique not routinely offered nearby.",
+      initial_diagnosis:
+        "Locally advanced NSCLC with a completed staging workup and an evidence-aligned local plan already proposed.",
+      decision_challenge:
+        "Whether to travel for a marketed specialized option or stay with the local multidisciplinary plan after clarifying the true capability gap.",
+      options_considered: [
+        "Proceed with the local evidence-aligned plan",
+        "Obtain a remote international records review before any travel",
+        "Travel for the specialized technique if review confirmed a material gap",
+      ],
+      why_compared:
+        "The family needed to know whether abroad care would change outcomes or mainly change venue, cost, and follow-up continuity.",
+      final_decision:
+        "Completed a remote international review first. The review confirmed the local plan was appropriate; the family stayed local and used the foreign notes to sharpen follow-up questions.",
+      lessons_learned: [
+        "Name the capability gap in one sentence before booking flights",
+        "Remote review can prevent unnecessary travel when options are equivalent",
+        "Home follow-up and complication coverage are part of the decision",
+      ],
+      status: "published" as const,
+      content_reviewed_at: reviewed,
+      created_at: ts,
+      updated_at: ts,
+      ...seo(
+        "Lung Cancer Decision Story: Local vs International Care",
+        "An illustrative journey comparing local lung cancer treatment with an international option.",
+        ["lung cancer story", "care abroad", "decision journey"]
       ),
     },
     {
@@ -1596,6 +1703,11 @@ export function createSeedData(): KnowledgeGraphStore {
     sort_order: number;
   }> = [
     { question_id: id("q", 1), story_id: id("story", 1), sort_order: 1 },
+    { question_id: id("q", 2), story_id: id("story", 1), sort_order: 1 },
+    { question_id: id("q", 3), story_id: id("story", 1), sort_order: 1 },
+    { question_id: id("q", 3), story_id: id("story", 6), sort_order: 2 },
+    { question_id: id("q", 21), story_id: id("story", 6), sort_order: 1 },
+    { question_id: id("q", 5), story_id: id("story", 7), sort_order: 1 },
     { question_id: id("q", 6), story_id: id("story", 2), sort_order: 1 },
     { question_id: id("q", 9), story_id: id("story", 3), sort_order: 1 },
     { question_id: id("q", 13), story_id: id("story", 4), sort_order: 1 },
@@ -1663,6 +1775,11 @@ export function createSeedData(): KnowledgeGraphStore {
 
   const story_treatments = [
     { story_id: id("story", 1), treatment_id: id("tx", 1), sort_order: 1 },
+    { story_id: id("story", 6), treatment_id: id("tx", 4), sort_order: 1 },
+    { story_id: id("story", 6), treatment_id: id("tx", 5), sort_order: 2 },
+    { story_id: id("story", 6), treatment_id: id("tx", 1), sort_order: 3 },
+    { story_id: id("story", 7), treatment_id: id("tx", 5), sort_order: 1 },
+    { story_id: id("story", 7), treatment_id: id("tx", 2), sort_order: 2 },
     { story_id: id("story", 2), treatment_id: id("tx", 7), sort_order: 1 },
     { story_id: id("story", 2), treatment_id: id("tx", 1), sort_order: 2 },
     { story_id: id("story", 3), treatment_id: id("tx", 1), sort_order: 1 },
@@ -1754,37 +1871,46 @@ export function createSeedData(): KnowledgeGraphStore {
       cancer_id: id("cancer", 1),
       title: "Lung Cancer Decision Map",
       intro:
-        "A practical journey from newly diagnosed to next decision. Each step links to educational questions, treatment comparisons, and illustrative decision scenarios — not a personal care plan.",
+        "A branching journey from newly diagnosed to the next decision. Paths can fork — biomarkers, treatment comparison, and second opinion often run in parallel. Each node links to decision questions, treatment comparisons, and illustrative scenarios — not a personal care plan.",
       nodes: [
         {
           id: "node-diagnosis",
           label: "1. Newly diagnosed",
+          state_label: "Diagnosis confirmed",
           summary:
-            "Confirm what is known, which tests are outstanding, and which decisions are time-sensitive.",
+            "Confirm what is known, which tests are outstanding, and which decisions are time-sensitive. From here the path forks.",
           sort_order: 1,
           question_slugs: [
             "what-decisions-matter-most-after-new-lung-cancer-diagnosis",
           ],
           treatment_slugs: [],
-          story_slugs: [],
+          story_slugs: ["choosing-second-opinion-before-lung-surgery"],
+          next_node_ids: [
+            "node-biomarkers",
+            "node-compare",
+            "node-second-opinion",
+          ],
         },
         {
           id: "node-biomarkers",
           label: "2. Confirm subtype & biomarkers",
+          state_label: "Biomarker testing",
           summary:
-            "Make sure pathology and molecular testing are complete enough to shape first-line choices.",
+            "Make sure pathology and molecular testing are complete enough to shape first-line choices — or decide when waiting is not safe.",
           sort_order: 2,
           question_slugs: [
             "do-i-need-biomarker-testing-before-lung-cancer-treatment",
           ],
           treatment_slugs: ["targeted-therapy", "immunotherapy"],
-          story_slugs: [],
+          story_slugs: ["biomarker-result-changed-lung-cancer-treatment-plan"],
+          next_node_ids: ["node-compare", "node-second-opinion"],
         },
         {
           id: "node-compare",
           label: "3. Compare treatment paths",
+          state_label: "Treatment comparison",
           summary:
-            "Weigh surgery-led versus systemic-led sequencing using your stage, markers, and priorities.",
+            "Weigh surgery-led versus systemic-led sequencing using stage, markers, and priorities. This can run alongside biomarker workup.",
           sort_order: 3,
           question_slugs: [
             "how-to-compare-surgery-and-systemic-therapy-lung-cancer",
@@ -1795,40 +1921,54 @@ export function createSeedData(): KnowledgeGraphStore {
             "immunotherapy",
             "targeted-therapy",
           ],
-          story_slugs: ["choosing-second-opinion-before-lung-surgery"],
+          story_slugs: [
+            "choosing-second-opinion-before-lung-surgery",
+            "biomarker-result-changed-lung-cancer-treatment-plan",
+          ],
+          next_node_ids: [
+            "node-second-opinion",
+            "node-global",
+            "node-costs",
+          ],
         },
         {
           id: "node-second-opinion",
           label: "4. Second opinion checkpoint",
+          state_label: "Second opinion",
           summary:
             "Decide whether a pathology, staging, or sequencing review would reduce uncertainty before irreversible steps.",
           sort_order: 4,
           question_slugs: [
             "should-i-get-second-opinion-after-lung-cancer-diagnosis",
           ],
-          treatment_slugs: [],
+          treatment_slugs: ["surgery"],
           story_slugs: ["choosing-second-opinion-before-lung-surgery"],
+          next_node_ids: ["node-compare", "node-global", "node-costs"],
         },
         {
           id: "node-global",
           label: "5. Local vs international branch",
+          state_label: "International option",
           summary:
             "Only explore cross-border care when a specific capability, trial, or review is missing locally.",
           sort_order: 5,
           question_slugs: ["when-to-consider-lung-cancer-care-abroad"],
-          treatment_slugs: ["proton-therapy-vs-traditional-radiation"],
-          story_slugs: [],
+          treatment_slugs: ["immunotherapy", "targeted-therapy"],
+          story_slugs: ["comparing-local-and-international-lung-cancer-options"],
+          next_node_ids: ["node-costs"],
           optional: true,
         },
         {
           id: "node-costs",
           label: "6. Clarify costs & logistics",
+          state_label: "Costs & logistics",
           summary:
             "Estimate the full episode — tests, drugs, travel, time away — before locking a pathway.",
           sort_order: 6,
           question_slugs: ["lung-cancer-treatment-costs-what-to-ask"],
           treatment_slugs: [],
-          story_slugs: [],
+          story_slugs: ["comparing-local-and-international-lung-cancer-options"],
+          next_node_ids: [],
           optional: true,
         },
       ],

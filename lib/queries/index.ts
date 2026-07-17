@@ -362,7 +362,36 @@ export async function getStoryPage(slug: string) {
     decisionMap != null
       ? buildStoryJourneyLoop(decisionMap, story.slug)
       : null;
-  return { story, cancer, treatments, sources, journeyLoop };
+
+  let questionTitles: Record<string, string> = {};
+  let treatmentNames: Record<string, string> = {};
+  if (journeyLoop) {
+    const store = await readStore();
+    questionTitles = Object.fromEntries(
+      store.questions
+        .filter((q) =>
+          journeyLoop.connectedQuestionSlugs.includes(q.slug)
+        )
+        .map((q) => [q.slug, q.title])
+    );
+    treatmentNames = Object.fromEntries(
+      store.treatments
+        .filter((t) =>
+          journeyLoop.connectedTreatmentSlugs.includes(t.slug)
+        )
+        .map((t) => [t.slug, t.name])
+    );
+  }
+
+  return {
+    story,
+    cancer,
+    treatments,
+    sources,
+    journeyLoop,
+    questionTitles,
+    treatmentNames,
+  };
 }
 
 export async function getSitemapEntries() {

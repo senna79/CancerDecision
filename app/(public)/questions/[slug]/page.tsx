@@ -86,6 +86,24 @@ export default async function QuestionPage({
             path: `/questions/${question.slug}`,
             dateModified: question.content_reviewed_at,
             aboutName: cancer?.name,
+            mentions: [
+              question.category.replaceAll("_", " "),
+              ...(journey
+                ? [
+                    journey.currentNode.state_label ??
+                      journey.currentNode.label.replace(/^\d+\.\s*/, ""),
+                  ]
+                : []),
+            ],
+            relatedTreatmentNames: treatments.map((tx) => tx.name),
+            partOfName: journey
+              ? journey.map.title
+              : cancer
+                ? `${cancer.name} Decision Center`
+                : null,
+            partOfUrl: cancer
+              ? `/cancers/${cancer.slug}${journey ? "#decision-map" : ""}`
+              : null,
           }),
           articleJsonLd({
             title: question.title,
@@ -123,7 +141,9 @@ export default async function QuestionPage({
       <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
         {question.category.replaceAll("_", " ")}
         {cancer ? ` · ${cancer.name}` : ""}
-        {journey ? ` · Step ${journey.currentNode.sort_order}` : ""}
+        {journey
+          ? ` · ${journey.currentNode.state_label ?? `Step ${journey.currentNode.sort_order}`}`
+          : ""}
       </p>
       <h1 className="mt-3 font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-4xl">
         {question.title}

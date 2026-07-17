@@ -1,3 +1,10 @@
+
+North Star Metric
+
+Can a cancer patient, regardless of their stage or situation, understand their next best step within 3 minutes of entering the platform?
+
+
+
 下面这份文档定位为：
 
 提供给 Cursor / AI Coding Agent 的开发规格文档（Technical Product Specification）
