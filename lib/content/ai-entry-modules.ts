@@ -187,6 +187,15 @@ export type AiEntryFlagshipModules = {
   costItems?: string[];
   costClose?: string;
 
+  /** How long until results — no fixed calendar promises */
+  resultsTimingTitle?: string;
+  resultsTimingLead?: string;
+  resultsTimingDependsIntro?: string;
+  resultsTimingDependsOn?: string[];
+  resultsTimingAskIntro?: string;
+  resultsTimingAsk?: string[];
+  resultsTimingClose?: string;
+
   /** Entry #4/#5 — start with goal / problem to solve */
   goalFrameworkTitle?: string;
   goalFrameworkLead?: string;
@@ -1063,17 +1072,16 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
   doesNotDecideClose:
     "Testing improves the information for discussion — it does not replace a conversation with your care team.",
 
-  costTitle: "Cost and insurance considerations",
+  costTitle: "Cost and insurance — what to ask before testing is ordered",
   costLead:
-    "Costs vary widely by test type, laboratory, country or region, and insurance rules. This page does not list prices because a single number would often be misleading.",
+    "There is no single “typical price.” Cost depends on the test type, lab, country or system, insurance rules, and whether another procedure is needed. Use these questions instead of guessing a number.",
   costItems: [
-    "Ask which tests are being ordered and why each one matters for your decision",
-    "Ask what is typically covered, what may require prior authorization, and what out-of-pocket costs to expect",
-    "Ask how long results usually take in your setting — timing can matter as much as cost",
-    "If cost is a barrier, ask whether a narrower panel, existing tissue, or sequencing options can still answer the key question",
+    "Which tests are being ordered, and why does each one matter for this decision?",
+    "What is usually covered, what needs prior authorization, and what might we pay out of pocket?",
+    "If cost is a barrier, can existing tissue, a narrower panel, or another path still answer the key question?",
   ],
   costClose:
-    "Before testing is ordered, a practical question is: “What will this cost us, and will the result change what we discuss next?”",
+    "Practical pair to ask together: “What will this cost us — and will the result change what we discuss next?”",
 
   valueTitle: "Situations where additional testing may be especially important",
   valueSituations: [
@@ -1114,6 +1122,25 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
   timingClose:
     "The answer depends on your individual situation. Discuss timing directly with your care team.",
 
+  resultsTimingTitle: "How long does biomarker testing take?",
+  resultsTimingLead:
+    "There is no single calendar for every test. Turnaround depends on the type of test, where it is performed, whether a usable sample is already available, and whether another sample is needed.",
+  resultsTimingDependsIntro: "Timing often depends on:",
+  resultsTimingDependsOn: [
+    "Whether existing tissue or a blood sample can be used",
+    "Which tests are ordered and which laboratory runs them",
+    "Local processing and shipping time",
+    "Whether an additional biopsy is needed first",
+  ],
+  resultsTimingAskIntro: "Ask your care team:",
+  resultsTimingAsk: [
+    "Has my sample already been sent for testing?",
+    "When should we expect results in our setting?",
+    "Will treatment decisions wait for these results — and why or why not?",
+  ],
+  resultsTimingClose:
+    "Do not assume “waiting” always means unsafe delay — or that results will arrive overnight. Confirm both the expected window and how it affects the next decision.",
+
   mistakesTitle: "Common mistakes when thinking about biomarker testing",
   mistakes: [
     {
@@ -1138,30 +1165,29 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
   doctorTitle: "Questions you can ask your doctor",
   doctorGroups: [
     {
-      heading: "About testing",
+      heading: "Before testing",
       questions: [
-        "Do I need biomarker testing for my situation?",
-        "What tests are recommended for my type of lung cancer?",
-        "Can you use tissue or samples we already have?",
-        "Are the results complete for the decision we are making now?",
-      ],
-    },
-    {
-      heading: "About biopsy and timing",
-      questions: [
-        "Will I need another biopsy — and why?",
-        "What are the risks of getting new tissue in my case?",
-        "Should testing happen before choosing treatment?",
-        "Could waiting for results change my options?",
-      ],
-    },
-    {
-      heading: "About results, cost, and next steps",
-      questions: [
-        "What treatment choices could be affected by the results?",
-        "What if there is no actionable finding?",
+        "What biomarkers should be tested for my cancer type and situation?",
+        "Has my tissue or sample already been sent — or can you use what we already have?",
+        "Do I need another biopsy, and what are the risks if we do?",
         "What should we expect for cost, insurance, and turnaround time?",
-        "How would the results influence our next step?",
+      ],
+    },
+    {
+      heading: "Before choosing treatment",
+      questions: [
+        "Should we wait for results before locking a plan?",
+        "Could these results change my options?",
+        "What happens if results are not back yet but treatment pressure is rising?",
+      ],
+    },
+    {
+      heading: "If testing is incomplete or unclear",
+      questions: [
+        "Are the results complete for the decision we are making now?",
+        "What if there is no actionable finding?",
+        "Are there other ways to get the information we still need?",
+        "How should these results change our next step?",
       ],
     },
   ],
