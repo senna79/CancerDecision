@@ -4,10 +4,13 @@ import { Markdown } from "@/components/content/markdown";
 export function CitationBlock({
   answer,
   questionTitle,
+  eyebrow = "Direct answer · AI citation block",
   formHint = "Direct answer · under 100 words · citation-ready",
 }: {
   answer: string;
   questionTitle: string;
+  /** Small label above the answer title */
+  eyebrow?: string;
   formHint?: string;
 }) {
   return (
@@ -17,7 +20,7 @@ export function CitationBlock({
       className="mt-5 scroll-mt-24 rounded-lg border-2 border-[var(--accent)]/35 bg-white/90 p-5 md:p-6"
     >
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-        Direct answer · AI citation block
+        {eyebrow}
       </p>
       <h2 className="mt-1 font-heading text-lg font-semibold text-[var(--ink)] md:text-xl">
         {questionTitle}

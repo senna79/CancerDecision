@@ -864,11 +864,11 @@ export const SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 };
 
-/** Lung Cancer AI Entry #3 — Biomarker Testing */
+/** Lung Cancer AI Entry #3 — Biomarker Testing (Entry Template v2.0 sample) */
 export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
   cancerLabel: "Lung Cancer",
   decisionMoment: "Whether additional information may change treatment choices",
-  exploring: "Biomarker Testing Decision",
+  exploring: "Whether testing should happen before locking a treatment plan",
   subtitle:
     "Could additional test results change which treatment options are considered?",
   relatedDecisions: [
@@ -884,55 +884,49 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     { label: "Treatment Decisions", href: TREATMENT_COMPARE },
   ],
 
-  triggersTitle: "You may be wondering about biomarker testing if:",
+  triggersTitle: "When biomarker testing may matter most",
   triggerGroups: [
     {
-      heading: "You recently received a lung cancer diagnosis",
+      heading: "New diagnosis",
       lead: "You may be asking:",
       items: [
         "Do I know enough about my cancer yet?",
-        "Is there information still missing?",
+        "Is important information still missing before we choose?",
       ],
     },
     {
-      heading: "You have been offered treatment options",
+      heading: "Choosing treatment",
       lead: "You may be asking:",
       items: [
-        "Could additional test results change these options?",
-        "Should testing happen before choosing treatment?",
+        "Could results change the options on the table?",
+        "Should testing happen before locking a plan?",
       ],
     },
     {
-      heading: "You heard about targeted or personalized treatments",
+      heading: "Treatment change or another opinion",
       lead: "You may be asking:",
       items: [
-        "Do these options apply to my situation?",
-        "What information is needed to consider them?",
-      ],
-    },
-    {
-      heading: "You are considering a second opinion",
-      lead: "You may be asking:",
-      items: [
-        "Was all important information reviewed?",
-        "Would additional testing help another specialist evaluate my case?",
+        "Was all relevant information reviewed?",
+        "Would updated testing change what we compare next?",
       ],
     },
   ],
 
-  whyTitle: "Treatment decisions depend on having the right information",
+  whyTitle: "Why biomarker testing may matter",
   whyLead:
-    "After a lung cancer diagnosis, many patients want to move quickly toward treatment.",
-  whyBody: [
-    "However, some treatment decisions depend on understanding more about the cancer itself.",
+    "After a lung cancer diagnosis, many people want to move quickly toward treatment — and some choices depend on understanding more about the cancer itself.",
+  whyBody: [],
+  whyQuestions: [
+    "It may reveal treatment approaches you would otherwise not discuss",
+    "It helps doctors match options to your cancer’s features",
+    "It is one factor in the decision — not the only factor",
   ],
-  whyQuestions: [],
   whyNotLabel: "The important question is not:",
   whyNotQuestion: "Do I need every possible test?",
   whyBetterLabel: "The more useful question is:",
   whyBetterQuestion: "Do I have the information needed to make a treatment decision?",
   whyClose: [
-    "Biomarker testing is one way doctors may gather additional information that could influence which options are considered.",
+    "Ask your care team whether testing is complete and whether results could change the options you should discuss.",
   ],
 
   infoGapTitle:
@@ -974,9 +968,9 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     },
   ],
 
-  doesNotDecideTitle: "Biomarker results are one part of the decision",
+  doesNotDecideTitle: "What biomarker results can and cannot tell you",
   doesNotDecideLead:
-    "A biomarker result does not automatically determine the right treatment.",
+    "A biomarker result does not automatically determine the right treatment. Decisions still consider:",
   doesNotDecideItems: [
     "Cancer stage",
     "Overall health",
@@ -986,7 +980,7 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     "Personal preferences",
   ],
   doesNotDecideClose:
-    "The purpose of testing is to provide better information for discussion, not replace a conversation with your healthcare team.",
+    "Testing improves the information for discussion — it does not replace a conversation with your care team.",
 
   valueTitle: "Situations where additional testing may be especially important",
   valueSituations: [
@@ -1093,18 +1087,16 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     "The goal is not to delay decisions. The goal is to make decisions with the most relevant information available.",
 
   nextStepTitle: "Your next step",
-  nextStepLead: "If you are deciding whether biomarker testing matters:",
+  nextStepLead: "Before you leave this page, focus on three actions:",
   nextStepActions: [
-    { label: "Confirm what information is already available about your cancer." },
     {
-      label: "Ask:",
-      examples: [
-        "Is there additional information that could change my treatment options?",
-      ],
+      label: "Ask whether biomarker testing has been completed for your cancer.",
     },
     {
-      label:
-        "Use the information to compare treatment choices with your care team.",
+      label: "Ask whether results could affect the treatment options you discuss.",
+    },
+    {
+      label: "Discuss timing with your care team if you are worried about delay.",
     },
   ],
   nextStepCtaLabel: "Compare Lung Cancer Treatment Options",

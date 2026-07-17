@@ -89,6 +89,7 @@ Each Moment is a **tree root**, not a single page.
 | Patient router | `lib/journey/decision-moments.ts` |
 | Map UI | `components/cancer/decision-map.tsx` |
 | Trust | `docs/CancerDecision_Source_Trust_Framework_v1.0.md` |
+| Entry Template v2.0 | `docs/Entry_Template_v2.0.md` (Biomarker sample) |
 
 ---
 
