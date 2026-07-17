@@ -207,7 +207,7 @@ export default async function QuestionPage({
 
       <TrustStrip reviewedAt={question.content_reviewed_at} />
 
-      {journey && cancer ? (
+      {journey && cancer && !entryV2 ? (
         <JourneyProgressRail journey={journey} cancerSlug={cancer.slug} />
       ) : null}
 
