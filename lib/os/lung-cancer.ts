@@ -38,8 +38,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "I was just diagnosed — I don’t know what comes first",
-        hint: "AI Entry: first checkpoints after diagnosis.",
-        nextStep: "Next: Direct answer + What to do next.",
+        hint: "AI Entry: first decisions after a new diagnosis.",
+        nextStep: "Next: Direct answer → first 3 decisions → your next step.",
       },
     },
     {

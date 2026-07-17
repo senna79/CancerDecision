@@ -26,12 +26,13 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
   {
     id: "newly-diagnosed",
     label: "Newly diagnosed",
-    decisionLabel: "First decisions after diagnosis",
+    decisionLabel: "New Diagnosis",
     slug: "what-decisions-matter-most-after-new-lung-cancer-diagnosis",
     momentId: "diagnosis",
     searchIntents: [
       "what should I do first after lung cancer diagnosis",
       "newly diagnosed lung cancer next steps",
+      "what to do after a lung cancer diagnosis",
     ],
     relatedEntryIds: ["biomarker", "treatment-comparison", "second-opinion"],
   },

@@ -7,7 +7,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "Know Your Next Step in a Cancer Decision",
   description:
-    "A patient navigation system that helps you understand options, prepare better questions, and find the right next step — starting with a complete lung cancer decision journey.",
+    "A patient navigation system that helps you understand options, prepare better questions, and find the right next step. Start with lung cancer — the first complete cancer decision journey.",
   path: "/",
   keywords: [
     "cancer decision",
@@ -49,15 +49,19 @@ export default async function HomePage() {
             Not an encyclopedia. A navigation path — so you leave knowing what
             to do next, not only what cancer is.
           </p>
+          <p className="animate-rise-delay mt-3 max-w-2xl text-base font-medium text-[var(--ink-soft)]">
+            Start with lung cancer — the first complete cancer decision journey.
+          </p>
 
           <div className="animate-rise-delay mt-8 max-w-3xl">
             <DecisionMomentRouter
               moments={LUNG_DECISION_MOMENTS}
               title="Where are you right now?"
-              subtitle="Tier-1 decision Moments from the Lung Cancer Decision OS — newly diagnosed, biomarkers, treatment comparison, second opinion, or care abroad. Each opens What to do next on the flagship path."
+              subtitle="Pick the decision you are facing. Lung cancer is our first complete journey — newly diagnosed, biomarkers, treatment comparison, second opinion, or care abroad. Each path opens What to do next."
               footer={
                 <>
-                  Facing another cancer type?{" "}
+                  Other cancer guides are structured the same way and will deepen
+                  over time.{" "}
                   <Link
                     href="/cancers"
                     className="font-semibold text-[var(--accent)] hover:underline"
@@ -72,7 +76,7 @@ export default async function HomePage() {
                         href="/cancers/lung-cancer#decision-moment"
                         className="font-semibold text-[var(--accent)] hover:underline"
                       >
-                        Open full lung decision center
+                        Open the lung decision center
                       </Link>
                     </>
                   ) : null}
@@ -88,8 +92,8 @@ export default async function HomePage() {
           Other cancer guides
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--muted)]">
-          Lung cancer is the complete decision journey today. Other centers are
-          structured the same way and will deepen over time.
+          Lung cancer is the first complete case. Other centers share the same
+          decision framework and will deepen over time — not a different product.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {otherCancers.map((cancer) => (

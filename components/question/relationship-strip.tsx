@@ -23,7 +23,7 @@ export function RelationshipStrip({
       className="mt-5 rounded-md border border-[var(--line)] bg-[var(--paper)]/90 px-4 py-3 text-sm"
     >
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-        Decision relationships
+        Part of your decision journey
       </p>
       <dl className="mt-2 grid gap-2 sm:grid-cols-2">
         <div>
@@ -55,7 +55,7 @@ export function RelationshipStrip({
           </dd>
         </div>
         <div className="sm:col-span-2">
-          <dt className="text-xs text-[var(--muted)]">Related decisions</dt>
+          <dt className="text-xs text-[var(--muted)]">Related</dt>
           <dd className="mt-1 flex flex-wrap gap-x-3 gap-y-1">
             {related.length > 0 ? (
               related.map((item) => (

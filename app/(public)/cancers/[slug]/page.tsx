@@ -102,7 +102,7 @@ export default async function CancerDecisionCenterPage({
       </h1>
       <p className="mt-3 max-w-3xl text-[var(--muted)]">
         {isLung
-          ? "Any stage — newly diagnosed, comparing options, second opinion, or care abroad. Pick where you are now; leave knowing your next step."
+          ? "Lung cancer is our first complete cancer decision journey. Any stage — newly diagnosed, comparing options, second opinion, or care abroad. Pick where you are; leave knowing your next step."
           : "Start from the decision you are facing, then explore questions, treatments, and illustrative journeys for this cancer type."}
       </p>
 
@@ -112,7 +112,7 @@ export default async function CancerDecisionCenterPage({
             moments={LUNG_DECISION_MOMENTS}
             activeId={activeMoment?.id}
             title="Where are you in this decision?"
-            subtitle="Active Tier-1 Moments only — each opens What to do next. More decision guides exist in the OS skeleton and will open when ready."
+            subtitle="Choose the decision you are facing now. Each path opens What to do next — concrete actions before the longer reading."
             footer={
               decisionMap ? (
                 <>
@@ -124,7 +124,7 @@ export default async function CancerDecisionCenterPage({
                     Jump to the Decision Map
                   </a>
                   {" · "}
-                  More guides coming as Moments are activated.
+                  More decision guides will open as this journey expands.
                 </>
               ) : null
             }

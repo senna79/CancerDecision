@@ -1,12 +1,14 @@
 import { Markdown } from "@/components/content/markdown";
 
-/** AI-citable Direct Answer — mandatory 4-sentence form in summary */
+/** AI-citable Direct Answer — short, quotable, decision-first */
 export function CitationBlock({
   answer,
   questionTitle,
+  formHint = "Direct answer · under 100 words · citation-ready",
 }: {
   answer: string;
   questionTitle: string;
+  formHint?: string;
 }) {
   return (
     <section
@@ -17,16 +19,13 @@ export function CitationBlock({
       <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
         Direct answer · AI citation block
       </p>
-      <p className="mt-1 text-sm text-[var(--muted)]">
-        Quotable answer to:{" "}
-        <span className="font-medium text-[var(--ink-soft)]">{questionTitle}</span>
-      </p>
-      <div className="mt-3 text-base leading-relaxed text-[var(--ink)] md:text-[1.05rem]">
+      <h2 className="mt-1 font-heading text-lg font-semibold text-[var(--ink)] md:text-xl">
+        {questionTitle}
+      </h2>
+      <div className="mt-3 space-y-3 text-base leading-relaxed text-[var(--ink)] md:text-[1.05rem]">
         <Markdown content={answer} />
       </div>
-      <p className="mt-3 text-[11px] text-[var(--muted)]">
-        Form: direct answer → when it matters → when it may not → next step
-      </p>
+      <p className="mt-3 text-[11px] text-[var(--muted)]">{formHint}</p>
     </section>
   );
 }

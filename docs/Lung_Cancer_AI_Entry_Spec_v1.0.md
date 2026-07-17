@@ -1,8 +1,9 @@
 # Lung Cancer AI Entry Specification v1.0
 
-**Status:** Active (Validation Sprint)  
+**Status:** Active (Content Excellence Sprint)  
 **Product role:** Acquisition layer (AEO) that feeds the Decision Journey  
-**North star connection:** A cited answer must land the patient in “What to do next” within ~3 minutes.
+**North star connection:** A cited answer must land the patient in “What to do next” within ~3 minutes.  
+**Positioning:** Lung cancer is the first complete cancer decision journey — not the only cancer the platform will cover.
 
 ---
 
