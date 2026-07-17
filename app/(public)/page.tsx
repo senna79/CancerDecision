@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { DecisionMomentRouter } from "@/components/journey/decision-moment-router";
+import { SituationGuidedRouter } from "@/components/journey/situation-guided-router";
 import { LUNG_DECISION_MOMENTS } from "@/lib/journey/decision-moments";
 import { getCancers, getStories } from "@/lib/queries";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -58,10 +58,8 @@ export default async function HomePage() {
           </p>
 
           <div className="animate-rise-delay mt-8 max-w-3xl">
-            <DecisionMomentRouter
+            <SituationGuidedRouter
               moments={LUNG_DECISION_MOMENTS}
-              title="Where are you right now?"
-              subtitle="Pick the decision you are facing. Lung cancer is our first complete journey — newly diagnosed, biomarkers, treatment comparison, Stage IV decisions, second opinion, or care center expertise. Each path opens What to do next."
               footer={
                 <>
                   Other cancer guides are structured the same way and will deepen

@@ -40,8 +40,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "I was just diagnosed — I don’t know what comes first",
-        hint: "AI Entry: first decisions after a new diagnosis.",
-        nextStep: "Next: Direct answer → first 3 decisions → your next step.",
+        hint: "What to sort out first after a new diagnosis.",
+        nextStep: "See what to do next",
       },
     },
     {
@@ -66,9 +66,9 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       story_slugs: ["biomarker-result-changed-lung-cancer-treatment-plan"],
       next_moment_ids: ["node-compare", "node-second-opinion"],
       patient_router: {
-        label: "I’m deciding about biomarker / molecular testing",
-        hint: "AI Entry: whether missing information could change options.",
-        nextStep: "Next: Direct answer → information gap → your next step.",
+        label: "Should I get biomarker testing before choosing treatment?",
+        hint: "Whether genetic or molecular testing should happen before locking a plan.",
+        nextStep: "See what to do next",
       },
     },
     {
@@ -115,8 +115,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "I need to compare treatment options",
-        hint: "AI Entry: framework to compare choices without ranking treatments.",
-        nextStep: "Next: Direct answer → five-question framework → your next step.",
+        hint: "How to compare choices without picking a single “best” treatment.",
+        nextStep: "See what to do next",
       },
     },
     {
@@ -142,8 +142,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       next_moment_ids: ["node-compare", "node-global"],
       patient_router: {
         label: "I’m considering a second opinion",
-        hint: "AI Entry: when another opinion may help — and when it may not.",
-        nextStep: "Next: Direct answer → prepare → your next step.",
+        hint: "When another review may help — and when waiting is fine.",
+        nextStep: "See what to do next",
       },
     },
     {
@@ -174,8 +174,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "I’m wondering if I need another center or specialist",
-        hint: "AI Entry: expertise match first — not hospital fame.",
-        nextStep: "Next: Direct answer → clarify your goal → your next step.",
+        hint: "When you may need different expertise — not a more famous hospital.",
+        nextStep: "See what to do next",
       },
     },
 
@@ -234,8 +234,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "I’m wondering whether surgery should be part of my plan",
-        hint: "Supporting module: compare surgery as one path among options.",
-        nextStep: "Next: Direct answer → compare framework → your next step.",
+        hint: "Whether surgery belongs in your plan among other options.",
+        nextStep: "See what to do next",
       },
     },
     {
@@ -266,8 +266,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "I’m wondering whether a clinical trial is relevant",
-        hint: "AI Entry: compare trials as an option — not a last resort.",
-        nextStep: "Next: Direct answer → compare framework → your next step.",
+        hint: "Whether a research treatment is worth discussing now.",
+        nextStep: "See what to do next",
       },
     },
     {
@@ -296,8 +296,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "My lung cancer has come back — what now?",
-        hint: "AI Entry: reassess changes first, then compare next options.",
-        nextStep: "Next: Direct answer → what changed → your next step.",
+        hint: "What to reassess when cancer returns, then compare next options.",
+        nextStep: "See what to do next",
       },
     },
     {
@@ -331,8 +331,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "My treatment is no longer working — what now?",
-        hint: "AI Entry: understand what changed, then compare next options.",
-        nextStep: "Next: Direct answer → what changed → your next step.",
+        hint: "What to do when the current plan is no longer working.",
+        nextStep: "See what to do next",
       },
     },
     {
@@ -369,8 +369,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "I was diagnosed with Stage IV / advanced lung cancer",
-        hint: "AI Entry: choose a path with goals, trade-offs, and priorities.",
-        nextStep: "Next: Direct answer → goals → compare → your next step.",
+        hint: "How to choose a path with goals, trade-offs, and priorities.",
+        nextStep: "See what to do next",
       },
     },
     {
@@ -402,9 +402,9 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-costs",
       ],
       patient_router: {
-        label: "I want my goals and daily life included in the decision",
-        hint: "Supporting module: add personal priorities to every treatment discussion.",
-        nextStep: "Next: Direct answer → define priorities → your next step.",
+        label: "How do I include my daily life in this decision?",
+        hint: "How to bring daily life and personal priorities into the discussion.",
+        nextStep: "See what to do next",
       },
     },
 
@@ -439,8 +439,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "I’m wondering if this plan can work with my real life",
-        hint: "Supporting module: include cost, travel, time, and support in planning.",
-        nextStep: "Next: Direct answer → feasibility framework → your next step.",
+        hint: "Whether the plan can work with cost, travel, time, and support.",
+        nextStep: "See what to do next",
       },
     },
   ],

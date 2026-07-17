@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { DecisionMapView } from "@/components/cancer/decision-map";
 import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
-import { DecisionMomentRouter } from "@/components/journey/decision-moment-router";
+import { SituationGuidedRouter } from "@/components/journey/situation-guided-router";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
 import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
@@ -108,11 +108,9 @@ export default async function CancerDecisionCenterPage({
 
       {isLung ? (
         <div className="mt-8 max-w-3xl">
-          <DecisionMomentRouter
+          <SituationGuidedRouter
             moments={LUNG_DECISION_MOMENTS}
             activeId={activeMoment?.id}
-            title="Where are you in this decision?"
-            subtitle="Choose the decision you are facing now. Each path opens What to do next — concrete actions before the longer reading."
             footer={
               decisionMap ? (
                 <>

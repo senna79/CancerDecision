@@ -7,6 +7,7 @@ export function DecisionMomentRouter({
   moments,
   title = "Where are you in this decision?",
   subtitle = "Pick the moment that matches you now. You’ll land on a guided next step — not a reading list.",
+  eyebrow = "Start here · about 3 minutes",
   activeId,
   compact = false,
   footer,
@@ -14,6 +15,8 @@ export function DecisionMomentRouter({
   moments: DecisionMoment[];
   title?: string;
   subtitle?: string;
+  /** Set null to hide the small label above the title */
+  eyebrow?: string | null;
   activeId?: string | null;
   compact?: boolean;
   footer?: ReactNode;
@@ -28,9 +31,11 @@ export function DecisionMomentRouter({
           : "rounded-lg border border-[var(--accent)]/30 bg-white/90 p-5 md:p-7"
       )}
     >
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-        Start here · about 3 minutes
-      </p>
+      {eyebrow ? (
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+          {eyebrow}
+        </p>
+      ) : null}
       <h2
         className={cn(
           "mt-1 font-heading font-semibold tracking-[-0.02em] text-[var(--ink)]",
