@@ -37,8 +37,8 @@ export default async function CancersPage({
         Cancer Library
       </h1>
       <p className="mt-3 max-w-2xl text-[var(--muted)]">
-        Every cancer type opens the same decision-center pathway: common
-        questions, treatment comparisons, global options, and patient journeys.
+        Each cancer guide brings together common questions, treatment
+        comparisons, international options, and illustrative decision journeys.
       </p>
 
       {activeTopic ? (

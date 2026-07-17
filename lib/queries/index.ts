@@ -240,17 +240,23 @@ export async function getCountriesForTreatment(treatmentId: string) {
   return store.countries.filter((c) => codes.includes(c.code));
 }
 
+export async function getDecisionMapForCancer(cancerId: string) {
+  const store = await readStore();
+  return store.decision_maps.find((m) => m.cancer_id === cancerId) ?? null;
+}
+
 export async function getCancerDecisionCenter(slug: string) {
   const cancer = await getCancerBySlug(slug);
   if (!cancer) return null;
 
-  const [questions, treatments, stories, globalOptions, sources] =
+  const [questions, treatments, stories, globalOptions, sources, decisionMap] =
     await Promise.all([
       getQuestions({ cancerId: cancer.id }),
       getTreatmentsForCancer(cancer.id),
       getStories({ cancerId: cancer.id }),
       getGlobalCareOptions({ cancerId: cancer.id }),
       getSourcesForEntity("cancer", cancer.id),
+      getDecisionMapForCancer(cancer.id),
     ]);
 
   return {
@@ -260,6 +266,7 @@ export async function getCancerDecisionCenter(slug: string) {
     stories,
     globalOptions,
     sources,
+    decisionMap,
     secondOpinionQuestions: questions.filter(
       (q) => q.category === "second_opinion"
     ),

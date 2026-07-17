@@ -49,7 +49,7 @@ export default async function HomePage() {
               href="/cancers"
               className="rounded-md bg-[var(--accent)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[#0d655e]"
             >
-              Explore cancer centers
+              Explore cancer guides
             </Link>
             <Link
               href="/about"
@@ -63,11 +63,12 @@ export default async function HomePage() {
 
       <section className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8">
         <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-          Cancer Selection
+          Start with your cancer type
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--muted)]">
-          Each cancer uses the same decision-center template. New cancers are
-          added through knowledge data, not new page code.
+          Start with the cancer type or decision you are facing. Each guide
+          brings together diagnosis questions, treatment choices, second-opinion
+          guidance, decision journeys, and international options.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {cancers.map((cancer) => (
@@ -114,10 +115,11 @@ export default async function HomePage() {
 
       <section className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8">
         <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-          Patient Stories Preview
+          Decision journey examples
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--muted)]">
-          Decision journey stories—not miracle narratives.
+          Illustrative decision scenarios that show how patients compare options
+          — not miracle recovery stories, and not verified patient testimonials.
         </p>
         <div className="mt-8 grid gap-4 md:grid-cols-3">
           {stories.map((story) => (
@@ -127,7 +129,7 @@ export default async function HomePage() {
               className="rounded-lg border border-[var(--line)] bg-white/70 p-5 transition hover:border-[var(--accent)]"
             >
               <p className="text-xs uppercase tracking-[0.14em] text-[var(--muted)]">
-                {story.country} · {story.age_range}
+                Illustrative · {story.country} · {story.age_range}
               </p>
               <h3 className="mt-2 font-heading text-lg font-semibold text-[var(--ink)]">
                 {story.title}

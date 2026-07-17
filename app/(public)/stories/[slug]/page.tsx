@@ -5,6 +5,7 @@ import { Section } from "@/components/content/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
 import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
+import { StoryDisclosure } from "@/components/trust/story-disclosure";
 import { TrustStrip } from "@/components/trust/trust-strip";
 import { getStories, getStoryPage } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
@@ -67,8 +68,9 @@ export default async function StoryPage({
         ]}
       />
       <TrustStrip reviewedAt={story.content_reviewed_at} />
+      <StoryDisclosure />
       <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
-        Decision journey · {story.country} · {story.age_range}
+        Illustrative decision journey · {story.country} · {story.age_range}
       </p>
       <h1 className="mt-3 font-heading text-4xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
         {story.title}

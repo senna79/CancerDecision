@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DecisionMapView } from "@/components/cancer/decision-map";
 import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
@@ -48,8 +49,17 @@ export default async function CancerDecisionCenterPage({
     stories,
     globalOptions,
     sources,
+    decisionMap,
     secondOpinionQuestions,
   } = data;
+
+  const questionTitles = Object.fromEntries(
+    questions.map((q) => [q.slug, q.title])
+  );
+  const treatmentNames = Object.fromEntries(
+    treatments.map((t) => [t.slug, t.name])
+  );
+  const storyTitles = Object.fromEntries(stories.map((s) => [s.slug, s.title]));
 
   return (
     <div className="mx-auto w-full max-w-6xl px-5 py-10 md:px-8">
@@ -80,10 +90,33 @@ export default async function CancerDecisionCenterPage({
       <h1 className="font-heading text-4xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-5xl">
         {cancer.name} Decision Center
       </h1>
+      <p className="mt-3 max-w-3xl text-[var(--muted)]">
+        Follow the decision journey below, then open the step that matches where
+        you are now.
+      </p>
+      {decisionMap ? (
+        <p className="mt-3">
+          <a
+            href="#decision-map"
+            className="text-sm font-semibold text-[var(--accent)] hover:underline"
+          >
+            Jump to decision map →
+          </a>
+        </p>
+      ) : null}
 
       <Section title="Cancer Overview">
         <Markdown content={cancer.overview} />
       </Section>
+
+      {decisionMap ? (
+        <DecisionMapView
+          map={decisionMap}
+          questionTitles={questionTitles}
+          treatmentNames={treatmentNames}
+          storyTitles={storyTitles}
+        />
+      ) : null}
 
       <Section title="Common Patient Decisions">
         <ul className="space-y-2">
@@ -140,7 +173,11 @@ export default async function CancerDecisionCenterPage({
         </ul>
       </Section>
 
-      <Section title="Global Treatment Options">
+      <Section title="International options (when relevant)">
+        <p className="mb-3 text-sm text-[var(--muted)]">
+          Cross-border care is a branch of the journey when a specific
+          capability is missing locally — not a default destination.
+        </p>
         <ul className="space-y-2">
           {globalOptions.map((opt) => (
             <li key={opt.id}>
@@ -154,13 +191,17 @@ export default async function CancerDecisionCenterPage({
           ))}
           <li>
             <Link href="/global-care" className="text-[var(--accent)] hover:underline">
-              Browse the international medical guide
+              International medical guide
             </Link>
           </li>
         </ul>
       </Section>
 
-      <Section title="Patient Stories">
+      <Section title="Illustrative decision journeys">
+        <p className="mb-3 text-sm text-[var(--muted)]">
+          Editorial examples of how patients compare options — not verified
+          personal testimonials.
+        </p>
         <div className="grid gap-3 md:grid-cols-2">
           {stories.map((story) => (
             <Link
@@ -170,7 +211,7 @@ export default async function CancerDecisionCenterPage({
             >
               <h3 className="font-heading text-lg font-semibold">{story.title}</h3>
               <p className="mt-1 text-sm text-[var(--muted)]">
-                {story.country} · {story.age_range}
+                Illustrative · {story.country} · {story.age_range}
               </p>
             </Link>
           ))}

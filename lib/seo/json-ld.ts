@@ -37,6 +37,7 @@ export function articleJsonLd(input: {
   };
 }
 
+/** Use only when the page visibly answers multiple distinct FAQ items. */
 export function faqJsonLd(
   items: Array<{ question: string; answer: string }>
 ) {
@@ -51,5 +52,52 @@ export function faqJsonLd(
         text: item.answer,
       },
     })),
+  };
+}
+
+/** Primary Q&A for a decision question page (not FAQPage). */
+export function questionAnswerJsonLd(input: {
+  question: string;
+  answer: string;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Question",
+    name: input.question,
+    acceptedAnswer: {
+      "@type": "Answer",
+      text: input.answer,
+    },
+  };
+}
+
+export function medicalWebPageJsonLd(input: {
+  title: string;
+  description: string;
+  path: string;
+  dateModified?: string | null;
+  aboutName?: string | null;
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name: input.title,
+    description: input.description,
+    url: absoluteUrl(input.path),
+    lastReviewed: input.dateModified ?? undefined,
+    audience: {
+      "@type": "MedicalAudience",
+      audienceType: "Patient",
+    },
+    about: input.aboutName
+      ? {
+          "@type": "MedicalCondition",
+          name: input.aboutName,
+        }
+      : undefined,
+    publisher: {
+      "@type": "Organization",
+      name: "Global Cancer Decision Platform",
+    },
   };
 }

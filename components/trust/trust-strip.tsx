@@ -1,5 +1,5 @@
 function formatDate(value: string | null | undefined) {
-  if (!value) return "Review pending";
+  if (!value) return "Not yet checked";
   return new Intl.DateTimeFormat("en", {
     year: "numeric",
     month: "short",
@@ -19,10 +19,14 @@ export function TrustStrip({
         recommendation.
       </p>
       <p className="mt-1 text-[var(--muted)]">
-        Content reviewed:{" "}
+        Content last checked:{" "}
         <span className="font-medium text-[var(--ink)]">
           {formatDate(reviewedAt)}
         </span>
+      </p>
+      <p className="mt-1 text-xs text-[var(--muted)]">
+        May use AI-assisted drafting. Editorially reviewed for clarity. Not
+        medically reviewed by a physician unless separately stated.
       </p>
     </div>
   );

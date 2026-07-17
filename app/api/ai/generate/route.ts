@@ -106,6 +106,13 @@ export async function POST(request: Request) {
       key_factors: draft.key_factors,
       doctor_questions: draft.doctor_questions,
       body: existing?.body ?? null,
+      decision_context: existing?.decision_context ?? null,
+      when_this_may_help: existing?.when_this_may_help ?? [],
+      when_it_may_not_help: existing?.when_it_may_not_help ?? [],
+      options_and_tradeoffs: existing?.options_and_tradeoffs ?? [],
+      records_to_prepare: existing?.records_to_prepare ?? [],
+      next_steps: existing?.next_steps ?? [],
+      if_opinions_conflict: existing?.if_opinions_conflict ?? [],
       seo_title: existing?.seo_title ?? parsed.data.title,
       seo_description: existing?.seo_description ?? draft.summary.slice(0, 155),
       seo_keywords: existing?.seo_keywords ?? [

@@ -18,11 +18,28 @@ async function ensureStoreFile(): Promise<void> {
   }
 }
 
+function normalizeStore(store: KnowledgeGraphStore): KnowledgeGraphStore {
+  return {
+    ...store,
+    decision_maps: store.decision_maps ?? [],
+    questions: (store.questions ?? []).map((q) => ({
+      ...q,
+      decision_context: q.decision_context ?? null,
+      when_this_may_help: q.when_this_may_help ?? [],
+      when_it_may_not_help: q.when_it_may_not_help ?? [],
+      options_and_tradeoffs: q.options_and_tradeoffs ?? [],
+      records_to_prepare: q.records_to_prepare ?? [],
+      next_steps: q.next_steps ?? [],
+      if_opinions_conflict: q.if_opinions_conflict ?? [],
+    })),
+  };
+}
+
 export async function readStore(): Promise<KnowledgeGraphStore> {
   if (memoryStore) return structuredClone(memoryStore);
   await ensureStoreFile();
   const raw = await fs.readFile(STORE_PATH, "utf8");
-  memoryStore = JSON.parse(raw) as KnowledgeGraphStore;
+  memoryStore = normalizeStore(JSON.parse(raw) as KnowledgeGraphStore);
   return structuredClone(memoryStore);
 }
 

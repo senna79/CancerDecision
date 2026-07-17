@@ -27,10 +27,15 @@ export function MedicalDisclaimer({
         decisions with your clinicians.
       </p>
       <p className="mt-3 text-sm text-[var(--muted)]">
-        Content review date:{" "}
+        Content last checked:{" "}
         <span className="font-medium text-[var(--ink)]">
           {formatDate(reviewedAt)}
         </span>
+      </p>
+      <p className="mt-2 text-xs text-[var(--muted)]">
+        Content may be drafted with AI assistance and is editorially reviewed
+        for clarity. It is not physician-medically reviewed unless a named
+        medical reviewer is listed.
       </p>
       {sources.length > 0 ? (
         <div className="mt-4 border-t border-[var(--line)] pt-4">

@@ -107,8 +107,50 @@ export default async function AdminQuestionEditPage({
         <AreaField
           label="Doctor questions"
           name="doctor_questions"
-          defaultValue={question?.doctor_questions.join("\n")}
+          defaultValue={(question?.doctor_questions ?? []).join("\n")}
           hint="One question per line"
+        />
+        <AreaField
+          label="Decision context (journey)"
+          name="decision_context"
+          defaultValue={question?.decision_context}
+          rows={3}
+        />
+        <AreaField
+          label="When this may help"
+          name="when_this_may_help"
+          defaultValue={(question?.when_this_may_help ?? []).join("\n")}
+          hint="One item per line"
+        />
+        <AreaField
+          label="When it may not help"
+          name="when_it_may_not_help"
+          defaultValue={(question?.when_it_may_not_help ?? []).join("\n")}
+          hint="One item per line"
+        />
+        <AreaField
+          label="Options and tradeoffs"
+          name="options_and_tradeoffs"
+          defaultValue={(question?.options_and_tradeoffs ?? []).join("\n")}
+          hint="One item per line"
+        />
+        <AreaField
+          label="Records to prepare"
+          name="records_to_prepare"
+          defaultValue={(question?.records_to_prepare ?? []).join("\n")}
+          hint="One item per line"
+        />
+        <AreaField
+          label="Next steps"
+          name="next_steps"
+          defaultValue={(question?.next_steps ?? []).join("\n")}
+          hint="One item per line"
+        />
+        <AreaField
+          label="If opinions conflict"
+          name="if_opinions_conflict"
+          defaultValue={(question?.if_opinions_conflict ?? []).join("\n")}
+          hint="One item per line"
         />
         <AreaField label="Body" name="body" defaultValue={question?.body} rows={6} />
         <Field

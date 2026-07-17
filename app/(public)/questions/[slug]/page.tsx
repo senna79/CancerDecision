@@ -4,6 +4,7 @@ import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { DoctorQuestionsPanel } from "@/components/question/doctor-questions-panel";
+import { JourneySections } from "@/components/question/journey-sections";
 import { RelatedPathway } from "@/components/question/related-pathway";
 import { SummaryPanel } from "@/components/question/summary-panel";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -14,7 +15,8 @@ import { getQuestionPage, getQuestions } from "@/lib/queries";
 import {
   articleJsonLd,
   breadcrumbJsonLd,
-  faqJsonLd,
+  medicalWebPageJsonLd,
+  questionAnswerJsonLd,
 } from "@/lib/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -74,6 +76,13 @@ export default async function QuestionPage({
               : []),
             { name: question.title, path: `/questions/${question.slug}` },
           ]),
+          medicalWebPageJsonLd({
+            title: question.title,
+            description: question.summary.slice(0, 160),
+            path: `/questions/${question.slug}`,
+            dateModified: question.content_reviewed_at,
+            aboutName: cancer?.name,
+          }),
           articleJsonLd({
             title: question.title,
             description: question.summary.slice(0, 160),
@@ -81,20 +90,10 @@ export default async function QuestionPage({
             dateModified: question.content_reviewed_at,
             datePublished: question.created_at,
           }),
-          faqJsonLd([
-            {
-              question: question.title,
-              answer: question.summary,
-            },
-            {
-              question: `Why do patients ask: ${question.title}`,
-              answer: question.why_patients_ask,
-            },
-            ...question.doctor_questions.map((dq) => ({
-              question: dq,
-              answer: `Use this question with your care team while reviewing your ${cancer?.name ?? "cancer"} situation, staging details, and personal priorities. ${question.key_factors.slice(0, 2).join("; ")}.`,
-            })),
-          ]),
+          questionAnswerJsonLd({
+            question: question.title,
+            answer: question.summary,
+          }),
         ]}
       />
 
@@ -126,6 +125,8 @@ export default async function QuestionPage({
       <Section title="Why patients ask this">
         <Markdown content={question.why_patients_ask} />
       </Section>
+
+      <JourneySections question={question} />
 
       <Section title="Key factors to consider">
         <ul className="space-y-3">
@@ -162,11 +163,11 @@ export default async function QuestionPage({
       />
 
       <RelatedPathway
-        title="Related patient stories"
+        title="Related illustrative journeys"
         items={stories.map((story) => ({
           href: `/stories/${story.slug}`,
           title: story.title,
-          meta: `${story.country} · ${story.age_range}`,
+          meta: `Illustrative · ${story.country} · ${story.age_range}`,
         }))}
         emptyHint="No linked stories yet."
       />
@@ -182,15 +183,21 @@ export default async function QuestionPage({
       />
 
       {cancer ? (
-        <p className="mt-4 text-sm text-[var(--muted)]">
-          Continue in the{" "}
+        <div className="mt-6 rounded-lg border border-[var(--accent)]/25 bg-[rgba(15,118,110,0.06)] p-4">
+          <p className="text-sm font-semibold text-[var(--ink)]">
+            Continue the decision journey
+          </p>
+          <p className="mt-1 text-sm text-[var(--muted)]">
+            Return to the {cancer.name} map to see where this question sits and
+            what usually comes next.
+          </p>
           <Link
-            href={`/cancers/${cancer.slug}`}
-            className="text-[var(--accent)] hover:underline"
+            href={`/cancers/${cancer.slug}#decision-map`}
+            className="mt-3 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
           >
-            {cancer.name} Decision Center
+            Open {cancer.name} Decision Map →
           </Link>
-        </p>
+        </div>
       ) : null}
 
       <MedicalDisclaimer

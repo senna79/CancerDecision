@@ -978,7 +978,14 @@ export function createSeedData(): KnowledgeGraphStore {
     why_patients_ask: q.why,
     key_factors: q.factors,
     doctor_questions: q.doctorQs,
-    body: null,
+    body: null as string | null,
+    decision_context: null as string | null,
+    when_this_may_help: [] as string[],
+    when_it_may_not_help: [] as string[],
+    options_and_tradeoffs: [] as string[],
+    records_to_prepare: [] as string[],
+    next_steps: [] as string[],
+    if_opinions_conflict: [] as string[],
     status: "published" as const,
     content_reviewed_at: reviewed,
     ai_generated_at: null,
@@ -989,6 +996,210 @@ export function createSeedData(): KnowledgeGraphStore {
       cancers[q.cancer - 1].name.toLowerCase(),
     ]),
   }));
+
+  // Flagship lung-cancer journey fields (pilot)
+  const lungFlagship: Record<
+    number,
+    {
+      decision_context: string;
+      when_this_may_help: string[];
+      when_it_may_not_help: string[];
+      options_and_tradeoffs: string[];
+      records_to_prepare: string[];
+      next_steps: string[];
+      if_opinions_conflict: string[];
+    }
+  > = {
+    2: {
+      decision_context:
+        "This is usually the first decision cluster after a lung cancer diagnosis: confirm what is known, what tests are still needed, and which choices are time-sensitive versus deliberately paced.",
+      when_this_may_help: [
+        "You are newly diagnosed and appointments feel overwhelming",
+        "Pathology, staging, or biomarker results are still incomplete",
+        "You are unsure which next test would actually change the first treatment plan",
+        "Different clinicians emphasize different first steps",
+      ],
+      when_it_may_not_help: [
+        "Acute symptoms require immediate stabilization before elective sequencing",
+        "A clearly time-critical intervention has already been explained and agreed",
+      ],
+      options_and_tradeoffs: [
+        "Finish staging first — reduces guesswork, may briefly delay treatment start",
+        "Start local therapy sooner — may help symptoms or anxiety, but can precede incomplete molecular data",
+        "Prioritize biomarker tissue adequacy — can redirect systemic options, may need repeat biopsy",
+      ],
+      records_to_prepare: [
+        "Pathology report and slides if available",
+        "Imaging reports and disks/links (CT, PET, MRI as applicable)",
+        "Operative or biopsy procedure notes",
+        "Current medication list and major comorbidities",
+      ],
+      next_steps: [
+        "List every outstanding test and its due date",
+        "Ask which result would change the first treatment decision",
+        "Confirm whether tissue is adequate for the recommended biomarker panel",
+        "Decide whether a brief second-opinion records review should run in parallel",
+      ],
+      if_opinions_conflict: [
+        "Ask each clinician to name the exact disagreement (staging, resectability, sequencing, or drug choice)",
+        "Request a multidisciplinary tumor-board framing of the conflict",
+        "Clarify which decision is reversible versus irreversible",
+      ],
+    },
+    21: {
+      decision_context:
+        "For many non-small cell lung cancers, biomarker results can redirect first-line therapy. The decision is whether waiting for results is safer than starting immediately.",
+      when_this_may_help: [
+        "Non-small cell histology is confirmed or strongly suspected",
+        "Tissue adequacy is uncertain",
+        "Targeted therapy or immunotherapy pathways may depend on markers",
+        "You want to avoid locking a first line before molecular data returns",
+      ],
+      when_it_may_not_help: [
+        "Disease pace or symptoms require urgent systemic therapy before results",
+        "Your care team already has a complete panel with actionable results",
+      ],
+      options_and_tradeoffs: [
+        "Wait for tissue-based panel — more complete matching, short delay",
+        "Add liquid biopsy if tissue is limited — faster in some settings, may miss alterations",
+        "Start therapy now for clinical urgency — may need later adjustment if markers arrive",
+      ],
+      records_to_prepare: [
+        "Pathology diagnosis and specimen adequacy notes",
+        "Any molecular reports already completed",
+        "Imaging that shows disease pace",
+        "Prior cancer treatment history",
+      ],
+      next_steps: [
+        "Confirm the exact biomarker panel ordered and expected turnaround",
+        "Ask whether liquid biopsy is useful if tissue is limited",
+        "Document what would change if a targetable alteration is found",
+        "Agree on a date to revisit the plan if results are delayed",
+      ],
+      if_opinions_conflict: [
+        "Ask whether the disagreement is about waiting versus starting, or about which panel to order",
+        "Request the clinical risk of a short wait in plain language",
+        "If needed, get a thoracic oncology second review focused only on sequencing",
+      ],
+    },
+    3: {
+      decision_context:
+        "This decision compares local surgical control with systemic strategies (targeted therapy, immunotherapy, chemotherapy), including whether systemic therapy should come before surgery.",
+      when_this_may_help: [
+        "Stage and resectability are still being interpreted",
+        "Biomarkers may change sequencing",
+        "You are hearing different recommendations from surgery and medical oncology",
+        "Recovery, lung function, and durability all matter to you",
+      ],
+      when_it_may_not_help: [
+        "Emergency complications require immediate intervention",
+        "Disease extent already clearly places you outside surgical pathways",
+      ],
+      options_and_tradeoffs: [
+        "Surgery-led path — strong local control in selected cases; recovery and functional impact vary",
+        "Systemic-first / neoadjuvant path — may improve selection or response; delays resection",
+        "Systemic-led non-surgical path — appropriate when resection is not the goal; different side-effect profile",
+      ],
+      records_to_prepare: [
+        "Staging imaging and multidisciplinary notes",
+        "Pulmonary function tests if surgery is considered",
+        "Biomarker results",
+        "Comorbidity and performance-status summary",
+      ],
+      next_steps: [
+        "Ask for resectability in plain language",
+        "Ask whether waiting briefly for biomarkers changes sequencing",
+        "Compare expected recovery and daily-life impact for each path",
+        "Request a joint surgical/medical oncology discussion if advice diverges",
+      ],
+      if_opinions_conflict: [
+        "Write down each specialty's goal (cure, control, symptom relief)",
+        "Ask what evidence would change each recommendation",
+        "Use tumor board or a second opinion focused on sequencing, not brand of hospital",
+      ],
+    },
+    1: {
+      decision_context:
+        "A second opinion is a structured review of pathology, staging, and treatment sequencing. It can be remote and parallel to local care when timing is managed carefully.",
+      when_this_may_help: [
+        "Surgery versus systemic therapy is unclear",
+        "Biomarker results are incomplete or contested",
+        "Specialists disagree on sequencing",
+        "You want a multidisciplinary review before an irreversible step",
+        "A rare subtype or complex anatomy is involved",
+      ],
+      when_it_may_not_help: [
+        "Delay would clearly worsen urgent clinical risk and your team explains why",
+        "You already have concordant multidisciplinary recommendations with complete data",
+      ],
+      options_and_tradeoffs: [
+        "Remote records review first — low travel burden; depends on complete records",
+        "In-person specialty visit — richer exam/context; more time and cost",
+        "Pathology-only re-review — focused; may not address full treatment sequencing",
+        "Full treatment-plan second opinion — broader; needs more preparation",
+      ],
+      records_to_prepare: [
+        "Pathology report and slides if requested",
+        "All key imaging with reports",
+        "Biopsy/operative notes",
+        "Current recommended plan in writing",
+        "Medication and comorbidity list",
+      ],
+      next_steps: [
+        "Decide whether the question is pathology, staging, sequencing, or all three",
+        "Ask your current team which records to send today",
+        "Set a time box so review does not drift indefinitely",
+        "Return with a written comparison of agreements and disagreements",
+      ],
+      if_opinions_conflict: [
+        "Ask both teams to list what would change their advice",
+        "Separate facts (stage, markers) from judgment (preferred sequence)",
+        "Consider a third multidisciplinary review only if conflict remains high-stakes",
+      ],
+    },
+    5: {
+      decision_context:
+        "International options are a branch of the decision path when a specific capability, trial, or second-opinion expertise is missing locally — not a default upgrade.",
+      when_this_may_help: [
+        "A defined technique, trial, or specialty review is unavailable locally",
+        "Remote second opinion suggests a capability gap worth exploring",
+        "You can sustain travel, lodging, and follow-up logistics",
+      ],
+      when_it_may_not_help: [
+        "Local care already offers an equivalent evidence-aligned option",
+        "Travel would interrupt urgent therapy without clear added value",
+        "No home follow-up plan exists after return",
+      ],
+      options_and_tradeoffs: [
+        "Remote international review only — lower cost/burden; limited exam",
+        "Travel for a specific procedure or trial — potential access gain; continuity risk",
+        "Stay local with clarified sequencing — continuity strength; may lack niche capability",
+      ],
+      records_to_prepare: [
+        "Complete imaging and pathology package",
+        "Written question you want the foreign center to answer",
+        "Insurance / self-pay estimate worksheet",
+        "Home-team follow-up contact plan",
+      ],
+      next_steps: [
+        "Define the exact capability gap in one sentence",
+        "Try remote review before booking travel when safe",
+        "Compare total episode cost including repeat visits",
+        "Confirm who manages complications after you return",
+      ],
+      if_opinions_conflict: [
+        "Ask whether the abroad recommendation changes survival, side effects, or only convenience",
+        "Have your local team respond to the foreign plan in writing",
+        "Do not travel until continuity and emergency coverage are clear",
+      ],
+    },
+  };
+
+  for (const [n, fields] of Object.entries(lungFlagship)) {
+    const q = questions.find((item) => item.id === id("q", Number(n)));
+    if (!q) continue;
+    Object.assign(q, fields);
+  }
 
   const stories = [
     {
@@ -1537,6 +1748,91 @@ export function createSeedData(): KnowledgeGraphStore {
     })),
   ];
 
+  const decision_maps = [
+    {
+      id: id("map", 1),
+      cancer_id: id("cancer", 1),
+      title: "Lung Cancer Decision Map",
+      intro:
+        "A practical journey from newly diagnosed to next decision. Each step links to educational questions, treatment comparisons, and illustrative decision scenarios — not a personal care plan.",
+      nodes: [
+        {
+          id: "node-diagnosis",
+          label: "1. Newly diagnosed",
+          summary:
+            "Confirm what is known, which tests are outstanding, and which decisions are time-sensitive.",
+          sort_order: 1,
+          question_slugs: [
+            "what-decisions-matter-most-after-new-lung-cancer-diagnosis",
+          ],
+          treatment_slugs: [],
+          story_slugs: [],
+        },
+        {
+          id: "node-biomarkers",
+          label: "2. Confirm subtype & biomarkers",
+          summary:
+            "Make sure pathology and molecular testing are complete enough to shape first-line choices.",
+          sort_order: 2,
+          question_slugs: [
+            "do-i-need-biomarker-testing-before-lung-cancer-treatment",
+          ],
+          treatment_slugs: ["targeted-therapy", "immunotherapy"],
+          story_slugs: [],
+        },
+        {
+          id: "node-compare",
+          label: "3. Compare treatment paths",
+          summary:
+            "Weigh surgery-led versus systemic-led sequencing using your stage, markers, and priorities.",
+          sort_order: 3,
+          question_slugs: [
+            "how-to-compare-surgery-and-systemic-therapy-lung-cancer",
+          ],
+          treatment_slugs: [
+            "surgery",
+            "chemotherapy",
+            "immunotherapy",
+            "targeted-therapy",
+          ],
+          story_slugs: ["choosing-second-opinion-before-lung-surgery"],
+        },
+        {
+          id: "node-second-opinion",
+          label: "4. Second opinion checkpoint",
+          summary:
+            "Decide whether a pathology, staging, or sequencing review would reduce uncertainty before irreversible steps.",
+          sort_order: 4,
+          question_slugs: [
+            "should-i-get-second-opinion-after-lung-cancer-diagnosis",
+          ],
+          treatment_slugs: [],
+          story_slugs: ["choosing-second-opinion-before-lung-surgery"],
+        },
+        {
+          id: "node-global",
+          label: "5. Local vs international branch",
+          summary:
+            "Only explore cross-border care when a specific capability, trial, or review is missing locally.",
+          sort_order: 5,
+          question_slugs: ["when-to-consider-lung-cancer-care-abroad"],
+          treatment_slugs: ["proton-therapy-vs-traditional-radiation"],
+          story_slugs: [],
+        },
+        {
+          id: "node-costs",
+          label: "6. Clarify costs & logistics",
+          summary:
+            "Estimate the full episode — tests, drugs, travel, time away — before locking a pathway.",
+          sort_order: 6,
+          question_slugs: ["lung-cancer-treatment-costs-what-to-ask"],
+          treatment_slugs: [],
+          story_slugs: [],
+        },
+      ],
+    },
+  ];
+
   return {
     cancers,
     questions,
@@ -1546,6 +1842,7 @@ export function createSeedData(): KnowledgeGraphStore {
     countries,
     sources,
     decision_topics,
+    decision_maps,
     cancer_treatments,
     question_treatments,
     question_stories,

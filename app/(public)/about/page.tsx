@@ -4,7 +4,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "Trust & Disclaimer",
   description:
-    "Learn what Global Cancer Decision Platform is, what it is not, and how educational content is reviewed.",
+    "Learn what Global Cancer Decision Platform is, what it is not, and how educational content is prepared and checked.",
   path: "/about",
 });
 
@@ -17,10 +17,11 @@ export default function AboutPage() {
       </h1>
       <div className="mt-8 space-y-6 text-[var(--ink-soft)] leading-relaxed">
         <p>
-          Global Cancer Decision Platform is an AI-powered cancer decision
-          knowledge platform. It helps patients understand diagnosis context,
-          compare treatment options, explore global medical choices, and learn
-          from real patient decision journeys.
+          Global Cancer Decision Platform helps patients understand diagnosis
+          context, compare treatment options, explore international care
+          questions, and learn from structured decision scenarios. It is
+          educational guidance for conversations with clinicians — not a care
+          service.
         </p>
         <div>
           <h2 className="font-heading text-2xl font-semibold text-[var(--ink)]">
@@ -45,14 +46,35 @@ export default function AboutPage() {
         </div>
         <div>
           <h2 className="font-heading text-2xl font-semibold text-[var(--ink)]">
-            How we build trust
+            How content is prepared
           </h2>
           <ul className="mt-3 list-disc space-y-2 pl-5">
-            <li>Structured answers organized as a knowledge graph</li>
-            <li>Sources and references on medical pages</li>
-            <li>Patient decision stories, not miracle narratives</li>
-            <li>Transparent content review dates and limitations</li>
-            <li>AI drafts that require human review before publishing</li>
+            <li>
+              <strong>AI-assisted drafting:</strong> AI may help organize
+              questions and draft educational text.
+            </li>
+            <li>
+              <strong>Editorial review:</strong> Drafts are checked for clarity,
+              structure, and cautious wording before publishing.
+            </li>
+            <li>
+              <strong>Not medically reviewed by default:</strong> Unless a named
+              physician reviewer is listed, pages are not physician-medically
+              reviewed.
+            </li>
+            <li>
+              <strong>Content last checked:</strong> Dates show when content was
+              last checked and updated — not automatic proof of medical
+              certification.
+            </li>
+            <li>
+              <strong>Decision scenarios:</strong> Story pages are illustrative
+              examples unless marked as verified patient contributions.
+            </li>
+            <li>
+              <strong>Sources:</strong> Medical pages list references; AI output
+              is never auto-published.
+            </li>
           </ul>
         </div>
       </div>

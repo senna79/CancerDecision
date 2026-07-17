@@ -52,11 +52,37 @@ export interface Question extends SeoFields {
   key_factors: string[];
   doctor_questions: string[];
   body: string | null;
+  /** Optional journey fields — used on flagship decision questions */
+  decision_context: string | null;
+  when_this_may_help: string[];
+  when_it_may_not_help: string[];
+  options_and_tradeoffs: string[];
+  records_to_prepare: string[];
+  next_steps: string[];
+  if_opinions_conflict: string[];
   status: ContentStatus;
   content_reviewed_at: string | null;
   ai_generated_at: string | null;
   created_at: string;
   updated_at: string;
+}
+
+export interface DecisionMapNode {
+  id: string;
+  label: string;
+  summary: string;
+  sort_order: number;
+  question_slugs: string[];
+  treatment_slugs: string[];
+  story_slugs: string[];
+}
+
+export interface DecisionMap {
+  id: string;
+  cancer_id: string;
+  title: string;
+  intro: string;
+  nodes: DecisionMapNode[];
 }
 
 export interface Treatment extends SeoFields {
@@ -189,6 +215,7 @@ export interface KnowledgeGraphStore {
   countries: Country[];
   sources: Source[];
   decision_topics: DecisionTopic[];
+  decision_maps: DecisionMap[];
   cancer_treatments: CancerTreatment[];
   question_treatments: QuestionTreatment[];
   question_stories: QuestionStory[];
