@@ -34,6 +34,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       next_moment_ids: [
         "node-biomarkers",
         "node-compare",
+        "node-surgery",
         "node-second-opinion",
         "node-stage-iv",
       ],
@@ -98,7 +99,12 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "choosing-second-opinion-before-lung-surgery",
         "biomarker-result-changed-lung-cancer-treatment-plan",
       ],
-      next_moment_ids: ["node-second-opinion", "node-global"],
+      next_moment_ids: [
+        "node-surgery",
+        "node-second-opinion",
+        "node-qol",
+        "node-global",
+      ],
       facets: [
         "Surgery",
         "Radiation",
@@ -160,7 +166,12 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       treatment_slugs: [],
       story_slugs: ["comparing-local-and-international-lung-cancer-options"],
-      next_moment_ids: ["node-second-opinion", "node-compare", "node-global"],
+      next_moment_ids: [
+        "node-second-opinion",
+        "node-compare",
+        "node-costs",
+        "node-global",
+      ],
       patient_router: {
         label: "I’m wondering if I need another center or specialist",
         hint: "AI Entry: expertise match first — not hospital fame.",
@@ -197,21 +208,35 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
     {
       id: "node-surgery",
       slug: "surgery-decision",
-      label: "Surgery decision",
+      label: "10. Surgery decision",
       state_label: "Surgery decision",
       summary:
-        "Whether resection is appropriate, and how it sequences with systemic therapy.",
+        "Decide whether surgery should be part of your treatment plan — compared with alternatives, not as an automatic best choice.",
       why_this_matters:
-        "Surgery is often irreversible — patients need a clear comparison frame, not a yes/no slogan.",
+        "Surgery is a treatment option, not the decision itself — patients need a comparison frame before a major procedure.",
       tier: 2,
-      status: "planned",
+      status: "active",
       stage: "treatment",
-      sort_order: 6,
-      ai_entry_slug: null,
-      question_slugs: [],
+      sort_order: 10,
+      optional: true,
+      ai_entry_slug:
+        "should-surgery-be-part-of-my-lung-cancer-treatment-plan",
+      question_slugs: [
+        "should-surgery-be-part-of-my-lung-cancer-treatment-plan",
+      ],
       treatment_slugs: ["surgery"],
-      story_slugs: [],
-      next_moment_ids: ["node-compare", "node-second-opinion"],
+      story_slugs: ["choosing-second-opinion-before-lung-surgery"],
+      next_moment_ids: [
+        "node-compare",
+        "node-biomarkers",
+        "node-second-opinion",
+        "node-cancer-center",
+      ],
+      patient_router: {
+        label: "I’m wondering whether surgery should be part of my plan",
+        hint: "Supporting module: compare surgery as one path among options.",
+        nextStep: "Next: Direct answer → compare framework → your next step.",
+      },
     },
     {
       id: "node-clinical-trial",
@@ -302,6 +327,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-clinical-trial",
         "node-recurrence",
         "node-cancer-center",
+        "node-qol",
       ],
       patient_router: {
         label: "My treatment is no longer working — what now?",
@@ -339,6 +365,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-clinical-trial",
         "node-second-opinion",
         "node-treatment-progression",
+        "node-qol",
       ],
       patient_router: {
         label: "I was diagnosed with Stage IV / advanced lung cancer",
@@ -346,46 +373,75 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         nextStep: "Next: Direct answer → goals → compare → your next step.",
       },
     },
-
-    // ——— Tier 3 · planned ———
-    {
-      id: "node-costs",
-      slug: "cost-logistics",
-      label: "Cost & logistics",
-      state_label: "Costs & logistics",
-      summary:
-        "Estimate the full episode — tests, drugs, travel, time away — before locking a pathway.",
-      why_this_matters:
-        "This matters because the full episode cost often differs from the headline procedure or drug fee.",
-      tier: 3,
-      status: "planned",
-      stage: "practical",
-      sort_order: 11,
-      optional: true,
-      ai_entry_slug: "lung-cancer-treatment-costs-what-to-ask",
-      question_slugs: ["lung-cancer-treatment-costs-what-to-ask"],
-      treatment_slugs: [],
-      story_slugs: ["comparing-local-and-international-lung-cancer-options"],
-      next_moment_ids: [],
-    },
     {
       id: "node-qol",
       slug: "quality-of-life",
-      label: "Quality of life / palliative decisions",
-      state_label: "Quality of life",
+      label: "11. Quality of life / personal goals",
+      state_label: "Personal goals",
       summary:
-        "When comfort, function, and goals of care should reshape the treatment conversation.",
+        "Bring personal goals, daily life, and priorities into treatment conversations — quality of life guides decisions, it does not automatically mean less treatment.",
       why_this_matters:
-        "Supportive decisions are part of navigation — not an afterthought when choices get hard.",
-      tier: 3,
-      status: "planned",
+        "Cancer decisions are about your life, not only your cancer — priorities make trade-offs clearer.",
+      tier: 2,
+      status: "active",
       stage: "supportive",
-      sort_order: 12,
-      ai_entry_slug: null,
-      question_slugs: [],
+      sort_order: 11,
+      optional: true,
+      ai_entry_slug:
+        "how-should-quality-of-life-factor-into-lung-cancer-decisions",
+      question_slugs: [
+        "how-should-quality-of-life-factor-into-lung-cancer-decisions",
+      ],
       treatment_slugs: [],
       story_slugs: [],
-      next_moment_ids: ["node-stage-iv", "node-second-opinion"],
+      next_moment_ids: [
+        "node-compare",
+        "node-stage-iv",
+        "node-treatment-progression",
+        "node-second-opinion",
+        "node-costs",
+      ],
+      patient_router: {
+        label: "I want my goals and daily life included in the decision",
+        hint: "Supporting module: add personal priorities to every treatment discussion.",
+        nextStep: "Next: Direct answer → define priorities → your next step.",
+      },
+    },
+
+    {
+      id: "node-costs",
+      slug: "cost-logistics",
+      label: "12. Treatment feasibility / cost & logistics",
+      state_label: "Treatment feasibility",
+      summary:
+        "Ask whether a treatment plan can work with real life — cost, location, time, support, and sustainability alongside medical fit.",
+      why_this_matters:
+        "The best treatment plan is one you can realistically follow — practical factors belong in the decision, not only after it.",
+      tier: 2,
+      status: "active",
+      stage: "practical",
+      sort_order: 12,
+      optional: true,
+      ai_entry_slug:
+        "can-my-lung-cancer-treatment-plan-work-with-my-real-life",
+      question_slugs: [
+        "can-my-lung-cancer-treatment-plan-work-with-my-real-life",
+        "lung-cancer-treatment-costs-what-to-ask",
+      ],
+      treatment_slugs: [],
+      story_slugs: ["comparing-local-and-international-lung-cancer-options"],
+      next_moment_ids: [
+        "node-cancer-center",
+        "node-second-opinion",
+        "node-compare",
+        "node-qol",
+        "node-clinical-trial",
+      ],
+      patient_router: {
+        label: "I’m wondering if this plan can work with my real life",
+        hint: "Supporting module: include cost, travel, time, and support in planning.",
+        nextStep: "Next: Direct answer → feasibility framework → your next step.",
+      },
     },
   ],
 };

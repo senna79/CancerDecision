@@ -1,6 +1,6 @@
 /**
  * Flagship AI Entry page modules — decision navigation, not articles.
- * Template v1: #1–#9 Tier-1 lung cancer AI Entries.
+ * Template v1: #1–#9 Tier-1 AI Entries + #10–#12 supporting modules.
  */
 
 export type AiEntryDecisionCard = {
@@ -295,6 +295,12 @@ const RECURRENCE =
   "/questions/what-are-my-options-if-lung-cancer-comes-back";
 const TREATMENT_PROGRESSION =
   "/questions/what-are-my-options-if-lung-cancer-treatment-no-longer-working";
+const SURGERY =
+  "/questions/should-surgery-be-part-of-my-lung-cancer-treatment-plan";
+const QUALITY_OF_LIFE =
+  "/questions/how-should-quality-of-life-factor-into-lung-cancer-decisions";
+const COST_LOGISTICS =
+  "/questions/can-my-lung-cancer-treatment-plan-work-with-my-real-life";
 const CARE_MAP = "/cancers/lung-cancer#decision-map";
 
 /** Lung Cancer AI Entry #1 — New Diagnosis */
@@ -1423,6 +1429,12 @@ export const TREATMENT_COMPARISON_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
+      title: "Wondering about surgery?",
+      question: "Should Surgery Be Part of My Lung Cancer Treatment Plan?",
+      cta: "Surgery Decision",
+      href: SURGERY,
+    },
+    {
       title: "Need to understand missing information?",
       question: "Do I Need Biomarker Testing Before Lung Cancer Treatment?",
       cta: "Biomarker Testing Journey",
@@ -1433,12 +1445,6 @@ export const TREATMENT_COMPARISON_FLAGSHIP: AiEntryFlagshipModules = {
       question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
       cta: "Second Opinion Journey",
       href: SECOND_OPINION,
-    },
-    {
-      title: "Need to choose where to receive care?",
-      question: "Choosing a Cancer Care Center",
-      cta: "Care Center Decision",
-      href: CARE_CENTER,
     },
   ],
 };
@@ -1748,6 +1754,12 @@ export const CARE_CENTER_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
+      title: "Wondering if the plan fits real life?",
+      question: "Can My Lung Cancer Treatment Plan Work With My Real Life?",
+      cta: "Treatment Feasibility",
+      href: COST_LOGISTICS,
+    },
+    {
       title: "Need more confidence?",
       question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
       cta: "Second Opinion Journey",
@@ -1758,12 +1770,6 @@ export const CARE_CENTER_FLAGSHIP: AiEntryFlagshipModules = {
       question: "How Should I Compare Lung Cancer Treatment Options?",
       cta: "Treatment Comparison Journey",
       href: TREATMENT_COMPARE,
-    },
-    {
-      title: "Need more information before deciding?",
-      question: "Do I Need Biomarker Testing Before Lung Cancer Treatment?",
-      cta: "Biomarker Testing Journey",
-      href: BIOMARKER,
     },
   ],
 };
@@ -2067,16 +2073,17 @@ export const STAGE_IV_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
+      title: "Want goals and daily life in the decision?",
+      question:
+        "How Should Quality of Life Factor Into My Lung Cancer Decisions?",
+      cta: "Personal Goals Decision",
+      href: QUALITY_OF_LIFE,
+    },
+    {
       title: "Need to compare treatments?",
       question: "How Should I Compare Lung Cancer Treatment Options?",
       cta: "Treatment Comparison Journey",
       href: TREATMENT_COMPARE,
-    },
-    {
-      title: "Need more information?",
-      question: "Do I Need Biomarker Testing Before Lung Cancer Treatment?",
-      cta: "Biomarker Testing Journey",
-      href: BIOMARKER,
     },
     {
       title: "Need more confidence?",
@@ -3088,6 +3095,995 @@ export const TREATMENT_PROGRESSION_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 };
 
+/** Lung Cancer Decision Module #10 — Surgery (supporting) */
+export const SURGERY_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Lung Cancer",
+  decisionMoment: "Whether surgery should be part of your treatment plan",
+  exploring: "Surgery Decision",
+  subtitle:
+    "Understand when surgery may be considered, how it compares with other options, and what questions can help you make a confident decision.",
+  relatedDecisions: [
+    { label: "New Diagnosis", href: NEW_DIAGNOSIS },
+    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
+    { label: "Biomarker Testing", href: BIOMARKER },
+    { label: "Second Opinion", href: SECOND_OPINION },
+    { label: "Care Center Selection", href: CARE_CENTER },
+  ],
+  journeyLabel: "Lung Cancer Decision Journey",
+  journeyPath: [
+    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
+    { label: "Surgery Decision", current: true },
+    { label: "Second Opinion", href: SECOND_OPINION },
+  ],
+
+  triggersTitle: "You may be considering a surgery decision if:",
+  triggerGroups: [
+    {
+      heading: "You were recently diagnosed",
+      lead: "You may wonder:",
+      items: [
+        "Is surgery possible for my cancer?",
+        "Should I discuss surgery before other treatments?",
+      ],
+    },
+    {
+      heading: "Your doctor mentioned surgery",
+      lead: "You may want to understand:",
+      items: [
+        "Why is surgery being considered?",
+        "What information supports this recommendation?",
+      ],
+    },
+    {
+      heading: "You are comparing treatment paths",
+      lead: "You may ask:",
+      items: [
+        "Surgery or another approach?",
+        "Treatment first or surgery first?",
+        "What are the differences?",
+      ],
+    },
+    {
+      heading: "You want more confidence before a major decision",
+      lead: "You may be considering:",
+      items: [
+        "A second opinion",
+        "A specialized cancer center",
+        "A multidisciplinary review",
+      ],
+    },
+  ],
+
+  whyTitle: "Surgery is a treatment option, not the decision itself",
+  whyLead: "When patients hear “Surgery is possible” they often think:",
+  whyBody: [
+    "Surgery must be the best choice. Avoiding surgery means losing an opportunity. More treatment must always be better.",
+  ],
+  whyQuestions: [],
+  whyNotLabel: "But the real decision is not:",
+  whyNotQuestion: "Is surgery good?",
+  whyBetterLabel: "The real decision is:",
+  whyBetterQuestion:
+    "Does surgery fit my cancer situation, my goals, and my priorities?",
+  whyClose: [
+    "A good treatment decision compares options rather than choosing based on one word.",
+  ],
+
+  goalFrameworkTitle: "When does surgery usually enter the decision?",
+  goalFrameworkLead:
+    "Surgery decisions depend on the complete picture. Your care team may consider:",
+  goalFrameworkBlocks: [
+    {
+      title: "Cancer characteristics",
+      questionsIntro: "Questions:",
+      questions: [
+        "What type of lung cancer is it?",
+        "Where is it located?",
+        "How extensive is it?",
+      ],
+    },
+    {
+      title: "Overall health",
+      questionsIntro: "Questions:",
+      questions: [
+        "Is surgery physically appropriate?",
+        "How might recovery affect daily life?",
+      ],
+    },
+    {
+      title: "Treatment goals",
+      questionsIntro: "Questions:",
+      questions: [
+        "What are we trying to achieve?",
+        "How does surgery fit into the overall plan?",
+      ],
+    },
+    {
+      title: "Other available options",
+      questionsIntro: "Questions:",
+      questions: [
+        "What alternatives exist?",
+        "How do they compare?",
+      ],
+    },
+  ],
+  goalFrameworkClose:
+    "The decision is based on multiple factors, not a single test result.",
+
+  affectTitle: "Surgery is not always the only path",
+  affectBlocks: [
+    {
+      title: "Surgery as the main approach",
+      body: "For some patients, surgery may be considered an important part of treatment.",
+    },
+    {
+      title: "Surgery combined with other treatments",
+      body: "Some treatment plans involve more than one approach.",
+    },
+    {
+      title: "Other approaches instead of surgery",
+      body: "Other options may be discussed depending on cancer characteristics, treatment goals, and personal priorities.",
+    },
+  ],
+  affectClose:
+    "The important question: “How does surgery fit into my overall decision?”",
+
+  evaluateTitle: "How to compare surgery with other options",
+  evaluateLead: "A decision framework for treatment choices.",
+  evaluateBlocks: [
+    {
+      title: "1. What is the goal?",
+      intro: "Ask:",
+      items: [
+        "What outcome are we trying to achieve?",
+        "How will we know whether the approach is helping?",
+      ],
+    },
+    {
+      title: "2. Why is surgery being considered?",
+      intro: "Ask:",
+      items: [
+        "What makes surgery reasonable in my situation?",
+        "What information supports this option?",
+      ],
+    },
+    {
+      title: "3. What are the possible benefits?",
+      intro: "Ask:",
+      items: [
+        "What potential benefit could surgery provide?",
+        "What problem is it intended to address?",
+      ],
+    },
+    {
+      title: "4. What are the trade-offs?",
+      intro: "Ask:",
+      items: [
+        "What risks should I understand?",
+        "What does recovery involve?",
+        "How could this affect my daily life?",
+      ],
+    },
+    {
+      title: "5. How does it compare with alternatives?",
+      intro: "Ask:",
+      items: [
+        "What other options exist?",
+        "Why might one approach be preferred over another?",
+      ],
+    },
+  ],
+
+  infoGapTitle: "Before choosing surgery: information checklist",
+  infoGapKnownIntro: "Make sure you understand the decision. Before moving forward, consider whether you know:",
+  infoGapKnown: [
+    "Why surgery is being recommended",
+    "What alternatives exist",
+    "What the goal of surgery is",
+    "What recovery may involve",
+    "How experienced the care team is",
+    "What questions remain unanswered",
+  ],
+  infoGapClose: [
+    "A useful question: “What information would help me feel confident about this decision?”",
+  ],
+
+  bridges: [
+    {
+      title: "Should I get a second opinion before surgery?",
+      body: [
+        "Major treatment decisions are common times to seek another perspective. A second opinion may help when the decision feels significant, multiple approaches exist, you want to understand alternatives, or you want more confidence before a procedure.",
+        "A second opinion does not always change the recommendation. Sometimes it confirms that the decision is based on complete information.",
+      ],
+      ctaLabel:
+        "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
+      ctaHref: SECOND_OPINION,
+    },
+    {
+      title: "Does the treatment center matter?",
+      body: [
+        "Expertise can be part of the decision. Some patients consider experience with similar cases, multidisciplinary teams, and access to specialized expertise.",
+        "Questions: Who will participate in my care? Does this center regularly manage similar decisions?",
+      ],
+      ctaLabel:
+        "Do I Need a Different Cancer Center or More Specialized Expertise?",
+      ctaHref: CARE_CENTER,
+    },
+  ],
+
+  mistakesTitle: "Common mistakes when considering surgery",
+  mistakes: [
+    {
+      mistake: "Assuming surgery is automatically the best option",
+      why: "The right choice depends on your situation.",
+    },
+    {
+      mistake: "Choosing surgery without comparing alternatives",
+      why: "Different approaches may have different goals and trade-offs.",
+    },
+    {
+      mistake: "Focusing only on the procedure",
+      why: "The decision includes recovery, lifestyle, and future choices.",
+    },
+    {
+      mistake: "Ignoring personal priorities",
+      why: "Your goals are part of the treatment decision.",
+    },
+  ],
+
+  doctorTitle: "Questions that can improve your discussion",
+  doctorGroups: [
+    {
+      heading: "About the recommendation",
+      questions: [
+        "Why is surgery being considered for me?",
+        "What factors make it suitable or unsuitable?",
+      ],
+    },
+    {
+      heading: "About alternatives",
+      questions: [
+        "What other options should I understand?",
+        "How do these options compare?",
+      ],
+    },
+    {
+      heading: "About expertise",
+      questions: [
+        "How often does this team treat similar cases?",
+        "Would another specialist perspective help?",
+      ],
+    },
+    {
+      heading: "About recovery",
+      questions: [
+        "What should I expect after surgery?",
+        "How might recovery affect my daily life?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Deciding whether surgery fits",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person diagnosed with lung cancer learns that surgery may be possible.",
+    "Their first thought is: “If surgery is available, should I do it?”",
+    "Instead of deciding immediately, they ask:",
+  ],
+  scenarioFocus: [
+    "Why is surgery being considered?",
+    "What alternatives exist?",
+    "What are the benefits and trade-offs?",
+    "How does this fit my goals?",
+  ],
+  scenarioClose:
+    "The decision becomes a comparison of paths rather than a simple yes-or-no choice.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If you are considering surgery for lung cancer:",
+  nextStepActions: [
+    { label: "Understand why surgery is being considered." },
+    { label: "Review available alternatives." },
+    {
+      label: "Compare:",
+      examples: [
+        "Expected benefits",
+        "Trade-offs",
+        "Recovery",
+        "Impact on your life",
+      ],
+    },
+    {
+      label: "Consider whether additional expertise would help.",
+    },
+  ],
+  nextStepCtaLabel:
+    "What Decisions Matter Most After a New Lung Cancer Diagnosis?",
+  nextStepHref: NEW_DIAGNOSIS,
+  nextStepCtaMeta: "New Diagnosis Journey",
+  nextStepSecondaryCtaLabel:
+    "How Should I Compare Lung Cancer Treatment Options?",
+  nextStepSecondaryHref: TREATMENT_COMPARE,
+  nextStepSecondaryMeta: "Treatment Comparison Journey",
+
+  relatedPathsTitle: "Continue your lung cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Newly diagnosed?",
+      question:
+        "What Decisions Matter Most After a New Lung Cancer Diagnosis?",
+      cta: "New Diagnosis Journey",
+      href: NEW_DIAGNOSIS,
+    },
+    {
+      title: "Need to compare options?",
+      question: "How Should I Compare Lung Cancer Treatment Options?",
+      cta: "Treatment Comparison Journey",
+      href: TREATMENT_COMPARE,
+    },
+    {
+      title: "Want another perspective?",
+      question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
+      cta: "Second Opinion Journey",
+      href: SECOND_OPINION,
+    },
+  ],
+};
+
+/** Lung Cancer Decision Module #11 — Quality of Life (supporting) */
+export const QUALITY_OF_LIFE_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Lung Cancer",
+  decisionMoment: "How personal goals should influence treatment choices",
+  exploring: "Personal Goals Decision Layer",
+  subtitle:
+    "Understand how your personal goals, daily life, and treatment priorities can help shape cancer decisions.",
+  relatedDecisions: [
+    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
+    { label: "Stage IV Decision", href: STAGE_IV },
+    { label: "Recurrence", href: RECURRENCE },
+    { label: "Treatment Progression", href: TREATMENT_PROGRESSION },
+    { label: "Second Opinion", href: SECOND_OPINION },
+    { label: "Cost & Logistics", href: COST_LOGISTICS },
+  ],
+  journeyLabel: "Lung Cancer Decision Journey",
+  journeyPath: [
+    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
+    { label: "Personal Goals", current: true },
+    { label: "Stage IV Decision", href: STAGE_IV },
+  ],
+
+  triggersTitle: "You may want to discuss this when:",
+  triggerGroups: [
+    {
+      heading: "You are comparing treatments",
+      lead: "You may wonder:",
+      items: [
+        "How will these options affect my daily life?",
+        "What trade-offs should I consider?",
+      ],
+    },
+    {
+      heading: "Treatment has significant burdens",
+      lead: "You may be thinking about:",
+      items: [
+        "Side effects",
+        "Frequent appointments",
+        "Recovery time",
+        "Travel requirements",
+      ],
+    },
+    {
+      heading: "Your cancer situation changes",
+      lead: "You may ask:",
+      items: [
+        "Should my priorities change with my situation?",
+        "Does my current plan still fit my goals?",
+      ],
+    },
+    {
+      heading: "You are making advanced cancer decisions",
+      lead: "You may consider:",
+      items: [
+        "What outcomes matter most now?",
+        "How should treatment goals and daily life be balanced?",
+      ],
+    },
+  ],
+
+  whyTitle: "Cancer decisions are about your life, not only your cancer",
+  whyLead: "When facing treatment choices, patients often focus on:",
+  whyBody: [
+    "Will this treatment work? What options do I have? What does my doctor recommend?",
+    "These questions are important. But another question is equally important:",
+  ],
+  whyQuestions: ["What kind of life am I trying to protect?"],
+  whyDependsIntro: "Every treatment decision involves trade-offs. Those trade-offs may include:",
+  whyDependsOn: [
+    "Possible medical benefits",
+    "Side effects",
+    "Time commitments",
+    "Daily activities",
+    "Family responsibilities",
+    "Personal goals",
+  ],
+  whyClose: [
+    "Quality of life helps make those trade-offs clear.",
+  ],
+
+  affectTitle: "Quality of life does not mean “less treatment”",
+  affectBlocks: [
+    {
+      title: "It means choosing treatment that fits your goals",
+      body: "Some patients may prioritize exploring every possible treatment option, pursuing additional possibilities, or maximizing treatment opportunities. Others may prioritize maintaining independence, spending time with family, reducing treatment burden, or preserving daily routines.",
+    },
+    {
+      title: "Neither approach is automatically right or wrong",
+      body: "Different people have different goals. What matters is understanding your priorities when comparing options.",
+    },
+  ],
+  affectClose:
+    "The important question is: “What matters most to me when comparing my options?”",
+
+  goalFrameworkTitle: "Define what quality of life means for you",
+  goalFrameworkLead:
+    "Different people value different outcomes. Consider what matters most:",
+  goalFrameworkBlocks: [
+    {
+      title: "Independence",
+      questionsIntro: "Examples:",
+      questions: [
+        "Managing daily activities",
+        "Staying active",
+        "Maintaining personal routines",
+      ],
+    },
+    {
+      title: "Relationships",
+      questionsIntro: "Examples:",
+      questions: [
+        "Spending time with family",
+        "Participating in important events",
+      ],
+    },
+    {
+      title: "Treatment goals",
+      questionsIntro: "Examples:",
+      questions: [
+        "Pursuing additional treatment possibilities",
+        "Understanding every available option",
+      ],
+    },
+    {
+      title: "Daily comfort and function",
+      questionsIntro: "Examples:",
+      questions: [
+        "Reducing treatment burden",
+        "Maintaining activities that are meaningful",
+      ],
+    },
+  ],
+  goalFrameworkClose:
+    "Your priorities help define what a good decision looks like.",
+
+  evaluateTitle: "How quality of life connects with treatment decisions",
+  evaluateLead: "Add your goals to every treatment discussion. When comparing options, consider:",
+  evaluateBlocks: [
+    {
+      title: "1. What is the medical goal?",
+      intro: "Ask:",
+      items: [
+        "What is this treatment trying to achieve?",
+        "What outcome are we hoping for?",
+      ],
+    },
+    {
+      title: "2. How could it affect daily life?",
+      intro: "Ask:",
+      items: [
+        "What changes might I experience?",
+        "What activities are important to protect?",
+      ],
+    },
+    {
+      title: "3. What are the trade-offs?",
+      intro: "Ask:",
+      items: [
+        "What benefits should I understand?",
+        "What burdens should I consider?",
+      ],
+    },
+    {
+      title: "4. Does it fit my priorities?",
+      intro: "Ask:",
+      items: [
+        "Does this option match what matters most to me?",
+        "What compromises am I comfortable making?",
+      ],
+    },
+    {
+      title: "5. Will my priorities change over time?",
+      intro: "Ask:",
+      items: [
+        "Should this decision be revisited later?",
+        "Has my situation changed?",
+      ],
+    },
+  ],
+
+  bridges: [
+    {
+      title: "Quality of life in advanced lung cancer decisions",
+      body: [
+        "Goals may become even more important as decisions become more complex. In advanced lung cancer, patients may consider how to balance treatment goals and daily life, which outcomes matter most now, and how to evaluate future choices.",
+        "The question is not only “What treatments exist?” It is also: “What choice best fits my goals at this stage?”",
+      ],
+      ctaLabel: "How Do I Choose Treatment Options for Stage IV Lung Cancer?",
+      ctaHref: STAGE_IV,
+    },
+    {
+      title: "Quality of life when treatment changes",
+      body: [
+        "New decisions may require new priorities. When treatment is no longer achieving its intended goal, patients may ask whether what matters most has changed, what balance feels right now, and how priorities should influence the next step.",
+      ],
+      ctaLabel:
+        "What Are My Options If My Lung Cancer Treatment Is No Longer Working?",
+      ctaHref: TREATMENT_PROGRESSION,
+    },
+  ],
+
+  mistakesTitle: "Common mistakes when considering quality of life",
+  mistakes: [
+    {
+      mistake:
+        "Thinking quality of life means giving up treatment",
+      why: "Quality of life helps guide decisions. It does not automatically mean choosing fewer treatments.",
+    },
+    {
+      mistake:
+        "Assuming every patient should want the same outcome",
+      why: "Different people have different goals.",
+    },
+    {
+      mistake: "Discussing treatment without discussing priorities",
+      why: "A treatment decision should fit the person, not only the disease.",
+    },
+    {
+      mistake: "Waiting until decisions become urgent",
+      why: "Understanding your priorities earlier can make future decisions clearer.",
+    },
+  ],
+
+  doctorTitle: "Questions that support patient-centered decisions",
+  doctorGroups: [
+    {
+      heading: "About treatment goals",
+      questions: [
+        "What is the goal of this treatment?",
+        "What outcome are we hoping to achieve?",
+      ],
+    },
+    {
+      heading: "About daily life",
+      questions: [
+        "How might this affect my normal activities?",
+        "What changes should I prepare for?",
+      ],
+    },
+    {
+      heading: "About trade-offs",
+      questions: [
+        "What are the benefits and burdens of each option?",
+        "How should I think about these differences?",
+      ],
+    },
+    {
+      heading: "About my priorities",
+      questions: [
+        "How can my goals be included in this decision?",
+        "Are there options that better match what matters to me?",
+      ],
+    },
+  ],
+
+  scenarioTitle:
+    "Example: Including personal goals in a treatment decision",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person with lung cancer is comparing two possible approaches.",
+    "Their first question is: “Which treatment is stronger?”",
+    "Instead, they discuss:",
+  ],
+  scenarioFocus: [
+    "What outcome matters most?",
+    "How might each option affect daily life?",
+    "What trade-offs feel acceptable?",
+    "What does a meaningful outcome look like?",
+  ],
+  scenarioClose:
+    "The decision becomes more than choosing a treatment. It becomes choosing a path that fits their goals.",
+
+  nextStepTitle: "Include your goals in your next cancer conversation",
+  nextStepLead: "Your next step:",
+  nextStepActions: [
+    { label: "Identify what matters most to you." },
+    { label: "Understand the goals and trade-offs of each option." },
+    { label: "Discuss how each choice may affect your life." },
+    { label: "Make sure your priorities are part of the decision." },
+  ],
+  nextStepCtaLabel: "How Should I Compare Lung Cancer Treatment Options?",
+  nextStepHref: TREATMENT_COMPARE,
+  nextStepCtaMeta: "Treatment Comparison",
+  nextStepSecondaryCtaLabel:
+    "How Do I Choose Treatment Options for Stage IV Lung Cancer?",
+  nextStepSecondaryHref: STAGE_IV,
+  nextStepSecondaryMeta: "Stage IV Decision",
+
+  relatedPathsTitle: "Continue your lung cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Comparing treatments?",
+      question: "How Should I Compare Lung Cancer Treatment Options?",
+      cta: "Treatment Comparison",
+      href: TREATMENT_COMPARE,
+    },
+    {
+      title: "Facing advanced decisions?",
+      question: "How Do I Choose Treatment Options for Stage IV Lung Cancer?",
+      cta: "Stage IV Decision",
+      href: STAGE_IV,
+    },
+    {
+      title: "Treatment changing?",
+      question:
+        "What Are My Options If My Lung Cancer Treatment Is No Longer Working?",
+      cta: "Treatment Progression",
+      href: TREATMENT_PROGRESSION,
+    },
+  ],
+};
+
+/** Lung Cancer Decision Module #12 — Treatment Feasibility / Cost & Logistics */
+export const TREATMENT_FEASIBILITY_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Lung Cancer",
+  decisionMoment:
+    "Whether a treatment plan is realistic and sustainable in daily life",
+  exploring: "Treatment Feasibility Layer",
+  subtitle:
+    "Understand how cost, location, time, support, and daily responsibilities can become part of your cancer decisions.",
+  relatedDecisions: [
+    { label: "Care Center Selection", href: CARE_CENTER },
+    { label: "Second Opinion", href: SECOND_OPINION },
+    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
+    { label: "Clinical Trial", href: CLINICAL_TRIAL },
+    { label: "Quality of Life", href: QUALITY_OF_LIFE },
+    { label: "Stage IV Decision", href: STAGE_IV },
+  ],
+  journeyLabel: "Lung Cancer Decision Journey",
+  journeyPath: [
+    { label: "Care Center Selection", href: CARE_CENTER },
+    { label: "Treatment Feasibility", current: true },
+    { label: "Quality of Life", href: QUALITY_OF_LIFE },
+  ],
+
+  triggersTitle: "Real-life factors may become important when:",
+  triggerGroups: [
+    {
+      heading: "You are choosing where to receive care",
+      lead: "You may wonder:",
+      items: [
+        "Should I stay near home?",
+        "Should I consider a specialized cancer center?",
+        "How much travel is realistic?",
+      ],
+    },
+    {
+      heading: "You are considering a second opinion",
+      lead: "You may ask:",
+      items: [
+        "Can my records be reviewed remotely?",
+        "What information do I need to prepare?",
+        "Will travel be necessary?",
+      ],
+    },
+    {
+      heading: "Your treatment requires ongoing care",
+      lead: "You may consider:",
+      items: [
+        "Appointment frequency",
+        "Transportation",
+        "Time away from normal activities",
+      ],
+    },
+    {
+      heading: "Your treatment plan changes",
+      lead: "You may need to understand:",
+      items: [
+        "New schedules",
+        "New costs",
+        "New practical requirements",
+      ],
+    },
+  ],
+
+  whyTitle:
+    "The best treatment plan is one you can realistically follow",
+  whyLead: "Cancer treatment decisions are often discussed around:",
+  whyBody: [
+    "What treatments exist? What does the evidence show? What does my doctor recommend?",
+    "But every treatment plan eventually becomes part of daily life.",
+  ],
+  whyQuestions: [],
+  whyDependsIntro: "Patients may need to consider:",
+  whyDependsOn: [
+    "How often appointments happen",
+    "How far they need to travel",
+    "Who can support them",
+    "How treatment affects work or family",
+    "Whether the plan can continue over time",
+  ],
+  whyClose: [
+    "A medically appropriate option also needs to be practical.",
+  ],
+
+  goalFrameworkTitle: "Cost is only one part of the decision",
+  goalFrameworkLead:
+    "Understanding the complete impact of cancer care. When patients think about cost, they may consider:",
+  goalFrameworkBlocks: [
+    {
+      title: "Direct medical costs",
+      questionsIntro: "Examples:",
+      questions: [
+        "Treatments",
+        "Procedures",
+        "Tests",
+        "Visits",
+      ],
+    },
+    {
+      title: "Insurance and coverage",
+      questionsIntro: "Questions:",
+      questions: [
+        "What costs should I understand before starting?",
+        "Who can help explain coverage?",
+      ],
+    },
+    {
+      title: "Travel and location costs",
+      questionsIntro: "Examples:",
+      questions: [
+        "Transportation",
+        "Accommodation",
+        "Time away from home",
+      ],
+    },
+    {
+      title: "Life impact",
+      questionsIntro: "Examples:",
+      questions: [
+        "Work changes",
+        "Family responsibilities",
+        "Caregiver needs",
+      ],
+    },
+  ],
+  goalFrameworkClose:
+    "The goal is not simply finding the least expensive option. The goal is understanding the full impact of each choice.",
+
+  affectTitle: "How logistics can influence treatment decisions",
+  affectBlocks: [
+    {
+      title: "Location",
+      body: "Where will treatment happen? How often do I need to be there?",
+    },
+    {
+      title: "Time commitment",
+      body: "How much time will treatment require? How might it affect my routine?",
+    },
+    {
+      title: "Support system",
+      body: "Who can help during treatment? What support will I need?",
+    },
+    {
+      title: "Long-term sustainability",
+      body: "Can I realistically continue this plan? What challenges should I prepare for?",
+    },
+  ],
+  affectClose:
+    "Practical factors can affect which options are realistic — without replacing medical judgment.",
+
+  evaluateTitle: "A decision framework for treatment feasibility",
+  evaluateLead:
+    "Include practical reality alongside medical information.",
+  evaluateBlocks: [
+    {
+      title: "1. Understand the medical goal",
+      intro: "Ask:",
+      items: [
+        "What is this option trying to achieve?",
+        "Why is it being considered?",
+      ],
+    },
+    {
+      title: "2. Understand the practical requirements",
+      intro: "Ask:",
+      items: [
+        "Where will care happen?",
+        "How often are visits needed?",
+      ],
+    },
+    {
+      title: "3. Understand the personal impact",
+      intro: "Ask:",
+      items: [
+        "How will this affect my daily life?",
+        "What support will I need?",
+      ],
+    },
+    {
+      title: "4. Understand financial considerations",
+      intro: "Ask:",
+      items: [
+        "What costs should I plan for?",
+        "Who can help me understand available resources?",
+      ],
+    },
+    {
+      title: "5. Decide whether the plan is realistic",
+      intro: "Ask:",
+      items: [
+        "Can this approach fit my medical needs and my life circumstances?",
+      ],
+    },
+  ],
+
+  bridges: [
+    {
+      title: "Does the cancer center decision affect logistics?",
+      body: [
+        "Expertise and practicality may both matter. Some patients consider specialist experience, multidisciplinary care, distance from home, and travel requirements.",
+        "A highly specialized center may provide additional expertise. Patients may also consider time, cost, support, and ability to continue care.",
+        "The question is not “Which center is always best?” The question is: “Which care approach fits my medical needs and my real situation?”",
+      ],
+      ctaLabel:
+        "Do I Need a Different Cancer Center or More Specialized Expertise?",
+      ctaHref: CARE_CENTER,
+    },
+    {
+      title: "How does this connect with second opinions?",
+      body: [
+        "Another perspective may also require planning. Second opinions may involve preparing medical records, remote consultations, travel, and additional appointments.",
+        "Questions: What information does another specialist need? Can this process happen remotely?",
+      ],
+      ctaLabel:
+        "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
+      ctaHref: SECOND_OPINION,
+    },
+  ],
+
+  mistakesTitle: "Common mistakes when considering treatment feasibility",
+  mistakes: [
+    {
+      mistake: "Looking only at the treatment itself",
+      why: "A treatment plan also has practical requirements.",
+    },
+    {
+      mistake: "Ignoring daily-life challenges until later",
+      why: "Planning early can reduce avoidable difficulties.",
+    },
+    {
+      mistake: "Choosing only based on cost",
+      why: "Medical fit and personal circumstances both matter.",
+    },
+    {
+      mistake: "Assuming practical concerns cannot be discussed",
+      why: "Your care team needs to understand your real situation.",
+    },
+  ],
+
+  doctorTitle: "Questions that improve treatment planning",
+  doctorGroups: [
+    {
+      heading: "About logistics",
+      questions: [
+        "How often will I need appointments?",
+        "How long will treatment visits usually take?",
+      ],
+    },
+    {
+      heading: "About location",
+      questions: [
+        "Do I need to receive all care at this center?",
+        "Are some parts of care possible closer to home?",
+      ],
+    },
+    {
+      heading: "About support",
+      questions: [
+        "What help might I need from family or caregivers?",
+        "What should I prepare before treatment begins?",
+      ],
+    },
+    {
+      heading: "About costs",
+      questions: [
+        "Who can help me understand expected costs?",
+        "What resources may be available?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Choosing a realistic treatment path",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person with lung cancer is considering receiving care at a specialized center farther from home.",
+    "Their first question is: “Is this the right medical option?”",
+    "They also consider:",
+  ],
+  scenarioFocus: [
+    "How often would I need to travel?",
+    "Can my family support this plan?",
+    "What time and financial commitments are involved?",
+    "Are some parts of care possible closer to home?",
+  ],
+  scenarioClose:
+    "The decision becomes: “What treatment approach can I realistically follow while receiving appropriate care?”",
+
+  nextStepTitle:
+    "Make sure your treatment plan fits both your cancer and your life",
+  nextStepLead: "Your next step:",
+  nextStepActions: [
+    { label: "Understand your medical options." },
+    { label: "Identify practical requirements." },
+    {
+      label: "Discuss:",
+      examples: [
+        "Location",
+        "Time",
+        "Cost",
+        "Support needs",
+      ],
+    },
+    {
+      label:
+        "Choose a plan that is medically appropriate and realistic for your situation.",
+    },
+  ],
+  nextStepCtaLabel:
+    "Do I Need a Different Cancer Center or More Specialized Expertise?",
+  nextStepHref: CARE_CENTER,
+  nextStepCtaMeta: "Care Center Decision",
+  nextStepSecondaryCtaLabel:
+    "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
+  nextStepSecondaryHref: SECOND_OPINION,
+  nextStepSecondaryMeta: "Second Opinion",
+
+  relatedPathsTitle: "Continue your lung cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Need more expertise?",
+      question:
+        "Do I Need a Different Cancer Center or More Specialized Expertise?",
+      cta: "Care Center Decision",
+      href: CARE_CENTER,
+    },
+    {
+      title: "Want another perspective?",
+      question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
+      cta: "Second Opinion",
+      href: SECOND_OPINION,
+    },
+    {
+      title: "Comparing treatments?",
+      question: "How Should I Compare Lung Cancer Treatment Options?",
+      cta: "Treatment Comparison",
+      href: TREATMENT_COMPARE,
+    },
+  ],
+};
+
 const FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> = {
   "what-decisions-matter-most-after-new-lung-cancer-diagnosis":
     NEWLY_DIAGNOSED_FLAGSHIP,
@@ -3106,6 +4102,12 @@ const FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> = {
   "what-are-my-options-if-lung-cancer-comes-back": RECURRENCE_FLAGSHIP,
   "what-are-my-options-if-lung-cancer-treatment-no-longer-working":
     TREATMENT_PROGRESSION_FLAGSHIP,
+  "should-surgery-be-part-of-my-lung-cancer-treatment-plan":
+    SURGERY_FLAGSHIP,
+  "how-should-quality-of-life-factor-into-lung-cancer-decisions":
+    QUALITY_OF_LIFE_FLAGSHIP,
+  "can-my-lung-cancer-treatment-plan-work-with-my-real-life":
+    TREATMENT_FEASIBILITY_FLAGSHIP,
 };
 
 export function getAiEntryFlagshipModules(

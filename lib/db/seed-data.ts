@@ -1,6 +1,10 @@
 import type { KnowledgeGraphStore } from "@/types/database";
 import { buildDecisionMapFromOs } from "@/lib/os/build-decision-map";
 import { LUNG_CANCER_DECISION_OS } from "@/lib/os/lung-cancer";
+import {
+  LUNG_FLAGSHIP_QUESTION_NS,
+  LUNG_FLAGSHIP_SOURCES_BY_QUESTION_N,
+} from "@/lib/trust/lung-entry-sources";
 import { id, now } from "./ids";
 
 const ts = now();
@@ -1099,6 +1103,78 @@ export function createSeedData(): KnowledgeGraphStore {
         "How does this choice affect future options?",
       ],
     },
+    {
+      n: 31,
+      cancer: 1,
+      title: "Should Surgery Be Part of My Lung Cancer Treatment Plan?",
+      slug: "should-surgery-be-part-of-my-lung-cancer-treatment-plan",
+      category: "treatment",
+      summary:
+        "Surgery may be an option for some people with lung cancer, but whether it should be part of your treatment plan depends on many factors, including the type and stage of cancer, where the cancer is located, your overall health, and your treatment goals.\n\nSurgery is not automatically the best choice for everyone, and it is usually considered alongside other approaches that may include radiation, systemic treatments, or observation depending on the situation.\n\nA useful question to ask your care team is: “Is surgery appropriate for my situation, and how does it compare with my other available options?”",
+      why: "Surgery is a treatment option, not the decision itself. The real question is whether surgery fits your cancer situation, goals, and priorities — compared with alternatives.",
+      factors: [
+        "Cancer type, location, and extent",
+        "Overall health and recovery considerations",
+        "Treatment goals and personal priorities",
+        "How surgery compares with other available options",
+        "Whether another opinion or specialized expertise would help",
+      ],
+      doctorQs: [
+        "Why is surgery being considered for me?",
+        "What other options should I understand?",
+        "How do these options compare?",
+        "What should I expect after surgery?",
+        "Would another specialist perspective help?",
+      ],
+    },
+    {
+      n: 32,
+      cancer: 1,
+      title: "How Should Quality of Life Factor Into My Lung Cancer Decisions?",
+      slug: "how-should-quality-of-life-factor-into-lung-cancer-decisions",
+      category: "treatment",
+      summary:
+        "Quality of life is an important part of lung cancer decisions because treatment choices involve more than medical outcomes alone. Patients and care teams often consider treatment goals, daily activities, possible benefits, potential burdens, and personal priorities.\n\nThe best decision is not always the option with the most treatment or the least treatment. It is the option that best fits your medical situation and what matters most to you.\n\nA useful question to ask your care team is: “How might each option affect both my health and the life I want to maintain?”",
+      why: "Cancer decisions are about your life, not only your cancer. Quality of life helps make trade-offs clear — it does not automatically mean choosing fewer treatments.",
+      factors: [
+        "What outcomes and daily activities matter most to you",
+        "Treatment goals and expected benefits",
+        "Possible burdens, side effects, and time commitments",
+        "How priorities may change as the situation changes",
+        "How to include personal goals in care-team discussions",
+      ],
+      doctorQs: [
+        "What is the goal of this treatment?",
+        "How might this affect my normal activities?",
+        "What are the benefits and burdens of each option?",
+        "How can my goals be included in this decision?",
+        "Are there options that better match what matters to me?",
+      ],
+    },
+    {
+      n: 33,
+      cancer: 1,
+      title: "Can My Lung Cancer Treatment Plan Work With My Real Life?",
+      slug: "can-my-lung-cancer-treatment-plan-work-with-my-real-life",
+      category: "cost",
+      summary:
+        "A lung cancer treatment plan needs to fit both your medical situation and your real-life circumstances. In addition to treatment options, patients may consider factors such as location, travel requirements, time commitments, insurance coverage, financial concerns, family support, and daily responsibilities.\n\nThese factors do not determine which treatment is medically appropriate, but they can help patients and care teams understand which options are realistic and sustainable.\n\nA useful question to ask your care team is: “How can we create a treatment plan that addresses my cancer while also fitting my life situation?”",
+      why: "The best treatment plan is one you can realistically follow. Practical factors — cost, travel, time, and support — belong in the decision, not only after it.",
+      factors: [
+        "Location and travel requirements",
+        "Appointment frequency and time commitments",
+        "Insurance, coverage, and expected costs",
+        "Family support and caregiver needs",
+        "Whether the plan can continue over time",
+      ],
+      doctorQs: [
+        "How often will I need appointments?",
+        "Do I need to receive all care at this center?",
+        "Are some parts of care possible closer to home?",
+        "Who can help me understand expected costs?",
+        "What help might I need from family or caregivers?",
+      ],
+    },
   ];
 
   const questions = questionDefs.map((q) => ({
@@ -1793,6 +1869,198 @@ export function createSeedData(): KnowledgeGraphStore {
         "what to do when lung cancer treatment fails",
       ],
     },
+    31: {
+      summary:
+        "Surgery may be an option for some people with lung cancer, but whether it should be part of your treatment plan depends on many factors, including the type and stage of cancer, where the cancer is located, your overall health, and your treatment goals.\n\nSurgery is not automatically the best choice for everyone, and it is usually considered alongside other approaches that may include radiation, systemic treatments, or observation depending on the situation.\n\nA useful question to ask your care team is: “Is surgery appropriate for my situation, and how does it compare with my other available options?”",
+      decision_triggers: [
+        "You were recently diagnosed and wonder if surgery is possible",
+        "Your doctor mentioned surgery as an option",
+        "You are comparing surgery with other treatment paths",
+        "You want more confidence before a major procedure decision",
+      ],
+      decision_context:
+        "Surgery is a treatment option, not the decision itself. Compare whether surgery fits your cancer situation, goals, and priorities — alongside alternatives.",
+      when_this_may_help: [
+        "Surgery has been mentioned as a possible part of your plan",
+        "You want to understand how surgery compares with other options",
+        "You are preparing questions before a major treatment discussion",
+        "You are considering a second opinion or specialized surgical expertise",
+      ],
+      when_it_may_not_help: [
+        "Emergency or urgent symptoms need immediate medical attention first",
+        "Your care team has already explained a time-critical next step and why",
+      ],
+      timing_considerations: [
+        "Some surgery decisions benefit from complete staging and biomarker information first",
+        "Ask which questions need a timely discussion versus which can wait for key information",
+        "Recovery and daily-life impact are part of the timing conversation",
+        "A second opinion may be useful before an irreversible procedure",
+      ],
+      options_and_tradeoffs: [
+        "Benefit — Clarify why surgery is being considered: clearer decision discussion",
+        "Trade-off — More comparison: takes time and may raise more questions",
+        "Benefit — Compare alternatives with the same questions: fair evaluation",
+        "Trade-off — Waiting for more information: short calendar delay",
+        "Benefit — Second opinion or specialized review: more confidence before a major step",
+        "Trade-off — Additional review: more appointments and planning",
+      ],
+      records_to_prepare: [
+        "Pathology and staging information",
+        "Imaging reports and scans",
+        "Biomarker / molecular testing results",
+        "Current medications and health status",
+        "Your goals and questions about surgery and alternatives",
+      ],
+      next_steps: [
+        "Understand why surgery is being considered",
+        "Review available alternatives",
+        "Compare benefits, trade-offs, recovery, and daily-life impact",
+        "Consider whether additional expertise would help",
+      ],
+      if_opinions_conflict: [
+        "Ask what information each recommendation rests on",
+        "Compare surgery and alternatives side by side using the same questions",
+        "A second opinion may help when the decision feels significant",
+      ],
+      body: null,
+      seo_title: "Should Surgery Be Part of My Lung Cancer Treatment Plan?",
+      seo_description:
+        "Considering surgery for lung cancer? Learn when surgery may be discussed, how to compare it with other options, and what questions to ask before making a decision.",
+      seo_keywords: [
+        "should surgery be part of lung cancer treatment",
+        "lung cancer surgery decision",
+        "lung cancer surgery vs other treatments",
+        "is surgery right for my lung cancer",
+      ],
+    },
+    32: {
+      summary:
+        "Quality of life is an important part of lung cancer decisions because treatment choices involve more than medical outcomes alone. Patients and care teams often consider treatment goals, daily activities, possible benefits, potential burdens, and personal priorities.\n\nThe best decision is not always the option with the most treatment or the least treatment. It is the option that best fits your medical situation and what matters most to you.\n\nA useful question to ask your care team is: “How might each option affect both my health and the life I want to maintain?”",
+      decision_triggers: [
+        "You are comparing treatments and wonder about daily-life impact",
+        "Treatment has significant burdens such as side effects or travel",
+        "Your cancer situation is changing and priorities may shift",
+        "You are making advanced cancer decisions and want goals included",
+      ],
+      decision_context:
+        "Quality of life means choosing treatment that fits your goals — not automatically choosing less treatment. Bring personal priorities into every comparison of options.",
+      when_this_may_help: [
+        "You want your goals and daily life included in treatment discussions",
+        "You are weighing benefits and burdens across options",
+        "You are facing Stage IV, recurrence, or treatment-change decisions",
+        "You want clearer language for talking with your care team about priorities",
+      ],
+      when_it_may_not_help: [
+        "Emergency or urgent symptoms need immediate medical attention first",
+        "Your care team has already explained a time-critical next step and why",
+      ],
+      timing_considerations: [
+        "Understanding priorities earlier can make future decisions clearer",
+        "Priorities may change when the cancer situation or treatment response changes",
+        "Trade-offs between medical goals and daily life can be discussed at any stage",
+        "Revisit goals when comparing a new set of options",
+      ],
+      options_and_tradeoffs: [
+        "Benefit — Name what matters most: clearer trade-off discussions",
+        "Trade-off — More personal reflection: takes time and emotional energy",
+        "Benefit — Compare options with goals included: decisions that fit the person",
+        "Trade-off — Different priorities among family members: may need more conversation",
+        "Benefit — Revisit goals when treatment changes: stays aligned with current life",
+        "Trade-off — Waiting to discuss priorities: decisions may feel more urgent later",
+      ],
+      records_to_prepare: [
+        "Your current treatment options as explained by your care team",
+        "Notes on daily activities and routines that matter most",
+        "Questions about benefits, burdens, and recovery",
+        "Support needs and family responsibilities",
+        "Your priorities ranked in your own words",
+      ],
+      next_steps: [
+        "Identify what matters most to you",
+        "Understand the goals and trade-offs of each option",
+        "Discuss how each choice may affect your life",
+        "Make sure your priorities are part of the decision",
+      ],
+      if_opinions_conflict: [
+        "Ask how each recommendation fits your stated goals",
+        "Compare benefits and burdens side by side",
+        "A second opinion may help when priorities and recommendations feel misaligned",
+      ],
+      body: null,
+      seo_title: "How Should Quality of Life Factor Into Lung Cancer Decisions?",
+      seo_description:
+        "Quality of life is an important part of lung cancer decisions. Learn how personal goals, daily life, treatment goals, and trade-offs can guide conversations with your care team.",
+      seo_keywords: [
+        "quality of life lung cancer decisions",
+        "lung cancer treatment goals and daily life",
+        "personal priorities in lung cancer treatment",
+        "how should quality of life factor into lung cancer decisions",
+      ],
+    },
+    33: {
+      summary:
+        "A lung cancer treatment plan needs to fit both your medical situation and your real-life circumstances. In addition to treatment options, patients may consider factors such as location, travel requirements, time commitments, insurance coverage, financial concerns, family support, and daily responsibilities.\n\nThese factors do not determine which treatment is medically appropriate, but they can help patients and care teams understand which options are realistic and sustainable.\n\nA useful question to ask your care team is: “How can we create a treatment plan that addresses my cancer while also fitting my life situation?”",
+      decision_triggers: [
+        "You are choosing where to receive care and wonder about travel",
+        "You are considering a second opinion and need to plan logistics",
+        "Your treatment requires ongoing visits and support",
+        "Your treatment plan is changing and practical requirements may change",
+      ],
+      decision_context:
+        "Treatment feasibility asks whether a plan can work with real life — cost, location, time, and support — alongside medical appropriateness. Practical concerns belong in the care-team conversation.",
+      when_this_may_help: [
+        "You want to understand travel, time, cost, and support needs before locking a plan",
+        "You are comparing local care with a more specialized center",
+        "You need language to discuss practical constraints with your care team",
+        "You are planning a second opinion or ongoing treatment schedule",
+      ],
+      when_it_may_not_help: [
+        "Emergency or urgent symptoms need immediate medical attention first",
+        "Your care team has already explained a time-critical next step and why",
+      ],
+      timing_considerations: [
+        "Discuss practical requirements early — before avoidable difficulties accumulate",
+        "Some parts of care may be possible closer to home while specialty review happens elsewhere",
+        "Costs include more than the headline treatment fee",
+        "Revisit logistics when the treatment plan changes",
+      ],
+      options_and_tradeoffs: [
+        "Benefit — Name practical requirements early: more realistic planning",
+        "Trade-off — More planning conversations: takes time before treatment starts",
+        "Benefit — Combine medical fit with life fit: plans you can continue",
+        "Trade-off — Specialized care farther away: more travel and support needs",
+        "Benefit — Ask about local coordination: may reduce unnecessary travel",
+        "Trade-off — Focusing only on cost: may overlook medical fit or support needs",
+      ],
+      records_to_prepare: [
+        "Insurance and coverage information",
+        "Notes on travel distance and transportation options",
+        "Work and family responsibilities that affect scheduling",
+        "Caregiver availability",
+        "Questions about visit frequency, location, and expected costs",
+      ],
+      next_steps: [
+        "Understand your medical options",
+        "Identify practical requirements",
+        "Discuss location, time, cost, and support needs",
+        "Choose a plan that is medically appropriate and realistic",
+      ],
+      if_opinions_conflict: [
+        "Ask how each option fits both medical goals and practical requirements",
+        "Compare travel, time, cost, and support needs side by side",
+        "A second opinion or care-center discussion may help when expertise and logistics conflict",
+      ],
+      body: null,
+      seo_title: "Can My Lung Cancer Treatment Plan Work With My Real Life?",
+      seo_description:
+        "Cancer treatment decisions involve more than medical options. Learn how cost, travel, time, support, and daily life factors can influence lung cancer care decisions.",
+      seo_keywords: [
+        "can my lung cancer treatment plan work with my real life",
+        "lung cancer treatment cost and logistics",
+        "lung cancer treatment travel and time",
+        "realistic lung cancer treatment plan",
+      ],
+    },
   };
 
   for (const [n, fields] of Object.entries(lungFlagship)) {
@@ -2231,6 +2499,14 @@ export function createSeedData(): KnowledgeGraphStore {
       published_on: "2025-01-01",
       notes: "Patient education on clinical trial decisions",
     },
+    {
+      id: id("src", 13),
+      title: "Clinical Trials Information for Patients and Caregivers",
+      url: "https://www.cancer.gov/research/participate/clinical-trials",
+      publisher: "National Cancer Institute",
+      published_on: "2025-01-01",
+      notes: "NCI clinical trial decision education",
+    },
   ];
 
   const cancer_treatments = [
@@ -2406,20 +2682,12 @@ export function createSeedData(): KnowledgeGraphStore {
     { treatment_id: id("tx", 7), country_code: "AU" },
   ];
 
-  /** Lung Tier-1 AI Entry question numbers — curated core references */
-  const lungFlagshipQuestionNs = [1, 2, 3, 21, 26, 27, 28, 29, 30];
-  const lungFlagshipCoreSourceNs = [1, 5, 9, 10, 11]; // NCCN, NCI care, NCI NSCLC, ASCO lung, ESMO
-  const lungFlagshipExtraByNs: Record<number, number[]> = {
-    1: [4, 8], // second opinion + talking with doctor
-    28: [12], // clinical trials
-  };
-
+  /** Lung Tier-1 AI Entries — Entry-specific References (Source Mapping v1.0) */
   const content_sources = [
     ...questions.flatMap((q, index) => {
       const n = Number(q.id.split("-").pop());
-      if (lungFlagshipQuestionNs.includes(n)) {
-        const extras = lungFlagshipExtraByNs[n] ?? [];
-        const sourceNs = [...lungFlagshipCoreSourceNs, ...extras];
+      if (LUNG_FLAGSHIP_QUESTION_NS.includes(n)) {
+        const sourceNs = LUNG_FLAGSHIP_SOURCES_BY_QUESTION_N[n] ?? [];
         return sourceNs.map((srcN) => ({
           entity_type: "question" as const,
           entity_id: q.id,

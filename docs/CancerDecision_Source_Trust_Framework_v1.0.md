@@ -83,6 +83,6 @@ Concrete URLs live in the `sources` catalog and `content_sources` links — not 
 ## Rollout
 
 1. Ship shared module + config (this version)
-2. Curate core references for lung Tier-1 Entries
+2. Curate Entry-specific references for lung Tier-1 Entries — see `CancerDecision_Lung_AI_Entry_Source_Mapping_v1.0.md`
 3. Later: optional Direct Answer `[n]` anchors per Entry
 4. Later: named medical reviewer fields when available

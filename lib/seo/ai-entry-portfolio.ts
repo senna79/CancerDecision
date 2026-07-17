@@ -12,7 +12,10 @@ export type AiEntryId =
   | "stage-iv"
   | "clinical-trial"
   | "recurrence"
-  | "treatment-progression";
+  | "treatment-progression"
+  | "surgery"
+  | "quality-of-life"
+  | "treatment-feasibility";
 
 export type AiEntry = {
   id: AiEntryId;
@@ -41,6 +44,7 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     relatedEntryIds: [
       "biomarker",
       "treatment-comparison",
+      "surgery",
       "second-opinion",
       "stage-iv",
     ],
@@ -100,6 +104,7 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     ],
     relatedEntryIds: [
       "biomarker",
+      "surgery",
       "second-opinion",
       "care-center",
       "stage-iv",
@@ -125,6 +130,7 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
       "biomarker",
       "clinical-trial",
       "treatment-progression",
+      "treatment-feasibility",
     ],
   },
   {
@@ -147,6 +153,7 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
       "newly-diagnosed",
       "recurrence",
       "treatment-progression",
+      "quality-of-life",
     ],
   },
   {
@@ -213,6 +220,70 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
       "clinical-trial",
       "second-opinion",
       "care-center",
+      "stage-iv",
+      "quality-of-life",
+    ],
+  },
+  {
+    id: "surgery",
+    label: "Surgery decision",
+    decisionLabel: "Whether surgery should be part of your treatment plan",
+    slug: "should-surgery-be-part-of-my-lung-cancer-treatment-plan",
+    momentId: "surgery-decision",
+    searchIntents: [
+      "should surgery be part of lung cancer treatment",
+      "lung cancer surgery decision",
+      "lung cancer surgery vs other treatments",
+      "is surgery right for my lung cancer",
+    ],
+    relatedEntryIds: [
+      "newly-diagnosed",
+      "treatment-comparison",
+      "biomarker",
+      "second-opinion",
+      "care-center",
+    ],
+  },
+  {
+    id: "quality-of-life",
+    label: "Quality of life / personal goals",
+    decisionLabel: "How personal goals should influence treatment choices",
+    slug: "how-should-quality-of-life-factor-into-lung-cancer-decisions",
+    momentId: "quality-of-life",
+    searchIntents: [
+      "quality of life lung cancer decisions",
+      "lung cancer treatment goals and daily life",
+      "personal priorities in lung cancer treatment",
+      "how should quality of life factor into lung cancer decisions",
+    ],
+    relatedEntryIds: [
+      "treatment-comparison",
+      "stage-iv",
+      "recurrence",
+      "treatment-progression",
+      "second-opinion",
+      "treatment-feasibility",
+    ],
+  },
+  {
+    id: "treatment-feasibility",
+    label: "Treatment feasibility / cost & logistics",
+    decisionLabel:
+      "Whether a treatment plan is realistic and sustainable in daily life",
+    slug: "can-my-lung-cancer-treatment-plan-work-with-my-real-life",
+    momentId: "cost-logistics",
+    searchIntents: [
+      "can my lung cancer treatment plan work with my real life",
+      "lung cancer treatment cost and logistics",
+      "lung cancer treatment travel and time",
+      "realistic lung cancer treatment plan",
+    ],
+    relatedEntryIds: [
+      "care-center",
+      "second-opinion",
+      "treatment-comparison",
+      "clinical-trial",
+      "quality-of-life",
       "stage-iv",
     ],
   },

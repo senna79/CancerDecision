@@ -173,7 +173,11 @@ export async function getSourcesForEntity(
   const sourceIds = store.content_sources
     .filter((cs) => cs.entity_type === entityType && cs.entity_id === entityId)
     .map((cs) => cs.source_id);
-  return store.sources.filter((s) => sourceIds.includes(s.id));
+  // Preserve content_sources order (Entry-specific Reference ranking)
+  const byId = new Map(store.sources.map((s) => [s.id, s]));
+  return sourceIds
+    .map((sourceId) => byId.get(sourceId))
+    .filter((s): s is Source => !!s);
 }
 
 export async function getAllSources() {
