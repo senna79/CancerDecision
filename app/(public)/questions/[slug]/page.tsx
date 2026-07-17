@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
+import { DecisionJourneyNav } from "@/components/journey/decision-journey-nav";
 import { DecisionWorkspace } from "@/components/journey/decision-workspace";
 import { NextActionClose } from "@/components/journey/next-action-close";
 import { JourneyProgressRail } from "@/components/journey/progress-rail";
@@ -20,6 +21,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { SourcesAndReview } from "@/components/trust/sources-and-review";
 import { TrustStrip } from "@/components/trust/trust-strip";
 import { getAiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
+import { getDecisionGraphNodeByAiEntrySlug } from "@/lib/os/decision-graph";
 import { getQuestionPage, getQuestions } from "@/lib/queries";
 import {
   getAiEntryBySlug,
@@ -81,8 +83,29 @@ export default async function QuestionPage({
   const entryMeta = getAiEntryBySlug(question.slug);
   const relatedEntries = entryMeta ? getRelatedAiEntries(entryMeta) : [];
   const flagship = getAiEntryFlagshipModules(question.slug);
+  const graphNode = getDecisionGraphNodeByAiEntrySlug(question.slug);
   const pageDescription =
     question.seo_description || question.summary.slice(0, 160);
+  const graphRelatedLinks = graphNode
+    ? [...graphNode.next, ...graphNode.related]
+        .filter((link) => !!link.href)
+        .slice(0, 8)
+        .map((link) => ({
+          name: link.stateLabel,
+          url: link.href as string,
+        }))
+    : [];
+  const significantNext = graphNode?.next.find((link) => link.href)?.href ?? null;
+  const relationshipRelated =
+    graphRelatedLinks.length > 0
+      ? graphRelatedLinks.map((link) => ({
+          href: link.url,
+          label: link.name,
+        }))
+      : relatedEntries.map((e) => ({
+          href: `/questions/${e.slug}`,
+          label: e.decisionLabel,
+        }));
 
   return (
     <div className="mx-auto w-full max-w-3xl px-5 py-10 md:px-8">
@@ -107,30 +130,36 @@ export default async function QuestionPage({
             mentions: [
               question.category.replaceAll("_", " "),
               ...(entryMeta ? [entryMeta.decisionLabel] : []),
-              ...(flagship
-                ? [
-                    "new diagnosis",
-                    "decision navigation",
-                    "tier 1 ai entry",
-                  ]
-                : []),
-              ...(journey
-                ? [
-                    journey.currentNode.state_label ??
-                      journey.currentNode.label.replace(/^\d+\.\s*/, ""),
-                  ]
-                : []),
+              ...(graphNode ? [graphNode.stateLabel, "decision navigation"] : []),
+              ...(flagship ? ["lung cancer decision journey"] : []),
               ...(aiEntry ? ["decision entry", "patient navigation"] : []),
             ],
+            mentionEntities: [
+              ...(treatments.some((tx) =>
+                tx.slug.toLowerCase().includes("surgery")
+              ) || question.slug.includes("surgery")
+                ? [{ type: "MedicalProcedure" as const, name: "Surgery" }]
+                : []),
+              ...(question.slug.includes("biomarker")
+                ? [
+                    {
+                      type: "MedicalTest" as const,
+                      name: "Biomarker Testing",
+                    },
+                  ]
+                : []),
+            ],
             relatedTreatmentNames: treatments.map((tx) => tx.name),
-            partOfName: journey
-              ? journey.map.title
-              : cancer
-                ? `${cancer.name} Decision Center`
+            partOfName: cancer
+              ? `${cancer.name} Decision Journey`
+              : journey
+                ? journey.map.title
                 : null,
             partOfUrl: cancer
-              ? `/cancers/${cancer.slug}${journey ? "#decision-map" : ""}`
+              ? `/cancers/${cancer.slug}#decision-map`
               : null,
+            relatedLinks: graphRelatedLinks,
+            significantLinkUrl: significantNext,
           }),
           articleJsonLd({
             title: question.title,
@@ -217,24 +246,40 @@ export default async function QuestionPage({
           >
             Jump to your next step →
           </a>
+          {" · "}
+          <a
+            href="#decision-journey"
+            className="font-semibold text-[var(--accent)] hover:underline"
+          >
+            See your journey
+          </a>
         </p>
       ) : null}
 
-      {!flagship && aiEntry && entryMeta && cancer ? (
+      {aiEntry && (entryMeta || graphNode) && cancer ? (
         <RelationshipStrip
           about={{
             href: `/cancers/${cancer.slug}`,
             label: cancer.name,
           }}
-          decision={entryMeta.decisionLabel}
+          decision={
+            entryMeta?.decisionLabel ??
+            graphNode?.stateLabel ??
+            question.title
+          }
           partOf={{
             href: `/cancers/${cancer.slug}#decision-map`,
             label: `${cancer.name} Decision Journey`,
           }}
-          related={relatedEntries.map((e) => ({
-            href: `/questions/${e.slug}`,
-            label: e.decisionLabel,
-          }))}
+          related={relationshipRelated}
+        />
+      ) : null}
+
+      {flagship && graphNode && cancer ? (
+        <DecisionJourneyNav
+          node={graphNode}
+          cancerSlug={cancer.slug}
+          cancerName={cancer.name}
         />
       ) : null}
 

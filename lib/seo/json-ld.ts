@@ -77,15 +77,29 @@ export function medicalWebPageJsonLd(input: {
   path: string;
   dateModified?: string | null;
   aboutName?: string | null;
+  /** Decision-moment / journey labels */
   mentions?: string[];
+  /** Typed entities for AI Search (procedure, test, therapy names) */
+  mentionEntities?: Array<{
+    type: "MedicalProcedure" | "MedicalTest" | "MedicalTherapy" | "Thing";
+    name: string;
+  }>;
   relatedTreatmentNames?: string[];
   partOfName?: string | null;
   partOfUrl?: string | null;
+  /** Adjacent Decision Graph neighbors */
+  relatedLinks?: Array<{ name: string; url: string }>;
+  /** Primary next-step URL on the Decision Graph */
+  significantLinkUrl?: string | null;
 }) {
   const mentions = [
     ...(input.mentions ?? []).map((name) => ({
       "@type": "Thing" as const,
       name,
+    })),
+    ...(input.mentionEntities ?? []).map((entity) => ({
+      "@type": entity.type,
+      name: entity.name,
     })),
     ...(input.relatedTreatmentNames ?? []).map((name) => ({
       "@type": "MedicalTherapy" as const,
@@ -119,6 +133,12 @@ export function medicalWebPageJsonLd(input: {
             url: absoluteUrl(input.partOfUrl),
           }
         : undefined,
+    relatedLink: input.relatedLinks?.length
+      ? input.relatedLinks.map((link) => absoluteUrl(link.url))
+      : undefined,
+    significantLink: input.significantLinkUrl
+      ? absoluteUrl(input.significantLinkUrl)
+      : undefined,
     publisher: {
       "@type": "Organization",
       name: "Global Cancer Decision Platform",
