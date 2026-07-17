@@ -4,6 +4,7 @@ import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
+import { StoryJourneyLoop } from "@/components/journey/story-journey-loop";
 import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
 import { StoryDisclosure } from "@/components/trust/story-disclosure";
 import { TrustStrip } from "@/components/trust/trust-strip";
@@ -41,7 +42,7 @@ export default async function StoryPage({
   const { slug } = await params;
   const data = await getStoryPage(slug);
   if (!data) notFound();
-  const { story, cancer, treatments, sources } = data;
+  const { story, cancer, treatments, sources, journeyLoop } = data;
 
   return (
     <div className="mx-auto w-full max-w-3xl px-5 py-10 md:px-8">
@@ -153,6 +154,29 @@ export default async function StoryPage({
           ))}
         </ul>
       </Section>
+
+      {journeyLoop && cancer ? (
+        <StoryJourneyLoop
+          cancerSlug={cancer.slug}
+          cancerName={cancer.name}
+          currentNode={journeyLoop.currentNode}
+          nextNode={journeyLoop.nextNode}
+          nextQuestionSlug={journeyLoop.nextQuestionSlug}
+        />
+      ) : cancer ? (
+        <section className="mt-10 rounded-lg border border-[var(--line)] bg-white/80 p-5">
+          <p className="text-sm text-[var(--muted)]">
+            Continue exploring the{" "}
+            <Link
+              href={`/cancers/${cancer.slug}#decision-map`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              {cancer.name} Decision Map
+            </Link>
+            .
+          </p>
+        </section>
+      ) : null}
 
       <MedicalDisclaimer reviewedAt={story.content_reviewed_at} sources={sources} />
     </div>

@@ -2,6 +2,9 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
+import { DecisionWorkspace } from "@/components/journey/decision-workspace";
+import { JourneyProgressRail } from "@/components/journey/progress-rail";
+import { JourneyStepNav } from "@/components/journey/step-nav";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { DoctorQuestionsPanel } from "@/components/question/doctor-questions-panel";
 import { JourneySections } from "@/components/question/journey-sections";
@@ -60,6 +63,7 @@ export default async function QuestionPage({
     stories,
     relatedQuestions,
     sources,
+    journey,
   } = data;
 
   return (
@@ -106,21 +110,30 @@ export default async function QuestionPage({
                 { label: cancer.name, href: `/cancers/${cancer.slug}` },
               ]
             : []),
-          { label: "Decision question" },
+          { label: journey ? "Journey step" : "Decision question" },
         ]}
       />
 
       <TrustStrip reviewedAt={question.content_reviewed_at} />
 
+      {journey && cancer ? (
+        <JourneyProgressRail journey={journey} cancerSlug={cancer.slug} />
+      ) : null}
+
       <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
         {question.category.replaceAll("_", " ")}
         {cancer ? ` · ${cancer.name}` : ""}
+        {journey ? ` · Step ${journey.currentNode.sort_order}` : ""}
       </p>
       <h1 className="mt-3 font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-4xl">
         {question.title}
       </h1>
 
       <SummaryPanel summary={question.summary} />
+
+      {journey ? (
+        <DecisionWorkspace question={question} journey={journey} />
+      ) : null}
 
       <Section title="Why patients ask this">
         <Markdown content={question.why_patients_ask} />
@@ -152,8 +165,12 @@ export default async function QuestionPage({
 
       <SourcesList sources={sources} />
 
+      {journey && cancer ? (
+        <JourneyStepNav journey={journey} cancerSlug={cancer.slug} />
+      ) : null}
+
       <RelatedPathway
-        title="Related treatment options"
+        title="Compare treatments for this step"
         items={treatments.map((tx) => ({
           href: `/treatments/${tx.slug}`,
           title: tx.name,
@@ -163,7 +180,7 @@ export default async function QuestionPage({
       />
 
       <RelatedPathway
-        title="Related illustrative journeys"
+        title="Illustrative journeys at nearby stages"
         items={stories.map((story) => ({
           href: `/stories/${story.slug}`,
           title: story.title,
@@ -172,30 +189,25 @@ export default async function QuestionPage({
         emptyHint="No linked stories yet."
       />
 
-      <RelatedPathway
-        title="Related questions"
-        items={relatedQuestions.map((rq) => ({
-          href: `/questions/${rq.slug}`,
-          title: rq.title,
-          meta: rq.category.replaceAll("_", " "),
-        }))}
-        emptyHint="No related questions yet."
-      />
+      {!journey ? (
+        <RelatedPathway
+          title="Related questions"
+          items={relatedQuestions.map((rq) => ({
+            href: `/questions/${rq.slug}`,
+            title: rq.title,
+            meta: rq.category.replaceAll("_", " "),
+          }))}
+          emptyHint="No related questions yet."
+        />
+      ) : null}
 
       {cancer ? (
-        <div className="mt-6 rounded-lg border border-[var(--accent)]/25 bg-[rgba(15,118,110,0.06)] p-4">
-          <p className="text-sm font-semibold text-[var(--ink)]">
-            Continue the decision journey
-          </p>
-          <p className="mt-1 text-sm text-[var(--muted)]">
-            Return to the {cancer.name} map to see where this question sits and
-            what usually comes next.
-          </p>
+        <div className="mt-6 text-sm text-[var(--muted)]">
           <Link
             href={`/cancers/${cancer.slug}#decision-map`}
-            className="mt-3 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+            className="font-semibold text-[var(--accent)] hover:underline"
           >
-            Open {cancer.name} Decision Map →
+            Open full {cancer.name} Decision Map →
           </Link>
         </div>
       ) : null}

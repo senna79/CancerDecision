@@ -13,6 +13,10 @@ import type {
   Treatment,
 } from "@/types/database";
 import { readStore, updateStore } from "@/lib/db/store";
+import {
+  buildJourneyContext,
+  buildStoryJourneyLoop,
+} from "@/lib/journey/engine";
 
 function publishedOnly<T extends { status: ContentStatus }>(
   items: T[],
@@ -314,6 +318,14 @@ export async function getQuestionPage(slug: string) {
       ? linkedRelated
       : cancerQuestions.filter((q) => q.id !== question.id).slice(0, 4);
 
+  const decisionMap = cancer
+    ? await getDecisionMapForCancer(cancer.id)
+    : null;
+  const journey =
+    decisionMap != null
+      ? buildJourneyContext(decisionMap, question.slug)
+      : null;
+
   return {
     question,
     cancer,
@@ -321,6 +333,7 @@ export async function getQuestionPage(slug: string) {
     stories,
     relatedQuestions,
     sources,
+    journey,
   };
 }
 
@@ -342,7 +355,14 @@ export async function getStoryPage(slug: string) {
     getTreatmentsForStory(story.id),
     getSourcesForEntity("story", story.id),
   ]);
-  return { story, cancer, treatments, sources };
+  const decisionMap = cancer
+    ? await getDecisionMapForCancer(cancer.id)
+    : null;
+  const journeyLoop =
+    decisionMap != null
+      ? buildStoryJourneyLoop(decisionMap, story.slug)
+      : null;
+  return { story, cancer, treatments, sources, journeyLoop };
 }
 
 export async function getSitemapEntries() {

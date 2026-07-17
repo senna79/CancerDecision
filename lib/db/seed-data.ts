@@ -1818,6 +1818,7 @@ export function createSeedData(): KnowledgeGraphStore {
           question_slugs: ["when-to-consider-lung-cancer-care-abroad"],
           treatment_slugs: ["proton-therapy-vs-traditional-radiation"],
           story_slugs: [],
+          optional: true,
         },
         {
           id: "node-costs",
@@ -1828,6 +1829,7 @@ export function createSeedData(): KnowledgeGraphStore {
           question_slugs: ["lung-cancer-treatment-costs-what-to-ask"],
           treatment_slugs: [],
           story_slugs: [],
+          optional: true,
         },
       ],
     },

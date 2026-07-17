@@ -40,9 +40,16 @@ export function DecisionMapView({
             </span>
 
             <article className="mb-4 rounded-lg border border-[var(--line)] bg-white/80 p-4 transition hover:border-[var(--accent)]/50 md:p-5">
-              <h3 className="font-heading text-xl font-semibold text-[var(--ink)]">
-                {node.label}
-              </h3>
+              <div className="flex flex-wrap items-center gap-2">
+                <h3 className="font-heading text-xl font-semibold text-[var(--ink)]">
+                  {node.label}
+                </h3>
+                {node.optional ? (
+                  <span className="rounded-full border border-dashed border-[var(--line)] px-2 py-0.5 text-[10px] uppercase tracking-wide text-[var(--muted)]">
+                    Optional
+                  </span>
+                ) : null}
+              </div>
               <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
                 {node.summary}
               </p>

@@ -75,6 +75,8 @@ export interface DecisionMapNode {
   question_slugs: string[];
   treatment_slugs: string[];
   story_slugs: string[];
+  /** Optional branch — shown as optional, not required next */
+  optional?: boolean;
 }
 
 export interface DecisionMap {
