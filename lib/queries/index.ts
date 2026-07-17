@@ -272,9 +272,9 @@ export async function getQuestionPage(slug: string) {
 
   const [
     cancer,
-    treatments,
-    stories,
-    relatedQuestions,
+    linkedTreatments,
+    linkedStories,
+    linkedRelated,
     sources,
   ] = await Promise.all([
     getCancerById(question.cancer_id),
@@ -283,6 +283,29 @@ export async function getQuestionPage(slug: string) {
     getRelatedQuestions(question.id),
     getSourcesForEntity("question", question.id),
   ]);
+
+  const [cancerTreatments, cancerStories, cancerQuestions] = await Promise.all([
+    linkedTreatments.length === 0
+      ? getTreatmentsForCancer(question.cancer_id)
+      : Promise.resolve([]),
+    linkedStories.length === 0
+      ? getStories({ cancerId: question.cancer_id, limit: 3 })
+      : Promise.resolve([]),
+    linkedRelated.length === 0
+      ? getQuestions({ cancerId: question.cancer_id })
+      : Promise.resolve([]),
+  ]);
+
+  const treatments =
+    linkedTreatments.length > 0
+      ? linkedTreatments
+      : cancerTreatments.slice(0, 3);
+  const stories =
+    linkedStories.length > 0 ? linkedStories : cancerStories.slice(0, 2);
+  const relatedQuestions =
+    linkedRelated.length > 0
+      ? linkedRelated
+      : cancerQuestions.filter((q) => q.id !== question.id).slice(0, 4);
 
   return {
     question,

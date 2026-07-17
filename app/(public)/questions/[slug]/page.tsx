@@ -3,8 +3,13 @@ import { notFound } from "next/navigation";
 import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { DoctorQuestionsPanel } from "@/components/question/doctor-questions-panel";
+import { RelatedPathway } from "@/components/question/related-pathway";
+import { SummaryPanel } from "@/components/question/summary-panel";
 import { JsonLd } from "@/components/seo/json-ld";
 import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
+import { SourcesList } from "@/components/trust/sources-list";
+import { TrustStrip } from "@/components/trust/trust-strip";
 import { getQuestionPage, getQuestions } from "@/lib/queries";
 import {
   articleJsonLd,
@@ -31,7 +36,9 @@ export async function generateMetadata({
     description:
       data.question.seo_description || data.question.summary.slice(0, 160),
     path: `/questions/${slug}`,
-    keywords: data.question.seo_keywords,
+    keywords: data.question.seo_keywords.length
+      ? data.question.seo_keywords
+      : data.question.key_factors.slice(0, 6),
   });
 }
 
@@ -79,10 +86,13 @@ export default async function QuestionPage({
               question: question.title,
               answer: question.summary,
             },
+            {
+              question: `Why do patients ask: ${question.title}`,
+              answer: question.why_patients_ask,
+            },
             ...question.doctor_questions.map((dq) => ({
               question: dq,
-              answer:
-                "Discuss this question with your care team in the context of your diagnosis, staging, and personal priorities.",
+              answer: `Use this question with your care team while reviewing your ${cancer?.name ?? "cancer"} situation, staging details, and personal priorities. ${question.key_factors.slice(0, 2).join("; ")}.`,
             })),
           ]),
         ]}
@@ -97,9 +107,11 @@ export default async function QuestionPage({
                 { label: cancer.name, href: `/cancers/${cancer.slug}` },
               ]
             : []),
-          { label: "Question" },
+          { label: "Decision question" },
         ]}
       />
+
+      <TrustStrip reviewedAt={question.content_reviewed_at} />
 
       <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
         {question.category.replaceAll("_", " ")}
@@ -109,96 +121,69 @@ export default async function QuestionPage({
         {question.title}
       </h1>
 
-      <Section title="AI Summary">
-        <Markdown content={question.summary} />
-      </Section>
+      <SummaryPanel summary={question.summary} />
 
-      <Section title="Why Patients Ask This">
+      <Section title="Why patients ask this">
         <Markdown content={question.why_patients_ask} />
       </Section>
 
-      <Section title="Key Factors To Consider">
-        <ul className="list-disc space-y-2 pl-5">
+      <Section title="Key factors to consider">
+        <ul className="space-y-3">
           {question.key_factors.map((factor) => (
-            <li key={factor}>{factor}</li>
+            <li
+              key={factor}
+              className="flex gap-3 rounded-md border border-[var(--line)] bg-white/60 px-4 py-3"
+            >
+              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+              <span>{factor}</span>
+            </li>
           ))}
         </ul>
       </Section>
 
-      <Section title="Questions To Ask Your Doctor">
-        <ul className="list-disc space-y-2 pl-5">
-          {question.doctor_questions.map((dq) => (
-            <li key={dq}>{dq}</li>
-          ))}
-        </ul>
-      </Section>
+      <DoctorQuestionsPanel questions={question.doctor_questions} />
 
       {question.body ? (
-        <Section title="Deeper Context">
+        <Section title="Deeper context">
           <Markdown content={question.body} />
         </Section>
       ) : null}
 
-      <Section title="Related Treatment Options">
-        {treatments.length === 0 ? (
-          <p>No linked treatments yet.</p>
-        ) : (
-          <ul className="space-y-2">
-            {treatments.map((tx) => (
-              <li key={tx.id}>
-                <Link
-                  href={`/treatments/${tx.slug}`}
-                  className="text-[var(--accent)] hover:underline"
-                >
-                  {tx.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </Section>
+      <SourcesList sources={sources} />
 
-      <Section title="Related Patient Stories">
-        {stories.length === 0 ? (
-          <p>No linked stories yet.</p>
-        ) : (
-          <ul className="space-y-2">
-            {stories.map((story) => (
-              <li key={story.id}>
-                <Link
-                  href={`/stories/${story.slug}`}
-                  className="text-[var(--accent)] hover:underline"
-                >
-                  {story.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </Section>
+      <RelatedPathway
+        title="Related treatment options"
+        items={treatments.map((tx) => ({
+          href: `/treatments/${tx.slug}`,
+          title: tx.name,
+          meta: "Treatment comparison",
+        }))}
+        emptyHint="No linked treatments yet."
+      />
 
-      <Section title="Related Questions">
-        {relatedQuestions.length === 0 ? (
-          <p>No related questions yet.</p>
-        ) : (
-          <ul className="space-y-2">
-            {relatedQuestions.map((rq) => (
-              <li key={rq.id}>
-                <Link
-                  href={`/questions/${rq.slug}`}
-                  className="text-[var(--accent)] hover:underline"
-                >
-                  {rq.title}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        )}
-      </Section>
+      <RelatedPathway
+        title="Related patient stories"
+        items={stories.map((story) => ({
+          href: `/stories/${story.slug}`,
+          title: story.title,
+          meta: `${story.country} · ${story.age_range}`,
+        }))}
+        emptyHint="No linked stories yet."
+      />
+
+      <RelatedPathway
+        title="Related questions"
+        items={relatedQuestions.map((rq) => ({
+          href: `/questions/${rq.slug}`,
+          title: rq.title,
+          meta: rq.category.replaceAll("_", " "),
+        }))}
+        emptyHint="No related questions yet."
+      />
 
       {cancer ? (
-        <p className="mt-8 text-sm text-[var(--muted)]">
-          Part of the{" "}
+        <p className="mt-4 text-sm text-[var(--muted)]">
+          Continue in the{" "}
           <Link
             href={`/cancers/${cancer.slug}`}
             className="text-[var(--accent)] hover:underline"

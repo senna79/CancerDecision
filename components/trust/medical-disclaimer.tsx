@@ -17,18 +17,23 @@ export function MedicalDisclaimer({
   sources?: Source[];
 }) {
   return (
-    <aside className="mt-12 border-t border-[var(--line)] pt-8">
-      <p className="text-sm leading-relaxed text-[var(--muted)]">
+    <aside className="mt-12 rounded-lg border border-[var(--line)] bg-[var(--paper-deep)]/80 p-5 md:p-6">
+      <h2 className="font-heading text-lg font-semibold text-[var(--ink)]">
+        Medical information disclaimer
+      </h2>
+      <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
         This content provides educational information and does not replace
         professional medical advice, diagnosis, or treatment. Always discuss
         decisions with your clinicians.
       </p>
       <p className="mt-3 text-sm text-[var(--muted)]">
         Content review date:{" "}
-        <span className="text-[var(--ink)]">{formatDate(reviewedAt)}</span>
+        <span className="font-medium text-[var(--ink)]">
+          {formatDate(reviewedAt)}
+        </span>
       </p>
       {sources.length > 0 ? (
-        <div className="mt-4">
+        <div className="mt-4 border-t border-[var(--line)] pt-4">
           <h3 className="font-heading text-sm font-semibold tracking-wide text-[var(--ink)]">
             Sources / References
           </h3>

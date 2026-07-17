@@ -5,6 +5,7 @@ import { Section } from "@/components/content/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
 import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
+import { TrustStrip } from "@/components/trust/trust-strip";
 import { getCancerDecisionCenter, getCancers } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -75,6 +76,7 @@ export default async function CancerDecisionCenterPage({
           { label: cancer.name },
         ]}
       />
+      <TrustStrip reviewedAt={cancer.content_reviewed_at} />
       <h1 className="font-heading text-4xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-5xl">
         {cancer.name} Decision Center
       </h1>

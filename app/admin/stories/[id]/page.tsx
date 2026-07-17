@@ -85,7 +85,8 @@ export default async function AdminStoryEditPage({
         <AreaField
           label="Options considered"
           name="options_considered"
-          defaultValue={story?.options_considered}
+          defaultValue={(story?.options_considered ?? []).join("\n")}
+          hint="One option per line"
         />
         <AreaField
           label="Why compared"
@@ -100,7 +101,8 @@ export default async function AdminStoryEditPage({
         <AreaField
           label="Lessons learned"
           name="lessons_learned"
-          defaultValue={story?.lessons_learned}
+          defaultValue={(story?.lessons_learned ?? []).join("\n")}
+          hint="One lesson per line"
         />
         <Field label="SEO title" name="seo_title" defaultValue={story?.seo_title} />
         <AreaField

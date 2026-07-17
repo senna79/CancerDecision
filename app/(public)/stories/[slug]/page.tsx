@@ -5,6 +5,7 @@ import { Section } from "@/components/content/section";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
 import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
+import { TrustStrip } from "@/components/trust/trust-strip";
 import { getStories, getStoryPage } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -65,6 +66,7 @@ export default async function StoryPage({
           { label: story.title },
         ]}
       />
+      <TrustStrip reviewedAt={story.content_reviewed_at} />
       <p className="text-xs uppercase tracking-[0.16em] text-[var(--muted)]">
         Decision journey · {story.country} · {story.age_range}
       </p>
@@ -83,40 +85,71 @@ export default async function StoryPage({
         </p>
       ) : null}
 
-      <Section title="Patient Background">
+      <Section title="Patient background">
         <Markdown content={story.background} />
       </Section>
-      <Section title="Initial Diagnosis">
+      <Section title="Initial diagnosis">
         <Markdown content={story.initial_diagnosis} />
       </Section>
-      <Section title="Decision Challenge">
+      <Section title="Decision challenge">
         <Markdown content={story.decision_challenge} />
       </Section>
-      <Section title="Options Considered">
-        <Markdown content={story.options_considered} />
+      <Section title="Options considered">
+        <ul className="space-y-2">
+          {story.options_considered.map((option) => (
+            <li
+              key={option}
+              className="flex gap-3 rounded-md border border-[var(--line)] bg-white/60 px-4 py-3"
+            >
+              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+              <span>{option}</span>
+            </li>
+          ))}
+        </ul>
         {treatments.length > 0 ? (
-          <ul className="mt-3 list-disc space-y-1 pl-5">
-            {treatments.map((tx) => (
-              <li key={tx.id}>
-                <Link
-                  href={`/treatments/${tx.slug}`}
-                  className="text-[var(--accent)] hover:underline"
-                >
-                  {tx.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <div className="mt-4">
+            <p className="text-sm font-medium text-[var(--ink)]">
+              Linked treatment comparisons
+            </p>
+            <ul className="mt-2 space-y-1">
+              {treatments.map((tx) => (
+                <li key={tx.id}>
+                  <Link
+                    href={`/treatments/${tx.slug}`}
+                    className="text-[var(--accent)] hover:underline"
+                  >
+                    {tx.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
         ) : null}
       </Section>
-      <Section title="Why Options Were Compared">
+      <Section title="Why options were compared">
         <Markdown content={story.why_compared} />
       </Section>
-      <Section title="Final Decision">
-        <Markdown content={story.final_decision} />
-      </Section>
-      <Section title="Lessons Learned">
-        <Markdown content={story.lessons_learned} />
+      <section className="scroll-mt-24 py-8">
+        <div className="rounded-lg border border-[var(--accent)]/20 bg-white/80 p-5 md:p-6">
+          <h2 className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)]">
+            Final decision
+          </h2>
+          <div className="mt-3 text-[var(--ink-soft)] leading-relaxed">
+            <Markdown content={story.final_decision} />
+          </div>
+        </div>
+      </section>
+      <Section title="Lessons learned">
+        <ul className="space-y-3">
+          {story.lessons_learned.map((lesson) => (
+            <li
+              key={lesson}
+              className="rounded-md border border-[var(--line)] bg-[var(--paper-deep)]/70 px-4 py-3 leading-relaxed"
+            >
+              {lesson}
+            </li>
+          ))}
+        </ul>
       </Section>
 
       <MedicalDisclaimer reviewedAt={story.content_reviewed_at} sources={sources} />

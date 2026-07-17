@@ -417,19 +417,22 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "should-i-get-second-opinion-after-lung-cancer-diagnosis",
       category: "second_opinion",
       summary:
-        "Many patients seek a second opinion after a lung cancer diagnosis to confirm staging, review pathology, and compare treatment sequencing. A second opinion is especially useful when surgery versus systemic therapy is unclear, biomarker results are incomplete, or the recommended plan differs across specialists. It does not mean distrusting your current team—it is a structured way to reduce uncertainty before irreversible decisions.",
-      why: "Lung cancer plans can change based on staging details, molecular findings, and multidisciplinary interpretation. Patients often feel pressure to start quickly and want confidence that key alternatives were considered.",
+        "A second opinion can help confirm pathology, staging, and treatment sequencing before irreversible choices. It is especially useful when surgery versus systemic therapy is unclear, biomarker results are incomplete, specialists disagree, or you want a multidisciplinary review. Seeking another opinion is not rejecting your current team—it is a structured way to reduce uncertainty. Many second opinions can start with remote records review so care is not delayed unnecessarily.",
+      why: "A lung cancer diagnosis is overwhelming. Patients often fear missing alternative approaches, feel pressure to decide quickly, or wonder whether their local center has the right specialist mix. Plans can change based on staging details, molecular findings, and how different teams interpret the same records.",
       factors: [
-        "Cancer stage and whether staging workup is complete",
-        "Availability of molecular or biomarker results",
-        "Treatment complexity and specialty mix required",
-        "Whether pathology review could change the plan",
-        "Time sensitivity versus the value of another review",
+        "Whether staging and pathology workup are complete",
+        "Availability and turnaround of molecular or biomarker results",
+        "Complexity of the recommended plan and specialty mix required",
+        "Whether another pathology review could change options",
+        "How urgent treatment is versus the value of a brief second review",
+        "Whether a remote records review can answer the question before travel",
       ],
       doctorQs: [
         "Would another pathology review change my treatment plan?",
-        "Are there alternative treatment approaches for my stage and biomarkers?",
+        "Are there alternative approaches for my stage and biomarkers?",
+        "What are the risks of waiting a short time for a second opinion?",
         "Should a multidisciplinary tumor board review my case before starting?",
+        "Which records should I send for a remote second opinion today?",
       ],
     },
     {
@@ -439,19 +442,21 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "what-decisions-matter-most-after-new-lung-cancer-diagnosis",
       category: "diagnosis",
       summary:
-        "Early decisions usually focus on confirming the exact diagnosis, completing staging, obtaining adequate tissue for biomarkers, and clarifying treatment intent. Patients benefit from asking which tests are still outstanding and which choices are time-sensitive versus deliberately paced.",
-      why: "Newly diagnosed patients face many appointments at once and need a clear map of which decisions are foundational.",
+        "After a new lung cancer diagnosis, the highest-value early decisions are usually: confirm the diagnosis and subtype, finish staging, obtain enough tissue for biomarkers, and clarify treatment intent. Ask which tests are still outstanding and which choices are time-sensitive versus deliberately paced so the pathway feels navigable instead of chaotic.",
+      why: "Newly diagnosed patients face many appointments at once. Without a map of foundational decisions, it is easy to confuse urgent logistics with irreversible treatment choices.",
       factors: [
         "Completeness of pathology and staging",
-        "Biomarker testing turnaround",
+        "Biomarker testing turnaround and tissue adequacy",
         "Performance status and comorbidities",
-        "Local specialist availability",
-        "Support system for treatment logistics",
+        "Local specialist and tumor-board availability",
+        "Caregiver support and treatment logistics",
+        "Which next step would actually change the first treatment decision",
       ],
       doctorQs: [
         "Which tests are still needed before a final plan?",
         "What is the treatment intent: curative or disease control?",
         "Which decision cannot wait, and which can?",
+        "Do we have enough tissue for the biomarker panel you recommend?",
       ],
     },
     {
@@ -461,19 +466,20 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "how-to-compare-surgery-and-systemic-therapy-lung-cancer",
       category: "treatment",
       summary:
-        "Comparison depends on stage, resectability, biomarkers, and overall health. Surgery may be central in localized disease, while systemic therapy—including targeted drugs, immunotherapy, or chemotherapy—may lead when disease is advanced or when neoadjuvant strategies are preferred.",
-      why: "Patients often hear both surgical and medical oncology perspectives and need a structured way to compare goals, timing, and side effects.",
+        "The comparison depends on stage, resectability, biomarkers, and overall health—not on which specialty speaks first. Surgery may be central in localized disease, while systemic therapy (targeted drugs, immunotherapy, or chemotherapy) may lead when disease is advanced or when neoadjuvant strategies are preferred. Compare goals, sequencing, recovery, and what information is still missing.",
+      why: "Patients often hear both surgical and medical oncology perspectives and need a structured way to compare timing, side effects, and what each option is trying to achieve.",
       factors: [
-        "Stage and resectability",
-        "Molecular profile",
-        "Expected recovery and lung function",
-        "Evidence for neoadjuvant or adjuvant approaches",
-        "Patient priorities around speed versus durability",
+        "Stage and current resectability",
+        "Molecular profile and whether results should arrive before locking a sequence",
+        "Expected recovery, lung function, and daily-life impact",
+        "Evidence for neoadjuvant or adjuvant approaches in your setting",
+        "Personal priorities around speed, durability, and side effects",
       ],
       doctorQs: [
         "Is my tumor currently resectable?",
-        "Would systemic therapy before surgery improve outcomes?",
-        "What happens if surgery is deferred for biomarker results?",
+        "Would systemic therapy before surgery change outcomes or options?",
+        "What happens if surgery is deferred briefly for biomarker results?",
+        "If we disagree across specialties, can we review the case together?",
       ],
     },
     {
@@ -994,19 +1000,25 @@ export function createSeedData(): KnowledgeGraphStore {
       age_range: "55-64",
       decision_topic: "second opinion before surgery",
       background:
-        "A patient with newly diagnosed lung cancer wanted clarity before agreeing to resection.",
+        "A newly diagnosed patient wanted clarity before agreeing to lung resection and felt pressure to decide quickly.",
       initial_diagnosis:
-        "Suspected early-stage non-small cell lung cancer after imaging and biopsy.",
+        "Suspected early-stage non-small cell lung cancer after imaging and biopsy, with molecular results still pending.",
       decision_challenge:
-        "Whether to proceed immediately with surgery locally or obtain a thoracic oncology second opinion and complete biomarker testing first.",
-      options_considered:
-        "Immediate local surgery; second opinion at a high-volume center; waiting for full molecular results before final sequencing.",
+        "Whether to proceed immediately with local surgery or pause briefly for a thoracic oncology second opinion and complete biomarker testing.",
+      options_considered: [
+        "Immediate surgery at the local hospital",
+        "Remote or in-person second opinion at a high-volume thoracic center",
+        "Wait for full molecular results before locking the treatment sequence",
+      ],
       why_compared:
-        "The patient wanted to know if neoadjuvant therapy or a different surgical approach might be recommended.",
+        "The patient wanted to know whether neoadjuvant therapy, a different surgical approach, or additional pathology review could change the plan before an irreversible step.",
       final_decision:
-        "Completed remote second opinion and biomarker testing, then proceeded with a coordinated local plan.",
-      lessons_learned:
-        "A second opinion did not require abandoning the local team; it clarified which tests should finish before irreversible steps.",
+        "Completed a remote second opinion and biomarker testing, then returned to a coordinated local plan with clearer sequencing.",
+      lessons_learned: [
+        "A second opinion did not require leaving the local care team",
+        "Waiting for key tests can clarify sequencing without abandoning treatment",
+        "Write down which decisions are time-sensitive versus deliberately paced",
+      ],
       status: "published" as const,
       content_reviewed_at: reviewed,
       created_at: ts,
@@ -1026,19 +1038,25 @@ export function createSeedData(): KnowledgeGraphStore {
       age_range: "65-74",
       decision_topic: "surveillance versus treatment",
       background:
-        "A patient with lower-risk prostate cancer wanted to avoid treatment side effects if safely possible.",
+        "A patient with lower-risk prostate cancer wanted to avoid treatment side effects if monitoring remained safe.",
       initial_diagnosis:
-        "Lower-risk prostate cancer based on PSA, MRI, and biopsy findings.",
+        "Lower-risk prostate cancer based on PSA, MRI, and biopsy findings, with guideline-supported surveillance as one option.",
       decision_challenge:
-        "Whether active surveillance was appropriate or whether early definitive therapy would be wiser.",
-      options_considered:
-        "Active surveillance; surgery; radiation therapy.",
+        "Whether active surveillance was appropriate or whether early definitive therapy would better match personal risk tolerance.",
+      options_considered: [
+        "Active surveillance with scheduled PSA, MRI, and biopsy triggers",
+        "Surgery",
+        "Radiation therapy",
+      ],
       why_compared:
-        "The patient prioritized urinary and sexual function while remaining attentive to cancer risk.",
+        "The patient prioritized urinary and sexual function while still wanting a clear plan if disease features changed.",
       final_decision:
-        "Chose active surveillance with a written trigger plan for reassessment.",
-      lessons_learned:
-        "Clear monitoring triggers reduced anxiety more than vague reassurance.",
+        "Chose active surveillance with a written trigger list for when treatment would be reconsidered.",
+      lessons_learned: [
+        "Clear monitoring triggers reduced anxiety more than vague reassurance",
+        "Function priorities belong in the decision conversation early",
+        "Surveillance is a structured plan, not 'doing nothing'",
+      ],
       status: "published" as const,
       content_reviewed_at: reviewed,
       created_at: ts,
@@ -1058,18 +1076,24 @@ export function createSeedData(): KnowledgeGraphStore {
       age_range: "45-54",
       decision_topic: "surgery choice",
       background:
-        "A patient eligible for either breast-conserving surgery or mastectomy needed to align medical options with personal priorities.",
+        "A patient eligible for either breast-conserving surgery or mastectomy needed medical options to match personal priorities.",
       initial_diagnosis: "Early-stage hormone receptor-positive breast cancer.",
       decision_challenge:
-        "Choosing between lumpectomy with radiation and mastectomy with reconstruction timing questions.",
-      options_considered:
-        "Lumpectomy plus radiation; mastectomy with immediate reconstruction; mastectomy with delayed reconstruction.",
+        "Choosing between lumpectomy plus radiation and mastectomy, including reconstruction timing questions.",
+      options_considered: [
+        "Lumpectomy plus radiation",
+        "Mastectomy with immediate reconstruction",
+        "Mastectomy with delayed reconstruction",
+      ],
       why_compared:
-        "Genetic counseling results and radiation willingness were both undecided at first.",
+        "Genetic counseling results and willingness to undergo radiation were still undecided when surgery was first discussed.",
       final_decision:
-        "Completed genetic counseling, then chose lumpectomy plus radiation.",
-      lessons_learned:
-        "Sequencing genetic counseling before a final surgery choice prevented a rushed irreversible decision.",
+        "Completed genetic counseling first, then chose lumpectomy plus radiation.",
+      lessons_learned: [
+        "Sequencing genetic counseling before a final surgery choice prevented a rushed irreversible decision",
+        "Two oncologically reasonable options can still feel very different personally",
+        "Ask which next test would actually change the surgery recommendation",
+      ],
       status: "published" as const,
       content_reviewed_at: reviewed,
       created_at: ts,
@@ -1094,14 +1118,20 @@ export function createSeedData(): KnowledgeGraphStore {
         "HCC with compensated cirrhosis under evaluation for local therapy.",
       decision_challenge:
         "Whether to proceed with embolization locally or obtain transplant-center input first.",
-      options_considered:
-        "Local embolization now; transplant evaluation first; sequential combination guided by a specialty center.",
+      options_considered: [
+        "Local embolization now",
+        "Transplant evaluation first",
+        "A sequenced combination guided by a specialty center",
+      ],
       why_compared:
-        "Local and specialty recommendations framed urgency differently.",
+        "Local and specialty recommendations framed urgency differently, and the patient needed the correct decision order more than a brand-name hospital.",
       final_decision:
-        "Remote transplant-center review first, then a coordinated local procedure plan.",
-      lessons_learned:
-        "Center selection mattered less than getting the decision sequence right.",
+        "Completed a remote transplant-center review first, then followed a coordinated local procedure plan.",
+      lessons_learned: [
+        "Decision sequence can matter more than center branding",
+        "Remote specialty review can clarify next steps before travel",
+        "Ask how each procedure affects later transplant eligibility",
+      ],
       status: "published" as const,
       content_reviewed_at: reviewed,
       created_at: ts,
@@ -1121,18 +1151,24 @@ export function createSeedData(): KnowledgeGraphStore {
       age_range: "40-49",
       decision_topic: "radiation technique comparison",
       background:
-        "After resection, a patient needed to understand differences among radiation approaches discussed by the team.",
+        "After resection, a patient needed to understand real differences among radiation approaches discussed by the team.",
       initial_diagnosis: "Glioma requiring adjuvant radiation planning.",
       decision_challenge:
         "How to compare standard fractionated radiation with more specialized techniques offered at another center.",
-      options_considered:
-        "Local fractionated radiation; referral for specialized technique; clinical trial with novel sequencing.",
+      options_considered: [
+        "Local fractionated radiation",
+        "Referral for a specialized radiation technique",
+        "Clinical trial with novel sequencing",
+      ],
       why_compared:
-        "The family wanted evidence-based differences, not technology marketing.",
+        "The family wanted evidence-based differences for this tumor type, not technology marketing.",
       final_decision:
-        "Stayed with the local evidence-aligned plan after a remote specialty review confirmed equivalence for this case.",
-      lessons_learned:
-        "A remote second opinion prevented unnecessary travel when options were clinically similar.",
+        "Stayed with the local evidence-aligned plan after a remote specialty review confirmed clinical equivalence for this case.",
+      lessons_learned: [
+        "A remote second opinion can prevent unnecessary travel when options are similar",
+        "Ask what evidence exists for your exact tumor and prior treatment",
+        "Technology labels matter less than indication fit and continuity of care",
+      ],
       status: "published" as const,
       content_reviewed_at: reviewed,
       created_at: ts,
@@ -1236,6 +1272,46 @@ export function createSeedData(): KnowledgeGraphStore {
       published_on: "2025-01-01",
       notes: "Global cancer context",
     },
+    {
+      id: id("src", 4),
+      title: "ASCO patient information: getting a second opinion",
+      url: "https://www.cancer.net/navigating-cancer-care/cancer-basics/cancer-care-team/seeking-second-opinion",
+      publisher: "Cancer.Net / ASCO",
+      published_on: "2025-01-01",
+      notes: "Second-opinion navigation for patients",
+    },
+    {
+      id: id("src", 5),
+      title: "NCI: Finding health care services",
+      url: "https://www.cancer.gov/about-cancer/managing-care/services",
+      publisher: "National Cancer Institute",
+      published_on: "2025-01-01",
+      notes: "Care navigation and service finding",
+    },
+    {
+      id: id("src", 6),
+      title: "ACS: Understanding your options for treatment",
+      url: "https://www.cancer.org/cancer/managing-cancer/making-treatment-decisions/making-treatment-decisions.html",
+      publisher: "American Cancer Society",
+      published_on: "2025-01-01",
+      notes: "Treatment decision framing",
+    },
+    {
+      id: id("src", 7),
+      title: "CDC: Cancer survivors—finding support",
+      url: "https://www.cdc.gov/cancer-survivors/patients/index.html",
+      publisher: "CDC",
+      published_on: "2025-01-01",
+      notes: "Patient support context",
+    },
+    {
+      id: id("src", 8),
+      title: "MedlinePlus: Talking with your doctor",
+      url: "https://medlineplus.gov/talkingwithyourdoctor.html",
+      publisher: "MedlinePlus",
+      published_on: "2025-01-01",
+      notes: "Doctor communication guidance",
+    },
   ];
 
   const cancer_treatments = [
@@ -1259,7 +1335,11 @@ export function createSeedData(): KnowledgeGraphStore {
     { cancer_id: id("cancer", 5), treatment_id: id("tx", 3), sort_order: 3 },
   ];
 
-  const question_treatments = [
+  const question_treatments: Array<{
+    question_id: string;
+    treatment_id: string;
+    sort_order: number;
+  }> = [
     { question_id: id("q", 1), treatment_id: id("tx", 1), sort_order: 1 },
     { question_id: id("q", 1), treatment_id: id("tx", 4), sort_order: 2 },
     { question_id: id("q", 1), treatment_id: id("tx", 5), sort_order: 3 },
@@ -1276,7 +1356,34 @@ export function createSeedData(): KnowledgeGraphStore {
     { question_id: id("q", 21), treatment_id: id("tx", 4), sort_order: 2 },
   ];
 
-  const question_stories = [
+  // Densify: every question gets at least two cancer-linked treatments.
+  for (const question of questions) {
+    const existing = new Set(
+      question_treatments
+        .filter((qt) => qt.question_id === question.id)
+        .map((qt) => qt.treatment_id)
+    );
+    const cancerTx = cancer_treatments
+      .filter((ct) => ct.cancer_id === question.cancer_id)
+      .map((ct) => ct.treatment_id);
+    let sort = existing.size;
+    for (const treatmentId of cancerTx) {
+      if (existing.has(treatmentId)) continue;
+      question_treatments.push({
+        question_id: question.id,
+        treatment_id: treatmentId,
+        sort_order: sort++,
+      });
+      existing.add(treatmentId);
+      if (existing.size >= 2) break;
+    }
+  }
+
+  const question_stories: Array<{
+    question_id: string;
+    story_id: string;
+    sort_order: number;
+  }> = [
     { question_id: id("q", 1), story_id: id("story", 1), sort_order: 1 },
     { question_id: id("q", 6), story_id: id("story", 2), sort_order: 1 },
     { question_id: id("q", 9), story_id: id("story", 3), sort_order: 1 },
@@ -1286,7 +1393,26 @@ export function createSeedData(): KnowledgeGraphStore {
     { question_id: id("q", 20), story_id: id("story", 5), sort_order: 1 },
   ];
 
-  const related_questions = [
+  for (const question of questions) {
+    const hasStory = question_stories.some(
+      (qs) => qs.question_id === question.id
+    );
+    if (hasStory) continue;
+    const story = stories.find((s) => s.cancer_id === question.cancer_id);
+    if (story) {
+      question_stories.push({
+        question_id: question.id,
+        story_id: story.id,
+        sort_order: 1,
+      });
+    }
+  }
+
+  const related_questions: Array<{
+    from_id: string;
+    to_id: string;
+    sort_order: number;
+  }> = [
     { from_id: id("q", 1), to_id: id("q", 2), sort_order: 1 },
     { from_id: id("q", 1), to_id: id("q", 3), sort_order: 2 },
     { from_id: id("q", 1), to_id: id("q", 21), sort_order: 3 },
@@ -1301,6 +1427,28 @@ export function createSeedData(): KnowledgeGraphStore {
     { from_id: id("q", 3), to_id: id("q", 1), sort_order: 1 },
     { from_id: id("q", 3), to_id: id("q", 4), sort_order: 2 },
   ];
+
+  for (const question of questions) {
+    const existing = new Set(
+      related_questions
+        .filter((rq) => rq.from_id === question.id)
+        .map((rq) => rq.to_id)
+    );
+    const peers = questions.filter(
+      (q) => q.cancer_id === question.cancer_id && q.id !== question.id
+    );
+    let sort = existing.size;
+    for (const peer of peers) {
+      if (existing.has(peer.id)) continue;
+      related_questions.push({
+        from_id: question.id,
+        to_id: peer.id,
+        sort_order: sort++,
+      });
+      existing.add(peer.id);
+      if (existing.size >= 3) break;
+    }
+  }
 
   const story_treatments = [
     { story_id: id("story", 1), treatment_id: id("tx", 1), sort_order: 1 },
@@ -1330,30 +1478,62 @@ export function createSeedData(): KnowledgeGraphStore {
   ];
 
   const content_sources = [
-    ...questions.slice(0, 10).map((q) => ({
+    ...questions.flatMap((q, index) => {
+      const primary = id("src", (index % 4) + 1);
+      const secondary = id("src", ((index + 3) % 4) + 5);
+      return [
+        {
+          entity_type: "question" as const,
+          entity_id: q.id,
+          source_id: primary,
+        },
+        {
+          entity_type: "question" as const,
+          entity_id: q.id,
+          source_id: secondary,
+        },
+      ];
+    }),
+    // Flagship second-opinion page gets extra trust references
+    {
       entity_type: "question" as const,
-      entity_id: q.id,
-      source_id: id("src", 1),
-    })),
-    ...questions.slice(10, 20).map((q) => ({
+      entity_id: id("q", 1),
+      source_id: id("src", 4),
+    },
+    {
       entity_type: "question" as const,
-      entity_id: q.id,
-      source_id: id("src", 2),
-    })),
+      entity_id: id("q", 1),
+      source_id: id("src", 8),
+    },
     ...cancers.map((c) => ({
       entity_type: "cancer" as const,
       entity_id: c.id,
       source_id: id("src", 3),
+    })),
+    ...cancers.map((c) => ({
+      entity_type: "cancer" as const,
+      entity_id: c.id,
+      source_id: id("src", 5),
     })),
     ...treatments.map((t) => ({
       entity_type: "treatment" as const,
       entity_id: t.id,
       source_id: id("src", 2),
     })),
+    ...treatments.map((t) => ({
+      entity_type: "treatment" as const,
+      entity_id: t.id,
+      source_id: id("src", 6),
+    })),
     ...stories.map((s) => ({
       entity_type: "story" as const,
       entity_id: s.id,
       source_id: id("src", 1),
+    })),
+    ...stories.map((s) => ({
+      entity_type: "story" as const,
+      entity_id: s.id,
+      source_id: id("src", 7),
     })),
   ];
 

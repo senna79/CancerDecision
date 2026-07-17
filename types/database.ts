@@ -86,10 +86,10 @@ export interface Story extends SeoFields {
   background: string;
   initial_diagnosis: string;
   decision_challenge: string;
-  options_considered: string;
+  options_considered: string[];
   why_compared: string;
   final_decision: string;
-  lessons_learned: string;
+  lessons_learned: string[];
   status: ContentStatus;
   content_reviewed_at: string | null;
   created_at: string;
