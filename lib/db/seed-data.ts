@@ -417,7 +417,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "should-i-get-second-opinion-after-lung-cancer-diagnosis",
       category: "second_opinion",
       summary:
-        "A second opinion is a decision tool — not a loyalty test. It helps most when diagnosis is complex, treatment has multiple reasonable paths, major surgery is being considered, or specialists disagree. Benefits can include confirming pathology, discovering alternatives, and clarifying sequencing. Trade-offs include time, cost, and emotional burden. Many reviews can start remotely so local care is not abandoned.",
+        "A second opinion may be especially valuable when the diagnosis is complex, treatment involves multiple reasonable options, or a major procedure is being considered. It does not mean your first doctor is wrong — it helps confirm the diagnosis and clarify available choices. Timing matters: urgent clinical risk can outweigh a brief delay for review, and many reviews can start with remote records.",
       why: "Patients fear missing a better path, feel pressure to decide quickly, or wonder whether their local team has the right specialty mix. The useful question is not “should everyone get a second opinion?” but “when is the review likely to change the plan — and when is it unlikely to?”",
       factors: [
         "Whether staging and pathology workup are complete",
@@ -438,11 +438,11 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 2,
       cancer: 1,
-      title: "What decisions matter most after a new lung cancer diagnosis?",
+      title: "What should I do first after a lung cancer diagnosis?",
       slug: "what-decisions-matter-most-after-new-lung-cancer-diagnosis",
       category: "diagnosis",
       summary:
-        "After a new lung cancer diagnosis, the highest-value early decisions are usually: confirm the diagnosis and subtype, finish staging, obtain enough tissue for biomarkers, and clarify treatment intent. Ask which tests are still outstanding and which choices are time-sensitive versus deliberately paced so the pathway feels navigable instead of chaotic.",
+        "After a new lung cancer diagnosis, the highest-value first moves are usually: confirm the diagnosis and subtype, finish staging, make sure tissue is adequate for biomarkers, and clarify treatment intent. Ask which tests are still outstanding and which choices are time-sensitive versus deliberately paced — so you know what to do next, not only what cancer is.",
       why: "Newly diagnosed patients face many appointments at once. Without a map of foundational decisions, it is easy to confuse urgent logistics with irreversible treatment choices.",
       factors: [
         "Completeness of pathology and staging",
@@ -462,11 +462,11 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 3,
       cancer: 1,
-      title: "How do I compare surgery and systemic therapy for lung cancer?",
+      title: "How do I compare lung cancer treatment options?",
       slug: "how-to-compare-surgery-and-systemic-therapy-lung-cancer",
       category: "treatment",
       summary:
-        "The comparison depends on stage, resectability, biomarkers, and overall health—not on which specialty speaks first. Surgery may be central in localized disease, while systemic therapy (targeted drugs, immunotherapy, or chemotherapy) may lead when disease is advanced or when neoadjuvant strategies are preferred. Compare goals, sequencing, recovery, and what information is still missing.",
+        "Comparing lung cancer treatment options depends on stage, resectability, biomarkers, and overall health — not on which specialty speaks first. Surgery may lead in selected localized cases; systemic therapy (targeted drugs, immunotherapy, or chemotherapy) may lead when disease is advanced or when systemic therapy before surgery is preferred. Compare goals, sequencing, recovery, and what information is still missing before locking a path.",
       why: "Patients often hear both surgical and medical oncology perspectives and need a structured way to compare timing, side effects, and what each option is trying to achieve.",
       factors: [
         "Stage and current resectability",
@@ -511,7 +511,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "when-to-consider-lung-cancer-care-abroad",
       category: "global_care",
       summary:
-        "Cross-border care may be considered for specialized techniques, trials, or second-opinion pathology review. Evaluate continuity of care, language, records transfer, and whether the expected benefit justifies travel burden.",
+        "Lung cancer care abroad is worth considering when a specific capability — technique, trial, or specialty review — is missing locally, not as a default upgrade. Start by naming the capability gap in one sentence, try remote review before travel when safe, and confirm home follow-up and complication coverage before booking flights.",
       why: "Families sometimes assume abroad equals better, but the real question is whether a specific capability is missing locally.",
       factors: [
         "Specific expertise or technology sought",
@@ -863,7 +863,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "do-i-need-biomarker-testing-before-lung-cancer-treatment",
       category: "diagnosis",
       summary:
-        "For many non-small cell lung cancers, biomarker results can redirect therapy toward targeted drugs or immunotherapy strategies. Ask whether waiting for results is safer than starting immediately, and whether adequate tissue is available.",
+        "For many non-small cell lung cancers, biomarker results can change which first-line treatments are considered. The decision is whether a short, managed wait for results is safer than starting immediately — and what would change if a targetable alteration is found. Incomplete tissue or urgent symptoms can shift that balance; ask your team which result would actually change the plan.",
       why: "Patients fear delay, while incomplete molecular data can lead to a less tailored first line.",
       factors: [
         "Histology subtype",
@@ -986,6 +986,7 @@ export function createSeedData(): KnowledgeGraphStore {
     records_to_prepare: [] as string[],
     next_steps: [] as string[],
     if_opinions_conflict: [] as string[],
+    timing_considerations: [] as string[],
     status: "published" as const,
     content_reviewed_at: reviewed,
     ai_generated_at: null,
@@ -997,25 +998,29 @@ export function createSeedData(): KnowledgeGraphStore {
     ]),
   }));
 
-  // Flagship lung-cancer journey fields — decision-choice framing
+  // AI Entry Portfolio v1 + journey fields (see docs/Lung_Cancer_AI_Entry_Spec_v1.0.md)
   const lungFlagship: Record<
     number,
     {
       decision_context: string;
       when_this_may_help: string[];
       when_it_may_not_help: string[];
+      timing_considerations: string[];
       options_and_tradeoffs: string[];
       records_to_prepare: string[];
       next_steps: string[];
       if_opinions_conflict: string[];
       body: string;
+      seo_title: string;
+      seo_description: string;
+      seo_keywords: string[];
     }
   > = {
     2: {
       decision_context:
         "After a new lung cancer diagnosis, the job is not to learn every fact at once — it is to sequence the decisions that change the first treatment plan. Confirm what is already known, which tests are still outstanding, and which choices are time-sensitive versus deliberately paced. Biomarker workup, treatment comparison, and a second-opinion review can run in parallel once the foundation is clear.",
       when_this_may_help: [
-        "Diagnosis is new and appointments feel chaotic or conflicting",
+        "You recently received a lung cancer diagnosis",
         "Pathology, staging, or biomarker results are still incomplete",
         "You cannot tell which next test would actually change first-line therapy",
         "Different clinicians emphasize different first steps",
@@ -1024,6 +1029,12 @@ export function createSeedData(): KnowledgeGraphStore {
       when_it_may_not_help: [
         "Acute symptoms require immediate stabilization before elective sequencing",
         "A clearly time-critical intervention has already been explained, agreed, and started",
+      ],
+      timing_considerations: [
+        "Ask which decisions cannot wait overnight versus which can wait for a key test result",
+        "A short pause to finish staging or biomarkers is different from an open-ended delay",
+        "If symptoms worsen (breathing, bleeding, severe pain), seek urgent care — do not wait for elective sequencing",
+        "Write a dated checklist so “waiting” has an end point",
       ],
       options_and_tradeoffs: [
         "Benefit — Finish staging first: reduces guesswork before locking a path",
@@ -1045,7 +1056,6 @@ export function createSeedData(): KnowledgeGraphStore {
         "Ask which single result would change the first treatment decision",
         "Confirm whether tissue is adequate for the recommended biomarker panel",
         "Decide whether a brief second-opinion records review should run in parallel",
-        "Open the Decision Map forks: biomarkers, treatment comparison, second opinion",
       ],
       if_opinions_conflict: [
         "Ask each clinician to name the exact disagreement (staging, resectability, sequencing, or drug choice)",
@@ -1053,6 +1063,14 @@ export function createSeedData(): KnowledgeGraphStore {
         "Clarify which decision is reversible versus irreversible",
       ],
       body: "Think in checkpoints, not in panic. Diagnosis confirmation, staging completeness, and biomarker readiness are foundation decisions. Treatment comparison and second opinion are often parallel forks — not a forced queue you must finish before thinking about alternatives.",
+      seo_title: "What Should I Do First After a Lung Cancer Diagnosis?",
+      seo_description:
+        "A decision guide for newly diagnosed lung cancer: first checkpoints, what can wait, and what to do next — not an encyclopedia page.",
+      seo_keywords: [
+        "what should I do first after lung cancer diagnosis",
+        "newly diagnosed lung cancer next steps",
+        "lung cancer decision guide",
+      ],
     },
     21: {
       decision_context:
@@ -1068,6 +1086,12 @@ export function createSeedData(): KnowledgeGraphStore {
         "Disease pace or symptoms require urgent systemic therapy before results — and your team explains why",
         "Your care team already has a complete panel with actionable results",
         "Small-cell pathways where the biomarker decision frame differs",
+      ],
+      timing_considerations: [
+        "Ask for the expected turnaround date and what happens if results are late",
+        "A time-boxed wait (with a revisit date) is safer than an indefinite pause",
+        "If the team says starting now is required for clinical urgency, document why waiting is riskier",
+        "Ask whether liquid biopsy can shorten the wait when tissue is limited",
       ],
       options_and_tradeoffs: [
         "Benefit — Wait for tissue-based panel: more complete matching of first-line options",
@@ -1088,7 +1112,6 @@ export function createSeedData(): KnowledgeGraphStore {
         "Ask whether liquid biopsy is useful if tissue is limited",
         "Document what would change if a targetable alteration is found",
         "Agree on a date to revisit the plan if results are delayed",
-        "If results may change surgery sequencing, loop in surgical oncology early",
       ],
       if_opinions_conflict: [
         "Ask whether the disagreement is about waiting versus starting, or about which panel to order",
@@ -1096,20 +1119,34 @@ export function createSeedData(): KnowledgeGraphStore {
         "If needed, get a thoracic oncology second review focused only on sequencing",
       ],
       body: "Biomarker testing is a decision about information value versus delay. Ask what result would change the plan — if nothing would change, waiting may have less value. If a positive EGFR, ALK, ROS1, or other finding would redirect therapy, protecting that information can be worth a managed wait.",
+      seo_title: "Do I Need Biomarker Testing Before Lung Cancer Treatment?",
+      seo_description:
+        "When to wait for molecular results before starting lung cancer therapy — and when waiting may not change the plan.",
+      seo_keywords: [
+        "biomarker testing before lung cancer treatment",
+        "molecular testing lung cancer",
+        "wait for biomarkers before therapy",
+      ],
     },
     3: {
       decision_context:
         "This decision compares local surgical control with systemic strategies (targeted therapy, immunotherapy, chemotherapy), including whether systemic therapy should come before surgery. Stage, resectability, biomarkers, and personal priorities all matter — not which specialty speaks first.",
       when_this_may_help: [
+        "You have been offered more than one reasonable treatment path",
         "Stage and resectability are still being interpreted",
         "Biomarkers may change sequencing (neoadjuvant vs surgery-first)",
-        "You are hearing different recommendations from surgery and medical oncology",
-        "Recovery, lung function, and durability all matter to you",
+        "Surgery and medical oncology recommendations differ",
         "Major surgery is on the table and you want trade-offs in plain language",
       ],
       when_it_may_not_help: [
         "Emergency complications require immediate intervention",
         "Disease extent already clearly places you outside surgical pathways",
+      ],
+      timing_considerations: [
+        "Ask whether a brief wait for biomarkers or a joint discussion changes sequencing",
+        "Clarify which step is irreversible (e.g., major resection) versus adjustable",
+        "Do not delay emergency care for elective comparison",
+        "Set a decision date so comparison does not become endless research",
       ],
       options_and_tradeoffs: [
         "Benefit — Surgery-led path: strong local control in selected cases",
@@ -1137,12 +1174,20 @@ export function createSeedData(): KnowledgeGraphStore {
         "Use tumor board or a second opinion focused on sequencing, not hospital brand",
       ],
       body: "Treatment comparison is a fork, not a verdict. Two reasonable teams can disagree when stage interpretation, biomarker timing, or risk tolerance differ. Your job is to make the disagreement concrete: what is the goal, what information is missing, and which step is irreversible.",
+      seo_title: "How Do I Compare Lung Cancer Treatment Options?",
+      seo_description:
+        "Compare lung cancer treatment paths — surgery-led vs systemic — with trade-offs, timing, and questions for your oncology visit.",
+      seo_keywords: [
+        "lung cancer treatment options comparison",
+        "surgery vs systemic therapy lung cancer",
+        "compare lung cancer treatments",
+      ],
     },
     1: {
       decision_context:
         "A second opinion is a structured review of pathology, staging, and treatment sequencing. It matters most when the diagnosis is complex, multiple treatment options exist, major surgery is being considered, or a rare subtype is involved. It is less useful when data are already complete and multidisciplinary advice is concordant — or when delay clearly increases clinical risk.",
       when_this_may_help: [
-        "Diagnosis is complex or pathology interpretation is uncertain",
+        "You recently received a diagnosis and want confirmation before major steps",
         "Treatment has multiple reasonable options (surgery vs systemic paths)",
         "Major surgery or another irreversible step is being considered",
         "A rare subtype, complex anatomy, or incomplete biomarkers is involved",
@@ -1152,6 +1197,12 @@ export function createSeedData(): KnowledgeGraphStore {
         "Delay would clearly worsen urgent clinical risk and your team explains why",
         "You already have concordant multidisciplinary recommendations with complete data",
         "The only disagreement is preference/style with no material outcome difference",
+      ],
+      timing_considerations: [
+        "Ask: what is the risk of waiting a short, defined time for a records review?",
+        "Remote review can often run in parallel with local care so treatment is not abandoned",
+        "Set a time box (days/weeks) so the second opinion does not drift indefinitely",
+        "If the team says delay is unsafe, prioritize stabilization and revisit review after",
       ],
       options_and_tradeoffs: [
         "Benefit — Remote records review: confirm diagnosis and alternatives with low travel burden",
@@ -1182,6 +1233,14 @@ export function createSeedData(): KnowledgeGraphStore {
         "Consider a third multidisciplinary review only if conflict remains high-stakes",
       ],
       body: "Trust comes from honesty about when a second opinion is worth it — and when it may not change the decision. Use it to reduce uncertainty before irreversible steps, not as a default upgrade or a rejection of your current team.",
+      seo_title: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
+      seo_description:
+        "When a lung cancer second opinion helps, when it may not, timing if you wait, and how to prepare — a decision entry, not a loyalty test.",
+      seo_keywords: [
+        "should I get a second opinion lung cancer",
+        "second opinion after lung cancer diagnosis",
+        "lung cancer second opinion timing",
+      ],
     },
     5: {
       decision_context:
@@ -1196,6 +1255,12 @@ export function createSeedData(): KnowledgeGraphStore {
         "Local care already offers an equivalent evidence-aligned option",
         "Travel would interrupt urgent therapy without clear added value",
         "No home follow-up plan exists after return",
+      ],
+      timing_considerations: [
+        "Try remote international review before booking travel when clinically safe",
+        "Do not interrupt urgent local therapy for elective travel without a clear capability gap",
+        "Confirm who manages complications after you return before you leave",
+        "Compare total episode timing including repeat visits, not only the first appointment abroad",
       ],
       options_and_tradeoffs: [
         "Benefit — Remote international review only: lower cost/burden; clarifies whether travel is needed",
@@ -1223,6 +1288,14 @@ export function createSeedData(): KnowledgeGraphStore {
         "Do not travel until continuity and emergency coverage are clear",
       ],
       body: "Cross-border care should answer a specific clinical question. If you cannot name the capability gap, pause before booking flights. Continuity after return is part of the decision — not an afterthought.",
+      seo_title: "When Is Lung Cancer Treatment Abroad Worth Considering?",
+      seo_description:
+        "When seeking lung cancer care abroad may help, when it may not, and what to decide before travel — capability gap first.",
+      seo_keywords: [
+        "lung cancer treatment abroad",
+        "when is cancer care abroad worth it",
+        "international lung cancer treatment",
+      ],
     },
   };
 

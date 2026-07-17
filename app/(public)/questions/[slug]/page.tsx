@@ -7,6 +7,8 @@ import { NextActionClose } from "@/components/journey/next-action-close";
 import { JourneyProgressRail } from "@/components/journey/progress-rail";
 import { JourneyStepNav } from "@/components/journey/step-nav";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import { AiEntrySections } from "@/components/question/ai-entry-sections";
+import { CitationBlock } from "@/components/question/citation-block";
 import { DoctorQuestionsPanel } from "@/components/question/doctor-questions-panel";
 import { JourneySections } from "@/components/question/journey-sections";
 import { RelatedPathway } from "@/components/question/related-pathway";
@@ -16,6 +18,7 @@ import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
 import { SourcesList } from "@/components/trust/sources-list";
 import { TrustStrip } from "@/components/trust/trust-strip";
 import { getQuestionPage, getQuestions } from "@/lib/queries";
+import { isAiEntrySlug } from "@/lib/seo/ai-entry-portfolio";
 import {
   articleJsonLd,
   breadcrumbJsonLd,
@@ -67,6 +70,8 @@ export default async function QuestionPage({
     journey,
   } = data;
 
+  const aiEntry = isAiEntrySlug(question.slug);
+
   return (
     <div className="mx-auto w-full max-w-3xl px-5 py-10 md:px-8">
       <JsonLd
@@ -95,6 +100,7 @@ export default async function QuestionPage({
                       journey.currentNode.label.replace(/^\d+\.\s*/, ""),
                   ]
                 : []),
+              ...(aiEntry ? ["decision entry", "patient navigation"] : []),
             ],
             relatedTreatmentNames: treatments.map((tx) => tx.name),
             partOfName: journey
@@ -129,7 +135,13 @@ export default async function QuestionPage({
                 { label: cancer.name, href: `/cancers/${cancer.slug}` },
               ]
             : []),
-          { label: journey ? "Journey step" : "Decision question" },
+          {
+            label: aiEntry
+              ? "AI decision entry"
+              : journey
+                ? "Journey step"
+                : "Decision question",
+          },
         ]}
       />
 
@@ -145,10 +157,20 @@ export default async function QuestionPage({
         {journey
           ? ` · ${journey.currentNode.state_label ?? `Step ${journey.currentNode.sort_order}`}`
           : ""}
+        {aiEntry ? " · Decision entry" : ""}
       </p>
       <h1 className="mt-3 font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-4xl">
         {question.title}
       </h1>
+
+      {aiEntry ? (
+        <CitationBlock
+          answer={question.summary}
+          questionTitle={question.title}
+        />
+      ) : (
+        <SummaryPanel summary={question.summary} />
+      )}
 
       <DecisionWorkspace
         question={question}
@@ -156,13 +178,13 @@ export default async function QuestionPage({
         cancerSlug={cancer?.slug}
       />
 
-      <SummaryPanel summary={question.summary} />
+      {aiEntry ? <AiEntrySections question={question} /> : null}
 
       <Section title="Why patients ask this">
         <Markdown content={question.why_patients_ask} />
       </Section>
 
-      <JourneySections question={question} />
+      <JourneySections question={question} aiEntryLayout={aiEntry} />
 
       <Section title="Key factors to consider">
         <ul className="space-y-3">

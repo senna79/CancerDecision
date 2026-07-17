@@ -41,6 +41,7 @@ function normalizeStore(store: KnowledgeGraphStore): KnowledgeGraphStore {
       records_to_prepare: q.records_to_prepare ?? [],
       next_steps: q.next_steps ?? [],
       if_opinions_conflict: q.if_opinions_conflict ?? [],
+      timing_considerations: q.timing_considerations ?? [],
     })),
   };
 }

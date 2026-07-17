@@ -98,6 +98,7 @@ export async function saveQuestionAction(formData: FormData) {
     records_to_prepare: parseList(formData.get("records_to_prepare")),
     next_steps: parseList(formData.get("next_steps")),
     if_opinions_conflict: parseList(formData.get("if_opinions_conflict")),
+    timing_considerations: parseList(formData.get("timing_considerations")),
     seo_title: String(formData.get("seo_title") || "") || null,
     seo_description: String(formData.get("seo_description") || "") || null,
     seo_keywords: parseList(formData.get("seo_keywords")),

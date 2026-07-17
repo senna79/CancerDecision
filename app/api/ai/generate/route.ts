@@ -113,6 +113,7 @@ export async function POST(request: Request) {
       records_to_prepare: existing?.records_to_prepare ?? [],
       next_steps: existing?.next_steps ?? [],
       if_opinions_conflict: existing?.if_opinions_conflict ?? [],
+      timing_considerations: existing?.timing_considerations ?? [],
       seo_title: existing?.seo_title ?? parsed.data.title,
       seo_description: existing?.seo_description ?? draft.summary.slice(0, 155),
       seo_keywords: existing?.seo_keywords ?? [

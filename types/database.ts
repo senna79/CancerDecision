@@ -60,6 +60,8 @@ export interface Question extends SeoFields {
   records_to_prepare: string[];
   next_steps: string[];
   if_opinions_conflict: string[];
+  /** Timing / “what if I wait?” — especially for AI Entry pages */
+  timing_considerations: string[];
   status: ContentStatus;
   content_reviewed_at: string | null;
   ai_generated_at: string | null;

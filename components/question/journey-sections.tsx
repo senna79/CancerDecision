@@ -18,14 +18,28 @@ function BulletBlock({ items }: { items: string[] }) {
   );
 }
 
-export function JourneySections({ question }: { question: Question }) {
+export function JourneySections({
+  question,
+  /** When true, Who-for / when-not / timing / next steps are shown elsewhere */
+  aiEntryLayout = false,
+}: {
+  question: Question;
+  aiEntryLayout?: boolean;
+}) {
+  const showWho = !aiEntryLayout && question.when_this_may_help.length > 0;
+  const showWhenNot = !aiEntryLayout && question.when_it_may_not_help.length > 0;
+  const showTiming =
+    !aiEntryLayout && question.timing_considerations.length > 0;
+  const showNext = !aiEntryLayout && question.next_steps.length > 0;
+
   const hasJourney =
     question.decision_context ||
-    question.when_this_may_help.length > 0 ||
-    question.when_it_may_not_help.length > 0 ||
+    showWho ||
+    showWhenNot ||
+    showTiming ||
     question.options_and_tradeoffs.length > 0 ||
     question.records_to_prepare.length > 0 ||
-    question.next_steps.length > 0 ||
+    showNext ||
     question.if_opinions_conflict.length > 0;
 
   if (!hasJourney) return null;
@@ -38,15 +52,21 @@ export function JourneySections({ question }: { question: Question }) {
         </Section>
       ) : null}
 
-      {question.when_this_may_help.length > 0 ? (
+      {showWho ? (
         <Section title="This question matters most when">
           <BulletBlock items={question.when_this_may_help} />
         </Section>
       ) : null}
 
-      {question.when_it_may_not_help.length > 0 ? (
+      {showWhenNot ? (
         <Section title="When it may not change the decision">
           <BulletBlock items={question.when_it_may_not_help} />
+        </Section>
+      ) : null}
+
+      {showTiming ? (
+        <Section title="Timing — what if I wait?">
+          <BulletBlock items={question.timing_considerations} />
         </Section>
       ) : null}
 
@@ -62,7 +82,7 @@ export function JourneySections({ question }: { question: Question }) {
         </Section>
       ) : null}
 
-      {question.next_steps.length > 0 ? (
+      {showNext ? (
         <Section title="Suggested next steps">
           <BulletBlock items={question.next_steps} />
         </Section>

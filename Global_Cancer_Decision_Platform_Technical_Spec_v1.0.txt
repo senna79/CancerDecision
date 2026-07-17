@@ -4,6 +4,18 @@ North Star Metric
 Can a cancer patient, regardless of their stage or situation, understand their next best step within 3 minutes of entering the platform?
 
 
+建议的「入口成立」标准（可验收）
+比「收录了多少页」更准的是：
+
+患者用自然语言问一个决策问题 → AI/搜索能否 点名或引用你们的结构（答案块 + 边界）
+点击进入后 → 3 分钟内是否进入 What to do next（北极星）
+是否继续走到 Journey 下一节点（不只 bounce）
+三者同时成立，才叫「癌症患者流量入口」；只满足第 1 条只是「被引用的内容站」。
+
+AI Entry Spec v1.0（获客层）见：docs/Lung_Cancer_AI_Entry_Spec_v1.0.md
+三层：Question (AEO) → Journey (产品) → Graph (关系)
+Portfolio：5 个肺癌决策入口（Citation Block + What to do next）
+
 
 下面这份文档定位为：
 
