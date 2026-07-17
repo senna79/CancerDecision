@@ -30,6 +30,11 @@ function normalizeStore(store: KnowledgeGraphStore): KnowledgeGraphStore {
         question_slugs: node.question_slugs ?? [],
         treatment_slugs: node.treatment_slugs ?? [],
         story_slugs: node.story_slugs ?? [],
+        moment_id: node.moment_id ?? undefined,
+        moment_slug: node.moment_slug ?? undefined,
+        moment_tier: node.moment_tier ?? undefined,
+        why_this_matters: node.why_this_matters ?? undefined,
+        facets: node.facets ?? undefined,
       })),
     })),
     questions: (store.questions ?? []).map((q) => ({
@@ -42,6 +47,7 @@ function normalizeStore(store: KnowledgeGraphStore): KnowledgeGraphStore {
       next_steps: q.next_steps ?? [],
       if_opinions_conflict: q.if_opinions_conflict ?? [],
       timing_considerations: q.timing_considerations ?? [],
+      decision_triggers: q.decision_triggers ?? [],
     })),
   };
 }

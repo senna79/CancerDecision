@@ -158,6 +158,12 @@ export default async function AdminQuestionEditPage({
           defaultValue={(question?.timing_considerations ?? []).join("\n")}
           hint="One item per line — AI Entry field"
         />
+        <AreaField
+          label="Decision triggers (why searching now)"
+          name="decision_triggers"
+          defaultValue={(question?.decision_triggers ?? []).join("\n")}
+          hint="One item per line — You may be asking this because…"
+        />
         <AreaField label="Body" name="body" defaultValue={question?.body} rows={6} />
         <Field
           label="SEO title"

@@ -2,21 +2,6 @@ import Link from "next/link";
 import type { DecisionMap, DecisionMapNode } from "@/types/database";
 import { outgoingNodes, sortedNodes } from "@/lib/journey/engine";
 
-const WHY_THIS_MATTERS: Record<string, string> = {
-  "node-diagnosis":
-    "This matters because early sequencing mistakes are hard to undo — you need to know which tests change the first plan.",
-  "node-biomarkers":
-    "This matters because some results may change which treatments are considered first.",
-  "node-compare":
-    "This matters because surgery-led and systemic paths can both be reasonable — the trade-offs are personal and clinical.",
-  "node-second-opinion":
-    "This matters before irreversible steps — another review can confirm pathology, staging, or sequencing.",
-  "node-global":
-    "This matters only when a specific capability is missing locally — not as a default upgrade.",
-  "node-costs":
-    "This matters because the full episode cost often differs from the headline procedure or drug fee.",
-};
-
 function NodeCard({
   node,
   map,
@@ -38,6 +23,11 @@ function NodeCard({
         <h3 className="font-heading text-xl font-semibold text-[var(--ink)]">
           {node.label}
         </h3>
+        {node.moment_tier === 1 ? (
+          <span className="rounded-md border border-[var(--accent)]/30 px-2 py-0.5 text-[10px] uppercase tracking-wide text-[var(--accent)]">
+            Tier 1
+          </span>
+        ) : null}
         {node.optional ? (
           <span className="rounded-md border border-dashed border-[var(--line)] px-2 py-0.5 text-[10px] uppercase tracking-wide text-[var(--muted)]">
             Optional
@@ -52,11 +42,29 @@ function NodeCard({
       <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
         {node.summary}
       </p>
-      {WHY_THIS_MATTERS[node.id] ? (
+      {node.why_this_matters ? (
         <p className="mt-2 text-sm leading-relaxed text-[var(--muted)]">
           <span className="font-semibold text-[var(--ink)]">Why this matters: </span>
-          {WHY_THIS_MATTERS[node.id]}
+          {node.why_this_matters}
         </p>
+      ) : null}
+
+      {node.facets && node.facets.length > 0 ? (
+        <div className="mt-3">
+          <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+            Decision center facets
+          </p>
+          <ul className="mt-2 flex flex-wrap gap-2">
+            {node.facets.map((facet) => (
+              <li
+                key={facet}
+                className="rounded-md border border-[var(--line)] bg-[var(--paper)] px-2.5 py-1 text-xs text-[var(--ink-soft)]"
+              >
+                {facet}
+              </li>
+            ))}
+          </ul>
+        </div>
       ) : null}
 
       {node.question_slugs.length > 0 ? (
@@ -169,8 +177,9 @@ export function DecisionMapView({
       </p>
       <p className="mt-3 max-w-3xl text-sm text-[var(--ink-soft)]">
         Use this map to answer three questions: Where am I? Why does this node
-        matter? What can I choose next? Paths can fork — not only run in a
-        straight line.
+        matter? What can I choose next? Nodes are driven by the Decision OS —
+        only active Moments are shown (more guides stay in the skeleton until
+        ready).
       </p>
 
       {entry ? (

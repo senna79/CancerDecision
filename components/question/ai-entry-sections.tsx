@@ -22,6 +22,12 @@ function BulletBlock({ items }: { items: string[] }) {
 export function AiEntrySections({ question }: { question: Question }) {
   return (
     <>
+      {question.decision_triggers.length > 0 ? (
+        <Section title="You may be asking this because">
+          <BulletBlock items={question.decision_triggers} />
+        </Section>
+      ) : null}
+
       {question.when_this_may_help.length > 0 ? (
         <Section title="Who this decision is for">
           <p className="mb-3 text-sm text-[var(--muted)]">

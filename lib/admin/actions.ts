@@ -99,6 +99,7 @@ export async function saveQuestionAction(formData: FormData) {
     next_steps: parseList(formData.get("next_steps")),
     if_opinions_conflict: parseList(formData.get("if_opinions_conflict")),
     timing_considerations: parseList(formData.get("timing_considerations")),
+    decision_triggers: parseList(formData.get("decision_triggers")),
     seo_title: String(formData.get("seo_title") || "") || null,
     seo_description: String(formData.get("seo_description") || "") || null,
     seo_keywords: parseList(formData.get("seo_keywords")),

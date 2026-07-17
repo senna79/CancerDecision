@@ -62,6 +62,8 @@ export interface Question extends SeoFields {
   if_opinions_conflict: string[];
   /** Timing / “what if I wait?” — especially for AI Entry pages */
   timing_considerations: string[];
+  /** Why the user may be searching this now — AI Entry triggers */
+  decision_triggers: string[];
   status: ContentStatus;
   content_reviewed_at: string | null;
   ai_generated_at: string | null;
@@ -83,6 +85,13 @@ export interface DecisionMapNode {
   next_node_ids?: string[];
   /** Optional branch — not required on the core path */
   optional?: boolean;
+  /** Decision OS moment id */
+  moment_id?: string;
+  moment_slug?: string;
+  moment_tier?: 1 | 2 | 3;
+  why_this_matters?: string;
+  /** Super-node facets (e.g. treatment modalities under comparison) */
+  facets?: string[];
 }
 
 export interface DecisionMap {

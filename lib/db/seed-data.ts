@@ -1,4 +1,6 @@
 import type { KnowledgeGraphStore } from "@/types/database";
+import { buildDecisionMapFromOs } from "@/lib/os/build-decision-map";
+import { LUNG_CANCER_DECISION_OS } from "@/lib/os/lung-cancer";
 import { id, now } from "./ids";
 
 const ts = now();
@@ -987,6 +989,7 @@ export function createSeedData(): KnowledgeGraphStore {
     next_steps: [] as string[],
     if_opinions_conflict: [] as string[],
     timing_considerations: [] as string[],
+    decision_triggers: [] as string[],
     status: "published" as const,
     content_reviewed_at: reviewed,
     ai_generated_at: null,
@@ -1002,6 +1005,8 @@ export function createSeedData(): KnowledgeGraphStore {
   const lungFlagship: Record<
     number,
     {
+      summary: string;
+      decision_triggers: string[];
       decision_context: string;
       when_this_may_help: string[];
       when_it_may_not_help: string[];
@@ -1017,6 +1022,14 @@ export function createSeedData(): KnowledgeGraphStore {
     }
   > = {
     2: {
+      summary:
+        "The most useful first moves after a lung cancer diagnosis are usually to confirm the diagnosis and subtype, finish staging, secure enough tissue for biomarkers, and clarify treatment intent. This matters most when appointments feel chaotic and you cannot tell which next test would change the first plan. It is less about memorizing every cancer fact at once — and acute symptoms may need stabilization before elective sequencing. Next: list outstanding tests with dates, then open What to do next and the Decision Map forks.",
+      decision_triggers: [
+        "Your diagnosis is recent and the calendar is filling with appointments",
+        "You were told you need treatment but the sequence is unclear",
+        "Different clinicians emphasize different first steps",
+        "You feel overwhelmed and want a checklist, not more encyclopedia reading",
+      ],
       decision_context:
         "After a new lung cancer diagnosis, the job is not to learn every fact at once — it is to sequence the decisions that change the first treatment plan. Confirm what is already known, which tests are still outstanding, and which choices are time-sensitive versus deliberately paced. Biomarker workup, treatment comparison, and a second-opinion review can run in parallel once the foundation is clear.",
       when_this_may_help: [
@@ -1073,6 +1086,14 @@ export function createSeedData(): KnowledgeGraphStore {
       ],
     },
     21: {
+      summary:
+        "For many non-small cell lung cancers, biomarker results can change which first-line treatments are considered. This decision matters when tissue adequacy is uncertain or when waiting could redirect therapy toward a better-matched option. It may not help if results are already complete, or if your team explains that symptoms make starting now safer than waiting. Next: confirm the panel ordered, the turnaround date, and what result would change the plan — then use What to do next.",
+      decision_triggers: [
+        "You were told molecular or biomarker testing is needed before treatment",
+        "Surgery or systemic therapy timing depends on pending results",
+        "You fear delay but also fear starting the wrong first line",
+        "Tissue adequacy or liquid biopsy was mentioned as uncertain",
+      ],
       decision_context:
         "For many non-small cell lung cancers, biomarker results can redirect first-line therapy. The real choice is whether waiting for results is safer than starting immediately — and what would change if a targetable alteration or immunotherapy marker is found.",
       when_this_may_help: [
@@ -1129,6 +1150,14 @@ export function createSeedData(): KnowledgeGraphStore {
       ],
     },
     3: {
+      summary:
+        "Comparing lung cancer treatment options means weighing surgery-led versus systemic paths using stage, resectability, biomarkers, and your priorities — not which specialty speaks first. This matters most when more than one reasonable plan is on the table or recommendations diverge. It may not help in emergencies, or when disease extent already places you outside surgical pathways. Next: write each option’s goal, recovery impact, and missing information, then continue in What to do next.",
+      decision_triggers: [
+        "You were offered more than one treatment path",
+        "Surgery and medical oncology recommendations differ",
+        "You are deciding whether systemic therapy should come before surgery",
+        "A major procedure is on the table and you want trade-offs in plain language",
+      ],
       decision_context:
         "This decision compares local surgical control with systemic strategies (targeted therapy, immunotherapy, chemotherapy), including whether systemic therapy should come before surgery. Stage, resectability, biomarkers, and personal priorities all matter — not which specialty speaks first.",
       when_this_may_help: [
@@ -1184,6 +1213,14 @@ export function createSeedData(): KnowledgeGraphStore {
       ],
     },
     1: {
+      summary:
+        "A second opinion can be valuable after a lung cancer diagnosis, especially when treatment decisions are complex or major procedures are being considered. It can help confirm the diagnosis and understand available options. However, it may not change the plan in every situation — especially when data are complete and multidisciplinary advice already agrees. The next step is to gather pathology, staging, and the current plan in writing before seeking another review.",
+      decision_triggers: [
+        "Your diagnosis is recent and you want confirmation before major steps",
+        "You were offered a major treatment or irreversible procedure",
+        "Your cancer subtype is uncommon or pathology feels uncertain",
+        "You received conflicting opinions from different specialists",
+      ],
       decision_context:
         "A second opinion is a structured review of pathology, staging, and treatment sequencing. It matters most when the diagnosis is complex, multiple treatment options exist, major surgery is being considered, or a rare subtype is involved. It is less useful when data are already complete and multidisciplinary advice is concordant — or when delay clearly increases clinical risk.",
       when_this_may_help: [
@@ -1243,6 +1280,14 @@ export function createSeedData(): KnowledgeGraphStore {
       ],
     },
     5: {
+      summary:
+        "Lung cancer care abroad is worth considering when a specific capability — technique, trial, or specialty review — is missing locally, not as a default upgrade. This matters when remote review suggests a real gap you can act on with sustainable logistics. It may not help when local care is already equivalent, or when travel would interrupt urgent therapy without clear added value. Next: write the capability gap in one sentence, try remote review first when safe, then use What to do next before booking travel.",
+      decision_triggers: [
+        "You heard another country offers a specialized technique or trial",
+        "A remote review suggested a capability missing locally",
+        "You are comparing total cost and logistics of staying vs traveling",
+        "Family members are pushing for international care without a defined gap",
+      ],
       decision_context:
         "International care is a branch of the decision path when a specific capability, trial, or second-opinion expertise is missing locally — not a default upgrade. Define the capability gap first, then compare remote review versus travel, total episode cost, and home follow-up continuity.",
       when_this_may_help: [
@@ -1938,114 +1983,13 @@ export function createSeedData(): KnowledgeGraphStore {
     })),
   ];
 
+  // Decision Map is built from Cancer Decision OS (active Moments only)
   const decision_maps = [
-    {
-      id: id("map", 1),
-      cancer_id: id("cancer", 1),
-      title: "Lung Cancer Decision Map",
-      intro:
-        "A branching journey from newly diagnosed to the next decision. Paths can fork — biomarkers, treatment comparison, and second opinion often run in parallel. Each node links to decision questions, treatment comparisons, and illustrative scenarios — not a personal care plan.",
-      nodes: [
-        {
-          id: "node-diagnosis",
-          label: "1. Newly diagnosed",
-          state_label: "Diagnosis confirmed",
-          summary:
-            "Confirm what is known, which tests are outstanding, and which decisions are time-sensitive. From here the path forks.",
-          sort_order: 1,
-          question_slugs: [
-            "what-decisions-matter-most-after-new-lung-cancer-diagnosis",
-          ],
-          treatment_slugs: [],
-          story_slugs: ["choosing-second-opinion-before-lung-surgery"],
-          next_node_ids: [
-            "node-biomarkers",
-            "node-compare",
-            "node-second-opinion",
-          ],
-        },
-        {
-          id: "node-biomarkers",
-          label: "2. Confirm subtype & biomarkers",
-          state_label: "Biomarker testing",
-          summary:
-            "Make sure pathology and molecular testing are complete enough to shape first-line choices — or decide when waiting is not safe.",
-          sort_order: 2,
-          question_slugs: [
-            "do-i-need-biomarker-testing-before-lung-cancer-treatment",
-          ],
-          treatment_slugs: ["targeted-therapy", "immunotherapy"],
-          story_slugs: ["biomarker-result-changed-lung-cancer-treatment-plan"],
-          next_node_ids: ["node-compare", "node-second-opinion"],
-        },
-        {
-          id: "node-compare",
-          label: "3. Compare treatment paths",
-          state_label: "Treatment comparison",
-          summary:
-            "Weigh surgery-led versus systemic-led sequencing using stage, markers, and priorities. This can run alongside biomarker workup.",
-          sort_order: 3,
-          question_slugs: [
-            "how-to-compare-surgery-and-systemic-therapy-lung-cancer",
-          ],
-          treatment_slugs: [
-            "surgery",
-            "chemotherapy",
-            "immunotherapy",
-            "targeted-therapy",
-          ],
-          story_slugs: [
-            "choosing-second-opinion-before-lung-surgery",
-            "biomarker-result-changed-lung-cancer-treatment-plan",
-          ],
-          next_node_ids: [
-            "node-second-opinion",
-            "node-global",
-            "node-costs",
-          ],
-        },
-        {
-          id: "node-second-opinion",
-          label: "4. Second opinion checkpoint",
-          state_label: "Second opinion",
-          summary:
-            "Decide whether a pathology, staging, or sequencing review would reduce uncertainty before irreversible steps.",
-          sort_order: 4,
-          question_slugs: [
-            "should-i-get-second-opinion-after-lung-cancer-diagnosis",
-          ],
-          treatment_slugs: ["surgery"],
-          story_slugs: ["choosing-second-opinion-before-lung-surgery"],
-          next_node_ids: ["node-compare", "node-global", "node-costs"],
-        },
-        {
-          id: "node-global",
-          label: "5. Local vs international branch",
-          state_label: "International option",
-          summary:
-            "Only explore cross-border care when a specific capability, trial, or review is missing locally.",
-          sort_order: 5,
-          question_slugs: ["when-to-consider-lung-cancer-care-abroad"],
-          treatment_slugs: ["immunotherapy", "targeted-therapy"],
-          story_slugs: ["comparing-local-and-international-lung-cancer-options"],
-          next_node_ids: ["node-costs"],
-          optional: true,
-        },
-        {
-          id: "node-costs",
-          label: "6. Clarify costs & logistics",
-          state_label: "Costs & logistics",
-          summary:
-            "Estimate the full episode — tests, drugs, travel, time away — before locking a pathway.",
-          sort_order: 6,
-          question_slugs: ["lung-cancer-treatment-costs-what-to-ask"],
-          treatment_slugs: [],
-          story_slugs: ["comparing-local-and-international-lung-cancer-options"],
-          next_node_ids: [],
-          optional: true,
-        },
-      ],
-    },
+    buildDecisionMapFromOs(
+      LUNG_CANCER_DECISION_OS,
+      id("cancer", 1),
+      id("map", 1)
+    ),
   ];
 
   return {

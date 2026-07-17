@@ -1,6 +1,6 @@
 # Lung Cancer AI Entry Specification v1.0
 
-**Status:** Active  
+**Status:** Active (Validation Sprint)  
 **Product role:** Acquisition layer (AEO) that feeds the Decision Journey  
 **North star connection:** A cited answer must land the patient in “What to do next” within ~3 minutes.
 
@@ -15,6 +15,8 @@ This spec defines how **5 lung cancer decision entries** simultaneously satisfy:
 3. **Journey conversion** — continue into What to do next / Decision Map  
 
 AI Search is an **entry channel**, not the product goal.
+
+**Validation Sprint goal:** polish these five pages to template quality — do **not** expand cancer types or question volume until citation → journey conversion is proven.
 
 ---
 
@@ -42,48 +44,53 @@ All three layers must exist. Content without Journey is an encyclopedia. Journey
 
 **Out of Tier-1 portfolio (for now):** generic symptoms, survival rates, hospital directories, recurrence as a sixth entry (route via comparison / second opinion).
 
-**Do not expand** to 500 questions until these five prove citation → journey conversion.
-
 ---
 
 ## 4. Page template (required order)
 
-For every AI Entry Question page:
-
 1. **Title** — patient decision question (search-shaped)  
-2. **Citation Block** — 2–5 sentences (`summary`); the AI answer unit  
-3. **What to do next** — action closure (north star)  
-4. **Who this is for** — `when_this_may_help`  
-5. **When it may not change the decision** — `when_it_may_not_help`  
-6. **Timing / if I wait** — `timing_considerations`  
-7. **Decision context** — `decision_context`  
-8. **Options, benefits, trade-offs** — `options_and_tradeoffs`  
-9. **Doctor questions** — `doctor_questions`  
-10. **Records / conflict / body / sources** as available  
-11. **Your next step** (end recap) + Journey continue  
+2. **Citation Block** — four-sentence Direct Answer (`summary`)  
+3. **Relationship strip** — About / Decision / Part of / Related  
+4. **What to do next** — action closure (north star)  
+5. **Decision triggers** — `decision_triggers` (“You may be asking this because…”)  
+6. **Who this is for** — `when_this_may_help`  
+7. **When it may not change the decision** — `when_it_may_not_help`  
+8. **Timing / if I wait** — `timing_considerations`  
+9. **Decision context** — `decision_context`  
+10. **Options, benefits, trade-offs** — `options_and_tradeoffs`  
+11. **Doctor questions** — `doctor_questions`  
+12. **Records / conflict / body / sources** as available  
+13. **Your next step** (end recap) + Journey continue  
 
 Deeper reading never precedes Citation Block + What to do next.
 
 ---
 
-## 5. Citation Block rules
+## 5. Citation Block rules (mandatory 4-sentence form)
 
-- **Source field:** `summary`  
-- **Length:** 2–5 sentences (~40–90 words)  
-- **Must include:** when it helps, what it is *not*, and a decision frame (not a treatment order)  
-- **Must not:** claim personalized medical advice, guarantee outcomes, or attack the patient’s current doctor  
-- **JSON-LD:** `Question.acceptedAnswer` uses this same text  
+**Source field:** `summary`  
+**JSON-LD:** `Question.acceptedAnswer` = same text  
 
-Example shape:
+| Sentence | Job |
+|---|---|
+| 1 | Direct answer to the H1 question |
+| 2 | When this decision matters most |
+| 3 | When it may *not* change the plan / not for everyone |
+| 4 | Concrete next step (records, ask, or continue journey) |
 
-> A second opinion may be especially valuable when the diagnosis is complex, multiple treatment options exist, or a major procedure is being considered. It does not mean the first doctor is wrong — it helps confirm the plan and clarify alternatives. Timing matters: urgent clinical risk can outweigh a brief delay for review.
+**Must not:** personalized treatment orders, outcome guarantees, attacking the current doctor.
+
+**Example (second opinion):**
+
+> A second opinion can be valuable after a lung cancer diagnosis, especially when treatment decisions are complex or major procedures are being considered. It can help confirm the diagnosis and understand available options. However, it may not change the plan in every situation — especially when data are complete and multidisciplinary advice already agrees. The next step is to gather pathology, staging, and the current plan in writing before seeking another review.
 
 ---
 
-## 6. Trust & timing fields
+## 6. Trust & intent fields
 
 | Field | Patient question it answers |
 |---|---|
+| `decision_triggers` | Why might I be searching this *right now*? |
 | `when_this_may_help` | Who is this decision for? |
 | `when_it_may_not_help` | When might this not change anything? |
 | `timing_considerations` | What if I wait / can I pause? |
@@ -91,72 +98,59 @@ Example shape:
 
 ---
 
-## 7. Structured data (restrained)
+## 7. Relationship strip (visible graph)
 
-**On AI Entry Question pages, use:**
+Every AI Entry page must show:
 
-- `MedicalWebPage` (about cancer, mentions decision topic, related therapies, `isPartOf` journey)  
-- `Article`  
-- `BreadcrumbList`  
-- `Question` + `acceptedAnswer` (Citation Block text)  
+- **About** → cancer decision center  
+- **Decision** → short decision label  
+- **Part of** → Lung Cancer Decision Journey / Map  
+- **Related** → other portfolio entries  
 
-**Do not** add bulk `FAQPage` for filler Q&A.
-
-**Optional later (only when page content matches):**
-
-- `HowTo` — e.g. “How to prepare records for a second opinion”  
-- `ItemList` — Decision Map steps on the cancer center page  
-
-Schema must reflect visible content. Never schema-wash.
+This is for patients and for AI/agents — not only database joins.
 
 ---
 
-## 8. Internal linking rules
+## 8. Structured data (restrained)
 
-Each AI Entry page must link to:
+**Use:** `MedicalWebPage` + `Article` + `BreadcrumbList` + `Question`/`acceptedAnswer`  
 
-1. Continue Journey node (suggested next)  
-2. Cancer Decision Map (`/cancers/lung-cancer#decision-map`)  
-3. ≥1 related Treatment comparison when relevant  
-4. ≥1 Illustrative Story when mapped  
+**Do not** add bulk `FAQPage`.  
 
-Homepage Decision Moment Router must deep-link to these five entry slugs (plus secondary moments).
+**Optional later** only when content matches: `HowTo`, Decision Map `ItemList`.
 
 ---
 
-## 9. Keyword / intent policy
+## 9. Validation checklist (per page)
 
-| Tier | Intent | Priority |
-|---|---|---|
-| 1 | Decision queries (should I / how do I compare / do I need before…) | **Build now** |
-| 2 | Treatment decision comparisons | Support via Treatment pages linked from Entry 4 |
-| 3 | Global / abroad | Entry 5 only |
-| Avoid as primary | symptoms, survival rate, generic “lung cancer” | Do not chase |
+### AI layer
+- [ ] H1 is a decision question AI can parse in one line  
+- [ ] Direct Answer follows the 4-sentence form and can be quoted alone  
+- [ ] Relationship strip names About / Decision / Part of / Related  
 
----
+### User layer
+- [ ] Within ~3 minutes, What to do next is clear  
+- [ ] Decision triggers feel like “why I’m here”  
 
-## 10. Acceptance criteria
+### Journey layer
+- [ ] One-click continue into Journey / Map  
+- [ ] Related portfolio entries link sideways  
 
-An AI Entry page is “done” when:
+### Business layer
+- [ ] Intent is Tier-1 decision traffic (not symptoms / survival)  
 
-1. Citation Block can be quoted without the rest of the page  
-2. Who-for + when-not + timing are visible above the fold cluster  
-3. What to do next gives ≤3 concrete actions + doctor ask  
-4. User can reach Journey continue in one click  
-5. Schema uses Citation text as `acceptedAnswer`  
-6. No false FAQ schema  
-
-Portfolio v1 is “done” when all five entries meet the above and the homepage Moment router points at them.
+Portfolio v1 passes when all five pages clear this checklist.
 
 ---
 
-## 11. Implementation map
+## 10. Implementation map
 
 | Spec element | Code |
 |---|---|
 | Portfolio list | `lib/seo/ai-entry-portfolio.ts` |
 | Citation UI | `components/question/citation-block.tsx` |
-| Who-for / Timing UI | `components/question/ai-entry-sections.tsx` |
+| Triggers / Who-for / Timing | `components/question/ai-entry-sections.tsx` |
+| Relationship strip | `components/question/relationship-strip.tsx` |
 | Page order | `app/(public)/questions/[slug]/page.tsx` |
-| Timing field | `Question.timing_considerations` |
-| Content | `lib/db/seed-data.ts` (lung flagship) |
+| Fields | `decision_triggers`, `timing_considerations`, … |
+| Content | `lib/db/seed-data.ts` (lung AI Entry flagship) |

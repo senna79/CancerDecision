@@ -12,13 +12,18 @@ import { CitationBlock } from "@/components/question/citation-block";
 import { DoctorQuestionsPanel } from "@/components/question/doctor-questions-panel";
 import { JourneySections } from "@/components/question/journey-sections";
 import { RelatedPathway } from "@/components/question/related-pathway";
+import { RelationshipStrip } from "@/components/question/relationship-strip";
 import { SummaryPanel } from "@/components/question/summary-panel";
 import { JsonLd } from "@/components/seo/json-ld";
 import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
 import { SourcesList } from "@/components/trust/sources-list";
 import { TrustStrip } from "@/components/trust/trust-strip";
 import { getQuestionPage, getQuestions } from "@/lib/queries";
-import { isAiEntrySlug } from "@/lib/seo/ai-entry-portfolio";
+import {
+  getAiEntryBySlug,
+  getRelatedAiEntries,
+  isAiEntrySlug,
+} from "@/lib/seo/ai-entry-portfolio";
 import {
   articleJsonLd,
   breadcrumbJsonLd,
@@ -71,6 +76,8 @@ export default async function QuestionPage({
   } = data;
 
   const aiEntry = isAiEntrySlug(question.slug);
+  const entryMeta = getAiEntryBySlug(question.slug);
+  const relatedEntries = entryMeta ? getRelatedAiEntries(entryMeta) : [];
 
   return (
     <div className="mx-auto w-full max-w-3xl px-5 py-10 md:px-8">
@@ -94,6 +101,7 @@ export default async function QuestionPage({
             aboutName: cancer?.name,
             mentions: [
               question.category.replaceAll("_", " "),
+              ...(entryMeta ? [entryMeta.decisionLabel] : []),
               ...(journey
                 ? [
                     journey.currentNode.state_label ??
@@ -171,6 +179,24 @@ export default async function QuestionPage({
       ) : (
         <SummaryPanel summary={question.summary} />
       )}
+
+      {aiEntry && entryMeta && cancer ? (
+        <RelationshipStrip
+          about={{
+            href: `/cancers/${cancer.slug}`,
+            label: cancer.name,
+          }}
+          decision={entryMeta.decisionLabel}
+          partOf={{
+            href: `/cancers/${cancer.slug}#decision-map`,
+            label: journey?.map.title ?? `${cancer.name} Decision Journey`,
+          }}
+          related={relatedEntries.map((e) => ({
+            href: `/questions/${e.slug}`,
+            label: e.decisionLabel,
+          }))}
+        />
+      ) : null}
 
       <DecisionWorkspace
         question={question}
