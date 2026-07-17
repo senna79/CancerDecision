@@ -57,7 +57,7 @@ export default async function HomePage() {
             <DecisionMomentRouter
               moments={LUNG_DECISION_MOMENTS}
               title="Where are you right now?"
-              subtitle="Pick the decision you are facing. Lung cancer is our first complete journey — newly diagnosed, biomarkers, treatment comparison, second opinion, or care abroad. Each path opens What to do next."
+              subtitle="Pick the decision you are facing. Lung cancer is our first complete journey — newly diagnosed, biomarkers, treatment comparison, Stage IV decisions, second opinion, or care center expertise. Each path opens What to do next."
               footer={
                 <>
                   Other cancer guides are structured the same way and will deepen

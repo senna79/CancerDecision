@@ -50,12 +50,13 @@ export default function AboutPage() {
           </h2>
           <ul className="mt-3 list-disc space-y-2 pl-5">
             <li>
-              <strong>AI-assisted drafting:</strong> AI may help organize
+              <strong>AI-assisted content creation:</strong> AI may help organize
               questions and draft educational text.
             </li>
             <li>
-              <strong>Editorial review:</strong> Drafts are checked for clarity,
-              structure, and cautious wording before publishing.
+              <strong>Editorial review:</strong> Drafts are reviewed for
+              structure, accuracy, source alignment, and cautious wording before
+              publishing.
             </li>
             <li>
               <strong>Not medically reviewed by default:</strong> Unless a named
@@ -64,16 +65,21 @@ export default function AboutPage() {
             </li>
             <li>
               <strong>Content last checked:</strong> Dates show when content was
-              last checked and updated — not automatic proof of medical
-              certification.
+              last checked — not automatic proof of medical certification.
+            </li>
+            <li>
+              <strong>Purpose:</strong> Decision support and patient preparation —
+              not diagnosis or medical advice.
             </li>
             <li>
               <strong>Decision scenarios:</strong> Story pages are illustrative
               examples unless marked as verified patient contributions.
             </li>
             <li>
-              <strong>Sources:</strong> Medical pages list references; AI output
-              is never auto-published.
+              <strong>Sources:</strong> Tier-1 decision pages include a Sources
+              &amp; Review Information module grounded in public guidance from
+              organizations such as NCI, ASCO, ESMO, and NCCN. AI output is never
+              auto-published.
             </li>
           </ul>
         </div>

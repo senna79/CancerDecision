@@ -19,23 +19,49 @@ export function YourNextStep({
         {modules.nextStepTitle}
       </h2>
       <p className="mt-2 text-sm text-[var(--muted)]">{modules.nextStepLead}</p>
-      <ol className="mt-5 list-decimal space-y-3 pl-5 text-base font-medium text-[var(--ink)]">
+      <ol className="mt-5 list-decimal space-y-4 pl-5 text-base font-medium text-[var(--ink)]">
         {modules.nextStepActions.map((action) => (
-          <li key={action}>{action}</li>
+          <li key={action.label}>
+            <span>{action.label}</span>
+            {action.examples?.length ? (
+              <ul className="mt-2 list-none space-y-1 pl-0 text-sm font-normal text-[var(--ink-soft)]">
+                {action.examples.map((example) => (
+                  <li key={example} className="flex gap-2">
+                    <span className="text-[var(--muted)]">•</span>
+                    <span>{example}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+          </li>
         ))}
       </ol>
       <div className="mt-6 border-t border-[var(--accent)]/20 pt-5">
         <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
           Continue your Journey
         </p>
-        <Link
-          href={modules.nextStepHref}
-          className="mt-3 inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
-        >
-          {modules.nextStepCtaLabel} →
-        </Link>
+        <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
+          <Link
+            href={modules.nextStepHref}
+            className="inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
+          >
+            {modules.nextStepCtaLabel} →
+          </Link>
+          {modules.nextStepSecondaryHref &&
+          modules.nextStepSecondaryCtaLabel ? (
+            <Link
+              href={modules.nextStepSecondaryHref}
+              className="inline-flex rounded-md border border-[var(--accent)] bg-white/90 px-4 py-2.5 text-sm font-semibold text-[var(--ink)] hover:bg-white"
+            >
+              {modules.nextStepSecondaryCtaLabel} →
+            </Link>
+          ) : null}
+        </div>
         <p className="mt-2 text-xs text-[var(--muted)]">
           {modules.nextStepCtaMeta}
+          {modules.nextStepSecondaryMeta
+            ? ` · ${modules.nextStepSecondaryMeta}`
+            : ""}
         </p>
       </div>
     </section>

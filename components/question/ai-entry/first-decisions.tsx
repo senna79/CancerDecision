@@ -6,6 +6,10 @@ export function FirstDecisions({
 }: {
   modules: AiEntryFlagshipModules;
 }) {
+  if (!modules.firstDecisionsTitle || !modules.firstDecisions?.length) {
+    return null;
+  }
+
   return (
     <Section id="first-decisions" title={modules.firstDecisionsTitle}>
       <p className="text-sm text-[var(--muted)]">

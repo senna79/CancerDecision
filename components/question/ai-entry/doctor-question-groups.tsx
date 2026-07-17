@@ -5,6 +5,8 @@ export function DoctorQuestionGroups({
 }: {
   modules: AiEntryFlagshipModules;
 }) {
+  if (!modules.doctorTitle || !modules.doctorGroups?.length) return null;
+
   return (
     <section id="doctor-questions" className="scroll-mt-24 py-6">
       <div className="rounded-lg border border-amber-700/20 bg-amber-50/80 p-5 md:p-6">

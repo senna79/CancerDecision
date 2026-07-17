@@ -1,12 +1,6 @@
-function formatDate(value: string | null | undefined) {
-  if (!value) return "Not yet checked";
-  return new Intl.DateTimeFormat("en", {
-    year: "numeric",
-    month: "short",
-    day: "numeric",
-  }).format(new Date(value));
-}
+import { TRUST_COPY, formatTrustDate } from "@/lib/trust/framework";
 
+/** Compact top-of-page trust boundary — detail lives in SourcesAndReview */
 export function TrustStrip({
   reviewedAt,
 }: {
@@ -14,19 +8,19 @@ export function TrustStrip({
 }) {
   return (
     <div className="mb-6 rounded-md border border-[var(--accent-soft)] bg-[var(--accent-soft)]/45 px-4 py-3 text-sm text-[var(--ink-soft)]">
-      <p>
-        Educational information only — not a diagnosis or treatment
-        recommendation.
-      </p>
+      <p>{TRUST_COPY.educationalBoundary}</p>
       <p className="mt-1 text-[var(--muted)]">
         Content last checked:{" "}
         <span className="font-medium text-[var(--ink)]">
-          {formatDate(reviewedAt)}
+          {formatTrustDate(reviewedAt, "short")}
         </span>
-      </p>
-      <p className="mt-1 text-xs text-[var(--muted)]">
-        May use AI-assisted drafting. Editorially reviewed for clarity. Not
-        medically reviewed by a physician unless separately stated.
+        <span className="mx-1.5 text-[var(--line)]">·</span>
+        <a
+          href="#sources-and-review"
+          className="font-medium text-[var(--accent)] hover:underline"
+        >
+          Sources &amp; review
+        </a>
       </p>
     </div>
   );

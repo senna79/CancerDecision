@@ -7,9 +7,18 @@ export function SecondOpinionBridge({
 }: {
   modules: AiEntryFlagshipModules;
 }) {
+  if (
+    !modules.secondOpinionTitle ||
+    !modules.secondOpinionWhen?.length ||
+    !modules.secondOpinionHref ||
+    !modules.secondOpinionCtaLabel
+  ) {
+    return null;
+  }
+
   return (
     <Section id="second-opinion-bridge" title={modules.secondOpinionTitle}>
-      <p>{modules.secondOpinionLead}</p>
+      {modules.secondOpinionLead ? <p>{modules.secondOpinionLead}</p> : null}
       <ul className="mt-3 space-y-2">
         {modules.secondOpinionWhen.map((item) => (
           <li
@@ -21,7 +30,9 @@ export function SecondOpinionBridge({
           </li>
         ))}
       </ul>
-      <p className="mt-4">{modules.secondOpinionClose}</p>
+      {modules.secondOpinionClose ? (
+        <p className="mt-4">{modules.secondOpinionClose}</p>
+      ) : null}
       <div className="mt-5 rounded-md border border-[var(--accent)]/30 bg-[rgba(15,118,110,0.06)] px-4 py-4">
         <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
           Explore

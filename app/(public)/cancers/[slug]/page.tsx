@@ -102,7 +102,7 @@ export default async function CancerDecisionCenterPage({
       </h1>
       <p className="mt-3 max-w-3xl text-[var(--muted)]">
         {isLung
-          ? "Lung cancer is our first complete cancer decision journey. Any stage — newly diagnosed, comparing options, second opinion, or care abroad. Pick where you are; leave knowing your next step."
+          ? "Lung cancer is our first complete cancer decision journey. Any stage — newly diagnosed, comparing options, second opinion, or care center expertise. Pick where you are; leave knowing your next step."
           : "Start from the decision you are facing, then explore questions, treatments, and illustrative journeys for this cancer type."}
       </p>
 

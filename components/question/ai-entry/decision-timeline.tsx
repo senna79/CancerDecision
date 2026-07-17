@@ -6,6 +6,8 @@ export function DecisionTimeline({
 }: {
   modules: AiEntryFlagshipModules;
 }) {
+  if (!modules.timelineTitle || !modules.timelineSteps?.length) return null;
+
   return (
     <Section id="decision-timeline" title={modules.timelineTitle}>
       <ol className="mt-1 space-y-0">
@@ -15,7 +17,7 @@ export function DecisionTimeline({
               <span className="flex size-6 shrink-0 items-center justify-center rounded-full border border-[var(--accent)]/50 bg-white text-xs font-semibold text-[var(--accent)]">
                 {index + 1}
               </span>
-              {index < modules.timelineSteps.length - 1 ? (
+              {index < modules.timelineSteps!.length - 1 ? (
                 <span
                   aria-hidden
                   className="mt-1 w-px flex-1 bg-[var(--line)]"
@@ -26,7 +28,9 @@ export function DecisionTimeline({
           </li>
         ))}
       </ol>
-      <p className="mt-4 text-sm text-[var(--muted)]">{modules.timelineNote}</p>
+      {modules.timelineNote ? (
+        <p className="mt-4 text-sm text-[var(--muted)]">{modules.timelineNote}</p>
+      ) : null}
     </Section>
   );
 }

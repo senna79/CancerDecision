@@ -6,6 +6,8 @@ export function PrepChecklist({
 }: {
   modules: AiEntryFlagshipModules;
 }) {
+  if (!modules.prepTitle || !modules.prepItems?.length) return null;
+
   return (
     <Section id="prep-checklist" title={modules.prepTitle}>
       <ul className="space-y-2">

@@ -6,6 +6,8 @@ export function CommonMistakes({
 }: {
   modules: AiEntryFlagshipModules;
 }) {
+  if (!modules.mistakesTitle || !modules.mistakes?.length) return null;
+
   return (
     <Section id="common-mistakes" title={modules.mistakesTitle}>
       <div className="space-y-4">

@@ -4,7 +4,7 @@ import { LUNG_CANCER_DECISION_OS } from "@/lib/os/lung-cancer";
 import { id, now } from "./ids";
 
 const ts = now();
-const reviewed = "2026-06-15T00:00:00.000Z";
+const reviewed = "2026-07-15T00:00:00.000Z";
 
 function seo(title: string, description: string, keywords: string[]) {
   return {
@@ -415,26 +415,27 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 1,
       cancer: 1,
-      title: "Should I get a second opinion after a lung cancer diagnosis?",
+      title: "Should I Get a Second Opinion After a Lung Cancer Diagnosis?",
       slug: "should-i-get-second-opinion-after-lung-cancer-diagnosis",
       category: "second_opinion",
       summary:
-        "A second opinion may be especially valuable when the diagnosis is complex, treatment involves multiple reasonable options, or a major procedure is being considered. It does not mean your first doctor is wrong — it helps confirm the diagnosis and clarify available choices. Timing matters: urgent clinical risk can outweigh a brief delay for review, and many reviews can start with remote records.",
-      why: "Patients fear missing a better path, feel pressure to decide quickly, or wonder whether their local team has the right specialty mix. The useful question is not “should everyone get a second opinion?” but “when is the review likely to change the plan — and when is it unlikely to?”",
+        "A second opinion may be worth considering after a lung cancer diagnosis, especially when you are facing a major treatment decision, your diagnosis is complex, or you want to better understand your available options.\n\nA second opinion is not about proving that your first doctor is wrong. It can help confirm important information, review treatment choices, understand alternatives, and make a decision with greater confidence.\n\nWhether a second opinion is useful depends on your specific situation, including your cancer type, stage, available treatments, and personal goals.",
+      why: "A second opinion is about confidence, not disagreement. After a lung cancer diagnosis, patients often face decisions about diagnosis, stage, treatment options, and where to receive care — and may want another perspective before a major choice.",
       factors: [
-        "Whether staging and pathology workup are complete",
-        "Availability and turnaround of molecular or biomarker results",
-        "Complexity of the recommended plan and specialty mix required",
-        "Whether another pathology review could change options",
-        "How urgent treatment is versus the value of a brief second review",
-        "Whether a remote records review can answer the question before travel",
+        "Whether the diagnosis and stage information feel complete",
+        "Whether a major treatment decision is ahead",
+        "Whether multiple approaches seem reasonable",
+        "Whether specialized expertise could add clarity",
+        "How timing interacts with starting appropriate care",
+        "What you want the second opinion to clarify",
       ],
       doctorQs: [
-        "Would another pathology review change my treatment plan?",
-        "Are there alternative approaches for my stage and biomarkers?",
-        "What are the risks of waiting a short time for a second opinion?",
-        "Should a multidisciplinary tumor board review my case before starting?",
-        "Which records should I send for a remote second opinion today?",
+        "Do you agree with my diagnosis?",
+        "Is the cancer type and stage clear?",
+        "What options would you consider?",
+        "What alternatives should I understand?",
+        "How often do you treat similar cases?",
+        "Is a multidisciplinary team involved?",
       ],
     },
     {
@@ -466,24 +467,26 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 3,
       cancer: 1,
-      title: "How do I compare lung cancer treatment options?",
+      title: "How Should I Compare Lung Cancer Treatment Options?",
       slug: "how-to-compare-surgery-and-systemic-therapy-lung-cancer",
       category: "treatment",
       summary:
-        "Comparing lung cancer treatment options depends on stage, resectability, biomarkers, and overall health — not on which specialty speaks first. Surgery may lead in selected localized cases; systemic therapy (targeted drugs, immunotherapy, or chemotherapy) may lead when disease is advanced or when systemic therapy before surgery is preferred. Compare goals, sequencing, recovery, and what information is still missing before locking a path.",
-      why: "Patients often hear both surgical and medical oncology perspectives and need a structured way to compare timing, side effects, and what each option is trying to achieve.",
+        "Comparing lung cancer treatment options is not about finding a single “best” treatment. The right choice depends on understanding the goal of each option, the expected benefits, possible trade-offs, and how each approach fits your specific cancer situation and personal priorities.\n\nTreatment decisions may depend on factors such as cancer type, stage, biomarker information, overall health, and your goals for treatment.\n\nBefore making a decision, ask your care team: “What are my options, why are they recommended, and what should I understand about the differences between them?”",
+      why: "Treatment decisions are choices, not just recommendations. A more useful question than “which treatment is best?” is “which option makes the most sense for my situation?”",
       factors: [
-        "Stage and current resectability",
-        "Molecular profile and whether results should arrive before locking a sequence",
-        "Expected recovery, lung function, and daily-life impact",
-        "Evidence for neoadjuvant or adjuvant approaches in your setting",
-        "Personal priorities around speed, durability, and side effects",
+        "What each option is trying to achieve",
+        "Expected benefits and how success is measured",
+        "Trade-offs, risks, and daily-life impact",
+        "What the treatment requires in time and commitment",
+        "How the choice fits personal priorities",
+        "Whether cancer information is complete before deciding",
       ],
       doctorQs: [
-        "Is my tumor currently resectable?",
-        "Would systemic therapy before surgery change outcomes or options?",
-        "What happens if surgery is deferred briefly for biomarker results?",
-        "If we disagree across specialties, can we review the case together?",
+        "What are my reasonable options?",
+        "What is the goal of each option?",
+        "What benefits and trade-offs should I understand?",
+        "How does each option fit my priorities?",
+        "Is any important information still missing?",
       ],
     },
     {
@@ -863,23 +866,27 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 21,
       cancer: 1,
-      title: "Do I need biomarker testing before starting lung cancer treatment?",
+      title:
+        "Do I Need Biomarker Testing Before Choosing Lung Cancer Treatment?",
       slug: "do-i-need-biomarker-testing-before-lung-cancer-treatment",
       category: "diagnosis",
       summary:
-        "For many non-small cell lung cancers, biomarker results can change which first-line treatments are considered. The decision is whether a short, managed wait for results is safer than starting immediately — and what would change if a targetable alteration is found. Incomplete tissue or urgent symptoms can shift that balance; ask your team which result would actually change the plan.",
-      why: "Patients fear delay, while incomplete molecular data can lead to a less tailored first line.",
+        "Before choosing lung cancer treatment, it is important to understand whether additional information could change the options being considered. Biomarker testing may provide information that helps doctors evaluate certain treatment approaches for some patients.\n\nNot every patient needs the same tests, and biomarker results do not decide treatment by themselves. The key question is whether missing information could affect an important treatment decision.\n\nBefore starting treatment, ask your care team whether biomarker testing is complete and whether the results could change the options you should discuss.",
+      why: "Treatment decisions depend on having the right information. The useful question is not whether you need every possible test — it is whether you have the information needed to make a treatment decision.",
       factors: [
-        "Histology subtype",
-        "Tissue adequacy",
-        "Turnaround time",
-        "Disease pace and symptoms",
-        "Local testing panel breadth",
+        "Whether important information about the cancer may still be missing",
+        "Whether test results could change which options are discussed",
+        "Timing of testing relative to starting treatment",
+        "Cancer type, stage, and overall health",
+        "Personal goals and preferences alongside test results",
       ],
       doctorQs: [
-        "Which biomarkers are essential before first-line therapy?",
-        "Is liquid biopsy useful if tissue is limited?",
-        "What is the risk of starting before results return?",
+        "Do I need biomarker testing?",
+        "What tests are recommended for my type of lung cancer?",
+        "Are the results complete?",
+        "Should testing happen before choosing treatment?",
+        "Could waiting for results change my options?",
+        "What treatment choices could be affected?",
       ],
     },
     {
@@ -970,6 +977,128 @@ export function createSeedData(): KnowledgeGraphStore {
         "What continuity plan exists with my home team?",
       ],
     },
+    {
+      n: 26,
+      cancer: 1,
+      title:
+        "Do I Need a Different Cancer Center or More Specialized Expertise?",
+      slug: "do-i-need-different-lung-cancer-center-or-specialized-expertise",
+      category: "hospital_selection",
+      summary:
+        "Seeking another cancer center or specialist may be worth considering when you need additional expertise, a complex decision requires further review, or you want to better understand available options.\n\nA different center is not automatically better. The value depends on whether the expertise, experience, and resources available match your specific situation.\n\nBefore changing where you receive care, first identify what you are trying to improve: confirming information, comparing treatments, accessing specialized expertise, or exploring additional options.",
+      why: "The goal is not simply finding the biggest hospital or the most well-known doctor. The goal is finding the right expertise for your specific decision.",
+      factors: [
+        "What problem you are trying to solve",
+        "Whether specialized expertise matches your situation",
+        "Decision quality and clarity of reasoning",
+        "Team experience with similar cases",
+        "Practical fit including follow-up coordination",
+      ],
+      doctorQs: [
+        "Does this team treat patients with my type of lung cancer?",
+        "How much experience do they have with similar situations?",
+        "Would they approach my situation differently?",
+        "What additional perspective could they provide?",
+        "How would care coordination work?",
+      ],
+    },
+    {
+      n: 27,
+      cancer: 1,
+      title: "How Do I Choose Treatment Options for Stage IV Lung Cancer?",
+      slug: "how-to-choose-treatment-options-for-stage-iv-lung-cancer",
+      category: "treatment",
+      summary:
+        "Choosing treatment for Stage IV lung cancer is not about finding one option that is best for every person. The right decision depends on understanding your cancer information, treatment goals, available options, possible trade-offs, and what matters most in your life.\n\nTreatment decisions may be influenced by factors such as cancer type, biomarker information, previous treatments, overall health, symptoms, and personal priorities.\n\nA useful first step is to ask your care team: “What are my options, what is the goal of each option, and how do these choices fit my priorities?”",
+      why: "Stage IV decisions are about choosing a path, not a single answer. The deeper question is how to choose the approach that makes sense for your situation — balancing cancer control, treatment burden, daily life, and personal goals.",
+      factors: [
+        "Your treatment goals and personal priorities",
+        "Cancer type, stage characteristics, and biomarker information",
+        "Expected benefits and trade-offs of each option",
+        "Treatment burden and impact on daily life",
+        "Whether additional information or expertise could help",
+      ],
+      doctorQs: [
+        "What are my options?",
+        "What is the goal of each option?",
+        "How do these choices fit my priorities?",
+        "Has biomarker testing been completed?",
+        "Could additional information change the options we should consider?",
+      ],
+    },
+    {
+      n: 28,
+      cancer: 1,
+      title: "Should I Consider a Clinical Trial for Lung Cancer?",
+      slug: "should-i-consider-a-clinical-trial-for-lung-cancer",
+      category: "treatment",
+      summary:
+        "A clinical trial may be worth discussing when you want to understand additional treatment options, especially if your situation is complex, your treatment choices are changing, or you want to explore approaches being studied by researchers.\n\nA clinical trial is not automatically better than standard treatment, and considering one does not mean giving up other options. Whether a trial is appropriate depends on your cancer situation, available choices, possible benefits and risks, and your personal goals.\n\nA useful question to ask your care team is: “Are there clinical trials that may be relevant to my situation, and how would they compare with my current options?”",
+      why: "A clinical trial is a decision option, not a last resort. The better question is whether a clinical trial could be a reasonable option for your situation — compared with alternatives, not instead of understanding them.",
+      factors: [
+        "What question the trial is trying to answer",
+        "How it compares with current options",
+        "Possible benefits, risks, and uncertainties",
+        "Practical commitments such as visits and monitoring",
+        "Whether it fits your treatment goals",
+      ],
+      doctorQs: [
+        "Are there clinical trials relevant to my situation?",
+        "What question is this trial trying to answer?",
+        "How does it compare with my current options?",
+        "What are the possible benefits and uncertainties?",
+        "What visits and monitoring would be required?",
+      ],
+    },
+    {
+      n: 29,
+      cancer: 1,
+      title: "What Are My Options If Lung Cancer Comes Back?",
+      slug: "what-are-my-options-if-lung-cancer-comes-back",
+      category: "treatment",
+      summary:
+        "If lung cancer comes back, the next step is usually not simply repeating the previous treatment. Doctors typically reassess the current situation, including where the cancer has returned, previous treatments, new information about the cancer, and your personal goals.\n\nOptions after recurrence may depend on factors such as the location of recurrence, timing, previous treatment response, biomarker information, overall health, and what matters most to you.\n\nA useful first question for your care team is: “What has changed, what options do I have now, and what information should guide my next decision?”",
+      why: "Recurrence is a new decision point, not simply a return to the old plan. The important questions become what has changed, what information you have now, what choices should be considered, and what matters most at this stage.",
+      factors: [
+        "Where and when the cancer returned",
+        "Previous treatments and response",
+        "Updated biomarker or testing information",
+        "Current goals and daily-life priorities",
+        "Whether another opinion or trial discussion could help",
+      ],
+      doctorQs: [
+        "What is different compared with my original diagnosis?",
+        "What information do we know now?",
+        "What are my reasonable options?",
+        "What are the benefits and trade-offs of each option?",
+        "How might this decision affect future options?",
+      ],
+    },
+    {
+      n: 30,
+      cancer: 1,
+      title:
+        "What Are My Options If My Lung Cancer Treatment Is No Longer Working?",
+      slug: "what-are-my-options-if-lung-cancer-treatment-no-longer-working",
+      category: "treatment",
+      summary:
+        "If lung cancer treatment is no longer working as expected, the next step is usually to reassess the situation rather than assume that there are no options left.\n\nDoctors may review what has changed, how the cancer is responding, what treatments have already been used, whether additional information is needed, and what matters most to you.\n\nDepending on the situation, the next decision may involve comparing different treatment approaches, reviewing new information, considering another opinion, or discussing clinical trials.\n\nA useful question to ask your care team is: “What has changed, what options do I have now, and how should we decide the next step?”",
+      why: "A treatment change is a new decision point, not the end of the journey. The goal is making the best decision based on the situation today — not simply finding another treatment.",
+      factors: [
+        "What has changed about the cancer or treatment response",
+        "Whether the current treatment is still achieving its goal",
+        "Updated testing or biomarker information",
+        "Goals, benefits, trade-offs, and daily-life impact",
+        "Whether another opinion or clinical trial discussion could help",
+      ],
+      doctorQs: [
+        "What tells us that the current treatment is no longer achieving its goal?",
+        "What information are we using?",
+        "What are my reasonable next options?",
+        "What are the possible benefits and burdens?",
+        "How does this choice affect future options?",
+      ],
+    },
   ];
 
   const questions = questionDefs.map((q) => ({
@@ -1027,10 +1156,10 @@ export function createSeedData(): KnowledgeGraphStore {
       summary:
         "After a lung cancer diagnosis, the first step is usually not choosing a treatment immediately. The most important first decisions are to confirm your diagnosis, understand your cancer type and stage, ask whether additional testing such as biomarker testing could affect your options, and prepare for a detailed discussion with your care team.\n\nYou do not need to make every decision at once. Good treatment decisions usually begin with having the right information about your specific cancer and understanding the choices available to you.",
       decision_triggers: [
-        "You were recently diagnosed and feel pressure to choose treatment quickly",
-        "You are unsure what type and stage of lung cancer you have",
-        "You wonder whether additional testing could change your options",
-        "You want a clear next step before comparing treatments",
+        "Received your first lung cancer diagnosis",
+        "Were told you need to choose a treatment approach",
+        "Are unsure whether more testing is needed",
+        "Want to understand whether another opinion could help",
       ],
       decision_context:
         "A diagnosis is the beginning of decisions — not the end. The job at this stage is to confirm your diagnosis, understand type and stage, ask whether additional testing could affect options, and prepare for a detailed discussion with your care team — before locking a treatment path.",
@@ -1046,10 +1175,10 @@ export function createSeedData(): KnowledgeGraphStore {
         "A clearly time-critical intervention has already been explained, agreed, and started",
       ],
       timing_considerations: [
-        "Ask which decisions cannot wait overnight versus which can wait for a key test result",
-        "A short pause to finish staging or biomarkers is different from an open-ended delay",
-        "If symptoms worsen (breathing, bleeding, severe pain), seek urgent care — do not wait for elective sequencing",
-        "Every person's timeline is different — some decisions move quickly, others need more information",
+        "Some decisions may require timely discussion, but many treatment choices depend on having complete information first",
+        "The right timing depends on cancer type, stage, test results, and your healthcare team's advice",
+        "Ask which questions need a timely discussion versus which can wait for key information",
+        "If symptoms worsen, seek urgent care rather than waiting for elective sequencing",
       ],
       options_and_tradeoffs: [
         "Benefit — Confirm diagnosis and subtype first: clearer treatment discussion",
@@ -1091,193 +1220,197 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     21: {
       summary:
-        "For many non-small cell lung cancers, biomarker results can change which first-line treatments are considered. This matters when tissue is limited, or when a short wait could redirect therapy to a better-matched option. It may not help if the panel is already complete, or if your team explains that symptoms make starting now safer than waiting. Next: confirm the panel ordered, the turnaround date, and which result would change the plan — then use What to do next.",
+        "Before choosing lung cancer treatment, it is important to understand whether additional information could change the options being considered. Biomarker testing may provide information that helps doctors evaluate certain treatment approaches for some patients.\n\nNot every patient needs the same tests, and biomarker results do not decide treatment by themselves. The key question is whether missing information could affect an important treatment decision.\n\nBefore starting treatment, ask your care team whether biomarker testing is complete and whether the results could change the options you should discuss.",
       decision_triggers: [
-        "You were told molecular or biomarker testing is needed before treatment",
-        "Surgery or systemic therapy timing depends on pending results",
-        "You fear delay but also fear starting the wrong first line",
-        "Tissue adequacy or liquid biopsy was mentioned as uncertain",
+        "You recently received a lung cancer diagnosis and wonder if information is still missing",
+        "You have been offered treatment options and wonder if testing could change them",
+        "You heard about targeted or personalized treatments and want to know if they apply",
+        "You are considering a second opinion and want complete information reviewed",
       ],
       decision_context:
-        "The real choice is whether waiting for molecular results is safer than starting immediately — and what would change if a targetable alteration or immunotherapy marker is found. Treat biomarkers as information with a clock attached, not as an open-ended pause.",
+        "The useful question is not whether you need every possible test — it is whether you have the information needed to make a treatment decision. Biomarker testing is one way to gather information that could influence which options are considered.",
       when_this_may_help: [
-        "Non-small cell histology is confirmed or strongly suspected",
-        "Tissue adequacy is uncertain or the panel is incomplete",
-        "Targeted therapy or immunotherapy pathways may depend on markers",
-        "You want to avoid locking a first line before molecular data returns",
-        "Surgery versus systemic sequencing might change with results",
+        "You are choosing initial treatment and want to know if information is complete",
+        "Multiple treatment approaches seem possible",
+        "You are considering specialized treatments that may depend on cancer characteristics",
+        "You are seeking another opinion and want complete information reviewed",
       ],
       when_it_may_not_help: [
-        "Disease pace or symptoms require urgent systemic therapy before results — and your team explains why",
-        "Your care team already has a complete panel with actionable results",
-        "Small-cell pathways where the biomarker decision frame differs",
+        "Your care team explains that testing is already complete for the decision at hand",
+        "Urgent clinical needs mean starting now is safer than waiting — and your team explains why",
       ],
       timing_considerations: [
-        "Ask for the expected turnaround date and what happens if results are late",
-        "A time-boxed wait (with a revisit date) is safer than an indefinite pause",
-        "If the team says starting now is required for clinical urgency, document why waiting is riskier",
-        "Ask whether liquid biopsy can shorten the wait when tissue is limited",
+        "Waiting for more information and moving forward with care are not always opposite choices",
+        "Timing depends on cancer type and stage, how quickly decisions are needed, and what information is still missing",
+        "Ask: Could waiting for these results change the treatment options we should consider?",
+        "Discuss timing concerns directly with your care team",
       ],
       options_and_tradeoffs: [
-        "Benefit — Wait for tissue-based panel: more complete matching of first-line options",
-        "Trade-off — Wait: short calendar delay and anxiety while results return",
-        "Benefit — Add liquid biopsy if tissue is limited: may return faster in some settings",
-        "Trade-off — Liquid biopsy: can miss alterations that tissue would catch",
-        "Benefit — Start therapy now for clinical urgency: addresses immediate risk",
-        "Trade-off — Start now: may need later adjustment when markers arrive",
+        "Benefit — Confirm whether information is complete: clearer treatment discussion",
+        "Trade-off — Waiting for results: short calendar delay and uncertainty",
+        "Benefit — Ask what results could change: avoids locking a path without relevant information",
+        "Trade-off — More testing: not useful if nothing would change the options discussed",
+        "Benefit — Use results to compare strategies with your team: better-informed next step",
+        "Trade-off — Treating one result as the whole decision: overlooks stage, health, and goals",
       ],
       records_to_prepare: [
-        "Pathology diagnosis and specimen adequacy notes",
-        "Any molecular reports already completed",
-        "Imaging that shows disease pace",
-        "Prior cancer treatment history",
+        "Pathology diagnosis",
+        "Cancer stage information",
+        "Any biomarker or molecular reports already completed",
+        "Current treatment recommendations",
+        "Questions about what information is still missing",
       ],
       next_steps: [
-        "Confirm the exact biomarker panel ordered and expected turnaround",
-        "Ask whether liquid biopsy helps if tissue is limited",
-        "Agree on a revisit date if results are delayed — and what would change the plan",
+        "Confirm what information is already available about your cancer",
+        "Ask whether additional information could change your treatment options",
+        "Use the information to compare treatment choices with your care team",
       ],
       if_opinions_conflict: [
-        "Ask whether the disagreement is about waiting versus starting, or about which panel to order",
-        "Request the clinical risk of a short wait in plain language",
-        "If needed, get a thoracic oncology second review focused only on sequencing",
+        "Ask whether the disagreement is about waiting versus starting, or about which information is needed",
+        "Clarify what result would change the options under discussion",
+        "If needed, seek a focused second opinion on sequencing and information completeness",
       ],
-      body: "Biomarker testing is a decision about information value versus delay. Ask what result would change the plan — if nothing would change, waiting may have less value. If a positive EGFR, ALK, ROS1, or other finding would redirect therapy, protecting that information can be worth a managed wait.",
+      body: null,
       seo_title: "Do I Need Biomarker Testing Before Lung Cancer Treatment?",
       seo_description:
-        "When waiting for lung cancer biomarker results may change first-line therapy — and when starting now is safer.",
+        "Wondering if biomarker testing is needed before lung cancer treatment? Learn when testing may affect treatment choices, what information may be missing, and what questions to ask your care team.",
       seo_keywords: [
         "biomarker testing before lung cancer treatment",
+        "do I need biomarker testing lung cancer",
         "molecular testing lung cancer",
         "wait for biomarkers before therapy",
       ],
     },
     3: {
       summary:
-        "Comparing lung cancer treatment options means weighing surgery-led versus systemic paths using stage, resectability, biomarkers, and your priorities — not which specialty speaks first. This matters most when more than one reasonable plan is offered or recommendations diverge. It may not help in emergencies, or when disease extent already places you outside surgical pathways. Next: write each option’s goal, recovery impact, and missing information, then continue in What to do next.",
+        "Comparing lung cancer treatment options is not about finding a single “best” treatment. The right choice depends on understanding the goal of each option, the expected benefits, possible trade-offs, and how each approach fits your specific cancer situation and personal priorities.\n\nTreatment decisions may depend on factors such as cancer type, stage, biomarker information, overall health, and your goals for treatment.\n\nBefore making a decision, ask your care team: “What are my options, why are they recommended, and what should I understand about the differences between them?”",
       decision_triggers: [
-        "You were offered more than one treatment path",
-        "Surgery and medical oncology recommendations differ",
-        "You are deciding whether systemic therapy should come before surgery",
-        "A major procedure is on the table and you want trade-offs in plain language",
+        "You have received a treatment recommendation and want to understand why",
+        "You have more than one possible option to compare",
+        "You are unsure whether you have enough information to decide",
+        "Your situation has changed with new results or health considerations",
       ],
       decision_context:
-        "This is a fork, not a verdict. Compare local surgical control with systemic strategies — including whether systemic therapy should come before surgery. Stage, resectability, biomarkers, and personal priorities all matter more than which specialty speaks first.",
+        "Comparing treatment options is a decision framework, not a ranking. Start with the goal of each option, then compare benefits, trade-offs, requirements, and personal priorities — without assuming there is a single best treatment for everyone.",
       when_this_may_help: [
-        "You have been offered more than one reasonable treatment path",
-        "Stage and resectability are still being interpreted",
-        "Biomarkers may change sequencing (neoadjuvant vs surgery-first)",
-        "Surgery and medical oncology recommendations differ",
-        "Major surgery is on the table and you want trade-offs in plain language",
+        "You have received a treatment recommendation and want to understand alternatives",
+        "More than one approach appears reasonable",
+        "You want a structured way to compare benefits and trade-offs",
+        "You want to prepare better questions before deciding",
       ],
       when_it_may_not_help: [
         "Emergency complications require immediate intervention",
-        "Disease extent already clearly places you outside surgical pathways",
+        "Your care team explains that only one time-critical path is appropriate right now",
       ],
       timing_considerations: [
-        "Ask whether a brief wait for biomarkers or a joint discussion changes sequencing",
-        "Clarify which step is irreversible (e.g., major resection) versus adjustable",
+        "Confirm whether important information is complete before locking a path",
+        "Ask what would change if you wait briefly for missing information",
         "Do not delay emergency care for elective comparison",
-        "Set a decision date so comparison does not become endless research",
+        "Prepare questions so comparison leads to a clearer next medical discussion",
       ],
       options_and_tradeoffs: [
-        "Benefit — Surgery-led path: strong local control in selected cases",
-        "Trade-off — Surgery-led: recovery time, lung-function impact, operative risk",
-        "Benefit — Systemic-first / neoadjuvant path: may improve selection or response before resection",
-        "Trade-off — Systemic-first: delays resection; side effects may affect operability timing",
-        "Benefit — Systemic-led non-surgical path: appropriate when resection is not the goal",
-        "Trade-off — Non-surgical path: different side-effect profile and follow-up intensity",
+        "Benefit — Start with treatment goals: clearer comparison across options",
+        "Trade-off — Goal-first framing: takes time before locking a path",
+        "Benefit — Five-question framework: compares options without ranking them",
+        "Trade-off — Structured comparison: may surface more questions at first",
+        "Benefit — Understanding why recommendations differ: reduces false conflict",
+        "Trade-off — Different opinions: can feel uncertain until reasoning is clear",
       ],
       records_to_prepare: [
-        "Staging imaging and multidisciplinary notes",
-        "Pulmonary function tests if surgery is considered",
-        "Biomarker results",
-        "Comorbidity and performance-status summary",
+        "Cancer type and stage information",
+        "Relevant biomarker information",
+        "Current treatment recommendations",
+        "Questions about goals, benefits, and trade-offs",
       ],
       next_steps: [
-        "Ask for resectability in plain language",
-        "Ask whether a short biomarker wait changes sequencing",
-        "Request a joint surgical/medical oncology discussion if advice diverges",
+        "Confirm you understand your cancer information",
+        "Ask what your reasonable options are",
+        "Compare each option by goal, benefit, trade-offs, and life impact",
+        "Prepare questions for your next medical discussion",
       ],
       if_opinions_conflict: [
-        "Write down each specialty's goal (cure, control, symptom relief)",
-        "Ask what evidence would change each recommendation",
-        "Use tumor board or a second opinion focused on sequencing, not hospital brand",
+        "Ask what reasoning supports each option",
+        "Compare goals, expected benefits, and trade-offs side by side",
+        "Consider a second opinion when the decision is complex or confidence is low",
       ],
-      body: "Treatment comparison is a fork, not a verdict. Two reasonable teams can disagree when stage interpretation, biomarker timing, or risk tolerance differ. Your job is to make the disagreement concrete: what is the goal, what information is missing, and which step is irreversible.",
-      seo_title: "How Do I Compare Lung Cancer Treatment Options?",
+      body: null,
+      seo_title:
+        "How to Compare Lung Cancer Treatment Options | Benefits and Trade-offs",
       seo_description:
-        "How to compare lung cancer treatment paths — surgery-led vs systemic — with clear trade-offs and doctor questions.",
+        "Comparing lung cancer treatment options? Learn how to evaluate choices, understand trade-offs, ask better questions, and prepare for treatment decisions with your care team.",
       seo_keywords: [
+        "how should I compare lung cancer treatment options",
         "lung cancer treatment options comparison",
-        "surgery vs systemic therapy lung cancer",
+        "lung cancer treatment benefits and trade-offs",
         "compare lung cancer treatments",
       ],
     },
     1: {
       summary:
-        "A second opinion can be valuable after a lung cancer diagnosis when decisions are complex or a major procedure is being considered. It can help confirm the diagnosis and clarify available options — it does not mean your first doctor is wrong. It may not change the plan when data are complete and multidisciplinary advice already agrees, or when delay clearly increases clinical risk. Next: gather pathology, staging, and the current plan in writing, then set a short time box for the review.",
+        "A second opinion may be worth considering after a lung cancer diagnosis, especially when you are facing a major treatment decision, your diagnosis is complex, or you want to better understand your available options.\n\nA second opinion is not about proving that your first doctor is wrong. It can help confirm important information, review treatment choices, understand alternatives, and make a decision with greater confidence.\n\nWhether a second opinion is useful depends on your specific situation, including your cancer type, stage, available treatments, and personal goals.",
       decision_triggers: [
-        "Your diagnosis is recent and you want confirmation before major steps",
-        "You were offered a major treatment or irreversible procedure",
-        "Your cancer subtype is uncommon or pathology feels uncertain",
-        "You received conflicting opinions from different specialists",
+        "Received a new diagnosis and want to confirm accuracy, type, and stage",
+        "Received a treatment recommendation and want to understand alternatives",
+        "Heard different opinions and want to understand why approaches differ",
+        "Have a complex or uncommon situation and want specialized perspectives",
       ],
       decision_context:
-        "A second opinion is a structured review of pathology, staging, and treatment sequencing — often startable with remote records so local care is not abandoned. It matters most when the diagnosis is complex, options diverge, major surgery is on the table, or a rare subtype is involved.",
+        "A second opinion is about confidence, not disagreement. It can help confirm important information, review treatment choices, understand alternatives, and decide with greater clarity — without assuming your first doctor is wrong.",
       when_this_may_help: [
-        "You recently received a diagnosis and want confirmation before major steps",
-        "Treatment has multiple reasonable options (surgery vs systemic paths)",
-        "Major surgery or another irreversible step is being considered",
-        "A rare subtype, complex anatomy, or incomplete biomarkers is involved",
-        "Specialists disagree on sequencing and you need a structured comparison",
+        "You face a major treatment decision",
+        "Your diagnosis is complex or uncommon",
+        "Multiple treatment approaches seem reasonable",
+        "You want specialized or multidisciplinary expertise",
+        "You want to understand alternatives before deciding",
       ],
       when_it_may_not_help: [
-        "Delay would clearly worsen urgent clinical risk and your team explains why",
-        "You already have concordant multidisciplinary recommendations with complete data",
-        "The only disagreement is preference/style with no material outcome difference",
+        "The diagnosis is clear and treatment options are well established",
+        "Multiple specialists already reach the same conclusion",
+        "Delay would create unnecessary risk and your care team explains why",
       ],
       timing_considerations: [
-        "Ask: what is the risk of waiting a short, defined time for a records review?",
-        "Remote review can often run in parallel with local care so treatment is not abandoned",
-        "Set a time box (days/weeks) so the second opinion does not drift indefinitely",
-        "If the team says delay is unsafe, prioritize stabilization and revisit review after",
+        "Seeking more information and moving forward with care are not always opposite choices",
+        "Timing depends on cancer type and stage, how quickly decisions are needed, and your team's guidance",
+        "A second opinion should support a more informed decision, not create unnecessary delay",
+        "If you are concerned about timing, discuss it directly with your care team",
       ],
       options_and_tradeoffs: [
-        "Benefit — Remote records review: confirm diagnosis and alternatives with low travel burden",
-        "Trade-off — Remote review: depends on complete records; limited exam context",
-        "Benefit — In-person specialty visit: richer exam and team access",
-        "Trade-off — In-person: more time, cost, and scheduling friction",
-        "Benefit — Pathology-only re-review: focused check on diagnosis/subtype",
-        "Trade-off — Pathology-only: may not resolve full treatment sequencing",
-        "Benefit — Full treatment-plan second opinion: broader comparison before irreversible steps",
-        "Trade-off — Full plan review: heavier preparation and emotional load",
+        "Benefit — Confirm diagnosis and options: greater confidence before major steps",
+        "Trade-off — Another review: calendar time and preparation effort",
+        "Benefit — Compare reasoning across teams: clearer trade-offs",
+        "Trade-off — Different opinions: may increase short-term uncertainty",
+        "Benefit — Specialized expertise for complex cases: additional perspective",
+        "Trade-off — Seeking more opinions: not useful if the decision is already clear and concordant",
       ],
       records_to_prepare: [
-        "Pathology report and slides if requested",
-        "All key imaging with reports",
-        "Biopsy/operative notes",
-        "Current recommended plan in writing",
-        "Medication and comorbidity list",
+        "Pathology report",
+        "Biopsy information",
+        "Imaging reports and scans",
+        "Cancer stage information",
+        "Biomarker / molecular testing results",
+        "Current treatment recommendation",
+        "Previous treatment information (if any)",
+        "Questions you want answered",
       ],
       next_steps: [
-        "Decide whether the question is pathology, staging, sequencing, or all three",
-        "Ask your current team which records to send today",
-        "Set a time box and return with written agreements vs disagreements",
+        "Collect your medical information",
+        "Identify what you want the second opinion to clarify",
+        "Prepare questions before speaking with another specialist",
       ],
       if_opinions_conflict: [
-        "Ask both teams to list what would change their advice",
-        "Separate facts (stage, markers) from judgment (preferred sequence)",
-        "Consider a third multidisciplinary review only if conflict remains high-stakes",
+        "Ask about diagnostic reasoning — do they agree on the diagnosis?",
+        "Ask about treatment reasoning — why this option, what alternatives, what trade-offs?",
+        "Consider expertise, multidisciplinary input, and your personal priorities",
       ],
-      body: "Trust comes from honesty about when a second opinion is worth it — and when it may not change the decision. Use it to reduce uncertainty before irreversible steps, not as a default upgrade or a rejection of your current team.",
+      body: null,
       seo_title: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
       seo_description:
-        "When a lung cancer second opinion helps, when it may not, and how to prepare records — a decision guide, not a loyalty test.",
+        "Considering a second opinion after a lung cancer diagnosis? Learn when it may help, what information to prepare, how to evaluate different medical opinions, and what to consider before making treatment decisions.",
       seo_keywords: [
         "should I get a second opinion lung cancer",
         "second opinion after lung cancer diagnosis",
         "lung cancer second opinion timing",
+        "how to evaluate second opinion lung cancer",
       ],
     },
     5: {
@@ -1340,6 +1473,324 @@ export function createSeedData(): KnowledgeGraphStore {
         "lung cancer treatment abroad",
         "when is cancer care abroad worth it",
         "international lung cancer treatment",
+      ],
+    },
+    26: {
+      summary:
+        "Seeking another cancer center or specialist may be worth considering when you need additional expertise, a complex decision requires further review, or you want to better understand available options.\n\nA different center is not automatically better. The value depends on whether the expertise, experience, and resources available match your specific situation.\n\nBefore changing where you receive care, first identify what you are trying to improve: confirming information, comparing treatments, accessing specialized expertise, or exploring additional options.",
+      decision_triggers: [
+        "Your diagnosis is complex and you wonder if specialized expertise is needed",
+        "You face an important treatment decision and want other perspectives",
+        "Your cancer situation is uncommon or local experience feels limited",
+        "You want access to multidisciplinary teams, trials, or specialized programs",
+      ],
+      decision_context:
+        "The goal is finding the right expertise for your specific decision — not simply the most famous center. Clarify what you want to improve before changing where you receive care.",
+      when_this_may_help: [
+        "Your diagnosis or treatment decision is complex",
+        "Your situation is uncommon and may need specialized experience",
+        "You want multidisciplinary review or specialized programs",
+        "You want to evaluate whether another team could improve decision quality",
+      ],
+      when_it_may_not_help: [
+        "You already have clear, concordant recommendations with matching expertise",
+        "Changing locations would interrupt urgent care without a defined expertise gap",
+      ],
+      timing_considerations: [
+        "Identify the decision you want to improve before searching for another center",
+        "Prepare medical information so another team can review your case efficiently",
+        "Ask how follow-up care would be coordinated if you seek care elsewhere",
+        "International options are not automatically better — name the specific advantage first",
+      ],
+      options_and_tradeoffs: [
+        "Benefit — Clarify the expertise goal first: avoids shopping by reputation alone",
+        "Trade-off — Goal-first framing: takes time before contacting another center",
+        "Benefit — Evaluate experience and decision quality: better match to your situation",
+        "Trade-off — Seeking another center: travel, cost, and coordination burden",
+        "Benefit — Keep follow-up in view: stronger long-term care continuity",
+        "Trade-off — Changing centers without a plan: risk of fragmented care",
+      ],
+      records_to_prepare: [
+        "Pathology and staging information",
+        "Imaging reports and scans",
+        "Biomarker or molecular results if available",
+        "Current treatment recommendation",
+        "A one-sentence statement of what expertise you are seeking",
+      ],
+      next_steps: [
+        "Identify what you want to improve",
+        "Prepare your medical information",
+        "Evaluate centers based on expertise and fit",
+      ],
+      if_opinions_conflict: [
+        "Compare reasoning and expertise match, not reputation alone",
+        "Ask what additional perspective another team could provide",
+        "Clarify how follow-up would work if recommendations differ",
+      ],
+      body: null,
+      seo_title: "Do I Need a Different Lung Cancer Center or Specialist?",
+      seo_description:
+        "Wondering if you need another lung cancer center or specialist? Learn when additional expertise, another opinion, or specialized care may help you make better decisions.",
+      seo_keywords: [
+        "do I need a different lung cancer center",
+        "lung cancer specialist second center",
+        "specialized lung cancer expertise",
+        "choose lung cancer care center",
+      ],
+    },
+    27: {
+      summary:
+        "Choosing treatment for Stage IV lung cancer is not about finding one option that is best for every person. The right decision depends on understanding your cancer information, treatment goals, available options, possible trade-offs, and what matters most in your life.\n\nTreatment decisions may be influenced by factors such as cancer type, biomarker information, previous treatments, overall health, symptoms, and personal priorities.\n\nA useful first step is to ask your care team: “What are my options, what is the goal of each option, and how do these choices fit my priorities?”",
+      decision_triggers: [
+        "You were recently diagnosed with Stage IV lung cancer",
+        "You received a treatment recommendation and want to understand alternatives",
+        "Your current treatment is changing or may stop working",
+        "You are thinking about priorities, daily life, and quality of life",
+      ],
+      decision_context:
+        "Stage IV decisions are about choosing a path, not a single answer. Start with goals, confirm important information is available, then compare options by benefit, trade-offs, and personal priorities.",
+      when_this_may_help: [
+        "You were diagnosed with Stage IV or advanced lung cancer",
+        "You want a structured way to compare treatment paths",
+        "You need to clarify goals before choosing among options",
+        "You wonder whether biomarkers, trials, or another opinion could help",
+      ],
+      when_it_may_not_help: [
+        "Emergency complications require immediate intervention",
+        "Your care team explains that only one time-critical path is appropriate right now",
+      ],
+      timing_considerations: [
+        "Clarify treatment goals before locking a path",
+        "Ask whether missing information could change the options under discussion",
+        "Decisions can change over time as response, side effects, or goals change",
+        "Do not delay emergency care for elective comparison",
+      ],
+      options_and_tradeoffs: [
+        "Benefit — Goal-first framing: clearer fit between options and priorities",
+        "Trade-off — Goal-first: takes time before choosing a path",
+        "Benefit — Same five questions for every option: fair comparison without ranking",
+        "Trade-off — Structured comparison: may raise more questions at first",
+        "Benefit — Connecting biomarkers, trials, and second opinion: more complete decision support",
+        "Trade-off — Seeking more input: calendar time and emotional load",
+      ],
+      records_to_prepare: [
+        "Cancer type and stage information",
+        "Biomarker testing results if available",
+        "Current treatment recommendations",
+        "A short list of personal priorities and concerns",
+      ],
+      next_steps: [
+        "Understand your cancer information",
+        "Clarify your treatment goals",
+        "Compare options by benefit, trade-offs, and life impact",
+        "Ask whether additional expertise or information could help",
+      ],
+      if_opinions_conflict: [
+        "Compare the goal and reasoning behind each recommendation",
+        "Ask what information would change each team's advice",
+        "Consider a second opinion when confidence is low or options diverge",
+      ],
+      body: null,
+      seo_title: "How to Choose Treatment Options for Stage IV Lung Cancer",
+      seo_description:
+        "Facing stage IV lung cancer? Learn how treatment decisions are made, what information matters, how to compare options, and what questions to discuss with your care team.",
+      seo_keywords: [
+        "how to choose treatment options for stage IV lung cancer",
+        "stage IV lung cancer treatment decisions",
+        "advanced lung cancer treatment options",
+        "stage 4 lung cancer what next",
+      ],
+    },
+    28: {
+      summary:
+        "A clinical trial may be worth discussing when you want to understand additional treatment options, especially if your situation is complex, your treatment choices are changing, or you want to explore approaches being studied by researchers.\n\nA clinical trial is not automatically better than standard treatment, and considering one does not mean giving up other options. Whether a trial is appropriate depends on your cancer situation, available choices, possible benefits and risks, and your personal goals.\n\nA useful question to ask your care team is: “Are there clinical trials that may be relevant to my situation, and how would they compare with my current options?”",
+      decision_triggers: [
+        "You were recently diagnosed and wonder whether to ask about trials early",
+        "You are comparing treatment options and want to know if trials belong in the discussion",
+        "Your current treatment is changing and you want additional options",
+        "Your cancer situation is complex or uncommon",
+      ],
+      decision_context:
+        "A clinical trial is a decision option, not a last resort. Compare purpose, evidence, benefits, risks, and practical requirements with your other choices before deciding.",
+      when_this_may_help: [
+        "You want to know whether trials should be discussed before or during treatment",
+        "You are comparing standard options and want to understand researched approaches",
+        "Your treatment path is changing and you need additional possibilities",
+        "Your situation is complex and specialized studies may be relevant",
+      ],
+      when_it_may_not_help: [
+        "Emergency care is needed before elective research discussions",
+        "Your care team explains that no relevant trial matches your situation right now",
+      ],
+      timing_considerations: [
+        "Trials may be discussed before starting treatment, during treatment, or when options change",
+        "Understanding options early can help before you urgently need them",
+        "Waiting until treatment stops working is not always required",
+        "Compare a trial with alternatives before joining",
+      ],
+      options_and_tradeoffs: [
+        "Benefit — Discuss trials early: more complete option set",
+        "Trade-off — Early discussion: more information to process",
+        "Benefit — Same comparison framework as other options: fair evaluation",
+        "Trade-off — Research uncertainty: outcomes may be less established",
+        "Benefit — Clear purpose and commitments: better informed consent",
+        "Trade-off — Visits, monitoring, and travel: practical burden",
+      ],
+      records_to_prepare: [
+        "Cancer type and stage information",
+        "Biomarker results",
+        "Previous treatments",
+        "Current treatment goals",
+        "Medical records for eligibility review",
+      ],
+      next_steps: [
+        "Understand your current treatment options",
+        "Ask whether clinical trials are relevant to your situation",
+        "Compare purpose, evidence, benefits, risks, and practical requirements",
+        "Discuss whether the option fits your goals",
+      ],
+      if_opinions_conflict: [
+        "Ask what question each trial is trying to answer",
+        "Compare trials with standard options side by side",
+        "Consider a second opinion if relevance or fit is unclear",
+      ],
+      body: null,
+      seo_title: "Should I Consider a Clinical Trial for Lung Cancer?",
+      seo_description:
+        "Considering a lung cancer clinical trial? Learn when trials may be worth discussing, how to compare them with other options, and what questions to ask your care team.",
+      seo_keywords: [
+        "should I consider a clinical trial for lung cancer",
+        "lung cancer clinical trial decision",
+        "clinical trial vs standard treatment lung cancer",
+        "lung cancer research study options",
+      ],
+    },
+    29: {
+      summary:
+        "If lung cancer comes back, the next step is usually not simply repeating the previous treatment. Doctors typically reassess the current situation, including where the cancer has returned, previous treatments, new information about the cancer, and your personal goals.\n\nOptions after recurrence may depend on factors such as the location of recurrence, timing, previous treatment response, biomarker information, overall health, and what matters most to you.\n\nA useful first question for your care team is: “What has changed, what options do I have now, and what information should guide my next decision?”",
+      decision_triggers: [
+        "Your scans show the cancer has returned",
+        "Your doctor recommends a new treatment plan",
+        "Your cancer returned after a period of control",
+        "You want more confidence before deciding",
+      ],
+      decision_context:
+        "Recurrence is a new decision point, not simply a return to the old plan. Reassess what changed, confirm updated information, then compare options based on goals, trade-offs, and what matters most now.",
+      when_this_may_help: [
+        "You recently learned that lung cancer has returned",
+        "You are unsure whether previous treatment should be repeated",
+        "You want to know what information should guide the next choice",
+        "You are considering a second opinion or clinical trial discussion",
+      ],
+      when_it_may_not_help: [
+        "Emergency or urgent symptoms need immediate medical attention first",
+        "Your care team has already explained a time-critical next step and why",
+      ],
+      timing_considerations: [
+        "Timing of recurrence may affect which options are discussed",
+        "Updated testing may be needed before comparing paths",
+        "Ask which decisions need a timely discussion versus which can wait for key information",
+        "Personal goals remain part of the decision at every stage",
+      ],
+      options_and_tradeoffs: [
+        "Benefit — Reassess what changed: decisions based on the current situation",
+        "Trade-off — Reassessment: more information to process before choosing",
+        "Benefit — Compare options with the same questions: clearer trade-offs",
+        "Trade-off — Comparing paths: takes time and may raise more questions",
+        "Benefit — Consider second opinion or trial discussion: more confidence or options",
+        "Trade-off — Additional review: calendar delay and more appointments",
+      ],
+      records_to_prepare: [
+        "Current imaging and pathology reports",
+        "Previous treatment history and response",
+        "Biomarker / molecular testing results",
+        "Current medications and health status",
+        "Your goals and questions for the next discussion",
+      ],
+      next_steps: [
+        "Understand what has changed",
+        "Confirm what information is available",
+        "Compare options based on goals, benefits, trade-offs, and daily life",
+        "Consider whether additional expertise or information would help",
+      ],
+      if_opinions_conflict: [
+        "Ask what has changed and what information each recommendation rests on",
+        "Compare options side by side using the same questions",
+        "A second opinion may help when the situation feels uncertain",
+      ],
+      body: null,
+      seo_title: "What Are My Options If Lung Cancer Comes Back?",
+      seo_description:
+        "Lung cancer recurrence creates new decisions. Learn how to understand what changed, compare options, and prepare questions for your next treatment discussion.",
+      seo_keywords: [
+        "what are my options if lung cancer comes back",
+        "lung cancer recurrence treatment decisions",
+        "lung cancer returned what next",
+        "options after lung cancer recurrence",
+      ],
+    },
+    30: {
+      summary:
+        "If lung cancer treatment is no longer working as expected, the next step is usually to reassess the situation rather than assume that there are no options left.\n\nDoctors may review what has changed, how the cancer is responding, what treatments have already been used, whether additional information is needed, and what matters most to you.\n\nDepending on the situation, the next decision may involve comparing different treatment approaches, reviewing new information, considering another opinion, or discussing clinical trials.\n\nA useful question to ask your care team is: “What has changed, what options do I have now, and how should we decide the next step?”",
+      decision_triggers: [
+        "Your scans show the cancer is growing",
+        "Your doctor recommends changing treatment",
+        "Your treatment is becoming harder to continue",
+        "You want to understand future options",
+      ],
+      decision_context:
+        "A treatment change is a new decision point, not the end of the journey. Understand what changed, confirm whether additional information is needed, then compare next options based on goals, benefits, trade-offs, and daily life.",
+      when_this_may_help: [
+        "Your current treatment is no longer achieving its expected goal",
+        "Your doctor has recommended changing treatment",
+        "You want to understand what information should guide the next choice",
+        "You are considering a second opinion, additional testing, or a clinical trial",
+      ],
+      when_it_may_not_help: [
+        "Emergency or urgent symptoms need immediate medical attention first",
+        "Your care team has already explained a time-critical next step and why",
+      ],
+      timing_considerations: [
+        "Treatment decisions often change over time as the situation changes",
+        "Updated testing may be needed before comparing new paths",
+        "Ask which decisions need a timely discussion versus which can wait for key information",
+        "Personal goals remain part of the decision at every stage",
+      ],
+      options_and_tradeoffs: [
+        "Benefit — Clarify what “not working” means: clearer next discussion",
+        "Trade-off — Reassessment: more information to process before choosing",
+        "Benefit — Compare options with the same questions: fair evaluation",
+        "Trade-off — Comparing paths: takes time and may raise more questions",
+        "Benefit — Consider another opinion or trial discussion: more confidence or options",
+        "Trade-off — Additional review: calendar delay and more appointments",
+      ],
+      records_to_prepare: [
+        "Current imaging and response assessments",
+        "Previous and current treatment history",
+        "Biomarker / molecular testing results",
+        "Side-effect and daily-life notes",
+        "Your goals and questions for the next discussion",
+      ],
+      next_steps: [
+        "Understand what has changed",
+        "Confirm whether additional information is needed",
+        "Compare options based on goals, benefits, trade-offs, and daily life",
+        "Consider whether another perspective or specialized expertise would help",
+      ],
+      if_opinions_conflict: [
+        "Ask what has changed and what information each recommendation rests on",
+        "Compare options side by side using the same questions",
+        "A second opinion may help when the decision feels complex",
+      ],
+      body: null,
+      seo_title: "What Are My Options If Lung Cancer Treatment Stops Working?",
+      seo_description:
+        "If lung cancer treatment stops working, new decisions may be needed. Learn how to understand what changed, compare options, and prepare questions for your care team.",
+      seo_keywords: [
+        "what are my options if lung cancer treatment stops working",
+        "lung cancer treatment no longer working",
+        "lung cancer treatment progression decisions",
+        "what to do when lung cancer treatment fails",
       ],
     },
   };
@@ -1748,6 +2199,38 @@ export function createSeedData(): KnowledgeGraphStore {
       published_on: "2025-01-01",
       notes: "Doctor communication guidance",
     },
+    {
+      id: id("src", 9),
+      title: "Non-Small Cell Lung Cancer Treatment (PDQ) — Patient Version",
+      url: "https://www.cancer.gov/types/lung/patient/non-small-cell-lung-treatment-pdq",
+      publisher: "National Cancer Institute",
+      published_on: "2025-01-01",
+      notes: "Authoritative NSCLC treatment overview for patients",
+    },
+    {
+      id: id("src", 10),
+      title: "Lung Cancer — Patient Information",
+      url: "https://www.cancer.net/cancer-types/lung-cancer",
+      publisher: "Cancer.Net / ASCO",
+      published_on: "2025-01-01",
+      notes: "ASCO patient education on lung cancer decisions",
+    },
+    {
+      id: id("src", 11),
+      title: "ESMO Patient Guides — Lung Cancer",
+      url: "https://www.esmo.org/for-patients/patient-guides/lung-cancer",
+      publisher: "European Society for Medical Oncology",
+      published_on: "2025-01-01",
+      notes: "ESMO patient-facing lung cancer guidance",
+    },
+    {
+      id: id("src", 12),
+      title: "ClinicalTrials.gov — Learn About Studies",
+      url: "https://clinicaltrials.gov/study-basics/learn-about-studies",
+      publisher: "ClinicalTrials.gov / NIH",
+      published_on: "2025-01-01",
+      notes: "Patient education on clinical trial decisions",
+    },
   ];
 
   const cancer_treatments = [
@@ -1923,8 +2406,26 @@ export function createSeedData(): KnowledgeGraphStore {
     { treatment_id: id("tx", 7), country_code: "AU" },
   ];
 
+  /** Lung Tier-1 AI Entry question numbers — curated core references */
+  const lungFlagshipQuestionNs = [1, 2, 3, 21, 26, 27, 28, 29, 30];
+  const lungFlagshipCoreSourceNs = [1, 5, 9, 10, 11]; // NCCN, NCI care, NCI NSCLC, ASCO lung, ESMO
+  const lungFlagshipExtraByNs: Record<number, number[]> = {
+    1: [4, 8], // second opinion + talking with doctor
+    28: [12], // clinical trials
+  };
+
   const content_sources = [
     ...questions.flatMap((q, index) => {
+      const n = Number(q.id.split("-").pop());
+      if (lungFlagshipQuestionNs.includes(n)) {
+        const extras = lungFlagshipExtraByNs[n] ?? [];
+        const sourceNs = [...lungFlagshipCoreSourceNs, ...extras];
+        return sourceNs.map((srcN) => ({
+          entity_type: "question" as const,
+          entity_id: q.id,
+          source_id: id("src", srcN),
+        }));
+      }
       const primary = id("src", (index % 4) + 1);
       const secondary = id("src", ((index + 3) % 4) + 5);
       return [
@@ -1940,17 +2441,6 @@ export function createSeedData(): KnowledgeGraphStore {
         },
       ];
     }),
-    // Flagship second-opinion page gets extra trust references
-    {
-      entity_type: "question" as const,
-      entity_id: id("q", 1),
-      source_id: id("src", 4),
-    },
-    {
-      entity_type: "question" as const,
-      entity_id: id("q", 1),
-      source_id: id("src", 8),
-    },
     ...cancers.map((c) => ({
       entity_type: "cancer" as const,
       entity_id: c.id,

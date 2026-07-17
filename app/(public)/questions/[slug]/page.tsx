@@ -17,8 +17,7 @@ import { RelatedPathway } from "@/components/question/related-pathway";
 import { RelationshipStrip } from "@/components/question/relationship-strip";
 import { SummaryPanel } from "@/components/question/summary-panel";
 import { JsonLd } from "@/components/seo/json-ld";
-import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
-import { SourcesList } from "@/components/trust/sources-list";
+import { SourcesAndReview } from "@/components/trust/sources-and-review";
 import { TrustStrip } from "@/components/trust/trust-strip";
 import { getAiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import { getQuestionPage, getQuestions } from "@/lib/queries";
@@ -188,6 +187,11 @@ export default async function QuestionPage({
       <h1 className="mt-3 font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-4xl">
         {question.title}
       </h1>
+      {flagship?.subtitle ? (
+        <p className="mt-3 text-lg text-[var(--ink-soft)] md:text-xl">
+          {flagship.subtitle}
+        </p>
+      ) : null}
 
       {flagship ? <DecisionContext modules={flagship} /> : null}
 
@@ -237,7 +241,6 @@ export default async function QuestionPage({
       {flagship ? (
         <>
           <AiEntryFlagshipBody modules={flagship} />
-          <SourcesList sources={sources} />
           {journey && cancer ? (
             <JourneyStepNav journey={journey} cancerSlug={cancer.slug} />
           ) : null}
@@ -251,7 +254,7 @@ export default async function QuestionPage({
               </Link>
             </div>
           ) : null}
-          <MedicalDisclaimer
+          <SourcesAndReview
             reviewedAt={question.content_reviewed_at}
             sources={sources}
           />
@@ -293,8 +296,6 @@ export default async function QuestionPage({
               <Markdown content={question.body} />
             </Section>
           ) : null}
-
-          <SourcesList sources={sources} />
 
           <NextActionClose
             question={question}
@@ -349,7 +350,7 @@ export default async function QuestionPage({
             </div>
           ) : null}
 
-          <MedicalDisclaimer
+          <SourcesAndReview
             reviewedAt={question.content_reviewed_at}
             sources={sources}
           />

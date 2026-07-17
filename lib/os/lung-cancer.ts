@@ -35,6 +35,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-biomarkers",
         "node-compare",
         "node-second-opinion",
+        "node-stage-iv",
       ],
       patient_router: {
         label: "I was just diagnosed — I don’t know what comes first",
@@ -65,8 +66,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       next_moment_ids: ["node-compare", "node-second-opinion"],
       patient_router: {
         label: "I’m deciding about biomarker / molecular testing",
-        hint: "AI Entry: wait for markers vs start now.",
-        nextStep: "Next: Direct answer + timing if you wait.",
+        hint: "AI Entry: whether missing information could change options.",
+        nextStep: "Next: Direct answer → information gap → your next step.",
       },
     },
     {
@@ -108,8 +109,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "I need to compare treatment options",
-        hint: "AI Entry: compare paths without picking a winner for you.",
-        nextStep: "Next: Direct answer + trade-offs + What to do next.",
+        hint: "AI Entry: framework to compare choices without ranking treatments.",
+        nextStep: "Next: Direct answer → five-question framework → your next step.",
       },
     },
     {
@@ -135,23 +136,52 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       next_moment_ids: ["node-compare", "node-global"],
       patient_router: {
         label: "I’m considering a second opinion",
-        hint: "AI Entry: when review helps — and when waiting is unsafe.",
-        nextStep: "Next: Direct answer + timing considerations.",
+        hint: "AI Entry: when another opinion may help — and when it may not.",
+        nextStep: "Next: Direct answer → prepare → your next step.",
       },
     },
     {
-      id: "node-global",
-      slug: "global-care",
-      label: "5. Local vs international branch",
-      state_label: "International option",
+      id: "node-cancer-center",
+      slug: "care-center-expertise",
+      label: "5. Care center & expertise",
+      state_label: "Care center & expertise",
       summary:
-        "Only explore cross-border care when a specific capability, trial, or review is missing locally.",
+        "Decide whether another center, specialist team, or additional expertise may improve your decision — without ranking hospitals.",
       why_this_matters:
-        "This matters only when a specific capability is missing locally — not as a default upgrade.",
+        "The goal is the right expertise for your decision, not simply a more famous center.",
       tier: 1,
       status: "active",
-      stage: "global",
+      stage: "practical",
       sort_order: 5,
+      ai_entry_slug:
+        "do-i-need-different-lung-cancer-center-or-specialized-expertise",
+      question_slugs: [
+        "do-i-need-different-lung-cancer-center-or-specialized-expertise",
+      ],
+      treatment_slugs: [],
+      story_slugs: ["comparing-local-and-international-lung-cancer-options"],
+      next_moment_ids: ["node-second-opinion", "node-compare", "node-global"],
+      patient_router: {
+        label: "I’m wondering if I need another center or specialist",
+        hint: "AI Entry: expertise match first — not hospital fame.",
+        nextStep: "Next: Direct answer → clarify your goal → your next step.",
+      },
+    },
+
+    // ——— Tier 2 · planned (skeleton only) ———
+    {
+      id: "node-global",
+      slug: "global-care",
+      label: "Local vs international branch",
+      state_label: "International option",
+      summary:
+        "Only explore cross-border care when a specific capability, trial, or specialty review is missing locally.",
+      why_this_matters:
+        "This matters only when a specific capability is missing locally — not as a default upgrade.",
+      tier: 2,
+      status: "planned",
+      stage: "global",
+      sort_order: 10,
       optional: true,
       ai_entry_slug: "when-to-consider-lung-cancer-care-abroad",
       question_slugs: ["when-to-consider-lung-cancer-care-abroad"],
@@ -160,12 +190,10 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       next_moment_ids: [],
       patient_router: {
         label: "I’m wondering about care in another city or country",
-        hint: "AI Entry: abroad only when a capability gap is real.",
-        nextStep: "Next: Direct answer + what to do before travel.",
+        hint: "Explore only when a capability gap is real.",
+        nextStep: "Next: name the capability gap before travel.",
       },
     },
-
-    // ——— Tier 2 · planned (skeleton only) ———
     {
       id: "node-surgery",
       slug: "surgery-decision",
@@ -188,78 +216,135 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
     {
       id: "node-clinical-trial",
       slug: "clinical-trial",
-      label: "Clinical trial decision",
-      state_label: "Clinical trials",
+      label: "7. Clinical trial decision",
+      state_label: "Clinical trial decision",
       summary:
-        "When a trial is a real option versus standard care — and what trade-offs to ask about.",
+        "Decide whether a clinical trial should be part of your discussion — compared with other options, not as a last resort.",
       why_this_matters:
-        "Trials can change access to new therapies, but also change logistics, uncertainty, and follow-up.",
-      tier: 2,
-      status: "planned",
+        "Trials are a decision option at multiple points in the journey — evaluate purpose, evidence, risks, and fit.",
+      tier: 1,
+      status: "active",
       stage: "treatment",
       sort_order: 7,
-      ai_entry_slug: null,
-      question_slugs: [],
+      ai_entry_slug:
+        "should-i-consider-a-clinical-trial-for-lung-cancer",
+      question_slugs: [
+        "should-i-consider-a-clinical-trial-for-lung-cancer",
+      ],
       treatment_slugs: [],
       story_slugs: [],
-      next_moment_ids: ["node-compare", "node-global"],
-    },
-    {
-      id: "node-cancer-center",
-      slug: "choosing-cancer-center",
-      label: "Choosing a cancer center",
-      state_label: "Cancer center choice",
-      summary:
-        "How to evaluate experience, multidisciplinary fit, and continuity — without fake rankings.",
-      why_this_matters:
-        "Center choice shapes second opinions, trials, and who manages complications.",
-      tier: 2,
-      status: "planned",
-      stage: "practical",
-      sort_order: 8,
-      ai_entry_slug: null,
-      question_slugs: [],
-      treatment_slugs: [],
-      story_slugs: [],
-      next_moment_ids: ["node-second-opinion", "node-global"],
+      next_moment_ids: [
+        "node-compare",
+        "node-biomarkers",
+        "node-second-opinion",
+        "node-cancer-center",
+      ],
+      patient_router: {
+        label: "I’m wondering whether a clinical trial is relevant",
+        hint: "AI Entry: compare trials as an option — not a last resort.",
+        nextStep: "Next: Direct answer → compare framework → your next step.",
+      },
     },
     {
       id: "node-recurrence",
       slug: "recurrence",
-      label: "Recurrence decision",
-      state_label: "Recurrence / plan change",
+      label: "8. Recurrence decision",
+      state_label: "Recurrence decision",
       summary:
-        "Re-orient when cancer returns or the plan suddenly changes — compare again, not from zero.",
+        "Reassess what changed, update information, and compare next options — recurrence is a new decision point, not a return to the old plan.",
       why_this_matters:
-        "Recurrence decisions carry high pressure; patients need a re-entry path into comparison and second opinion.",
-      tier: 2,
-      status: "planned",
+        "Recurrence decisions carry high pressure; patients need a re-entry path into comparison, information, and second opinion.",
+      tier: 1,
+      status: "active",
       stage: "recurrence",
-      sort_order: 9,
-      ai_entry_slug: null,
-      question_slugs: [],
+      sort_order: 8,
+      ai_entry_slug: "what-are-my-options-if-lung-cancer-comes-back",
+      question_slugs: ["what-are-my-options-if-lung-cancer-comes-back"],
       treatment_slugs: [],
       story_slugs: [],
-      next_moment_ids: ["node-compare", "node-second-opinion"],
+      next_moment_ids: [
+        "node-compare",
+        "node-biomarkers",
+        "node-second-opinion",
+        "node-clinical-trial",
+        "node-treatment-progression",
+      ],
+      patient_router: {
+        label: "My lung cancer has come back — what now?",
+        hint: "AI Entry: reassess changes first, then compare next options.",
+        nextStep: "Next: Direct answer → what changed → your next step.",
+      },
+    },
+    {
+      id: "node-treatment-progression",
+      slug: "treatment-progression",
+      label: "9. Treatment progression decision",
+      state_label: "Treatment progression",
+      summary:
+        "When current treatment is no longer achieving its goal — reassess what changed, update information, and compare the next options.",
+      why_this_matters:
+        "Treatment change is a new decision point, not the end of the journey — patients need a clear re-entry into comparison and information.",
+      tier: 1,
+      status: "active",
+      stage: "treatment",
+      sort_order: 9,
+      ai_entry_slug:
+        "what-are-my-options-if-lung-cancer-treatment-no-longer-working",
+      question_slugs: [
+        "what-are-my-options-if-lung-cancer-treatment-no-longer-working",
+      ],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: [
+        "node-compare",
+        "node-biomarkers",
+        "node-second-opinion",
+        "node-clinical-trial",
+        "node-recurrence",
+        "node-cancer-center",
+      ],
+      patient_router: {
+        label: "My treatment is no longer working — what now?",
+        hint: "AI Entry: understand what changed, then compare next options.",
+        nextStep: "Next: Direct answer → what changed → your next step.",
+      },
     },
     {
       id: "node-stage-iv",
       slug: "stage-iv-options",
-      label: "Stage IV / advanced options",
-      state_label: "Advanced disease options",
+      label: "6. Stage IV / advanced options",
+      state_label: "Stage IV decision",
       summary:
-        "Facing choices in advanced disease — goals of care, systemic options, and when to seek another review.",
+        "Facing choices in advanced disease — clarify goals, compare options, and decide what information or expertise would help next.",
       why_this_matters:
         "Advanced disease decisions are about goals and trade-offs, not encyclopedia lists of every drug.",
-      tier: 2,
-      status: "planned",
+      tier: 1,
+      status: "active",
       stage: "treatment",
-      sort_order: 10,
-      ai_entry_slug: null,
-      question_slugs: [],
-      treatment_slugs: [],
+      sort_order: 6,
+      ai_entry_slug:
+        "how-to-choose-treatment-options-for-stage-iv-lung-cancer",
+      question_slugs: [
+        "how-to-choose-treatment-options-for-stage-iv-lung-cancer",
+      ],
+      treatment_slugs: [
+        "chemotherapy",
+        "immunotherapy",
+        "targeted-therapy",
+      ],
       story_slugs: [],
-      next_moment_ids: ["node-compare", "node-clinical-trial", "node-second-opinion"],
+      next_moment_ids: [
+        "node-compare",
+        "node-biomarkers",
+        "node-clinical-trial",
+        "node-second-opinion",
+        "node-treatment-progression",
+      ],
+      patient_router: {
+        label: "I was diagnosed with Stage IV / advanced lung cancer",
+        hint: "AI Entry: choose a path with goals, trade-offs, and priorities.",
+        nextStep: "Next: Direct answer → goals → compare → your next step.",
+      },
     },
 
     // ——— Tier 3 · planned ———

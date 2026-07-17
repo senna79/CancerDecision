@@ -1,14 +1,10 @@
 import type { Source } from "@/types/database";
+import { SourcesAndReview } from "@/components/trust/sources-and-review";
 
-function formatDate(value: string | null | undefined) {
-  if (!value) return "Not yet reviewed";
-  return new Intl.DateTimeFormat("en", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  }).format(new Date(value));
-}
-
+/**
+ * @deprecated Prefer SourcesAndReview directly.
+ * Kept as a thin wrapper so existing cancer/treatment/story pages keep working.
+ */
 export function MedicalDisclaimer({
   reviewedAt,
   sources = [],
@@ -16,51 +12,5 @@ export function MedicalDisclaimer({
   reviewedAt?: string | null;
   sources?: Source[];
 }) {
-  return (
-    <aside className="mt-12 rounded-lg border border-[var(--line)] bg-[var(--paper-deep)]/80 p-5 md:p-6">
-      <h2 className="font-heading text-lg font-semibold text-[var(--ink)]">
-        Medical information disclaimer
-      </h2>
-      <p className="mt-2 text-sm leading-relaxed text-[var(--ink-soft)]">
-        This content provides educational information and does not replace
-        professional medical advice, diagnosis, or treatment. Always discuss
-        decisions with your clinicians.
-      </p>
-      <p className="mt-3 text-sm text-[var(--muted)]">
-        Content last checked:{" "}
-        <span className="font-medium text-[var(--ink)]">
-          {formatDate(reviewedAt)}
-        </span>
-      </p>
-      <p className="mt-2 text-xs text-[var(--muted)]">
-        Content may be drafted with AI assistance and is editorially reviewed
-        for clarity. It is not physician-medically reviewed unless a named
-        medical reviewer is listed.
-      </p>
-      {sources.length > 0 ? (
-        <div className="mt-4 border-t border-[var(--line)] pt-4">
-          <h3 className="font-heading text-sm font-semibold tracking-wide text-[var(--ink)]">
-            Sources / References
-          </h3>
-          <ul className="mt-2 space-y-1 text-sm">
-            {sources.map((source) => (
-              <li key={source.id}>
-                <a
-                  href={source.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-[var(--accent)] underline-offset-4 hover:underline"
-                >
-                  {source.title}
-                </a>
-                {source.publisher ? (
-                  <span className="text-[var(--muted)]"> — {source.publisher}</span>
-                ) : null}
-              </li>
-            ))}
-          </ul>
-        </div>
-      ) : null}
-    </aside>
-  );
+  return <SourcesAndReview reviewedAt={reviewedAt} sources={sources} />;
 }
