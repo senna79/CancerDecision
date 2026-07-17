@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Global Cancer Decision Platform
 
-## Getting Started
+AI-powered cancer decision knowledge platform (MVP). Structured knowledge graph, not a blog.
 
-First, run the development server:
+## Stack
+
+- Next.js (App Router) + TypeScript + Tailwind CSS + shadcn/ui
+- Local JSON knowledge store for development (seeded graph)
+- Supabase PostgreSQL schema + RLS migrations ready for production
+- Optional OpenAI draft generation (never auto-publishes)
+- Vercel-ready
+
+## Quick start
+
+```bash
+npm install
+cp .env.example .env.local
+npm run dev
+```
+
+Open [http://localhost:3000](http://localhost:3000).
+
+Admin CMS: [http://localhost:3000/admin](http://localhost:3000/admin)  
+Default password: `admin123` (override with `ADMIN_PASSWORD`)
+
+## Routes
+
+| Route | Purpose |
+|---|---|
+| `/` | Homepage |
+| `/cancers` | Cancer library |
+| `/cancers/[slug]` | Cancer Decision Center |
+| `/questions/[slug]` | Question detail |
+| `/treatments/[slug]` | Treatment comparison |
+| `/stories/[slug]` | Patient decision story |
+| `/global-care` | International medical guide |
+| `/about` | Trust & disclaimer |
+| `/admin` | Knowledge graph CMS |
+
+## Architecture notes
+
+- Public pages are data-driven templates. Adding a cancer is data entry, not new code.
+- Seed includes 5 cancers, 25 questions, treatments, stories, global options, and graph edges.
+- SQL schema lives in `supabase/migrations/`.
+- Runtime data defaults to `data/store.json` (created from `lib/db/seed-data.ts` on first read).
+- AI drafts save as `status: draft` only.
+
+## Scripts
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run build
+npm run start
+npm run lint
 ```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.

@@ -1,0 +1,6 @@
+-- Production seed can be loaded from the application seed graph.
+-- For local MVP development, the Next.js app seeds `data/store.json`
+-- from `lib/db/seed-data.ts` on first read.
+--
+-- After connecting Supabase, import published entities through your preferred
+-- ETL path or extend this file with INSERT statements mirrored from seed-data.

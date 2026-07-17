@@ -1,0 +1,696 @@
+下面这份文档定位为：
+
+提供给 Cursor / AI Coding Agent 的开发规格文档（Technical Product Specification）
+
+它不是给用户看的，而是告诉 Cursor：
+
+产品是什么；
+MVP 做什么；
+不做什么；
+如何设计数据结构；
+如何开发第一版。
+
+建议保存为：
+
+Global_Cancer_Decision_Platform_Technical_Spec_v1.0.md
+
+
+Global Cancer Decision Platform
+Technical Product Specification v1.0
+AI-Powered Cancer Decision Knowledge Platform
+
+Version: 1.0
+Target: MVP Development
+Platform: Web Application
+Primary Language: English
+
+1. Product Overview
+Product Name
+
+Global Cancer Decision Platform
+
+Product Positioning
+
+This product is NOT:
+
+Cancer encyclopedia
+Medical diagnosis system
+Online hospital marketplace
+Doctor replacement
+
+This product IS:
+
+An AI-powered cancer decision knowledge platform helping patients understand diagnosis, compare treatment options, explore global medical choices, and learn from real patient decision journeys.
+
+2. Core Product Concept
+
+The core asset is:
+
+Cancer Decision Knowledge Graph
+
+The website is organized around:
+
+Cancer Type
+
+      ↓
+
+Patient Situation
+
+      ↓
+
+Decision Question
+
+      ↓
+
+Treatment Options
+
+      ↓
+
+Global Options
+
+      ↓
+
+Patient Experience
+
+      ↓
+
+Next Decision
+
+The system should NOT be built as a traditional blog.
+
+It should be built as a structured knowledge database.
+
+3. MVP Objectives
+
+The first version should prove:
+
+Objective 1
+
+AI Search discoverability.
+
+The website should expose hundreds of structured decision pages.
+
+Objective 2
+
+Build reusable cancer knowledge architecture.
+
+Adding new cancer types should require data entry, not new development.
+
+Objective 3
+
+Create trust through:
+
+structured answers
+references
+patient decision stories
+transparent limitations
+4. MVP Scope
+Included
+Cancer Categories
+
+Initial:
+
+Lung Cancer
+Prostate Cancer
+Breast Cancer
+Liver Cancer
+Brain Tumor
+Core Modules
+Module 1
+
+Cancer Decision Center
+
+Module 2
+
+Question Knowledge Library
+
+Module 3
+
+Patient Decision Stories
+
+Module 4
+
+Treatment Comparison
+
+Module 5
+
+Global Medical Options
+
+Not Included in MVP
+
+Do NOT build:
+
+Doctor consultation system
+Payment system
+Hospital booking
+AI diagnosis
+Medical recommendation engine
+Community forum
+User social features
+5. Website Architecture
+Main Routes
+/
+
+Home Page
+
+
+/cancers
+
+Cancer Library
+
+
+/cancers/[slug]
+
+Cancer Decision Center
+
+
+/questions/[slug]
+
+Question Detail Page
+
+
+/treatments/[slug]
+
+Treatment Comparison Page
+
+
+/stories/[slug]
+
+Patient Decision Story Page
+
+
+/global-care
+
+International Medical Guide
+
+
+/about
+
+Trust & Disclaimer
+6. Homepage Specification
+Goal
+
+Immediately communicate:
+
+"This website helps cancer patients make better decisions."
+
+Sections
+Hero
+
+Title:
+
+Make Better Cancer Treatment Decisions
+
+Subtitle:
+
+Understand your options, compare treatments,
+and explore global medical choices.
+Cancer Selection
+
+Cards:
+
+Lung Cancer
+Prostate Cancer
+Breast Cancer
+Liver Cancer
+Brain Tumor
+Decision Topics
+
+Display:
+
+I was newly diagnosed
+
+I need a second opinion
+
+I want to compare treatments
+
+I am considering treatment abroad
+
+I want to understand costs
+Patient Stories Preview
+
+Display latest decision stories.
+
+7. Cancer Decision Center Page
+
+Example:
+
+/cancers/lung-cancer
+
+Structure:
+
+Cancer Overview
+
+↓
+
+Common Patient Decisions
+
+↓
+
+Treatment Options
+
+↓
+
+Second Opinion
+
+↓
+
+Global Treatment Options
+
+↓
+
+Patient Stories
+
+↓
+
+Related Questions
+8. Question Page Specification
+
+Most important page type.
+
+Route:
+
+/questions/[slug]
+
+Example:
+
+/questions/should-i-get-second-opinion-after-lung-cancer-diagnosis
+Page Structure
+Question Title
+
+Example:
+
+"Should I get a second opinion after a lung cancer diagnosis?"
+
+AI Summary
+
+Short answer.
+
+Maximum:
+
+300 words.
+
+Why Patients Ask This
+
+Explain:
+
+uncertainty
+common concerns
+decision context
+Key Factors To Consider
+
+Bullet list.
+
+Example:
+
+Cancer stage
+
+Treatment complexity
+
+Available specialists
+
+Potential alternative options
+Questions To Ask Your Doctor
+
+Example:
+
+Would another pathology review change my treatment plan?
+
+Are there alternative treatment approaches?
+Related Treatment Options
+
+Links:
+
+Surgery
+
+Radiation
+
+Immunotherapy
+
+Targeted Therapy
+Related Patient Stories
+
+Show relevant stories.
+
+Related Questions
+
+Internal links.
+
+9. Patient Story Specification
+
+Route:
+
+/stories/[slug]
+
+Purpose:
+
+Build trust.
+
+Stories are NOT:
+
+"miracle recovery stories".
+
+They are:
+
+"decision journey stories".
+
+Structure:
+
+Patient Background
+
+Cancer Type
+
+Country
+
+Age Range
+
+
+Initial Diagnosis
+
+
+Decision Challenge
+
+
+Options Considered
+
+
+Why Options Were Compared
+
+
+Final Decision
+
+
+Lessons Learned
+10. Treatment Comparison Page
+
+Route:
+
+/treatments/[slug]
+
+Example:
+
+/treatments/proton-therapy-vs-traditional-radiation
+
+Structure:
+
+What is this treatment?
+
+When doctors consider it
+
+Potential advantages
+
+Limitations
+
+Questions to discuss with doctors
+
+Countries offering this option
+
+Cost considerations
+11. Database Design
+
+Database should be designed as knowledge graph.
+
+Cancer Table
+Cancer
+
+id
+
+name
+
+slug
+
+overview
+
+created_at
+
+updated_at
+
+Example:
+
+lung-cancer
+Question Table
+Question
+
+id
+
+cancer_id
+
+title
+
+slug
+
+category
+
+summary
+
+content
+
+doctor_questions
+
+created_at
+
+updated_at
+
+Category examples:
+
+diagnosis
+
+treatment
+
+second_opinion
+
+hospital_selection
+
+global_care
+
+cost
+Treatment Table
+Treatment
+
+id
+
+name
+
+slug
+
+description
+
+advantages
+
+limitations
+Question_Treatment Relationship
+
+Many-to-many:
+
+question_id
+
+treatment_id
+Story Table
+Story
+
+id
+
+cancer_id
+
+country
+
+age_range
+
+decision_topic
+
+content
+
+created_at
+12. AI Content Generation System
+
+MVP should prepare for AI generation.
+
+Workflow:
+
+Question Database
+
+        ↓
+
+AI Generation Prompt
+
+        ↓
+
+Draft Answer
+
+        ↓
+
+Human Review
+
+        ↓
+
+Publish
+
+Each Question should support:
+
+AI generated summary
+
+AI generated explanation
+
+AI generated doctor questions
+
+AI generated related questions
+13. SEO / AI Search Requirements
+
+Every page must include:
+
+Metadata
+title
+
+description
+
+keywords
+
+canonical URL
+Structured Data
+
+Implement:
+
+FAQ Schema
+Article Schema
+Breadcrumb Schema
+Internal Linking
+
+Every page should link:
+
+Question
+
+→ Cancer
+
+→ Treatment
+
+→ Related Questions
+
+→ Stories
+14. Trust Requirements
+
+Every medical page must show:
+
+Medical Information Disclaimer
+
+Content Review Date
+
+Sources / References
+
+Example:
+
+This content provides educational information
+and does not replace professional medical advice.
+15. Recommended Technology Stack
+Frontend
+
+Next.js
+
+React
+
+TypeScript
+
+UI
+
+Tailwind CSS
+
+shadcn/ui
+
+Backend
+
+Supabase
+
+Database
+
+PostgreSQL
+
+Hosting
+
+Vercel
+
+AI
+
+OpenAI API
+
+(for content generation assistance)
+
+16. MVP Development Priority
+Phase 1
+
+Build:
+
+✅ Homepage
+
+✅ Cancer pages
+
+✅ Question pages
+
+✅ Database
+
+✅ CMS/admin input
+
+Phase 2
+
+Add:
+
+✅ Patient stories
+
+✅ Treatment comparison
+
+✅ Global care pages
+
+Phase 3
+
+Add:
+
+AI assistant
+
+Medical report explanation
+
+17. Development Principles
+
+Important:
+
+Principle 1
+
+Build data architecture first.
+
+Do not hard-code pages.
+
+Principle 2
+
+Every cancer should use the same template.
+
+Principle 3
+
+Content scale comes from database + AI generation.
+
+Principle 4
+
+The core product is:
+
+Knowledge Graph.
+
+Not articles.
+
+18. Definition of MVP Success
+
+MVP is successful when:
+
+5 cancer categories exist
+500 structured questions can be stored
+100+ pages can be published
+Internal linking works
+Search engines can understand relationships
+Adding new cancer requires no code change
+Final Product Definition
+
+Build an AI-native cancer decision knowledge platform that transforms fragmented cancer information into structured patient decision pathways.
+
+End of Specification v1.0
+
+这份可以直接给 Cursor。
+下一步建议不要让 Cursor 直接写代码，而是先输入：
+
+"Read this specification. Before coding, propose the complete system architecture, database schema, folder structure, and development plan."
+
+让 Cursor 先设计，再开发。这样能避免它把项目做成普通博客。
