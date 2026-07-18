@@ -236,14 +236,6 @@ export default async function QuestionPage({
           ) : (
             <SummaryPanel summary={question.summary} />
           )}
-          <p className="mt-4">
-            <a
-              href="#decision-path"
-              className="inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
-            >
-              Follow the decision path below ↓
-            </a>
-          </p>
         </EntryHeroV2>
       ) : (
         <>

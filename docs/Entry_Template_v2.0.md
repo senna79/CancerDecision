@@ -5,11 +5,12 @@
 
 ## Hero (above the path)
 
-Only three jobs:
+Only two jobs:
 
 1. **H1** — Is this my question?  
 2. **Direct Answer** — 2–3 sentences (compact; no repeated H1)  
-3. **CTA** — `Follow the decision path below` → `#decision-path`
+
+The Decision Path begins immediately below — no solid “start path” button (it steals focus from the real next actions).
 
 Moved out of hero (kept elsewhere):
 
