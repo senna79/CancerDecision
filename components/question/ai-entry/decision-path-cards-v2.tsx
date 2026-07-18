@@ -9,6 +9,7 @@ import { RECURRENCE_ENTRY_CARDS } from "@/lib/content/recurrence-entry-cards";
 import { QUALITY_OF_LIFE_ENTRY_CARDS } from "@/lib/content/quality-of-life-entry-cards";
 import { FOLLOW_UP_ENTRY_CARDS } from "@/lib/content/follow-up-entry-cards";
 import { NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/newly-diagnosed-entry-cards";
+import { STAGE_IV_ENTRY_CARDS } from "@/lib/content/stage-iv-entry-cards";
 import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
@@ -1349,6 +1350,126 @@ export function DecisionPathCardDetail({
         <BulletCard
           lead={NEWLY_DIAGNOSED_ENTRY_CARDS.overwhelmed.lead}
           close={NEWLY_DIAGNOSED_ENTRY_CARDS.overwhelmed.close}
+        />
+      );
+    case "siv-active-treatment":
+      return (
+        <BulletCard
+          lead={STAGE_IV_ENTRY_CARDS.activeTreatment.lead}
+          items={STAGE_IV_ENTRY_CARDS.activeTreatment.items}
+          close={STAGE_IV_ENTRY_CARDS.activeTreatment.close}
+        />
+      );
+    case "siv-different-plans":
+      return (
+        <BulletCard
+          lead={STAGE_IV_ENTRY_CARDS.differentPlans.lead}
+          items={STAGE_IV_ENTRY_CARDS.differentPlans.items}
+          close={STAGE_IV_ENTRY_CARDS.differentPlans.close}
+        />
+      );
+    case "siv-goals-not-giving-up":
+      return (
+        <BulletCard
+          lead={STAGE_IV_ENTRY_CARDS.goalsNotGivingUp.lead}
+          close={STAGE_IV_ENTRY_CARDS.goalsNotGivingUp.close}
+        />
+      );
+    case "siv-strongest":
+      return (
+        <BulletCard
+          lead={STAGE_IV_ENTRY_CARDS.strongest.lead}
+          items={STAGE_IV_ENTRY_CARDS.strongest.items}
+          close={STAGE_IV_ENTRY_CARDS.strongest.close}
+        />
+      );
+    case "siv-biomarker":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={STAGE_IV_ENTRY_CARDS.biomarker.lead}
+            close={`Ask: “${STAGE_IV_ENTRY_CARDS.biomarker.ask}”`}
+          />
+          <p>
+            <Link
+              href="/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Biomarker testing decision →
+            </Link>
+          </p>
+        </div>
+      );
+    case "siv-second-opinion":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={STAGE_IV_ENTRY_CARDS.secondOpinion.lead}
+            items={STAGE_IV_ENTRY_CARDS.secondOpinion.when}
+            close={STAGE_IV_ENTRY_CARDS.secondOpinion.close}
+          />
+          <p>
+            <Link
+              href="/questions/should-i-get-second-opinion-after-lung-cancer-diagnosis"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Second opinion decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "siv-clinical-trial":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={STAGE_IV_ENTRY_CARDS.clinicalTrial.lead}
+            close={STAGE_IV_ENTRY_CARDS.clinicalTrial.close}
+          />
+          <p>
+            <Link
+              href="/questions/should-i-consider-a-clinical-trial-for-lung-cancer"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Clinical trial decision →
+            </Link>
+          </p>
+        </div>
+      );
+    case "siv-first":
+      return (
+        <BulletCard
+          lead={STAGE_IV_ENTRY_CARDS.first.lead}
+          items={STAGE_IV_ENTRY_CARDS.first.steps}
+          close={STAGE_IV_ENTRY_CARDS.first.close}
+        />
+      );
+    case "siv-statistics":
+      return (
+        <BulletCard
+          lead={STAGE_IV_ENTRY_CARDS.statistics.lead}
+          close={`Ask: “${STAGE_IV_ENTRY_CARDS.statistics.ask}” ${STAGE_IV_ENTRY_CARDS.statistics.close}`}
+        />
+      );
+    case "siv-family":
+      return (
+        <BulletCard
+          lead={STAGE_IV_ENTRY_CARDS.family.lead}
+          items={STAGE_IV_ENTRY_CARDS.family.items}
+          close={STAGE_IV_ENTRY_CARDS.family.close}
+        />
+      );
+    case "siv-worth-it":
+      return (
+        <BulletCard
+          lead={STAGE_IV_ENTRY_CARDS.worthIt.lead}
+          close={STAGE_IV_ENTRY_CARDS.worthIt.close}
+        />
+      );
+    case "siv-have-say":
+      return (
+        <BulletCard
+          lead={STAGE_IV_ENTRY_CARDS.haveSay.lead}
+          close={STAGE_IV_ENTRY_CARDS.haveSay.close}
         />
       );
     case "second-opinion": {

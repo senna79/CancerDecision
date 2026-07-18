@@ -58,6 +58,8 @@ export const FOLLOW_UP_SLUG =
   "how-do-i-monitor-my-health-after-lung-cancer-treatment";
 export const NEWLY_DIAGNOSED_SLUG =
   "what-decisions-matter-most-after-new-lung-cancer-diagnosis";
+export const STAGE_IV_SLUG =
+  "how-to-choose-treatment-options-for-stage-iv-lung-cancer";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -1391,6 +1393,138 @@ const NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
   ],
 };
 
+const STAGE_IV_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Finding Your Next Step After Stage IV",
+  pathSubtitle:
+    "You do not need to solve every question today. Understand your situation, clarify what treatment may aim for, check key information, then prepare for the next conversation.",
+  orientationTrail: [
+    "Stabilize",
+    "Situation",
+    "Goals",
+    "Next conversation",
+  ],
+  completedLabels: [
+    "What Stage IV means in your situation",
+    "How treatment goals are discussed",
+    "Whether key information is available",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "What doctors have confirmed so far",
+    "What information is still pending",
+    "How urgent the next decision is",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Understand your situation",
+      lead: "Patient question: what does Stage IV mean for me?",
+      main: "siv-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people are facing Stage IV or advanced lung cancer.",
+        },
+        {
+          id: "siv-active-treatment",
+          title: "What kind of care do people with Stage IV often receive?",
+          summary: "Many people receive active treatment tailored to their goals.",
+        },
+        {
+          id: "siv-different-plans",
+          title: "Why do people with the same Stage receive different plans?",
+          summary: "Cancer biology, health, and goals shape the conversation.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Understand your treatment goals",
+      lead: "Patient question: what are we hoping treatment can do?",
+      main: "siv-goals",
+      cards: [
+        {
+          id: "siv-goals-not-giving-up",
+          title: "Do different treatment goals mean doctors are giving up?",
+          summary: "Different goals do not mean less care.",
+        },
+        {
+          id: "siv-strongest",
+          title: "Is the strongest treatment always the best treatment?",
+          summary: "A good choice balances benefit, risks, goals, and daily life.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "Make sure you have the right information",
+      lead: "Patient question: what information affects my choices?",
+      main: "siv-information",
+      cards: [
+        {
+          id: "siv-biomarker",
+          title: "Why does biomarker testing matter in Stage IV?",
+          summary: "Some characteristics may change which options are discussed.",
+        },
+        {
+          id: "siv-second-opinion",
+          title: "Should I get a second opinion?",
+          summary: "Helpful when decisions feel complex or confidence is low.",
+        },
+        {
+          id: "siv-clinical-trial",
+          title: "Are clinical trials worth considering?",
+          summary: "One option to discuss — depending on fit and eligibility.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "Prepare for ongoing decisions",
+      lead: "Patient question: what happens after the first treatment decision?",
+      main: "checklist",
+      cards: [
+        {
+          id: "siv-first",
+          title: "I just heard “Stage IV.” What should I do first?",
+          summary: "Three focuses — not the whole journey at once.",
+        },
+        {
+          id: "siv-statistics",
+          title: "I already looked up Stage IV statistics. What now?",
+          summary: "Group numbers are not your personal picture.",
+        },
+        {
+          id: "siv-family",
+          title: "How do I talk with my family about Stage IV?",
+          summary: "Share what you know and what happens next.",
+        },
+        {
+          id: "siv-worth-it",
+          title: "How do I know if a treatment is worth it for me?",
+          summary: "Benefit, side effects, daily life, and your priorities.",
+        },
+        {
+          id: "siv-have-say",
+          title: "Can I still have a say in my treatment?",
+          summary: "Yes — your preferences belong in the conversation.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might frame the first conversations.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
@@ -1402,6 +1536,7 @@ const PATHS: Record<string, EntryPathV2> = {
   [QUALITY_OF_LIFE_SLUG]: QUALITY_OF_LIFE_PATH,
   [FOLLOW_UP_SLUG]: FOLLOW_UP_PATH,
   [NEWLY_DIAGNOSED_SLUG]: NEWLY_DIAGNOSED_PATH,
+  [STAGE_IV_SLUG]: STAGE_IV_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {

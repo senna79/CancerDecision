@@ -1712,322 +1712,220 @@ export const CARE_CENTER_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 };
 
-/** Lung Cancer AI Entry #6 — Stage IV / Advanced */
+/** Lung Cancer AI Entry #6 — Stage IV / Advanced (Decision Path v2) */
 export const STAGE_IV_FLAGSHIP: AiEntryFlagshipModules = {
   cancerLabel: "Lung Cancer",
-  decisionMoment: "How to make treatment decisions in advanced lung cancer",
-  exploring: "Stage IV Lung Cancer Decision",
+  decisionMoment: "What to know after a Stage IV diagnosis",
+  exploring: "Next steps after Stage IV",
   subtitle:
-    "Understand your goals, options, and the decisions that matter most when facing advanced lung cancer.",
+    "A Stage IV diagnosis can feel overwhelming. This guide helps you understand what it means, what information matters, and how to prepare for the decisions ahead — one step at a time.",
   relatedDecisions: [
     { label: "Biomarker Testing", href: BIOMARKER },
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
-    { label: "Clinical Trials", href: CLINICAL_TRIAL },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
     { label: "Second Opinion", href: SECOND_OPINION },
-    { label: "Quality of Life", href: CARE_MAP },
+    { label: "Quality of Life", href: QUALITY_OF_LIFE },
   ],
   journeyLabel: "Lung Cancer Decision Journey",
   journeyPath: [
     { label: "New Diagnosis", href: NEW_DIAGNOSIS },
     { label: "Stage IV Decision", current: true },
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
   ],
 
-  triggersTitle: "You may be facing an advanced lung cancer decision if:",
+  triggersTitle: "You may be facing this if:",
   triggerGroups: [
     {
-      heading: "You were recently diagnosed with Stage IV lung cancer",
+      heading: "You were told you have Stage IV or advanced lung cancer",
       lead: "You may be wondering:",
       items: [
         "What happens next?",
-        "What information do I need?",
-        "How do I begin making decisions?",
+        "Does this mean there is nothing doctors can do?",
+      ],
+    },
+    {
+      heading: "You feel lost in too much information",
+      lead: "You may want:",
+      items: [
+        "A way to break the problem into smaller questions",
+        "Clarity on what to focus on this week",
       ],
     },
     {
       heading: "You received a treatment recommendation",
       lead: "You may want to understand:",
       items: [
-        "Why this option was recommended",
-        "What alternatives exist",
-        "What trade-offs should I consider",
+        "What the goal of treatment is",
+        "What alternatives belong in the discussion",
       ],
     },
     {
-      heading: "Your current treatment is changing",
+      heading: "You are thinking about daily life and priorities",
       lead: "You may be asking:",
       items: [
-        "What happens if treatment stops working?",
-        "Are there other options to discuss?",
-        "Should I seek another opinion?",
-      ],
-    },
-    {
-      heading: "You are thinking about your priorities",
-      lead: "You may be considering:",
-      items: [
-        "How treatment affects daily life",
-        "What outcomes matter most",
-        "How to balance treatment and quality of life",
+        "How treatment fits the life I want to maintain",
+        "Whether my preferences still matter",
       ],
     },
   ],
 
-  whyTitle:
-    "Stage IV lung cancer decisions are about choosing a path, not choosing a single answer",
-  whyLead: "A Stage IV diagnosis can bring a lot of uncertainty.",
+  whyTitle: "Understand your situation",
+  whyLead:
+    "Stage IV describes where cancer is — not your entire future. Doctors also consider cancer type, characteristics, treatment options, your overall health, and your goals.",
+  whyBody: [
+    "Stage IV usually means cancer has spread beyond where it first started.",
+    "Your complete situation matters more than the Stage label alone.",
+    "A Stage IV diagnosis changes the conversation. It does not end the conversation.",
+  ],
   whyQuestions: [],
-  whyNotLabel: "Many people immediately ask:",
-  whyNotQuestion: "What treatment should I choose?",
-  whyBetterLabel: "But the deeper question is:",
+  whyNotLabel: "The goal is not:",
+  whyNotQuestion: "Solving every future decision today.",
+  whyBetterLabel: "The goal is:",
   whyBetterQuestion:
-    "How do I choose the approach that makes sense for my situation?",
-  whyDependsIntro: "Stage IV decisions often involve balancing:",
-  whyDependsOn: [
-    "Cancer control",
-    "Treatment burden",
-    "Daily life",
-    "Personal goals",
-    "Future options",
-  ],
+    "Understanding your situation — then preparing for the next important step.",
   whyClose: [
-    "The goal is not simply finding the most aggressive treatment.",
-    "The goal is making a decision you understand and feel prepared for.",
+    "Take this one step at a time. You do not need every answer on day one.",
   ],
 
-  goalFrameworkTitle: "Stage IV decisions begin with your goals",
-  goalFrameworkLead:
-    "Different patients may have different priorities. Understanding your goals can help guide conversations.",
-  goalFrameworkBlocks: [
-    {
-      title: "Goal: Control the cancer",
-      questionsIntro: "Questions:",
-      questions: [
-        "What treatment approaches may help manage the cancer?",
-        "How will doctors evaluate whether treatment is working?",
-      ],
-    },
-    {
-      title: "Goal: Maintain quality of life",
-      questionsIntro: "Questions:",
-      questions: [
-        "How might treatment affect daily activities?",
-        "What side effects should I prepare for?",
-      ],
-    },
-    {
-      title: "Goal: Preserve future options",
-      questionsIntro: "Questions:",
-      questions: [
-        "What information should be collected now?",
-        "How might today's decision affect future choices?",
-      ],
-    },
+  doesNotDecideTitle: "Understand your treatment goals",
+  doesNotDecideLead:
+    "Treatment goals are personal. Your care team can help explain what treatment may achieve, which options fit your situation, and what matters most to you.",
+  doesNotDecideItems: [
+    "Treatments that may slow or reduce cancer growth",
+    "Improving symptoms so daily life is more manageable",
+    "Supporting the activities and independence that matter to you",
+    "Different goals do not mean less care — they mean care designed around your situation",
   ],
-  goalFrameworkClose:
-    "There is no single goal that applies to every patient. The important step is understanding what matters most to you.",
+  doesNotDecideNotes: [
+    "Ask how urgent the next decision is. If symptoms worsen, seek urgent care rather than waiting for elective comparisons.",
+  ],
+  doesNotDecideClose:
+    "Open the cards beside this step if you worry that goals mean giving up — or that the strongest option is always best.",
 
-  infoGapTitle:
-    "Before choosing a treatment path, make sure the important information is available",
-  infoGapKnownIntro: "Consider whether you understand:",
-  infoGapKnown: [
-    "Your exact lung cancer type",
-    "Your cancer stage and disease characteristics",
-    "Biomarker testing results",
-    "Current treatment options",
-    "Expected benefits and trade-offs",
-    "Your personal priorities",
-  ],
-  infoGapClose: [
-    "If important information is missing, ask: “Could additional information change the options we should consider?”",
-  ],
-
-  evaluateTitle: "How to compare Stage IV treatment options",
-  evaluateLead: "Use the same questions for every option.",
-  evaluateBlocks: [
-    {
-      title: "1. What is the goal?",
-      intro: "Ask:",
-      items: [
-        "What is this option trying to achieve?",
-        "How will success be measured?",
-      ],
-    },
-    {
-      title: "2. What benefit is expected?",
-      intro: "Ask:",
-      items: [
-        "What improvement are doctors hoping for?",
-        "What information supports this expectation?",
-      ],
-    },
-    {
-      title: "3. What are the trade-offs?",
-      intro: "Ask:",
-      items: [
-        "What risks or side effects should I understand?",
-        "How could this affect my daily life?",
-      ],
-    },
-    {
-      title: "4. What does this option require?",
-      intro: "Ask:",
-      items: [
-        "How often is treatment needed?",
-        "What monitoring is involved?",
-      ],
-    },
-    {
-      title: "5. Does this fit my priorities?",
-      intro: "Ask:",
-      items: [
-        "Does this approach match what matters most to me?",
-        "Do I understand the balance between benefits and burden?",
-      ],
-    },
-  ],
-
-  bridges: [
-    {
-      title: "Some treatment decisions depend on information about the cancer itself",
-      body: [
-        "For some patients, biomarker information may help doctors understand which treatment approaches should be considered.",
-        "Useful questions: Has biomarker testing been completed? Could the results change my options? Should testing happen before choosing treatment?",
-      ],
-      ctaLabel:
-        "Do I Need Biomarker Testing Before Choosing Lung Cancer Treatment?",
-      ctaHref: BIOMARKER,
-    },
-    {
-      title: "Clinical trials may be one option to discuss",
-      body: [
-        "Some patients explore clinical trials when they want to understand additional possibilities.",
-        "Questions to ask: Is a clinical trial appropriate for my situation? How would it compare with other options? What would participation involve?",
-      ],
-      ctaLabel: "Should I Consider a Clinical Trial for Lung Cancer?",
-      ctaHref: CLINICAL_TRIAL,
-    },
-    {
-      title: "When treatment is no longer working as expected",
-      body: [
-        "Stage IV decisions are not always one-time decisions. If treatment response, new information, side effects, or goals change, it may be time to reassess.",
-        "Useful questions: What has changed? What options do I have now? How should we decide the next step?",
-      ],
-      ctaLabel:
-        "What Are My Options If My Lung Cancer Treatment Is No Longer Working?",
-      ctaHref: TREATMENT_PROGRESSION,
-    },
-  ],
-
-  secondOpinionTitle: "Complex decisions often benefit from another perspective",
-  secondOpinionLead: "A second opinion may be useful when:",
-  secondOpinionWhen: [
-    "The decision feels uncertain",
-    "Several approaches seem possible",
-    "You want to understand alternatives",
-    "You want more confidence before deciding",
-  ],
-  secondOpinionClose:
-    "A second opinion is not always about changing doctors. Sometimes it helps confirm that your decision is based on complete information.",
-  secondOpinionCtaLabel:
-    "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-  secondOpinionHref: SECOND_OPINION,
-
-  progressionTitle: "Stage IV decisions are not always one-time decisions",
-  progressionLead: "Your situation may change because of:",
-  progressionFactors: [
-    "Treatment response",
-    "New test information",
-    "Side effects",
-    "Changes in personal goals",
-  ],
-  progressionCloseIntro: "When circumstances change, it may be time to revisit:",
-  progressionClose: [
-    "Available options",
-    "Treatment goals",
-    "Support needed",
-  ],
-
-  mistakesTitle: "Common mistakes when making Stage IV treatment decisions",
+  mistakesTitle: "Common early missteps after a Stage IV diagnosis",
   mistakes: [
     {
-      mistake:
-        "Thinking Stage IV means there are no meaningful choices",
-      why: "Advanced lung cancer decisions often involve multiple paths and trade-offs.",
+      mistake: "Trying to solve the whole journey in one week",
+      why: "Stage IV care is usually a series of decisions. Focus on the next important step.",
     },
     {
-      mistake: "Choosing treatment before understanding the goal",
-      why: "A treatment decision should be connected to what you are trying to achieve.",
+      mistake: "Assuming different goals mean less care",
+      why: "Personalized goals are how teams design active care around your situation.",
     },
     {
-      mistake: "Focusing only on treatment effectiveness",
-      why: "Daily life, side effects, and personal priorities also matter.",
-    },
-    {
-      mistake: "Making decisions without complete information",
-      why: "Testing, expert opinions, and updated information may influence choices.",
+      mistake: "Choosing before key information is available",
+      why: "Type, biomarkers, prior treatment, and health often change which options belong in the discussion.",
     },
   ],
 
-  scenarioTitle:
-    "Example: Choosing a treatment path after Stage IV diagnosis",
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may be especially useful when:",
+  secondOpinionWhen: [
+    "Decisions feel complex",
+    "Several approaches seem possible",
+    "You want more confidence",
+    "You want to understand alternatives",
+  ],
+  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionCtaLabel: "Second opinion decision guide",
+  secondOpinionHref: SECOND_OPINION,
+
+  doctorTitle: "Doctor Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What do we know about my cancer so far?",
+    "What information are we still waiting for?",
+    "What is the goal of the treatment we are discussing?",
+    "What decision comes next — and how urgent is it?",
+  ],
+  doctorGroups: [
+    {
+      heading: "Understanding my situation",
+      questions: [
+        "What does Stage IV mean in my specific case?",
+        "What type of lung cancer do I have?",
+        "What information are we still waiting for?",
+      ],
+    },
+    {
+      heading: "Understanding treatment goals",
+      questions: [
+        "What are we hoping treatment can do?",
+        "How will we know if treatment is helping?",
+        "How do my priorities fit into this plan?",
+      ],
+    },
+    {
+      heading: "Understanding my next step",
+      questions: [
+        "What decision comes next?",
+        "How urgent is this decision?",
+        "Would biomarker results, a trial, or another opinion change the options we discuss?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: First conversations after Stage IV",
   scenarioTag: "Illustrative decision scenario",
   scenarioDisclaimer: "Not a real patient story",
   scenarioBody: [
-    "A person receives a Stage IV lung cancer diagnosis and is presented with treatment options.",
-    "Instead of asking “Which treatment is strongest?”, they ask:",
+    "A person hears “Stage IV” and feels pressure to choose the strongest treatment immediately — or fears that care is ending.",
+    "Instead of solving every future question, they focus on:",
   ],
   scenarioFocus: [
-    "What is the goal of each option?",
-    "What information supports each recommendation?",
-    "What are the trade-offs?",
-    "How does this fit the life I want to maintain?",
+    "What do we know about my cancer so far?",
+    "What is the goal of the options being discussed?",
+    "Is important information still pending?",
+    "What decision comes next — and how urgent is it?",
   ],
   scenarioClose:
-    "By understanding the reasoning behind each option, they are better prepared to discuss decisions with their care team.",
+    "The focus shifts from solving the whole journey to taking a clear next step with the care team.",
 
   nextStepTitle: "Your next step",
   nextStepLead:
-    "If you are making decisions after a Stage IV lung cancer diagnosis:",
+    "You do not need to plan the entire journey today. This week, focus on:",
   nextStepActions: [
-    { label: "Understand your cancer information." },
-    { label: "Clarify your treatment goals." },
+    { label: "Clarify what doctors have confirmed — and what is still pending." },
     {
-      label: "Compare options based on:",
-      examples: ["Expected benefit", "Trade-offs", "Impact on your life"],
+      label:
+        "Ask what the goal of treatment is in your situation, and how your priorities fit.",
     },
     {
-      label: "Ask whether additional expertise or information could help.",
+      label:
+        "Ask whether biomarker information, another opinion, or a trial belongs in the discussion.",
     },
   ],
-  nextStepCtaLabel: "How Should I Compare Lung Cancer Treatment Options?",
-  nextStepHref: TREATMENT_COMPARE,
-  nextStepCtaMeta: "Treatment Comparison Journey",
-  nextStepSecondaryCtaLabel:
-    "Do I Need Biomarker Testing Before Lung Cancer Treatment?",
-  nextStepSecondaryHref: BIOMARKER,
-  nextStepSecondaryMeta: "Biomarker Testing Journey",
+  nextStepCtaLabel: "Biomarker Testing Decision",
+  nextStepHref: BIOMARKER,
+  nextStepCtaMeta: "When more information may change options",
+  nextStepSecondaryCtaLabel: "Treatment Options Decision",
+  nextStepSecondaryHref: TREATMENT_COMPARE,
+  nextStepSecondaryMeta: "When you are ready to compare approaches",
 
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Want goals and daily life in the decision?",
-      question:
-        "How Do I Balance Lung Cancer Treatment and Quality of Life?",
-      cta: "Quality of Life Decision",
-      href: QUALITY_OF_LIFE,
+      title: "Wondering about biomarkers?",
+      question: "Do I need biomarker testing before choosing treatment?",
+      cta: "Biomarker testing",
+      href: BIOMARKER,
     },
     {
-      title: "Need to compare treatments?",
-      question: "How Should I Compare Lung Cancer Treatment Options?",
-      cta: "Treatment Comparison Journey",
+      title: "Ready to compare approaches?",
+      question: "How should I compare lung cancer treatment options?",
+      cta: "Treatment options",
       href: TREATMENT_COMPARE,
     },
     {
-      title: "Need more confidence?",
-      question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      cta: "Second Opinion Journey",
+      title: "Want more confidence?",
+      question: "Should I get a second opinion after lung cancer diagnosis?",
+      cta: "Second opinion",
       href: SECOND_OPINION,
+    },
+    {
+      title: "Want daily life in the decision?",
+      question: "How should quality of life factor into lung cancer decisions?",
+      cta: "Quality of life",
+      href: QUALITY_OF_LIFE,
     },
   ],
 };

@@ -15,6 +15,7 @@ import {
   QUALITY_OF_LIFE_SLUG,
   RECURRENCE_SLUG,
   SECOND_OPINION_SLUG,
+  STAGE_IV_SLUG,
   SURGERY_SLUG,
   TREATMENT_COMPARE_SLUG,
   TREATMENT_PROGRESSION_SLUG,
@@ -41,6 +42,18 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Feel pressure to choose a treatment before you understand your situation",
       "Are unsure what information still matters",
       "Want a clear next step — not the whole journey at once",
+    ],
+  },
+  [STAGE_IV_SLUG]: {
+    plainLanguageGloss:
+      "A Stage IV diagnosis can feel overwhelming — you do not need to answer everything today. First understand your situation, clarify treatment goals with your team, check key information, and prepare for the next conversation.",
+    oneMinuteLabel: "What should I know first?",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Were told you have Stage IV or advanced lung cancer",
+      "Feel lost about what happens next",
+      "Want to understand treatment goals without assuming care is ending",
+      "Need a clear next step — not the whole journey at once",
     ],
   },
   [BIOMARKER_SLUG]: {

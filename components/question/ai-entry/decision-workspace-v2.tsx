@@ -386,6 +386,60 @@ function StepMain({
           </p>
         </div>
       );
+    case "siv-understand":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "siv-goals":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Treatment goals are personal. Your care team can help explain what
+            treatment may achieve, which options fit your situation, and what
+            matters most to you.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Treatments that may slow or reduce cancer growth",
+              "Improving symptoms so daily life is more manageable",
+              "Supporting the activities and independence that matter to you",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Different treatment goals do not mean less care. They mean your care
+            plan is designed around your situation.
+          </p>
+        </div>
+      );
+    case "siv-information":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Doctors usually look at several pieces of information together — not
+            Stage alone. The right decision comes from the whole picture.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Cancer type — what kind of lung cancer do you have?",
+              "Biomarker information — characteristics that may affect options",
+              "Previous treatment — what has already been tried?",
+              "Your health and priorities — what fits your life and goals?",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Ask how urgent the next decision is. If symptoms worsen, seek urgent
+            care rather than waiting for elective comparisons.
+          </p>
+        </div>
+      );
     case "qol-understand":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "qol-symptoms":
