@@ -127,6 +127,51 @@ function ConfidenceCard() {
   );
 }
 
+function TriggerSituationCard({
+  modules,
+  groupIndex,
+}: {
+  modules: AiEntryFlagshipModules;
+  groupIndex: number;
+}) {
+  const group = modules.triggerGroups?.[groupIndex];
+  if (!group) return null;
+  return (
+    <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+      <p className="font-medium text-[var(--ink)]">{group.heading}</p>
+      {group.lead ? <p>{group.lead}</p> : null}
+      <ul className="space-y-1.5">
+        {group.items.map((item) => (
+          <li key={item} className="flex gap-2.5 text-[var(--ink)]">
+            <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function SingleMistakeCard({
+  modules,
+  index,
+}: {
+  modules: AiEntryFlagshipModules;
+  index: number;
+}) {
+  const item = modules.mistakes?.[index];
+  if (!item) return null;
+  return (
+    <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+      <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+      <p>
+        <span className="font-medium text-[var(--ink)]">Why it matters: </span>
+        {item.why}
+      </p>
+    </div>
+  );
+}
+
 function MySituationCard({
   slug,
   modules,
@@ -149,7 +194,7 @@ function MySituationCard({
   );
 }
 
-/** Accordion card bodies for Entry Template v2 paths */
+/** Accordion card bodies for Entry Template v2 paths — one question per card */
 export function DecisionPathCardDetail({
   id,
   slug,
@@ -159,11 +204,26 @@ export function DecisionPathCardDetail({
   slug: string;
   modules: AiEntryFlagshipModules;
 }) {
+  if (id.startsWith("mistake-")) {
+    const index = Number(id.slice("mistake-".length));
+    if (!Number.isNaN(index)) {
+      return <SingleMistakeCard modules={modules} index={index} />;
+    }
+  }
+
   switch (id) {
     case "what-is":
       return <WhatIsBiomarkerTesting />;
     case "look-for":
       return <WhatDoesTestLookFor />;
+    case "situation-new-diagnosis":
+      return <TriggerSituationCard modules={modules} groupIndex={0} />;
+    case "situation-choosing-treatment":
+      return <TriggerSituationCard modules={modules} groupIndex={1} />;
+    case "situation-change-opinion":
+      return <TriggerSituationCard modules={modules} groupIndex={2} />;
+    case "who-needs":
+      return <WhoNeedsTesting modules={modules} />;
     case "my-situation":
       return <MySituationCard slug={slug} modules={modules} />;
     case "targeted":
@@ -173,18 +233,15 @@ export function DecisionPathCardDetail({
     case "which-checked":
       return <WhichBiomarkersCard />;
     case "how-done":
-      return <HowTestingDone modules={modules} focus="all" />;
+      return <HowTestingDone modules={modules} focus="sources" />;
     case "biopsy":
       return <HowTestingDone modules={modules} focus="biopsy" />;
     case "risks":
       return <HowTestingDone modules={modules} focus="risks" />;
     case "turnaround":
-      return (
-        <div className="space-y-4">
-          <ResultsTurnaround modules={modules} />
-          <TimingAnxiety modules={modules} />
-        </div>
-      );
+      return <ResultsTurnaround modules={modules} />;
+    case "delay":
+      return <TimingAnxiety modules={modules} />;
     case "cost":
       return <CostConsiderations modules={modules} />;
     case "confidence":

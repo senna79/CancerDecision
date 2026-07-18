@@ -47,6 +47,7 @@ Cards expand **inline** (accordion). No page jump. No single global question rai
 
 - Main axis is a numbered path on **one canvas surface** — avoid nested white box stacks.  
 - Question cards are quiet disclosures (divider + chevron), not admin panels.  
+- **One card = one question.** Do not bundle situations, timing+urgency, or multiple mistakes into a single hang card.  
 - Doctor checklist is a **takeaway** with Copy.  
 - Practical Reality is its own step (sample / biopsy / risk / time / cost).  
 - “Which biomarkers…” = ask-your-doctor framing — **no gene lists**.  

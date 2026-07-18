@@ -75,9 +75,24 @@ const BIOMARKER_PATH: EntryPathV2 = {
           summary: "Features of your cancer — not a gene encyclopedia.",
         },
         {
-          id: "my-situation",
-          title: "Is this my situation?",
-          summary: "When people usually ask about biomarker testing.",
+          id: "situation-new-diagnosis",
+          title: "I was recently diagnosed — does this apply?",
+          summary: "When testing comes up after a new diagnosis.",
+        },
+        {
+          id: "situation-choosing-treatment",
+          title: "I’m choosing treatment — does this apply?",
+          summary: "When results may change options before locking a plan.",
+        },
+        {
+          id: "situation-change-opinion",
+          title: "My plan changed or I want another opinion",
+          summary: "When updated testing may matter again.",
+        },
+        {
+          id: "who-needs",
+          title: "Does everyone need the same tests?",
+          summary: "Why testing is not identical for every person.",
         },
       ],
     },
@@ -130,7 +145,12 @@ const BIOMARKER_PATH: EntryPathV2 = {
         {
           id: "turnaround",
           title: "How long does testing take?",
-          summary: "Timing, waiting, and what to ask if treatment feels urgent.",
+          summary: "What affects turnaround — without a fixed calendar.",
+        },
+        {
+          id: "delay",
+          title: "What if treatment feels urgent?",
+          summary: "Waiting is not automatically an unsafe delay.",
         },
         {
           id: "cost",
@@ -147,19 +167,29 @@ const BIOMARKER_PATH: EntryPathV2 = {
       main: "checklist",
       cards: [
         {
-          id: "mistakes",
-          title: "Common mistakes",
-          summary: "Pitfalls when thinking about biomarker testing.",
+          id: "mistake-0",
+          title: "Mistake: treating all lung cancers the same",
+          summary: "Why one-size-fits-all thinking can mislead.",
+        },
+        {
+          id: "mistake-1",
+          title: "Mistake: choosing before checking missing info",
+          summary: "Why locking a plan too early can narrow options.",
+        },
+        {
+          id: "mistake-2",
+          title: "Mistake: assuming testing always delays care",
+          summary: "Why waiting for information is not always unsafe delay.",
+        },
+        {
+          id: "mistake-3",
+          title: "Mistake: treating one result as the whole decision",
+          summary: "Why results are one factor among several.",
         },
         {
           id: "scenario",
           title: "An example scenario",
           summary: "How someone might frame this decision.",
-        },
-        {
-          id: "value",
-          title: "When testing may matter most",
-          summary: "Situations where this decision often comes up.",
         },
       ],
     },
