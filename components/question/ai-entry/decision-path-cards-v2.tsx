@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import { getEntryTemplateV2Config } from "@/lib/content/entry-template-v2";
 import { SURGERY_ENTRY_CARDS } from "@/lib/content/surgery-entry-cards";
+import { CLINICAL_TRIAL_ENTRY_CARDS } from "@/lib/content/clinical-trial-entry-cards";
 import { TREATMENT_OPTIONS_ENTRY_CARDS } from "@/lib/content/treatment-options-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
@@ -559,6 +560,113 @@ export function DecisionPathCardDetail({
             </Link>
           </p>
         </div>
+      );
+    case "trial-not-last":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.notLastResort.lead}
+          items={CLINICAL_TRIAL_ENTRY_CARDS.notLastResort.when}
+          close={CLINICAL_TRIAL_ENTRY_CARDS.notLastResort.close}
+        />
+      );
+    case "trial-ask-early":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.askEarly.lead}
+          close={`Ask: “${CLINICAL_TRIAL_ENTRY_CARDS.askEarly.ask}”`}
+        />
+      );
+    case "trial-not-subject":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.notTestSubject.lead}
+          items={CLINICAL_TRIAL_ENTRY_CARDS.notTestSubject.understand}
+          close={CLINICAL_TRIAL_ENTRY_CARDS.notTestSubject.close}
+        />
+      );
+    case "trial-qualify":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.notQualify.lead}
+          items={CLINICAL_TRIAL_ENTRY_CARDS.notQualify.mayInvolve}
+          close={CLINICAL_TRIAL_ENTRY_CARDS.notQualify.close}
+        />
+      );
+    case "trial-biomarkers":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{CLINICAL_TRIAL_ENTRY_CARDS.biomarkers.lead}</p>
+          <p className="font-medium text-[var(--ink)]">
+            Ask: “{CLINICAL_TRIAL_ENTRY_CARDS.biomarkers.ask}”
+          </p>
+          <p>
+            <Link
+              href="/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Biomarker testing decision →
+            </Link>
+          </p>
+        </div>
+      );
+    case "trial-replace":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.replaceCurrent.lead}
+          items={CLINICAL_TRIAL_ENTRY_CARDS.replaceCurrent.depends}
+        />
+      );
+    case "trial-better":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.notAutomaticallyBetter.lead}
+          items={CLINICAL_TRIAL_ENTRY_CARDS.notAutomaticallyBetter.mayOffer}
+          close={CLINICAL_TRIAL_ENTRY_CARDS.notAutomaticallyBetter.close}
+        />
+      );
+    case "trial-risks":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.risks.lead}
+          items={CLINICAL_TRIAL_ENTRY_CARDS.risks.items}
+          close={CLINICAL_TRIAL_ENTRY_CARDS.risks.close}
+        />
+      );
+    case "trial-daily-life":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.dailyLife.lead}
+          close={`Ask: “${CLINICAL_TRIAL_ENTRY_CARDS.dailyLife.ask}”`}
+        />
+      );
+    case "trial-if-not":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.ifNotWorking.lead}
+          ask={CLINICAL_TRIAL_ENTRY_CARDS.ifNotWorking.ask}
+          close={CLINICAL_TRIAL_ENTRY_CARDS.ifNotWorking.close}
+        />
+      );
+    case "trial-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{CLINICAL_TRIAL_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {CLINICAL_TRIAL_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "trial-family":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.family.lead}
+          close={CLINICAL_TRIAL_ENTRY_CARDS.family.close}
+        />
       );
     case "second-opinion": {
       const bridge = modules.bridges?.[0];

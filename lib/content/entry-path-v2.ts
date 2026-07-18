@@ -42,6 +42,8 @@ export const TREATMENT_COMPARE_SLUG =
   "how-to-compare-surgery-and-systemic-therapy-lung-cancer";
 export const SURGERY_SLUG =
   "should-surgery-be-part-of-my-lung-cancer-treatment-plan";
+export const CLINICAL_TRIAL_SLUG =
+  "should-i-consider-a-clinical-trial-for-lung-cancer";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -563,11 +565,142 @@ const SURGERY_PATH: EntryPathV2 = {
   ],
 };
 
+const CLINICAL_TRIAL_PATH: EntryPathV2 = {
+  pathTitle: "Clinical Trial Decision Path",
+  pathSubtitle:
+    "When trials enter the conversation → whether one fits → how to compare → what to ask.",
+  completedLabels: [
+    "When clinical trials become part of the conversation",
+    "Whether a trial fits your situation",
+    "How to compare a trial with standard care",
+    "Questions to ask your doctor",
+  ],
+  practicalPoints: [
+    "Goal — treat cancer, delay progression, relieve symptoms, or improve future options",
+    "What is known versus still uncertain",
+    "Impact — visits, travel, time, and daily life",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why would a clinical trial be mentioned for someone like me?",
+      lead: "Patient question: when do trials become part of the conversation?",
+      main: "trial-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people start hearing about clinical trials.",
+        },
+        {
+          id: "trial-not-last",
+          title: "Are clinical trials only for people who have no other options?",
+          summary: "Why “last resort” is a common misunderstanding.",
+        },
+        {
+          id: "trial-ask-early",
+          title: "Should I ask about clinical trials before starting treatment?",
+          summary: "Why earlier discussion can still help.",
+        },
+        {
+          id: "trial-not-subject",
+          title: "Does joining a clinical trial mean I am a test subject?",
+          summary: "Research with structure — and your choice to participate.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How do I know if a trial is relevant to me?",
+      lead: "Patient question: what makes a trial a fit — or not?",
+      main: "trial-fit",
+      cards: [
+        {
+          id: "trial-qualify",
+          title: "Why might I not qualify for a clinical trial?",
+          summary: "Eligibility protects safety and research accuracy.",
+        },
+        {
+          id: "trial-biomarkers",
+          title: "How do biomarkers affect clinical trials?",
+          summary: "When cancer features open or close trial doors.",
+        },
+        {
+          id: "trial-replace",
+          title: "Can a clinical trial replace my current treatment?",
+          summary: "Alternative, combination, or something else — depending on design.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "How should I compare a trial with my other options?",
+      lead: "Patient question: goal, evidence, and impact — side by side.",
+      main: "trial-compare",
+      cards: [
+        {
+          id: "trial-better",
+          title: "Are clinical trials better than standard treatment?",
+          summary: "Not automatically — fit and uncertainty both matter.",
+        },
+        {
+          id: "trial-risks",
+          title: "What risks should I consider before joining?",
+          summary: "Unknowns, side effects, and extra appointments.",
+        },
+        {
+          id: "trial-daily-life",
+          title: "Will a clinical trial affect my daily life?",
+          summary: "Visits, travel, and what a normal week may look like.",
+        },
+        {
+          id: "trial-if-not",
+          title: "What happens if the trial does not work?",
+          summary: "Options afterward — and whether you can stop.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I ask before deciding?",
+      lead: "Patient question: how do I prepare for the trial conversation?",
+      main: "checklist",
+      cards: [
+        {
+          id: "trial-mistakes",
+          title: "What mistakes do patients often make when considering trials?",
+          summary: "Timing, “last resort,” and chasing “new.”",
+        },
+        {
+          id: "trial-family",
+          title: "Should my family be involved in this decision?",
+          summary: "Travel, support, and uncertainty are shared decisions.",
+        },
+        {
+          id: "second-opinion",
+          title: "Should I get a second opinion about a clinical trial?",
+          summary: "When another view may help before you decide.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might evaluate a trial option.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
   [TREATMENT_COMPARE_SLUG]: TREATMENT_COMPARE_PATH,
   [SURGERY_SLUG]: SURGERY_PATH,
+  [CLINICAL_TRIAL_SLUG]: CLINICAL_TRIAL_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {

@@ -9,6 +9,7 @@
 
 import {
   BIOMARKER_SLUG,
+  CLINICAL_TRIAL_SLUG,
   SECOND_OPINION_SLUG,
   SURGERY_SLUG,
   TREATMENT_COMPARE_SLUG,
@@ -71,6 +72,18 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "You are deciding between different treatment approaches",
       "You want to understand whether surgery could help",
       "You are preparing for a major treatment decision",
+    ],
+  },
+  [CLINICAL_TRIAL_SLUG]: {
+    plainLanguageGloss:
+      "A clinical trial studies a possible new approach or a new way of using existing treatments — worth discussing at different points in care, not only as a last resort.",
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Heard a clinical trial mentioned as a possible option",
+      "Are comparing treatments and wonder whether a trial belongs in the discussion",
+      "Want to ask about trials before locking a first plan",
+      "Are facing a treatment change and want to understand research options",
     ],
   },
 };

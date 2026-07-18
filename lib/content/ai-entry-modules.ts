@@ -2169,25 +2169,24 @@ export const CLINICAL_TRIAL_FLAGSHIP: AiEntryFlagshipModules = {
     "Whether a clinical trial should be part of your treatment discussion",
   exploring: "Clinical Trial Decision",
   subtitle:
-    "Understand when clinical trials may be worth discussing and how to compare them with other treatment options.",
+    "A clinical trial is another option to evaluate — not automatically better than standard care, and not only for people who have run out of options.",
   relatedDecisions: [
-    { label: "Stage IV Lung Cancer", href: STAGE_IV },
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
     { label: "Biomarker Testing", href: BIOMARKER },
+    { label: "Treatment Changes", href: TREATMENT_PROGRESSION },
     { label: "Second Opinion", href: SECOND_OPINION },
-    { label: "Care Center Selection", href: CARE_CENTER },
   ],
   journeyLabel: "Lung Cancer Decision Journey",
   journeyPath: [
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
-    { label: "Stage IV Decision", href: STAGE_IV },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
     { label: "Clinical Trial", current: true },
+    { label: "Second Opinion", href: SECOND_OPINION },
   ],
 
   triggersTitle: "You may be considering a clinical trial if:",
   triggerGroups: [
     {
-      heading: "You were recently diagnosed",
+      heading: "You are choosing an initial plan",
       lead: "You may wonder:",
       items: [
         "Should I ask about trials before starting treatment?",
@@ -2198,227 +2197,84 @@ export const CLINICAL_TRIAL_FLAGSHIP: AiEntryFlagshipModules = {
       heading: "You are comparing treatment options",
       lead: "You may want to understand:",
       items: [
-        "Should trials be considered alongside standard treatments?",
-        "How do they compare with other choices?",
+        "Should a trial sit alongside standard options?",
+        "How do they compare for my goals?",
       ],
     },
     {
-      heading: "Your current treatment is changing",
+      heading: "Your current options are limited or changing",
       lead: "You may ask:",
       items: [
-        "Are there additional options?",
-        "Should I explore trials before making my next decision?",
+        "Are there additional options to discuss?",
+        "Should I explore trials before the next decision?",
       ],
     },
     {
-      heading: "Your cancer situation is complex",
-      lead: "Examples:",
+      heading: "A new approach may match your cancer features",
+      lead: "You may be hearing about:",
       items: [
-        "Advanced disease",
-        "Rare cancer characteristics",
-        "Multiple possible approaches",
+        "Biomarker-selected studies",
+        "New combinations or sequences",
       ],
     },
   ],
 
-  whyTitle: "A clinical trial is a decision option, not a last resort",
-  whyLead: "Many patients hear “clinical trial” and think:",
+  whyTitle: "Why would a clinical trial be mentioned for someone like me?",
+  whyLead:
+    "Clinical trials are considered when researchers are studying a treatment approach that may help people with certain situations.",
   whyBody: [
-    "“Does this mean my regular treatment has failed?” or “Am I choosing something uncertain instead of proven care?”",
-    "These concerns are understandable.",
-    "However, clinical trials can be considered at different points in the cancer journey.",
+    "A clinical trial may be discussed when choosing an initial plan, when current options are limited, when cancer changes over time, or when a new approach matches specific cancer characteristics.",
+    "A clinical trial is not only for people who have “run out of options.”",
   ],
   whyQuestions: [],
-  whyNotLabel: "The important decision is not:",
-  whyNotQuestion: "Should I join a trial?",
+  whyNotLabel: "The key question is not:",
+  whyNotQuestion: "Should I join a clinical trial?",
   whyBetterLabel: "The better question is:",
-  whyBetterQuestion: "Could a clinical trial be a reasonable option for my situation?",
-  whyClose: [],
-
-  goalFrameworkTitle:
-    "Clinical trials may be discussed at different decision points",
-  goalFrameworkLead:
-    "The right timing depends on your situation. There is value in understanding options before you urgently need them.",
-  goalFrameworkBlocks: [
-    {
-      title: "Before starting treatment",
-      questionsIntro: "Questions:",
-      questions: [
-        "Are there relevant trials for my situation?",
-        "Would knowing about them change my decision?",
-      ],
-    },
-    {
-      title: "During treatment",
-      questionsIntro: "Questions:",
-      questions: [
-        "Is my current treatment meeting its goals?",
-        "Are there other approaches worth discussing?",
-      ],
-    },
-    {
-      title: "When treatment options change",
-      questionsIntro: "Questions:",
-      questions: [
-        "What options exist now?",
-        "Should clinical trials be part of the next discussion?",
-      ],
-    },
+  whyBetterQuestion:
+    "Is there a clinical trial that fits my situation and is worth discussing with my care team?",
+  whyClose: [
+    "The right timing to discuss trials depends on your journey. Earlier discussion can help you understand whether any options may exist.",
   ],
 
-  affectTitle: "A clinical trial studies a specific question",
-  affectBlocks: [
-    {
-      title: "New treatment approaches",
-      body: "Researchers may study new therapies or combinations.",
-    },
-    {
-      title: "Different treatment strategies",
-      body: "Some studies explore new ways to use existing treatments.",
-    },
-    {
-      title: "New ways to understand or manage cancer",
-      body: "Some studies focus on diagnosis, monitoring, or supportive care.",
-    },
+  doesNotDecideTitle: "How do I know if a trial is relevant to me?",
+  doesNotDecideLead:
+    "Clinical trials have specific requirements. Your care team may consider lung cancer type, stage, biomarker results, previous treatments, overall health, and treatment goals.",
+  doesNotDecideItems: [
+    "A trial that is valuable for one person may not be appropriate for another",
+    "Finding a trial is not about finding the newest option",
+    "It is about finding a trial that matches your situation",
   ],
-  affectClose:
-    "The key question is: “What is this trial trying to learn, and how does it relate to my decision?”",
+  doesNotDecideNotes: [
+    "Not qualifying for one trial does not mean there are no other options.",
+  ],
+  doesNotDecideClose:
+    "Open the cards beside this step for eligibility, biomarkers, and whether a trial replaces or combines with standard care.",
 
-  evaluateTitle:
-    "Evaluate a clinical trial using the same framework as any treatment option",
-  evaluateLead:
-    "How to compare a clinical trial with other options.",
-  evaluateBlocks: [
-    {
-      title: "1. What decision is this trial trying to improve?",
-      intro: "Ask:",
-      items: [
-        "What problem is this study addressing?",
-        "Why is this option being considered?",
-      ],
-    },
-    {
-      title: "2. What is known and unknown?",
-      intro: "Ask:",
-      items: [
-        "What evidence already exists?",
-        "What is still uncertain?",
-      ],
-    },
-    {
-      title: "3. What are the possible benefits?",
-      intro: "Ask:",
-      items: [
-        "What potential benefit are researchers hoping for?",
-        "How realistic is that benefit for my situation?",
-      ],
-    },
-    {
-      title: "4. What are the commitments and risks?",
-      intro: "Ask:",
-      items: [
-        "What visits are required?",
-        "What monitoring is involved?",
-        "What side effects or uncertainties exist?",
-      ],
-    },
-    {
-      title: "5. How does it compare with alternatives?",
-      intro: "Ask:",
-      items: [
-        "What other options do I have?",
-        "How does this choice fit my goals?",
-      ],
-    },
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may help when:",
+  secondOpinionWhen: [
+    "The trial decision is complex",
+    "Multiple options exist",
+    "You want more confidence before deciding",
   ],
+  secondOpinionClose:
+    "The goal is better understanding — not delaying care unnecessarily.",
+  secondOpinionCtaLabel: "Second opinion decision guide",
+  secondOpinionHref: SECOND_OPINION,
 
-  faqTitle: "Common questions patients ask",
-  faqItems: [
-    {
-      question: "Are clinical trials only for people with no options?",
-      answer: [
-        "No. Clinical trials may be discussed at different points in the cancer journey.",
-        "The important question is whether a specific trial matches your situation.",
-      ],
-    },
-    {
-      question:
-        "Does joining a clinical trial mean I receive better treatment?",
-      answer: [
-        "Not necessarily. A clinical trial provides access to an approach being studied.",
-        "It should be evaluated by understanding potential benefits, risks, and alternatives.",
-      ],
-    },
-    {
-      question: "Should I wait until treatment stops working?",
-      answer: [
-        "Not always. Some trials may be considered earlier depending on your situation.",
-        "Discussing options early may help you understand what choices exist.",
-      ],
-    },
-  ],
-
-  infoGapTitle: "Better decisions require the right information",
-  infoGapKnownIntro: "Useful information may include:",
-  infoGapKnown: [
-    "Cancer type",
-    "Cancer stage",
-    "Biomarker results",
-    "Previous treatments",
-    "Current treatment goals",
-    "Medical records",
-  ],
-  infoGapClose: [
-    "Having complete information helps determine whether a trial is relevant.",
-  ],
-
-  journeyLinksTitle: "Clinical trial decisions connect with:",
-  journeyLinksLead:
-    "Trials are rarely a standalone decision — they sit inside your broader lung cancer journey.",
-  journeyLinks: [
-    {
-      title: "Biomarker Testing",
-      body: "Some trials may require specific cancer information.",
-      href: BIOMARKER,
-      cta: "Explore Biomarker Testing Journey",
-    },
-    {
-      title: "Treatment Comparison",
-      body: "Trials should be compared with other available options.",
-      href: TREATMENT_COMPARE,
-      cta: "Explore Treatment Comparison Journey",
-    },
-    {
-      title: "Second Opinion",
-      body: "Another specialist may help review whether trials are relevant.",
-      href: SECOND_OPINION,
-      cta: "Explore Second Opinion Journey",
-    },
-    {
-      title: "Care Center Selection",
-      body: "Some centers have access to research programs.",
-      href: CARE_CENTER,
-      cta: "Explore Care Center Decision",
-    },
-  ],
-
-  mistakesTitle: "Common mistakes when thinking about clinical trials",
+  mistakesTitle: "Common mistakes when considering clinical trials",
   mistakes: [
     {
-      mistake: "Thinking clinical trials are only a last option",
-      why: "Some patients discuss trials before other decisions are finalized.",
+      mistake: "Waiting too long to ask",
+      why: "Some opportunities require early discussion.",
     },
     {
-      mistake: "Assuming a clinical trial is automatically better",
-      why: "A trial should be compared with available alternatives.",
+      mistake: "Assuming trials are only for advanced cancer",
+      why: "Trials exist at different stages of the journey.",
     },
     {
-      mistake: "Joining without understanding the purpose",
-      why: "Every trial has a specific research question.",
-    },
-    {
-      mistake: "Ignoring practical requirements",
-      why: "Travel, visits, monitoring, and time commitments affect the decision.",
+      mistake: "Choosing based only on “new”",
+      why: "New does not always mean appropriate for you.",
     },
   ],
 
@@ -2433,58 +2289,83 @@ export const CLINICAL_TRIAL_FLAGSHIP: AiEntryFlagshipModules = {
     "What question is this trial trying to answer?",
     "How does it compare with my current options?",
     "What are the possible benefits and uncertainties?",
-    "Does it fit my goals?",
+    "Does it fit my goals and daily life?",
   ],
   scenarioClose:
-    "The trial becomes one option to evaluate, not a decision made without comparison.",
+    "The trial becomes one option to evaluate — not a decision made without comparison.",
+
+  doctorTitle: "Doctor Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What question is this trial trying to answer?",
+    "Why do you think I may be a candidate?",
+    "How does this compare with standard treatment?",
+    "How might this affect my daily life?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About the trial",
+      questions: [
+        "What question is this trial trying to answer?",
+        "Why do you think I may be a candidate?",
+        "How does this compare with standard treatment?",
+      ],
+    },
+    {
+      heading: "About benefits and risks",
+      questions: [
+        "What is known about this treatment so far?",
+        "What are the possible benefits?",
+        "What risks should I understand?",
+      ],
+    },
+    {
+      heading: "About my life",
+      questions: [
+        "How often would I need to visit?",
+        "Would travel be required?",
+        "How might this affect my daily life?",
+      ],
+    },
+  ],
 
   nextStepTitle: "Your next step",
   nextStepLead: "If you are considering a clinical trial:",
   nextStepActions: [
-    { label: "Understand your current treatment options." },
+    { label: "Ask whether any trials fit your type, stage, and prior treatment." },
+    { label: "Compare the trial with standard options — goal, evidence, and impact." },
     {
-      label: "Ask:",
-      examples: ["Are there clinical trials relevant to my situation?"],
+      label: "Clarify practical requirements:",
+      examples: ["Visits", "Travel", "What happens if it does not work"],
     },
-    {
-      label: "Compare:",
-      examples: [
-        "Purpose",
-        "Evidence",
-        "Potential benefits",
-        "Risks",
-        "Practical requirements",
-      ],
-    },
-    { label: "Discuss whether the option fits your goals." },
   ],
-  nextStepCtaLabel: "How Should I Compare Lung Cancer Treatment Options?",
+  nextStepCtaLabel: "Compare Treatment Options",
   nextStepHref: TREATMENT_COMPARE,
-  nextStepCtaMeta: "Treatment Comparison Journey",
-  nextStepSecondaryCtaLabel:
-    "Do I Need Biomarker Testing Before Choosing Lung Cancer Treatment?",
+  nextStepCtaMeta: "Treatment Options Decision",
+  nextStepSecondaryCtaLabel: "Biomarker Testing Decision",
   nextStepSecondaryHref: BIOMARKER,
-  nextStepSecondaryMeta: "Biomarker Testing Journey",
+  nextStepSecondaryMeta: "Could results affect trial options?",
 
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Need to compare treatment choices?",
-      question: "How Should I Compare Lung Cancer Treatment Options?",
-      cta: "Treatment Comparison Journey",
+      title: "Comparing treatments?",
+      question: "How should I compare lung cancer treatment options?",
+      cta: "Treatment options",
       href: TREATMENT_COMPARE,
     },
     {
-      title: "Need more cancer information?",
-      question: "Do I Need Biomarker Testing Before Choosing Lung Cancer Treatment?",
-      cta: "Biomarker Testing Journey",
+      title: "Need more information first?",
+      question: "Do I need biomarker testing before lung cancer treatment?",
+      cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
-      title: "Need another perspective?",
-      question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      cta: "Second Opinion Journey",
-      href: SECOND_OPINION,
+      title: "Facing a treatment change?",
+      question:
+        "What are my options if lung cancer treatment is no longer working?",
+      cta: "Treatment changes",
+      href: TREATMENT_PROGRESSION,
     },
   ],
 };

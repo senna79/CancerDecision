@@ -280,6 +280,55 @@ function StepMain({
           </p>
         </div>
       );
+    case "trial-understand":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "trial-fit":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Clinical trials have specific requirements. Your care team may
+            consider lung cancer type, stage, biomarker results, previous
+            treatments, overall health, and treatment goals.
+          </p>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Finding a trial is not about finding the newest option. It is about
+            finding a trial that matches your situation.
+          </p>
+        </div>
+      );
+    case "trial-compare":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            A clinical trial should be evaluated like any other treatment
+            decision — with both opportunity and uncertainty on the table.
+          </p>
+          <ul className="space-y-2 text-[var(--ink)]">
+            <li>
+              <span className="font-medium">Goal</span>
+              <span className="text-[var(--ink-soft)]">
+                {" "}
+                — treat cancer, delay progression, relieve symptoms, or improve
+                future options?
+              </span>
+            </li>
+            <li>
+              <span className="font-medium">What is known</span>
+              <span className="text-[var(--ink-soft)]">
+                {" "}
+                — what results exist, and what is still uncertain?
+              </span>
+            </li>
+            <li>
+              <span className="font-medium">Impact</span>
+              <span className="text-[var(--ink-soft)]">
+                {" "}
+                — side effects, visits, travel, and time commitment?
+              </span>
+            </li>
+          </ul>
+        </div>
+      );
     case "treatment-compare":
       return (
         <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
