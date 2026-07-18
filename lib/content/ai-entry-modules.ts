@@ -1241,24 +1241,24 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
   nextStepHref: TREATMENT_COMPARE,
   nextStepCtaMeta: "Treatment Comparison Decision Center",
 
-  relatedPathsTitle: "Continue your lung cancer decision journey",
+  relatedPathsTitle: "Related decisions",
   relatedPaths: [
     {
       title: "Recently diagnosed?",
       question: "What should I do first after a lung cancer diagnosis?",
-      cta: "New Diagnosis Journey",
+      cta: "New diagnosis next steps",
       href: NEW_DIAGNOSIS,
     },
     {
       title: "Unsure about your current plan?",
       question: "Should I get a second opinion after lung cancer diagnosis?",
-      cta: "Second Opinion Journey",
+      cta: "Second opinion",
       href: SECOND_OPINION,
     },
     {
       title: "Comparing treatments?",
       question: "How should I compare lung cancer treatment options?",
-      cta: "Treatment Comparison Journey",
+      cta: "Treatment options",
       href: TREATMENT_COMPARE,
     },
   ],

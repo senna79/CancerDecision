@@ -58,6 +58,18 @@ Cards expand **inline** (accordion). No page jump. No single global question rai
 | Compact Direct Answer | `CitationBlock` `compact` on v2 pages |
 | Sample content | `BIOMARKER_FLAGSHIP` in `lib/content/ai-entry-modules.ts` |
 
+## Page ending (after Step 4)
+
+Secondary only — do not compete with the path:
+
+1. Light closure — “You've completed this decision step”  
+2. **One** next-step CTA  
+3. Related decisions — ≤3 text links  
+4. **One** journey strip — where you are + next decisions + Full map  
+5. Sources & Review — **collapsed by default**
+
+Do not mount both `JourneyYouAreHere` and `DecisionJourneyNav` on v2 pages.
+
 ## Patient pass criteria
 
 After the path only (without opening cards):

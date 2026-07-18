@@ -13,6 +13,8 @@ type SourcesAndReviewProps = TrustReviewMeta & {
   /** Override default lung guidance org list (e.g. other cancers later) */
   guidanceOrganizations?: GuidanceOrganization[];
   showGuidanceFamilies?: boolean;
+  /** Collapse detail so trust stays out of the main reading flow */
+  defaultCollapsed?: boolean;
 };
 
 /**
@@ -26,16 +28,10 @@ export function SourcesAndReview({
   sources = [],
   guidanceOrganizations = LUNG_GUIDANCE_ORGANIZATIONS,
   showGuidanceFamilies = true,
+  defaultCollapsed = false,
 }: SourcesAndReviewProps) {
-  return (
-    <aside
-      id="sources-and-review"
-      className="mt-12 scroll-mt-24 rounded-lg border border-[var(--line)] bg-[var(--paper-deep)]/80 p-5 md:p-6"
-    >
-      <h2 className="font-heading text-xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-2xl">
-        Sources &amp; Review Information
-      </h2>
-
+  const detail = (
+    <>
       {showGuidanceFamilies ? (
         <div className="mt-5">
           <h3 className="font-heading text-sm font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
@@ -166,6 +162,50 @@ export function SourcesAndReview({
           for how content is prepared.
         </p>
       </div>
+    </>
+  );
+
+  if (defaultCollapsed) {
+    return (
+      <aside
+        id="sources-and-review"
+        className="mt-10 scroll-mt-24 rounded-lg border border-[var(--line)] bg-[var(--paper-deep)]/60 px-4 py-4 md:px-5"
+      >
+        <details className="group">
+          <summary className="cursor-pointer list-none [&::-webkit-details-marker]:hidden">
+            <div className="flex flex-wrap items-start justify-between gap-3">
+              <div>
+                <h2 className="font-heading text-lg font-semibold tracking-[-0.02em] text-[var(--ink)]">
+                  Sources &amp; Review Information
+                </h2>
+                <p className="mt-1 text-sm text-[var(--muted)]">
+                  Reviewed sources and medical references supporting this
+                  decision guide.
+                </p>
+              </div>
+              <span className="shrink-0 rounded-md border border-[var(--accent)]/30 bg-white/80 px-3 py-1.5 text-sm font-semibold text-[var(--accent)] group-open:hidden">
+                View sources
+              </span>
+              <span className="hidden shrink-0 text-sm font-semibold text-[var(--muted)] group-open:inline">
+                Hide sources
+              </span>
+            </div>
+          </summary>
+          <div className="mt-2">{detail}</div>
+        </details>
+      </aside>
+    );
+  }
+
+  return (
+    <aside
+      id="sources-and-review"
+      className="mt-12 scroll-mt-24 rounded-lg border border-[var(--line)] bg-[var(--paper-deep)]/80 p-5 md:p-6"
+    >
+      <h2 className="font-heading text-xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-2xl">
+        Sources &amp; Review Information
+      </h2>
+      {detail}
     </aside>
   );
 }

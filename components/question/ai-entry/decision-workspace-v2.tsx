@@ -12,14 +12,12 @@ import { DoesNotDecide } from "./does-not-decide";
 import { HowTestingDone } from "./how-testing-done";
 import { IllustrativeScenario } from "./illustrative-scenario";
 import { InformationGap } from "./information-gap";
-import { RelatedDecisionPaths } from "./related-decision-paths";
 import { ResultsTurnaround } from "./results-turnaround";
 import { TimingAnxiety } from "./timing-anxiety";
 import { ValueSituations } from "./value-situations";
 import { WhoNeedsTesting } from "./who-needs-testing";
 import { WhoThisIsFor } from "./who-this-is-for";
 import { WhyDecisionMatters } from "./why-decision-matters";
-import { YourNextStep } from "./your-next-step";
 
 type QuestionCard = {
   id: string;
@@ -460,40 +458,33 @@ function StepMain({
         </div>
       );
     case "conversation":
-      return (
-        <div className="space-y-4">
-          {modules.doctorLeaveTitle && modules.doctorLeaveItems?.length ? (
-            <div className="rounded-md border border-amber-700/20 bg-amber-50/70 px-4 py-4">
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">
-                Doctor Conversation Checklist
-              </p>
-              <p className="mt-1 text-sm font-semibold text-[var(--ink)]">
-                {modules.doctorLeaveTitle}
-              </p>
-              <ul className="mt-3 space-y-2 text-sm text-[var(--ink-soft)]">
-                {modules.doctorLeaveItems.map((item) => (
-                  <li key={item} className="flex gap-2">
-                    <span className="text-[var(--accent)]" aria-hidden>
-                      ☐
-                    </span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <button
-                type="button"
-                onClick={onOpenDoctor}
-                className="mt-3 text-sm font-semibold text-[var(--accent)] hover:underline"
-              >
-                Open full doctor checklist →
-              </button>
-            </div>
-          ) : null}
-          <div className="[&>#your-next-step]:mt-2">
-            <YourNextStep modules={modules} />
-          </div>
+      return modules.doctorLeaveTitle && modules.doctorLeaveItems?.length ? (
+        <div className="rounded-md border border-amber-700/20 bg-amber-50/70 px-4 py-4">
+          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">
+            Doctor Conversation Checklist
+          </p>
+          <p className="mt-1 text-sm font-semibold text-[var(--ink)]">
+            {modules.doctorLeaveTitle}
+          </p>
+          <ul className="mt-3 space-y-2 text-sm text-[var(--ink-soft)]">
+            {modules.doctorLeaveItems.map((item) => (
+              <li key={item} className="flex gap-2">
+                <span className="text-[var(--accent)]" aria-hidden>
+                  ☐
+                </span>
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <button
+            type="button"
+            onClick={onOpenDoctor}
+            className="mt-3 text-sm font-semibold text-[var(--accent)] hover:underline"
+          >
+            Open full doctor checklist →
+          </button>
         </div>
-      );
+      ) : null;
     default:
       return null;
   }
@@ -580,8 +571,6 @@ export function DecisionWorkspaceV2({
           );
         })}
       </ol>
-
-      <RelatedDecisionPaths modules={modules} />
     </div>
   );
 }

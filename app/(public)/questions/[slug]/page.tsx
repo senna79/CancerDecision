@@ -11,7 +11,7 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { AiEntryFlagshipBody } from "@/components/question/ai-entry/flagship-body";
 import { AiEntryFlagshipBodyV2 } from "@/components/question/ai-entry/flagship-body-v2";
 import { DecisionContext } from "@/components/question/ai-entry/decision-context";
-import { JourneyYouAreHere } from "@/components/question/ai-entry/journey-you-are-here";
+import { EntryPageEndingV2 } from "@/components/question/ai-entry/entry-page-ending-v2";
 import { AiEntrySections } from "@/components/question/ai-entry-sections";
 import { CitationBlock } from "@/components/question/citation-block";
 import { usesEntryTemplateV2 } from "@/lib/content/entry-template-v2";
@@ -315,13 +315,13 @@ export default async function QuestionPage({
           ) : (
             <AiEntryFlagshipBody modules={flagship} />
           )}
-          {flagship && entryV2 ? (
-            <div className="mt-8">
-              <JourneyYouAreHere
-                modules={flagship}
-                mapHref={cancer ? `/cancers/${cancer.slug}#decision-map` : null}
-              />
-            </div>
+          {entryV2 ? (
+            <EntryPageEndingV2
+              modules={flagship}
+              graphNode={graphNode}
+              cancerSlug={cancer?.slug}
+              cancerName={cancer?.name}
+            />
           ) : null}
           {journey && cancer && !entryV2 ? (
             <JourneyStepNav journey={journey} cancerSlug={cancer.slug} />
@@ -336,7 +336,7 @@ export default async function QuestionPage({
               </Link>
             </div>
           ) : null}
-          {entryV2 && graphNode && cancer ? (
+          {!entryV2 && flagship && graphNode && cancer ? (
             <div className="mt-6">
               <DecisionJourneyNav
                 node={graphNode}
@@ -348,6 +348,7 @@ export default async function QuestionPage({
           <SourcesAndReview
             reviewedAt={question.content_reviewed_at}
             sources={sources}
+            defaultCollapsed={entryV2}
           />
         </>
       ) : (
