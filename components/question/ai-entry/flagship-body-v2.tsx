@@ -7,8 +7,10 @@ import { DecisionWorkspaceV2 } from "./decision-workspace-v2";
  */
 export function AiEntryFlagshipBodyV2({
   modules,
+  slug,
 }: {
   modules: AiEntryFlagshipModules;
+  slug: string;
 }) {
-  return <DecisionWorkspaceV2 modules={modules} />;
+  return <DecisionWorkspaceV2 modules={modules} slug={slug} />;
 }

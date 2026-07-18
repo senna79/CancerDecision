@@ -817,6 +817,13 @@ export const SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
   },
 
   doctorTitle: "Questions you may want to discuss with a specialist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What specifically should this second opinion clarify?",
+    "Do I have the records I need for another review?",
+    "How urgent is starting treatment versus waiting for another perspective?",
+    "Who would you recommend for another review — and why?",
+  ],
   doctorGroups: [
     {
       heading: "Diagnosis",
@@ -880,25 +887,25 @@ export const SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
   nextStepHref: TREATMENT_COMPARE,
   nextStepCtaMeta: "Treatment Comparison Decision Center",
 
-  relatedPathsTitle: "Continue your lung cancer decision journey",
+  relatedPathsTitle: "Related decisions",
   relatedPaths: [
     {
       title: "Newly diagnosed?",
       question: "What should I do first after a lung cancer diagnosis?",
-      cta: "New Diagnosis Journey",
+      cta: "New diagnosis next steps",
       href: NEW_DIAGNOSIS,
     },
     {
       title: "Need to understand testing?",
       question: "Could biomarker testing change my treatment options?",
-      cta: "Biomarker Testing Journey",
+      cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
-      title: "Considering different care centers?",
-      question: "How do I choose where to receive cancer care?",
-      cta: "Care Center Decision",
-      href: CARE_MAP,
+      title: "Comparing treatments?",
+      question: "How should I compare lung cancer treatment options?",
+      cta: "Treatment options",
+      href: TREATMENT_COMPARE,
     },
   ],
 };
@@ -1530,6 +1537,42 @@ export const TREATMENT_COMPARISON_FLAGSHIP: AiEntryFlagshipModules = {
   scenarioClose:
     "By comparing the reasoning behind each option, they are better prepared for a discussion with their care team.",
 
+  doctorTitle: "Questions that help compare treatment options",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What are my reasonable options right now?",
+    "What is the goal of each option?",
+    "What are the main trade-offs I should understand?",
+    "What information is still missing before I decide?",
+  ],
+  doctorGroups: [
+    {
+      heading: "Before comparing",
+      questions: [
+        "Is my diagnosis, stage, and biomarker information complete for this decision?",
+        "What are the reasonable options for my situation?",
+        "What is each option trying to achieve?",
+      ],
+    },
+    {
+      heading: "Comparing options",
+      questions: [
+        "What benefit is expected from each approach?",
+        "What are the main risks and side effects?",
+        "What time, visits, and recovery burden should I expect?",
+        "How does each option fit my priorities?",
+      ],
+    },
+    {
+      heading: "Before deciding",
+      questions: [
+        "What happens if we wait for more information?",
+        "Would a second opinion help before locking a plan?",
+        "What is the next step either way?",
+      ],
+    },
+  ],
+
   nextStepTitle: "Your next step",
   nextStepLead: "Before choosing a treatment approach:",
   nextStepActions: [
@@ -1556,24 +1599,24 @@ export const TREATMENT_COMPARISON_FLAGSHIP: AiEntryFlagshipModules = {
   nextStepSecondaryHref: SECOND_OPINION,
   nextStepSecondaryMeta: "Second Opinion Journey",
 
-  relatedPathsTitle: "Continue your lung cancer decision journey",
+  relatedPathsTitle: "Related decisions",
   relatedPaths: [
     {
       title: "Wondering about surgery?",
       question: "Should Surgery Be Part of My Lung Cancer Treatment Plan?",
-      cta: "Surgery Decision",
+      cta: "Surgery decision",
       href: SURGERY,
     },
     {
       title: "Need to understand missing information?",
       question: "Do I Need Biomarker Testing Before Lung Cancer Treatment?",
-      cta: "Biomarker Testing Journey",
+      cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
       title: "Need more confidence?",
       question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      cta: "Second Opinion Journey",
+      cta: "Second opinion",
       href: SECOND_OPINION,
     },
   ],

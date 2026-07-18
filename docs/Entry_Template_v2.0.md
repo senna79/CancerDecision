@@ -1,6 +1,6 @@
 # Entry Template v2.0 — Patient Decision Workspace
 
-**Status:** Active sample on Biomarker Testing  
+**Status:** Active on Biomarker Testing, Second Opinion, and Treatment Comparison  
 **Goal:** 30 seconds to know this page fits · ~3 minutes on the Decision Path · depth only when chosen.
 
 ## Hero (above the path)
@@ -54,12 +54,13 @@ Cards expand **inline** (accordion). No page jump. No single global question rai
 
 | Concern | Code |
 |--------|------|
-| Opt-in + audience (for Step 1 card) | `lib/content/entry-template-v2.ts` |
+| Opt-in + audience (Step 1 card) | `lib/content/entry-template-v2.ts` |
+| Path configs (per Entry) | `lib/content/entry-path-v2.ts` |
+| Brand hero | `components/question/ai-entry/entry-hero-v2.tsx` |
 | Workspace shell | `components/question/ai-entry/decision-workspace-v2.tsx` |
+| Card bodies | `components/question/ai-entry/decision-path-cards-v2.tsx` |
 | Doctor checklist takeaway | `components/question/ai-entry/doctor-checklist-takeaway.tsx` |
-| Body entry | `components/question/ai-entry/flagship-body-v2.tsx` |
 | Compact Direct Answer + trust line | `CitationBlock` `compact` on v2 pages |
-| Sample content | `BIOMARKER_FLAGSHIP` in `lib/content/ai-entry-modules.ts` |
 
 ## Page ending (after Step 4)
 

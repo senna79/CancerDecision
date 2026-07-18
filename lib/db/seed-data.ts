@@ -423,7 +423,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "should-i-get-second-opinion-after-lung-cancer-diagnosis",
       category: "second_opinion",
       summary:
-        "A second opinion may be worth considering after a lung cancer diagnosis, especially when you are facing a major treatment decision, your diagnosis is complex, or you want to better understand your available options.\n\nA second opinion is not about proving that your first doctor is wrong. It can help confirm important information, review treatment choices, understand alternatives, and make a decision with greater confidence.\n\nWhether a second opinion is useful depends on your specific situation, including your cancer type, stage, available treatments, and personal goals.",
+        "A second opinion is another specialist review of your diagnosis and options. It is often about confidence and clarity — not about proving your first doctor wrong.\n\nIt may confirm a plan, surface alternatives, or show where more information is still needed.",
       why: "A second opinion is about confidence, not disagreement. After a lung cancer diagnosis, patients often face decisions about diagnosis, stage, treatment options, and where to receive care — and may want another perspective before a major choice.",
       factors: [
         "Whether the diagnosis and stage information feel complete",
@@ -475,7 +475,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "how-to-compare-surgery-and-systemic-therapy-lung-cancer",
       category: "treatment",
       summary:
-        "Comparing lung cancer treatment options is not about finding a single “best” treatment. The right choice depends on understanding the goal of each option, the expected benefits, possible trade-offs, and how each approach fits your specific cancer situation and personal priorities.\n\nTreatment decisions may depend on factors such as cancer type, stage, biomarker information, overall health, and your goals for treatment.\n\nBefore making a decision, ask your care team: “What are my options, why are they recommended, and what should I understand about the differences between them?”",
+        "Comparing lung cancer treatment options is not about finding one “best” treatment. Compare each option by goal, expected benefit, trade-offs, what it requires, and how it fits your priorities.\n\nIt does not replace a conversation with your care team.",
       why: "Treatment decisions are choices, not just recommendations. A more useful question than “which treatment is best?” is “which option makes the most sense for my situation?”",
       factors: [
         "What each option is trying to achieve",
@@ -1359,7 +1359,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     3: {
       summary:
-        "Comparing lung cancer treatment options is not about finding a single “best” treatment. The right choice depends on understanding the goal of each option, the expected benefits, possible trade-offs, and how each approach fits your specific cancer situation and personal priorities.\n\nTreatment decisions may depend on factors such as cancer type, stage, biomarker information, overall health, and your goals for treatment.\n\nBefore making a decision, ask your care team: “What are my options, why are they recommended, and what should I understand about the differences between them?”",
+        "Comparing lung cancer treatment options is not about finding one “best” treatment. Compare each option by goal, expected benefit, trade-offs, what it requires, and how it fits your priorities.\n\nIt does not replace a conversation with your care team.",
       decision_triggers: [
         "You have received a treatment recommendation and want to understand why",
         "You have more than one possible option to compare",
@@ -1423,7 +1423,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     1: {
       summary:
-        "A second opinion may be worth considering after a lung cancer diagnosis, especially when you are facing a major treatment decision, your diagnosis is complex, or you want to better understand your available options.\n\nA second opinion is not about proving that your first doctor is wrong. It can help confirm important information, review treatment choices, understand alternatives, and make a decision with greater confidence.\n\nWhether a second opinion is useful depends on your specific situation, including your cancer type, stage, available treatments, and personal goals.",
+        "A second opinion is another specialist review of your diagnosis and options. It is often about confidence and clarity — not about proving your first doctor wrong.\n\nIt may confirm a plan, surface alternatives, or show where more information is still needed.",
       decision_triggers: [
         "Received a new diagnosis and want to confirm accuracy, type, and stage",
         "Received a treatment recommendation and want to understand alternatives",

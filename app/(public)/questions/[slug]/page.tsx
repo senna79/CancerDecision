@@ -11,6 +11,7 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { AiEntryFlagshipBody } from "@/components/question/ai-entry/flagship-body";
 import { AiEntryFlagshipBodyV2 } from "@/components/question/ai-entry/flagship-body-v2";
 import { DecisionContext } from "@/components/question/ai-entry/decision-context";
+import { EntryHeroV2 } from "@/components/question/ai-entry/entry-hero-v2";
 import { EntryPageEndingV2 } from "@/components/question/ai-entry/entry-page-ending-v2";
 import { AiEntrySections } from "@/components/question/ai-entry-sections";
 import { CitationBlock } from "@/components/question/citation-block";
@@ -223,45 +224,54 @@ export default async function QuestionPage({
         </p>
       ) : null}
 
-      <h1 className="mt-3 font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-4xl">
-        {question.title}
-      </h1>
-      {!entryV2 && flagship?.subtitle ? (
-        <p className="mt-3 text-lg text-[var(--ink-soft)] md:text-xl">
-          {flagship.subtitle}
-        </p>
-      ) : null}
-
-      {flagship && !entryV2 ? <DecisionContext modules={flagship} /> : null}
-
-      {aiEntry ? (
-        <CitationBlock
-          answer={question.summary}
-          questionTitle={question.title}
-          compact={entryV2}
-          eyebrow={entryV2 ? "Direct answer" : "Direct answer · AI citation block"}
-          formHint={
-            entryV2
-              ? "Short answer · citation-ready · not personal medical advice"
-              : flagship
-                ? "Direct answer · under 100 words · citation-ready"
-                : "Form: direct answer → when it matters → when it may not → next step"
-          }
-        />
+      {entryV2 ? (
+        <EntryHeroV2 title={question.title}>
+          {aiEntry ? (
+            <CitationBlock
+              answer={question.summary}
+              questionTitle={question.title}
+              compact
+              eyebrow="Direct answer"
+            />
+          ) : (
+            <SummaryPanel summary={question.summary} />
+          )}
+          <p className="mt-4">
+            <a
+              href="#decision-path"
+              className="inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
+            >
+              Follow the decision path below ↓
+            </a>
+          </p>
+        </EntryHeroV2>
       ) : (
-        <SummaryPanel summary={question.summary} />
+        <>
+          <h1 className="mt-3 font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-4xl">
+            {question.title}
+          </h1>
+          {flagship?.subtitle ? (
+            <p className="mt-3 text-lg text-[var(--ink-soft)] md:text-xl">
+              {flagship.subtitle}
+            </p>
+          ) : null}
+          {flagship ? <DecisionContext modules={flagship} /> : null}
+          {aiEntry ? (
+            <CitationBlock
+              answer={question.summary}
+              questionTitle={question.title}
+              eyebrow="Direct answer · AI citation block"
+              formHint={
+                flagship
+                  ? "Direct answer · under 100 words · citation-ready"
+                  : "Form: direct answer → when it matters → when it may not → next step"
+              }
+            />
+          ) : (
+            <SummaryPanel summary={question.summary} />
+          )}
+        </>
       )}
-
-      {flagship && entryV2 ? (
-        <p className="mt-4">
-          <a
-            href="#decision-path"
-            className="inline-flex text-sm font-semibold text-[var(--accent)] hover:underline"
-          >
-            Follow the decision path below ↓
-          </a>
-        </p>
-      ) : null}
 
       {flagship && !entryV2 ? (
         <p className="mt-4 text-sm text-[var(--muted)]">
@@ -311,13 +321,14 @@ export default async function QuestionPage({
       {flagship ? (
         <>
           {entryV2 ? (
-            <AiEntryFlagshipBodyV2 modules={flagship} />
+            <AiEntryFlagshipBodyV2 modules={flagship} slug={question.slug} />
           ) : (
             <AiEntryFlagshipBody modules={flagship} />
           )}
           {entryV2 ? (
             <EntryPageEndingV2
               modules={flagship}
+              slug={question.slug}
               graphNode={graphNode}
               cancerSlug={cancer?.slug}
               cancerName={cancer?.name}

@@ -1,370 +1,82 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
-import { getEntryTemplateV2Config } from "@/lib/content/entry-template-v2";
+import {
+  getEntryPathV2,
+  type EntryPathStep,
+  type EntryPathV2,
+} from "@/lib/content/entry-path-v2";
 import { cn } from "@/lib/utils";
-import { CommonMistakes } from "./common-mistakes";
-import { CostConsiderations } from "./cost-considerations";
-import { DecisionTriggers } from "./decision-triggers";
-import { DoctorQuestionGroups } from "./doctor-question-groups";
-import { DoesNotDecide } from "./does-not-decide";
-import { HowTestingDone } from "./how-testing-done";
-import { IllustrativeScenario } from "./illustrative-scenario";
-import { InformationGap } from "./information-gap";
-import { ResultsTurnaround } from "./results-turnaround";
-import { TimingAnxiety } from "./timing-anxiety";
-import { ValueSituations } from "./value-situations";
+import { DecisionPathCardDetail } from "./decision-path-cards-v2";
 import { DoctorChecklistTakeaway } from "./doctor-checklist-takeaway";
-import { WhoNeedsTesting } from "./who-needs-testing";
-import { WhoThisIsFor } from "./who-this-is-for";
+import { DoesNotDecide } from "./does-not-decide";
 import { WhyDecisionMatters } from "./why-decision-matters";
 
-type QuestionCard = {
-  id: string;
-  title: string;
-  summary: string;
-};
+function useStepReveal() {
+  const ref = useRef<HTMLOListElement>(null);
 
-type DecisionStep = {
-  id: string;
-  number: number;
-  stage: string;
-  title: string;
-  lead?: string;
-  cards: QuestionCard[];
-};
+  useEffect(() => {
+    const root = ref.current;
+    if (!root) return;
+    const items = root.querySelectorAll<HTMLElement>("[data-path-step]");
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduced) {
+      items.forEach((el) => el.classList.add("is-visible"));
+      return;
+    }
+    const io = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            io.unobserve(entry.target);
+          }
+        }
+      },
+      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+    );
+    items.forEach((el) => io.observe(el));
+    return () => io.disconnect();
+  }, []);
 
-const BIOMARKER_SLUG =
-  "do-i-need-biomarker-testing-before-lung-cancer-treatment";
-
-const STEPS: DecisionStep[] = [
-  {
-    id: "understand",
-    number: 1,
-    stage: "Understand the decision",
-    title: "Why does biomarker testing matter?",
-    lead: "Patient question: why is my doctor talking about this test?",
-    cards: [
-      {
-        id: "what-is",
-        title: "What is biomarker testing?",
-        summary: "A plain-language definition.",
-      },
-      {
-        id: "look-for",
-        title: "What does the test look for?",
-        summary: "Features of your cancer — not a gene encyclopedia.",
-      },
-      {
-        id: "my-situation",
-        title: "Is this my situation?",
-        summary: "When people usually ask about biomarker testing.",
-      },
-    ],
-  },
-  {
-    id: "compare",
-    number: 2,
-    stage: "Compare what matters",
-    title: "Could biomarker results change my treatment options?",
-    lead: "Patient question: what would this result actually be used for?",
-    cards: [
-      {
-        id: "targeted",
-        title: "Does a biomarker result mean targeted therapy?",
-        summary: "What a finding may open — and what it does not decide alone.",
-      },
-      {
-        id: "if-none",
-        title: "What if no actionable biomarker is found?",
-        summary: "Why “no match” is not the same as “no options.”",
-      },
-      {
-        id: "which-checked",
-        title: "Which biomarkers are usually checked?",
-        summary: "Ask what matters for your decision — not a public gene list.",
-      },
-    ],
-  },
-  {
-    id: "practical",
-    number: 3,
-    stage: "Consider practical realities",
-    title: "What should I know before testing?",
-    lead: "Patient question: what will I actually go through?",
-    cards: [
-      {
-        id: "how-done",
-        title: "How is biomarker testing done?",
-        summary: "Tissue already collected, blood tests, or a new sample.",
-      },
-      {
-        id: "biopsy",
-        title: "Will I need another biopsy?",
-        summary: "When a new sample may be discussed — and when it may not.",
-      },
-      {
-        id: "risks",
-        title: "What are the biopsy risks?",
-        summary: "Risks usually come from getting tissue, not the lab test itself.",
-      },
-      {
-        id: "turnaround",
-        title: "How long does testing take?",
-        summary: "Timing, waiting, and what to ask if treatment feels urgent.",
-      },
-      {
-        id: "cost",
-        title: "Cost and insurance",
-        summary: "Questions to ask before testing is ordered.",
-      },
-    ],
-  },
-  {
-    id: "conversation",
-    number: 4,
-    stage: "Prepare for next conversation",
-    title: "What should I discuss with my doctor?",
-    lead: "Patient question: what should I ask at the next visit?",
-    cards: [
-      {
-        id: "doctor",
-        title: "Full doctor questions checklist",
-        summary: "Grouped questions you can take to the appointment.",
-      },
-      {
-        id: "deeper",
-        title: "Common mistakes & an example",
-        summary: "Pitfalls to avoid and an illustrative scenario.",
-      },
-    ],
-  },
-];
-
-const PRACTICAL_POINTS = [
-  "How a sample would be obtained — existing tissue, sometimes blood, sometimes a new biopsy discussion",
-  "Rough timing — when results are expected, and whether treatment decisions will wait",
-  "Cost and insurance questions to ask before anything is ordered",
-];
-
-function WhatIsBiomarkerTesting() {
-  return (
-    <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
-      <p>
-        Biomarker testing looks for features of your cancer that may affect which
-        treatments your care team discusses.
-      </p>
-      <p>
-        It is laboratory analysis — often using tissue or other samples already
-        collected. It is related to, but not the same thing as, a biopsy
-        procedure.
-      </p>
-      <p className="font-medium text-[var(--ink)]">
-        Some results may open or change treatment discussions; others mainly
-        confirm that the current plan still fits the information available.
-      </p>
-    </div>
-  );
-}
-
-function WhatDoesTestLookFor() {
-  return (
-    <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
-      <p>
-        The test looks for features of your cancer — signals that may help
-        doctors compare which approaches are worth discussing for you.
-      </p>
-      <p>
-        Exactly which features matter depends on your cancer type, stage, and
-        the decision in front of you. That list belongs in a conversation with
-        your care team, not on a public webpage.
-      </p>
-      <p className="font-medium text-[var(--ink)]">
-        Ask: “For my situation, what are we looking for — and could the answer
-        change the options we discuss?”
-      </p>
-    </div>
-  );
-}
-
-function WhichBiomarkersCard() {
-  return (
-    <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
-      <p>
-        There is no single public checklist that fits every person. Useful tests
-        depend on cancer type, stage, prior results, and the treatment decision
-        you are making now.
-      </p>
-      <p>
-        This page does not list individual biomarker names as medical advice.
-        The safer next step is to ask your team what is recommended for{" "}
-        <span className="font-medium text-[var(--ink)]">your</span> decision.
-      </p>
-      <p className="font-medium text-[var(--ink)]">
-        Ask: “Which tests matter before we choose a plan — which are already
-        done — and which can wait?”
-      </p>
-    </div>
-  );
-}
-
-function MySituationCard({
-  modules,
-}: {
-  modules: AiEntryFlagshipModules;
-}) {
-  const audience = getEntryTemplateV2Config(BIOMARKER_SLUG);
-
-  return (
-    <div className="space-y-4">
-      {audience?.audienceTitle && audience.audienceItems?.length ? (
-        <WhoThisIsFor
-          title={audience.audienceTitle}
-          items={audience.audienceItems}
-        />
-      ) : null}
-      <DecisionTriggers modules={modules} />
-      <WhoNeedsTesting modules={modules} />
-    </div>
-  );
-}
-
-function TargetedTherapyCard() {
-  return (
-    <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
-      <p>
-        Not automatically. A biomarker finding may open a discussion about
-        matched approaches — including targeted therapies in some situations —
-        but it does not by itself choose the right treatment.
-      </p>
-      <p>Your care team still weighs factors such as:</p>
-      <ul className="space-y-2">
-        {[
-          "Cancer stage and overall health",
-          "Previous treatments and current goals",
-          "Potential benefits, trade-offs, and preferences",
-        ].map((item) => (
-          <li
-            key={item}
-            className="flex gap-3 rounded-md border border-[var(--line)] bg-white/60 px-3 py-2"
-          >
-            <span className="mt-1.5 size-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
-            <span>{item}</span>
-          </li>
-        ))}
-      </ul>
-      <p className="font-medium text-[var(--ink)]">
-        Ask: “If this result is positive, what options does it add to our
-        discussion — and what still depends on other factors?”
-      </p>
-    </div>
-  );
-}
-
-function NoActionableCard({ modules }: { modules: AiEntryFlagshipModules }) {
-  const note =
-    modules.doesNotDecideNotes?.[0] ??
-    "If no “actionable” finding is reported, that does not mean there are no options — it means this particular information did not point to a specific matched approach.";
-
-  return (
-    <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
-      <p>{note}</p>
-      <p>
-        Next discussions may still include other treatment approaches, supportive
-        care priorities, clinical trials, or whether different testing is needed
-        for a later decision.
-      </p>
-      <p className="font-medium text-[var(--ink)]">
-        Ask: “If there is no actionable finding, what should our next
-        conversation focus on?”
-      </p>
-    </div>
-  );
-}
-
-function CardDetail({
-  id,
-  modules,
-}: {
-  id: string;
-  modules: AiEntryFlagshipModules;
-}) {
-  switch (id) {
-    case "what-is":
-      return <WhatIsBiomarkerTesting />;
-    case "look-for":
-      return <WhatDoesTestLookFor />;
-    case "my-situation":
-      return <MySituationCard modules={modules} />;
-    case "targeted":
-      return <TargetedTherapyCard />;
-    case "if-none":
-      return <NoActionableCard modules={modules} />;
-    case "which-checked":
-      return <WhichBiomarkersCard />;
-    case "how-done":
-      return <HowTestingDone modules={modules} focus="all" />;
-    case "biopsy":
-      return <HowTestingDone modules={modules} focus="biopsy" />;
-    case "risks":
-      return <HowTestingDone modules={modules} focus="risks" />;
-    case "turnaround":
-      return (
-        <div className="space-y-4">
-          <ResultsTurnaround modules={modules} />
-          <TimingAnxiety modules={modules} />
-        </div>
-      );
-    case "cost":
-      return <CostConsiderations modules={modules} />;
-    case "doctor":
-      return <DoctorQuestionGroups modules={modules} />;
-    case "deeper":
-      return (
-        <div className="space-y-2">
-          <InformationGap modules={modules} />
-          <ValueSituations modules={modules} />
-          <CommonMistakes modules={modules} />
-          <IllustrativeScenario modules={modules} />
-        </div>
-      );
-    default:
-      return null;
-  }
+  return ref;
 }
 
 function StepCards({
   step,
   openId,
   onToggle,
+  slug,
   modules,
 }: {
-  step: DecisionStep;
+  step: EntryPathStep & { number: number };
   openId: string | null;
   onToggle: (id: string) => void;
+  slug: string;
   modules: AiEntryFlagshipModules;
 }) {
   return (
-    <div>
+    <div className="path-question-rail">
       <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
         Questions you may have
       </p>
-      <ul className="mt-2 divide-y divide-[var(--line)]/80 border-y border-[var(--line)]/80">
+      <ul className="mt-2">
         {step.cards.map((card) => {
           const open = openId === card.id;
           return (
             <li
               key={card.id}
               className={cn(
-                open && "border-l-2 border-l-[var(--accent)] bg-white/50"
+                "path-question-item",
+                open && "path-question-item--open"
               )}
             >
               <button
                 type="button"
                 aria-expanded={open}
                 onClick={() => onToggle(card.id)}
-                className="flex w-full items-start gap-2 px-2 py-2.5 text-left transition hover:bg-white/60"
+                className="flex w-full items-start gap-2 px-2 py-2.5 text-left transition hover:bg-white/70"
               >
                 <span className="min-w-0 flex-1">
                   <span className="block text-sm font-semibold text-[var(--ink)]">
@@ -378,25 +90,49 @@ function StepCards({
                 </span>
                 <span
                   aria-hidden
-                  className="mt-0.5 shrink-0 text-xs font-semibold text-[var(--muted)]"
+                  className={cn(
+                    "mt-1 shrink-0 text-[var(--muted)] transition-transform duration-200",
+                    open && "rotate-180 text-[var(--accent)]"
+                  )}
                 >
-                  {open ? "⌃" : "⌄"}
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path
+                      d="M3 5l4 4 4-4"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
                 </span>
               </button>
-              {open ? (
-                <div className="px-2 pb-3">
-                  <div className="max-h-[min(50vh,26rem)] overflow-y-auto pr-1">
-                    <CardDetail id={card.id} modules={modules} />
-                  </div>
-                  <button
-                    type="button"
-                    onClick={() => onToggle(card.id)}
-                    className="mt-2 text-sm font-semibold text-[var(--accent)] hover:underline"
-                  >
-                    Close
-                  </button>
+              <div
+                className={cn(
+                  "grid transition-[grid-template-rows] duration-300 ease-out",
+                  open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+                )}
+              >
+                <div className="overflow-hidden">
+                  {open ? (
+                    <div className="px-2 pb-3">
+                      <div className="max-h-[min(50vh,26rem)] overflow-y-auto pr-1">
+                        <DecisionPathCardDetail
+                          id={card.id}
+                          slug={slug}
+                          modules={modules}
+                        />
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => onToggle(card.id)}
+                        className="mt-2 text-sm font-semibold text-[var(--accent)] hover:underline"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  ) : null}
                 </div>
-              ) : null}
+              </div>
             </li>
           );
         })}
@@ -407,15 +143,17 @@ function StepCards({
 
 function StepMain({
   step,
+  path,
   modules,
   onOpenDoctor,
 }: {
-  step: DecisionStep;
+  step: EntryPathStep;
+  path: EntryPathV2;
   modules: AiEntryFlagshipModules;
   onOpenDoctor: () => void;
 }) {
-  switch (step.id) {
-    case "understand":
+  switch (step.main) {
+    case "biomarker-understand":
       return (
         <div className="space-y-3">
           <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
@@ -425,18 +163,59 @@ function StepMain({
           <WhyDecisionMatters modules={modules} embedded />
         </div>
       );
-    case "compare":
+    case "why":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "does-not-decide":
       return <DoesNotDecide modules={modules} embedded />;
-    case "practical":
+    case "second-compare":
       return (
         <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
           <p>
-            Real decisions include the practical layer — not only whether testing
-            could help, but what you may need to go through to get the
-            information.
+            Another opinion may change what you discuss — or confirm the current
+            plan. Either outcome can strengthen the decision.
           </p>
           <ul className="space-y-1.5 text-[var(--ink)]">
-            {PRACTICAL_POINTS.map((point) => (
+            {[
+              "It may clarify diagnosis, staging, or testing gaps",
+              "It may widen or refine the treatment options on the table",
+              "Agreement between teams can still increase confidence",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "treatment-compare":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Use the same questions for every option your care team discusses —
+            so you compare reasoning, not just labels.
+          </p>
+          <ol className="list-decimal space-y-1.5 pl-5 text-[var(--ink)]">
+            <li>What is the goal?</li>
+            <li>What benefit is expected?</li>
+            <li>What are the trade-offs?</li>
+            <li>What does treatment require?</li>
+            <li>How does it fit my priorities?</li>
+          </ol>
+          <p className="text-sm font-medium text-[var(--ink)]">
+            Open the cards beside this step for the full comparison framework.
+          </p>
+        </div>
+      );
+    case "practical-points":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Real decisions include the practical layer — not only whether this
+            path could help, but what you may need to go through.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {(path.practicalPoints ?? []).map((point) => (
               <li key={point} className="flex gap-2.5">
                 <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
                 <span>{point}</span>
@@ -444,38 +223,59 @@ function StepMain({
             ))}
           </ul>
           <p className="text-sm font-medium text-[var(--ink)]">
-            Open a question beside this step for sample method, biopsy, risks,
-            timing, or cost.
+            Open a question beside this step for details that match your worry.
           </p>
         </div>
       );
-    case "conversation":
-      return modules.doctorLeaveTitle && modules.doctorLeaveItems?.length ? (
+    case "checklist": {
+      const leaveItems =
+        modules.doctorLeaveItems?.length
+          ? modules.doctorLeaveItems
+          : modules.doctorGroups?.[0]?.questions?.slice(0, 4) ?? [];
+      const leaveTitle =
+        modules.doctorLeaveTitle ?? "Before leaving your appointment, ask:";
+      return leaveItems.length ? (
         <DoctorChecklistTakeaway
-          lead={modules.doctorLeaveTitle}
-          items={modules.doctorLeaveItems}
+          lead={leaveTitle}
+          items={leaveItems}
           onOpenFull={onOpenDoctor}
         />
-      ) : null;
+      ) : (
+        <p className="text-sm text-[var(--ink-soft)]">
+          Open the doctor checklist beside this step for questions to take to
+          your next visit.
+        </p>
+      );
+    }
     default:
       return null;
   }
 }
 
 /**
- * Entry Template v2 workspace:
- * Vertical Decision Path (4 OS stages) · ~70/30 · accordion cards per step.
+ * Entry Template v2 workspace — config-driven Decision Path.
  */
 export function DecisionWorkspaceV2({
   modules,
+  slug,
 }: {
   modules: AiEntryFlagshipModules;
+  slug: string;
 }) {
+  const path = getEntryPathV2(slug);
   const [openId, setOpenId] = useState<string | null>(null);
+  const listRef = useStepReveal();
+
+  if (!path) return null;
 
   function toggleCard(id: string) {
     setOpenId((current) => (current === id ? null : id));
   }
+
+  const numberedSteps = path.steps.map((step, index) => ({
+    ...step,
+    number: index + 1,
+  }));
 
   return (
     <div
@@ -484,14 +284,13 @@ export function DecisionWorkspaceV2({
     >
       <header className="mb-7 animate-rise">
         <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
-          Biomarker Testing Decision Path
+          {path.pathTitle}
         </p>
         <p className="mt-1.5 max-w-2xl text-sm text-[var(--muted)]">
-          Why it matters → whether options could change → what you may go through
-          → what to ask your doctor.
+          {path.pathSubtitle}
         </p>
         <ol className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[0.7rem] text-[var(--muted)]">
-          {STEPS.map((s) => (
+          {numberedSteps.map((s) => (
             <li key={s.id}>
               <a
                 href={`#path-step-${s.id}`}
@@ -504,11 +303,17 @@ export function DecisionWorkspaceV2({
         </ol>
       </header>
 
-      <ol className="relative">
-        {STEPS.map((step, index) => {
-          const isLast = index === STEPS.length - 1;
+      <ol ref={listRef} className="relative">
+        {numberedSteps.map((step, index) => {
+          const isLast = index === numberedSteps.length - 1;
           return (
-            <li key={step.id} id={`path-step-${step.id}`} className="relative">
+            <li
+              key={step.id}
+              id={`path-step-${step.id}`}
+              data-path-step
+              className="path-step-reveal relative"
+              style={{ transitionDelay: `${index * 60}ms` }}
+            >
               <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,7fr)_minmax(220px,3fr)] lg:gap-8">
                 <div className="relative min-w-0 pl-11 md:pl-12">
                   {!isLast ? (
@@ -536,6 +341,7 @@ export function DecisionWorkspaceV2({
                   <div className="mt-3.5">
                     <StepMain
                       step={step}
+                      path={path}
                       modules={modules}
                       onOpenDoctor={() => setOpenId("doctor")}
                     />
@@ -549,6 +355,7 @@ export function DecisionWorkspaceV2({
                       step.cards.some((c) => c.id === openId) ? openId : null
                     }
                     onToggle={toggleCard}
+                    slug={slug}
                     modules={modules}
                   />
                 </div>

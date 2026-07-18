@@ -1,13 +1,7 @@
 import Link from "next/link";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
+import { getEntryPathV2 } from "@/lib/content/entry-path-v2";
 import type { DecisionGraphNode } from "@/lib/os/decision-graph";
-
-const COMPLETED = [
-  "Why biomarker testing matters",
-  "How results may affect choices",
-  "What to consider before testing",
-  "Questions to ask your doctor",
-];
 
 /**
  * Secondary page ending after Decision Path Steps 1–4.
@@ -15,15 +9,24 @@ const COMPLETED = [
  */
 export function EntryPageEndingV2({
   modules,
+  slug,
   graphNode,
   cancerSlug,
   cancerName,
 }: {
   modules: AiEntryFlagshipModules;
+  slug: string;
   graphNode?: DecisionGraphNode | null;
   cancerSlug?: string | null;
   cancerName?: string | null;
 }) {
+  const path = getEntryPathV2(slug);
+  const completed = path?.completedLabels ?? [
+    "Why this decision matters",
+    "What could change your options",
+    "What to know before acting",
+    "Questions to ask your doctor",
+  ];
   const related = modules.relatedPaths
     .filter((path) => path.href !== modules.nextStepHref)
     .slice(0, 3);
@@ -47,7 +50,7 @@ export function EntryPageEndingV2({
           You&apos;ve completed this decision step
         </p>
         <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-[var(--ink-soft)]">
-          {COMPLETED.map((item) => (
+          {completed.map((item) => (
             <li key={item} className="flex items-center gap-1.5">
               <span className="text-[var(--accent)]" aria-hidden>
                 ✓
