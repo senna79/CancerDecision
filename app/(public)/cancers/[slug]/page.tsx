@@ -112,68 +112,19 @@ export default async function CancerDecisionCenterPage({
             moments={LUNG_DECISION_MOMENTS}
             activeId={activeMoment?.id}
             footer={
-              <>
-                Need orientation first?{" "}
-                <Link
-                  href="/cancers/lung-cancer/understanding-types"
-                  className="font-semibold text-[var(--accent)] hover:underline"
-                >
-                  Types
-                </Link>
-                {" · "}
-                <Link
-                  href="/cancers/lung-cancer/understanding-stage"
-                  className="font-semibold text-[var(--accent)] hover:underline"
-                >
-                  Stage
-                </Link>
-                {" · "}
-                <Link
-                  href="/cancers/lung-cancer/treatment-landscape"
-                  className="font-semibold text-[var(--accent)] hover:underline"
-                >
-                  Treatment Landscape
-                </Link>
-                {decisionMap ? (
-                  <>
-                    {" · "}
-                    Prefer the full graph?{" "}
-                    <a
-                      href="#decision-map"
-                      className="font-semibold text-[var(--accent)] hover:underline"
-                    >
-                      Jump to the Decision Map
-                    </a>
-                  </>
-                ) : null}
-              </>
+              decisionMap ? (
+                <>
+                  Prefer the full graph?{" "}
+                  <a
+                    href="#decision-map"
+                    className="font-semibold text-[var(--accent)] hover:underline"
+                  >
+                    Jump to the Decision Map
+                  </a>
+                </>
+              ) : null
             }
           />
-          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm text-[var(--ink-soft)]">
-            <span className="font-semibold text-[var(--ink)]">
-              New to these terms?{" "}
-            </span>
-            <Link
-              href="/cancers/lung-cancer/understanding-types"
-              className="font-semibold text-[var(--accent)] hover:underline"
-            >
-              What type do I have?
-            </Link>
-            {" · "}
-            <Link
-              href="/cancers/lung-cancer/understanding-stage"
-              className="font-semibold text-[var(--accent)] hover:underline"
-            >
-              What does my stage mean?
-            </Link>
-            {" · "}
-            <Link
-              href="/cancers/lung-cancer/treatment-landscape"
-              className="font-semibold text-[var(--accent)] hover:underline"
-            >
-              How do treatments relate?
-            </Link>
-          </p>
         </div>
       ) : null}
 

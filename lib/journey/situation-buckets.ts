@@ -1,15 +1,38 @@
 /**
  * Homepage / lung center: situation layer before Decision Moments.
- * Patients pick where they are; then see 2–4 relevant next-step guides.
+ * Patients pick where they are; then see 2–3 primary guides (+ optional Also).
  */
 
 export type SituationBucket = {
   id: string;
   label: string;
   hint: string;
-  /** DecisionMoment.id values (moment slugs) */
+  /** Primary DecisionMoment.id values (moment slugs) — aim for 2–3 */
   momentIds: string[];
+  /** Optional secondary links shown under “Also” */
+  alsoMomentIds?: string[];
 };
+
+export type OrientationLink = {
+  label: string;
+  href: string;
+};
+
+/** Not a 7th situation — orientation before choosing a decision path */
+export const LUNG_ORIENTATION_LINKS: OrientationLink[] = [
+  {
+    label: "Types",
+    href: "/cancers/lung-cancer/understanding-types",
+  },
+  {
+    label: "Stage",
+    href: "/cancers/lung-cancer/understanding-stage",
+  },
+  {
+    label: "Treatment map",
+    href: "/cancers/lung-cancer/treatment-landscape",
+  },
+];
 
 export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
   {
@@ -20,8 +43,8 @@ export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
       "newly-diagnosed",
       "biomarker-testing",
       "second-opinion",
-      "stage-iv-options",
     ],
+    alsoMomentIds: ["stage-iv-options"],
   },
   {
     id: "choosing-treatment",
@@ -35,8 +58,8 @@ export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
   },
   {
     id: "another-opinion",
-    label: "I’m looking for another opinion or care team",
-    hint: "Second opinion, specialist, or different expertise.",
+    label: "I’m unsure about my plan or care team",
+    hint: "Want more confidence, another review, or different expertise.",
     momentIds: ["second-opinion", "care-center-expertise"],
   },
   {
@@ -51,7 +74,7 @@ export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
   },
   {
     id: "real-life",
-    label: "I need the plan to fit real life",
+    label: "Treatment feels hard on my life or logistics",
     hint: "Goals, daily life, cost, travel, time, and support.",
     momentIds: ["quality-of-life", "cost-logistics"],
   },
@@ -63,7 +86,7 @@ export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
       "follow-up-monitoring",
       "recurrence",
       "quality-of-life",
-      "second-opinion",
     ],
+    alsoMomentIds: ["second-opinion"],
   },
 ];

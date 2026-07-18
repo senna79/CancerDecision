@@ -8,26 +8,67 @@ import {
   type DecisionMoment,
 } from "@/lib/journey/decision-moments";
 import {
+  LUNG_ORIENTATION_LINKS,
   LUNG_SITUATION_BUCKETS,
+  type OrientationLink,
   type SituationBucket,
 } from "@/lib/journey/situation-buckets";
 import { cn } from "@/lib/utils";
 
-function bucketContaining(activeId: string | null | undefined, buckets: SituationBucket[]) {
+function bucketContaining(
+  activeId: string | null | undefined,
+  buckets: SituationBucket[]
+) {
   if (!activeId) return null;
-  return buckets.find((b) => b.momentIds.includes(activeId))?.id ?? null;
+  return (
+    buckets.find(
+      (b) =>
+        b.momentIds.includes(activeId) ||
+        b.alsoMomentIds?.includes(activeId)
+    )?.id ?? null
+  );
 }
 
-/** Accordion: 5 situation entries → 2–4 Entry links each */
+function MomentLink({
+  moment,
+  isActive,
+}: {
+  moment: DecisionMoment;
+  isActive: boolean;
+}) {
+  return (
+    <Link
+      href={moment.href}
+      className={cn(
+        "block rounded-md px-3 py-2.5 transition",
+        isActive
+          ? "bg-[rgba(15,118,110,0.1)]"
+          : "hover:bg-[rgba(15,118,110,0.06)]"
+      )}
+    >
+      <span className="block text-sm font-semibold text-[var(--ink)]">
+        {moment.label}
+      </span>
+      <span className="mt-0.5 block text-sm text-[var(--ink-soft)]">
+        {moment.hint}
+      </span>
+    </Link>
+  );
+}
+
+/** Accordion: situation entries → 2–3 primary Entry links (+ optional Also) */
 export function SituationGuidedRouter({
   moments,
   buckets = LUNG_SITUATION_BUCKETS,
+  orientationLinks = LUNG_ORIENTATION_LINKS,
   activeId,
   footer,
   cancerLabel = "lung cancer",
 }: {
   moments: DecisionMoment[];
   buckets?: SituationBucket[];
+  /** Supporting guides — not a 7th situation. Pass [] to hide. */
+  orientationLinks?: OrientationLink[];
   activeId?: string | null;
   footer?: ReactNode;
   /** Used in the section title */
@@ -37,9 +78,15 @@ export function SituationGuidedRouter({
   const [openId, setOpenId] = useState<string | null>(initialOpen);
 
   const momentsByBucket = useMemo(() => {
-    const map = new Map<string, DecisionMoment[]>();
+    const map = new Map<
+      string,
+      { primary: DecisionMoment[]; also: DecisionMoment[] }
+    >();
     for (const bucket of buckets) {
-      map.set(bucket.id, filterMomentsByIds(moments, bucket.momentIds));
+      map.set(bucket.id, {
+        primary: filterMomentsByIds(moments, bucket.momentIds),
+        also: filterMomentsByIds(moments, bucket.alsoMomentIds ?? []),
+      });
     }
     return map;
   }, [buckets, moments]);
@@ -60,10 +107,34 @@ export function SituationGuidedRouter({
         need to read every page.
       </p>
 
+      {orientationLinks.length ? (
+        <p className="mt-4 max-w-2xl border-l-2 border-[var(--accent)]/40 pl-3 text-sm text-[var(--ink-soft)]">
+          <span className="font-semibold text-[var(--ink)]">
+            Need orientation first?{" "}
+          </span>
+          {orientationLinks.map((link, index) => (
+            <span key={link.href}>
+              {index > 0 ? (
+                <span className="text-[var(--muted)]"> · </span>
+              ) : null}
+              <Link
+                href={link.href}
+                className="font-semibold text-[var(--accent)] hover:underline"
+              >
+                {link.label}
+              </Link>
+            </span>
+          ))}
+        </p>
+      ) : null}
+
       <div className="mt-5 space-y-2">
         {buckets.map((bucket, index) => {
           const isOpen = openId === bucket.id;
-          const links = momentsByBucket.get(bucket.id) ?? [];
+          const { primary, also } = momentsByBucket.get(bucket.id) ?? {
+            primary: [],
+            also: [],
+          };
 
           return (
             <div
@@ -120,38 +191,44 @@ export function SituationGuidedRouter({
               </button>
 
               {isOpen ? (
-                <ul className="space-y-1 border-t border-[var(--line)]/80 px-3 py-3 md:px-4">
-                  {links.map((moment) => {
-                    const isActive = activeId === moment.id;
-                    return (
+                <div className="border-t border-[var(--line)]/80 px-3 py-3 md:px-4">
+                  <ul className="space-y-1">
+                    {primary.map((moment) => (
                       <li key={moment.id}>
-                        <Link
-                          href={moment.href}
-                          className={cn(
-                            "block rounded-md px-3 py-2.5 transition",
-                            isActive
-                              ? "bg-[rgba(15,118,110,0.1)]"
-                              : "hover:bg-[rgba(15,118,110,0.06)]"
-                          )}
-                        >
-                          <span className="block text-sm font-semibold text-[var(--ink)]">
-                            {moment.label}
-                          </span>
-                          <span className="mt-0.5 block text-sm text-[var(--ink-soft)]">
-                            {moment.hint}
-                          </span>
-                        </Link>
+                        <MomentLink
+                          moment={moment}
+                          isActive={activeId === moment.id}
+                        />
                       </li>
-                    );
-                  })}
-                </ul>
+                    ))}
+                  </ul>
+                  {also.length ? (
+                    <div className="mt-3 border-t border-[var(--line)]/60 pt-3">
+                      <p className="px-3 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+                        Also
+                      </p>
+                      <ul className="mt-1 space-y-1">
+                        {also.map((moment) => (
+                          <li key={moment.id}>
+                            <MomentLink
+                              moment={moment}
+                              isActive={activeId === moment.id}
+                            />
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  ) : null}
+                </div>
               ) : null}
             </div>
           );
         })}
       </div>
 
-      {footer ? <div className="mt-4 text-sm text-[var(--muted)]">{footer}</div> : null}
+      {footer ? (
+        <div className="mt-4 text-sm text-[var(--muted)]">{footer}</div>
+      ) : null}
     </section>
   );
 }
