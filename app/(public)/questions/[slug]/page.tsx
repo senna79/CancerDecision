@@ -119,7 +119,13 @@ export default async function QuestionPage({
         }));
 
   return (
-    <div className="mx-auto w-full max-w-3xl px-5 py-10 md:px-8">
+    <div
+      className={
+        entryV2
+          ? "mx-auto w-full max-w-6xl px-5 py-10 md:px-8"
+          : "mx-auto w-full max-w-3xl px-5 py-10 md:px-8"
+      }
+    >
       <JsonLd
         data={[
           breadcrumbJsonLd([

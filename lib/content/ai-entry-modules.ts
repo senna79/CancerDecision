@@ -1057,9 +1057,9 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     },
   ],
 
-  doesNotDecideTitle: "What biomarker results can and cannot tell you",
+  doesNotDecideTitle: "Could testing change my treatment options?",
   doesNotDecideLead:
-    "A biomarker result does not automatically determine the right treatment. Decisions still consider:",
+    "Results may change which approaches your team discusses — but a biomarker finding does not automatically decide the right treatment. Decisions still consider:",
   doesNotDecideItems: [
     "Cancer stage",
     "Overall health",

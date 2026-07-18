@@ -1,85 +1,64 @@
 # Entry Template v2.0 — Patient Decision Workspace
 
 **Status:** Active sample on Biomarker Testing  
-**Goal:** Turn a medical decision page from a long article into a tool a frightened patient can finish in ~3 minutes.
+**Goal:** Help a frightened patient finish a decision prep in ~3 minutes — not read an 11-screen article.
 
-## North star
+## Layout
 
-- **30 seconds:** know the direction  
-- **3 minutes:** know the next step with the care team  
-- **Not required:** read every section  
+**Desktop (≈70 / 30)**
 
-## Design rule
+| Left — Main decision path | Right — Questions patients ask |
+|---------------------------|--------------------------------|
+| Why this matters | Will it delay treatment? |
+| Could testing change options? | How is testing done? |
+| What happens next? | Another biopsy? / risks |
+| Leave-appointment confirms | How long? / Cost |
+| Your next step | Doctor checklist |
+| Continue journey | Common questions & deeper detail |
 
-**Short path default-visible + long content expandable (still in HTML).**
+Right cards open in place with **← Questions patients ask** to return. No blog-style “related articles” rail.
 
-Do not delete depth for SEO/AI. Collapse it for anxious human readers.
+**Mobile:** stack — H1 → quick answer → main path → next step → question cards → sources.
 
-## Default reading path (required order)
+## Page chrome (above the workspace)
 
-1. **H1** — patient question  
-2. **Plain-language gloss** — translate jargon once  
-3. **Light journey strip** — `You are here: A → B → C` (not a Decision Map hero)  
-4. **One-minute answer** — Direct Answer / citation block  
-5. **Who this may help** — 3–4 fit bullets under H1  
-6. **Quick actions** — dual intent: understand / prepare for visit  
-7. **Reading guide** — 3-minute path → checklist → next step; details optional  
-8. **Why this matters** — one module, no triple restatement  
-9. **Does everyone need the same tests?** — trust + personalization (when relevant)  
-10. **Highest-anxiety timing question** — e.g. will waiting delay care?  
-11. **How is it done / another procedure?** — sample source, biopsy?, risks  
-12. **How long for results?** — no fixed days; ask sample sent / window / wait-or-not  
-13. **What it can / cannot decide alone** — including “no actionable finding”  
-14. **Cost & insurance principles** — on main path, short; no fixed prices  
-15. **Questions you can ask your doctor** — leave-confirms + checklist groups  
-16. **Your next step** — 3 concrete actions (brand-critical)  
-17. **Continue journey** — related Moments  
-18. **More about this decision** — `<details>`: when it matters, deeper explanation, mistakes, examples  
-19. **Sources & Review** — trust footer  
+1. H1 — patient question  
+2. Plain-language gloss  
+3. Who this may help  
+4. Light journey strip  
+5. One-minute answer  
+6. Dual intent + reading guide  
 
-### Practical reality layer (Biomarker sample)
+## Design rules
 
-- Main path: who needs it · delay · how done · results turnaround · cost questions  
-- Folded: when it matters + deeper explanation modules  
-- Out of scope for this Entry: stage-by-stage nursing care (belongs on Journey Overview / other Moments)  
-
-## What not to put first
-
-- Full Decision Context grid  
-- Heavy RelationshipStrip / graph chrome  
-- Encyclopedia definitions (EGFR lists, etc.)  
-- Product names like “Decision Map” as the first headline  
+- Left is a **story**, not a table of contents.  
+- Right is **patient questions**, not “more content.”  
+- Depth stays available (card detail / deeper card) for humans who choose it and for AI crawlers when rendered.  
+- No fixed prices, no “you should get tested,” no EGFR encyclopedia walls.  
 
 ## Implementation map
 
 | Concern | Code |
 |--------|------|
-| Opt-in slugs + gloss | `lib/content/entry-template-v2.ts` |
-| v2 body order | `components/question/ai-entry/flagship-body-v2.tsx` |
-| Journey strip | `components/question/ai-entry/journey-you-are-here.tsx` |
-| Quick actions | `components/question/ai-entry/entry-quick-actions.tsx` |
-| Disclosure | `components/question/ai-entry/more-about-decision.tsx` |
-| Page branch | `app/(public)/questions/[slug]/page.tsx` via `usesEntryTemplateV2()` |
+| Opt-in + audience gloss | `lib/content/entry-template-v2.ts` |
+| Workspace shell | `components/question/ai-entry/decision-workspace-v2.tsx` |
+| Body entry | `components/question/ai-entry/flagship-body-v2.tsx` |
+| Wider canvas | `app/(public)/questions/[slug]/page.tsx` when `usesEntryTemplateV2()` |
 | Sample content | `BIOMARKER_FLAGSHIP` in `lib/content/ai-entry-modules.ts` |
 
-## Rollout plan
+## Rollout
 
-1. **Done (sample):** Biomarker Testing Entry  
-2. **Next:** Audit remaining 11 lung Entries against this checklist  
-3. **Then:** Move each slug into `ENTRY_TEMPLATE_V2_BY_SLUG` with a gloss string  
-4. Keep v1 `AiEntryFlagshipBody` until an Entry is migrated  
+1. **Done:** Biomarker workspace sample  
+2. Migrate other lung Entries onto the same shell with Entry-specific left story + right cards  
+3. Keep v1 `AiEntryFlagshipBody` until migrated  
 
-## Patient pass criteria (per Entry)
+## Patient pass criteria
 
-After reading the short path only, can the patient say:
+After the left path only, can they say:
 
-1. How this relates to **their** decision  
-2. Why it matters in plain language  
-3. What to ask the doctor  
-4. What to do next  
+1. Why this decision exists  
+2. Whether options might change  
+3. What happens next  
+4. What to do / ask next  
 
-If not, fix order/weight — do not add more mid-page sections.
-
-## Safety boundary
-
-Workspace language prepares conversations. It does **not** prescribe personal treatment (“you should get this test”). Prefer: ask whether testing is complete / whether results could change options.
+Right cards are optional worry-resolvers — not required reading.

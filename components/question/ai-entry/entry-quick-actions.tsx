@@ -13,7 +13,7 @@ export function EntryQuickActions() {
           I want to understand the decision
         </a>
         <a
-          href="#doctor-questions"
+          href="#patient-questions-panel"
           className="inline-flex rounded-md bg-[var(--accent)] px-3.5 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
         >
           I want to prepare for my doctor visit
@@ -21,16 +21,10 @@ export function EntryQuickActions() {
       </div>
       <div className="flex flex-wrap gap-x-4 gap-y-1 text-sm">
         <a
-          href="#how-testing-done"
+          href="#patient-questions-panel"
           className="font-medium text-[var(--accent)] hover:underline"
         >
-          How is testing done?
-        </a>
-        <a
-          href="#results-turnaround"
-          className="font-medium text-[var(--accent)] hover:underline"
-        >
-          How long for results?
+          Questions patients ask
         </a>
         <a
           href="#your-next-step"
