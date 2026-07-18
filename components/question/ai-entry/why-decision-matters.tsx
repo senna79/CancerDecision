@@ -21,13 +21,29 @@ export function WhyDecisionMatters({
         </p>
       ))}
       {modules.whyQuestions.length > 0 ? (
-        <ul className="mt-3 space-y-2">
+        <ul
+          className={
+            embedded
+              ? "mt-3 space-y-1.5 text-[var(--ink)]"
+              : "mt-3 space-y-2"
+          }
+        >
           {modules.whyQuestions.map((q) => (
             <li
               key={q}
-              className="flex gap-3 rounded-md border border-[var(--line)] bg-white/60 px-4 py-3"
+              className={
+                embedded
+                  ? "flex gap-2.5"
+                  : "flex gap-3 rounded-md border border-[var(--line)] bg-white/60 px-4 py-3"
+              }
             >
-              <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+              <span
+                className={
+                  embedded
+                    ? "mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]"
+                    : "mt-2 size-1.5 shrink-0 rounded-full bg-[var(--accent)]"
+                }
+              />
               <span>{q}</span>
             </li>
           ))}
@@ -36,11 +52,21 @@ export function WhyDecisionMatters({
       {modules.whyDependsIntro && modules.whyDependsOn?.length ? (
         <>
           <p className="mt-4">{modules.whyDependsIntro}</p>
-          <ul className="mt-2 space-y-2">
+          <ul
+            className={
+              embedded
+                ? "mt-2 space-y-1.5 text-[var(--ink)]"
+                : "mt-2 space-y-2"
+            }
+          >
             {modules.whyDependsOn.map((item) => (
               <li
                 key={item}
-                className="flex gap-3 rounded-md border border-[var(--line)] bg-white/60 px-4 py-3"
+                className={
+                  embedded
+                    ? "flex gap-2.5"
+                    : "flex gap-3 rounded-md border border-[var(--line)] bg-white/60 px-4 py-3"
+                }
               >
                 <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
                 <span>{item}</span>
@@ -50,11 +76,17 @@ export function WhyDecisionMatters({
         </>
       ) : null}
       {modules.whyNotQuestion || modules.whyBetterQuestion ? (
-        <div className="mt-4 space-y-3 rounded-lg border border-[var(--line)] bg-white/70 px-4 py-4">
+        <div
+          className={
+            embedded
+              ? "mt-4 space-y-3 border-l-2 border-[var(--accent)]/30 pl-3"
+              : "mt-4 space-y-3 rounded-lg border border-[var(--line)] bg-white/70 px-4 py-4"
+          }
+        >
           {modules.whyNotQuestion ? (
             <div>
               {modules.whyNotLabel ? (
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
                   {modules.whyNotLabel}
                 </p>
               ) : null}
@@ -66,7 +98,7 @@ export function WhyDecisionMatters({
           {modules.whyBetterQuestion ? (
             <div>
               {modules.whyBetterLabel ? (
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">
+                <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
                   {modules.whyBetterLabel}
                 </p>
               ) : null}

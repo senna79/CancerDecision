@@ -38,12 +38,15 @@ export function EntryPageEndingV2({
     "Biomarker Testing";
 
   return (
-    <div id="after-decision-path" className="mt-10 scroll-mt-24 space-y-8">
-      <div className="border-t border-[var(--line)] pt-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+    <div
+      id="after-decision-path"
+      className="mt-8 scroll-mt-24 space-y-6 print:hidden"
+    >
+      <div className="border-t border-[var(--line)]/80 pt-6">
+        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
           You&apos;ve completed this decision step
         </p>
-        <ul className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5 text-sm text-[var(--ink-soft)]">
+        <ul className="mt-2 flex flex-wrap gap-x-3 gap-y-1 text-sm text-[var(--ink-soft)]">
           {COMPLETED.map((item) => (
             <li key={item} className="flex items-center gap-1.5">
               <span className="text-[var(--accent)]" aria-hidden>
@@ -56,7 +59,7 @@ export function EntryPageEndingV2({
       </div>
 
       <section id="your-next-step" className="scroll-mt-24">
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
           Your next step
         </p>
         <p className="mt-1 text-sm text-[var(--muted)]">
@@ -79,13 +82,10 @@ export function EntryPageEndingV2({
 
       {related.length > 0 ? (
         <section aria-label="Related decisions">
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
+          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
             Related decisions
           </p>
-          <p className="mt-1 text-sm text-[var(--muted)]">
-            You may also want to explore:
-          </p>
-          <ul className="mt-2 flex flex-col gap-1.5 sm:flex-row sm:flex-wrap sm:gap-x-5">
+          <ul className="mt-1.5 flex flex-col gap-1 sm:flex-row sm:flex-wrap sm:gap-x-5">
             {related.map((path) => (
               <li key={path.href}>
                 <Link
@@ -102,7 +102,7 @@ export function EntryPageEndingV2({
 
       <aside
         id="decision-journey"
-        className="rounded-md border border-[var(--line)] bg-white/70 px-4 py-4"
+        className="border-t border-[var(--line)]/80 pt-4"
       >
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">

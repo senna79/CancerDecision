@@ -43,7 +43,9 @@ Cards expand **inline** (accordion). No page jump. No single global question rai
 
 ## Design rules
 
-- Main axis is a numbered path, not a preface-heavy article.  
+- Main axis is a numbered path on **one canvas surface** — avoid nested white box stacks.  
+- Question cards are quiet disclosures (divider + chevron), not admin panels.  
+- Doctor checklist is a **takeaway** with Copy / Print.  
 - Practical Reality is its own step (sample / biopsy / risk / time / cost).  
 - “Which biomarkers…” = ask-your-doctor framing — **no gene lists**.  
 - No fixed prices, no “you should get tested.”  
@@ -54,8 +56,9 @@ Cards expand **inline** (accordion). No page jump. No single global question rai
 |--------|------|
 | Opt-in + audience (for Step 1 card) | `lib/content/entry-template-v2.ts` |
 | Workspace shell | `components/question/ai-entry/decision-workspace-v2.tsx` |
+| Doctor checklist takeaway | `components/question/ai-entry/doctor-checklist-takeaway.tsx` |
 | Body entry | `components/question/ai-entry/flagship-body-v2.tsx` |
-| Compact Direct Answer | `CitationBlock` `compact` on v2 pages |
+| Compact Direct Answer + trust line | `CitationBlock` `compact` on v2 pages |
 | Sample content | `BIOMARKER_FLAGSHIP` in `lib/content/ai-entry-modules.ts` |
 
 ## Page ending (after Step 4)

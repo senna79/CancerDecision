@@ -1,4 +1,5 @@
 import { Markdown } from "@/components/content/markdown";
+import { TRUST_COPY } from "@/lib/trust/framework";
 
 /** AI-citable Direct Answer — short, quotable, decision-first */
 export function CitationBlock({
@@ -22,7 +23,7 @@ export function CitationBlock({
       aria-label="Direct answer"
       className={
         compact
-          ? "mt-4 scroll-mt-24 rounded-lg border border-[var(--accent)]/30 bg-white/90 px-4 py-4 md:px-5 md:py-5"
+          ? "mt-4 scroll-mt-24 rounded-lg border border-[var(--accent)]/25 bg-white/90 px-4 py-4 md:px-5 md:py-5"
           : "mt-5 scroll-mt-24 rounded-lg border-2 border-[var(--accent)]/35 bg-white/90 p-5 md:p-6"
       }
     >
@@ -43,7 +44,17 @@ export function CitationBlock({
       >
         <Markdown content={answer} />
       </div>
-      {compact ? null : (
+      {compact ? (
+        <p className="mt-3 text-xs leading-relaxed text-[var(--muted)]">
+          {TRUST_COPY.editorialReview}. {TRUST_COPY.educationalBoundary}{" "}
+          <a
+            href="#sources-and-review"
+            className="font-medium text-[var(--accent)] hover:underline"
+          >
+            Sources
+          </a>
+        </p>
+      ) : (
         <p className="mt-3 text-[11px] text-[var(--muted)]">{formHint}</p>
       )}
     </section>

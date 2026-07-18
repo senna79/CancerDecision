@@ -22,25 +22,41 @@ export function DoesNotDecide({
           <p className="mt-3 text-sm font-medium text-[var(--ink)]">
             Treatment decisions may also depend on:
           </p>
-          <ul className="mt-2 space-y-2">
-            {modules.doesNotDecideItems.map((item) => (
-              <li
-                key={item}
-                className="flex gap-3 rounded-md border border-[var(--line)] bg-white/60 px-4 py-3"
-              >
-                <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
+          {embedded ? (
+            <p className="mt-1.5 text-sm leading-relaxed text-[var(--ink-soft)]">
+              {modules.doesNotDecideItems.join(" · ")}
+            </p>
+          ) : (
+            <ul className="mt-2 space-y-2">
+              {modules.doesNotDecideItems.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-3 rounded-md border border-[var(--line)] bg-white/60 px-4 py-3"
+                >
+                  <span className="mt-2 size-1.5 shrink-0 rounded-full bg-[var(--accent)]" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          )}
         </>
       ) : null}
       {modules.doesNotDecideNotes?.length ? (
-        <ul className="mt-4 space-y-2">
+        <ul
+          className={
+            embedded
+              ? "mt-3 space-y-2 text-sm text-[var(--ink-soft)]"
+              : "mt-4 space-y-2"
+          }
+        >
           {modules.doesNotDecideNotes.map((note) => (
             <li
               key={note}
-              className="rounded-md border border-[var(--line)] bg-white/70 px-4 py-3 text-[var(--ink-soft)]"
+              className={
+                embedded
+                  ? "border-l-2 border-[var(--line)] pl-3"
+                  : "rounded-md border border-[var(--line)] bg-white/70 px-4 py-3 text-[var(--ink-soft)]"
+              }
             >
               {note}
             </li>

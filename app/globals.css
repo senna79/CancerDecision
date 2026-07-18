@@ -174,3 +174,25 @@
 .animate-fade {
   animation: fade-soft 900ms ease both;
 }
+
+/* Print only the doctor checklist takeaway (clinic pocket sheet) */
+@media print {
+  body * {
+    visibility: hidden !important;
+  }
+
+  #doctor-checklist-print,
+  #doctor-checklist-print * {
+    visibility: visible !important;
+  }
+
+  #doctor-checklist-print {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: none !important;
+    background: white !important;
+    padding: 1.25rem !important;
+  }
+}
