@@ -1,249 +1,351 @@
 /**
- * Lung Cancer Treatment Landscape — cognitive map, not a treatment encyclopedia.
- * Skeleton is reusable; copy is lung-specific. Primary exits go to Decision Entries.
+ * Supporting Module #3 — Lung Cancer Treatment Landscape
+ * Treatment direction map → how doctors choose → short approaches → checklist.
+ * Route kept for SEO; not a Decision Path and not a treatment encyclopedia.
  */
-
-export type LandscapeApproach = {
-  id: string;
-  name: string;
-  what: string;
-  whenDiscussed: string;
-  questions: string[];
-  entryHref: string;
-  entryLabel: string;
-};
-
-export type LandscapeBranch = {
-  id: string;
-  name: string;
-  note: string;
-};
-
-export type LandscapeContinueLink = {
-  label: string;
-  href: string;
-  hint: string;
-};
-
-export type LandscapeReadPoint = {
-  title: string;
-  body: string;
-  href?: string;
-  linkLabel?: string;
-};
 
 export const LUNG_TREATMENT_LANDSCAPE = {
   path: "/cancers/lung-cancer/treatment-landscape",
-  title: "Lung Cancer Treatment Landscape",
-  eyebrow: "Understand lung cancer treatment approaches",
-  lead:
-    "A lung-specific map of the directions you may hear after diagnosis — so you can see how they relate before you compare options with your care team.",
-  notThis:
-    "This is not a treatment menu, not a ranking, and not a recommendation of what you should choose.",
+  slug: "treatment-landscape",
 
-  lungReadTitle: "How to read this map for lung cancer",
-  lungReadLead:
-    "The big boxes look familiar across many cancers. In lung cancer, three facts usually change which box gets discussed first.",
-  lungReadPoints: [
-    {
-      title: "Cancer type",
-      body: "Non-small cell (NSCLC) and small cell (SCLC) are planned differently. Ask which type you have — it changes how surgery, radiation, medicines, and trials enter the conversation.",
-      href: "/cancers/lung-cancer/understanding-types",
-      linkLabel: "What type of lung cancer do I have?",
-    },
-    {
-      title: "How far it has spread",
-      body: "Earlier-stage disease more often includes local treatments (surgery and/or radiation). More advanced disease more often starts with systemic therapy — sometimes with radiation for specific problems.",
-      href: "/cancers/lung-cancer/understanding-stage",
-      linkLabel: "What does my lung cancer stage mean?",
-    },
-    {
-      title: "Whether key information is complete",
-      body: "For many people with NSCLC, biomarker testing is part of building the map — not an optional extra. Incomplete information can mean you are comparing options too early.",
-    },
-  ] satisfies LandscapeReadPoint[],
+  hero: {
+    id: "hero",
+    eyebrow: "Supporting guide · Lung cancer",
+    title: "What Lung Cancer Treatments Might Be Discussed?",
+    subtitle:
+      "A map of the directions you may hear after diagnosis — so you can see how they relate before you compare options with your care team.",
+    boundary:
+      "This is not a treatment menu, not a ranking, and not a recommendation of what you should choose.",
+  },
 
-  mapTitle: "The main directions in lung cancer",
-  mapLead:
-    "Most lung cancer plans combine or sequence a few large approaches. Systemic therapy then branches into chemotherapy, immunotherapy, and targeted therapy.",
-  topBranches: [
-    {
-      id: "surgery",
-      name: "Surgery",
-      note: "More often discussed in earlier-stage NSCLC when removing the tumor (and checking lymph nodes) may be part of the plan.",
-    },
-    {
-      id: "radiation",
-      name: "Radiation",
-      note: "Used for local control in lung cancer — sometimes instead of surgery, sometimes with chemo, sometimes for symptoms or specific sites.",
-    },
-    {
-      id: "systemic",
-      name: "Systemic therapy",
-      note: "Often central in advanced disease, and also used before/after local treatment in some NSCLC plans.",
-    },
-    {
-      id: "trials",
-      name: "Clinical trials",
-      note: "Frequently discussed in advanced disease, after progression, or when biomarker-driven studies may fit.",
-    },
-  ] satisfies LandscapeBranch[],
-  systemicBranches: [
-    {
-      id: "chemo",
-      name: "Chemotherapy",
-      note: "Still used alone or with other medicines; also common with radiation in some lung plans.",
-    },
-    {
-      id: "immuno",
-      name: "Immunotherapy",
-      note: "A major option for many people with NSCLC — sometimes alone, sometimes with chemotherapy.",
-    },
-    {
-      id: "targeted",
-      name: "Targeted therapy",
-      note: "When biomarkers match, this may become a leading discussion in NSCLC — testing status matters early.",
-    },
-  ] satisfies LandscapeBranch[],
-
-  approachesTitle: "Why one option may be discussed over another",
-  approaches: [
-    {
-      id: "surgery",
-      name: "Surgery",
-      what: "An operation to remove lung cancer when location, stage, and lung function make that realistic — often with lymph-node assessment.",
-      whenDiscussed:
-        "Most often in earlier-stage NSCLC. Less often the first path in widely metastatic disease, or in SCLC where medicines (and sometimes radiation) usually lead.",
-      questions: [
-        "Is surgery possible for my lung cancer type and stage — and what would it try to achieve?",
-        "Do I need medicines or radiation before or after surgery?",
-        "If surgery is not recommended, what local or systemic options replace it?",
-      ],
-      entryHref:
-        "/questions/should-surgery-be-part-of-my-lung-cancer-treatment-plan",
-      entryLabel: "Surgery decision guide",
-    },
-    {
-      id: "radiation",
-      name: "Radiation",
-      what: "Focused treatment to a lung tumor, lymph nodes, or other sites — including techniques like stereotactic radiation in selected early cases.",
-      whenDiscussed:
-        "When local control matters but surgery is not the best fit; when chemo and radiation are paired; or when a specific area needs treatment for symptoms or control.",
-      questions: [
-        "Is radiation instead of surgery, or part of a combined lung cancer plan?",
-        "What is the goal — cure intent, control, or symptom relief?",
-        "How does timing fit with chemotherapy, immunotherapy, or surgery?",
-      ],
-      entryHref:
-        "/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer",
-      entryLabel: "Compare treatment options",
-    },
-    {
-      id: "systemic",
-      name: "Systemic therapy",
-      what: "Medicines that work throughout the body — the backbone of many advanced lung cancer plans, and part of some earlier-stage plans too.",
-      whenDiscussed:
-        "Especially when cancer has spread, when medicines come before/after local treatment, or when the team is choosing among chemo, immunotherapy, targeted therapy, or combinations.",
-      questions: [
-        "Why systemic therapy for my stage and type of lung cancer?",
-        "Are we discussing chemo, immunotherapy, targeted therapy, or a combination — and why?",
-        "What results or tests support this choice right now?",
-      ],
-      entryHref:
-        "/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer",
-      entryLabel: "Compare treatment options",
-    },
-    {
-      id: "immuno",
-      name: "Immunotherapy",
-      what: "Treatment that helps the immune system recognize lung cancer — a common discussion in NSCLC, sometimes with chemotherapy.",
-      whenDiscussed:
-        "Often when there is no matched targeted option, or when biomarker and pathology results support an immunotherapy-based plan. Timing and combinations vary.",
-      questions: [
-        "Is immunotherapy part of my plan alone, or with chemotherapy?",
-        "What information made this a fit — or not a fit — for me?",
-        "What should I watch for, and how will we judge if it is working?",
-      ],
-      entryHref:
-        "/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer",
-      entryLabel: "Compare treatment options",
-    },
-    {
-      id: "targeted",
-      name: "Targeted therapy",
-      what: "Medicines matched to specific features of the cancer. In lung cancer — especially NSCLC — whether testing is complete often changes the whole comparison.",
-      whenDiscussed:
-        "When biomarker results may open a matched approach, when results are still pending, or when a prior plan stopped working and re-testing is being considered.",
-      questions: [
-        "Has biomarker testing been completed for my lung cancer decision?",
-        "Should we wait for results before locking a first plan?",
-        "What if no matched finding is reported — what do we discuss next?",
-      ],
-      entryHref:
-        "/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment",
-      entryLabel: "Biomarker testing decision",
-    },
-    {
-      id: "trials",
-      name: "Clinical trials",
-      what: "Research studies that may test newer medicines, combinations, or biomarker-selected approaches under structured follow-up.",
-      whenDiscussed:
-        "Common in advanced lung cancer, after progression, when standard options are limited, or when a study matches your cancer features.",
-      questions: [
-        "Are there lung cancer trials that fit my type, stage, and prior treatment?",
-        "What would I gain or give up compared with standard care?",
-        "What does participation require in time, travel, and monitoring?",
-      ],
-      entryHref: "/questions/should-i-consider-a-clinical-trial-for-lung-cancer",
-      entryLabel: "Clinical trial decision",
-    },
-  ] satisfies LandscapeApproach[],
-
-  emergingTitle: "Newer and evolving approaches in lung cancer",
-  emergingLead:
-    "Lung cancer care changes quickly — especially around biomarkers, immunotherapy combinations, and trial options. “Newer” is not automatically better for everyone.",
-  emergingItems: [
-    "Additional targeted options as more lung cancer biomarkers are studied",
-    "Immunotherapy used alone, with chemotherapy, or in new sequences",
-    "Using blood-based tests in some situations when tissue is limited",
-    "Trials for people whose first plan stopped working or who have rare findings",
+  anchors: [
+    { label: "Treatment map", href: "#treatment-map" },
+    { label: "How doctors choose", href: "#how-doctors-choose" },
+    { label: "Approaches", href: "#approaches" },
+    { label: "Ask doctor", href: "#doctor-checklist" },
   ],
-  emergingAsk:
-    "For my type and stage of lung cancer, are there newer approaches or trials that fit — and what would they change compared with the current plan?",
 
-  continueTitle: "Continue into your lung cancer decision",
-  continueLead:
-    "Use the map to orient. Then open the guide that matches the decision in front of you.",
-  continueLinks: [
-    {
-      label: "Recently diagnosed?",
-      href: "/questions/what-decisions-matter-most-after-new-lung-cancer-diagnosis",
-      hint: "What should come first after a lung cancer diagnosis",
-    },
-    {
-      label: "Need biomarker information first?",
-      href: "/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment",
-      hint: "Whether testing could change lung cancer options",
-    },
-    {
-      label: "Comparing paths?",
-      href: "/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer",
-      hint: "How to weigh goals, benefits, and trade-offs",
-    },
-    {
-      label: "Considering surgery?",
-      href: "/questions/should-surgery-be-part-of-my-lung-cancer-treatment-plan",
-      hint: "Whether surgery should be part of your plan",
-    },
-    {
-      label: "Facing advanced disease?",
-      href: "/questions/how-to-choose-treatment-options-for-stage-iv-lung-cancer",
-      hint: "How treatment decisions work in stage IV / advanced lung cancer",
-    },
-    {
-      label: "Wondering about a trial?",
-      href: "/questions/should-i-consider-a-clinical-trial-for-lung-cancer",
-      hint: "Whether a study belongs in the discussion",
-    },
-  ] satisfies LandscapeContinueLink[],
+  directAnswer: {
+    id: "direct-answer",
+    label: "Direct answer",
+    lead: "Lung cancer treatment is not one single approach.",
+    intro:
+      "Doctors may consider different directions depending on cancer type, stage, biomarker information, previous treatments, your health, and your goals.",
+    points: [
+      "Local treatments focus on a specific area — such as surgery or radiation.",
+      "Systemic treatments work throughout the body — such as chemotherapy, targeted therapy, or immunotherapy.",
+      "Research options and supportive care may also belong in the conversation.",
+    ],
+    close:
+      "The right discussion depends on your situation — not on which treatment name sounds strongest.",
+  },
+
+  orientFirst: {
+    id: "orient-first",
+    title: "Orient before you compare treatments",
+    lead: "In lung cancer, three facts usually change which directions get discussed first.",
+    points: [
+      {
+        id: "orient-type",
+        title: "Cancer type",
+        body: "NSCLC and SCLC are planned differently. Knowing your type changes how surgery, radiation, medicines, and trials enter the conversation.",
+        href: "/cancers/lung-cancer/understanding-types",
+        linkLabel: "What type of lung cancer do I have?",
+      },
+      {
+        id: "orient-stage",
+        title: "How far it has spread",
+        body: "Earlier-stage disease more often includes local treatments. More advanced disease more often starts with systemic therapy — sometimes with radiation for specific problems.",
+        href: "/cancers/lung-cancer/understanding-stage",
+        linkLabel: "What does my lung cancer stage mean?",
+      },
+      {
+        id: "orient-info",
+        title: "Whether key information is complete",
+        body: "For many people with NSCLC, biomarker testing is part of building the map — not an optional extra. Incomplete information can mean you are comparing options too early.",
+        href: "/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment",
+        linkLabel: "Biomarker testing decision",
+      },
+    ],
+  },
+
+  treatmentMap: {
+    id: "treatment-map",
+    title: "The lung cancer treatment map",
+    lead: "Start with three large directions. Most plans combine or sequence more than one.",
+    groups: [
+      {
+        id: "local",
+        name: "Local treatments",
+        tag: "Treat cancer in a specific area",
+        examples: ["Surgery", "Radiation therapy"],
+        note: "Often considered when doctors can focus treatment on a known location.",
+      },
+      {
+        id: "systemic",
+        name: "Systemic treatments",
+        tag: "Treat cancer throughout the body",
+        examples: ["Chemotherapy", "Targeted therapy", "Immunotherapy"],
+        note: "Often considered when cancer may need treatment beyond one location — or before/after local treatment.",
+      },
+      {
+        id: "research-support",
+        name: "Research & supportive care",
+        tag: "Additional directions in the conversation",
+        examples: ["Clinical trials", "Supportive care"],
+        note: "Trials may open another option depending on fit. Supportive care can run alongside cancer treatment.",
+      },
+    ],
+  },
+
+  howDoctorsChoose: {
+    id: "how-doctors-choose",
+    title: "How doctors choose between treatments",
+    lead: "Doctors do not choose treatments based on the treatment name alone.",
+    factors: [
+      {
+        id: "cancer-info",
+        title: "Your cancer information",
+        items: ["cancer type;", "stage;", "biomarkers."],
+      },
+      {
+        id: "history",
+        title: "Your treatment history",
+        items: ["what you already received;", "how your cancer responded."],
+      },
+      {
+        id: "personal",
+        title: "Your personal situation",
+        items: ["overall health;", "priorities;", "quality-of-life goals."],
+      },
+    ],
+    notLabel: "The question is not:",
+    notQuestion: "Which treatment is the strongest?",
+    betterLabel: "The better question is:",
+    betterQuestion: "Which treatment fits my situation and goals?",
+  },
+
+  approaches: {
+    id: "approaches",
+    title: "Common directions you may hear",
+    lead: "Each line is a direction — not a recommendation. Open the Decision Path when you need to compare or decide.",
+    items: [
+      {
+        id: "surgery",
+        name: "Surgery",
+        what: "Removes cancer when location, stage, and recovery make that realistic.",
+        when: "More often discussed in earlier-stage NSCLC.",
+        entryHref:
+          "/questions/should-surgery-be-part-of-my-lung-cancer-treatment-plan",
+        entryLabel: "Surgery decision",
+      },
+      {
+        id: "radiation",
+        name: "Radiation therapy",
+        what: "Uses focused energy to treat cancer in specific areas.",
+        when: "Instead of surgery in some cases, with other treatments, or for symptom control.",
+        entryHref:
+          "/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer",
+        entryLabel: "Compare treatment options",
+      },
+      {
+        id: "chemotherapy",
+        name: "Chemotherapy",
+        what: "Medicines that affect cancer cells throughout the body.",
+        when: "Alone, with other medicines, with radiation, or when the plan changes.",
+        entryHref:
+          "/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer",
+        entryLabel: "Compare treatment options",
+      },
+      {
+        id: "targeted",
+        name: "Targeted therapy",
+        what: "Medicines matched to specific characteristics of the cancer.",
+        when: "When biomarker results may open a matched approach — testing status matters early.",
+        entryHref:
+          "/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment",
+        entryLabel: "Biomarker testing decision",
+      },
+      {
+        id: "immuno",
+        name: "Immunotherapy",
+        what: "Helps the immune system recognize and respond to cancer.",
+        when: "Often discussed in NSCLC based on cancer characteristics and prior treatment.",
+        entryHref:
+          "/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer",
+        entryLabel: "Compare treatment options",
+      },
+      {
+        id: "trials",
+        name: "Clinical trials",
+        what: "Studies of new treatments or new ways of using existing treatments.",
+        when: "When a study may fit your type, stage, biomarkers, or a changing plan.",
+        entryHref:
+          "/questions/should-i-consider-a-clinical-trial-for-lung-cancer",
+        entryLabel: "Clinical trial decision",
+      },
+      {
+        id: "supportive",
+        name: "Supportive care",
+        what: "Helps manage symptoms, side effects, daily challenges, and quality of life.",
+        when: "Can happen alongside cancer treatment — it does not mean treatment has stopped.",
+        entryHref:
+          "/questions/how-should-quality-of-life-factor-into-lung-cancer-decisions",
+        entryLabel: "Quality of life decision",
+      },
+    ],
+  },
+
+  faqs: {
+    id: "common-questions",
+    title: "Questions patients often ask",
+    lead: "Open a question only if it matches what you are wondering.",
+    items: [
+      {
+        id: "faq-newest",
+        question: "Is the newest treatment always the best?",
+        paragraphs: [
+          "No. A newer treatment may be helpful, but the right choice depends on evidence, cancer characteristics, possible benefits, and risks.",
+        ],
+      },
+      {
+        id: "faq-multiple",
+        question: "Why do some patients receive multiple treatments?",
+        paragraphs: [
+          "Different treatments may serve different purposes — for example reducing cancer before surgery, lowering recurrence risk, or controlling cancer over time.",
+        ],
+      },
+      {
+        id: "faq-goals-change",
+        question: "Can treatment goals change over time?",
+        paragraphs: [
+          "Yes. Goals may change depending on cancer response, side effects, and personal priorities.",
+        ],
+      },
+      {
+        id: "faq-different",
+        question:
+          "Why did someone else with lung cancer get a different treatment?",
+        paragraphs: [
+          "Treatment depends on cancer type, stage, biomarkers, previous treatment, and personal health. There is no single plan for everyone.",
+        ],
+      },
+      {
+        id: "faq-decline",
+        question: "Can I choose not to start a recommended treatment?",
+        paragraphs: [
+          "Treatment decisions should include expected benefits, possible risks, and alternatives. Your goals and preferences are part of the conversation.",
+        ],
+      },
+    ],
+  },
+
+  checklist: {
+    id: "doctor-checklist",
+    title: "Questions to take to your doctor",
+    leaveTitle: "Before you leave, confirm:",
+    leaveItems: [
+      "What is the goal of this treatment — and why is it recommended for me?",
+      "What alternatives should I understand?",
+      "What benefit do we expect, and how will we know if it is working?",
+      "What happens next if this treatment does not work as hoped?",
+    ],
+    groups: [
+      {
+        id: "checklist-understanding",
+        heading: "Understanding my treatment",
+        questions: [
+          "What is the goal of this treatment?",
+          "Why is this treatment recommended for me?",
+          "What alternatives should I understand?",
+        ],
+      },
+      {
+        id: "checklist-benefits",
+        heading: "Understanding benefits and risks",
+        questions: [
+          "What benefit do we expect?",
+          "What are the main risks?",
+          "How will we know if it is working?",
+        ],
+      },
+      {
+        id: "checklist-future",
+        heading: "Understanding my future",
+        questions: [
+          "What happens after this treatment?",
+          "What options remain if it does not work?",
+          "Are there decisions I should prepare for?",
+        ],
+      },
+    ],
+  },
+
+  related: {
+    id: "related-decisions",
+    title: "Continue into a decision",
+    lead: "Use the map to orient. Then open the Decision Path that matches the choice in front of you.",
+    items: [
+      {
+        id: "related-options",
+        title: "Treatment options",
+        question: "How should I compare lung cancer treatment options?",
+        hint: "Compare approaches based on your situation — not the treatment name alone.",
+        href: "/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer",
+        cta: "Open treatment comparison",
+      },
+      {
+        id: "related-biomarker",
+        title: "Biomarker testing",
+        question:
+          "Do I need biomarker testing before choosing lung cancer treatment?",
+        hint: "Understand whether cancer characteristics may change which options are discussed.",
+        href: "/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment",
+        cta: "Open biomarker decision",
+      },
+      {
+        id: "related-surgery",
+        title: "Surgery decision",
+        question: "Should surgery be part of my lung cancer treatment plan?",
+        hint: "Understand when surgery may be considered.",
+        href: "/questions/should-surgery-be-part-of-my-lung-cancer-treatment-plan",
+        cta: "Open surgery decision",
+      },
+    ],
+    secondary: [
+      {
+        href: "/questions/should-i-consider-a-clinical-trial-for-lung-cancer",
+        label: "Clinical trial decision",
+        hint: "when research options may apply",
+      },
+      {
+        href: "/questions/how-should-quality-of-life-factor-into-lung-cancer-decisions",
+        label: "Quality of life decision",
+        hint: "when burden and daily life are part of the choice",
+      },
+      {
+        href: "/cancers/lung-cancer/understanding-types",
+        label: "Understanding Types",
+        hint: "if you still need to orient to NSCLC vs SCLC",
+      },
+      {
+        href: "/cancers/lung-cancer/understanding-stage",
+        label: "Understanding Stage",
+        hint: "if you still need to orient to what stage means",
+      },
+    ],
+  },
+
+  sources: {
+    id: "sources",
+    title: "Sources & review",
+    purpose:
+      "This guide helps patients understand lung cancer treatment directions as part of decision preparation. It does not replace medical advice.",
+    items: [
+      "National Cancer Institute (NCI)",
+      "NCCN Guidelines for Patients: Non-Small Cell Lung Cancer",
+      "American Society of Clinical Oncology (ASCO)",
+      "American Cancer Society (ACS)",
+    ],
+  },
 } as const;

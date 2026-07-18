@@ -254,15 +254,14 @@ export default async function CancerDecisionCenterPage({
                 Treatment Landscape
               </p>
               <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
-                A map of the main treatment directions — not a menu of what you
-                should choose — so you can see how approaches relate before you
-                compare options.
+                Orient to local vs systemic directions, how doctors choose, and
+                which Decision Path to open next — not a treatment menu.
               </p>
               <Link
                 href="/cancers/lung-cancer/treatment-landscape"
                 className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
               >
-                Open the Lung Cancer Treatment Landscape →
+                Open Treatment Landscape →
               </Link>
             </li>
           </ul>

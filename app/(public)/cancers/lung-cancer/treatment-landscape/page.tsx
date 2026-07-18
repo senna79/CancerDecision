@@ -1,7 +1,6 @@
 import { TreatmentLandscape } from "@/components/cancer/treatment-landscape";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
-import { SourcesAndReview } from "@/components/trust/sources-and-review";
 import { LUNG_TREATMENT_LANDSCAPE } from "@/lib/content/lung-treatment-landscape";
 import { breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -9,15 +8,15 @@ import { buildMetadata } from "@/lib/seo/metadata";
 const path = LUNG_TREATMENT_LANDSCAPE.path;
 
 export const metadata = buildMetadata({
-  title: "Lung Cancer Treatment Landscape",
+  title: "What Lung Cancer Treatments Might Be Discussed?",
   description:
-    "A lung-specific map of treatment approaches — how type, stage, and biomarker information change the discussion of surgery, radiation, systemic therapy, and trials.",
+    "A lung cancer treatment map — local, systemic, trials, and supportive care — plus how doctors choose, questions to ask, and which Decision Path to open next.",
   path,
   keywords: [
     "lung cancer treatment options",
     "lung cancer treatment landscape",
     "surgery radiation systemic therapy",
-    "lung cancer decision map",
+    "how doctors choose lung cancer treatment",
   ],
 });
 
@@ -41,9 +40,6 @@ export default function LungTreatmentLandscapePage() {
         ]}
       />
       <TreatmentLandscape />
-      <div className="mt-14">
-        <SourcesAndReview defaultCollapsed />
-      </div>
     </div>
   );
 }

@@ -1,45 +1,105 @@
 import Link from "next/link";
+import { DoctorChecklistTakeaway } from "@/components/question/ai-entry/doctor-checklist-takeaway";
 import { LUNG_TREATMENT_LANDSCAPE } from "@/lib/content/lung-treatment-landscape";
 
 const content = LUNG_TREATMENT_LANDSCAPE;
 
+function BulletList({ items }: { items: readonly string[] }) {
+  return (
+    <ul className="space-y-1.5">
+      {items.map((item) => (
+        <li key={item} className="flex gap-2.5 text-[var(--ink)]">
+          <span
+            className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]"
+            aria-hidden
+          />
+          <span>{item}</span>
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 export function TreatmentLandscape() {
   return (
     <article className="space-y-14 md:space-y-16">
-      <header className="relative overflow-hidden border-b border-[var(--line)] pb-10">
+      <header
+        id={content.hero.id}
+        className="relative scroll-mt-24 overflow-hidden border-b border-[var(--line)] pb-8"
+      >
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_15%_0%,rgba(15,118,110,0.12),transparent_45%),linear-gradient(180deg,rgba(231,238,233,0.55),transparent)]"
         />
         <div className="relative">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-            {content.eyebrow}
+            {content.hero.eyebrow}
           </p>
           <h1 className="mt-2 max-w-3xl font-heading text-4xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-5xl">
-            {content.title}
+            {content.hero.title}
           </h1>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-[var(--ink-soft)]">
-            {content.lead}
+            {content.hero.subtitle}
           </p>
           <p className="mt-3 max-w-2xl text-sm text-[var(--muted)]">
-            {content.notThis}
+            {content.hero.boundary}
           </p>
+
+          <nav
+            aria-label="On this page"
+            className="mt-6 flex flex-wrap gap-x-4 gap-y-2 border-t border-[var(--line)]/80 pt-4 text-sm"
+          >
+            {content.anchors.map((anchor) => (
+              <a
+                key={anchor.href}
+                href={anchor.href}
+                className="font-medium text-[var(--ink-soft)] hover:text-[var(--accent)]"
+              >
+                {anchor.label}
+              </a>
+            ))}
+          </nav>
         </div>
       </header>
 
-      <section aria-labelledby="landscape-lung-read">
+      <section
+        id={content.directAnswer.id}
+        aria-labelledby="direct-answer-label"
+        className="scroll-mt-24"
+      >
+        <p
+          id="direct-answer-label"
+          className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]"
+        >
+          {content.directAnswer.label}
+        </p>
+        <div className="mt-3 max-w-2xl space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>{content.directAnswer.lead}</p>
+          <p>{content.directAnswer.intro}</p>
+          <BulletList items={content.directAnswer.points} />
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            {content.directAnswer.close}
+          </p>
+        </div>
+      </section>
+
+      <section
+        id={content.orientFirst.id}
+        aria-labelledby="orient-first-title"
+        className="scroll-mt-24"
+      >
         <h2
-          id="landscape-lung-read"
+          id="orient-first-title"
           className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
         >
-          {content.lungReadTitle}
+          {content.orientFirst.title}
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--muted)]">
-          {content.lungReadLead}
+          {content.orientFirst.lead}
         </p>
         <ol className="mt-6 space-y-5">
-          {content.lungReadPoints.map((point, index) => (
-            <li key={point.title} className="flex gap-3">
+          {content.orientFirst.points.map((point, index) => (
+            <li key={point.id} id={point.id} className="flex gap-3">
               <span
                 className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-[var(--line)] bg-white text-[11px] font-bold text-[var(--muted)]"
                 aria-hidden
@@ -48,125 +108,144 @@ export function TreatmentLandscape() {
               </span>
               <div>
                 <p className="font-semibold text-[var(--ink)]">{point.title}</p>
-                <p className="mt-1 text-sm leading-relaxed text-[var(--ink-soft)]">
+                <p className="mt-1 text-sm leading-relaxed text-[var(--ink-soft)] md:text-base">
                   {point.body}
                 </p>
-                {point.href && point.linkLabel ? (
-                  <p className="mt-2">
-                    <Link
-                      href={point.href}
-                      className="text-sm font-semibold text-[var(--accent)] hover:underline"
-                    >
-                      {point.linkLabel} →
-                    </Link>
-                  </p>
-                ) : null}
+                <p className="mt-2">
+                  <Link
+                    href={point.href}
+                    className="text-sm font-semibold text-[var(--accent)] hover:underline"
+                  >
+                    {point.linkLabel} →
+                  </Link>
+                </p>
               </div>
             </li>
           ))}
         </ol>
       </section>
 
-      <section aria-labelledby="landscape-map">
+      <section
+        id={content.treatmentMap.id}
+        aria-labelledby="treatment-map-title"
+        className="scroll-mt-24"
+      >
         <h2
-          id="landscape-map"
+          id="treatment-map-title"
           className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
         >
-          {content.mapTitle}
+          {content.treatmentMap.title}
         </h2>
-        <p className="mt-2 max-w-2xl text-[var(--muted)]">{content.mapLead}</p>
+        <p className="mt-2 max-w-2xl text-[var(--muted)]">
+          {content.treatmentMap.lead}
+        </p>
 
-        <div className="mt-8">
-          <p className="text-center font-heading text-sm font-semibold uppercase tracking-[0.12em] text-[var(--ink-soft)]">
-            Lung cancer treatment map
-          </p>
-          <div
-            aria-hidden
-            className="mx-auto mt-3 h-8 w-px bg-[var(--line)]"
-          />
-          <ul className="mt-1 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {content.topBranches.map((branch) => (
-              <li
-                key={branch.id}
-                className="border-t-2 border-[var(--accent)]/50 pt-3"
-              >
-                <p className="font-heading text-lg font-semibold text-[var(--ink)]">
-                  {branch.name}
-                </p>
-                <p className="mt-1 text-sm leading-relaxed text-[var(--ink-soft)]">
-                  {branch.note}
-                </p>
-              </li>
-            ))}
-          </ul>
-
-          <div className="mt-8 border-l-2 border-[var(--accent)]/30 pl-5 md:pl-6">
-            <p className="text-sm font-semibold text-[var(--ink)]">
-              Under systemic therapy
-            </p>
-            <ul className="mt-3 grid gap-4 sm:grid-cols-3">
-              {content.systemicBranches.map((branch) => (
-                <li key={branch.id}>
-                  <p className="font-medium text-[var(--ink)]">{branch.name}</p>
-                  <p className="mt-1 text-sm text-[var(--ink-soft)]">
-                    {branch.note}
-                  </p>
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div className="mt-8 grid gap-8 md:grid-cols-3">
+          {content.treatmentMap.groups.map((group) => (
+            <div
+              key={group.id}
+              id={group.id}
+              className="border-t-2 border-[var(--accent)]/50 pt-4"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
+                {group.tag}
+              </p>
+              <h3 className="mt-1.5 font-heading text-xl font-semibold text-[var(--ink)]">
+                {group.name}
+              </h3>
+              <ul className="mt-3 space-y-1 text-sm font-medium text-[var(--ink)]">
+                {group.examples.map((ex) => (
+                  <li key={ex}>{ex}</li>
+                ))}
+              </ul>
+              <p className="mt-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+                {group.note}
+              </p>
+            </div>
+          ))}
         </div>
       </section>
 
-      <section aria-labelledby="landscape-approaches">
+      <section
+        id={content.howDoctorsChoose.id}
+        aria-labelledby="how-doctors-choose-title"
+        className="scroll-mt-24"
+      >
         <h2
-          id="landscape-approaches"
+          id="how-doctors-choose-title"
           className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
         >
-          {content.approachesTitle}
+          {content.howDoctorsChoose.title}
         </h2>
+        <p className="mt-2 max-w-2xl text-[var(--muted)]">
+          {content.howDoctorsChoose.lead}
+        </p>
+
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
+          {content.howDoctorsChoose.factors.map((factor) => (
+            <div key={factor.id} id={factor.id}>
+              <p className="font-semibold text-[var(--ink)]">{factor.title}</p>
+              <div className="mt-2">
+                <BulletList items={factor.items} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="mt-8 max-w-2xl space-y-2 border-l-2 border-[var(--accent)]/40 pl-3">
+          <p className="text-sm text-[var(--muted)]">
+            {content.howDoctorsChoose.notLabel}
+          </p>
+          <p className="font-medium text-[var(--ink-soft)]">
+            “{content.howDoctorsChoose.notQuestion}”
+          </p>
+          <p className="pt-2 text-sm text-[var(--muted)]">
+            {content.howDoctorsChoose.betterLabel}
+          </p>
+          <p className="font-semibold text-[var(--ink)]">
+            “{content.howDoctorsChoose.betterQuestion}”
+          </p>
+        </div>
+      </section>
+
+      <section
+        id={content.approaches.id}
+        aria-labelledby="approaches-title"
+        className="scroll-mt-24"
+      >
+        <h2
+          id="approaches-title"
+          className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
+        >
+          {content.approaches.title}
+        </h2>
+        <p className="mt-2 max-w-2xl text-[var(--muted)]">
+          {content.approaches.lead}
+        </p>
+
         <div className="mt-8 divide-y divide-[var(--line)] border-y border-[var(--line)]">
-          {content.approaches.map((approach) => (
-            <div key={approach.id} className="py-6 md:py-7">
-              <div className="md:grid md:grid-cols-[minmax(0,12rem)_1fr] md:gap-8">
-                <h3 className="font-heading text-xl font-semibold text-[var(--ink)]">
-                  {approach.name}
+          {content.approaches.items.map((item) => (
+            <div key={item.id} id={item.id} className="py-5 md:py-6">
+              <div className="md:grid md:grid-cols-[minmax(0,11rem)_1fr] md:gap-8">
+                <h3 className="font-heading text-lg font-semibold text-[var(--ink)]">
+                  {item.name}
                 </h3>
-                <div className="mt-3 space-y-3 md:mt-0">
+                <div className="mt-2 space-y-2 md:mt-0">
                   <p className="text-[var(--ink-soft)] leading-relaxed">
-                    {approach.what}
+                    {item.what}
                   </p>
-                  <p className="text-sm leading-relaxed text-[var(--muted)]">
+                  <p className="text-sm text-[var(--muted)]">
                     <span className="font-semibold text-[var(--ink)]">
                       When it may be discussed:{" "}
                     </span>
-                    {approach.whenDiscussed}
+                    {item.when}
                   </p>
-                  <div>
-                    <p className="text-sm font-semibold text-[var(--ink)]">
-                      Questions to ask
-                    </p>
-                    <ul className="mt-2 space-y-1.5">
-                      {approach.questions.map((q) => (
-                        <li
-                          key={q}
-                          className="flex gap-2.5 text-sm text-[var(--ink-soft)]"
-                        >
-                          <span
-                            className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]"
-                            aria-hidden
-                          />
-                          <span>{q}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
                   <p>
                     <Link
-                      href={approach.entryHref}
+                      href={item.entryHref}
                       className="text-sm font-semibold text-[var(--accent)] hover:underline"
                     >
-                      {approach.entryLabel} →
+                      {item.entryLabel} →
                     </Link>
                   </p>
                 </div>
@@ -177,68 +256,152 @@ export function TreatmentLandscape() {
       </section>
 
       <section
-        aria-labelledby="landscape-emerging"
-        className="border-t border-[var(--line)] pt-10"
+        id={content.faqs.id}
+        aria-labelledby="common-questions-title"
+        className="scroll-mt-24"
       >
         <h2
-          id="landscape-emerging"
-          className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)]"
+          id="common-questions-title"
+          className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
         >
-          {content.emergingTitle}
+          {content.faqs.title}
         </h2>
-        <p className="mt-2 max-w-2xl text-[var(--muted)]">
-          {content.emergingLead}
-        </p>
-        <ul className="mt-5 max-w-2xl space-y-2">
-          {content.emergingItems.map((item) => (
-            <li
-              key={item}
-              className="flex gap-2.5 text-sm text-[var(--ink-soft)]"
-            >
-              <span
-                className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]"
-                aria-hidden
-              />
-              <span>{item}</span>
-            </li>
+        <p className="mt-2 max-w-2xl text-[var(--muted)]">{content.faqs.lead}</p>
+
+        <div className="mt-6 divide-y divide-[var(--line)] border-y border-[var(--line)]">
+          {content.faqs.items.map((faq) => (
+            <details key={faq.id} id={faq.id} className="group py-1">
+              <summary className="cursor-pointer list-none py-4 font-semibold text-[var(--ink)] marker:content-none [&::-webkit-details-marker]:hidden">
+                <span className="flex items-start justify-between gap-3">
+                  <span>{faq.question}</span>
+                  <span
+                    aria-hidden
+                    className="mt-0.5 shrink-0 text-[var(--muted)] transition group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </span>
+              </summary>
+              <div className="space-y-2 pb-4 text-sm leading-relaxed text-[var(--ink-soft)] md:text-base">
+                {faq.paragraphs.map((p) => (
+                  <p key={p}>{p}</p>
+                ))}
+              </div>
+            </details>
           ))}
-        </ul>
-        <p className="mt-5 max-w-2xl border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
-          Ask your care team: “{content.emergingAsk}”
-        </p>
+        </div>
       </section>
 
       <section
-        aria-labelledby="landscape-continue"
-        className="border-t border-[var(--line)] pt-10"
+        id={content.checklist.id}
+        aria-labelledby="doctor-checklist-title"
+        className="scroll-mt-24"
       >
         <h2
-          id="landscape-continue"
-          className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)]"
+          id="doctor-checklist-title"
+          className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
         >
-          {content.continueTitle}
+          {content.checklist.title}
+        </h2>
+
+        <div className="mt-6">
+          <DoctorChecklistTakeaway
+            title={content.checklist.title}
+            lead={content.checklist.leaveTitle}
+            items={[...content.checklist.leaveItems]}
+          />
+        </div>
+
+        <div className="mt-6 space-y-2">
+          {content.checklist.groups.map((group) => (
+            <details
+              key={group.id}
+              id={group.id}
+              className="group rounded-lg border border-[var(--line)] bg-white/50"
+            >
+              <summary className="cursor-pointer list-none px-4 py-3 font-semibold text-[var(--ink)] marker:content-none [&::-webkit-details-marker]:hidden">
+                <span className="flex items-center justify-between gap-3">
+                  <span>{group.heading}</span>
+                  <span
+                    aria-hidden
+                    className="text-[var(--muted)] transition group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </span>
+              </summary>
+              <ul className="space-y-2 border-t border-[var(--line)] px-4 py-3 text-sm text-[var(--ink-soft)]">
+                {group.questions.map((q) => (
+                  <li key={q} className="flex gap-2.5">
+                    <span
+                      className="mt-1 size-3.5 shrink-0 rounded-[2px] border border-[var(--line)]"
+                      aria-hidden
+                    />
+                    <span>{q}</span>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section
+        id={content.related.id}
+        aria-labelledby="related-decisions-title"
+        className="scroll-mt-24 border-t border-[var(--line)] pt-10"
+      >
+        <h2
+          id="related-decisions-title"
+          className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
+        >
+          {content.related.title}
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--muted)]">
-          {content.continueLead}
+          {content.related.lead}
         </p>
+
         <ul className="mt-6 space-y-4">
-          {content.continueLinks.map((link) => (
-            <li key={link.href} className="border-b border-[var(--line)] pb-4">
+          {content.related.items.map((item) => (
+            <li key={item.id} className="border-b border-[var(--line)] pb-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
+                {item.title}
+              </p>
               <Link
-                href={link.href}
-                className="group block transition hover:border-[var(--accent)]"
+                href={item.href}
+                className="mt-1 block font-semibold text-[var(--ink)] hover:text-[var(--accent)]"
               >
-                <span className="font-semibold text-[var(--ink)] group-hover:text-[var(--accent)]">
-                  {link.label}
-                </span>
-                <span className="mt-0.5 block text-sm text-[var(--ink-soft)]">
-                  {link.hint}
-                </span>
+                {item.question}
               </Link>
+              <p className="mt-1 text-sm text-[var(--ink-soft)]">{item.hint}</p>
+              <p className="mt-2">
+                <Link
+                  href={item.href}
+                  className="text-sm font-semibold text-[var(--accent)] hover:underline"
+                >
+                  {item.cta} →
+                </Link>
+              </p>
             </li>
           ))}
         </ul>
-        <p className="mt-6 text-sm text-[var(--muted)]">
+
+        <ul className="mt-6 space-y-2 text-sm text-[var(--muted)]">
+          {content.related.secondary.map((link) => (
+            <li key={link.href}>
+              Also useful:{" "}
+              <Link
+                href={link.href}
+                className="font-semibold text-[var(--accent)] hover:underline"
+              >
+                {link.label}
+              </Link>{" "}
+              — {link.hint}
+            </li>
+          ))}
+        </ul>
+
+        <p className="mt-4 text-sm text-[var(--muted)]">
           Prefer situation-based navigation?{" "}
           <Link
             href="/cancers/lung-cancer#decision-moment"
@@ -247,6 +410,40 @@ export function TreatmentLandscape() {
             Back to where you are now
           </Link>
         </p>
+      </section>
+
+      <section
+        id={content.sources.id}
+        aria-labelledby="sources-title"
+        className="scroll-mt-24 border-t border-[var(--line)] pt-8"
+      >
+        <details className="group">
+          <summary className="cursor-pointer list-none font-heading text-lg font-semibold text-[var(--ink)] marker:content-none [&::-webkit-details-marker]:hidden">
+            <span className="flex items-center justify-between gap-3">
+              <span id="sources-title">{content.sources.title}</span>
+              <span
+                aria-hidden
+                className="text-sm font-normal text-[var(--muted)] transition group-open:rotate-45"
+              >
+                +
+              </span>
+            </span>
+          </summary>
+          <div className="mt-3 space-y-3 text-sm text-[var(--ink-soft)]">
+            <p>{content.sources.purpose}</p>
+            <ul className="space-y-1.5">
+              {content.sources.items.map((item) => (
+                <li key={item} className="flex gap-2.5">
+                  <span
+                    className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]"
+                    aria-hidden
+                  />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </details>
       </section>
     </article>
   );
