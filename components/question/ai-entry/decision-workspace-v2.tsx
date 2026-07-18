@@ -194,18 +194,21 @@ function StepMain({
           </p>
         </div>
       );
+    case "second-understand":
+      return <WhyDecisionMatters modules={modules} embedded />;
     case "second-compare":
       return (
         <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
           <p>
-            Another opinion may change what you discuss — or confirm the current
-            plan. Either outcome can strengthen the decision.
+            A second opinion may lead to different outcomes — and sometimes the
+            most valuable result is knowing why the current plan makes sense.
           </p>
           <ul className="space-y-1.5 text-[var(--ink)]">
             {[
-              "It may clarify diagnosis, staging, or testing gaps",
-              "It may widen or refine the treatment options on the table",
-              "Agreement between teams can still increase confidence",
+              "Confirm — your current plan is reasonable",
+              "Clarify — why a treatment is recommended",
+              "Expand — other options worth discussing",
+              "Identify — information that may affect the decision",
             ].map((item) => (
               <li key={item} className="flex gap-2.5">
                 <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
@@ -213,6 +216,10 @@ function StepMain({
               </li>
             ))}
           </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            It is not about finding a different answer. It is about understanding
+            the reasoning behind the answer.
+          </p>
         </div>
       );
     case "treatment-understand":

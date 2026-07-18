@@ -3,6 +3,7 @@ import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import { getEntryTemplateV2Config } from "@/lib/content/entry-template-v2";
 import { SURGERY_ENTRY_CARDS } from "@/lib/content/surgery-entry-cards";
 import { CLINICAL_TRIAL_ENTRY_CARDS } from "@/lib/content/clinical-trial-entry-cards";
+import { SECOND_OPINION_ENTRY_CARDS } from "@/lib/content/second-opinion-entry-cards";
 import { TREATMENT_OPTIONS_ENTRY_CARDS } from "@/lib/content/treatment-options-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
@@ -402,6 +403,118 @@ export function DecisionPathCardDetail({
     }
     case "confidence":
       return <ConfidenceCard />;
+    case "so-everyone":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.everyone.lead}
+          items={SECOND_OPINION_ENTRY_CARDS.everyone.when}
+          close={SECOND_OPINION_ENTRY_CARDS.everyone.close}
+        />
+      );
+    case "so-delay":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.delay.lead}
+          ask={SECOND_OPINION_ENTRY_CARDS.delay.ask}
+          close={SECOND_OPINION_ENTRY_CARDS.delay.close}
+        />
+      );
+    case "so-disrespect":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{SECOND_OPINION_ENTRY_CARDS.disrespectful.lead}</p>
+          <p className="font-medium text-[var(--ink)]">
+            You can frame it as: “{SECOND_OPINION_ENTRY_CARDS.disrespectful.frame}
+            ”
+          </p>
+          <p>{SECOND_OPINION_ENTRY_CARDS.disrespectful.close}</p>
+        </div>
+      );
+    case "so-change":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.canChange.lead}
+          items={SECOND_OPINION_ENTRY_CARDS.canChange.outcomes}
+          close={SECOND_OPINION_ENTRY_CARDS.canChange.close}
+        />
+      );
+    case "so-two-doctors":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.twoDoctors.lead}
+          items={SECOND_OPINION_ENTRY_CARDS.twoDoctors.compare}
+        />
+      );
+    case "so-pathology":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.pathologyReview.lead}
+          ask={SECOND_OPINION_ENTRY_CARDS.pathologyReview.ask}
+        />
+      );
+    case "so-records":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.records.lead}
+          items={SECOND_OPINION_ENTRY_CARDS.records.items}
+        />
+      );
+    case "so-specialist":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={SECOND_OPINION_ENTRY_CARDS.specialist.lead}
+            close={SECOND_OPINION_ENTRY_CARDS.specialist.close}
+          />
+          {modules.bridge?.ctaHref && modules.bridge.ctaLabel ? (
+            <p>
+              <Link
+                href={modules.bridge.ctaHref}
+                className="font-semibold text-[var(--accent)] hover:underline"
+              >
+                {modules.bridge.ctaLabel} →
+              </Link>
+            </p>
+          ) : null}
+        </div>
+      );
+    case "so-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{SECOND_OPINION_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {SECOND_OPINION_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "so-choose":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.chooseBetween.lead}
+          items={SECOND_OPINION_ENTRY_CARDS.chooseBetween.points}
+          close={SECOND_OPINION_ENTRY_CARDS.chooseBetween.close}
+        />
+      );
+    case "so-again":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.againLater.lead}
+          items={SECOND_OPINION_ENTRY_CARDS.againLater.when}
+          close={SECOND_OPINION_ENTRY_CARDS.againLater.close}
+        />
+      );
+    case "so-family":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.family.lead}
+          close={SECOND_OPINION_ENTRY_CARDS.family.close}
+        />
+      );
     case "clarify":
       return <ClarifyTopics modules={modules} />;
     case "may-not":

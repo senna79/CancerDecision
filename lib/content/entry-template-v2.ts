@@ -40,14 +40,14 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
   },
   [SECOND_OPINION_SLUG]: {
     plainLanguageGloss:
-      "A second opinion is another specialist review of your diagnosis and options — often about confidence and clarity, not disagreement.",
+      "A second opinion is another expert review of your diagnosis, options, or care plan — about having enough information to feel confident, not about distrusting your doctor.",
     oneMinuteLabel: "Direct answer",
     audienceTitle: "This page may help if you:",
     audienceItems: [
-      "Received a new lung cancer diagnosis and want more confidence",
-      "Were given a major treatment recommendation",
-      "Heard different opinions and need a way to compare them",
-      "Have a complex situation and wonder about specialized review",
+      "Were recently diagnosed with lung cancer",
+      "Are choosing between treatment approaches",
+      "Surgery or another major treatment has been recommended",
+      "Your diagnosis, stage, or current plan feels uncertain — or treatment is not working as expected",
     ],
   },
   [TREATMENT_COMPARE_SLUG]: {

@@ -578,276 +578,171 @@ export const SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
   cancerLabel: "Lung Cancer",
   decisionMoment: "Whether a second opinion may help",
   exploring: "Second Opinion Decision",
+  subtitle:
+    "A second opinion is another expert review of your diagnosis, options, or care plan — about having enough information to feel confident, not about distrusting your doctor.",
   relatedDecisions: [
-    { label: "Treatment Options", href: TREATMENT_COMPARE },
     { label: "Biomarker Testing", href: BIOMARKER },
-    { label: "Choosing a Care Team", href: CARE_CENTER },
-    { label: "Global Care Options", href: GLOBAL_CARE },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
+    { label: "Surgery Decision", href: SURGERY },
+    { label: "Clinical Trials", href: CLINICAL_TRIAL },
   ],
   journeyLabel: "Lung Cancer Decision Journey",
   journeyPath: [
     { label: "New Diagnosis", href: NEW_DIAGNOSIS },
     { label: "Second Opinion", current: true },
-    { label: "Treatment Decisions", href: TREATMENT_COMPARE },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
   ],
 
   triggersTitle: "You may be considering a second opinion if:",
   triggerGroups: [
     {
-      heading: "Received a new diagnosis",
-      lead: "You want to confirm:",
+      heading: "You were recently diagnosed",
+      lead: "You may want to confirm:",
       items: [
-        "Is the diagnosis accurate?",
-        "Is the cancer type clearly identified?",
-        "Is the stage information complete?",
+        "Whether important information is complete",
+        "Whether other options should be discussed",
       ],
     },
     {
-      heading: "Received a treatment recommendation",
-      lead: "You want to understand:",
+      heading: "You are choosing between approaches",
+      lead: "You may want to understand:",
       items: [
-        "Are there other reasonable options?",
-        "Why is this approach recommended?",
-        "What are the potential trade-offs?",
+        "Why this plan was recommended",
+        "What alternatives exist",
       ],
     },
     {
-      heading: "Heard different opinions",
-      lead: "You want to understand:",
+      heading: "Surgery or another major treatment was recommended",
+      lead: "You may want confidence before a hard-to-reverse decision.",
       items: [
-        "Why doctors may recommend different approaches",
-        "Which factors influence each recommendation",
+        "Whether the recommendation fits your situation",
+        "What tradeoffs you should understand",
       ],
     },
     {
-      heading: "Have a complex or uncommon situation",
-      lead: "You want access to:",
+      heading: "Diagnosis, stage, or treatment feels uncertain",
+      lead: "You may be asking:",
       items: [
-        "Specialized expertise",
-        "Multidisciplinary review",
-        "Additional perspectives",
+        "Is anything missing?",
+        "Should pathology or scans be reviewed again?",
+        "What if treatment is not working as expected?",
       ],
     },
   ],
 
-  whyTitle: "A second opinion is about confidence, not disagreement",
-  whyLead: "After a lung cancer diagnosis, patients often face decisions involving:",
-  whyQuestions: [
-    "Understanding the diagnosis",
-    "Confirming the cancer stage",
-    "Choosing between treatment options",
-    "Deciding where to receive care",
+  whyTitle: "Is this a situation where another opinion could help?",
+  whyLead:
+    "A second opinion may be useful when a decision has significant consequences or when multiple reasonable paths may exist.",
+  whyBody: [
+    "Patients often consider another opinion when they receive a new diagnosis, surgery is being considered, several treatment options are possible, biomarker results may affect choices, or treatment is changing.",
+    "A second opinion is not about questioning every decision. It is about making sure the decision is based on the right information.",
   ],
-  whyDependsIntro:
-    "Cancer treatment decisions can be complex because different approaches may be reasonable depending on:",
-  whyDependsOn: [
-    "Cancer type",
-    "Stage",
-    "Biomarker information",
-    "Overall health",
-    "Personal priorities",
-  ],
+  whyQuestions: [],
+  whyNotLabel: "The question is not:",
+  whyNotQuestion: "Do I trust my doctor?",
+  whyBetterLabel: "The better question is:",
+  whyBetterQuestion:
+    "Do I have enough information to feel confident about this decision?",
   whyClose: [
-    "A second opinion can help you better understand the reasoning behind your options before making a major decision.",
+    "The value of a second opinion is highest before a major decision is made — especially decisions that may be difficult to reverse.",
   ],
 
-  clarifyTitle: "What questions can a second opinion answer?",
-  clarifyGroups: [
-    {
-      heading: "About diagnosis",
-      mayHelpIntro: "A second opinion may help review:",
-      mayHelp: ["Pathology findings", "Cancer subtype", "Stage information"],
-      questionsIntro: "Questions:",
-      questions: [
-        "Do you agree with the diagnosis?",
-        "Is any additional review needed?",
-      ],
-    },
-    {
-      heading: "About treatment choices",
-      mayHelpIntro: "A second opinion may help explain:",
-      mayHelp: [
-        "Available options",
-        "Why a treatment is recommended",
-        "Alternative approaches",
-      ],
-      questionsIntro: "Questions:",
-      questions: [
-        "Are there other reasonable options?",
-        "What are the benefits and trade-offs?",
-      ],
-    },
-    {
-      heading: "About care planning",
-      mayHelpIntro: "A second opinion may help you understand:",
-      mayHelp: [
-        "Which specialists may be involved",
-        "Whether additional expertise could help",
-        "How your care plan fits your goals",
-      ],
-      questionsIntro: "Questions:",
-      questions: [],
-    },
+  doesNotDecideTitle:
+    "What could another doctor tell me that I do not already know?",
+  doesNotDecideLead:
+    "A second opinion may confirm your current plan, clarify why a treatment is recommended, expand options worth discussing, or identify additional information that may affect the decision.",
+  doesNotDecideItems: [
+    "Confirm — your current plan is reasonable",
+    "Clarify — why a treatment is recommended",
+    "Expand — other options worth discussing",
+    "Identify — information that may affect the decision",
   ],
+  doesNotDecideNotes: [
+    "Sometimes the most valuable result is not changing the plan. It is knowing why that plan makes sense.",
+    "A second opinion is not about finding a different answer. It is about making sure you understand the reasoning behind the answer.",
+  ],
+  doesNotDecideClose:
+    "Open the cards beside this step for conflicting recommendations and when pathology or scans should be reviewed again.",
 
-  valueTitle: "Situations where a second opinion may be especially helpful",
-  valueSituations: [
-    {
-      title: "Complex diagnosis",
-      examples: [
-        "Rare cancer subtype",
-        "Unclear pathology",
-        "Difficult staging questions",
-      ],
-    },
-    {
-      title: "Major treatment decisions",
-      examples: [
-        "Choosing initial treatment",
-        "Considering surgery",
-        "Starting long-term therapy",
-      ],
-    },
-    {
-      title: "Multiple possible approaches",
-      examples: [
-        "Different treatment combinations",
-        "Different treatment sequences",
-        "Different care strategies",
-      ],
-    },
-    {
-      title: "Seeking specialized expertise",
-      examples: [
-        "High-volume cancer centers",
-        "Multidisciplinary teams",
-        "Specialized treatment experience",
-      ],
-    },
+  costTitle: "Cost and insurance — what to ask about a second opinion",
+  costLead:
+    "Costs vary depending on the healthcare system, insurance coverage, and type of consultation.",
+  costItems: [
+    "Is this consultation covered?",
+    "Are record reviews included?",
+    "Are there additional fees?",
   ],
-
-  mayNotTitle: "A second opinion does not always mean a different answer",
-  mayNotLead: "A second opinion may confirm the original recommendation.",
-  mayNotWhenIntro: "This can happen when:",
-  mayNotWhen: [
-    "The diagnosis is clear",
-    "Treatment options are well established",
-    "Multiple specialists reach the same conclusion",
-  ],
-  mayNotValueIntro:
-    "The value of a second opinion is not only finding a different recommendation. It may also provide:",
-  mayNotValue: ["More confidence", "Better understanding", "Clearer expectations"],
-
-  timingTitle: "Does getting a second opinion mean waiting to start treatment?",
-  timingLead:
-    "Seeking more information and moving forward with appropriate care are not always opposite choices.",
-  timingDependsIntro: "The timing of decisions depends on:",
-  timingDependsOn: [
-    "Cancer type and stage",
-    "How quickly treatment decisions need to be made",
-    "Your healthcare team's guidance",
-  ],
-  timingClose:
-    "A second opinion should help you make a more informed decision, not create unnecessary delay. If you are concerned about timing, discuss this directly with your care team.",
-
-  evaluateTitle: "How should I compare different medical opinions?",
-  evaluateLead:
-    "Different recommendations do not always mean one doctor is right and another is wrong.",
-  evaluateBlocks: [
-    {
-      title: "1. Diagnostic reasoning",
-      intro: "Ask:",
-      items: [
-        "Do they agree on the diagnosis?",
-        "Do they interpret the available information differently?",
-        "Is more information needed?",
-      ],
-    },
-    {
-      title: "2. Treatment reasoning",
-      intro: "Ask:",
-      items: [
-        "Why is this option recommended?",
-        "What alternatives were considered?",
-        "What are the trade-offs?",
-      ],
-    },
-    {
-      title: "3. Expertise and experience",
-      intro: "Consider:",
-      items: [
-        "Does the team regularly treat similar cases?",
-        "Is multidisciplinary input available?",
-        "Do they have experience with your specific situation?",
-      ],
-    },
-    {
-      title: "4. Your personal priorities",
-      intro: "Consider:",
-      items: [
-        "Treatment goals",
-        "Side effects",
-        "Lifestyle impact",
-        "Access and cost",
-      ],
-    },
-  ],
+  costClose:
+    "Ask before you schedule — so cost does not surprise you mid-decision.",
 
   prepTitle: "What information should I prepare for a second opinion?",
   prepItems: [
-    "Pathology report",
+    "Pathology reports",
     "Biopsy information",
-    "Imaging reports and scans",
-    "Cancer stage information",
-    "Biomarker / molecular testing results",
-    "Current treatment recommendation",
-    "Previous treatment information (if any)",
+    "Imaging reports and scan images if available",
+    "Biomarker results",
+    "Treatment history",
+    "Current treatment plan",
     "Questions you want answered",
   ],
 
   bridge: {
-    title: "Exploring specialized opinions beyond your local care team",
+    title: "Should I seek a lung cancer specialist or cancer center?",
     body: [
-      "Some patients explore opinions from specialized centers in other regions or countries, especially when looking for expertise in complex or uncommon cases.",
-      "International opinions are not necessary for everyone.",
-      "The important question is whether additional expertise could meaningfully improve your understanding of available options.",
+      "A specialist or experienced cancer center may provide focused expertise, multidisciplinary review, and access to clinical trials.",
+      "The best choice depends on your situation, location, and access.",
     ],
-    ctaLabel: "When is lung cancer care abroad worth considering?",
-    ctaHref: GLOBAL_CARE,
+    ctaLabel: "Care center & expertise guide",
+    ctaHref: CARE_CENTER,
   },
 
-  doctorTitle: "Questions you may want to discuss with a specialist",
+  mistakesTitle: "Common mistakes when getting a second opinion",
+  mistakes: [
+    {
+      mistake: "Waiting until after a major decision",
+      why: "Earlier review may provide more options.",
+    },
+    {
+      mistake: "Asking for another opinion without complete records",
+      why: "Missing information limits usefulness.",
+    },
+    {
+      mistake: "Looking only for someone who agrees",
+      why: "The goal is understanding, not confirmation.",
+    },
+  ],
+
+  doctorTitle: "Doctor Conversation Checklist",
   doctorLeaveTitle: "Before leaving your appointment, ask:",
   doctorLeaveItems: [
-    "What specifically should this second opinion clarify?",
-    "Do I have the records I need for another review?",
-    "How urgent is starting treatment versus waiting for another perspective?",
-    "Who would you recommend for another review — and why?",
+    "Do you agree with my diagnosis and stage?",
+    "Would you recommend the same treatment plan?",
+    "What alternatives should I discuss?",
+    "What questions should I bring back to my current doctor?",
   ],
   doctorGroups: [
     {
-      heading: "Diagnosis",
+      heading: "About my diagnosis",
       questions: [
-        "Do you agree with my diagnosis?",
-        "Is the cancer type and stage clear?",
-        "Is additional testing recommended?",
+        "Do you agree with my diagnosis and stage?",
+        "Is there any additional information I should consider?",
+        "Are there uncertainties that could affect my options?",
       ],
     },
     {
-      heading: "Treatment",
+      heading: "About treatment choices",
       questions: [
-        "What options would you consider?",
-        "Why would you recommend this approach?",
-        "What alternatives should I understand?",
-        "What are the main trade-offs?",
+        "Would you recommend the same treatment plan?",
+        "What alternatives should I discuss?",
+        "What are the main tradeoffs between options?",
       ],
     },
     {
-      heading: "Expertise",
+      heading: "About next steps",
       questions: [
-        "How often do you treat similar cases?",
-        "Is a multidisciplinary team involved?",
-        "Are there specialized options I should consider?",
+        "What would you recommend if this treatment does not work?",
+        "Are there clinical trials I should consider?",
+        "What questions should I bring back to my current doctor?",
       ],
     },
   ],
@@ -864,40 +759,37 @@ export const SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
     "Whether their diagnosis information is complete",
     "Whether additional testing may affect choices",
     "What treatment options exist",
-    "What questions they need answered",
+    "What questions they need answered before a hard-to-reverse decision",
   ],
   scenarioClose:
-    "The second opinion helps them make a decision with more confidence.",
+    "The second opinion helps them make a decision with more confidence — whether or not the plan changes.",
 
   nextStepTitle: "Your next step",
   nextStepLead: "If you are considering a second opinion:",
   nextStepActions: [
-    { label: "Collect your medical information." },
+    { label: "Collect the records another specialist needs for a full review." },
     {
-      label: "Identify what you want the second opinion to clarify.",
+      label: "Decide what you most need clarified:",
       examples: [
-        "Confirm diagnosis",
-        "Compare treatments",
-        "Understand alternatives",
+        "Diagnosis or stage",
+        "Treatment alternatives",
+        "Tradeoffs before a major decision",
       ],
     },
-    { label: "Prepare questions before speaking with another specialist." },
+    { label: "Prepare questions — and ask how urgent timing is." },
   ],
-  nextStepCtaLabel: "Compare Lung Cancer Treatment Options",
+  nextStepCtaLabel: "Compare Treatment Options",
   nextStepHref: TREATMENT_COMPARE,
-  nextStepCtaMeta: "Treatment Comparison Decision Center",
+  nextStepCtaMeta: "Treatment Options Decision",
+  nextStepSecondaryCtaLabel: "Biomarker Testing Decision",
+  nextStepSecondaryHref: BIOMARKER,
+  nextStepSecondaryMeta: "Could results change the discussion?",
 
-  relatedPathsTitle: "Related decisions",
+  relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Newly diagnosed?",
-      question: "What should I do first after a lung cancer diagnosis?",
-      cta: "New diagnosis next steps",
-      href: NEW_DIAGNOSIS,
-    },
-    {
-      title: "Need to understand testing?",
-      question: "Could biomarker testing change my treatment options?",
+      title: "Need more information first?",
+      question: "Do I need biomarker testing before lung cancer treatment?",
       cta: "Biomarker testing",
       href: BIOMARKER,
     },
@@ -906,6 +798,12 @@ export const SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
       question: "How should I compare lung cancer treatment options?",
       cta: "Treatment options",
       href: TREATMENT_COMPARE,
+    },
+    {
+      title: "Considering surgery?",
+      question: "Should surgery be part of my lung cancer treatment plan?",
+      cta: "Surgery decision",
+      href: SURGERY,
     },
   ],
 };

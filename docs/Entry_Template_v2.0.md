@@ -1,6 +1,6 @@
 # Entry Template v2.0 — Patient Decision Workspace
 
-**Status:** Active on Biomarker, Surgery, Treatment Options, Clinical Trial, and Second Opinion (v2 Decision Path)  
+**Status:** Active v2 Decision Path — Biomarker, Surgery, Treatment Options, Clinical Trial, Second Opinion (flagship set)  
 **Goal:** 30 seconds to know this page fits · ~3 minutes on the Decision Path · depth only when chosen.
 
 ## Hero (above the path)
