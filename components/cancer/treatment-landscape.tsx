@@ -51,6 +51,16 @@ export function TreatmentLandscape() {
                 <p className="mt-1 text-sm leading-relaxed text-[var(--ink-soft)]">
                   {point.body}
                 </p>
+                {point.href && point.linkLabel ? (
+                  <p className="mt-2">
+                    <Link
+                      href={point.href}
+                      className="text-sm font-semibold text-[var(--accent)] hover:underline"
+                    >
+                      {point.linkLabel} →
+                    </Link>
+                  </p>
+                ) : null}
               </div>
             </li>
           ))}

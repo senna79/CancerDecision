@@ -28,6 +28,8 @@ export type LandscapeContinueLink = {
 export type LandscapeReadPoint = {
   title: string;
   body: string;
+  href?: string;
+  linkLabel?: string;
 };
 
 export const LUNG_TREATMENT_LANDSCAPE = {
@@ -46,6 +48,8 @@ export const LUNG_TREATMENT_LANDSCAPE = {
     {
       title: "Cancer type",
       body: "Non-small cell (NSCLC) and small cell (SCLC) are planned differently. Ask which type you have — it changes how surgery, radiation, medicines, and trials enter the conversation.",
+      href: "/cancers/lung-cancer/understanding-types",
+      linkLabel: "What type of lung cancer do I have?",
     },
     {
       title: "How far it has spread",

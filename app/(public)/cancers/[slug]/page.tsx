@@ -113,12 +113,19 @@ export default async function CancerDecisionCenterPage({
             activeId={activeMoment?.id}
             footer={
               <>
-                Need the treatment map first?{" "}
+                Need orientation first?{" "}
+                <Link
+                  href="/cancers/lung-cancer/understanding-types"
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  Cancer types
+                </Link>
+                {" · "}
                 <Link
                   href="/cancers/lung-cancer/treatment-landscape"
                   className="font-semibold text-[var(--accent)] hover:underline"
                 >
-                  Open the Treatment Landscape
+                  Treatment Landscape
                 </Link>
                 {decisionMap ? (
                   <>
@@ -140,10 +147,17 @@ export default async function CancerDecisionCenterPage({
               New to these terms?{" "}
             </span>
             <Link
+              href="/cancers/lung-cancer/understanding-types"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              What type of lung cancer do I have?
+            </Link>
+            {" · "}
+            <Link
               href="/cancers/lung-cancer/treatment-landscape"
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              See how surgery, radiation, systemic therapy, and trials relate →
+              How do treatment directions relate?
             </Link>
           </p>
         </div>
@@ -189,18 +203,40 @@ export default async function CancerDecisionCenterPage({
       </Section>
 
       {isLung ? (
-        <Section title="Treatment Landscape">
-          <p className="mb-3 max-w-2xl text-[var(--muted)]">
-            A map of the main treatment directions — not a menu of what you
-            should choose — so you can see how approaches relate before you
-            compare options.
-          </p>
-          <Link
-            href="/cancers/lung-cancer/treatment-landscape"
-            className="text-sm font-semibold text-[var(--accent)] hover:underline"
-          >
-            Open the Lung Cancer Treatment Landscape →
-          </Link>
+        <Section title="Supporting guides">
+          <ul className="space-y-4">
+            <li>
+              <p className="font-semibold text-[var(--ink)]">
+                Understanding lung cancer types
+              </p>
+              <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
+                Orient to NSCLC vs SCLC, what to find on your pathology report,
+                and how type changes the next conversation.
+              </p>
+              <Link
+                href="/cancers/lung-cancer/understanding-types"
+                className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+              >
+                Open Understanding Types →
+              </Link>
+            </li>
+            <li>
+              <p className="font-semibold text-[var(--ink)]">
+                Treatment Landscape
+              </p>
+              <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
+                A map of the main treatment directions — not a menu of what you
+                should choose — so you can see how approaches relate before you
+                compare options.
+              </p>
+              <Link
+                href="/cancers/lung-cancer/treatment-landscape"
+                className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+              >
+                Open the Lung Cancer Treatment Landscape →
+              </Link>
+            </li>
+          </ul>
         </Section>
       ) : (
         <Section title="Treatment Options">
