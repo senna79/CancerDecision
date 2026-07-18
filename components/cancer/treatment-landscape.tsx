@@ -27,6 +27,36 @@ export function TreatmentLandscape() {
         </div>
       </header>
 
+      <section aria-labelledby="landscape-lung-read">
+        <h2
+          id="landscape-lung-read"
+          className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
+        >
+          {content.lungReadTitle}
+        </h2>
+        <p className="mt-2 max-w-2xl text-[var(--muted)]">
+          {content.lungReadLead}
+        </p>
+        <ol className="mt-6 space-y-5">
+          {content.lungReadPoints.map((point, index) => (
+            <li key={point.title} className="flex gap-3">
+              <span
+                className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-[var(--line)] bg-white text-[11px] font-bold text-[var(--muted)]"
+                aria-hidden
+              >
+                {index + 1}
+              </span>
+              <div>
+                <p className="font-semibold text-[var(--ink)]">{point.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-[var(--ink-soft)]">
+                  {point.body}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+      </section>
+
       <section aria-labelledby="landscape-map">
         <h2
           id="landscape-map"
@@ -38,7 +68,7 @@ export function TreatmentLandscape() {
 
         <div className="mt-8">
           <p className="text-center font-heading text-sm font-semibold uppercase tracking-[0.12em] text-[var(--ink-soft)]">
-            Lung cancer treatment
+            Lung cancer treatment map
           </p>
           <div
             aria-hidden

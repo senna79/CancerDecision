@@ -11,7 +11,7 @@ const path = LUNG_TREATMENT_LANDSCAPE.path;
 export const metadata = buildMetadata({
   title: "Lung Cancer Treatment Landscape",
   description:
-    "A map of lung cancer treatment approaches — surgery, radiation, systemic therapy, and clinical trials — so you can see how they relate before comparing options.",
+    "A lung-specific map of treatment approaches — how type, stage, and biomarker information change the discussion of surgery, radiation, systemic therapy, and trials.",
   path,
   keywords: [
     "lung cancer treatment options",
