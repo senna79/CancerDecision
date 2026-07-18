@@ -3,11 +3,17 @@ import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 
 export function WhyDecisionMatters({
   modules,
+  embedded = false,
 }: {
   modules: AiEntryFlagshipModules;
+  embedded?: boolean;
 }) {
   return (
-    <Section id="why-this-decision-matters" title={modules.whyTitle}>
+    <Section
+      id="why-this-decision-matters"
+      title={modules.whyTitle}
+      embedded={embedded}
+    >
       <p>{modules.whyLead}</p>
       {modules.whyBody?.map((line) => (
         <p key={line} className="mt-3">

@@ -16,25 +16,24 @@ export function EntryReadingGuide() {
         </li>
         <li>
           <span className="font-medium text-[var(--ink)]">
-            2. Main decision path
+            2. Decision path (4 steps)
           </span>
           {" — "}
-          on the left (or first on mobile): why it matters, what can change, what
-          happens next, and{" "}
+          why it matters → could options change → practical realities →{" "}
           <a
-            href="#your-next-step"
+            href="#path-step-conversation"
             className="font-medium text-[var(--accent)] hover:underline"
           >
-            your next step
+            what to discuss with your doctor
           </a>
         </li>
         <li>
           <span className="font-medium text-[var(--ink)]">
-            3. Questions patients ask
+            3. Questions beside each step
           </span>
           {" — "}
-          on the right (or below on mobile): open only the worries you have now
-          (biopsy, timing, cost, doctor checklist)
+          open only the worries for that step (what it is, biopsy, cost,
+          checklist)
         </li>
       </ol>
     </aside>

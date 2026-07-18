@@ -951,14 +951,14 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     },
   ],
 
-  whyTitle: "Why biomarker testing may matter",
+  whyTitle: "Why does this matter?",
   whyLead:
     "After a lung cancer diagnosis, many people want to move quickly toward treatment — and some choices depend on understanding more about the cancer itself.",
   whyBody: [],
   whyQuestions: [
-    "It may reveal treatment approaches you would otherwise not discuss",
-    "It helps doctors match options to your cancer’s features",
-    "It is one factor in the decision — not the only factor",
+    "Biomarker testing looks for features of your cancer",
+    "Some results may open or change treatment discussions",
+    "Treatment decisions are stronger when important information is available",
   ],
   whyNotLabel: "The important question is not:",
   whyNotQuestion: "Do I need every possible test?",
@@ -1057,9 +1057,9 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     },
   ],
 
-  doesNotDecideTitle: "Could testing change my treatment options?",
+  doesNotDecideTitle: "Could results change my options?",
   doesNotDecideLead:
-    "Results may change which approaches your team discusses — but a biomarker finding does not automatically decide the right treatment. Decisions still consider:",
+    "Some results may identify treatments worth discussing. Some may not change the plan. Results are one part of the decision — not the whole decision. A finding does not automatically decide the right treatment. Decisions still consider:",
   doesNotDecideItems: [
     "Cancer stage",
     "Overall health",
@@ -1169,8 +1169,9 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
   doctorLeaveTitle: "Before you leave your appointment, make sure you know:",
   doctorLeaveItems: [
     "Is biomarker testing complete — or still pending?",
-    "Are we waiting for results before choosing a plan?",
-    "Could those results change my treatment options?",
+    "Are results available — or when should we expect them?",
+    "Should treatment wait for these results — and why or why not?",
+    "What are the next options we should discuss either way?",
   ],
   doctorGroups: [
     {

@@ -3,13 +3,19 @@ import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 
 export function DoesNotDecide({
   modules,
+  embedded = false,
 }: {
   modules: AiEntryFlagshipModules;
+  embedded?: boolean;
 }) {
   if (!modules.doesNotDecideTitle) return null;
 
   return (
-    <Section id="does-not-decide" title={modules.doesNotDecideTitle}>
+    <Section
+      id="does-not-decide"
+      title={modules.doesNotDecideTitle}
+      embedded={embedded}
+    >
       {modules.doesNotDecideLead ? <p>{modules.doesNotDecideLead}</p> : null}
       {modules.doesNotDecideItems?.length ? (
         <>

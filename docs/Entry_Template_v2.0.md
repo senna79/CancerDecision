@@ -1,24 +1,29 @@
 # Entry Template v2.0 — Patient Decision Workspace
 
 **Status:** Active sample on Biomarker Testing  
-**Goal:** Help a frightened patient finish a decision prep in ~3 minutes — not read an 11-screen article.
+**Goal:** Help a frightened patient finish decision prep in ~3 minutes — not read an 11-screen article.
+
+## Decision OS stages (every Entry)
+
+These four stage labels appear as **light eyebrows** above each patient-facing step title — not as big headlines, not as background watermarks.
+
+| Stage | Patient question (Biomarker example) |
+|-------|--------------------------------------|
+| Understand the decision | Why does this matter? |
+| Compare what matters | Could results change my options? |
+| Consider practical realities | What should I know before testing? |
+| Prepare for next conversation | What should I discuss with my doctor? |
 
 ## Layout
 
-**Desktop (≈70 / 30)**
+**Desktop:** vertical numbered Decision Path. Each step is a row:
 
-| Left — Main decision path | Right — Questions patients ask |
-|---------------------------|--------------------------------|
-| Why this matters | Will it delay treatment? |
-| Could testing change options? | How is testing done? |
-| What happens next? | Another biopsy? / risks |
-| Leave-appointment confirms | How long? / Cost |
-| Your next step | Doctor checklist |
-| Continue journey | Common questions & deeper detail |
+- Left — step story (short main axis)
+- Right — **Questions you may have** for that step only
 
-Right cards open in place with **← Questions patients ask** to return. No blog-style “related articles” rail.
+Cards expand in place beside their step. No single global right-rail stack.
 
-**Mobile:** stack — H1 → quick answer → main path → next step → question cards → sources.
+**Mobile:** for each step — story first, then that step’s cards, then the next step.
 
 ## Page chrome (above the workspace)
 
@@ -31,9 +36,10 @@ Right cards open in place with **← Questions patients ask** to return. No blog
 
 ## Design rules
 
-- Left is a **story**, not a table of contents.  
-- Right is **patient questions**, not “more content.”  
-- Depth stays available (card detail / deeper card) for humans who choose it and for AI crawlers when rendered.  
+- Main axis is a **numbered path**, not a table of contents and not a blog.  
+- Question cards **hang on the matching step** — they resolve worry for that stage.  
+- Practical Reality is its own step (sample / biopsy / risk / time / cost) — not an appendix.  
+- Depth stays available (card detail) for humans who choose it and for AI crawlers when rendered.  
 - No fixed prices, no “you should get tested,” no EGFR encyclopedia walls.  
 
 ## Implementation map
@@ -48,17 +54,17 @@ Right cards open in place with **← Questions patients ask** to return. No blog
 
 ## Rollout
 
-1. **Done:** Biomarker workspace sample  
-2. Migrate other lung Entries onto the same shell with Entry-specific left story + right cards  
+1. **Done:** Biomarker 4-step Decision Path sample  
+2. Migrate other lung Entries onto the same OS stages with Entry-specific step titles + cards  
 3. Keep v1 `AiEntryFlagshipBody` until migrated  
 
 ## Patient pass criteria
 
-After the left path only, can they say:
+After the path only (without opening cards), can they say:
 
 1. Why this decision exists  
 2. Whether options might change  
-3. What happens next  
-4. What to do / ask next  
+3. What they may experience before testing  
+4. What to ask / do next with their doctor  
 
-Right cards are optional worry-resolvers — not required reading.
+Cards are optional worry-resolvers — not required reading.

@@ -2,7 +2,8 @@
  * Entry Template v2.0 — Patient Decision Workspace
  * See docs/Entry_Template_v2.0.md
  *
- * Short path default-visible; deeper modules remain in HTML (disclosure).
+ * Decision OS stages (eyebrows): Understand → Compare → Practical → Conversation.
+ * Deeper modules hang as question cards beside each step.
  */
 
 export type EntryTemplateV2Config = {
