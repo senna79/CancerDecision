@@ -1,6 +1,6 @@
 # Entry Template v2.0 — Patient Decision Workspace
 
-**Status:** Active on Biomarker Testing, Second Opinion, and Treatment Comparison  
+**Status:** Active on Biomarker Testing, Second Opinion, Treatment Comparison, and Surgery Decision  
 **Goal:** 30 seconds to know this page fits · ~3 minutes on the Decision Path · depth only when chosen.
 
 ## Hero (above the path)

@@ -10,6 +10,7 @@
 import {
   BIOMARKER_SLUG,
   SECOND_OPINION_SLUG,
+  SURGERY_SLUG,
   TREATMENT_COMPARE_SLUG,
 } from "./entry-path-v2";
 
@@ -58,6 +59,18 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Want a framework before locking a plan",
       "Heard different recommendations and need comparison questions",
       "Want to include your priorities in the decision",
+    ],
+  },
+  [SURGERY_SLUG]: {
+    plainLanguageGloss:
+      "Surgery can be an important option for some people with lung cancer when the cancer can be safely removed and surgery may provide meaningful benefit — it is not automatically best for everyone.",
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Your doctor mentioned surgery as a possible treatment",
+      "You are deciding between different treatment approaches",
+      "You want to understand whether surgery could help",
+      "You are preparing for a major treatment decision",
     ],
   },
 };

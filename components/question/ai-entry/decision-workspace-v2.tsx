@@ -164,8 +164,36 @@ function StepMain({
       );
     case "why":
       return <WhyDecisionMatters modules={modules} embedded />;
+    case "surgery-understand":
+      return <WhyDecisionMatters modules={modules} embedded />;
     case "does-not-decide":
       return <DoesNotDecide modules={modules} embedded />;
+    case "surgery-compare":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Surgery is one possible treatment approach. Doctors compare it with
+            other options based on stage, tumor characteristics, biomarker
+            information when relevant, your overall health, and your goals.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "For some people, surgery is the main treatment",
+              "For others, treatment may happen before or after surgery",
+              "For some people, a different approach is discussed instead",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The decision is not “surgery or no surgery?” It is which approach
+            gives the best balance of benefit and risk for your situation.
+          </p>
+        </div>
+      );
     case "second-compare":
       return (
         <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">

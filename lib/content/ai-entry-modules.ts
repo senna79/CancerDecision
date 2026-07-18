@@ -3274,13 +3274,12 @@ export const SURGERY_FLAGSHIP: AiEntryFlagshipModules = {
   decisionMoment: "Whether surgery should be part of your treatment plan",
   exploring: "Surgery Decision",
   subtitle:
-    "Understand when surgery may be considered, how it compares with other options, and what questions can help you make a confident decision.",
+    "Surgery can be an important option for some people with lung cancer — when it can be safely done and may provide meaningful benefit. The goal is the approach that best matches your cancer, health, and treatment goals.",
   relatedDecisions: [
-    { label: "New Diagnosis", href: NEW_DIAGNOSIS },
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
     { label: "Biomarker Testing", href: BIOMARKER },
+    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
+    { label: "Clinical Trials", href: CLINICAL_TRIAL },
     { label: "Second Opinion", href: SECOND_OPINION },
-    { label: "Care Center Selection", href: CARE_CENTER },
   ],
   journeyLabel: "Lung Cancer Decision Journey",
   journeyPath: [
@@ -3289,16 +3288,8 @@ export const SURGERY_FLAGSHIP: AiEntryFlagshipModules = {
     { label: "Second Opinion", href: SECOND_OPINION },
   ],
 
-  triggersTitle: "You may be considering a surgery decision if:",
+  triggersTitle: "You may be thinking about surgery if:",
   triggerGroups: [
-    {
-      heading: "You were recently diagnosed",
-      lead: "You may wonder:",
-      items: [
-        "Is surgery possible for my cancer?",
-        "Should I discuss surgery before other treatments?",
-      ],
-    },
     {
       heading: "Your doctor mentioned surgery",
       lead: "You may want to understand:",
@@ -3308,178 +3299,91 @@ export const SURGERY_FLAGSHIP: AiEntryFlagshipModules = {
       ],
     },
     {
-      heading: "You are comparing treatment paths",
+      heading: "You are deciding between approaches",
       lead: "You may ask:",
       items: [
         "Surgery or another approach?",
-        "Treatment first or surgery first?",
-        "What are the differences?",
+        "Treatment before surgery, after, or instead?",
       ],
     },
     {
-      heading: "You want more confidence before a major decision",
+      heading: "You want to know whether surgery could help",
+      lead: "You may wonder:",
+      items: [
+        "What benefit would surgery aim for?",
+        "What would recovery mean for my life?",
+      ],
+    },
+    {
+      heading: "You are preparing for a major decision",
       lead: "You may be considering:",
       items: [
-        "A second opinion",
-        "A specialized cancer center",
-        "A multidisciplinary review",
+        "A second opinion before surgery",
+        "Whether the care team has the right experience",
       ],
     },
   ],
 
-  whyTitle: "Surgery is a treatment option, not the decision itself",
-  whyLead: "When patients hear “Surgery is possible” they often think:",
+  whyTitle: "Why are my doctors talking about surgery?",
+  whyLead:
+    "Surgery is considered when your care team believes removing the cancer may offer meaningful benefit.",
   whyBody: [
-    "Surgery must be the best choice. Avoiding surgery means losing an opportunity. More treatment must always be better.",
+    "Before recommending surgery, doctors usually look at whether the cancer is located in a way that allows removal, whether surgery can achieve the intended treatment goal, and whether your body can safely handle the procedure.",
+    "Being offered surgery does not automatically mean surgery is the only option. It means your team believes it is an option worth discussing.",
   ],
   whyQuestions: [],
-  whyNotLabel: "But the real decision is not:",
-  whyNotQuestion: "Is surgery good?",
-  whyBetterLabel: "The real decision is:",
+  whyNotLabel: "The important question is not:",
+  whyNotQuestion: "Can the tumor be removed?",
+  whyBetterLabel: "The more important question is:",
   whyBetterQuestion:
-    "Does surgery fit my cancer situation, my goals, and my priorities?",
+    "Will surgery provide meaningful benefit in my overall treatment plan?",
   whyClose: [
-    "A good treatment decision compares options rather than choosing based on one word.",
+    "The goal is not simply to remove a tumor. The goal is to choose the approach that best matches your cancer, your health, and your treatment goals.",
   ],
 
-  goalFrameworkTitle: "When does surgery usually enter the decision?",
-  goalFrameworkLead:
-    "Surgery decisions depend on the complete picture. Your care team may consider:",
-  goalFrameworkBlocks: [
-    {
-      title: "Cancer characteristics",
-      questionsIntro: "Questions:",
-      questions: [
-        "What type of lung cancer is it?",
-        "Where is it located?",
-        "How extensive is it?",
-      ],
-    },
-    {
-      title: "Overall health",
-      questionsIntro: "Questions:",
-      questions: [
-        "Is surgery physically appropriate?",
-        "How might recovery affect daily life?",
-      ],
-    },
-    {
-      title: "Treatment goals",
-      questionsIntro: "Questions:",
-      questions: [
-        "What are we trying to achieve?",
-        "How does surgery fit into the overall plan?",
-      ],
-    },
-    {
-      title: "Other available options",
-      questionsIntro: "Questions:",
-      questions: [
-        "What alternatives exist?",
-        "How do they compare?",
-      ],
-    },
+  doesNotDecideTitle: "Is surgery the best choice for my situation?",
+  doesNotDecideLead:
+    "Surgery is one possible treatment approach. Doctors compare it with other options based on cancer stage, tumor characteristics, biomarker information when relevant, your overall health, and your personal goals.",
+  doesNotDecideItems: [
+    "For some people, surgery is the main treatment",
+    "For others, another treatment may happen before surgery",
+    "Some people need additional treatment after surgery",
+    "For some people, a different approach is discussed instead of surgery",
   ],
-  goalFrameworkClose:
-    "The decision is based on multiple factors, not a single test result.",
+  doesNotDecideNotes: [
+    "The decision is not “surgery or no surgery?” It is: which treatment approach gives the best balance of benefit and risk for my situation?",
+  ],
+  doesNotDecideClose:
+    "Open the cards beside this step for before-surgery treatment, biomarkers, and when surgery may not be the best option.",
 
-  affectTitle: "Surgery is not always the only path",
-  affectBlocks: [
-    {
-      title: "Surgery as the main approach",
-      body: "For some patients, surgery may be considered an important part of treatment.",
-    },
-    {
-      title: "Surgery combined with other treatments",
-      body: "Some treatment plans involve more than one approach.",
-    },
-    {
-      title: "Other approaches instead of surgery",
-      body: "Other options may be discussed depending on cancer characteristics, treatment goals, and personal priorities.",
-    },
+  costTitle: "Cost and insurance — what to ask before surgery",
+  costLead:
+    "Costs vary depending on the hospital, procedure, insurance coverage, and recovery needs. Use questions instead of guessing a number.",
+  costItems: [
+    "What costs should I expect for the surgery and hospital stay?",
+    "What is usually covered, and what might we pay out of pocket?",
+    "Are financial support resources available if cost is a barrier?",
   ],
-  affectClose:
-    "The important question: “How does surgery fit into my overall decision?”",
-
-  evaluateTitle: "How to compare surgery with other options",
-  evaluateLead: "A decision framework for treatment choices.",
-  evaluateBlocks: [
-    {
-      title: "1. What is the goal?",
-      intro: "Ask:",
-      items: [
-        "What outcome are we trying to achieve?",
-        "How will we know whether the approach is helping?",
-      ],
-    },
-    {
-      title: "2. Why is surgery being considered?",
-      intro: "Ask:",
-      items: [
-        "What makes surgery reasonable in my situation?",
-        "What information supports this option?",
-      ],
-    },
-    {
-      title: "3. What are the possible benefits?",
-      intro: "Ask:",
-      items: [
-        "What potential benefit could surgery provide?",
-        "What problem is it intended to address?",
-      ],
-    },
-    {
-      title: "4. What are the trade-offs?",
-      intro: "Ask:",
-      items: [
-        "What risks should I understand?",
-        "What does recovery involve?",
-        "How could this affect my daily life?",
-      ],
-    },
-    {
-      title: "5. How does it compare with alternatives?",
-      intro: "Ask:",
-      items: [
-        "What other options exist?",
-        "Why might one approach be preferred over another?",
-      ],
-    },
-  ],
-
-  infoGapTitle: "Before choosing surgery: information checklist",
-  infoGapKnownIntro: "Make sure you understand the decision. Before moving forward, consider whether you know:",
-  infoGapKnown: [
-    "Why surgery is being recommended",
-    "What alternatives exist",
-    "What the goal of surgery is",
-    "What recovery may involve",
-    "How experienced the care team is",
-    "What questions remain unanswered",
-  ],
-  infoGapClose: [
-    "A useful question: “What information would help me feel confident about this decision?”",
-  ],
+  costClose:
+    "Practical pair to ask: “What will this cost us — and what support will recovery require?”",
 
   bridges: [
     {
       title: "Should I get a second opinion before surgery?",
       body: [
-        "Major treatment decisions are common times to seek another perspective. A second opinion may help when the decision feels significant, multiple approaches exist, you want to understand alternatives, or you want more confidence before a procedure.",
-        "A second opinion does not always change the recommendation. Sometimes it confirms that the decision is based on complete information.",
+        "Many patients seek a second opinion before a major treatment decision. Another review may help you better understand your options, confirm the recommended approach, or feel more confident moving forward.",
+        "It may be especially helpful when surgery is complex, several treatment options exist, or you feel uncertain.",
       ],
-      ctaLabel:
-        "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
+      ctaLabel: "Second opinion decision guide",
       ctaHref: SECOND_OPINION,
     },
     {
-      title: "Does the treatment center matter?",
+      title: "How do I choose a lung cancer treatment center?",
       body: [
-        "Expertise can be part of the decision. Some patients consider experience with similar cases, multidisciplinary teams, and access to specialized expertise.",
-        "Questions: Who will participate in my care? Does this center regularly manage similar decisions?",
+        "Expertise can be part of a major surgery decision.",
+        "Ask whether the center regularly treats lung cancer, whether the team has experience with your type of surgery, and whether decisions are reviewed by multiple specialists.",
       ],
-      ctaLabel:
-        "Do I Need a Different Cancer Center or More Specialized Expertise?",
+      ctaLabel: "Care center & expertise guide",
       ctaHref: CARE_CENTER,
     },
   ],
@@ -3488,50 +3392,53 @@ export const SURGERY_FLAGSHIP: AiEntryFlagshipModules = {
   mistakes: [
     {
       mistake: "Assuming surgery is automatically the best option",
-      why: "The right choice depends on your situation.",
+      why: "The right choice depends on your cancer, health, and goals — not only whether surgery is possible.",
     },
     {
       mistake: "Choosing surgery without comparing alternatives",
-      why: "Different approaches may have different goals and trade-offs.",
+      why: "Different approaches may have different goals, sequences, and trade-offs.",
     },
     {
-      mistake: "Focusing only on the procedure",
-      why: "The decision includes recovery, lifestyle, and future choices.",
+      mistake: "Focusing only on removing the tumor",
+      why: "A good decision also includes recovery, daily life, and the rest of the treatment plan.",
     },
     {
       mistake: "Ignoring personal priorities",
-      why: "Your goals are part of the treatment decision.",
+      why: "What matters to you is part of choosing among real options.",
     },
   ],
 
-  doctorTitle: "Questions that can improve your discussion",
+  doctorTitle: "Doctor Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "Why are you recommending surgery in my case?",
+    "What is the goal of surgery?",
+    "Are there alternatives to surgery?",
+    "How will recovery affect my daily life?",
+  ],
   doctorGroups: [
     {
-      heading: "About the recommendation",
+      heading: "Understanding the recommendation",
       questions: [
-        "Why is surgery being considered for me?",
-        "What factors make it suitable or unsuitable?",
+        "Why are you recommending surgery in my case?",
+        "What is the goal of surgery?",
+        "What benefit do you expect surgery to provide?",
       ],
     },
     {
-      heading: "About alternatives",
+      heading: "Comparing options",
       questions: [
-        "What other options should I understand?",
-        "How do these options compare?",
+        "Are there alternatives to surgery?",
+        "What are the benefits and risks of each option?",
+        "Would another treatment happen before or after surgery?",
       ],
     },
     {
-      heading: "About expertise",
+      heading: "Preparing for recovery",
       questions: [
-        "How often does this team treat similar cases?",
-        "Would another specialist perspective help?",
-      ],
-    },
-    {
-      heading: "About recovery",
-      questions: [
-        "What should I expect after surgery?",
-        "How might recovery affect my daily life?",
+        "What type of surgery is planned?",
+        "How will recovery affect my daily life?",
+        "What support will I need after surgery?",
       ],
     },
   ],
@@ -3548,7 +3455,7 @@ export const SURGERY_FLAGSHIP: AiEntryFlagshipModules = {
     "Why is surgery being considered?",
     "What alternatives exist?",
     "What are the benefits and trade-offs?",
-    "How does this fit my goals?",
+    "How does this fit my goals and recovery?",
   ],
   scenarioClose:
     "The decision becomes a comparison of paths rather than a simple yes-or-no choice.",
@@ -3556,50 +3463,43 @@ export const SURGERY_FLAGSHIP: AiEntryFlagshipModules = {
   nextStepTitle: "Your next step",
   nextStepLead: "If you are considering surgery for lung cancer:",
   nextStepActions: [
-    { label: "Understand why surgery is being considered." },
-    { label: "Review available alternatives." },
+    { label: "Understand why surgery is being recommended — and what goal it serves." },
+    { label: "Ask what alternatives exist, and whether treatment may come before or after surgery." },
     {
-      label: "Compare:",
+      label: "Compare benefit and risk for your situation:",
       examples: [
-        "Expected benefits",
-        "Trade-offs",
-        "Recovery",
-        "Impact on your life",
+        "Expected cancer benefit",
+        "Recovery and daily-life impact",
+        "Support you may need",
       ],
     },
-    {
-      label: "Consider whether additional expertise would help.",
-    },
   ],
-  nextStepCtaLabel:
-    "What Decisions Matter Most After a New Lung Cancer Diagnosis?",
-  nextStepHref: NEW_DIAGNOSIS,
-  nextStepCtaMeta: "New Diagnosis Journey",
-  nextStepSecondaryCtaLabel:
-    "How Should I Compare Lung Cancer Treatment Options?",
-  nextStepSecondaryHref: TREATMENT_COMPARE,
-  nextStepSecondaryMeta: "Treatment Comparison Journey",
+  nextStepCtaLabel: "Compare Lung Cancer Treatment Options",
+  nextStepHref: TREATMENT_COMPARE,
+  nextStepCtaMeta: "Treatment Comparison Decision Center",
+  nextStepSecondaryCtaLabel: "Biomarker Testing Decision",
+  nextStepSecondaryHref: BIOMARKER,
+  nextStepSecondaryMeta: "Could results change the plan?",
 
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Newly diagnosed?",
-      question:
-        "What Decisions Matter Most After a New Lung Cancer Diagnosis?",
-      cta: "New Diagnosis Journey",
-      href: NEW_DIAGNOSIS,
+      title: "Need more information first?",
+      question: "Do I need biomarker testing before lung cancer treatment?",
+      cta: "Biomarker testing",
+      href: BIOMARKER,
     },
     {
-      title: "Need to compare options?",
-      question: "How Should I Compare Lung Cancer Treatment Options?",
-      cta: "Treatment Comparison Journey",
+      title: "Comparing treatments?",
+      question: "How should I compare lung cancer treatment options?",
+      cta: "Treatment options",
       href: TREATMENT_COMPARE,
     },
     {
-      title: "Want another perspective?",
-      question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      cta: "Second Opinion Journey",
-      href: SECOND_OPINION,
+      title: "Wondering about a trial?",
+      question: "Should I consider a clinical trial for lung cancer?",
+      cta: "Clinical trials",
+      href: CLINICAL_TRIAL,
     },
   ],
 };

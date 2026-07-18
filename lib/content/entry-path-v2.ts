@@ -40,6 +40,8 @@ export const SECOND_OPINION_SLUG =
   "should-i-get-second-opinion-after-lung-cancer-diagnosis";
 export const TREATMENT_COMPARE_SLUG =
   "how-to-compare-surgery-and-systemic-therapy-lung-cancer";
+export const SURGERY_SLUG =
+  "should-surgery-be-part-of-my-lung-cancer-treatment-plan";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -401,10 +403,141 @@ const TREATMENT_COMPARE_PATH: EntryPathV2 = {
   ],
 };
 
+const SURGERY_PATH: EntryPathV2 = {
+  pathTitle: "Surgery Decision Path",
+  pathSubtitle:
+    "Why surgery is discussed → how it compares → what it means practically → what to ask.",
+  completedLabels: [
+    "Why surgery is being considered",
+    "How surgery compares with other options",
+    "What surgery would mean practically",
+    "Questions to ask your doctor",
+  ],
+  practicalPoints: [
+    "What type of surgery is planned, and what part of the lung may be removed",
+    "Possible risks, complications, and recovery expectations",
+    "How surgery may affect breathing, daily life, cost, and support needs",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why is surgery being considered?",
+      lead: "Patient question: why are my doctors talking about surgery?",
+      main: "surgery-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people start thinking about surgery.",
+        },
+        {
+          id: "surgery-candidate",
+          title: "What makes someone a candidate for lung cancer surgery?",
+          summary: "Why surgery may enter the discussion.",
+        },
+        {
+          id: "surgery-stage",
+          title: "What stage is surgery usually considered for?",
+          summary: "Stage matters — but it is not the whole decision.",
+        },
+        {
+          id: "surgery-gone",
+          title: "Does surgery mean the cancer is gone?",
+          summary: "What surgery aims to achieve — and what it does not guarantee.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Is surgery the best choice for my situation?",
+      lead: "Patient question: how should I compare surgery with other options?",
+      main: "surgery-compare",
+      cards: [
+        {
+          id: "surgery-before",
+          title: "Could I need treatment before surgery?",
+          summary: "When medicines or other care come first.",
+        },
+        {
+          id: "surgery-biomarker",
+          title: "Could biomarker testing affect my surgery plan?",
+          summary: "When results may change the comparison.",
+        },
+        {
+          id: "surgery-when-not",
+          title: "When might surgery not be the best option?",
+          summary: "Why another path may fit better.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What would surgery actually mean for me?",
+      lead: "Patient question: what do I need to understand before deciding?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "surgery-types",
+          title: "What type of lung surgery might I need?",
+          summary: "Lobectomy, segmentectomy, pneumonectomy — in plain language.",
+        },
+        {
+          id: "surgery-risks",
+          title: "What are the risks of lung cancer surgery?",
+          summary: "Questions that make risks personal, not generic.",
+        },
+        {
+          id: "surgery-recovery",
+          title: "How long does recovery usually take?",
+          summary: "What to ask about return to activities and home support.",
+        },
+        {
+          id: "surgery-breathing",
+          title: "Will surgery affect my breathing or daily life?",
+          summary: "Setting realistic expectations for life after surgery.",
+        },
+        {
+          id: "cost",
+          title: "What about cost and insurance?",
+          summary: "Questions to ask before a major procedure.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "How can I feel confident about this decision?",
+      lead: "Patient question: what should I discuss with my doctor?",
+      main: "checklist",
+      cards: [
+        {
+          id: "second-opinion",
+          title: "Should I get a second opinion before lung surgery?",
+          summary: "When another view may help before a major decision.",
+        },
+        {
+          id: "surgery-center",
+          title: "How do I choose a lung cancer treatment center?",
+          summary: "Experience and team review — not only reputation.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might frame the surgery decision.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
   [TREATMENT_COMPARE_SLUG]: TREATMENT_COMPARE_PATH,
+  [SURGERY_SLUG]: SURGERY_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {

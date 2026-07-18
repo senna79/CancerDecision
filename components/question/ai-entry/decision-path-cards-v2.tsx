@@ -1,5 +1,7 @@
+import Link from "next/link";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import { getEntryTemplateV2Config } from "@/lib/content/entry-template-v2";
+import { SURGERY_ENTRY_CARDS } from "@/lib/content/surgery-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
 import { ContentBridge } from "./content-bridge";
@@ -21,6 +23,48 @@ import { TreatmentCategories } from "./treatment-categories";
 import { ValueSituations } from "./value-situations";
 import { WhoNeedsTesting } from "./who-needs-testing";
 import { WhoThisIsFor } from "./who-this-is-for";
+
+function BulletCard({
+  lead,
+  items,
+  close,
+  ask,
+}: {
+  lead: string;
+  items?: readonly string[];
+  close?: string;
+  ask?: readonly string[];
+}) {
+  return (
+    <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+      <p>{lead}</p>
+      {items?.length ? (
+        <ul className="space-y-1.5">
+          {items.map((item) => (
+            <li key={item} className="flex gap-2.5 text-[var(--ink)]">
+              <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+              <span>{item}</span>
+            </li>
+          ))}
+        </ul>
+      ) : null}
+      {ask?.length ? (
+        <div>
+          <p className="font-medium text-[var(--ink)]">Ask:</p>
+          <ul className="mt-1.5 space-y-1.5">
+            {ask.map((item) => (
+              <li key={item} className="flex gap-2.5 text-[var(--ink)]">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
+      {close ? <p className="font-medium text-[var(--ink)]">{close}</p> : null}
+    </div>
+  );
+}
 
 function WhatIsBiomarkerTesting() {
   return (
@@ -244,6 +288,116 @@ export function DecisionPathCardDetail({
       return <TimingAnxiety modules={modules} />;
     case "cost":
       return <CostConsiderations modules={modules} />;
+    case "surgery-candidate":
+      return (
+        <BulletCard
+          lead={SURGERY_ENTRY_CARDS.candidate.lead}
+          items={SURGERY_ENTRY_CARDS.candidate.factors}
+          close={SURGERY_ENTRY_CARDS.candidate.close}
+        />
+      );
+    case "surgery-stage":
+      return (
+        <BulletCard
+          lead={SURGERY_ENTRY_CARDS.stage.lead}
+          items={SURGERY_ENTRY_CARDS.stage.also}
+          close={SURGERY_ENTRY_CARDS.stage.close}
+        />
+      );
+    case "surgery-gone":
+      return (
+        <BulletCard
+          lead={SURGERY_ENTRY_CARDS.cancerGone.lead}
+          items={SURGERY_ENTRY_CARDS.cancerGone.points}
+          close={SURGERY_ENTRY_CARDS.cancerGone.close}
+        />
+      );
+    case "surgery-before":
+      return (
+        <BulletCard
+          lead={SURGERY_ENTRY_CARDS.beforeSurgery.lead}
+          items={SURGERY_ENTRY_CARDS.beforeSurgery.reasons}
+          close={SURGERY_ENTRY_CARDS.beforeSurgery.close}
+        />
+      );
+    case "surgery-biomarker":
+      return (
+        <BulletCard
+          lead={SURGERY_ENTRY_CARDS.biomarker.lead}
+          items={SURGERY_ENTRY_CARDS.biomarker.mayHelp}
+          close={`Ask: “${SURGERY_ENTRY_CARDS.biomarker.ask}”`}
+        />
+      );
+    case "surgery-when-not":
+      return (
+        <BulletCard
+          lead={SURGERY_ENTRY_CARDS.whenNot.lead}
+          items={SURGERY_ENTRY_CARDS.whenNot.reasons}
+          close={SURGERY_ENTRY_CARDS.whenNot.close}
+        />
+      );
+    case "surgery-types":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{SURGERY_ENTRY_CARDS.surgeryTypes.lead}</p>
+          <ul className="space-y-2">
+            {SURGERY_ENTRY_CARDS.surgeryTypes.types.map((type) => (
+              <li key={type.name}>
+                <span className="font-medium text-[var(--ink)]">
+                  {type.name}.{" "}
+                </span>
+                {type.body}
+              </li>
+            ))}
+          </ul>
+          <p className="font-medium text-[var(--ink)]">
+            {SURGERY_ENTRY_CARDS.surgeryTypes.close}
+          </p>
+        </div>
+      );
+    case "surgery-risks":
+      return (
+        <BulletCard
+          lead={SURGERY_ENTRY_CARDS.risks.lead}
+          ask={SURGERY_ENTRY_CARDS.risks.ask}
+        />
+      );
+    case "surgery-recovery":
+      return (
+        <BulletCard
+          lead={SURGERY_ENTRY_CARDS.recovery.lead}
+          ask={SURGERY_ENTRY_CARDS.recovery.ask}
+        />
+      );
+    case "surgery-breathing":
+      return (
+        <BulletCard
+          lead={SURGERY_ENTRY_CARDS.breathing.lead}
+          items={SURGERY_ENTRY_CARDS.breathing.factors}
+          close={SURGERY_ENTRY_CARDS.breathing.close}
+        />
+      );
+    case "surgery-center": {
+      const bridge = modules.bridges?.[1];
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={SURGERY_ENTRY_CARDS.careCenter.lead}
+            ask={SURGERY_ENTRY_CARDS.careCenter.ask}
+          />
+          {bridge?.ctaHref && bridge.ctaLabel ? (
+            <p>
+              <Link
+                href={bridge.ctaHref}
+                className="font-semibold text-[var(--accent)] hover:underline"
+              >
+                {bridge.ctaLabel} →
+              </Link>
+            </p>
+          ) : null}
+        </div>
+      );
+    }
     case "confidence":
       return <ConfidenceCard />;
     case "clarify":
@@ -271,8 +425,29 @@ export function DecisionPathCardDetail({
       return <TreatmentCategories modules={modules} />;
     case "info-gap":
       return <InformationGap modules={modules} />;
-    case "second-opinion":
+    case "second-opinion": {
+      const bridge = modules.bridges?.[0];
+      if (bridge) {
+        return (
+          <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+            {bridge.body.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+            {bridge.ctaHref && bridge.ctaLabel ? (
+              <p>
+                <Link
+                  href={bridge.ctaHref}
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  {bridge.ctaLabel} →
+                </Link>
+              </p>
+            ) : null}
+          </div>
+        );
+      }
       return <SecondOpinionBridge modules={modules} />;
+    }
     case "mistakes":
       return <CommonMistakes modules={modules} />;
     case "scenario":
