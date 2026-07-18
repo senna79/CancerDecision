@@ -374,6 +374,49 @@ function StepMain({
           </p>
         </div>
       );
+    case "followup-understand":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "followup-watching":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Follow-up visits usually focus on three areas: cancer status,
+            treatment effects, and overall health — looking for possible
+            recurrence, managing ongoing effects, and supporting recovery.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Cancer status — signs that cancer may have returned",
+              "Treatment effects — ongoing effects from prior care",
+              "Overall health — recovery and future health needs",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Follow-up is not only about finding problems. It is also about
+            helping you recover and live well.
+          </p>
+        </div>
+      );
+    case "followup-between":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            You do not need to wait until your next scheduled visit if something
+            concerns you. Contact your team about new or worsening symptoms,
+            changes affecting daily activities, or concerns that feel unusual
+            for you.
+          </p>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The goal is not to monitor every small change with fear. The goal is
+            knowing which changes deserve attention.
+          </p>
+        </div>
+      );
     case "progression-understand":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "progression-info":

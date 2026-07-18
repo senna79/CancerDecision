@@ -340,6 +340,8 @@ const QUALITY_OF_LIFE =
   "/questions/how-should-quality-of-life-factor-into-lung-cancer-decisions";
 const COST_LOGISTICS =
   "/questions/can-my-lung-cancer-treatment-plan-work-with-my-real-life";
+const FOLLOW_UP =
+  "/questions/how-do-i-monitor-my-health-after-lung-cancer-treatment";
 const CARE_MAP = "/cancers/lung-cancer#decision-map";
 
 /** Lung Cancer AI Entry #1 — New Diagnosis */
@@ -2937,9 +2939,9 @@ export const QUALITY_OF_LIFE_FLAGSHIP: AiEntryFlagshipModules = {
   subtitle:
     "Treatment decisions are not only about controlling cancer. They are also about helping you live as well as possible while receiving care.",
   relatedDecisions: [
+    { label: "Follow-Up Monitoring", href: FOLLOW_UP },
     { label: "Treatment Change", href: TREATMENT_PROGRESSION },
     { label: "Recurrence", href: RECURRENCE },
-    { label: "Clinical Trials", href: CLINICAL_TRIAL },
     { label: "Second Opinion", href: SECOND_OPINION },
     { label: "Cost & Logistics", href: COST_LOGISTICS },
   ],
@@ -2947,7 +2949,7 @@ export const QUALITY_OF_LIFE_FLAGSHIP: AiEntryFlagshipModules = {
   journeyPath: [
     { label: "Treatment Options", href: TREATMENT_COMPARE },
     { label: "Quality of Life", current: true },
-    { label: "Treatment Change", href: TREATMENT_PROGRESSION },
+    { label: "Follow-Up", href: FOLLOW_UP },
   ],
 
   triggersTitle: "You may be facing this decision if:",
@@ -3114,11 +3116,10 @@ export const QUALITY_OF_LIFE_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Treatment changing?",
-      question:
-        "What are my options if lung cancer treatment is no longer working?",
-      cta: "Treatment change",
-      href: TREATMENT_PROGRESSION,
+      title: "Finished treatment?",
+      question: "How do I monitor my health after lung cancer treatment?",
+      cta: "Follow-up",
+      href: FOLLOW_UP,
     },
     {
       title: "Facing recurrence?",
@@ -3131,6 +3132,211 @@ export const QUALITY_OF_LIFE_FLAGSHIP: AiEntryFlagshipModules = {
       question: "Should I get a second opinion after lung cancer diagnosis?",
       cta: "Second opinion",
       href: SECOND_OPINION,
+    },
+  ],
+};
+
+/** Lung Cancer Decision Module #13 — Long-Term Monitoring & Follow-Up */
+export const FOLLOW_UP_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Lung Cancer",
+  decisionMoment:
+    "How to monitor health and rebuild confidence after treatment",
+  exploring: "Long-Term Monitoring Decision",
+  subtitle:
+    "Finishing treatment is an important milestone, but cancer care does not simply stop. Follow-up helps you know what to watch for and what to do next.",
+  relatedDecisions: [
+    { label: "Recurrence", href: RECURRENCE },
+    { label: "Treatment Change", href: TREATMENT_PROGRESSION },
+    { label: "Quality of Life", href: QUALITY_OF_LIFE },
+    { label: "Second Opinion", href: SECOND_OPINION },
+  ],
+  journeyLabel: "Lung Cancer Decision Journey",
+  journeyPath: [
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
+    { label: "Follow-Up Monitoring", current: true },
+    { label: "Recurrence", href: RECURRENCE },
+  ],
+
+  triggersTitle: "You may be facing this decision if:",
+  triggerGroups: [
+    {
+      heading: "You recently completed treatment",
+      lead: "You may wonder:",
+      items: [
+        "Am I done with cancer care?",
+        "What happens at the first follow-up visit?",
+      ],
+    },
+    {
+      heading: "You are moving into follow-up care",
+      lead: "You may want to understand:",
+      items: [
+        "What doctors are watching for",
+        "How long monitoring continues",
+      ],
+    },
+    {
+      heading: "You are worried about recurrence",
+      lead: "You may be asking:",
+      items: [
+        "Which symptoms matter?",
+        "How do I handle fear without constant worry?",
+      ],
+    },
+    {
+      heading: "You want a clearer plan after treatment",
+      lead: "You may need:",
+      items: [
+        "Who to call between visits",
+        "How to rebuild daily life with a plan",
+      ],
+    },
+  ],
+
+  whyTitle: "Am I done with cancer care after treatment?",
+  whyLead:
+    "Completing treatment does not mean your healthcare team stops paying attention.",
+  whyBody: [
+    "After treatment, care often shifts from treating known cancer to monitoring your health and responding to changes.",
+    "Follow-up may help identify possible recurrence, manage treatment effects, support recovery, and address new concerns.",
+    "A follow-up plan is personalized based on your cancer type and stage, treatments you received, your risk of recurrence, and your current health.",
+  ],
+  whyQuestions: [],
+  whyNotLabel: "The goal is not:",
+  whyNotQuestion: "To spend your life waiting for bad news.",
+  whyBetterLabel: "The goal is to have a clear plan:",
+  whyBetterQuestion:
+    "What should I monitor, when should I contact my team, and what happens if something changes?",
+  whyClose: [
+    "The end of treatment is not the end of care. It is the beginning of a different care phase.",
+  ],
+
+  doesNotDecideTitle: "What are doctors looking for during follow-up?",
+  doesNotDecideLead:
+    "Follow-up visits usually focus on three areas: cancer status, treatment effects, and overall health.",
+  doesNotDecideItems: [
+    "Looking for signs that cancer may have returned",
+    "Managing ongoing effects from surgery, radiation, or medicines",
+    "Supporting your recovery and future health",
+    "Your follow-up plan is designed around your situation",
+  ],
+  doesNotDecideNotes: [
+    "Follow-up is not only about finding problems. It is also about helping you recover and live well.",
+  ],
+  doesNotDecideClose:
+    "Open the cards beside this step for scan schedules, what a normal scan means, and whether more testing is better.",
+
+  mistakesTitle: "Common mistakes after finishing lung cancer treatment",
+  mistakes: [
+    {
+      mistake: "Assuming follow-up means something is wrong",
+      why: "Follow-up is planned care after treatment — not a sign that care has failed.",
+    },
+    {
+      mistake: "Waiting until the next visit for every concern",
+      why: "Some changes deserve earlier attention — ask which ones.",
+    },
+    {
+      mistake: "Trying to monitor every small change with fear",
+      why: "The goal is knowing which changes deserve attention.",
+    },
+    {
+      mistake: "Not keeping cancer records",
+      why: "Records help if you need another doctor or a future decision.",
+    },
+  ],
+
+  doctorTitle: "Doctor Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What is my follow-up schedule — and why are these tests recommended?",
+    "Which symptoms should I report, and who should I contact?",
+    "What symptoms require urgent attention?",
+    "What long-term effects should I watch for?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About follow-up",
+      questions: [
+        "What is my follow-up schedule?",
+        "Why are these tests recommended?",
+        "How long will this monitoring continue?",
+      ],
+    },
+    {
+      heading: "About symptoms",
+      questions: [
+        "Which symptoms should I report?",
+        "Who should I contact if something changes?",
+        "What symptoms require urgent attention?",
+      ],
+    },
+    {
+      heading: "About life after treatment",
+      questions: [
+        "What long-term effects should I watch for?",
+        "What activities can I safely return to?",
+        "What support resources are available?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Building a plan after treatment ends",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person has finished lung cancer treatment and feels both relieved and uncertain.",
+    "Their first thought is: “Can I finally stop worrying?”",
+    "Instead of waiting in fear, they ask:",
+  ],
+  scenarioFocus: [
+    "What is my follow-up schedule — and why?",
+    "Which symptoms should I call about?",
+    "Who manages different concerns?",
+    "What helps me rebuild daily life with a clear plan?",
+  ],
+  scenarioClose:
+    "The focus shifts from waiting for bad news to having a plan for what to monitor and when to act.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If you are moving into follow-up after lung cancer treatment:",
+  nextStepActions: [
+    { label: "Ask for your follow-up schedule and who manages which concerns." },
+    {
+      label:
+        "Confirm which symptoms to report between visits — and what needs urgent attention.",
+    },
+    {
+      label: "Keep records and plan recovery steps that help you live well after cancer.",
+    },
+  ],
+  nextStepCtaLabel: "Recurrence Decision",
+  nextStepHref: RECURRENCE,
+  nextStepCtaMeta: "If cancer returns or a new concern appears",
+  nextStepSecondaryCtaLabel: "Quality of Life Decision",
+  nextStepSecondaryHref: QUALITY_OF_LIFE,
+  nextStepSecondaryMeta: "Balancing daily life with ongoing care",
+
+  relatedPathsTitle: "Continue your lung cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Facing recurrence?",
+      question: "What are my options if lung cancer comes back?",
+      cta: "Recurrence",
+      href: RECURRENCE,
+    },
+    {
+      title: "Treatment changing?",
+      question:
+        "What are my options if lung cancer treatment is no longer working?",
+      cta: "Treatment change",
+      href: TREATMENT_PROGRESSION,
+    },
+    {
+      title: "Balancing daily life?",
+      question: "How do I balance lung cancer treatment and quality of life?",
+      cta: "Quality of life",
+      href: QUALITY_OF_LIFE,
     },
   ],
 };
@@ -3497,6 +3703,8 @@ const FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> = {
     SURGERY_FLAGSHIP,
   "how-should-quality-of-life-factor-into-lung-cancer-decisions":
     QUALITY_OF_LIFE_FLAGSHIP,
+  "how-do-i-monitor-my-health-after-lung-cancer-treatment":
+    FOLLOW_UP_FLAGSHIP,
   "can-my-lung-cancer-treatment-plan-work-with-my-real-life":
     TREATMENT_FEASIBILITY_FLAGSHIP,
 };

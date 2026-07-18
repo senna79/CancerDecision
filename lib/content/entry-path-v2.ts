@@ -50,6 +50,8 @@ export const RECURRENCE_SLUG =
   "what-are-my-options-if-lung-cancer-comes-back";
 export const QUALITY_OF_LIFE_SLUG =
   "how-should-quality-of-life-factor-into-lung-cancer-decisions";
+export const FOLLOW_UP_SLUG =
+  "how-do-i-monitor-my-health-after-lung-cancer-treatment";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -1126,6 +1128,141 @@ const QUALITY_OF_LIFE_PATH: EntryPathV2 = {
   ],
 };
 
+const FOLLOW_UP_PATH: EntryPathV2 = {
+  pathTitle: "Long-Term Monitoring Decision Path",
+  pathSubtitle:
+    "What happens after treatment → what follow-up watches for → when to act → how to move forward.",
+  completedLabels: [
+    "What happens after treatment ends",
+    "What follow-up is watching for",
+    "What to do between appointments",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Which symptoms deserve a call between visits",
+    "Who to contact first when something changes",
+    "How monitoring fits recovery and daily life",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Am I done with cancer care after treatment?",
+      lead: "Patient question: what happens when active treatment ends?",
+      main: "followup-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people move into follow-up care.",
+        },
+        {
+          id: "fu-cancer-gone",
+          title: "Does finishing treatment mean the cancer is gone forever?",
+          summary: "A milestone — and a reason follow-up continues.",
+        },
+        {
+          id: "fu-first-visit",
+          title: "What should I expect at my first follow-up visit?",
+          summary: "Symptoms, recovery, results, and next monitoring.",
+        },
+        {
+          id: "fu-who-manages",
+          title: "Who manages my care after treatment?",
+          summary: "Know who to contact for different concerns.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "What are doctors looking for during follow-up?",
+      lead: "Patient question: what is my follow-up plan watching for?",
+      main: "followup-watching",
+      cards: [
+        {
+          id: "fu-scan-frequency",
+          title: "How often should I get scans after treatment?",
+          summary: "Appropriate monitoring — not simply more testing.",
+        },
+        {
+          id: "fu-normal-scan",
+          title: "Does a normal scan mean I never need to worry again?",
+          summary: "Encouraging news — and why a plan still matters.",
+        },
+        {
+          id: "fu-more-scans",
+          title: "Are more scans always better?",
+          summary: "Balance information, stress, cost, and procedures.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I do if something changes?",
+      lead: "Patient question: what actions should I take between appointments?",
+      main: "followup-between",
+      cards: [
+        {
+          id: "fu-which-symptoms",
+          title: "Which symptoms should I report after treatment?",
+          summary: "Ask which changes matter most for you.",
+        },
+        {
+          id: "fu-between-visits",
+          title: "What if I notice something between appointments?",
+          summary: "Do not wait automatically — ask what to do.",
+        },
+        {
+          id: "fu-fear",
+          title: "How do I handle fear of recurrence?",
+          summary: "A plan, clear signals, and support — not alone.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "How do I move forward after lung cancer treatment?",
+      lead: "Patient question: how do I build a long-term health plan?",
+      main: "checklist",
+      cards: [
+        {
+          id: "fu-long-term",
+          title: "What long-term effects should I watch for?",
+          summary: "Breathing, fatigue, pain, emotions, recovery.",
+        },
+        {
+          id: "fu-activities",
+          title: "When can I return to normal activities?",
+          summary: "Recovery varies — ask what is safe to restart.",
+        },
+        {
+          id: "fu-lifestyle",
+          title: "Should I change my lifestyle after lung cancer treatment?",
+          summary: "Realistic changes you can maintain.",
+        },
+        {
+          id: "fu-records",
+          title: "Should I keep my cancer records?",
+          summary: "Pathology, imaging, treatments, biomarkers, meds.",
+        },
+        {
+          id: "fu-second-opinion",
+          title: "When should I seek another opinion during follow-up?",
+          summary: "When a new decision or more confidence is needed.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might frame the next decision.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
@@ -1135,6 +1272,7 @@ const PATHS: Record<string, EntryPathV2> = {
   [TREATMENT_PROGRESSION_SLUG]: TREATMENT_PROGRESSION_PATH,
   [RECURRENCE_SLUG]: RECURRENCE_PATH,
   [QUALITY_OF_LIFE_SLUG]: QUALITY_OF_LIFE_PATH,
+  [FOLLOW_UP_SLUG]: FOLLOW_UP_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {

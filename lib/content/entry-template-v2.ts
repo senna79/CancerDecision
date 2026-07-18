@@ -10,6 +10,7 @@
 import {
   BIOMARKER_SLUG,
   CLINICAL_TRIAL_SLUG,
+  FOLLOW_UP_SLUG,
   QUALITY_OF_LIFE_SLUG,
   RECURRENCE_SLUG,
   SECOND_OPINION_SLUG,
@@ -123,6 +124,18 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "You are unsure whether the benefits of treatment outweigh the burden",
       "You want to stay active and independent during treatment",
       "Symptoms are becoming harder to manage — or you and your family are discussing what matters most",
+    ],
+  },
+  [FOLLOW_UP_SLUG]: {
+    plainLanguageGloss:
+      "Finishing treatment is an important milestone, but cancer care does not simply stop — follow-up helps you monitor changes, manage long-term effects, and know when to contact your team.",
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "You recently completed lung cancer treatment",
+      "You are moving from active treatment into follow-up care",
+      "You are worried about recurrence or unsure what symptoms matter",
+      "You want a clearer plan for life after treatment",
     ],
   },
 };

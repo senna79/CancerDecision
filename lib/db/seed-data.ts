@@ -1172,6 +1172,30 @@ export function createSeedData(): KnowledgeGraphStore {
         "What help might I need from family or caregivers?",
       ],
     },
+    {
+      n: 34,
+      cancer: 1,
+      title: "How Do I Monitor My Health After Lung Cancer Treatment?",
+      slug: "how-do-i-monitor-my-health-after-lung-cancer-treatment",
+      category: "treatment",
+      summary:
+        "Finishing treatment is an important milestone, but cancer care does not simply stop. Follow-up care helps you and your medical team monitor for possible changes, manage long-term effects of treatment, address new symptoms, and support your health after cancer.\n\nA follow-up plan is personalized based on your cancer type and stage, treatments you received, your risk of recurrence, and your current health. It may include appointments, imaging tests, symptom discussions, and long-term health management.\n\nThe goal is not to spend your life waiting for bad news. The goal is to have a clear plan: “What should I monitor, when should I contact my team, and what happens if something changes?”",
+      why: "The end of treatment is not the end of care — it is the beginning of a different care phase. A clear follow-up plan helps you know what to watch for and when to act.",
+      factors: [
+        "Your follow-up schedule and why those tests are recommended",
+        "Which symptoms to report between visits",
+        "Who manages different concerns after treatment",
+        "Long-term effects and returning to activities",
+        "Keeping records for future care decisions",
+      ],
+      doctorQs: [
+        "What is my follow-up schedule?",
+        "Which symptoms should I report?",
+        "Who should I contact if something changes?",
+        "What long-term effects should I watch for?",
+        "What activities can I safely return to?",
+      ],
+    },
   ];
 
   const questions = questionDefs.map((q) => ({
@@ -2056,6 +2080,70 @@ export function createSeedData(): KnowledgeGraphStore {
         "lung cancer treatment cost and logistics",
         "lung cancer treatment travel and time",
         "realistic lung cancer treatment plan",
+      ],
+    },
+    34: {
+      summary:
+        "Finishing treatment is an important milestone, but cancer care does not simply stop. Follow-up care helps you and your medical team monitor for possible changes, manage long-term effects of treatment, address new symptoms, and support your health after cancer.\n\nA follow-up plan is personalized based on your cancer type and stage, treatments you received, your risk of recurrence, and your current health. It may include appointments, imaging tests, symptom discussions, and long-term health management.\n\nThe goal is not to spend your life waiting for bad news. The goal is to have a clear plan: “What should I monitor, when should I contact my team, and what happens if something changes?”",
+      decision_triggers: [
+        "You recently completed lung cancer treatment",
+        "You are moving from active treatment into follow-up care",
+        "You are worried about recurrence or unsure what symptoms matter",
+        "You want a clearer plan for life after treatment",
+      ],
+      decision_context:
+        "Long-term monitoring asks how to watch for changes, manage treatment effects, and rebuild confidence after active treatment — with a clear plan for what to monitor and when to contact your team.",
+      when_this_may_help: [
+        "You finished treatment and want to know what comes next",
+        "You need clarity on scan schedules and symptom reporting",
+        "Fear of recurrence is making daily life harder",
+        "You want to keep records and plan recovery steps",
+      ],
+      when_it_may_not_help: [
+        "Emergency or urgent symptoms need immediate medical attention first",
+        "Your care team has already given a time-critical next step and why",
+      ],
+      timing_considerations: [
+        "Ask for the follow-up plan before active treatment fully ends when possible",
+        "Confirm who to call between visits for different concerns",
+        "Revisit the plan if new symptoms or major life changes appear",
+        "Keep records ready if another opinion or future decision is needed",
+      ],
+      options_and_tradeoffs: [
+        "Benefit — Clear monitoring schedule: less uncertainty between visits",
+        "Trade-off — Ongoing appointments and scans: time and possible anxiety",
+        "Benefit — Knowing which symptoms matter: earlier action when needed",
+        "Trade-off — Watching too many small changes: unnecessary fear",
+        "Benefit — Keeping records: smoother future care decisions",
+        "Trade-off — Focusing only on scans: may overlook recovery and daily life",
+      ],
+      records_to_prepare: [
+        "Pathology reports and treatment summaries",
+        "Imaging and biomarker results",
+        "Medication list and side-effect notes",
+        "Questions about schedule, symptoms, and recovery",
+        "Contact plan for concerns between visits",
+      ],
+      next_steps: [
+        "Ask for your follow-up schedule and why those tests are recommended",
+        "Confirm which symptoms to report and who to contact",
+        "Keep your cancer records organized",
+        "Plan recovery steps that help you live well after treatment",
+      ],
+      if_opinions_conflict: [
+        "Ask why each recommended monitoring schedule fits your situation",
+        "Compare what each team would watch for and when to call",
+        "A second opinion may help when follow-up recommendations feel unclear",
+      ],
+      body: null,
+      seo_title: "How Do I Monitor My Health After Lung Cancer Treatment?",
+      seo_description:
+        "Learn what follow-up care after lung cancer treatment involves — scan schedules, symptoms to report, fear of recurrence, and questions to ask your care team.",
+      seo_keywords: [
+        "monitor health after lung cancer treatment",
+        "lung cancer follow-up care plan",
+        "symptoms to report after lung cancer treatment",
+        "fear of recurrence after lung cancer",
       ],
     },
   };

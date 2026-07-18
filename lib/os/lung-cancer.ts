@@ -1,7 +1,7 @@
 import type { CancerDecisionOs } from "@/lib/os/types";
 
 /**
- * Lung Cancer Decision OS v1 — 12 Moment skeleton.
+ * Lung Cancer Decision OS v1 — Moment skeleton (Tier-1 + supporting).
  * Only status=active moments are patient-visible on the Decision Map.
  */
 export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
@@ -103,6 +103,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-surgery",
         "node-second-opinion",
         "node-qol",
+        "node-follow-up",
         "node-global",
       ],
       facets: [
@@ -231,6 +232,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-biomarkers",
         "node-second-opinion",
         "node-cancer-center",
+        "node-follow-up",
       ],
       patient_router: {
         label: "I’m wondering whether surgery should be part of my plan",
@@ -395,6 +397,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       treatment_slugs: [],
       story_slugs: [],
       next_moment_ids: [
+        "node-follow-up",
         "node-compare",
         "node-stage-iv",
         "node-treatment-progression",
@@ -404,6 +407,40 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       patient_router: {
         label: "How do I include my daily life in this decision?",
         hint: "How to bring daily life and personal priorities into the discussion.",
+        nextStep: "See what to do next",
+      },
+    },
+
+    {
+      id: "node-follow-up",
+      slug: "follow-up-monitoring",
+      label: "13. Long-term monitoring & follow-up",
+      state_label: "Follow-up monitoring",
+      summary:
+        "After active treatment, clarify what to monitor, when to contact the team, and how to rebuild confidence in daily life.",
+      why_this_matters:
+        "The end of treatment is not the end of care — patients need a clear plan for scans, symptoms, and life after cancer.",
+      tier: 2,
+      status: "active",
+      stage: "supportive",
+      sort_order: 13,
+      optional: true,
+      ai_entry_slug:
+        "how-do-i-monitor-my-health-after-lung-cancer-treatment",
+      question_slugs: [
+        "how-do-i-monitor-my-health-after-lung-cancer-treatment",
+      ],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: [
+        "node-recurrence",
+        "node-treatment-progression",
+        "node-qol",
+        "node-second-opinion",
+      ],
+      patient_router: {
+        label: "I’ve finished treatment — what should I watch for?",
+        hint: "Follow-up plans, symptoms to report, and life after treatment.",
         nextStep: "See what to do next",
       },
     },

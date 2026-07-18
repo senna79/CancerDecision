@@ -1,6 +1,6 @@
 # Entry Template v2.0 — Patient Decision Workspace
 
-**Status:** Active v2 Decision Path — Biomarker, Surgery, Treatment Options, Clinical Trial, Second Opinion, Treatment Change, Recurrence, Quality of Life  
+**Status:** Active v2 Decision Path — Biomarker, Surgery, Treatment Options, Clinical Trial, Second Opinion, Treatment Change, Recurrence, Quality of Life, Follow-Up  
 **Goal:** 30 seconds to know this page fits · ~3 minutes on the Decision Path · depth only when chosen.
 
 ## Hero (above the path)

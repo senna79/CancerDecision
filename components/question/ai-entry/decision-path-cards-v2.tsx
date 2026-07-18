@@ -7,6 +7,7 @@ import { SECOND_OPINION_ENTRY_CARDS } from "@/lib/content/second-opinion-entry-c
 import { TREATMENT_OPTIONS_ENTRY_CARDS } from "@/lib/content/treatment-options-entry-cards";
 import { RECURRENCE_ENTRY_CARDS } from "@/lib/content/recurrence-entry-cards";
 import { QUALITY_OF_LIFE_ENTRY_CARDS } from "@/lib/content/quality-of-life-entry-cards";
+import { FOLLOW_UP_ENTRY_CARDS } from "@/lib/content/follow-up-entry-cards";
 import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
@@ -1134,6 +1135,126 @@ export function DecisionPathCardDetail({
           items={QUALITY_OF_LIFE_ENTRY_CARDS.whoHelps.people}
           close={QUALITY_OF_LIFE_ENTRY_CARDS.whoHelps.close}
         />
+      );
+    case "fu-cancer-gone":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.cancerGone.lead}
+          items={FOLLOW_UP_ENTRY_CARDS.cancerGone.reasons}
+          close={FOLLOW_UP_ENTRY_CARDS.cancerGone.close}
+        />
+      );
+    case "fu-first-visit":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={FOLLOW_UP_ENTRY_CARDS.firstVisit.lead}
+            items={FOLLOW_UP_ENTRY_CARDS.firstVisit.includes}
+          />
+          <BulletCard
+            lead="Prepare by bringing:"
+            items={FOLLOW_UP_ENTRY_CARDS.firstVisit.bring}
+          />
+        </div>
+      );
+    case "fu-who-manages":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.whoManages.lead}
+          close={`Ask: “${FOLLOW_UP_ENTRY_CARDS.whoManages.ask}” ${FOLLOW_UP_ENTRY_CARDS.whoManages.close}`}
+        />
+      );
+    case "fu-scan-frequency":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.scanFrequency.lead}
+          close={`${FOLLOW_UP_ENTRY_CARDS.scanFrequency.close} Ask: “${FOLLOW_UP_ENTRY_CARDS.scanFrequency.ask}”`}
+        />
+      );
+    case "fu-normal-scan":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.normalScan.lead}
+          close={FOLLOW_UP_ENTRY_CARDS.normalScan.close}
+        />
+      );
+    case "fu-more-scans":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.moreScans.lead}
+          close={FOLLOW_UP_ENTRY_CARDS.moreScans.close}
+        />
+      );
+    case "fu-which-symptoms":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.whichSymptoms.lead}
+          items={FOLLOW_UP_ENTRY_CARDS.whichSymptoms.symptoms}
+        />
+      );
+    case "fu-between-visits":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.betweenVisits.lead}
+          ask={FOLLOW_UP_ENTRY_CARDS.betweenVisits.ask}
+          close={FOLLOW_UP_ENTRY_CARDS.betweenVisits.close}
+        />
+      );
+    case "fu-fear":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.fearRecurrence.lead}
+          items={FOLLOW_UP_ENTRY_CARDS.fearRecurrence.steps}
+          close={FOLLOW_UP_ENTRY_CARDS.fearRecurrence.close}
+        />
+      );
+    case "fu-long-term":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.longTermEffects.lead}
+          items={FOLLOW_UP_ENTRY_CARDS.longTermEffects.effects}
+          close={FOLLOW_UP_ENTRY_CARDS.longTermEffects.close}
+        />
+      );
+    case "fu-activities":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.returnActivities.lead}
+          close={`Ask: “${FOLLOW_UP_ENTRY_CARDS.returnActivities.ask}”`}
+        />
+      );
+    case "fu-lifestyle":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.lifestyle.lead}
+          items={FOLLOW_UP_ENTRY_CARDS.lifestyle.changes}
+          close={FOLLOW_UP_ENTRY_CARDS.lifestyle.close}
+        />
+      );
+    case "fu-records":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.keepRecords.lead}
+          items={FOLLOW_UP_ENTRY_CARDS.keepRecords.records}
+          close={FOLLOW_UP_ENTRY_CARDS.keepRecords.close}
+        />
+      );
+    case "fu-second-opinion":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={FOLLOW_UP_ENTRY_CARDS.secondOpinion.lead}
+            items={FOLLOW_UP_ENTRY_CARDS.secondOpinion.when}
+          />
+          <p>
+            <Link
+              href="/questions/should-i-get-second-opinion-after-lung-cancer-diagnosis"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Second opinion decision guide →
+            </Link>
+          </p>
+        </div>
       );
     case "second-opinion": {
       const bridge = modules.bridges?.[0];

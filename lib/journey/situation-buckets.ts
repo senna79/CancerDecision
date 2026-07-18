@@ -55,4 +55,15 @@ export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
     hint: "Goals, daily life, cost, travel, time, and support.",
     momentIds: ["quality-of-life", "cost-logistics"],
   },
+  {
+    id: "after-treatment",
+    label: "I’ve finished treatment / I’m in follow-up",
+    hint: "Monitoring, symptoms to report, and life after cancer.",
+    momentIds: [
+      "follow-up-monitoring",
+      "recurrence",
+      "quality-of-life",
+      "second-opinion",
+    ],
+  },
 ];

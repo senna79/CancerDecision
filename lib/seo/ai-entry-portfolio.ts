@@ -15,6 +15,7 @@ export type AiEntryId =
   | "treatment-progression"
   | "surgery"
   | "quality-of-life"
+  | "follow-up"
   | "treatment-feasibility";
 
 export type AiEntry = {
@@ -258,11 +259,31 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
       "how should quality of life factor into lung cancer decisions",
     ],
     relatedEntryIds: [
-      "treatment-progression",
+      "follow-up",
       "recurrence",
-      "clinical-trial",
+      "treatment-progression",
       "second-opinion",
       "treatment-feasibility",
+    ],
+  },
+  {
+    id: "follow-up",
+    label: "Long-term monitoring & follow-up",
+    decisionLabel:
+      "How to monitor health and rebuild confidence after treatment",
+    slug: "how-do-i-monitor-my-health-after-lung-cancer-treatment",
+    momentId: "follow-up-monitoring",
+    searchIntents: [
+      "monitor health after lung cancer treatment",
+      "lung cancer follow-up care plan",
+      "symptoms to report after lung cancer treatment",
+      "fear of recurrence after lung cancer",
+    ],
+    relatedEntryIds: [
+      "recurrence",
+      "treatment-progression",
+      "quality-of-life",
+      "second-opinion",
     ],
   },
   {
