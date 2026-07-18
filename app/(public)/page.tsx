@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { SituationGuidedRouter } from "@/components/journey/situation-guided-router";
+import { CancerJourneyNav } from "@/components/home/cancer-journey-nav";
 import { LUNG_DECISION_MOMENTS } from "@/lib/journey/decision-moments";
 import { getCancers, getStories } from "@/lib/queries";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -25,7 +25,10 @@ export default async function HomePage() {
     getStories({ limit: 3 }),
   ]);
 
-  const lung = cancers.find((c) => c.slug === "lung-cancer");
+  const cancerOptions = cancers.map((c) => ({
+    slug: c.slug,
+    name: c.name,
+  }));
   const otherCancers = cancers.filter((c) => c.slug !== "lung-cancer");
 
   return (
@@ -53,37 +56,11 @@ export default async function HomePage() {
             Not an encyclopedia. A navigation path — so you leave knowing what
             to do next, not only what cancer is.
           </p>
-          <p className="animate-rise-delay mt-3 max-w-2xl text-base font-medium text-[var(--ink-soft)]">
-            Start with lung cancer — the first complete cancer decision journey.
-          </p>
 
-          <div className="animate-rise-delay mt-8 max-w-3xl">
-            <SituationGuidedRouter
-              moments={LUNG_DECISION_MOMENTS}
-              footer={
-                <>
-                  Other cancer guides are structured the same way and will deepen
-                  over time.{" "}
-                  <Link
-                    href="/cancers"
-                    className="font-semibold text-[var(--accent)] hover:underline"
-                  >
-                    Browse all guides
-                  </Link>
-                  {lung ? (
-                    <>
-                      {" "}
-                      ·{" "}
-                      <Link
-                        href="/cancers/lung-cancer#decision-moment"
-                        className="font-semibold text-[var(--accent)] hover:underline"
-                      >
-                        Open the lung decision center
-                      </Link>
-                    </>
-                  ) : null}
-                </>
-              }
+          <div className="animate-rise-delay mt-10 max-w-3xl">
+            <CancerJourneyNav
+              cancers={cancerOptions}
+              lungMoments={LUNG_DECISION_MOMENTS}
             />
           </div>
         </div>

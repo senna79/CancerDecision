@@ -1,8 +1,8 @@
 "use client";
 
+import Link from "next/link";
 import { useMemo, useState } from "react";
 import type { ReactNode } from "react";
-import { DecisionMomentRouter } from "@/components/journey/decision-moment-router";
 import {
   filterMomentsByIds,
   type DecisionMoment,
@@ -13,145 +13,145 @@ import {
 } from "@/lib/journey/situation-buckets";
 import { cn } from "@/lib/utils";
 
-type View =
-  | { kind: "buckets" }
-  | { kind: "bucket"; bucketId: string }
-  | { kind: "all" };
-
-function initialView(activeId?: string | null): View {
-  if (!activeId) return { kind: "buckets" };
-  const match = LUNG_SITUATION_BUCKETS.find((b) =>
-    b.momentIds.includes(activeId)
-  );
-  if (match) return { kind: "bucket", bucketId: match.id };
-  return { kind: "all" };
+function bucketContaining(activeId: string | null | undefined, buckets: SituationBucket[]) {
+  if (!activeId) return null;
+  return buckets.find((b) => b.momentIds.includes(activeId))?.id ?? null;
 }
 
+/** Accordion: 5 situation entries → 2–4 Entry links each */
 export function SituationGuidedRouter({
   moments,
   buckets = LUNG_SITUATION_BUCKETS,
   activeId,
   footer,
+  cancerLabel = "lung cancer",
 }: {
   moments: DecisionMoment[];
   buckets?: SituationBucket[];
   activeId?: string | null;
   footer?: ReactNode;
+  /** Used in the section title */
+  cancerLabel?: string;
 }) {
-  const [view, setView] = useState<View>(() => initialView(activeId));
+  const initialOpen = bucketContaining(activeId, buckets);
+  const [openId, setOpenId] = useState<string | null>(initialOpen);
 
-  const selectedBucket = useMemo(() => {
-    if (view.kind !== "bucket") return null;
-    return buckets.find((b) => b.id === view.bucketId) ?? null;
-  }, [buckets, view]);
-
-  const visibleMoments = useMemo(() => {
-    if (view.kind === "all") return moments;
-    if (view.kind === "bucket" && selectedBucket) {
-      return filterMomentsByIds(moments, selectedBucket.momentIds);
+  const momentsByBucket = useMemo(() => {
+    const map = new Map<string, DecisionMoment[]>();
+    for (const bucket of buckets) {
+      map.set(bucket.id, filterMomentsByIds(moments, bucket.momentIds));
     }
-    return [];
-  }, [moments, selectedBucket, view]);
+    return map;
+  }, [buckets, moments]);
 
-  if (view.kind === "buckets") {
-    return (
-      <section
-        id="decision-moment"
-        className="scroll-mt-24 rounded-lg border border-[var(--accent)]/30 bg-white/90 p-5 md:p-7"
-      >
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-          Start here · about 3 minutes
-        </p>
-        <h2 className="mt-1 font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl">
-          Where are you in your lung cancer journey?
-        </h2>
-        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
-          Tell us where you are — we’ll show the relevant next steps. You do not
-          need to read every guide.
-        </p>
+  return (
+    <section
+      id="decision-moment"
+      className="scroll-mt-24 rounded-lg border border-[var(--accent)]/30 bg-white/90 p-5 md:p-7"
+    >
+      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+        Start here · about 3 minutes
+      </p>
+      <h2 className="mt-1 font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl">
+        Where are you in your {cancerLabel} journey?
+      </h2>
+      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
+        Open the situation that matches you — then pick one guide. You do not
+        need to read every page.
+      </p>
 
-        <ol className="mt-5 space-y-2">
-          {buckets.map((bucket, index) => (
-            <li key={bucket.id}>
+      <div className="mt-5 space-y-2">
+        {buckets.map((bucket, index) => {
+          const isOpen = openId === bucket.id;
+          const links = momentsByBucket.get(bucket.id) ?? [];
+
+          return (
+            <div
+              key={bucket.id}
+              className={cn(
+                "rounded-md border transition",
+                isOpen
+                  ? "border-[var(--accent)]/40 bg-white"
+                  : "border-[var(--line)] bg-[var(--paper)]/80"
+              )}
+            >
               <button
                 type="button"
-                onClick={() =>
-                  setView({ kind: "bucket", bucketId: bucket.id })
-                }
-                className="group flex w-full gap-3 rounded-md border border-[var(--line)] bg-[var(--paper)]/80 px-3 py-3 text-left transition hover:border-[var(--accent)] hover:bg-[rgba(15,118,110,0.05)] md:px-4 md:py-3.5"
+                aria-expanded={isOpen}
+                onClick={() => setOpenId(isOpen ? null : bucket.id)}
+                className="flex w-full gap-3 px-3 py-3 text-left md:px-4 md:py-3.5"
               >
                 <span
-                  className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-[var(--line)] bg-white text-[11px] font-bold text-[var(--muted)] group-hover:border-[var(--accent)] group-hover:text-[var(--accent)]"
+                  className={cn(
+                    "mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border text-[11px] font-bold",
+                    isOpen
+                      ? "border-[var(--accent)] bg-[var(--accent)] text-white"
+                      : "border-[var(--line)] bg-white text-[var(--muted)]"
+                  )}
                   aria-hidden
                 >
                   {index + 1}
                 </span>
                 <span className="min-w-0 flex-1">
-                  <span className="block font-semibold text-[var(--ink)] group-hover:text-[var(--accent)]">
+                  <span className="block font-semibold text-[var(--ink)]">
                     {bucket.label}
                   </span>
                   <span className="mt-0.5 block text-sm text-[var(--ink-soft)]">
                     {bucket.hint}
                   </span>
                 </span>
+                <span
+                  aria-hidden
+                  className={cn(
+                    "mt-1 shrink-0 text-[var(--muted)] transition-transform duration-200",
+                    isOpen && "rotate-180"
+                  )}
+                >
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                    <path
+                      d="M3 5l4 4 4-4"
+                      stroke="currentColor"
+                      strokeWidth="1.6"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </svg>
+                </span>
               </button>
-            </li>
-          ))}
-        </ol>
 
-        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 text-sm">
-          <button
-            type="button"
-            onClick={() => setView({ kind: "all" })}
-            className="font-semibold text-[var(--accent)] hover:underline"
-          >
-            Explore all decision guides
-          </button>
-        </div>
-
-        {footer ? <div className="mt-4 text-sm text-[var(--muted)]">{footer}</div> : null}
-      </section>
-    );
-  }
-
-  const stepTitle =
-    view.kind === "all"
-      ? "All lung cancer decision guides"
-      : selectedBucket?.label ?? "Your next steps";
-
-  const stepSubtitle =
-    view.kind === "all"
-      ? "Pick the guide that matches you now. Each one opens What to do next."
-      : "These guides fit your situation. Pick one to see your next step.";
-
-  return (
-    <div className="space-y-3">
-      <div className="flex flex-wrap items-center gap-3 text-sm">
-        <button
-          type="button"
-          onClick={() => setView({ kind: "buckets" })}
-          className="font-semibold text-[var(--accent)] hover:underline"
-        >
-          ← Where are you?
-        </button>
-        {view.kind === "bucket" ? (
-          <button
-            type="button"
-            onClick={() => setView({ kind: "all" })}
-            className={cn("text-[var(--muted)] hover:text-[var(--accent)]")}
-          >
-            See all guides
-          </button>
-        ) : null}
+              {isOpen ? (
+                <ul className="space-y-1 border-t border-[var(--line)]/80 px-3 py-3 md:px-4">
+                  {links.map((moment) => {
+                    const isActive = activeId === moment.id;
+                    return (
+                      <li key={moment.id}>
+                        <Link
+                          href={moment.href}
+                          className={cn(
+                            "block rounded-md px-3 py-2.5 transition",
+                            isActive
+                              ? "bg-[rgba(15,118,110,0.1)]"
+                              : "hover:bg-[rgba(15,118,110,0.06)]"
+                          )}
+                        >
+                          <span className="block text-sm font-semibold text-[var(--ink)]">
+                            {moment.label}
+                          </span>
+                          <span className="mt-0.5 block text-sm text-[var(--ink-soft)]">
+                            {moment.hint}
+                          </span>
+                        </Link>
+                      </li>
+                    );
+                  })}
+                </ul>
+              ) : null}
+            </div>
+          );
+        })}
       </div>
-      <DecisionMomentRouter
-        moments={visibleMoments}
-        activeId={activeId}
-        title={stepTitle}
-        subtitle={stepSubtitle}
-        eyebrow="Your next-step guides"
-        footer={footer}
-      />
-    </div>
+
+      {footer ? <div className="mt-4 text-sm text-[var(--muted)]">{footer}</div> : null}
+    </section>
   );
 }
