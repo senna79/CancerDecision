@@ -5,6 +5,7 @@ import { SURGERY_ENTRY_CARDS } from "@/lib/content/surgery-entry-cards";
 import { CLINICAL_TRIAL_ENTRY_CARDS } from "@/lib/content/clinical-trial-entry-cards";
 import { SECOND_OPINION_ENTRY_CARDS } from "@/lib/content/second-opinion-entry-cards";
 import { TREATMENT_OPTIONS_ENTRY_CARDS } from "@/lib/content/treatment-options-entry-cards";
+import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
 import { ContentBridge } from "./content-bridge";
@@ -779,6 +780,126 @@ export function DecisionPathCardDetail({
         <BulletCard
           lead={CLINICAL_TRIAL_ENTRY_CARDS.family.lead}
           close={CLINICAL_TRIAL_ENTRY_CARDS.family.close}
+        />
+      );
+    case "prog-not-worse":
+      return (
+        <BulletCard
+          lead={TREATMENT_PROGRESSION_ENTRY_CARDS.notWorseOnly.lead}
+          items={TREATMENT_PROGRESSION_ENTRY_CARDS.notWorseOnly.reasons}
+          close={TREATMENT_PROGRESSION_ENTRY_CARDS.notWorseOnly.close}
+        />
+      );
+    case "prog-how-know":
+      return (
+        <BulletCard
+          lead={TREATMENT_PROGRESSION_ENTRY_CARDS.howKnow.lead}
+          items={TREATMENT_PROGRESSION_ENTRY_CARDS.howKnow.factors}
+          close={TREATMENT_PROGRESSION_ENTRY_CARDS.howKnow.close}
+        />
+      );
+    case "prog-can-change":
+      return (
+        <BulletCard
+          lead={TREATMENT_PROGRESSION_ENTRY_CARDS.canChange.lead}
+          items={TREATMENT_PROGRESSION_ENTRY_CARDS.canChange.review}
+          close={TREATMENT_PROGRESSION_ENTRY_CARDS.canChange.close}
+        />
+      );
+    case "prog-biopsy":
+      return (
+        <BulletCard
+          lead={TREATMENT_PROGRESSION_ENTRY_CARDS.biopsy.lead}
+          close={`Ask: “${TREATMENT_PROGRESSION_ENTRY_CARDS.biopsy.ask}”`}
+        />
+      );
+    case "prog-biomarkers":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{TREATMENT_PROGRESSION_ENTRY_CARDS.biomarkersAgain.lead}</p>
+          <p className="font-medium text-[var(--ink)]">
+            {TREATMENT_PROGRESSION_ENTRY_CARDS.biomarkersAgain.close}
+          </p>
+          <p>
+            <Link
+              href="/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Biomarker testing decision →
+            </Link>
+          </p>
+        </div>
+      );
+    case "prog-prior":
+      return (
+        <BulletCard
+          lead={TREATMENT_PROGRESSION_ENTRY_CARDS.priorTreatment.lead}
+          items={TREATMENT_PROGRESSION_ENTRY_CARDS.priorTreatment.factors}
+          close={TREATMENT_PROGRESSION_ENTRY_CARDS.priorTreatment.close}
+        />
+      );
+    case "prog-options":
+      return (
+        <BulletCard
+          lead={TREATMENT_PROGRESSION_ENTRY_CARDS.nextOptions.lead}
+          items={TREATMENT_PROGRESSION_ENTRY_CARDS.nextOptions.options}
+          close={TREATMENT_PROGRESSION_ENTRY_CARDS.nextOptions.close}
+        />
+      );
+    case "prog-newest":
+      return (
+        <BulletCard
+          lead={TREATMENT_PROGRESSION_ENTRY_CARDS.newestNotBest.lead}
+          items={TREATMENT_PROGRESSION_ENTRY_CARDS.newestNotBest.consider}
+          close={`Ask: “${TREATMENT_PROGRESSION_ENTRY_CARDS.newestNotBest.ask}”`}
+        />
+      );
+    case "prog-goals":
+      return (
+        <BulletCard
+          lead={TREATMENT_PROGRESSION_ENTRY_CARDS.lessAggressive.lead}
+          items={TREATMENT_PROGRESSION_ENTRY_CARDS.lessAggressive.priorities}
+          close={TREATMENT_PROGRESSION_ENTRY_CARDS.lessAggressive.close}
+        />
+      );
+    case "prog-trial":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={TREATMENT_PROGRESSION_ENTRY_CARDS.trials.lead}
+            items={TREATMENT_PROGRESSION_ENTRY_CARDS.trials.when}
+            close={`Ask: “${TREATMENT_PROGRESSION_ENTRY_CARDS.trials.ask}”`}
+          />
+          <p>
+            <Link
+              href="/questions/should-i-consider-a-clinical-trial-for-lung-cancer"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Clinical trial decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "prog-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{TREATMENT_PROGRESSION_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {TREATMENT_PROGRESSION_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "prog-helping":
+      return (
+        <BulletCard
+          lead={TREATMENT_PROGRESSION_ENTRY_CARDS.isHelping.lead}
+          ask={TREATMENT_PROGRESSION_ENTRY_CARDS.isHelping.ask}
+          close={TREATMENT_PROGRESSION_ENTRY_CARDS.isHelping.close}
         />
       );
     case "second-opinion": {

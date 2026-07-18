@@ -2606,269 +2606,150 @@ export const TREATMENT_PROGRESSION_FLAGSHIP: AiEntryFlagshipModules = {
   cancerLabel: "Lung Cancer",
   decisionMoment:
     "What to do when the current treatment is no longer achieving its goal",
-  exploring: "Treatment Progression Decision",
+  exploring: "Treatment Change Decision",
   subtitle:
-    "Understand what changed, what information matters now, and how to make your next treatment decision.",
+    "When treatment stops working as expected, it does not mean there are no more options. Cancer care often involves multiple decisions over time.",
   relatedDecisions: [
-    { label: "Recurrence", href: RECURRENCE },
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
-    { label: "Biomarker Testing", href: BIOMARKER },
-    { label: "Clinical Trial", href: CLINICAL_TRIAL },
+    { label: "Clinical Trials", href: CLINICAL_TRIAL },
     { label: "Second Opinion", href: SECOND_OPINION },
-    { label: "Care Center Selection", href: CARE_CENTER },
+    { label: "Biomarker Testing", href: BIOMARKER },
+    { label: "Quality of Life", href: QUALITY_OF_LIFE },
   ],
   journeyLabel: "Lung Cancer Decision Journey",
   journeyPath: [
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
-    { label: "Treatment Progression", current: true },
-    { label: "Second Opinion", href: SECOND_OPINION },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
+    { label: "Treatment Change", current: true },
+    { label: "Clinical Trial", href: CLINICAL_TRIAL },
   ],
 
-  triggersTitle: "You may be facing a treatment progression decision if:",
+  triggersTitle: "You may be facing this decision if:",
   triggerGroups: [
     {
-      heading: "Your scans show the cancer is growing",
+      heading: "Your scans show cancer has grown or changed",
       lead: "You may wonder:",
       items: [
         "What does this change mean?",
-        "Does my current treatment need to change?",
-        "What information should we review?",
+        "What information should we review next?",
       ],
     },
     {
-      heading: "Your doctor recommends changing treatment",
+      heading: "Current treatment is no longer controlling the cancer",
       lead: "You may want to understand:",
       items: [
         "Why is a different approach being considered?",
-        "What alternatives exist?",
-        "How should I compare them?",
+        "What alternatives exist now?",
       ],
     },
     {
-      heading: "Your treatment is becoming harder to continue",
-      lead: "You may be considering:",
+      heading: "Symptoms have changed",
+      lead: "You may be asking:",
       items: [
-        "Side effects",
-        "Daily life impact",
-        "Whether the current balance still makes sense",
+        "Is the balance of benefit and burden still right?",
+        "What matters most in daily life now?",
       ],
     },
     {
-      heading: "You want to understand future options",
+      heading: "You are considering a new option",
       lead: "You may be exploring:",
       items: [
-        "Additional treatments",
+        "Another treatment approach",
         "Clinical trials",
-        "Another expert opinion",
+        "Supportive care focused on symptoms",
       ],
     },
   ],
 
-  whyTitle:
-    "A treatment change is a new decision point, not the end of the journey",
+  whyTitle: "Does treatment change mean my cancer is getting worse?",
   whyLead:
-    "Hearing “Your treatment is no longer working” can feel overwhelming.",
+    "A treatment change can happen for different reasons. Doctors may consider changing treatment when scans show growth, side effects become difficult, a different treatment may offer more benefit, or new information changes the discussion.",
   whyBody: [
-    "Many patients immediately think: “Does this mean there is nothing else to try?” “Was the previous decision wrong?” “What happens next?”",
-    "But cancer treatment decisions often change over time.",
+    "A treatment change does not always mean an emergency. It means the care team is reassessing the situation.",
+    "Cancer care is often a series of decisions, not one single treatment choice.",
   ],
   whyQuestions: [],
-  whyDependsIntro: "A treatment may need to be reconsidered because:",
-  whyDependsOn: [
-    "The cancer has changed",
-    "The treatment is no longer providing the expected benefit",
-    "The balance between benefit and burden has changed",
-    "New information has become available",
-  ],
+  whyNotLabel: "The key question is not:",
+  whyNotQuestion: "Did my treatment fail?",
+  whyBetterLabel: "It is:",
+  whyBetterQuestion:
+    "What information do we need now to understand the next best option?",
   whyClose: [
-    "The goal is not simply finding another treatment.",
-    "The goal is making the best decision based on the situation today.",
+    "When treatment stops working as expected, it does not mean there are no more options.",
   ],
 
-  goalFrameworkTitle: "First understand: What has changed?",
-  goalFrameworkLead:
-    "The next decision starts with understanding the reason for change. Before choosing a new direction, clarify:",
-  goalFrameworkBlocks: [
-    {
-      title: "Has the cancer changed?",
-      questionsIntro: "Questions:",
-      questions: [
-        "Is the cancer growing?",
-        "Has the pattern of disease changed?",
-      ],
-    },
-    {
-      title: "Is the current treatment still achieving its goal?",
-      questionsIntro: "Questions:",
-      questions: [
-        "What was this treatment intended to do?",
-        "Is it still achieving that goal?",
-      ],
-    },
-    {
-      title: "Has new information become available?",
-      questionsIntro: "Questions:",
-      questions: [
-        "Are additional tests needed?",
-        "Do we understand the cancer characteristics today?",
-      ],
-    },
-    {
-      title: "Have your goals changed?",
-      questionsIntro: "Questions:",
-      questions: [
-        "What matters most to me now?",
-        "How do I balance treatment and daily life?",
-      ],
-    },
+  doesNotDecideTitle: "How will doctors decide what comes next?",
+  doesNotDecideLead:
+    "When treatment changes, doctors usually review the complete picture again — latest imaging, symptoms, previous treatments, biomarker information, and whether additional testing is needed.",
+  doesNotDecideItems: [
+    "Sometimes the most useful next step is not immediately choosing another treatment",
+    "It is understanding what has changed",
+    "A new decision starts with new information",
   ],
+  doesNotDecideNotes: [
+    "Previous treatments, how long they helped, and side effects all guide future choices.",
+  ],
+  doesNotDecideClose:
+    "Open the cards beside this step for biopsy, biomarkers over time, and why prior treatment matters.",
 
-  affectTitle: "“Treatment not working” can mean different things",
-  affectBlocks: [
-    {
-      title: "The cancer is growing",
-      body: "The current approach may no longer be controlling the cancer as expected.",
-    },
-    {
-      title: "The benefit is limited",
-      body: "The treatment may not be providing enough benefit compared with its burden.",
-    },
-    {
-      title: "New information changes the decision",
-      body: "Additional testing or expert review may reveal new options to consider.",
-    },
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may be useful when:",
+  secondOpinionWhen: [
+    "Several options exist",
+    "The decision feels complex",
+    "You want more confidence before changing direction",
   ],
-  affectClose:
-    "The important question is: “What exactly has changed, and what does that mean for my choices?”",
-
-  evaluateTitle: "How to compare your next options",
-  evaluateLead:
-    "Use a decision framework, not a simple “best treatment” question.",
-  evaluateBlocks: [
-    {
-      title: "1. What is the goal?",
-      intro: "Ask:",
-      items: [
-        "What are we trying to achieve?",
-        "Has the treatment goal changed?",
-      ],
-    },
-    {
-      title: "2. Why is this option being considered?",
-      intro: "Ask:",
-      items: [
-        "What information supports this approach?",
-        "Why might it fit my situation?",
-      ],
-    },
-    {
-      title: "3. What are the possible benefits?",
-      intro: "Ask:",
-      items: [
-        "What improvement are we hoping for?",
-        "How will we know if it is helping?",
-      ],
-    },
-    {
-      title: "4. What are the trade-offs?",
-      intro: "Ask:",
-      items: [
-        "What side effects or burdens should I understand?",
-        "How might this affect my daily life?",
-      ],
-    },
-    {
-      title: "5. What future choices remain?",
-      intro: "Ask:",
-      items: [
-        "How might this decision affect later options?",
-        "What should we consider next?",
-      ],
-    },
-  ],
-
-  bridges: [
-    {
-      title: "Should I get another opinion before changing treatment?",
-      body: [
-        "A treatment change is often an important time for another perspective. A second opinion may help when the decision feels complex, several options are possible, you want to understand alternatives, or you want more confidence before changing direction.",
-        "A second opinion does not always mean changing doctors. Sometimes it confirms that the next step is based on complete information.",
-      ],
-      ctaLabel:
-        "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      ctaHref: SECOND_OPINION,
-    },
-    {
-      title: "Could additional testing change my options?",
-      body: [
-        "New information may influence future decisions. Depending on your situation, your care team may discuss whether additional information could help.",
-        "Questions: Do we have the latest information about my cancer? Could additional testing affect available options? Has anything changed since my original treatment decision?",
-      ],
-      ctaLabel:
-        "Do I Need Biomarker Testing Before Choosing Lung Cancer Treatment?",
-      ctaHref: BIOMARKER,
-    },
-    {
-      title: "Should I consider a clinical trial?",
-      body: [
-        "Clinical trials may be one option to discuss. When treatment options are changing, some patients explore clinical trials.",
-        "Questions: Are there trials relevant to my situation? How would they compare with other options? What uncertainties should I understand?",
-      ],
-      ctaLabel: "Should I Consider a Clinical Trial for Lung Cancer?",
-      ctaHref: CLINICAL_TRIAL,
-    },
-  ],
+  secondOpinionClose:
+    "Treatment changes are another important decision point.",
+  secondOpinionCtaLabel: "Second opinion decision guide",
+  secondOpinionHref: SECOND_OPINION,
 
   mistakesTitle: "Common mistakes when treatment changes",
   mistakes: [
     {
       mistake:
-        "Thinking the previous treatment decision was wrong",
-      why: "A treatment can be appropriate even if the cancer later changes.",
+        "Assuming one treatment failure means all options are gone",
+      why: "Cancer treatment often involves multiple steps.",
     },
     {
-      mistake:
-        "Assuming treatment change means there are no options",
-      why: "A change creates a new decision point.",
+      mistake: "Choosing only based on the newest option",
+      why: "Fit matters more than novelty.",
     },
     {
-      mistake: "Focusing only on the next treatment",
-      why: "The goal and trade-offs are also important.",
-    },
-    {
-      mistake: "Making decisions without updated information",
-      why: "New information may affect available choices.",
+      mistake: "Not discussing personal goals",
+      why: "Your priorities matter in the next decision.",
     },
   ],
 
-  doctorTitle: "Questions that can help when treatment changes",
+  doctorTitle: "Doctor Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "Why are we considering changing treatment?",
+    "What are my available options now?",
+    "What benefit do we expect from each option?",
+    "How will we measure whether this treatment is helping?",
+  ],
   doctorGroups: [
     {
-      heading: "About what changed",
+      heading: "Understanding the change",
       questions: [
-        "What tells us that the current treatment is no longer achieving its goal?",
-        "What information are we using?",
+        "Why are we considering changing treatment?",
+        "What information shows that change may help?",
+        "Is this change urgent?",
       ],
     },
     {
-      heading: "About options",
+      heading: "Comparing options",
       questions: [
-        "What are my reasonable next options?",
-        "Why are these options being considered?",
+        "What are my available options now?",
+        "What benefit do we expect from each option?",
+        "What are the possible risks?",
       ],
     },
     {
-      heading: "About trade-offs",
+      heading: "Looking ahead",
       questions: [
-        "What are the possible benefits and burdens?",
-        "How might each choice affect my daily life?",
-      ],
-    },
-    {
-      heading: "About the future",
-      questions: [
-        "What decisions may come after this?",
-        "How does this choice affect future options?",
+        "What happens if the next treatment does not work?",
+        "Are clinical trials relevant?",
+        "How will we measure whether this treatment is helping?",
       ],
     },
   ],
@@ -2895,49 +2776,39 @@ export const TREATMENT_PROGRESSION_FLAGSHIP: AiEntryFlagshipModules = {
   nextStepLead:
     "If your lung cancer treatment is no longer working as expected:",
   nextStepActions: [
-    { label: "Understand what has changed." },
-    { label: "Confirm whether additional information is needed." },
+    { label: "Understand what has changed — and whether the change is urgent." },
+    { label: "Ask whether additional testing would change the options." },
     {
-      label: "Compare options based on:",
-      examples: [
-        "Goals",
-        "Benefits",
-        "Trade-offs",
-        "Impact on your life",
-      ],
-    },
-    {
-      label:
-        "Consider whether another perspective or specialized expertise would help.",
+      label: "Compare next options by:",
+      examples: ["Expected benefit", "Risks", "Your goals and daily life"],
     },
   ],
-  nextStepCtaLabel: "What Are My Options If Lung Cancer Comes Back?",
-  nextStepHref: RECURRENCE,
-  nextStepCtaMeta: "Recurrence Decision",
-  nextStepSecondaryCtaLabel:
-    "How Should I Compare Lung Cancer Treatment Options?",
-  nextStepSecondaryHref: TREATMENT_COMPARE,
-  nextStepSecondaryMeta: "Treatment Comparison",
+  nextStepCtaLabel: "Clinical Trial Decision",
+  nextStepHref: CLINICAL_TRIAL,
+  nextStepCtaMeta: "When research options may fit",
+  nextStepSecondaryCtaLabel: "Second Opinion Decision",
+  nextStepSecondaryHref: SECOND_OPINION,
+  nextStepSecondaryMeta: "When you want more confidence",
 
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Cancer has returned?",
-      question: "What Are My Options If Lung Cancer Comes Back?",
-      cta: "Recurrence Decision",
-      href: RECURRENCE,
-    },
-    {
-      title: "Need to compare treatments?",
-      question: "How Should I Compare Lung Cancer Treatment Options?",
-      cta: "Treatment Comparison",
-      href: TREATMENT_COMPARE,
+      title: "Wondering about a trial?",
+      question: "Should I consider a clinical trial for lung cancer?",
+      cta: "Clinical trials",
+      href: CLINICAL_TRIAL,
     },
     {
       title: "Need more confidence?",
-      question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      cta: "Second Opinion",
+      question: "Should I get a second opinion after lung cancer diagnosis?",
+      cta: "Second opinion",
       href: SECOND_OPINION,
+    },
+    {
+      title: "Need updated information?",
+      question: "Do I need biomarker testing before lung cancer treatment?",
+      cta: "Biomarker testing",
+      href: BIOMARKER,
     },
   ],
 };

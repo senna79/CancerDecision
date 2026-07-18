@@ -13,6 +13,7 @@ import {
   SECOND_OPINION_SLUG,
   SURGERY_SLUG,
   TREATMENT_COMPARE_SLUG,
+  TREATMENT_PROGRESSION_SLUG,
 } from "./entry-path-v2";
 
 export type EntryTemplateV2Config = {
@@ -84,6 +85,18 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Are comparing treatments and wonder whether a trial belongs in the discussion",
       "Want to ask about trials before locking a first plan",
       "Are facing a treatment change and want to understand research options",
+    ],
+  },
+  [TREATMENT_PROGRESSION_SLUG]: {
+    plainLanguageGloss:
+      "When lung cancer treatment stops working as expected, it does not mean there are no more options — it means your team is reassessing what information and choices fit the situation now.",
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Your scans show that cancer has grown or changed",
+      "Your doctor says the current treatment is no longer controlling the cancer",
+      "Symptoms have changed or you are considering a new option",
+      "You want to understand what happens after the first treatment",
     ],
   },
 };

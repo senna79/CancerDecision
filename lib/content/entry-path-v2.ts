@@ -44,6 +44,8 @@ export const SURGERY_SLUG =
   "should-surgery-be-part-of-my-lung-cancer-treatment-plan";
 export const CLINICAL_TRIAL_SLUG =
   "should-i-consider-a-clinical-trial-for-lung-cancer";
+export const TREATMENT_PROGRESSION_SLUG =
+  "what-are-my-options-if-lung-cancer-treatment-no-longer-working";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -720,12 +722,143 @@ const CLINICAL_TRIAL_PATH: EntryPathV2 = {
   ],
 };
 
+const TREATMENT_PROGRESSION_PATH: EntryPathV2 = {
+  pathTitle: "Treatment Change Decision Path",
+  pathSubtitle:
+    "What change means → what information guides next → how to compare → what to ask.",
+  completedLabels: [
+    "What a treatment change means",
+    "What information guides the next decision",
+    "How to compare options after change",
+    "Questions before changing treatment",
+  ],
+  practicalPoints: [
+    "Expected benefit of each next option",
+    "Possible risks and daily-life impact",
+    "Whether goals favor more treatment, symptom focus, or a trial",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Does treatment change mean my cancer is getting worse?",
+      lead: "Patient question: what does a treatment change actually mean?",
+      main: "progression-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people face a treatment change decision.",
+        },
+        {
+          id: "prog-not-worse",
+          title: "Does treatment stopping mean my cancer is getting worse?",
+          summary: "Reassessing is not the same as having no options.",
+        },
+        {
+          id: "prog-how-know",
+          title: "How do doctors know if treatment is working?",
+          summary: "Imaging, symptoms, and the whole picture — not one result.",
+        },
+        {
+          id: "prog-can-change",
+          title: "Can cancer come back or change after treatment?",
+          summary: "Why the next decision depends on the current situation.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How will doctors decide what comes next?",
+      lead: "Patient question: what information guides the next decision?",
+      main: "progression-info",
+      cards: [
+        {
+          id: "prog-biopsy",
+          title: "Will I need another biopsy if treatment stops working?",
+          summary: "When additional testing may change options.",
+        },
+        {
+          id: "prog-biomarkers",
+          title: "Can my biomarker information change over time?",
+          summary: "Whether prior results still guide the next choice.",
+        },
+        {
+          id: "prog-prior",
+          title: "Why does my previous treatment matter?",
+          summary: "What worked, how long, and what side effects taught us.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What options do I have now?",
+      lead: "Patient question: how do I compare next steps after treatment changes?",
+      main: "progression-compare",
+      cards: [
+        {
+          id: "prog-options",
+          title: "What treatment options exist after the first treatment?",
+          summary: "Approved treatments, combinations, trials, supportive care.",
+        },
+        {
+          id: "prog-newest",
+          title: "Is the newest treatment always the best next treatment?",
+          summary: "Fit matters more than novelty.",
+        },
+        {
+          id: "prog-goals",
+          title: "What if I do not want another aggressive treatment?",
+          summary: "Your priorities belong in the next decision.",
+        },
+        {
+          id: "prog-trial",
+          title: "When should I consider a clinical trial?",
+          summary: "When standard options are changing or features match.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I ask before changing treatment?",
+      lead: "Patient question: how do I prepare for the next conversation?",
+      main: "checklist",
+      cards: [
+        {
+          id: "prog-mistakes",
+          title: "What mistakes do patients make when treatment changes?",
+          summary: "No options left, chasing “new,” skipping goals.",
+        },
+        {
+          id: "second-opinion",
+          title: "Should I get a second opinion when treatment changes?",
+          summary: "When another view may help at this decision point.",
+        },
+        {
+          id: "prog-helping",
+          title: "How do I know if treatment is helping me?",
+          summary: "What to watch for and how often progress is checked.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might frame the next decision.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
   [TREATMENT_COMPARE_SLUG]: TREATMENT_COMPARE_PATH,
   [SURGERY_SLUG]: SURGERY_PATH,
   [CLINICAL_TRIAL_SLUG]: CLINICAL_TRIAL_PATH,
+  [TREATMENT_PROGRESSION_SLUG]: TREATMENT_PROGRESSION_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {

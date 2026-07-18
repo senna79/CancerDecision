@@ -287,6 +287,49 @@ function StepMain({
           </p>
         </div>
       );
+    case "progression-understand":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "progression-info":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            When treatment changes, doctors usually review the complete picture
+            again — latest imaging, symptoms, previous treatments, biomarker
+            information, and whether additional testing is needed.
+          </p>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Sometimes the most useful next step is not immediately choosing
+            another treatment. It is understanding what has changed.
+          </p>
+        </div>
+      );
+    case "progression-compare":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Possible next steps may include another approved treatment, a
+            different combination, a clinical trial, or supportive care focused
+            on symptoms and quality of life.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Expected benefit",
+              "Possible risks",
+              "Your goals",
+              "Daily-life priorities",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The next decision is not “What is the newest option?” It is “What
+            option best fits my situation now?”
+          </p>
+        </div>
+      );
     case "trial-understand":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "trial-fit":
