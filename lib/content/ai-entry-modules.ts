@@ -951,7 +951,7 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     },
   ],
 
-  whyTitle: "Why does this matter?",
+  whyTitle: "Why does biomarker testing matter?",
   whyLead:
     "After a lung cancer diagnosis, many people want to move quickly toward treatment — and some choices depend on understanding more about the cancer itself.",
   whyBody: [],
@@ -1057,9 +1057,10 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     },
   ],
 
-  doesNotDecideTitle: "Could results change my options?",
+  doesNotDecideTitle:
+    "Could biomarker results change my treatment options?",
   doesNotDecideLead:
-    "Some results may identify treatments worth discussing. Some may not change the plan. Results are one part of the decision — not the whole decision. A finding does not automatically decide the right treatment. Decisions still consider:",
+    "Results may change which approaches your team discusses. A biomarker finding does not automatically mean a specific treatment — and it is only one factor among several. Decisions still consider:",
   doesNotDecideItems: [
     "Cancer stage",
     "Overall health",
@@ -1166,12 +1167,12 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 
   doctorTitle: "Questions you can ask your doctor",
-  doctorLeaveTitle: "Before you leave your appointment, make sure you know:",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
   doctorLeaveItems: [
-    "Is biomarker testing complete — or still pending?",
-    "Are results available — or when should we expect them?",
-    "Should treatment wait for these results — and why or why not?",
-    "What are the next options we should discuss either way?",
+    "Has biomarker testing been completed?",
+    "Are all recommended results available?",
+    "Could results change my treatment options?",
+    "Should we wait for results before deciding treatment?",
   ],
   doctorGroups: [
     {

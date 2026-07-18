@@ -2,8 +2,8 @@
 
 import { useState } from "react";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
+import { getEntryTemplateV2Config } from "@/lib/content/entry-template-v2";
 import { cn } from "@/lib/utils";
-import { AffectDecisions } from "./affect-decisions";
 import { CommonMistakes } from "./common-mistakes";
 import { CostConsiderations } from "./cost-considerations";
 import { DecisionTriggers } from "./decision-triggers";
@@ -17,6 +17,7 @@ import { ResultsTurnaround } from "./results-turnaround";
 import { TimingAnxiety } from "./timing-anxiety";
 import { ValueSituations } from "./value-situations";
 import { WhoNeedsTesting } from "./who-needs-testing";
+import { WhoThisIsFor } from "./who-this-is-for";
 import { WhyDecisionMatters } from "./why-decision-matters";
 import { YourNextStep } from "./your-next-step";
 
@@ -29,32 +30,37 @@ type QuestionCard = {
 type DecisionStep = {
   id: string;
   number: number;
-  /** OS stage — light eyebrow only */
   stage: string;
-  /** Patient-facing step title */
   title: string;
-  /** Optional short lead under the title */
   lead?: string;
   cards: QuestionCard[];
 };
+
+const BIOMARKER_SLUG =
+  "do-i-need-biomarker-testing-before-lung-cancer-treatment";
 
 const STEPS: DecisionStep[] = [
   {
     id: "understand",
     number: 1,
     stage: "Understand the decision",
-    title: "Why does this matter?",
-    lead: "Start with the question patients usually ask first: why is my doctor talking about this test?",
+    title: "Why does biomarker testing matter?",
+    lead: "Patient question: why is my doctor talking about this test?",
     cards: [
       {
         id: "what-is",
         title: "What is biomarker testing?",
-        summary: "A plain-language definition of what the test looks for.",
+        summary: "A plain-language definition.",
       },
       {
-        id: "who-needs",
-        title: "Does everyone need the same tests?",
-        summary: "Why testing is not identical for every person.",
+        id: "look-for",
+        title: "What does the test look for?",
+        summary: "Features of your cancer — not a gene encyclopedia.",
+      },
+      {
+        id: "my-situation",
+        title: "Is this my situation?",
+        summary: "When people usually ask about biomarker testing.",
       },
     ],
   },
@@ -62,23 +68,23 @@ const STEPS: DecisionStep[] = [
     id: "compare",
     number: 2,
     stage: "Compare what matters",
-    title: "Could results change my options?",
-    lead: "This is the core question: would the result change what you and your team discuss next?",
+    title: "Could biomarker results change my treatment options?",
+    lead: "Patient question: what would this result actually be used for?",
     cards: [
       {
         id: "targeted",
-        title: "Does this mean targeted therapy?",
+        title: "Does a biomarker result mean targeted therapy?",
         summary: "What a finding may open — and what it does not decide alone.",
-      },
-      {
-        id: "if-found",
-        title: "What happens if a biomarker is found?",
-        summary: "How results can support option discussions.",
       },
       {
         id: "if-none",
         title: "What if no actionable biomarker is found?",
         summary: "Why “no match” is not the same as “no options.”",
+      },
+      {
+        id: "which-checked",
+        title: "Which biomarkers are usually checked?",
+        summary: "Ask what matters for your decision — not a public gene list.",
       },
     ],
   },
@@ -87,11 +93,11 @@ const STEPS: DecisionStep[] = [
     number: 3,
     stage: "Consider practical realities",
     title: "What should I know before testing?",
-    lead: "Before you say yes, understand what you may experience — sample, timing, risk, and cost questions.",
+    lead: "Patient question: what will I actually go through?",
     cards: [
       {
         id: "how-done",
-        title: "How is testing done?",
+        title: "How is biomarker testing done?",
         summary: "Tissue already collected, blood tests, or a new sample.",
       },
       {
@@ -101,23 +107,18 @@ const STEPS: DecisionStep[] = [
       },
       {
         id: "risks",
-        title: "What are the risks?",
+        title: "What are the biopsy risks?",
         summary: "Risks usually come from getting tissue, not the lab test itself.",
       },
       {
         id: "turnaround",
-        title: "How long does it take?",
-        summary: "What to ask about timing — without a one-size calendar.",
+        title: "How long does testing take?",
+        summary: "Timing, waiting, and what to ask if treatment feels urgent.",
       },
       {
         id: "cost",
         title: "Cost and insurance",
         summary: "Questions to ask before testing is ordered.",
-      },
-      {
-        id: "delay",
-        title: "What if treatment feels urgent?",
-        summary: "Waiting is not automatically an unsafe delay — ask what applies to you.",
       },
     ],
   },
@@ -126,12 +127,12 @@ const STEPS: DecisionStep[] = [
     number: 4,
     stage: "Prepare for next conversation",
     title: "What should I discuss with my doctor?",
-    lead: "Leave with a short list — not a finished medical decision.",
+    lead: "Patient question: what should I ask at the next visit?",
     cards: [
       {
         id: "doctor",
-        title: "Doctor questions checklist",
-        summary: "A visit checklist you can take to the appointment.",
+        title: "Full doctor questions checklist",
+        summary: "Grouped questions you can take to the appointment.",
       },
       {
         id: "deeper",
@@ -148,28 +149,84 @@ const PRACTICAL_POINTS = [
   "Cost and insurance questions to ask before anything is ordered",
 ];
 
-function WhatIsBiomarkerTesting({
-  modules,
-}: {
-  modules: AiEntryFlagshipModules;
-}) {
+function WhatIsBiomarkerTesting() {
   return (
     <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
       <p>
         Biomarker testing looks for features of your cancer that may affect which
-        treatments your doctors discuss.
+        treatments your care team discusses.
       </p>
       <p>
         It is laboratory analysis — often using tissue or other samples already
         collected. It is related to, but not the same thing as, a biopsy
         procedure.
       </p>
-      {modules.howDoneLead ? <p>{modules.howDoneLead}</p> : null}
       <p className="font-medium text-[var(--ink)]">
-        Useful framing: some results may open or change treatment discussions;
-        others mainly confirm that the current plan still fits the information
-        available.
+        Some results may open or change treatment discussions; others mainly
+        confirm that the current plan still fits the information available.
       </p>
+    </div>
+  );
+}
+
+function WhatDoesTestLookFor() {
+  return (
+    <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+      <p>
+        The test looks for features of your cancer — signals that may help
+        doctors compare which approaches are worth discussing for you.
+      </p>
+      <p>
+        Exactly which features matter depends on your cancer type, stage, and
+        the decision in front of you. That list belongs in a conversation with
+        your care team, not on a public webpage.
+      </p>
+      <p className="font-medium text-[var(--ink)]">
+        Ask: “For my situation, what are we looking for — and could the answer
+        change the options we discuss?”
+      </p>
+    </div>
+  );
+}
+
+function WhichBiomarkersCard() {
+  return (
+    <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+      <p>
+        There is no single public checklist that fits every person. Useful tests
+        depend on cancer type, stage, prior results, and the treatment decision
+        you are making now.
+      </p>
+      <p>
+        This page does not list individual biomarker names as medical advice.
+        The safer next step is to ask your team what is recommended for{" "}
+        <span className="font-medium text-[var(--ink)]">your</span> decision.
+      </p>
+      <p className="font-medium text-[var(--ink)]">
+        Ask: “Which tests matter before we choose a plan — which are already
+        done — and which can wait?”
+      </p>
+    </div>
+  );
+}
+
+function MySituationCard({
+  modules,
+}: {
+  modules: AiEntryFlagshipModules;
+}) {
+  const audience = getEntryTemplateV2Config(BIOMARKER_SLUG);
+
+  return (
+    <div className="space-y-4">
+      {audience?.audienceTitle && audience.audienceItems?.length ? (
+        <WhoThisIsFor
+          title={audience.audienceTitle}
+          items={audience.audienceItems}
+        />
+      ) : null}
+      <DecisionTriggers modules={modules} />
+      <WhoNeedsTesting modules={modules} />
     </div>
   );
 }
@@ -236,15 +293,17 @@ function CardDetail({
 }) {
   switch (id) {
     case "what-is":
-      return <WhatIsBiomarkerTesting modules={modules} />;
-    case "who-needs":
-      return <WhoNeedsTesting modules={modules} />;
+      return <WhatIsBiomarkerTesting />;
+    case "look-for":
+      return <WhatDoesTestLookFor />;
+    case "my-situation":
+      return <MySituationCard modules={modules} />;
     case "targeted":
       return <TargetedTherapyCard />;
-    case "if-found":
-      return <AffectDecisions modules={modules} />;
     case "if-none":
       return <NoActionableCard modules={modules} />;
+    case "which-checked":
+      return <WhichBiomarkersCard />;
     case "how-done":
       return <HowTestingDone modules={modules} focus="all" />;
     case "biopsy":
@@ -252,17 +311,19 @@ function CardDetail({
     case "risks":
       return <HowTestingDone modules={modules} focus="risks" />;
     case "turnaround":
-      return <ResultsTurnaround modules={modules} />;
+      return (
+        <div className="space-y-4">
+          <ResultsTurnaround modules={modules} />
+          <TimingAnxiety modules={modules} />
+        </div>
+      );
     case "cost":
       return <CostConsiderations modules={modules} />;
-    case "delay":
-      return <TimingAnxiety modules={modules} />;
     case "doctor":
       return <DoctorQuestionGroups modules={modules} />;
     case "deeper":
       return (
         <div className="space-y-2">
-          <DecisionTriggers modules={modules} />
           <InformationGap modules={modules} />
           <ValueSituations modules={modules} />
           <CommonMistakes modules={modules} />
@@ -276,65 +337,77 @@ function CardDetail({
 
 function StepCards({
   step,
-  activeId,
-  onOpen,
-  onClose,
+  openId,
+  onToggle,
   modules,
 }: {
   step: DecisionStep;
-  activeId: string | null;
-  onOpen: (id: string) => void;
-  onClose: () => void;
+  openId: string | null;
+  onToggle: (id: string) => void;
   modules: AiEntryFlagshipModules;
 }) {
-  const activeCard = step.cards.find((c) => c.id === activeId) ?? null;
-
   return (
     <div className="rounded-lg border border-[var(--accent)]/20 bg-white/90 p-3 md:p-4">
-      {activeCard ? (
-        <div>
-          <button
-            type="button"
-            onClick={onClose}
-            className="text-sm font-semibold text-[var(--accent)] hover:underline"
-          >
-            ← Questions for this step
-          </button>
-          <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
-            {activeCard.title}
-          </p>
-          <div className="mt-2 max-h-[min(60vh,32rem)] overflow-y-auto pr-1">
-            <CardDetail id={activeCard.id} modules={modules} />
-          </div>
-        </div>
-      ) : (
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
-            Questions you may have
-          </p>
-          <ul className="mt-3 space-y-2">
-            {step.cards.map((card) => (
-              <li key={card.id}>
-                <button
-                  type="button"
-                  onClick={() => onOpen(card.id)}
-                  className={cn(
-                    "w-full rounded-md border border-[var(--line)] bg-[var(--paper)]/80 px-3 py-2.5 text-left transition",
-                    "hover:border-[var(--accent)] hover:bg-[rgba(15,118,110,0.05)]"
-                  )}
-                >
+      <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
+        Questions you may have
+      </p>
+      <ul className="mt-3 space-y-2">
+        {step.cards.map((card) => {
+          const open = openId === card.id;
+          return (
+            <li
+              key={card.id}
+              className={cn(
+                "rounded-md border bg-[var(--paper)]/80",
+                open
+                  ? "border-[var(--accent)]/40"
+                  : "border-[var(--line)]"
+              )}
+            >
+              <button
+                type="button"
+                aria-expanded={open}
+                onClick={() => onToggle(card.id)}
+                className={cn(
+                  "flex w-full items-start gap-2 px-3 py-2.5 text-left transition",
+                  "hover:bg-[rgba(15,118,110,0.05)]"
+                )}
+              >
+                <span className="min-w-0 flex-1">
                   <span className="block text-sm font-semibold text-[var(--ink)]">
                     {card.title}
                   </span>
-                  <span className="mt-0.5 block text-xs leading-relaxed text-[var(--muted)]">
-                    {card.summary}
-                  </span>
-                </button>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
+                  {!open ? (
+                    <span className="mt-0.5 block text-xs leading-relaxed text-[var(--muted)]">
+                      {card.summary}
+                    </span>
+                  ) : null}
+                </span>
+                <span
+                  aria-hidden
+                  className="mt-0.5 shrink-0 text-sm font-semibold text-[var(--accent)]"
+                >
+                  {open ? "−" : "+"}
+                </span>
+              </button>
+              {open ? (
+                <div className="border-t border-[var(--line)] px-3 py-3">
+                  <div className="max-h-[min(55vh,28rem)] overflow-y-auto pr-1">
+                    <CardDetail id={card.id} modules={modules} />
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => onToggle(card.id)}
+                    className="mt-3 text-sm font-semibold text-[var(--accent)] hover:underline"
+                  >
+                    Close
+                  </button>
+                </div>
+              ) : null}
+            </li>
+          );
+        })}
+      </ul>
     </div>
   );
 }
@@ -350,7 +423,15 @@ function StepMain({
 }) {
   switch (step.id) {
     case "understand":
-      return <WhyDecisionMatters modules={modules} embedded />;
+      return (
+        <div className="space-y-4">
+          <p className="rounded-md border border-[var(--accent)]/20 bg-[rgba(15,118,110,0.06)] px-4 py-3 text-sm font-medium text-[var(--ink)]">
+            Before making treatment decisions, ask whether the picture is
+            complete.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
     case "compare":
       return <DoesNotDecide modules={modules} embedded />;
     case "practical":
@@ -374,8 +455,7 @@ function StepMain({
           </ul>
           <p className="font-medium text-[var(--ink)]">
             Open a question beside this step for sample method, biopsy, risks,
-            timing, or cost — then bring those answers into your next
-            appointment.
+            timing, or cost.
           </p>
         </div>
       );
@@ -383,15 +463,18 @@ function StepMain({
       return (
         <div className="space-y-4">
           {modules.doctorLeaveTitle && modules.doctorLeaveItems?.length ? (
-            <div className="rounded-md border border-amber-700/20 bg-amber-50/70 px-4 py-3">
-              <p className="text-sm font-semibold text-[var(--ink)]">
+            <div className="rounded-md border border-amber-700/20 bg-amber-50/70 px-4 py-4">
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">
+                Doctor Conversation Checklist
+              </p>
+              <p className="mt-1 text-sm font-semibold text-[var(--ink)]">
                 {modules.doctorLeaveTitle}
               </p>
-              <ul className="mt-2 space-y-1.5 text-sm text-[var(--ink-soft)]">
+              <ul className="mt-3 space-y-2 text-sm text-[var(--ink-soft)]">
                 {modules.doctorLeaveItems.map((item) => (
                   <li key={item} className="flex gap-2">
                     <span className="text-[var(--accent)]" aria-hidden>
-                      □
+                      ☐
                     </span>
                     <span>{item}</span>
                   </li>
@@ -418,39 +501,42 @@ function StepMain({
 
 /**
  * Entry Template v2 workspace:
- * Vertical Decision Path (4 OS stages) with question cards beside each step.
+ * Vertical Decision Path (4 OS stages) · ~70/30 · accordion cards per step.
  */
 export function DecisionWorkspaceV2({
   modules,
 }: {
   modules: AiEntryFlagshipModules;
 }) {
-  const [activeId, setActiveId] = useState<string | null>(null);
+  const [openId, setOpenId] = useState<string | null>(null);
+
+  function toggleCard(id: string) {
+    setOpenId((current) => (current === id ? null : id));
+  }
 
   return (
-    <div className="mt-8">
+    <div id="decision-path" className="mt-6 scroll-mt-24">
       <header className="mb-6">
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
           Biomarker Testing Decision Path
         </p>
         <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
-          Four steps — understand the decision, compare what matters, consider
-          practical realities, then prepare for your next conversation.
+          Why it matters → whether options could change → what you may go through
+          → what to ask your doctor.
         </p>
       </header>
 
-      <ol className="relative space-y-0">
+      <ol className="relative">
         {STEPS.map((step, index) => {
           const isLast = index === STEPS.length - 1;
           return (
             <li key={step.id} id={`path-step-${step.id}`} className="relative">
-              <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(260px,0.95fr)] lg:gap-8">
+              <div className="grid items-start gap-4 lg:grid-cols-[minmax(0,7fr)_minmax(220px,3fr)] lg:gap-6">
                 <div className="relative min-w-0 pl-12 md:pl-14">
-                  {/* Vertical connector */}
                   {!isLast ? (
                     <span
                       aria-hidden
-                      className="absolute left-[1.15rem] top-10 bottom-[-1.5rem] w-px bg-[var(--accent)]/25 md:left-[1.35rem]"
+                      className="absolute left-[1.15rem] top-10 bottom-[-1.25rem] w-px bg-[var(--accent)]/25 md:left-[1.35rem]"
                     />
                   ) : null}
                   <span
@@ -473,26 +559,23 @@ export function DecisionWorkspaceV2({
                     <StepMain
                       step={step}
                       modules={modules}
-                      onOpenDoctor={() => setActiveId("doctor")}
+                      onOpenDoctor={() => setOpenId("doctor")}
                     />
                   </div>
                 </div>
 
-                <div className="min-w-0 pl-12 lg:pl-0 lg:pt-6">
+                <div className="min-w-0 pl-12 lg:sticky lg:top-24 lg:pl-0 lg:pt-6 lg:self-start">
                   <StepCards
                     step={step}
-                    activeId={
-                      step.cards.some((c) => c.id === activeId)
-                        ? activeId
-                        : null
+                    openId={
+                      step.cards.some((c) => c.id === openId) ? openId : null
                     }
-                    onOpen={setActiveId}
-                    onClose={() => setActiveId(null)}
+                    onToggle={toggleCard}
                     modules={modules}
                   />
                 </div>
               </div>
-              {!isLast ? <div className="h-8 md:h-10" aria-hidden /> : null}
+              {!isLast ? <div className="h-7 md:h-9" aria-hidden /> : null}
             </li>
           );
         })}

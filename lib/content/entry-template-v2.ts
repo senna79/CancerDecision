@@ -2,8 +2,9 @@
  * Entry Template v2.0 — Patient Decision Workspace
  * See docs/Entry_Template_v2.0.md
  *
- * Decision OS stages (eyebrows): Understand → Compare → Practical → Conversation.
- * Deeper modules hang as question cards beside each step.
+ * Hero: H1 + compact Direct Answer + path CTA.
+ * Path: Understand → Compare → Practical → Conversation.
+ * Audience gloss lives on Step 1 “Is this my situation?” card.
  */
 
 export type EntryTemplateV2Config = {

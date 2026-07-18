@@ -11,16 +11,10 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { AiEntryFlagshipBody } from "@/components/question/ai-entry/flagship-body";
 import { AiEntryFlagshipBodyV2 } from "@/components/question/ai-entry/flagship-body-v2";
 import { DecisionContext } from "@/components/question/ai-entry/decision-context";
-import { EntryQuickActions } from "@/components/question/ai-entry/entry-quick-actions";
-import { EntryReadingGuide } from "@/components/question/ai-entry/entry-reading-guide";
 import { JourneyYouAreHere } from "@/components/question/ai-entry/journey-you-are-here";
-import { WhoThisIsFor } from "@/components/question/ai-entry/who-this-is-for";
 import { AiEntrySections } from "@/components/question/ai-entry-sections";
 import { CitationBlock } from "@/components/question/citation-block";
-import {
-  getEntryTemplateV2Config,
-  usesEntryTemplateV2,
-} from "@/lib/content/entry-template-v2";
+import { usesEntryTemplateV2 } from "@/lib/content/entry-template-v2";
 import { DoctorQuestionsPanel } from "@/components/question/doctor-questions-panel";
 import { JourneySections } from "@/components/question/journey-sections";
 import { RelatedPathway } from "@/components/question/related-pathway";
@@ -93,7 +87,6 @@ export default async function QuestionPage({
   const relatedEntries = entryMeta ? getRelatedAiEntries(entryMeta) : [];
   const flagship = getAiEntryFlagshipModules(question.slug);
   const entryV2 = usesEntryTemplateV2(question.slug);
-  const entryV2Config = getEntryTemplateV2Config(question.slug);
   const graphNode = getDecisionGraphNodeByAiEntrySlug(question.slug);
   const pageDescription =
     question.seo_description || question.summary.slice(0, 160);
@@ -233,30 +226,10 @@ export default async function QuestionPage({
       <h1 className="mt-3 font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-4xl">
         {question.title}
       </h1>
-      {entryV2 && entryV2Config ? (
-        <p className="mt-3 text-lg leading-relaxed text-[var(--ink-soft)] md:text-xl">
-          {entryV2Config.plainLanguageGloss}
-        </p>
-      ) : flagship?.subtitle ? (
+      {!entryV2 && flagship?.subtitle ? (
         <p className="mt-3 text-lg text-[var(--ink-soft)] md:text-xl">
           {flagship.subtitle}
         </p>
-      ) : null}
-
-      {entryV2 &&
-      entryV2Config?.audienceTitle &&
-      entryV2Config.audienceItems?.length ? (
-        <WhoThisIsFor
-          title={entryV2Config.audienceTitle}
-          items={entryV2Config.audienceItems}
-        />
-      ) : null}
-
-      {flagship && entryV2 ? (
-        <JourneyYouAreHere
-          modules={flagship}
-          mapHref={cancer ? `/cancers/${cancer.slug}#decision-map` : null}
-        />
       ) : null}
 
       {flagship && !entryV2 ? <DecisionContext modules={flagship} /> : null}
@@ -265,11 +238,8 @@ export default async function QuestionPage({
         <CitationBlock
           answer={question.summary}
           questionTitle={question.title}
-          eyebrow={
-            entryV2 && entryV2Config
-              ? entryV2Config.oneMinuteLabel
-              : "Direct answer · AI citation block"
-          }
+          compact={entryV2}
+          eyebrow={entryV2 ? "Direct answer" : "Direct answer · AI citation block"}
           formHint={
             entryV2
               ? "Short answer · citation-ready · not personal medical advice"
@@ -283,10 +253,14 @@ export default async function QuestionPage({
       )}
 
       {flagship && entryV2 ? (
-        <>
-          <EntryQuickActions />
-          <EntryReadingGuide />
-        </>
+        <p className="mt-4">
+          <a
+            href="#decision-path"
+            className="inline-flex text-sm font-semibold text-[var(--accent)] hover:underline"
+          >
+            Follow the decision path below ↓
+          </a>
+        </p>
       ) : null}
 
       {flagship && !entryV2 ? (
@@ -341,10 +315,18 @@ export default async function QuestionPage({
           ) : (
             <AiEntryFlagshipBody modules={flagship} />
           )}
+          {flagship && entryV2 ? (
+            <div className="mt-8">
+              <JourneyYouAreHere
+                modules={flagship}
+                mapHref={cancer ? `/cancers/${cancer.slug}#decision-map` : null}
+              />
+            </div>
+          ) : null}
           {journey && cancer && !entryV2 ? (
             <JourneyStepNav journey={journey} cancerSlug={cancer.slug} />
           ) : null}
-          {cancer ? (
+          {cancer && !entryV2 ? (
             <div className="mt-6 text-sm text-[var(--muted)]">
               <Link
                 href={`/cancers/${cancer.slug}#decision-map`}
@@ -355,7 +337,7 @@ export default async function QuestionPage({
             </div>
           ) : null}
           {entryV2 && graphNode && cancer ? (
-            <div className="mt-8">
+            <div className="mt-6">
               <DecisionJourneyNav
                 node={graphNode}
                 cancerSlug={cancer.slug}

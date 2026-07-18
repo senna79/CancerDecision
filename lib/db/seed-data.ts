@@ -875,7 +875,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "do-i-need-biomarker-testing-before-lung-cancer-treatment",
       category: "diagnosis",
       summary:
-        "Biomarker testing can reveal features of your cancer that may affect which treatments your doctors discuss. It helps complete the picture before making treatment decisions.\n\nNot every patient needs the same tests, and results do not decide treatment by themselves. The key question is whether missing information could change an important choice.\n\nBefore starting treatment, ask your care team whether biomarker testing is complete and whether the results could change the options you should discuss.",
+        "Biomarker testing looks for features of your cancer that may affect which treatments your care team discusses. It helps make sure important information is available before treatment decisions are made.\n\nIt does not decide your treatment by itself.",
       why: "Treatment decisions depend on having the right information. The useful question is not whether you need every possible test — it is whether you have the information needed to make a treatment decision.",
       factors: [
         "Whether important information about the cancer may still be missing",
@@ -1296,7 +1296,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     21: {
       summary:
-        "Biomarker testing can reveal features of your cancer that may affect which treatments your doctors discuss. It helps complete the picture before making treatment decisions.\n\nNot every patient needs the same tests, and results do not decide treatment by themselves. The key question is whether missing information could change an important choice.\n\nBefore starting treatment, ask your care team whether biomarker testing is complete and whether the results could change the options you should discuss.",
+        "Biomarker testing looks for features of your cancer that may affect which treatments your care team discusses. It helps make sure important information is available before treatment decisions are made.\n\nIt does not decide your treatment by itself.",
       decision_triggers: [
         "You recently received a lung cancer diagnosis and wonder if information is still missing",
         "You have been offered treatment options and wonder if testing could change them",
