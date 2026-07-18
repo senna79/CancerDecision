@@ -2041,8 +2041,8 @@ export const STAGE_IV_FLAGSHIP: AiEntryFlagshipModules = {
     {
       title: "Want goals and daily life in the decision?",
       question:
-        "How Should Quality of Life Factor Into My Lung Cancer Decisions?",
-      cta: "Personal Goals Decision",
+        "How Do I Balance Lung Cancer Treatment and Quality of Life?",
+      cta: "Quality of Life Decision",
       href: QUALITY_OF_LIFE,
     },
     {
@@ -2928,315 +2928,209 @@ export const SURGERY_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 };
 
-/** Lung Cancer Decision Module #11 — Quality of Life (supporting) */
+/** Lung Cancer Decision Module #11 — Quality of Life & Supportive Care */
 export const QUALITY_OF_LIFE_FLAGSHIP: AiEntryFlagshipModules = {
   cancerLabel: "Lung Cancer",
-  decisionMoment: "How personal goals should influence treatment choices",
-  exploring: "Personal Goals Decision Layer",
+  decisionMoment:
+    "How to balance treatment goals with the life you want to protect",
+  exploring: "Quality of Life Decision",
   subtitle:
-    "Understand how your personal goals, daily life, and treatment priorities can help shape cancer decisions.",
+    "Treatment decisions are not only about controlling cancer. They are also about helping you live as well as possible while receiving care.",
   relatedDecisions: [
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
-    { label: "Stage IV Decision", href: STAGE_IV },
+    { label: "Treatment Change", href: TREATMENT_PROGRESSION },
     { label: "Recurrence", href: RECURRENCE },
-    { label: "Treatment Progression", href: TREATMENT_PROGRESSION },
+    { label: "Clinical Trials", href: CLINICAL_TRIAL },
     { label: "Second Opinion", href: SECOND_OPINION },
     { label: "Cost & Logistics", href: COST_LOGISTICS },
   ],
   journeyLabel: "Lung Cancer Decision Journey",
   journeyPath: [
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
-    { label: "Personal Goals", current: true },
-    { label: "Stage IV Decision", href: STAGE_IV },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
+    { label: "Quality of Life", current: true },
+    { label: "Treatment Change", href: TREATMENT_PROGRESSION },
   ],
 
-  triggersTitle: "You may want to discuss this when:",
+  triggersTitle: "You may be facing this decision if:",
   triggerGroups: [
     {
-      heading: "You are comparing treatments",
+      heading: "Treatment side effects are affecting daily activities",
       lead: "You may wonder:",
       items: [
-        "How will these options affect my daily life?",
-        "What trade-offs should I consider?",
+        "Is this burden still worth it?",
+        "What can be adjusted?",
       ],
     },
     {
-      heading: "Treatment has significant burdens",
-      lead: "You may be thinking about:",
+      heading: "Benefits and burden feel hard to weigh",
+      lead: "You may be asking:",
       items: [
-        "Side effects",
-        "Frequent appointments",
-        "Recovery time",
-        "Travel requirements",
+        "Do the benefits outweigh what treatment asks of me?",
+        "What matters most right now?",
       ],
     },
     {
-      heading: "Your cancer situation changes",
-      lead: "You may ask:",
+      heading: "You want to stay active and independent",
+      lead: "You may want to protect:",
       items: [
-        "Should my priorities change with my situation?",
-        "Does my current plan still fit my goals?",
+        "Daily routines",
+        "Work or family roles",
+        "Meaningful activities",
       ],
     },
     {
-      heading: "You are making advanced cancer decisions",
-      lead: "You may consider:",
+      heading: "Symptoms or family conversations are shifting priorities",
+      lead: "You may need to discuss:",
       items: [
-        "What outcomes matter most now?",
-        "How should treatment goals and daily life be balanced?",
+        "Harder-to-manage symptoms",
+        "What matters most during care",
       ],
     },
   ],
 
-  whyTitle: "Cancer decisions are about your life, not only your cancer",
-  whyLead: "When facing treatment choices, patients often focus on:",
+  whyTitle: "What should my treatment plan help me protect?",
+  whyLead:
+    "Lung cancer treatment decisions are not only about controlling cancer. They are also about helping you live as well as possible while receiving care.",
   whyBody: [
-    "Will this treatment work? What options do I have? What does my doctor recommend?",
-    "These questions are important. But another question is equally important:",
+    "Quality of life may include staying independent, spending time with family, continuing meaningful activities, managing symptoms, and maintaining the ability to do things that matter to you.",
+    "Supportive care helps address the physical, emotional, and practical challenges of cancer. It can include symptom management, side-effect support, nutrition, physical activity guidance, emotional support, and help with daily challenges.",
+    "Supportive care does not mean treatment has failed, doctors are giving up, or cancer care is ending.",
   ],
-  whyQuestions: ["What kind of life am I trying to protect?"],
-  whyDependsIntro: "Every treatment decision involves trade-offs. Those trade-offs may include:",
-  whyDependsOn: [
-    "Possible medical benefits",
-    "Side effects",
-    "Time commitments",
-    "Daily activities",
-    "Family responsibilities",
-    "Personal goals",
-  ],
+  whyQuestions: [],
+  whyNotLabel: "The key question is not:",
+  whyNotQuestion: "Should I choose treatment or quality of life?",
+  whyBetterLabel: "It is:",
+  whyBetterQuestion:
+    "How can my treatment plan support both my cancer goals and my life goals?",
   whyClose: [
-    "Quality of life helps make those trade-offs clear.",
+    "Your goals are not separate from medical decisions. They are part of the decision.",
   ],
 
-  affectTitle: "Quality of life does not mean “less treatment”",
-  affectBlocks: [
-    {
-      title: "It means choosing treatment that fits your goals",
-      body: "Some patients may prioritize exploring every possible treatment option, pursuing additional possibilities, or maximizing treatment opportunities. Others may prioritize maintaining independence, spending time with family, reducing treatment burden, or preserving daily routines.",
-    },
-    {
-      title: "Neither approach is automatically right or wrong",
-      body: "Different people have different goals. What matters is understanding your priorities when comparing options.",
-    },
+  doesNotDecideTitle: "Manage symptoms before they control your life",
+  doesNotDecideLead:
+    "Many symptoms and treatment side effects can be managed. The most important step is communication.",
+  doesNotDecideItems: [
+    "Tell your team about new or worsening symptoms",
+    "Share changes in your ability to do daily activities",
+    "Raise concerns about treatment burden early",
+    "You do not need to wait until symptoms become severe",
   ],
-  affectClose:
-    "The important question is: “What matters most to me when comparing my options?”",
-
-  goalFrameworkTitle: "Define what quality of life means for you",
-  goalFrameworkLead:
-    "Different people value different outcomes. Consider what matters most:",
-  goalFrameworkBlocks: [
-    {
-      title: "Independence",
-      questionsIntro: "Examples:",
-      questions: [
-        "Managing daily activities",
-        "Staying active",
-        "Maintaining personal routines",
-      ],
-    },
-    {
-      title: "Relationships",
-      questionsIntro: "Examples:",
-      questions: [
-        "Spending time with family",
-        "Participating in important events",
-      ],
-    },
-    {
-      title: "Treatment goals",
-      questionsIntro: "Examples:",
-      questions: [
-        "Pursuing additional treatment possibilities",
-        "Understanding every available option",
-      ],
-    },
-    {
-      title: "Daily comfort and function",
-      questionsIntro: "Examples:",
-      questions: [
-        "Reducing treatment burden",
-        "Maintaining activities that are meaningful",
-      ],
-    },
+  doesNotDecideNotes: [
+    "Managing symptoms is part of cancer treatment, not a sign that treatment is failing.",
   ],
-  goalFrameworkClose:
-    "Your priorities help define what a good decision looks like.",
+  doesNotDecideClose:
+    "Open the cards beside this step for which symptoms to report, when to call, and whether treatment can be adjusted.",
 
-  evaluateTitle: "How quality of life connects with treatment decisions",
-  evaluateLead: "Add your goals to every treatment discussion. When comparing options, consider:",
-  evaluateBlocks: [
-    {
-      title: "1. What is the medical goal?",
-      intro: "Ask:",
-      items: [
-        "What is this treatment trying to achieve?",
-        "What outcome are we hoping for?",
-      ],
-    },
-    {
-      title: "2. How could it affect daily life?",
-      intro: "Ask:",
-      items: [
-        "What changes might I experience?",
-        "What activities are important to protect?",
-      ],
-    },
-    {
-      title: "3. What are the trade-offs?",
-      intro: "Ask:",
-      items: [
-        "What benefits should I understand?",
-        "What burdens should I consider?",
-      ],
-    },
-    {
-      title: "4. Does it fit my priorities?",
-      intro: "Ask:",
-      items: [
-        "Does this option match what matters most to me?",
-        "What compromises am I comfortable making?",
-      ],
-    },
-    {
-      title: "5. Will my priorities change over time?",
-      intro: "Ask:",
-      items: [
-        "Should this decision be revisited later?",
-        "Has my situation changed?",
-      ],
-    },
-  ],
-
-  bridges: [
-    {
-      title: "Quality of life in advanced lung cancer decisions",
-      body: [
-        "Goals may become even more important as decisions become more complex. In advanced lung cancer, patients may consider how to balance treatment goals and daily life, which outcomes matter most now, and how to evaluate future choices.",
-        "The question is not only “What treatments exist?” It is also: “What choice best fits my goals at this stage?”",
-      ],
-      ctaLabel: "How Do I Choose Treatment Options for Stage IV Lung Cancer?",
-      ctaHref: STAGE_IV,
-    },
-    {
-      title: "Quality of life when treatment changes",
-      body: [
-        "New decisions may require new priorities. When treatment is no longer achieving its intended goal, patients may ask whether what matters most has changed, what balance feels right now, and how priorities should influence the next step.",
-      ],
-      ctaLabel:
-        "What Are My Options If My Lung Cancer Treatment Is No Longer Working?",
-      ctaHref: TREATMENT_PROGRESSION,
-    },
-  ],
-
-  mistakesTitle: "Common mistakes when considering quality of life",
+  mistakesTitle: "Common mistakes when balancing treatment and daily life",
   mistakes: [
     {
-      mistake:
-        "Thinking quality of life means giving up treatment",
-      why: "Quality of life helps guide decisions. It does not automatically mean choosing fewer treatments.",
+      mistake: "Thinking supportive care means giving up",
+      why: "Supportive care can run alongside cancer treatment at any stage.",
     },
     {
-      mistake:
-        "Assuming every patient should want the same outcome",
-      why: "Different people have different goals.",
+      mistake: "Not telling doctors what matters most",
+      why: "Your priorities help the team recommend options that fit your life.",
     },
     {
-      mistake: "Discussing treatment without discussing priorities",
-      why: "A treatment decision should fit the person, not only the disease.",
+      mistake: "Assuming more treatment is always better",
+      why: "The right amount of treatment depends on benefit, burden, and your goals.",
     },
     {
-      mistake: "Waiting until decisions become urgent",
-      why: "Understanding your priorities earlier can make future decisions clearer.",
+      mistake: "Waiting until symptoms become severe",
+      why: "Earlier communication can open more ways to reduce burden.",
     },
   ],
 
-  doctorTitle: "Questions that support patient-centered decisions",
+  doctorTitle: "Doctor Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What matters most to me during treatment — and how can we include those goals?",
+    "Which symptoms should I report, and what support is available?",
+    "Can side effects be reduced?",
+    "How will we know if treatment is still right for me?",
+  ],
   doctorGroups: [
     {
-      heading: "About treatment goals",
+      heading: "About my goals",
       questions: [
-        "What is the goal of this treatment?",
-        "What outcome are we hoping to achieve?",
+        "What matters most to me during treatment?",
+        "How can we include my goals in the treatment plan?",
+        "What tradeoffs should I understand?",
       ],
     },
     {
-      heading: "About daily life",
+      heading: "About symptoms",
       questions: [
-        "How might this affect my normal activities?",
-        "What changes should I prepare for?",
+        "Which symptoms should I report?",
+        "What support is available?",
+        "Can side effects be reduced?",
       ],
     },
     {
-      heading: "About trade-offs",
+      heading: "About future decisions",
       questions: [
-        "What are the benefits and burdens of each option?",
-        "How should I think about these differences?",
-      ],
-    },
-    {
-      heading: "About my priorities",
-      questions: [
-        "How can my goals be included in this decision?",
-        "Are there options that better match what matters to me?",
+        "How will we know if treatment is still right for me?",
+        "What happens if my priorities change?",
+        "Who can help with these decisions?",
       ],
     },
   ],
 
-  scenarioTitle:
-    "Example: Including personal goals in a treatment decision",
+  scenarioTitle: "Example: Balancing treatment and daily life",
   scenarioTag: "Illustrative decision scenario",
   scenarioDisclaimer: "Not a real patient story",
   scenarioBody: [
-    "A person with lung cancer is comparing two possible approaches.",
-    "Their first question is: “Which treatment is stronger?”",
-    "Instead, they discuss:",
+    "A person with lung cancer is deciding whether to continue a treatment that helps control the cancer but leaves them too tired for family time.",
+    "Their first thought is: “Should I choose treatment or quality of life?”",
+    "Instead, they ask:",
   ],
   scenarioFocus: [
-    "What outcome matters most?",
-    "How might each option affect daily life?",
-    "What trade-offs feel acceptable?",
-    "What does a meaningful outcome look like?",
+    "What am I trying to protect in daily life?",
+    "Can symptoms or side effects be reduced?",
+    "What tradeoffs should I understand?",
+    "How can the plan support both cancer goals and life goals?",
   ],
   scenarioClose:
-    "The decision becomes more than choosing a treatment. It becomes choosing a path that fits their goals.",
+    "The decision shifts from choosing one or the other to finding a plan that supports both.",
 
-  nextStepTitle: "Include your goals in your next cancer conversation",
-  nextStepLead: "Your next step:",
+  nextStepTitle: "Your next step",
+  nextStepLead: "If you are balancing treatment and quality of life:",
   nextStepActions: [
-    { label: "Identify what matters most to you." },
-    { label: "Understand the goals and trade-offs of each option." },
-    { label: "Discuss how each choice may affect your life." },
-    { label: "Make sure your priorities are part of the decision." },
+    { label: "Name what matters most for you to protect during care." },
+    {
+      label: "Tell your team about symptoms, side effects, and daily-life impact early.",
+    },
+    {
+      label: "Compare options by:",
+      examples: ["Possible benefit", "Treatment burden", "Your personal goals"],
+    },
   ],
-  nextStepCtaLabel: "How Should I Compare Lung Cancer Treatment Options?",
-  nextStepHref: TREATMENT_COMPARE,
-  nextStepCtaMeta: "Treatment Comparison",
-  nextStepSecondaryCtaLabel:
-    "How Do I Choose Treatment Options for Stage IV Lung Cancer?",
-  nextStepSecondaryHref: STAGE_IV,
-  nextStepSecondaryMeta: "Stage IV Decision",
+  nextStepCtaLabel: "Treatment Change Decision",
+  nextStepHref: TREATMENT_PROGRESSION,
+  nextStepCtaMeta: "When the balance may need a new plan",
+  nextStepSecondaryCtaLabel: "Second Opinion Decision",
+  nextStepSecondaryHref: SECOND_OPINION,
+  nextStepSecondaryMeta: "When you want more confidence",
 
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Comparing treatments?",
-      question: "How Should I Compare Lung Cancer Treatment Options?",
-      cta: "Treatment Comparison",
-      href: TREATMENT_COMPARE,
-    },
-    {
-      title: "Facing advanced decisions?",
-      question: "How Do I Choose Treatment Options for Stage IV Lung Cancer?",
-      cta: "Stage IV Decision",
-      href: STAGE_IV,
-    },
-    {
       title: "Treatment changing?",
       question:
-        "What Are My Options If My Lung Cancer Treatment Is No Longer Working?",
-      cta: "Treatment Progression",
+        "What are my options if lung cancer treatment is no longer working?",
+      cta: "Treatment change",
       href: TREATMENT_PROGRESSION,
+    },
+    {
+      title: "Facing recurrence?",
+      question: "What are my options if lung cancer comes back?",
+      cta: "Recurrence",
+      href: RECURRENCE,
+    },
+    {
+      title: "Need more confidence?",
+      question: "Should I get a second opinion after lung cancer diagnosis?",
+      cta: "Second opinion",
+      href: SECOND_OPINION,
     },
   ],
 };

@@ -10,6 +10,7 @@
 import {
   BIOMARKER_SLUG,
   CLINICAL_TRIAL_SLUG,
+  QUALITY_OF_LIFE_SLUG,
   RECURRENCE_SLUG,
   SECOND_OPINION_SLUG,
   SURGERY_SLUG,
@@ -110,6 +111,18 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Scans show a new area of concern after treatment",
       "Symptoms appear after a period of control",
       "You want to understand what options exist if cancer comes back",
+    ],
+  },
+  [QUALITY_OF_LIFE_SLUG]: {
+    plainLanguageGloss:
+      "Lung cancer treatment decisions are not only about controlling cancer — they are also about helping you live as well as possible while receiving care.",
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Treatment side effects are affecting your daily activities",
+      "You are unsure whether the benefits of treatment outweigh the burden",
+      "You want to stay active and independent during treatment",
+      "Symptoms are becoming harder to manage — or you and your family are discussing what matters most",
     ],
   },
 };

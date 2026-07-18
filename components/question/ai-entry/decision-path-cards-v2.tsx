@@ -6,6 +6,7 @@ import { CLINICAL_TRIAL_ENTRY_CARDS } from "@/lib/content/clinical-trial-entry-c
 import { SECOND_OPINION_ENTRY_CARDS } from "@/lib/content/second-opinion-entry-cards";
 import { TREATMENT_OPTIONS_ENTRY_CARDS } from "@/lib/content/treatment-options-entry-cards";
 import { RECURRENCE_ENTRY_CARDS } from "@/lib/content/recurrence-entry-cards";
+import { QUALITY_OF_LIFE_ENTRY_CARDS } from "@/lib/content/quality-of-life-entry-cards";
 import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
@@ -1034,6 +1035,104 @@ export function DecisionPathCardDetail({
           lead={RECURRENCE_ENTRY_CARDS.supportive.lead}
           items={RECURRENCE_ENTRY_CARDS.supportive.focus}
           close={RECURRENCE_ENTRY_CARDS.supportive.close}
+        />
+      );
+    case "qol-supportive-worse":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.supportiveWorse.lead}
+          items={QUALITY_OF_LIFE_ENTRY_CARDS.supportiveWorse.helps}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.supportiveWorse.close}
+        />
+      );
+    case "qol-tell-doctor":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.tellDoctor.lead}
+          items={QUALITY_OF_LIFE_ENTRY_CARDS.tellDoctor.examples}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.tellDoctor.close}
+        />
+      );
+    case "qol-affect-choice":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.affectChoice.lead}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.affectChoice.close}
+        />
+      );
+    case "qol-which-symptoms":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.whichSymptoms.lead}
+          items={QUALITY_OF_LIFE_ENTRY_CARDS.whichSymptoms.symptoms}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.whichSymptoms.close}
+        />
+      );
+    case "qol-wait-appointment":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.waitAppointment.lead}
+          close={`Ask: “${QUALITY_OF_LIFE_ENTRY_CARDS.waitAppointment.ask}” ${QUALITY_OF_LIFE_ENTRY_CARDS.waitAppointment.close}`}
+        />
+      );
+    case "qol-adjust-treatment":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.adjustTreatment.lead}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.adjustTreatment.close}
+        />
+      );
+    case "qol-burden-too-much":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.burdenTooMuch.lead}
+          items={QUALITY_OF_LIFE_ENTRY_CARDS.burdenTooMuch.factors}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.burdenTooMuch.close}
+        />
+      );
+    case "qol-more-better":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.moreBetter.lead}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.moreBetter.close}
+        />
+      );
+    case "qol-goals-change":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.goalsChange.lead}
+          items={QUALITY_OF_LIFE_ENTRY_CARDS.goalsChange.examples}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.goalsChange.close}
+        />
+      );
+    case "qol-hospice":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.hospice.lead}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.hospice.close}
+        />
+      );
+    case "qol-family":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.family.lead}
+          items={QUALITY_OF_LIFE_ENTRY_CARDS.family.ways}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.family.close}
+        />
+      );
+    case "qol-services":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.services.lead}
+          items={QUALITY_OF_LIFE_ENTRY_CARDS.services.items}
+        />
+      );
+    case "qol-who-helps":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.whoHelps.lead}
+          items={QUALITY_OF_LIFE_ENTRY_CARDS.whoHelps.people}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.whoHelps.close}
         />
       );
     case "second-opinion": {

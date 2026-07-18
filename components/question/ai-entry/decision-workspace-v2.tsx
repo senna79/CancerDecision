@@ -332,6 +332,48 @@ function StepMain({
           </p>
         </div>
       );
+    case "qol-understand":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "qol-symptoms":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Many symptoms and treatment side effects can be managed. The most
+            important step is communication — new symptoms, worsening symptoms,
+            changes in daily activities, and concerns about treatment burden.
+          </p>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Managing symptoms is part of cancer treatment, not a sign that
+            treatment is failing.
+          </p>
+        </div>
+      );
+    case "qol-balance":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Every treatment decision involves tradeoffs. Doctors consider
+            possible benefit, possible burden — side effects, appointments,
+            recovery time, and impact on daily life — and your personal goals.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Possible benefit — what the treatment may achieve",
+              "Possible burden — side effects, time, and daily-life impact",
+              "Personal goals — what matters most to you",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            More treatment is not always the same as better treatment. The right
+            amount depends on your situation.
+          </p>
+        </div>
+      );
     case "progression-understand":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "progression-info":

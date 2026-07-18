@@ -27,7 +27,7 @@ export const LUNG_FLAGSHIP_SOURCES_BY_QUESTION_N: Record<number, number[]> = {
   30: [9, 1, 10, 11, 12, 4],
   // Module #10 — Surgery (supporting)
   31: [9, 1, 10, 11, 2, 4],
-  // Module #11 — Quality of Life (supporting)
+  // Module #11 — Quality of Life & Supportive Care
   32: [9, 10, 2, 11, 7, 8],
   // Module #12 — Treatment Feasibility / Cost & Logistics (supporting)
   33: [2, 5, 1, 10, 6, 8],

@@ -48,6 +48,8 @@ export const TREATMENT_PROGRESSION_SLUG =
   "what-are-my-options-if-lung-cancer-treatment-no-longer-working";
 export const RECURRENCE_SLUG =
   "what-are-my-options-if-lung-cancer-comes-back";
+export const QUALITY_OF_LIFE_SLUG =
+  "how-should-quality-of-life-factor-into-lung-cancer-decisions";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -994,6 +996,136 @@ const RECURRENCE_PATH: EntryPathV2 = {
   ],
 };
 
+const QUALITY_OF_LIFE_PATH: EntryPathV2 = {
+  pathTitle: "Quality of Life Decision Path",
+  pathSubtitle:
+    "What matters most → manage symptoms → balance benefit and burden → build support.",
+  completedLabels: [
+    "What your plan should help protect",
+    "How to manage symptoms during treatment",
+    "How to balance benefit and burden",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Possible benefit of continuing or adjusting treatment",
+    "Side effects, appointments, and daily-life impact",
+    "What matters most to you right now",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "What should my treatment plan help me protect?",
+      lead: "Patient question: what matters most in my daily life?",
+      main: "qol-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When quality of life becomes part of the decision.",
+        },
+        {
+          id: "qol-supportive-worse",
+          title: "Does needing supportive care mean my cancer is getting worse?",
+          summary: "Supportive care can run alongside treatment at any stage.",
+        },
+        {
+          id: "qol-tell-doctor",
+          title: "Should I tell my doctor what matters most to me?",
+          summary: "Your priorities are important medical information.",
+        },
+        {
+          id: "qol-affect-choice",
+          title: "Can quality of life affect which treatment I choose?",
+          summary: "Benefit, risks, and personal goals all count.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "What can I do when treatment affects how I feel?",
+      lead: "Patient question: how do I manage symptoms before they take over?",
+      main: "qol-symptoms",
+      cards: [
+        {
+          id: "qol-which-symptoms",
+          title: "Which symptoms should I tell my doctor about?",
+          summary: "Report changes that affect daily activities.",
+        },
+        {
+          id: "qol-wait-appointment",
+          title: "Should I wait until my next appointment to mention side effects?",
+          summary: "Some symptoms need earlier attention.",
+        },
+        {
+          id: "qol-adjust-treatment",
+          title: "Can treatment be adjusted if side effects become difficult?",
+          summary: "Tell your team what is happening.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "How do I know if a treatment is still right for me?",
+      lead: "Patient question: how do I balance benefit and treatment burden?",
+      main: "qol-balance",
+      cards: [
+        {
+          id: "qol-burden-too-much",
+          title: "How do I know if treatment burden is becoming too much?",
+          summary: "Daily life, goals, and ways to reduce burden.",
+        },
+        {
+          id: "qol-more-better",
+          title: "Is more treatment always better?",
+          summary: "More benefit can also mean more burden.",
+        },
+        {
+          id: "qol-goals-change",
+          title: "Can my treatment goals change over time?",
+          summary: "Priorities can be revisited as circumstances change.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What support can help me live better during treatment?",
+      lead: "Patient question: how do I build a support plan around my care?",
+      main: "checklist",
+      cards: [
+        {
+          id: "qol-hospice",
+          title: "What is the difference between supportive care and hospice care?",
+          summary: "They are not the same thing.",
+        },
+        {
+          id: "qol-family",
+          title: "How can my family help without taking over decisions?",
+          summary: "Support your choices — keep your preferences central.",
+        },
+        {
+          id: "qol-services",
+          title: "What support services should I ask about?",
+          summary: "Symptoms, nutrition, rehab, emotions, and practical help.",
+        },
+        {
+          id: "qol-who-helps",
+          title: "Who helps with difficult treatment decisions?",
+          summary: "You do not have to decide alone.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might frame the next decision.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
@@ -1002,6 +1134,7 @@ const PATHS: Record<string, EntryPathV2> = {
   [CLINICAL_TRIAL_SLUG]: CLINICAL_TRIAL_PATH,
   [TREATMENT_PROGRESSION_SLUG]: TREATMENT_PROGRESSION_PATH,
   [RECURRENCE_SLUG]: RECURRENCE_PATH,
+  [QUALITY_OF_LIFE_SLUG]: QUALITY_OF_LIFE_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {
