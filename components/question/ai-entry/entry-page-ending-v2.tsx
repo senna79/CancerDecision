@@ -70,53 +70,64 @@ export function EntryPageEndingV2({
         </ul>
       </div>
 
-      {/* Next step — primary exit */}
+      {/* Leave panel: primary next step + secondary related */}
       <section
         id="your-next-step"
+        aria-label="Continue after this decision"
         className="scroll-mt-24 overflow-hidden rounded-xl border border-[var(--accent)]/25 bg-white/90"
       >
-        <div className="border-l-4 border-[var(--accent)] px-4 py-4 md:px-5 md:py-5">
-          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-            Your next step
+        <div className="border-b border-[var(--line)]/60 bg-[rgba(15,118,110,0.03)] px-4 py-2.5 md:px-5">
+          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+            Continue after this decision
           </p>
-          <p className="mt-1 text-sm text-[var(--muted)]">
-            One clear move after this page — not a new reading list.
-          </p>
-          <div className="mt-4">
-            <Link
-              href={modules.nextStepHref}
-              className="inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
-            >
-              {modules.nextStepCtaLabel} →
-            </Link>
-            {modules.nextStepCtaMeta ? (
-              <p className="mt-2 text-xs text-[var(--muted)]">
-                {modules.nextStepCtaMeta}
-              </p>
-            ) : null}
+        </div>
+        <div className="grid md:grid-cols-[minmax(0,65fr)_minmax(0,35fr)]">
+          <div className="border-l-4 border-[var(--accent)] px-4 py-4 md:px-5 md:py-5">
+            <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+              Your next step
+            </p>
+            <p className="mt-1 text-sm text-[var(--muted)]">
+              One clear move after this page — not a new reading list.
+            </p>
+            <div className="mt-4">
+              <Link
+                href={modules.nextStepHref}
+                className="inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
+              >
+                {modules.nextStepCtaLabel} →
+              </Link>
+              {modules.nextStepCtaMeta ? (
+                <p className="mt-2 text-xs text-[var(--muted)]">
+                  {modules.nextStepCtaMeta}
+                </p>
+              ) : null}
+            </div>
           </div>
+
+          {related.length > 0 ? (
+            <div className="border-t border-[var(--line)]/70 px-4 py-4 md:border-t-0 md:border-l md:border-[var(--line)]/70 md:px-5 md:py-5">
+              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
+                Also related
+              </p>
+              <p className="mt-1 text-xs text-[var(--muted)]">
+                Optional — only if these fit your situation.
+              </p>
+              <ul className="mt-3 space-y-2">
+                {related.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      href={item.href}
+                      className="text-sm font-medium text-[var(--accent)] hover:underline"
+                    >
+                      {item.cta} →
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
         </div>
       </section>
-
-      {related.length > 0 ? (
-        <section aria-label="Related decisions" className="px-1">
-          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
-            Related decisions
-          </p>
-          <ul className="mt-2 flex flex-wrap gap-2">
-            {related.map((item) => (
-              <li key={item.href}>
-                <Link
-                  href={item.href}
-                  className="inline-flex rounded-md border border-[var(--line)] bg-white/80 px-3 py-1.5 text-sm font-medium text-[var(--accent)] transition hover:border-[var(--accent)]/40 hover:bg-[rgba(15,118,110,0.05)]"
-                >
-                  {item.cta} →
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ) : null}
 
       {/* Journey — visual path strip */}
       <aside
