@@ -90,6 +90,15 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     ],
     close: "Your priorities are part of the decision.",
   },
+  practicalCompare: {
+    lead: "For each option, also ask about visit frequency, travel, recovery time, work impact, and support needed at home.",
+    close:
+      "Two medically reasonable options can differ a lot in how livable they are week to week.",
+  },
+  cantManage: {
+    lead: "Say so early. Teams may discuss local treatment, schedule changes, supportive services, or another approach that still fits your goals.",
+    close: "A plan only works if it can be followed.",
+  },
   ifNotWorking: {
     lead: "Treatment decisions can change over time. If a treatment is not working as expected, doctors may consider:",
     options: [

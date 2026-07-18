@@ -3110,342 +3110,183 @@ export const FOLLOW_UP_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 };
 
-/** Lung Cancer Decision Module #12 — Treatment Feasibility / Cost & Logistics */
+/** Practical Fit stub — points into Care Team, Treatment Options, and Quality of Life */
 export const TREATMENT_FEASIBILITY_FLAGSHIP: AiEntryFlagshipModules = {
   cancerLabel: "Lung Cancer",
   decisionMoment:
-    "Whether a treatment plan is realistic and sustainable in daily life",
-  exploring: "Treatment Feasibility Layer",
+    "Whether a treatment plan can work with real life",
+  exploring: "Practical fit",
   subtitle:
-    "Understand how cost, location, time, support, and daily responsibilities can become part of your cancer decisions.",
+    "Cost, travel, time, and support belong in the conversation — then open the decision page that matches your question.",
   relatedDecisions: [
-    { label: "Care Center Selection", href: CARE_CENTER },
-    { label: "Second Opinion", href: SECOND_OPINION },
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
-    { label: "Clinical Trial", href: CLINICAL_TRIAL },
+    { label: "Care Team", href: CARE_CENTER },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
     { label: "Quality of Life", href: QUALITY_OF_LIFE },
-    { label: "Stage IV Decision", href: STAGE_IV },
   ],
   journeyLabel: "Lung Cancer Decision Journey",
   journeyPath: [
-    { label: "Care Center Selection", href: CARE_CENTER },
-    { label: "Treatment Feasibility", current: true },
+    { label: "Care Team", href: CARE_CENTER },
+    { label: "Practical Fit", current: true },
     { label: "Quality of Life", href: QUALITY_OF_LIFE },
   ],
 
-  triggersTitle: "Real-life factors may become important when:",
+  triggersTitle: "You may be facing this if:",
   triggerGroups: [
     {
-      heading: "You are choosing where to receive care",
+      heading: "The plan feels hard to live with",
+      lead: "You may be asking:",
+      items: [
+        "Can I keep up with this schedule?",
+        "Will travel or cost make this unrealistic?",
+      ],
+    },
+    {
+      heading: "You are choosing where care happens",
       lead: "You may wonder:",
       items: [
-        "Should I stay near home?",
-        "Should I consider a specialized cancer center?",
-        "How much travel is realistic?",
+        "Stay local, go to a specialist center, or combine both?",
       ],
     },
     {
-      heading: "You are considering a second opinion",
-      lead: "You may ask:",
+      heading: "You are comparing treatment options",
+      lead: "You may want to know:",
       items: [
-        "Can my records be reviewed remotely?",
-        "What information do I need to prepare?",
-        "Will travel be necessary?",
-      ],
-    },
-    {
-      heading: "Your treatment requires ongoing care",
-      lead: "You may consider:",
-      items: [
-        "Appointment frequency",
-        "Transportation",
-        "Time away from normal activities",
-      ],
-    },
-    {
-      heading: "Your treatment plan changes",
-      lead: "You may need to understand:",
-      items: [
-        "New schedules",
-        "New costs",
-        "New practical requirements",
+        "Which option fits a normal week better?",
       ],
     },
   ],
 
-  whyTitle:
-    "The best treatment plan is one you can realistically follow",
-  whyLead: "Cancer treatment decisions are often discussed around:",
+  whyTitle: "Why does practical fit matter?",
+  whyLead:
+    "A good treatment plan needs to fit both your medical situation and your real life.",
   whyBody: [
-    "What treatments exist? What does the evidence show? What does my doctor recommend?",
-    "But every treatment plan eventually becomes part of daily life.",
+    "Cost, travel, time, and support do not replace medical advice — but they belong in the conversation.",
+    "The better question is not only “Is this the strongest plan?” It is “Is this plan workable for my life — and if not, what can we adjust?”",
   ],
   whyQuestions: [],
-  whyDependsIntro: "Patients may need to consider:",
-  whyDependsOn: [
-    "How often appointments happen",
-    "How far they need to travel",
-    "Who can support them",
-    "How treatment affects work or family",
-    "Whether the plan can continue over time",
-  ],
+  whyNotLabel: "The goal is not:",
+  whyNotQuestion: "Finding the cheapest option on your own.",
+  whyBetterLabel: "The goal is:",
+  whyBetterQuestion:
+    "Naming practical limits early so your team can help shape a plan you can follow.",
   whyClose: [
     "A medically appropriate option also needs to be practical.",
   ],
 
-  goalFrameworkTitle: "Cost is only one part of the decision",
-  goalFrameworkLead:
-    "Understanding the complete impact of cancer care. When patients think about cost, they may consider:",
-  goalFrameworkBlocks: [
-    {
-      title: "Direct medical costs",
-      questionsIntro: "Examples:",
-      questions: [
-        "Treatments",
-        "Procedures",
-        "Tests",
-        "Visits",
-      ],
-    },
-    {
-      title: "Insurance and coverage",
-      questionsIntro: "Questions:",
-      questions: [
-        "What costs should I understand before starting?",
-        "Who can help explain coverage?",
-      ],
-    },
-    {
-      title: "Travel and location costs",
-      questionsIntro: "Examples:",
-      questions: [
-        "Transportation",
-        "Accommodation",
-        "Time away from home",
-      ],
-    },
-    {
-      title: "Life impact",
-      questionsIntro: "Examples:",
-      questions: [
-        "Work changes",
-        "Family responsibilities",
-        "Caregiver needs",
-      ],
-    },
+  doesNotDecideTitle: "Where should I go next?",
+  doesNotDecideLead:
+    "This page is a pointer — not an insurance or price guide. Open the decision that matches your concern:",
+  doesNotDecideItems: [
+    "Where care happens — travel, hybrid care, and who coordinates your network → Care Team",
+    "Which option fits a real week — visit load, recovery, and practical burden → Treatment Options",
+    "Whether the burden is sustainable — daily life, symptoms, and what you can keep doing → Quality of Life",
   ],
-  goalFrameworkClose:
-    "The goal is not simply finding the least expensive option. The goal is understanding the full impact of each choice.",
+  doesNotDecideClose:
+    "Exact prices and insurance rules vary by place and plan. Put constraints on the table with your care team.",
 
-  affectTitle: "How logistics can influence treatment decisions",
-  affectBlocks: [
-    {
-      title: "Location",
-      body: "Where will treatment happen? How often do I need to be there?",
-    },
-    {
-      title: "Time commitment",
-      body: "How much time will treatment require? How might it affect my routine?",
-    },
-    {
-      title: "Support system",
-      body: "Who can help during treatment? What support will I need?",
-    },
-    {
-      title: "Long-term sustainability",
-      body: "Can I realistically continue this plan? What challenges should I prepare for?",
-    },
-  ],
-  affectClose:
-    "Practical factors can affect which options are realistic — without replacing medical judgment.",
-
-  evaluateTitle: "A decision framework for treatment feasibility",
-  evaluateLead:
-    "Include practical reality alongside medical information.",
-  evaluateBlocks: [
-    {
-      title: "1. Understand the medical goal",
-      intro: "Ask:",
-      items: [
-        "What is this option trying to achieve?",
-        "Why is it being considered?",
-      ],
-    },
-    {
-      title: "2. Understand the practical requirements",
-      intro: "Ask:",
-      items: [
-        "Where will care happen?",
-        "How often are visits needed?",
-      ],
-    },
-    {
-      title: "3. Understand the personal impact",
-      intro: "Ask:",
-      items: [
-        "How will this affect my daily life?",
-        "What support will I need?",
-      ],
-    },
-    {
-      title: "4. Understand financial considerations",
-      intro: "Ask:",
-      items: [
-        "What costs should I plan for?",
-        "Who can help me understand available resources?",
-      ],
-    },
-    {
-      title: "5. Decide whether the plan is realistic",
-      intro: "Ask:",
-      items: [
-        "Can this approach fit my medical needs and my life circumstances?",
-      ],
-    },
-  ],
-
-  bridges: [
-    {
-      title: "Does the cancer center decision affect logistics?",
-      body: [
-        "Expertise and practicality may both matter. Some patients consider specialist experience, multidisciplinary care, distance from home, and travel requirements.",
-        "A highly specialized center may provide additional expertise. Patients may also consider time, cost, support, and ability to continue care.",
-        "The question is not “Which center is always best?” The question is: “Which care approach fits my medical needs and my real situation?”",
-      ],
-      ctaLabel:
-        "Do I Need a Different Cancer Center or More Specialized Expertise?",
-      ctaHref: CARE_CENTER,
-    },
-    {
-      title: "How does this connect with second opinions?",
-      body: [
-        "Another perspective may also require planning. Second opinions may involve preparing medical records, remote consultations, travel, and additional appointments.",
-        "Questions: What information does another specialist need? Can this process happen remotely?",
-      ],
-      ctaLabel:
-        "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      ctaHref: SECOND_OPINION,
-    },
-  ],
-
-  mistakesTitle: "Common mistakes when considering treatment feasibility",
+  mistakesTitle: "Common missteps with practical fit",
   mistakes: [
     {
-      mistake: "Looking only at the treatment itself",
-      why: "A treatment plan also has practical requirements.",
+      mistake: "Waiting until the plan is locked to mention real-life limits",
+      why: "Early conversation makes adjustments more possible.",
     },
     {
-      mistake: "Ignoring daily-life challenges until later",
-      why: "Planning early can reduce avoidable difficulties.",
+      mistake: "Assuming practical concerns are not medical enough to raise",
+      why: "Your team needs the full picture to recommend a workable plan.",
     },
     {
-      mistake: "Choosing only based on cost",
-      why: "Medical fit and personal circumstances both matter.",
-    },
-    {
-      mistake: "Assuming practical concerns cannot be discussed",
-      why: "Your care team needs to understand your real situation.",
+      mistake: "Shopping only by cost or only by reputation",
+      why: "Medical fit and life fit both matter.",
     },
   ],
 
-  doctorTitle: "Questions that improve treatment planning",
+  doctorTitle: "Practical Fit Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What will a normal treatment week look like?",
+    "What travel, time, or cost pressures should we plan for?",
+    "If this becomes too hard, what can we adjust?",
+  ],
   doctorGroups: [
     {
-      heading: "About logistics",
+      heading: "About a normal week",
       questions: [
         "How often will I need appointments?",
-        "How long will treatment visits usually take?",
+        "How long do visits usually take?",
+        "What recovery or downtime should I expect?",
       ],
     },
     {
-      heading: "About location",
+      heading: "About location and support",
       questions: [
-        "Do I need to receive all care at this center?",
+        "Do I need all care at this center?",
         "Are some parts of care possible closer to home?",
-      ],
-    },
-    {
-      heading: "About support",
-      questions: [
         "What help might I need from family or caregivers?",
-        "What should I prepare before treatment begins?",
       ],
     },
     {
-      heading: "About costs",
+      heading: "About cost and resources",
       questions: [
-        "Who can help me understand expected costs?",
-        "What resources may be available?",
+        "Who can help me understand expected costs at a high level?",
+        "What support resources may be available?",
       ],
     },
   ],
 
-  scenarioTitle: "Example: Choosing a realistic treatment path",
+  scenarioTitle: "Example: Naming practical limits early",
   scenarioTag: "Illustrative decision scenario",
   scenarioDisclaimer: "Not a real patient story",
   scenarioBody: [
-    "A person with lung cancer is considering receiving care at a specialized center farther from home.",
-    "Their first question is: “Is this the right medical option?”",
-    "They also consider:",
+    "A person receives a treatment recommendation that looks medically strong but would require frequent travel and unpaid time off work.",
+    "Instead of staying silent, they ask:",
   ],
   scenarioFocus: [
-    "How often would I need to travel?",
-    "Can my family support this plan?",
-    "What time and financial commitments are involved?",
-    "Are some parts of care possible closer to home?",
+    "What will a normal week look like?",
+    "Can some care happen closer to home?",
+    "If this schedule becomes too hard, what can we adjust?",
   ],
   scenarioClose:
-    "The decision becomes: “What treatment approach can I realistically follow while receiving appropriate care?”",
+    "The conversation shifts from “Can I endure this?” to “What workable plan still fits my medical goals?”",
 
-  nextStepTitle:
-    "Make sure your treatment plan fits both your cancer and your life",
-  nextStepLead: "Your next step:",
+  nextStepTitle: "Your next step",
+  nextStepLead: "Choose the decision that matches your concern:",
   nextStepActions: [
-    { label: "Understand your medical options." },
-    { label: "Identify practical requirements." },
+    { label: "Care Team — where care happens, travel, and hybrid networks." },
     {
-      label: "Discuss:",
-      examples: [
-        "Location",
-        "Time",
-        "Cost",
-        "Support needs",
-      ],
+      label:
+        "Treatment Options — compare visit load and practical burden alongside medical benefit.",
     },
     {
       label:
-        "Choose a plan that is medically appropriate and realistic for your situation.",
+        "Quality of Life — talk about daily life, symptoms, and sustainability.",
     },
   ],
-  nextStepCtaLabel:
-    "Do I Need a Different Cancer Center or More Specialized Expertise?",
+  nextStepCtaLabel: "Care Team Decision",
   nextStepHref: CARE_CENTER,
-  nextStepCtaMeta: "Care Center Decision",
-  nextStepSecondaryCtaLabel:
-    "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-  nextStepSecondaryHref: SECOND_OPINION,
-  nextStepSecondaryMeta: "Second Opinion",
+  nextStepCtaMeta: "Where care happens",
+  nextStepSecondaryCtaLabel: "Quality of Life Decision",
+  nextStepSecondaryHref: QUALITY_OF_LIFE,
+  nextStepSecondaryMeta: "Whether the burden is sustainable",
 
-  relatedPathsTitle: "Continue your lung cancer decision journey",
+  relatedPathsTitle: "Continue where practical fit usually matters",
   relatedPaths: [
     {
-      title: "Need more expertise?",
-      question:
-        "Do I Need a Different Cancer Center or More Specialized Expertise?",
-      cta: "Care Center Decision",
+      title: "Where care happens?",
+      question: "How do I choose the right lung cancer care team?",
+      cta: "Care Team",
       href: CARE_CENTER,
     },
     {
-      title: "Want another perspective?",
-      question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      cta: "Second Opinion",
-      href: SECOND_OPINION,
+      title: "Which option fits a real week?",
+      question: "How should I compare lung cancer treatment options?",
+      cta: "Treatment Options",
+      href: TREATMENT_COMPARE,
     },
     {
-      title: "Comparing treatments?",
-      question: "How Should I Compare Lung Cancer Treatment Options?",
-      cta: "Treatment Comparison",
-      href: TREATMENT_COMPARE,
+      title: "Is the burden sustainable?",
+      question: "How should quality of life factor into lung cancer decisions?",
+      cta: "Quality of Life",
+      href: QUALITY_OF_LIFE,
     },
   ],
 };

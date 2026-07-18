@@ -71,6 +71,17 @@ export const QUALITY_OF_LIFE_ENTRY_CARDS = {
     ],
     close: "Your goals can be revisited.",
   },
+  planTooHard: {
+    lead: "Tell your team what is becoming hard: work, caregiving, travel frequency, side-effect burden, or money stress.",
+    ask: "Can we adjust the schedule, location, supportive care, or approach so this plan is more sustainable?",
+    close:
+      "Raising practical limits is part of good decision-making — not quitting care.",
+  },
+  costConversation: {
+    lead: "Yes — at a high level. Ask what costs and time commitments to expect, what support resources exist, and whether another workable option has a lighter practical burden.",
+    close:
+      "Exact prices vary; the useful step is putting affordability and time on the table with your team.",
+  },
   hospice: {
     lead: "Supportive care focuses on improving quality of life during cancer care. It can happen during active treatment, alongside cancer therapy.",
     close:

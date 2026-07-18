@@ -42,7 +42,7 @@ This is not a decorative UI graph. It is the product’s relationship layer.
 9. Treatment progression  
 10. Surgery *(optional supporting)*  
 11. Quality of life / personal goals *(optional supporting)*  
-12. Treatment feasibility / cost & logistics *(optional supporting)*  
+12. Practical fit / cost & logistics *(optional pointer → Care Team · Treatment · QoL)*  
 
 Planned-only moments (e.g. global care) stay out of the public graph until activated.
 

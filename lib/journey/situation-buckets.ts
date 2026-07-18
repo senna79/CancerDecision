@@ -75,8 +75,9 @@ export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
   {
     id: "real-life",
     label: "Treatment feels hard on my life or logistics",
-    hint: "Goals, daily life, cost, travel, time, and support.",
-    momentIds: ["quality-of-life", "cost-logistics"],
+    hint: "Daily life, burden, travel, time, and whether the plan is workable — start with Quality of Life or Care Team.",
+    momentIds: ["quality-of-life", "care-center-expertise"],
+    alsoMomentIds: ["cost-logistics", "treatment-comparison"],
   },
   {
     id: "after-treatment",

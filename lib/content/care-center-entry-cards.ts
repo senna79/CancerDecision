@@ -73,4 +73,19 @@ export const CARE_CENTER_ENTRY_CARDS = {
     ],
     close: "Good expertise without coordination can still leave care fragmented.",
   },
+  insurance: {
+    lead: "In many places, coverage and referral rules may affect which centers and specialists are practical options.",
+    ask: "Are there network, referral, or authorization steps I should understand before changing where I receive care?",
+    close:
+      "You do not need to become an insurance expert — you need the constraints named early.",
+  },
+  multiSite: {
+    lead: "If specialist planning and local treatment are both involved, ask who coordinates visits, records, and questions between sites.",
+    items: [
+      "Who is the day-to-day contact?",
+      "How are records shared?",
+      "What happens if the plan changes?",
+    ],
+    close: "Expertise without coordination can still make a plan hard to follow.",
+  },
 } as const;

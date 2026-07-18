@@ -288,9 +288,8 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
   },
   {
     id: "treatment-feasibility",
-    label: "Treatment feasibility / cost & logistics",
-    decisionLabel:
-      "Whether a treatment plan is realistic and sustainable in daily life",
+    label: "Practical fit (pointer)",
+    decisionLabel: "Whether a treatment plan can work with real life",
     slug: "can-my-lung-cancer-treatment-plan-work-with-my-real-life",
     momentId: "cost-logistics",
     searchIntents: [
@@ -301,11 +300,8 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     ],
     relatedEntryIds: [
       "care-center",
-      "second-opinion",
       "treatment-comparison",
-      "clinical-trial",
       "quality-of-life",
-      "stage-iv",
     ],
   },
 ];

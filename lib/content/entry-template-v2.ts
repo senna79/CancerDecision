@@ -11,6 +11,7 @@ import {
   BIOMARKER_SLUG,
   CARE_CENTER_SLUG,
   CLINICAL_TRIAL_SLUG,
+  FEASIBILITY_SLUG,
   FOLLOW_UP_SLUG,
   NEWLY_DIAGNOSED_SLUG,
   QUALITY_OF_LIFE_SLUG,
@@ -67,6 +68,18 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Are deciding between local care and a larger cancer center",
       "Want multidisciplinary review, trials, or clearer options",
       "Need to know what to look for — without shopping by reputation alone",
+    ],
+  },
+  [FEASIBILITY_SLUG]: {
+    plainLanguageGloss:
+      "A good treatment plan needs to fit both your medical situation and your real life. Cost, travel, time, and support belong in the conversation — then open the decision page that matches your question.",
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Wonder whether a recommended plan can work with work, family, or travel",
+      "Feel stuck between medical fit and practical limits",
+      "Need language to raise cost, time, or support with your care team",
+      "Want to know which decision page to open next",
     ],
   },
   [BIOMARKER_SLUG]: {

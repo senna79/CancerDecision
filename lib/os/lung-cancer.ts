@@ -448,12 +448,12 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
     {
       id: "node-costs",
       slug: "cost-logistics",
-      label: "12. Treatment feasibility / cost & logistics",
-      state_label: "Treatment feasibility",
+      label: "12. Practical fit (cost & logistics pointer)",
+      state_label: "Practical fit",
       summary:
-        "Ask whether a treatment plan can work with real life — cost, location, time, support, and sustainability alongside medical fit.",
+        "Pointer into Care Team, Treatment Options, and Quality of Life — whether a plan can work with cost, travel, time, and support.",
       why_this_matters:
-        "The best treatment plan is one you can realistically follow — practical factors belong in the decision, not only after it.",
+        "Practical factors belong in the conversation. Open the matching decision page rather than treating logistics as a separate encyclopedia.",
       tier: 2,
       status: "active",
       stage: "practical",
@@ -476,8 +476,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "I’m wondering if this plan can work with my real life",
-        hint: "Whether the plan can work with cost, travel, time, and support.",
-        nextStep: "See what to do next",
+        hint: "Practical fit — then Care Team, Treatment Options, or Quality of Life.",
+        nextStep: "See where to go next",
       },
     },
   ],

@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import {
@@ -491,6 +492,86 @@ function StepMain({
           <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
             Credentials such as NCI designation can be one useful signal. They
             are not a substitute for asking whether the team fits your situation.
+          </p>
+        </div>
+      );
+    case "fe-why":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "fe-where":
+      return (
+        <div className="space-y-4 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            This page is a pointer — not an insurance or price guide. Open the
+            decision that matches your concern:
+          </p>
+          <ul className="space-y-3 text-[var(--ink)]">
+            <li className="flex gap-2.5">
+              <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+              <span>
+                <span className="font-medium">Where care happens</span> — travel,
+                hybrid care, and who coordinates your network.{" "}
+                <Link
+                  href="/questions/do-i-need-different-lung-cancer-center-or-specialized-expertise"
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  Care Team →
+                </Link>
+              </span>
+            </li>
+            <li className="flex gap-2.5">
+              <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+              <span>
+                <span className="font-medium">Which option fits a real week</span>{" "}
+                — visit load, recovery, and practical burden.{" "}
+                <Link
+                  href="/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer"
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  Treatment Options →
+                </Link>
+              </span>
+            </li>
+            <li className="flex gap-2.5">
+              <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+              <span>
+                <span className="font-medium">
+                  Whether the burden is sustainable
+                </span>{" "}
+                — daily life, symptoms, and what you can keep doing.{" "}
+                <Link
+                  href="/questions/how-should-quality-of-life-factor-into-lung-cancer-decisions"
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  Quality of Life →
+                </Link>
+              </span>
+            </li>
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Exact prices and insurance rules vary. Put constraints on the table
+            with your care team.
+          </p>
+        </div>
+      );
+    case "fe-ask":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>Three questions help most:</p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "What will a normal treatment week look like?",
+              "What travel, time, or cost pressures should we plan for?",
+              "If this becomes too hard, what can we adjust?",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Raising practical limits is part of good decision-making — not
+            quitting care.
           </p>
         </div>
       );

@@ -11,6 +11,7 @@ import { FOLLOW_UP_ENTRY_CARDS } from "@/lib/content/follow-up-entry-cards";
 import { NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/newly-diagnosed-entry-cards";
 import { STAGE_IV_ENTRY_CARDS } from "@/lib/content/stage-iv-entry-cards";
 import { CARE_CENTER_ENTRY_CARDS } from "@/lib/content/care-center-entry-cards";
+import { FEASIBILITY_ENTRY_CARDS } from "@/lib/content/feasibility-entry-cards";
 import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
@@ -623,6 +624,20 @@ export function DecisionPathCardDetail({
           close={TREATMENT_OPTIONS_ENTRY_CARDS.compareTradeoffs.close}
         />
       );
+    case "tx-practical-fit":
+      return (
+        <BulletCard
+          lead={TREATMENT_OPTIONS_ENTRY_CARDS.practicalCompare.lead}
+          close={TREATMENT_OPTIONS_ENTRY_CARDS.practicalCompare.close}
+        />
+      );
+    case "tx-cant-manage":
+      return (
+        <BulletCard
+          lead={TREATMENT_OPTIONS_ENTRY_CARDS.cantManage.lead}
+          close={TREATMENT_OPTIONS_ENTRY_CARDS.cantManage.close}
+        />
+      );
     case "tx-qol":
       return (
         <BulletCard
@@ -1094,6 +1109,20 @@ export function DecisionPathCardDetail({
           close={QUALITY_OF_LIFE_ENTRY_CARDS.burdenTooMuch.close}
         />
       );
+    case "qol-plan-hard":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.planTooHard.lead}
+          close={`Ask: “${QUALITY_OF_LIFE_ENTRY_CARDS.planTooHard.ask}” ${QUALITY_OF_LIFE_ENTRY_CARDS.planTooHard.close}`}
+        />
+      );
+    case "qol-cost":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.costConversation.lead}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.costConversation.close}
+        />
+      );
     case "qol-more-better":
       return (
         <BulletCard
@@ -1562,6 +1591,35 @@ export function DecisionPathCardDetail({
           lead={CARE_CENTER_ENTRY_CARDS.coordination.lead}
           items={CARE_CENTER_ENTRY_CARDS.coordination.items}
           close={CARE_CENTER_ENTRY_CARDS.coordination.close}
+        />
+      );
+    case "cc-insurance":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.insurance.lead}
+          close={`Ask: “${CARE_CENTER_ENTRY_CARDS.insurance.ask}” ${CARE_CENTER_ENTRY_CARDS.insurance.close}`}
+        />
+      );
+    case "cc-multisite":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.multiSite.lead}
+          items={CARE_CENTER_ENTRY_CARDS.multiSite.items}
+          close={CARE_CENTER_ENTRY_CARDS.multiSite.close}
+        />
+      );
+    case "fe-belongs":
+      return (
+        <BulletCard
+          lead={FEASIBILITY_ENTRY_CARDS.belongs.lead}
+          close={FEASIBILITY_ENTRY_CARDS.belongs.close}
+        />
+      );
+    case "fe-not-prices":
+      return (
+        <BulletCard
+          lead={FEASIBILITY_ENTRY_CARDS.notPrices.lead}
+          close={FEASIBILITY_ENTRY_CARDS.notPrices.close}
         />
       );
     case "second-opinion": {

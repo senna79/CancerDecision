@@ -62,6 +62,8 @@ export const STAGE_IV_SLUG =
   "how-to-choose-treatment-options-for-stage-iv-lung-cancer";
 export const CARE_CENTER_SLUG =
   "do-i-need-different-lung-cancer-center-or-specialized-expertise";
+export const FEASIBILITY_SLUG =
+  "can-my-lung-cancer-treatment-plan-work-with-my-real-life";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -428,6 +430,16 @@ const TREATMENT_COMPARE_PATH: EntryPathV2 = {
           id: "tx-tradeoffs",
           title: "How do I compare treatment benefits and risks?",
           summary: "Benefit, risk, and life impact — side by side.",
+        },
+        {
+          id: "tx-practical-fit",
+          title: "Besides benefit and side effects, what else should I compare?",
+          summary: "Visit load, travel, recovery, and support needs.",
+        },
+        {
+          id: "tx-cant-manage",
+          title: "What if I cannot manage the recommended schedule?",
+          summary: "Say so early — plans can sometimes be adjusted.",
         },
         {
           id: "tx-qol",
@@ -1090,6 +1102,16 @@ const QUALITY_OF_LIFE_PATH: EntryPathV2 = {
           summary: "Daily life, goals, and ways to reduce burden.",
         },
         {
+          id: "qol-plan-hard",
+          title: "What if the plan is medically right but too hard to live with?",
+          summary: "Raise practical limits early — adjustments may be possible.",
+        },
+        {
+          id: "qol-cost",
+          title: "Should cost be part of the treatment conversation?",
+          summary: "Yes at a high level — affordability and time belong on the table.",
+        },
+        {
           id: "qol-more-better",
           title: "Is more treatment always better?",
           summary: "More benefit can also mean more burden.",
@@ -1625,6 +1647,11 @@ const CARE_CENTER_PATH: EntryPathV2 = {
           title: "What if travel is hard or expensive?",
           summary: "Local expertise, remote consults, and coordinated review.",
         },
+        {
+          id: "cc-insurance",
+          title: "Can insurance or network rules affect where I get care?",
+          summary: "Name coverage constraints early — you do not need to be an expert.",
+        },
       ],
     },
     {
@@ -1645,9 +1672,95 @@ const CARE_CENTER_PATH: EntryPathV2 = {
           summary: "Ask who coordinates care and how follow-up will work.",
         },
         {
+          id: "cc-multisite",
+          title: "How do I keep a multi-site plan workable?",
+          summary: "Who coordinates visits, records, and changes between sites.",
+        },
+        {
           id: "scenario",
           title: "An example scenario",
           summary: "How someone might decide whether another team helps.",
+        },
+      ],
+    },
+  ],
+};
+
+const FEASIBILITY_PATH: EntryPathV2 = {
+  pathEyebrow: "Practical fit",
+  pathTitle: "Making Sure Your Plan Can Work With Real Life",
+  pathSubtitle:
+    "Practical factors belong in the conversation — then go to the decision page that matches your question.",
+  orientationTrail: [
+    "Why it matters",
+    "Where to go",
+    "What to ask",
+    "Next conversation",
+  ],
+  completedLabels: [
+    "Why practical fit belongs in the decision",
+    "Which decision page to open next",
+    "What to ask your care team",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "What a normal treatment week may look like",
+    "Travel, time, or cost pressures to plan for",
+    "What could be adjusted if the plan becomes too hard",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why does practical fit matter?",
+      lead: "Patient question: can this plan work with my real life?",
+      main: "fe-why",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When cost, travel, time, or support may affect the plan.",
+        },
+        {
+          id: "fe-belongs",
+          title: "Do practical concerns belong in a medical conversation?",
+          summary: "Yes — they do not replace medical advice, but they matter.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Where should I go next?",
+      lead: "Patient question: which decision page matches my concern?",
+      main: "fe-where",
+      cards: [
+        {
+          id: "fe-not-prices",
+          title: "Will this page list prices or insurance rules?",
+          summary: "No — those vary. Name constraints with your team instead.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I ask about practical fit?",
+      lead: "Patient question: what three questions help most?",
+      main: "fe-ask",
+      cards: [],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "Prepare for the practical-fit conversation",
+      lead: "Patient question: how do I bring this up with my care team?",
+      main: "checklist",
+      cards: [
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might name practical limits early.",
         },
       ],
     },
@@ -1667,6 +1780,7 @@ const PATHS: Record<string, EntryPathV2> = {
   [NEWLY_DIAGNOSED_SLUG]: NEWLY_DIAGNOSED_PATH,
   [STAGE_IV_SLUG]: STAGE_IV_PATH,
   [CARE_CENTER_SLUG]: CARE_CENTER_PATH,
+  [FEASIBILITY_SLUG]: FEASIBILITY_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {
