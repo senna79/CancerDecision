@@ -51,14 +51,14 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
   },
   [TREATMENT_COMPARE_SLUG]: {
     plainLanguageGloss:
-      "Treatment comparison means weighing goals, benefits, trade-offs, and what fits your life — not only picking a treatment name.",
+      "Choosing a lung cancer treatment is about the plan that best fits your cancer, test information, health, and goals — not finding the “strongest” treatment.",
     oneMinuteLabel: "Direct answer",
     audienceTitle: "This page may help if you:",
     audienceItems: [
-      "Have more than one treatment option to consider",
-      "Want a framework before locking a plan",
-      "Heard different recommendations and need comparison questions",
-      "Want to include your priorities in the decision",
+      "Were recently diagnosed with lung cancer",
+      "Your doctor discussed more than one possible treatment approach",
+      "You are trying to understand surgery, radiation, medicines, or clinical trials",
+      "You want to know why your recommended treatment may differ from someone else’s",
     ],
   },
   [SURGERY_SLUG]: {

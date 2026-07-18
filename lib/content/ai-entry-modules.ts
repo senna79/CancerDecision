@@ -1274,250 +1274,155 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
 /** Lung Cancer AI Entry #4 — Treatment Comparison */
 export const TREATMENT_COMPARISON_FLAGSHIP: AiEntryFlagshipModules = {
   cancerLabel: "Lung Cancer",
-  decisionMoment: "How to compare treatment choices",
-  exploring: "Treatment Comparison Decision",
+  decisionMoment: "How to choose among lung cancer treatment options",
+  exploring: "Treatment Options Decision",
   subtitle:
-    "A framework to understand choices, trade-offs, and questions before making a treatment decision.",
+    "Choosing a lung cancer treatment is not about finding the “strongest” option. It is about the plan that best fits your cancer, test information, health, and goals.",
   relatedDecisions: [
     { label: "Biomarker Testing", href: BIOMARKER },
+    { label: "Surgery Decision", href: SURGERY },
+    { label: "Clinical Trials", href: CLINICAL_TRIAL },
     { label: "Second Opinion", href: SECOND_OPINION },
-    { label: "Clinical Trials", href: CARE_MAP },
-    { label: "Care Center Selection", href: CARE_CENTER },
   ],
   journeyLabel: "Lung Cancer Decision Journey",
   journeyPath: [
     { label: "New Diagnosis", href: NEW_DIAGNOSIS },
     { label: "Biomarker Testing", href: BIOMARKER },
-    { label: "Treatment Comparison", current: true },
+    { label: "Treatment Options", current: true },
     { label: "Second Opinion", href: SECOND_OPINION },
   ],
 
-  triggersTitle: "You may be comparing treatment options if:",
+  triggersTitle: "You may be facing this decision if:",
   triggerGroups: [
     {
-      heading: "You have received a treatment recommendation",
+      heading: "You were recently diagnosed",
+      lead: "You may wonder:",
+      items: [
+        "What treatment options are on the table?",
+        "Why might my plan differ from someone else’s?",
+      ],
+    },
+    {
+      heading: "Your doctor discussed more than one approach",
       lead: "You want to understand:",
       items: [
-        "Why this option was suggested",
-        "Whether alternatives exist",
-        "What factors influenced this recommendation",
+        "Why this option was recommended",
+        "What alternatives exist",
+        "How to compare them",
       ],
     },
     {
-      heading: "You have more than one possible option",
-      lead: "You want to compare:",
+      heading: "You are trying to understand the main categories",
+      lead: "You may be hearing about:",
       items: [
-        "Potential benefits",
-        "Side effects",
-        "Treatment burden",
-        "Long-term considerations",
+        "Surgery or radiation",
+        "Chemotherapy, immunotherapy, or targeted therapy",
+        "Clinical trials",
       ],
     },
     {
-      heading: "You are unsure whether you have enough information",
+      heading: "You want confidence before choosing",
       lead: "You may be asking:",
       items: [
-        "Are there missing test results?",
-        "Should I get another opinion?",
-        "What questions should I ask before deciding?",
-      ],
-    },
-    {
-      heading: "Your situation has changed",
-      lead: "Examples:",
-      items: [
-        "New test results",
-        "Treatment response changes",
-        "Recurrence",
-        "New health considerations",
+        "Is more aggressive always better?",
+        "Can I wait for more information?",
+        "Would another opinion help?",
       ],
     },
   ],
 
-  whyTitle: "Treatment decisions are choices, not just recommendations",
+  whyTitle: "What treatment options are being discussed?",
   whyLead:
-    "After a lung cancer diagnosis, patients may hear different treatment names or receive different recommendations.",
+    "Lung cancer treatment includes several different approaches. Some focus on removing or controlling cancer in a specific area. Others work throughout the body.",
+  whyBody: [
+    "Doctors choose among these approaches based on the goal of treatment and the information available about your cancer.",
+    "Understanding the categories helps you ask better questions. It does not mean you need to choose from every available treatment.",
+  ],
   whyQuestions: [],
-  whyNotLabel: "The natural question is:",
-  whyNotQuestion: "Which treatment is best?",
-  whyBetterLabel: "But a more useful question is:",
-  whyBetterQuestion: "Which option makes the most sense for my situation?",
+  whyNotLabel: "The key question is not:",
+  whyNotQuestion: "Which treatment is the best?",
+  whyBetterLabel: "It is:",
+  whyBetterQuestion:
+    "Which treatment plan makes the most sense for my situation, and why?",
   whyClose: [
-    "A treatment decision involves understanding what each option is trying to achieve, what benefits may be expected, what risks or trade-offs exist, and how the choice fits your life and priorities.",
+    "Some people receive one treatment. Others receive a combination or a sequence of treatments.",
   ],
 
-  goalFrameworkTitle: "The first question: What is each option trying to achieve?",
-  goalFrameworkLead: "Before comparing treatments, understand the goal.",
-  goalFrameworkBlocks: [
-    {
-      title: "Is the goal to remove the cancer?",
-      questionsIntro: "Questions:",
-      questions: [
-        "Is the cancer in a situation where removal may be possible?",
-        "What is the goal of this approach?",
-      ],
-    },
-    {
-      title: "Is the goal to control the cancer?",
-      questionsIntro: "Questions:",
-      questions: [
-        "Is the goal to slow growth or manage disease?",
-        "How is success evaluated?",
-      ],
-    },
-    {
-      title: "Is the goal to improve quality of life?",
-      questionsIntro: "Questions:",
-      questions: [
-        "Could this approach help symptoms?",
-        "How might it affect daily life?",
-      ],
-    },
-  ],
-  goalFrameworkClose:
-    "The same treatment can have different roles depending on the patient's situation.",
-
-  evaluateTitle: "Compare any two options using these five questions",
-  evaluateLead:
-    "Use the same five questions for each option your care team discusses.",
-  evaluateBlocks: [
-    {
-      title: "1. What is the goal?",
-      intro: "Ask:",
-      items: [
-        "What problem is this option trying to solve?",
-        "Is the goal cure, control, or symptom relief?",
-      ],
-    },
-    {
-      title: "2. What benefit is expected?",
-      intro: "Ask:",
-      items: [
-        "What improvement do doctors hope to achieve?",
-        "How will success be measured?",
-      ],
-    },
-    {
-      title: "3. What are the trade-offs?",
-      intro: "Ask:",
-      items: [
-        "What are the possible risks?",
-        "What side effects should I understand?",
-        "How could this affect daily life?",
-      ],
-    },
-    {
-      title: "4. What does the treatment require?",
-      intro: "Ask:",
-      items: [
-        "How long does treatment take?",
-        "How frequent are appointments?",
-        "What commitment does it require?",
-      ],
-    },
-    {
-      title: "5. How does it fit my priorities?",
-      intro: "Ask:",
-      items: [
-        "What matters most to me?",
-        "What outcomes am I hoping for?",
-        "What risks am I comfortable accepting?",
-      ],
-    },
-  ],
-
-  differTitle: "Different recommendations do not always mean someone is wrong",
-  differLead: "Patients may sometimes hear different opinions.",
-  differFactorsIntro: "This can happen because doctors may weigh:",
-  differFactors: [
-    "Different medical information",
-    "Different treatment goals",
-    "Different interpretations of risks and benefits",
-    "Different patient priorities",
-  ],
-  differNotLabel: "The important question is not:",
-  differNotQuestion: "Who is right?",
-  differBetterLabel: "The better question is:",
-  differBetterQuestion: "What reasoning supports each option?",
-
-  infoGapTitle: "Make sure the decision is based on complete information",
-  infoGapKnownIntro: "Before choosing treatment, consider whether you understand:",
-  infoGapKnown: [
-    "Your cancer type",
-    "Your cancer stage",
-    "Relevant biomarker information",
-    "Treatment goals",
-    "Available alternatives",
-    "Expected benefits and trade-offs",
-  ],
-  infoGapClose: [
-    "If important information is missing, ask what additional information may help before making a decision.",
-  ],
-
-  treatmentCategoriesTitle: "Treatments are tools, not automatic answers",
-  treatmentCategoriesLead: "Different treatment approaches may include:",
+  treatmentCategoriesTitle: "Treatment landscape — local, systemic, and trials",
+  treatmentCategoriesLead:
+    "Most lung cancer discussions use a few large categories:",
   treatmentCategories: [
     {
-      title: "Surgery",
-      questionsIntro: "Questions:",
+      title: "Local treatments",
+      includes: ["Surgery", "Radiation therapy"],
+      questionsIntro: "Often considered when:",
       questions: [
-        "Is surgery appropriate in my situation?",
-        "What is the goal?",
-        "What are the benefits and risks?",
-      ],
-    },
-    {
-      title: "Radiation therapy",
-      questionsIntro: "Questions:",
-      questions: [
-        "What role would radiation play?",
-        "Would it be combined with other approaches?",
+        "Controlling a specific tumor area is an important goal",
+        "What role would a local treatment play in my plan?",
       ],
     },
     {
       title: "Systemic treatments",
-      includes: ["Chemotherapy", "Immunotherapy", "Targeted treatments"],
-      questionsIntro: "Questions:",
+      includes: ["Chemotherapy", "Immunotherapy", "Targeted therapy"],
+      questionsIntro: "Often considered when:",
       questions: [
-        "Why is this approach recommended?",
-        "Does my cancer information affect this choice?",
+        "Treatment needs to address cancer beyond one location",
+        "Why this medicine approach for my situation?",
+      ],
+    },
+    {
+      title: "Clinical trials",
+      questionsIntro: "May provide another option when:",
+      questions: [
+        "A newer approach or combination is being studied",
+        "Eligibility and trade-offs fit your situation",
       ],
     },
   ],
   treatmentCategoriesClose:
-    "The important decision is not choosing a treatment category. It is understanding why a particular option is being considered for you.",
+    "These are tools for discussion — not a menu you must pick from.",
+
+  doesNotDecideTitle: "Why did my doctor recommend this treatment?",
+  doesNotDecideLead:
+    "A treatment recommendation comes from putting many pieces together: lung cancer type, stage and spread pattern, biomarker information, previous treatments, your overall health, and your goals.",
+  doesNotDecideItems: [
+    "Expected benefit — what doctors hope the treatment can achieve",
+    "Possible risks — side effects or challenges that may occur",
+    "Personal priorities — what matters most in your daily life",
+  ],
+  doesNotDecideNotes: [
+    "The same treatment is not automatically right for everyone.",
+    "The goal is not to choose the most aggressive treatment. The goal is to choose the plan with the right balance for you.",
+  ],
+  doesNotDecideClose:
+    "Open the cards beside this step for why plans differ, how biomarkers fit, and why “less aggressive” can still be appropriate.",
 
   secondOpinionTitle: "When another perspective may help",
-  secondOpinionLead: "A second opinion may be worth considering when:",
+  secondOpinionLead: "A second opinion may help you better understand:",
   secondOpinionWhen: [
-    "The decision is complex",
-    "Several approaches appear reasonable",
-    "You want to understand alternatives",
-    "You want more confidence before deciding",
+    "Available options",
+    "Reasons behind the recommendation",
+    "Possible alternatives",
+    "Whether you want more confidence before deciding",
   ],
   secondOpinionClose:
-    "A second opinion does not always change the recommendation. Sometimes it confirms that the decision is based on complete information.",
-  secondOpinionCtaLabel:
-    "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
+    "It can be especially helpful when multiple treatments seem possible or the decision feels complex.",
+  secondOpinionCtaLabel: "Second opinion decision guide",
   secondOpinionHref: SECOND_OPINION,
 
-  mistakesTitle: "Common mistakes when comparing treatment options",
+  mistakesTitle: "Common mistakes when choosing treatment",
   mistakes: [
     {
-      mistake: "Choosing based on one factor only",
-      why: "Treatment decisions involve benefits, risks, and personal priorities.",
+      mistake: "Choosing based only on what worked for someone else",
+      why: "Another person’s plan may not fit your cancer, health, or goals.",
     },
     {
-      mistake: "Assuming the newest treatment is automatically better",
-      why: "A newer option may not always be the most appropriate option.",
+      mistake: "Assuming the newest treatment is automatically best",
+      why: "Newer is valuable when it matches your situation — not by default.",
     },
     {
-      mistake: "Comparing treatments without understanding the goal",
-      why: "Different treatments may serve different purposes.",
-    },
-    {
-      mistake: "Ignoring quality of life",
-      why: "Your priorities are part of the treatment decision.",
+      mistake: "Focusing only on the cancer and ignoring personal goals",
+      why: "Daily life and priorities belong in the comparison.",
     },
   ],
 
@@ -1537,38 +1442,37 @@ export const TREATMENT_COMPARISON_FLAGSHIP: AiEntryFlagshipModules = {
   scenarioClose:
     "By comparing the reasoning behind each option, they are better prepared for a discussion with their care team.",
 
-  doctorTitle: "Questions that help compare treatment options",
+  doctorTitle: "Doctor Conversation Checklist",
   doctorLeaveTitle: "Before leaving your appointment, ask:",
   doctorLeaveItems: [
-    "What are my reasonable options right now?",
-    "What is the goal of each option?",
-    "What are the main trade-offs I should understand?",
-    "What information is still missing before I decide?",
+    "What is the main goal of this treatment?",
+    "Why do you think this option fits my situation?",
+    "What alternatives should we discuss?",
+    "How will we know whether treatment is working?",
   ],
   doctorGroups: [
     {
-      heading: "Before comparing",
+      heading: "Understanding the recommendation",
       questions: [
-        "Is my diagnosis, stage, and biomarker information complete for this decision?",
-        "What are the reasonable options for my situation?",
-        "What is each option trying to achieve?",
+        "What is the main goal of this treatment?",
+        "Why do you think this option fits my situation?",
+        "What information influenced this recommendation?",
       ],
     },
     {
       heading: "Comparing options",
       questions: [
-        "What benefit is expected from each approach?",
-        "What are the main risks and side effects?",
-        "What time, visits, and recovery burden should I expect?",
-        "How does each option fit my priorities?",
+        "What alternatives should we discuss?",
+        "What are the main benefits and risks?",
+        "How do these options compare for my daily life?",
       ],
     },
     {
-      heading: "Before deciding",
+      heading: "Looking ahead",
       questions: [
-        "What happens if we wait for more information?",
-        "Would a second opinion help before locking a plan?",
-        "What is the next step either way?",
+        "How will we know whether treatment is working?",
+        "What are the next options if this treatment does not work?",
+        "Are clinical trials relevant for me?",
       ],
     },
   ],
@@ -1576,48 +1480,39 @@ export const TREATMENT_COMPARISON_FLAGSHIP: AiEntryFlagshipModules = {
   nextStepTitle: "Your next step",
   nextStepLead: "Before choosing a treatment approach:",
   nextStepActions: [
-    { label: "Confirm you understand your cancer information." },
-    {
-      label: "Ask:",
-      examples: ["What are my reasonable options?"],
-    },
+    { label: "Confirm you understand why this plan was recommended." },
+    { label: "Ask what alternatives exist — and how they compare for daily life." },
     {
       label: "Compare each option by:",
-      examples: [
-        "Goal",
-        "Expected benefit",
-        "Trade-offs",
-        "Impact on your life",
-      ],
+      examples: ["Goal", "Timing in the sequence", "Impact on your life"],
     },
-    { label: "Prepare questions for your next medical discussion." },
   ],
-  nextStepCtaLabel: "Review Biomarker Testing Decision",
+  nextStepCtaLabel: "Biomarker Testing Decision",
   nextStepHref: BIOMARKER,
-  nextStepCtaMeta: "Biomarker Testing Journey",
-  nextStepSecondaryCtaLabel: "Explore Second Opinion Decision",
-  nextStepSecondaryHref: SECOND_OPINION,
-  nextStepSecondaryMeta: "Second Opinion Journey",
+  nextStepCtaMeta: "Could results change the options?",
+  nextStepSecondaryCtaLabel: "Surgery Decision",
+  nextStepSecondaryHref: SURGERY,
+  nextStepSecondaryMeta: "When surgery is part of the comparison",
 
-  relatedPathsTitle: "Related decisions",
+  relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Wondering about surgery?",
-      question: "Should Surgery Be Part of My Lung Cancer Treatment Plan?",
-      cta: "Surgery decision",
-      href: SURGERY,
-    },
-    {
-      title: "Need to understand missing information?",
-      question: "Do I Need Biomarker Testing Before Lung Cancer Treatment?",
+      title: "Need more information first?",
+      question: "Do I need biomarker testing before lung cancer treatment?",
       cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
-      title: "Need more confidence?",
-      question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      cta: "Second opinion",
-      href: SECOND_OPINION,
+      title: "Wondering about surgery?",
+      question: "Should surgery be part of my lung cancer treatment plan?",
+      cta: "Surgery decision",
+      href: SURGERY,
+    },
+    {
+      title: "Wondering about a trial?",
+      question: "Should I consider a clinical trial for lung cancer?",
+      cta: "Clinical trials",
+      href: CLINICAL_TRIAL,
     },
   ],
 };

@@ -215,22 +215,105 @@ function StepMain({
           </ul>
         </div>
       );
+    case "treatment-understand":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <WhyDecisionMatters modules={modules} embedded />
+          <div className="mt-2 space-y-3 border-t border-[var(--line)]/80 pt-3">
+            <p className="text-sm font-semibold text-[var(--ink)]">
+              Treatment landscape
+            </p>
+            <ul className="space-y-2 text-sm text-[var(--ink)]">
+              <li>
+                <span className="font-medium">Local treatments</span>
+                <span className="text-[var(--ink-soft)]">
+                  {" "}
+                  — surgery and radiation, when controlling a specific area
+                  matters.
+                </span>
+              </li>
+              <li>
+                <span className="font-medium">Systemic treatments</span>
+                <span className="text-[var(--ink-soft)]">
+                  {" "}
+                  — chemotherapy, immunotherapy, and targeted therapy, when
+                  treatment needs to work throughout the body.
+                </span>
+              </li>
+              <li>
+                <span className="font-medium">Clinical trials</span>
+                <span className="text-[var(--ink-soft)]">
+                  {" "}
+                  — newer approaches or combinations under structured research.
+                </span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      );
+    case "treatment-why-fit":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            A treatment recommendation comes from putting many pieces together —
+            cancer type, stage and spread, biomarker information, previous
+            treatments, your overall health, and your goals.
+          </p>
+          <p className="text-sm font-semibold text-[var(--ink)]">
+            Plans are usually chosen by balancing:
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Expected benefit — what doctors hope treatment can achieve",
+              "Possible risks — side effects or challenges that may occur",
+              "Personal priorities — what matters most in your daily life",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The goal is not the most aggressive treatment. The goal is the plan
+            with the right balance for you.
+          </p>
+        </div>
+      );
     case "treatment-compare":
       return (
         <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
           <p>
-            Use the same questions for every option your care team discusses —
-            so you compare reasoning, not just labels.
+            Every treatment option involves tradeoffs. Before deciding, discuss
+            goal, timing, and impact for each option on the table.
           </p>
-          <ol className="list-decimal space-y-1.5 pl-5 text-[var(--ink)]">
-            <li>What is the goal?</li>
-            <li>What benefit is expected?</li>
-            <li>What are the trade-offs?</li>
-            <li>What does treatment require?</li>
-            <li>How does it fit my priorities?</li>
-          </ol>
-          <p className="text-sm font-medium text-[var(--ink)]">
-            Open the cards beside this step for the full comparison framework.
+          <ul className="space-y-2 text-[var(--ink)]">
+            <li>
+              <span className="font-medium">Goal</span>
+              <span className="text-[var(--ink-soft)]">
+                {" "}
+                — remove, reduce, control growth, or relieve symptoms?
+              </span>
+            </li>
+            <li>
+              <span className="font-medium">Timing</span>
+              <span className="text-[var(--ink-soft)]">
+                {" "}
+                — before surgery, after, instead, or combined with another
+                treatment?
+              </span>
+            </li>
+            <li>
+              <span className="font-medium">Impact</span>
+              <span className="text-[var(--ink-soft)]">
+                {" "}
+                — side effects, how often treatment is given, and daily life?
+              </span>
+            </li>
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            A good decision is not only about medical effectiveness. It also
+            considers how treatment fits your life.
           </p>
         </div>
       );

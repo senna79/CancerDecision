@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import { getEntryTemplateV2Config } from "@/lib/content/entry-template-v2";
 import { SURGERY_ENTRY_CARDS } from "@/lib/content/surgery-entry-cards";
+import { TREATMENT_OPTIONS_ENTRY_CARDS } from "@/lib/content/treatment-options-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
 import { ContentBridge } from "./content-bridge";
@@ -425,6 +426,140 @@ export function DecisionPathCardDetail({
       return <TreatmentCategories modules={modules} />;
     case "info-gap":
       return <InformationGap modules={modules} />;
+    case "tx-approaches":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{TREATMENT_OPTIONS_ENTRY_CARDS.approaches.lead}</p>
+          <ul className="space-y-2">
+            {TREATMENT_OPTIONS_ENTRY_CARDS.approaches.types.map((type) => (
+              <li key={type.name}>
+                <span className="font-medium text-[var(--ink)]">
+                  {type.name}.{" "}
+                </span>
+                {type.body}
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "tx-combined":
+      return (
+        <BulletCard
+          lead={TREATMENT_OPTIONS_ENTRY_CARDS.combined.lead}
+          items={TREATMENT_OPTIONS_ENTRY_CARDS.combined.examples}
+          close={`Ask: “${TREATMENT_OPTIONS_ENTRY_CARDS.combined.ask}”`}
+        />
+      );
+    case "tx-newer":
+      return (
+        <BulletCard
+          lead={TREATMENT_OPTIONS_ENTRY_CARDS.newer.lead}
+          items={TREATMENT_OPTIONS_ENTRY_CARDS.newer.match}
+          close={`Ask: “${TREATMENT_OPTIONS_ENTRY_CARDS.newer.ask}”`}
+        />
+      );
+    case "tx-different":
+      return (
+        <BulletCard
+          lead={TREATMENT_OPTIONS_ENTRY_CARDS.differentPeople.lead}
+          items={TREATMENT_OPTIONS_ENTRY_CARDS.differentPeople.factors}
+          close={TREATMENT_OPTIONS_ENTRY_CARDS.differentPeople.close}
+        />
+      );
+    case "tx-biomarkers":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{TREATMENT_OPTIONS_ENTRY_CARDS.biomarkers.lead}</p>
+          <p>{TREATMENT_OPTIONS_ENTRY_CARDS.biomarkers.body}</p>
+          <p className="font-medium text-[var(--ink)]">
+            Ask: “{TREATMENT_OPTIONS_ENTRY_CARDS.biomarkers.ask}”
+          </p>
+          <p>
+            <Link
+              href="/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Biomarker testing decision →
+            </Link>
+          </p>
+        </div>
+      );
+    case "tx-less-aggressive":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{TREATMENT_OPTIONS_ENTRY_CARDS.lessAggressive.lead}</p>
+          <p>{TREATMENT_OPTIONS_ENTRY_CARDS.lessAggressive.body}</p>
+          <p className="font-medium text-[var(--ink)]">
+            {TREATMENT_OPTIONS_ENTRY_CARDS.lessAggressive.close}
+          </p>
+        </div>
+      );
+    case "tx-tradeoffs":
+      return (
+        <BulletCard
+          lead={TREATMENT_OPTIONS_ENTRY_CARDS.compareTradeoffs.lead}
+          items={TREATMENT_OPTIONS_ENTRY_CARDS.compareTradeoffs.points}
+          close={TREATMENT_OPTIONS_ENTRY_CARDS.compareTradeoffs.close}
+        />
+      );
+    case "tx-qol":
+      return (
+        <BulletCard
+          lead={TREATMENT_OPTIONS_ENTRY_CARDS.qualityOfLife.lead}
+          items={TREATMENT_OPTIONS_ENTRY_CARDS.qualityOfLife.factors}
+          close={TREATMENT_OPTIONS_ENTRY_CARDS.qualityOfLife.close}
+        />
+      );
+    case "tx-if-not-working":
+      return (
+        <BulletCard
+          lead={TREATMENT_OPTIONS_ENTRY_CARDS.ifNotWorking.lead}
+          items={TREATMENT_OPTIONS_ENTRY_CARDS.ifNotWorking.options}
+          close={TREATMENT_OPTIONS_ENTRY_CARDS.ifNotWorking.close}
+        />
+      );
+    case "tx-take-time":
+      return (
+        <BulletCard
+          lead={TREATMENT_OPTIONS_ENTRY_CARDS.takeTime.lead}
+          ask={TREATMENT_OPTIONS_ENTRY_CARDS.takeTime.ask}
+          close={TREATMENT_OPTIONS_ENTRY_CARDS.takeTime.close}
+        />
+      );
+    case "tx-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{TREATMENT_OPTIONS_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {TREATMENT_OPTIONS_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="font-medium text-[var(--ink)]">
+            {TREATMENT_OPTIONS_ENTRY_CARDS.mistakes.close}
+          </p>
+        </div>
+      );
+    case "tx-trial":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={TREATMENT_OPTIONS_ENTRY_CARDS.clinicalTrial.lead}
+            ask={TREATMENT_OPTIONS_ENTRY_CARDS.clinicalTrial.ask}
+          />
+          <p>
+            <Link
+              href="/questions/should-i-consider-a-clinical-trial-for-lung-cancer"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Clinical trial decision guide →
+            </Link>
+          </p>
+        </div>
+      );
     case "second-opinion": {
       const bridge = modules.bridges?.[0];
       if (bridge) {
@@ -446,7 +581,25 @@ export function DecisionPathCardDetail({
           </div>
         );
       }
-      return <SecondOpinionBridge modules={modules} />;
+      if (modules.secondOpinionTitle) {
+        return <SecondOpinionBridge modules={modules} />;
+      }
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={TREATMENT_OPTIONS_ENTRY_CARDS.secondOpinion.lead}
+            items={TREATMENT_OPTIONS_ENTRY_CARDS.secondOpinion.when}
+          />
+          <p>
+            <Link
+              href="/questions/should-i-get-second-opinion-after-lung-cancer-diagnosis"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Second opinion decision guide →
+            </Link>
+          </p>
+        </div>
+      );
     }
     case "mistakes":
       return <CommonMistakes modules={modules} />;
