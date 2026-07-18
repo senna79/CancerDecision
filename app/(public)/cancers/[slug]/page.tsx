@@ -107,26 +107,45 @@ export default async function CancerDecisionCenterPage({
       </p>
 
       {isLung ? (
-        <div className="mt-8 max-w-3xl">
+        <div className="mt-8 max-w-3xl space-y-6">
           <SituationGuidedRouter
             moments={LUNG_DECISION_MOMENTS}
             activeId={activeMoment?.id}
             footer={
-              decisionMap ? (
-                <>
-                  Prefer the full graph?{" "}
-                  <a
-                    href="#decision-map"
-                    className="font-semibold text-[var(--accent)] hover:underline"
-                  >
-                    Jump to the Decision Map
-                  </a>
-                  {" · "}
-                  More decision guides will open as this journey expands.
-                </>
-              ) : null
+              <>
+                Need the treatment map first?{" "}
+                <Link
+                  href="/cancers/lung-cancer/treatment-landscape"
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  Open the Treatment Landscape
+                </Link>
+                {decisionMap ? (
+                  <>
+                    {" · "}
+                    Prefer the full graph?{" "}
+                    <a
+                      href="#decision-map"
+                      className="font-semibold text-[var(--accent)] hover:underline"
+                    >
+                      Jump to the Decision Map
+                    </a>
+                  </>
+                ) : null}
+              </>
             }
           />
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm text-[var(--ink-soft)]">
+            <span className="font-semibold text-[var(--ink)]">
+              New to these terms?{" "}
+            </span>
+            <Link
+              href="/cancers/lung-cancer/treatment-landscape"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              See how surgery, radiation, systemic therapy, and trials relate →
+            </Link>
+          </p>
         </div>
       ) : null}
 
@@ -169,24 +188,40 @@ export default async function CancerDecisionCenterPage({
         </ul>
       </Section>
 
-      <Section title="Treatment Options">
-        <div className="grid gap-3 md:grid-cols-2">
-          {treatments.map((tx) => (
-            <Link
-              key={tx.id}
-              href={`/treatments/${tx.slug}`}
-              className="rounded-lg border border-[var(--line)] bg-white/70 p-4 hover:border-[var(--accent)]"
-            >
-              <h3 className="font-heading text-lg font-semibold text-[var(--ink)]">
-                {tx.name}
-              </h3>
-              <p className="mt-1 line-clamp-3 text-sm text-[var(--muted)]">
-                {tx.description}
-              </p>
-            </Link>
-          ))}
-        </div>
-      </Section>
+      {isLung ? (
+        <Section title="Treatment Landscape">
+          <p className="mb-3 max-w-2xl text-[var(--muted)]">
+            A map of the main treatment directions — not a menu of what you
+            should choose — so you can see how approaches relate before you
+            compare options.
+          </p>
+          <Link
+            href="/cancers/lung-cancer/treatment-landscape"
+            className="text-sm font-semibold text-[var(--accent)] hover:underline"
+          >
+            Open the Lung Cancer Treatment Landscape →
+          </Link>
+        </Section>
+      ) : (
+        <Section title="Treatment Options">
+          <div className="grid gap-3 md:grid-cols-2">
+            {treatments.map((tx) => (
+              <Link
+                key={tx.id}
+                href={`/treatments/${tx.slug}`}
+                className="rounded-lg border border-[var(--line)] bg-white/70 p-4 hover:border-[var(--accent)]"
+              >
+                <h3 className="font-heading text-lg font-semibold text-[var(--ink)]">
+                  {tx.name}
+                </h3>
+                <p className="mt-1 line-clamp-3 text-sm text-[var(--muted)]">
+                  {tx.description}
+                </p>
+              </Link>
+            ))}
+          </div>
+        </Section>
+      )}
 
       <Section title="Second Opinion">
         <ul className="space-y-2">
