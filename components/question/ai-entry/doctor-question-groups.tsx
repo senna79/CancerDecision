@@ -21,20 +21,18 @@ export function DoctorQuestionGroups({
   if (embedded) {
     return (
       <div id="doctor-questions" className="scroll-mt-24">
-        <details className="group rounded-lg border border-[var(--line)] bg-white/70 open:bg-white/90">
+        <details
+          open
+          className="group rounded-lg border border-[var(--line)] bg-white/70 open:bg-white/90"
+        >
           <summary className="cursor-pointer list-none px-4 py-3 [&::-webkit-details-marker]:hidden">
-            <div className="flex items-start justify-between gap-3">
-              <div>
-                <p className="text-sm font-semibold text-[var(--ink)]">
-                  More questions by situation
-                </p>
-                <p className="mt-0.5 text-sm text-[var(--muted)]">
-                  Optional — open only the group that matches where you are now.
-                </p>
-              </div>
+            <div className="flex items-center justify-between gap-3">
+              <p className="text-sm font-semibold text-[var(--ink)]">
+                More questions by situation
+              </p>
               <span
                 aria-hidden
-                className="mt-1 shrink-0 text-[var(--muted)] transition-transform duration-200 group-open:rotate-180"
+                className="shrink-0 text-[var(--muted)] transition-transform duration-200 group-open:rotate-180"
               >
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
                   <path
