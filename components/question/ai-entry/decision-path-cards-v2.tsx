@@ -5,6 +5,7 @@ import { SURGERY_ENTRY_CARDS } from "@/lib/content/surgery-entry-cards";
 import { CLINICAL_TRIAL_ENTRY_CARDS } from "@/lib/content/clinical-trial-entry-cards";
 import { SECOND_OPINION_ENTRY_CARDS } from "@/lib/content/second-opinion-entry-cards";
 import { TREATMENT_OPTIONS_ENTRY_CARDS } from "@/lib/content/treatment-options-entry-cards";
+import { RECURRENCE_ENTRY_CARDS } from "@/lib/content/recurrence-entry-cards";
 import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
@@ -902,6 +903,139 @@ export function DecisionPathCardDetail({
           close={TREATMENT_PROGRESSION_ENTRY_CARDS.isHelping.close}
         />
       );
+    case "rec-not-failed":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.notFailed.lead}
+          close={RECURRENCE_ENTRY_CARDS.notFailed.close}
+        />
+      );
+    case "rec-why":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.whyReturn.lead}
+          items={RECURRENCE_ENTRY_CARDS.whyReturn.factors}
+          close={RECURRENCE_ENTRY_CARDS.whyReturn.close}
+        />
+      );
+    case "rec-harder":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.harder.lead}
+          items={RECURRENCE_ENTRY_CARDS.harder.factors}
+          close={RECURRENCE_ENTRY_CARDS.harder.close}
+        />
+      );
+    case "rec-after-surgery":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.afterSurgery.lead}
+          items={RECURRENCE_ENTRY_CARDS.afterSurgery.reassess}
+        />
+      );
+    case "rec-biopsy":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.biopsy.lead}
+          close={`Ask: “${RECURRENCE_ENTRY_CARDS.biopsy.ask}”`}
+        />
+      );
+    case "rec-characteristics":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.characteristicsChange.lead}
+          close={RECURRENCE_ENTRY_CARDS.characteristicsChange.close}
+        />
+      );
+    case "rec-prior":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.priorTreatment.lead}
+          items={RECURRENCE_ENTRY_CARDS.priorTreatment.factors}
+          close={RECURRENCE_ENTRY_CARDS.priorTreatment.close}
+        />
+      );
+    case "rec-treatable":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.stillTreatable.lead}
+          items={RECURRENCE_ENTRY_CARDS.stillTreatable.goals}
+          close={RECURRENCE_ENTRY_CARDS.stillTreatable.close}
+        />
+      );
+    case "rec-trial":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={RECURRENCE_ENTRY_CARDS.trial.lead}
+            ask={RECURRENCE_ENTRY_CARDS.trial.ask}
+          />
+          <p>
+            <Link
+              href="/questions/should-i-consider-a-clinical-trial-for-lung-cancer"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Clinical trial decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "rec-qol":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={RECURRENCE_ENTRY_CARDS.qol.lead}
+            items={RECURRENCE_ENTRY_CARDS.qol.factors}
+            close={RECURRENCE_ENTRY_CARDS.qol.close}
+          />
+          <p>
+            <Link
+              href="/questions/how-should-quality-of-life-factor-into-lung-cancer-decisions"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Quality of life decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "rec-newest":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.newest.lead}
+          items={RECURRENCE_ENTRY_CARDS.newest.factors}
+          close={RECURRENCE_ENTRY_CARDS.newest.close}
+        />
+      );
+    case "rec-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{RECURRENCE_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {RECURRENCE_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "rec-family":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.family.lead}
+          items={RECURRENCE_ENTRY_CARDS.family.topics}
+          close={RECURRENCE_ENTRY_CARDS.family.close}
+        />
+      );
+    case "rec-supportive":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.supportive.lead}
+          items={RECURRENCE_ENTRY_CARDS.supportive.focus}
+          close={RECURRENCE_ENTRY_CARDS.supportive.close}
+        />
+      );
     case "second-opinion": {
       const bridge = modules.bridges?.[0];
       if (bridge) {
@@ -924,7 +1058,38 @@ export function DecisionPathCardDetail({
         );
       }
       if (modules.secondOpinionTitle) {
-        return <SecondOpinionBridge modules={modules} />;
+        return (
+          <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+            {modules.secondOpinionLead ? (
+              <p>{modules.secondOpinionLead}</p>
+            ) : null}
+            {modules.secondOpinionWhen?.length ? (
+              <ul className="space-y-1.5">
+                {modules.secondOpinionWhen.map((item) => (
+                  <li key={item} className="flex gap-2.5 text-[var(--ink)]">
+                    <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            ) : null}
+            {modules.secondOpinionClose ? (
+              <p className="font-medium text-[var(--ink)]">
+                {modules.secondOpinionClose}
+              </p>
+            ) : null}
+            {modules.secondOpinionHref && modules.secondOpinionCtaLabel ? (
+              <p>
+                <Link
+                  href={modules.secondOpinionHref}
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  {modules.secondOpinionCtaLabel} →
+                </Link>
+              </p>
+            ) : null}
+          </div>
+        );
       }
       return (
         <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">

@@ -2274,262 +2274,147 @@ export const RECURRENCE_FLAGSHIP: AiEntryFlagshipModules = {
   decisionMoment: "How to make decisions after recurrence",
   exploring: "Recurrence Decision",
   subtitle:
-    "Understand how recurrence changes your decisions, what information matters now, and how to choose your next step.",
+    "If lung cancer comes back after treatment, it does not mean there are no options. The next decision starts with understanding what has changed.",
   relatedDecisions: [
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
-    { label: "Biomarker Testing", href: BIOMARKER },
+    { label: "Treatment Change", href: TREATMENT_PROGRESSION },
+    { label: "Clinical Trials", href: CLINICAL_TRIAL },
     { label: "Second Opinion", href: SECOND_OPINION },
-    { label: "Clinical Trial", href: CLINICAL_TRIAL },
-    { label: "Care Center Selection", href: CARE_CENTER },
-    { label: "Quality of Life", href: CARE_MAP },
+    { label: "Quality of Life", href: QUALITY_OF_LIFE },
   ],
   journeyLabel: "Lung Cancer Decision Journey",
   journeyPath: [
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
     { label: "Recurrence Decision", current: true },
-    { label: "Second Opinion", href: SECOND_OPINION },
+    { label: "Treatment Change", href: TREATMENT_PROGRESSION },
   ],
 
-  triggersTitle: "You may be facing a recurrence decision if:",
+  triggersTitle: "You may be facing this decision if:",
   triggerGroups: [
     {
-      heading: "Your scans show the cancer has returned",
+      heading: "Your doctor says the cancer has returned",
       lead: "You may be wondering:",
       items: [
         "What does this mean?",
-        "Is my previous treatment still relevant?",
-        "What happens next?",
+        "What information do we need now?",
       ],
     },
     {
-      heading: "Your doctor recommends a new treatment plan",
+      heading: "Scans show a new area of concern",
       lead: "You may want to understand:",
       items: [
-        "Why has the recommendation changed?",
-        "What alternatives exist?",
-        "How should I compare options?",
+        "Where has cancer returned?",
+        "How does this change the next discussion?",
       ],
     },
     {
-      heading: "Your cancer returned after a period of control",
+      heading: "Symptoms appear after treatment",
       lead: "You may be asking:",
       items: [
-        "Does the timing of recurrence matter?",
-        "Does this change my available choices?",
+        "Is this recurrence?",
+        "What should we check next?",
       ],
     },
     {
-      heading: "You want more confidence before deciding",
-      lead: "You may be considering:",
+      heading: "You worry about recurrence after finishing treatment",
+      lead: "You may want to know:",
       items: [
-        "A second opinion",
-        "Another specialist",
-        "Additional information",
+        "What options exist if cancer comes back?",
+        "How would the next decision be made?",
       ],
     },
   ],
 
-  whyTitle:
-    "Recurrence is a new decision point, not simply a return to the old plan",
-  whyLead: "Hearing “Your cancer has come back” can create immediate fear.",
+  whyTitle: "Does recurrence mean my cancer has failed treatment?",
+  whyLead:
+    "Recurrence means cancer has returned after a period when it was controlled or could not be detected.",
   whyBody: [
-    "Many patients think: “Does this mean treatment failed?” or “Are my options running out?”",
-    "Recurrence does not mean the decision process stops. It means the situation needs to be understood again.",
+    "It does not automatically mean previous treatment did not help, that there are no remaining options, or that the next step is the same for everyone.",
+    "Doctors first need to understand where the cancer returned, how much cancer is present, and how long after treatment it appeared.",
   ],
-  whyQuestions: [
-    "What has changed?",
-    "What information do we have now?",
-    "What choices should be considered?",
-    "What matters most at this stage?",
-  ],
-  whyClose: [],
-
-  goalFrameworkTitle: "First understand: What has changed?",
-  goalFrameworkLead:
-    "Recurrence decisions begin with reassessment. Before choosing a next step, understand the current situation.",
-  goalFrameworkBlocks: [
-    {
-      title: "Where has the cancer returned?",
-      questionsIntro: "Questions:",
-      questions: [
-        "Where is the recurrence located?",
-        "Is the situation different from the original diagnosis?",
-      ],
-    },
-    {
-      title: "When did recurrence happen?",
-      questionsIntro: "Questions:",
-      questions: [
-        "How long after treatment did it occur?",
-        "Does timing affect the discussion?",
-      ],
-    },
-    {
-      title: "What treatments have already been used?",
-      questionsIntro: "Questions:",
-      questions: [
-        "What approaches were tried?",
-        "What was the response?",
-        "What limitations were experienced?",
-      ],
-    },
-    {
-      title: "What new information is available?",
-      questionsIntro: "Questions:",
-      questions: [
-        "Is additional testing needed?",
-        "Has anything changed about the cancer?",
-      ],
-    },
-  ],
-  goalFrameworkClose:
-    "The next decision should be based on the current situation, not only the original diagnosis.",
-
-  infoGapTitle:
-    "Make sure your next decision is based on updated information",
-  infoGapKnownIntro: "Before choosing a path, consider whether you understand:",
-  infoGapKnown: [
-    "Current cancer situation",
-    "Previous treatments",
-    "Treatment response",
-    "Biomarker information",
-    "Available options",
-    "Your current goals",
-  ],
-  infoGapClose: [
-    "A useful question: “Do we have enough information to compare my options?”",
+  whyQuestions: [],
+  whyNotLabel: "The first question is not:",
+  whyNotQuestion: "Why did this happen?",
+  whyBetterLabel: "The more useful question is:",
+  whyBetterQuestion:
+    "What information do we need now to understand my next options?",
+  whyClose: [
+    "Recurrence is not one single situation. The next decision depends on understanding what has changed.",
   ],
 
-  evaluateTitle: "How to compare options after recurrence",
-  evaluateLead: "Use the same questions for every possible option.",
-  evaluateBlocks: [
-    {
-      title: "1. What is the goal?",
-      intro: "Ask:",
-      items: [
-        "What is this option trying to achieve?",
-        "How does it fit my current priorities?",
-      ],
-    },
-    {
-      title: "2. Why is this option being considered?",
-      intro: "Ask:",
-      items: [
-        "What information supports this approach?",
-        "Why might it fit my situation?",
-      ],
-    },
-    {
-      title: "3. What are the benefits and trade-offs?",
-      intro: "Ask:",
-      items: [
-        "What potential benefits should I understand?",
-        "What risks or burdens should I consider?",
-      ],
-    },
-    {
-      title: "4. What does this mean for future choices?",
-      intro: "Ask:",
-      items: [
-        "Could this affect future options?",
-        "What decisions may come next?",
-      ],
-    },
-    {
-      title: "5. Does this fit my life?",
-      intro: "Ask:",
-      items: [
-        "How might this affect daily life?",
-        "What matters most to me now?",
-      ],
-    },
+  doesNotDecideTitle: "How will doctors decide what happens next?",
+  doesNotDecideLead:
+    "After recurrence, doctors usually reassess the situation instead of simply repeating the previous plan. They may review new imaging, biopsy or pathology information, biomarker results, previous treatments, symptoms, and overall health.",
+  doesNotDecideItems: [
+    "Sometimes the most important next step is not choosing a treatment immediately",
+    "It is making sure the team understands the current cancer",
+    "Previous treatment matters, but the current situation guides the next choice",
   ],
+  doesNotDecideNotes: [
+    "A recurrence creates a new decision point.",
+  ],
+  doesNotDecideClose:
+    "Open the cards beside this step for biopsy, changing cancer characteristics, and how prior treatment shapes options.",
 
-  faqTitle: "Common questions after recurrence",
-  faqItems: [
-    {
-      question: "Does recurrence mean I need a completely different treatment?",
-      answer: [
-        "Sometimes the answer changes, sometimes it does not.",
-        "After recurrence, doctors may consider what treatment was used before, how long the cancer was controlled, what information is available now, and what goals matter at this stage.",
-        "The next step is not determined by recurrence alone.",
-        "The important question is: “What has changed, and how should that change our decision?”",
-      ],
-    },
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead:
+    "A second opinion may be especially useful after recurrence because decisions can become more complex. It may help you:",
+  secondOpinionWhen: [
+    "Understand options",
+    "Review treatment strategy",
+    "Feel more confident",
   ],
-
-  bridges: [
-    {
-      title: "Should I get a second opinion after recurrence?",
-      body: [
-        "Complex decisions often benefit from another perspective. A second opinion may help when the situation feels uncertain, multiple options are possible, you want to understand alternatives, or you want more confidence before deciding.",
-        "A second opinion does not always change the recommendation. Sometimes it confirms that the decision is based on complete information.",
-      ],
-      ctaLabel:
-        "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      ctaHref: SECOND_OPINION,
-    },
-    {
-      title: "Should I consider a clinical trial after recurrence?",
-      body: [
-        "Clinical trials may become part of the discussion. Some patients explore clinical trials after recurrence because they want to understand additional options.",
-        "Questions: Are there trials relevant to my situation? How would they compare with other choices? What are the possible benefits and uncertainties?",
-      ],
-      ctaLabel: "Should I Consider a Clinical Trial for Lung Cancer?",
-      ctaHref: CLINICAL_TRIAL,
-    },
-  ],
+  secondOpinionClose:
+    "It does not always change the plan — sometimes it confirms the reasoning.",
+  secondOpinionCtaLabel: "Second opinion decision guide",
+  secondOpinionHref: SECOND_OPINION,
 
   mistakesTitle: "Common mistakes after lung cancer recurrence",
   mistakes: [
     {
-      mistake:
-        "Thinking recurrence means there are no meaningful choices",
-      why: "Recurrence creates a new decision point.",
+      mistake: "Assuming there are no options",
+      why: "Recurrence does not automatically mean the end of treatment choices.",
     },
     {
-      mistake:
-        "Assuming the previous treatment should automatically be repeated",
-      why: "Your situation may have changed.",
+      mistake: "Making decisions only from fear",
+      why: "Understanding the situation can reduce uncertainty.",
     },
     {
-      mistake: "Making decisions without updated information",
-      why: "New information may influence available choices.",
-    },
-    {
-      mistake:
-        "Focusing only on treatment and ignoring personal goals",
-      why: "Your priorities remain part of the decision.",
+      mistake: "Ignoring personal goals",
+      why: "Treatment should fit your life, not only your scans.",
     },
   ],
 
-  doctorTitle: "Questions that can help after recurrence",
+  doctorTitle: "Doctor Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "Where exactly has the cancer returned?",
+    "What treatment options are realistic for me now?",
+    "What benefit do we expect?",
+    "How will we know if treatment is helping?",
+  ],
   doctorGroups: [
     {
-      heading: "About what changed",
+      heading: "Understanding the situation",
       questions: [
-        "What is different compared with my original diagnosis?",
-        "What information do we know now?",
+        "Where exactly has the cancer returned?",
+        "Is this a local recurrence or cancer in another location?",
+        "What information do we need before deciding?",
       ],
     },
     {
-      heading: "About options",
+      heading: "Understanding options",
       questions: [
-        "What are my reasonable options?",
-        "Why are these options being considered?",
+        "What treatment options are realistic for me now?",
+        "What benefit do we expect?",
+        "What are the main risks or burdens?",
       ],
     },
     {
-      heading: "About decisions",
+      heading: "Planning ahead",
       questions: [
-        "What are the benefits and trade-offs of each option?",
-        "What would you consider if this were your decision?",
-      ],
-    },
-    {
-      heading: "About the future",
-      questions: [
-        "How might this decision affect future options?",
+        "How will we know if treatment is helping?",
+        "What happens if this option does not work?",
+        "Are clinical trials relevant?",
       ],
     },
   ],
@@ -2554,48 +2439,42 @@ export const RECURRENCE_FLAGSHIP: AiEntryFlagshipModules = {
   nextStepTitle: "Your next step",
   nextStepLead: "If lung cancer has returned:",
   nextStepActions: [
-    { label: "Understand what has changed." },
-    { label: "Confirm what information is available." },
-    {
-      label: "Compare options based on:",
-      examples: [
-        "Goals",
-        "Expected benefits",
-        "Trade-offs",
-        "Impact on your life",
-      ],
-    },
     {
       label:
-        "Consider whether additional expertise or information would help.",
+        "Understand where cancer returned, how much is present, and what prior treatment taught us.",
+    },
+    { label: "Ask whether additional testing would change the options." },
+    {
+      label: "Compare next approaches by:",
+      examples: ["Expected benefit", "Risks and burden", "Your life priorities"],
     },
   ],
-  nextStepCtaLabel: "How Should I Compare Lung Cancer Treatment Options?",
-  nextStepHref: TREATMENT_COMPARE,
-  nextStepCtaMeta: "Treatment Comparison Journey",
-  nextStepSecondaryCtaLabel:
-    "Do I Need Biomarker Testing Before Choosing Lung Cancer Treatment?",
-  nextStepSecondaryHref: BIOMARKER,
-  nextStepSecondaryMeta: "Biomarker Testing Journey",
+  nextStepCtaLabel: "Treatment Change Decision",
+  nextStepHref: TREATMENT_PROGRESSION,
+  nextStepCtaMeta: "When treatment stops working as expected",
+  nextStepSecondaryCtaLabel: "Clinical Trial Decision",
+  nextStepSecondaryHref: CLINICAL_TRIAL,
+  nextStepSecondaryMeta: "When research options may fit",
 
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Need to compare current options?",
-      question: "How Should I Compare Lung Cancer Treatment Options?",
-      cta: "Treatment Comparison Journey",
-      href: TREATMENT_COMPARE,
+      title: "Facing a treatment change?",
+      question:
+        "What are my options if lung cancer treatment is no longer working?",
+      cta: "Treatment change",
+      href: TREATMENT_PROGRESSION,
     },
     {
-      title: "Need more information?",
-      question: "Do I Need Biomarker Testing Before Choosing Lung Cancer Treatment?",
-      cta: "Biomarker Testing Journey",
-      href: BIOMARKER,
+      title: "Wondering about a trial?",
+      question: "Should I consider a clinical trial for lung cancer?",
+      cta: "Clinical trials",
+      href: CLINICAL_TRIAL,
     },
     {
-      title: "Need another perspective?",
-      question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      cta: "Second Opinion Journey",
+      title: "Need more confidence?",
+      question: "Should I get a second opinion after lung cancer diagnosis?",
+      cta: "Second opinion",
       href: SECOND_OPINION,
     },
   ],

@@ -10,6 +10,7 @@
 import {
   BIOMARKER_SLUG,
   CLINICAL_TRIAL_SLUG,
+  RECURRENCE_SLUG,
   SECOND_OPINION_SLUG,
   SURGERY_SLUG,
   TREATMENT_COMPARE_SLUG,
@@ -97,6 +98,18 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Your doctor says the current treatment is no longer controlling the cancer",
       "Symptoms have changed or you are considering a new option",
       "You want to understand what happens after the first treatment",
+    ],
+  },
+  [RECURRENCE_SLUG]: {
+    plainLanguageGloss:
+      "If lung cancer returns after treatment, it does not mean there are no options — the next decision starts with understanding what has changed and what fits your situation now.",
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Your doctor says the cancer has returned",
+      "Scans show a new area of concern after treatment",
+      "Symptoms appear after a period of control",
+      "You want to understand what options exist if cancer comes back",
     ],
   },
 };

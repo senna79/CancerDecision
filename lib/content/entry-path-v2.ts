@@ -46,6 +46,8 @@ export const CLINICAL_TRIAL_SLUG =
   "should-i-consider-a-clinical-trial-for-lung-cancer";
 export const TREATMENT_PROGRESSION_SLUG =
   "what-are-my-options-if-lung-cancer-treatment-no-longer-working";
+export const RECURRENCE_SLUG =
+  "what-are-my-options-if-lung-cancer-comes-back";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -852,6 +854,146 @@ const TREATMENT_PROGRESSION_PATH: EntryPathV2 = {
   ],
 };
 
+const RECURRENCE_PATH: EntryPathV2 = {
+  pathTitle: "Recurrence Decision Path",
+  pathSubtitle:
+    "What recurrence means → what has changed → how to compare options → what to ask.",
+  completedLabels: [
+    "What recurrence really means",
+    "What has changed before the next step",
+    "How to compare options after recurrence",
+    "Questions for the next conversation",
+  ],
+  practicalPoints: [
+    "Expected benefit of each realistic next approach",
+    "Possible risks and treatment burden",
+    "How the choice fits personal priorities and daily life",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Does recurrence mean my cancer has failed treatment?",
+      lead: "Patient question: what does recurrence really mean?",
+      main: "recurrence-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people face a recurrence decision.",
+        },
+        {
+          id: "rec-not-failed",
+          title: "Does recurrence mean my treatment failed?",
+          summary: "Reassessing is not the same as everything failed.",
+        },
+        {
+          id: "rec-why",
+          title: "Why can lung cancer come back after treatment?",
+          summary: "Where, when, and how it behaves now matter.",
+        },
+        {
+          id: "rec-harder",
+          title: "Is recurrence always harder to treat?",
+          summary: "Every recurrence is different.",
+        },
+        {
+          id: "rec-after-surgery",
+          title: "Can lung cancer come back after surgery?",
+          summary: "Why follow-up matters — and what gets reassessed.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How will doctors decide what happens next?",
+      lead: "Patient question: what has changed before choosing the next step?",
+      main: "recurrence-info",
+      cards: [
+        {
+          id: "rec-biopsy",
+          title: "Will I need another biopsy after recurrence?",
+          summary: "Only when testing could change the options.",
+        },
+        {
+          id: "rec-characteristics",
+          title: "Can my cancer characteristics change over time?",
+          summary: "Why prior information may need a fresh look.",
+        },
+        {
+          id: "rec-prior",
+          title: "How does my previous treatment affect my next options?",
+          summary: "What worked, how long, and what remains.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What choices do I have now?",
+      lead: "Patient question: how do I compare options after recurrence?",
+      main: "recurrence-compare",
+      cards: [
+        {
+          id: "rec-treatable",
+          title: "Can recurrent lung cancer still be treated?",
+          summary: "Goals may include control, symptoms, and daily life.",
+        },
+        {
+          id: "rec-trial",
+          title: "Should I consider a clinical trial after recurrence?",
+          summary: "When research options may fit.",
+        },
+        {
+          id: "rec-qol",
+          title: "How do I balance treatment and quality of life?",
+          summary: "Your priorities belong in the decision.",
+        },
+        {
+          id: "rec-newest",
+          title: "Is the newest treatment always the best choice?",
+          summary: "Fit matters more than novelty.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I ask before deciding what comes next?",
+      lead: "Patient question: how do I prepare for the conversation?",
+      main: "checklist",
+      cards: [
+        {
+          id: "second-opinion",
+          title: "Should I get a second opinion after recurrence?",
+          summary: "When another view may help at a complex moment.",
+        },
+        {
+          id: "rec-mistakes",
+          title: "What mistakes do patients often make after recurrence?",
+          summary: "No options, fear-only choices, skipping goals.",
+        },
+        {
+          id: "rec-family",
+          title: "What should my family understand after recurrence?",
+          summary: "What changed, options, and how they can help.",
+        },
+        {
+          id: "rec-supportive",
+          title: "When should supportive care become part of the conversation?",
+          summary: "Alongside treatment — not only at the end of options.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might frame the next decision.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
@@ -859,6 +1001,7 @@ const PATHS: Record<string, EntryPathV2> = {
   [SURGERY_SLUG]: SURGERY_PATH,
   [CLINICAL_TRIAL_SLUG]: CLINICAL_TRIAL_PATH,
   [TREATMENT_PROGRESSION_SLUG]: TREATMENT_PROGRESSION_PATH,
+  [RECURRENCE_SLUG]: RECURRENCE_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {

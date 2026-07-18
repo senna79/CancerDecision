@@ -287,6 +287,51 @@ function StepMain({
           </p>
         </div>
       );
+    case "recurrence-understand":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "recurrence-info":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            After recurrence, doctors usually reassess the situation instead of
+            simply repeating the previous plan — new imaging, pathology when
+            useful, biomarker results, previous treatments, symptoms, and overall
+            health.
+          </p>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Sometimes the most important next step is not choosing a treatment
+            immediately. It is making sure the team understands the current
+            cancer.
+          </p>
+        </div>
+      );
+    case "recurrence-compare":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Possible approaches may include another systemic treatment, local
+            treatment in selected situations, clinical trials, or supportive care
+            focused on symptoms and quality of life.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Expected benefit",
+              "Possible risks",
+              "Treatment burden",
+              "Your personal priorities",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The goal is not simply “find another treatment.” It is “find the
+            approach that best fits my situation now.”
+          </p>
+        </div>
+      );
     case "progression-understand":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "progression-info":
