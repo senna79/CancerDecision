@@ -8,6 +8,7 @@ import { TREATMENT_OPTIONS_ENTRY_CARDS } from "@/lib/content/treatment-options-e
 import { RECURRENCE_ENTRY_CARDS } from "@/lib/content/recurrence-entry-cards";
 import { QUALITY_OF_LIFE_ENTRY_CARDS } from "@/lib/content/quality-of-life-entry-cards";
 import { FOLLOW_UP_ENTRY_CARDS } from "@/lib/content/follow-up-entry-cards";
+import { NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/newly-diagnosed-entry-cards";
 import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
@@ -1255,6 +1256,100 @@ export function DecisionPathCardDetail({
             </Link>
           </p>
         </div>
+      );
+    case "nd-more-tests":
+      return (
+        <BulletCard
+          lead={NEWLY_DIAGNOSED_ENTRY_CARDS.moreTests.lead}
+          close={NEWLY_DIAGNOSED_ENTRY_CARDS.moreTests.close}
+        />
+      );
+    case "nd-not-immediate":
+      return (
+        <BulletCard
+          lead={NEWLY_DIAGNOSED_ENTRY_CARDS.notImmediate.lead}
+          items={NEWLY_DIAGNOSED_ENTRY_CARDS.notImmediate.factors}
+          close={NEWLY_DIAGNOSED_ENTRY_CARDS.notImmediate.close}
+        />
+      );
+    case "nd-biomarker":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={NEWLY_DIAGNOSED_ENTRY_CARDS.biomarker.lead}
+            close={`Ask: “${NEWLY_DIAGNOSED_ENTRY_CARDS.biomarker.ask}”`}
+          />
+          <p>
+            <Link
+              href="/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Biomarker testing decision →
+            </Link>
+          </p>
+        </div>
+      );
+    case "nd-waiting":
+      return (
+        <BulletCard
+          lead={NEWLY_DIAGNOSED_ENTRY_CARDS.waiting.lead}
+          close={`Ask: “${NEWLY_DIAGNOSED_ENTRY_CARDS.waiting.ask}” ${NEWLY_DIAGNOSED_ENTRY_CARDS.waiting.close}`}
+        />
+      );
+    case "nd-focus-first":
+      return (
+        <BulletCard
+          lead={NEWLY_DIAGNOSED_ENTRY_CARDS.focusFirst.lead}
+          items={NEWLY_DIAGNOSED_ENTRY_CARDS.focusFirst.steps}
+          close={NEWLY_DIAGNOSED_ENTRY_CARDS.focusFirst.close}
+        />
+      );
+    case "nd-not-expert":
+      return (
+        <BulletCard
+          lead={NEWLY_DIAGNOSED_ENTRY_CARDS.notExpert.lead}
+          close={NEWLY_DIAGNOSED_ENTRY_CARDS.notExpert.close}
+        />
+      );
+    case "nd-this-week":
+      return (
+        <BulletCard
+          lead={NEWLY_DIAGNOSED_ENTRY_CARDS.thisWeek.lead}
+          items={NEWLY_DIAGNOSED_ENTRY_CARDS.thisWeek.steps}
+          close={NEWLY_DIAGNOSED_ENTRY_CARDS.thisWeek.close}
+        />
+      );
+    case "nd-second-opinion":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={NEWLY_DIAGNOSED_ENTRY_CARDS.secondOpinion.lead}
+            close={NEWLY_DIAGNOSED_ENTRY_CARDS.secondOpinion.close}
+          />
+          <p>
+            <Link
+              href="/questions/should-i-get-second-opinion-after-lung-cancer-diagnosis"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Second opinion decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "nd-records":
+      return (
+        <BulletCard
+          lead={NEWLY_DIAGNOSED_ENTRY_CARDS.records.lead}
+          items={NEWLY_DIAGNOSED_ENTRY_CARDS.records.items}
+          close={NEWLY_DIAGNOSED_ENTRY_CARDS.records.close}
+        />
+      );
+    case "nd-overwhelmed":
+      return (
+        <BulletCard
+          lead={NEWLY_DIAGNOSED_ENTRY_CARDS.overwhelmed.lead}
+          close={NEWLY_DIAGNOSED_ENTRY_CARDS.overwhelmed.close}
+        />
       );
     case "second-opinion": {
       const bridge = modules.bridges?.[0];

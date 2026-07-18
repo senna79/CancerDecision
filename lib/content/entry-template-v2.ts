@@ -11,6 +11,7 @@ import {
   BIOMARKER_SLUG,
   CLINICAL_TRIAL_SLUG,
   FOLLOW_UP_SLUG,
+  NEWLY_DIAGNOSED_SLUG,
   QUALITY_OF_LIFE_SLUG,
   RECURRENCE_SLUG,
   SECOND_OPINION_SLUG,
@@ -30,6 +31,18 @@ export type EntryTemplateV2Config = {
 };
 
 export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = {
+  [NEWLY_DIAGNOSED_SLUG]: {
+    plainLanguageGloss:
+      "After a lung cancer diagnosis, you do not need every answer immediately — first understand your type and stage, whether more information is needed, and how to prepare for the next conversation.",
+    oneMinuteLabel: "What should I do first?",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Were just told you have lung cancer",
+      "Feel pressure to choose a treatment before you understand your situation",
+      "Are unsure what information still matters",
+      "Want a clear next step — not the whole journey at once",
+    ],
+  },
   [BIOMARKER_SLUG]: {
     plainLanguageGloss:
       "Biomarker testing looks for features of your cancer that may affect which treatments your doctors discuss.",

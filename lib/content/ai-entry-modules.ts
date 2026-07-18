@@ -344,232 +344,202 @@ const FOLLOW_UP =
   "/questions/how-do-i-monitor-my-health-after-lung-cancer-treatment";
 const CARE_MAP = "/cancers/lung-cancer#decision-map";
 
-/** Lung Cancer AI Entry #1 — New Diagnosis */
+/** Lung Cancer Orientation Entry — Newly Diagnosed */
 export const NEWLY_DIAGNOSED_FLAGSHIP: AiEntryFlagshipModules = {
   cancerLabel: "Lung Cancer",
-  decisionMoment: "New Diagnosis",
-  exploring: "What to do first after diagnosis",
+  decisionMoment: "What happens next after a new diagnosis",
+  exploring: "Orientation after diagnosis",
+  subtitle:
+    "A lung cancer diagnosis brings many questions. This guide helps you understand what information you need, what may come next, and how to prepare for conversations — without solving the whole journey today.",
   relatedDecisions: [
     { label: "Biomarker Testing", href: BIOMARKER },
-    { label: "Treatment Options", href: TREATMENT_COMPARE },
     { label: "Second Opinion", href: SECOND_OPINION },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
   ],
-  journeyLabel: "Lung Cancer Journey",
+  journeyLabel: "Lung Cancer Decision Journey",
   journeyPath: [
     { label: "New Diagnosis", current: true },
-    { label: "Treatment Decisions", href: TREATMENT_COMPARE },
-    { label: "Second Opinion", href: SECOND_OPINION },
+    { label: "Biomarker Testing", href: BIOMARKER },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
   ],
 
-  triggersTitle: "You may be asking this because…",
-  triggersLead: "You recently:",
-  triggers: [
-    "Received your first lung cancer diagnosis",
-    "Were told you need to choose a treatment approach",
-    "Are unsure whether more testing is needed",
-    "Want to understand whether another opinion could help",
+  triggersTitle: "You may be facing this if:",
+  triggerGroups: [
+    {
+      heading: "You were just diagnosed",
+      lead: "You may be thinking:",
+      items: [
+        "What happens next?",
+        "Do I need to choose a treatment today?",
+      ],
+    },
+    {
+      heading: "You feel pressure to decide quickly",
+      lead: "You may wonder:",
+      items: [
+        "Is waiting for more information safe?",
+        "What should I focus on this week?",
+      ],
+    },
+    {
+      heading: "You are unsure what information still matters",
+      lead: "You may want to know:",
+      items: [
+        "Type, stage, and tests still pending",
+        "Who coordinates the next step",
+      ],
+    },
   ],
 
-  whyTitle: "A diagnosis is the beginning of decisions — not the end",
-  whyLead: "A lung cancer diagnosis often brings many questions at the same time:",
-  whyQuestions: [
-    "What type of lung cancer do I have?",
-    "How advanced is it?",
-    "Do I need more testing?",
-    "What treatments are available?",
-    "Should I get another medical opinion?",
+  whyTitle: "Get clear on your diagnosis",
+  whyLead:
+    "The word “lung cancer” describes a broad group of diseases. Before discussing treatment, your team will usually clarify what you have.",
+  whyBody: [
+    "Cancer type — what kind of lung cancer is it (for example NSCLC or SCLC)?",
+    "Cancer stage — where is it, and has it spread?",
+    "Cancer characteristics — are there details that may affect treatment discussions?",
   ],
+  whyQuestions: [],
+  whyNotLabel: "The goal is not:",
+  whyNotQuestion: "Choosing every treatment today.",
+  whyBetterLabel: "The goal is:",
+  whyBetterQuestion:
+    "Understanding your cancer — then preparing for the next conversation.",
   whyClose: [
-    "The goal at this stage is not to rush into a decision.",
-    "The goal is to make sure the important information is available before comparing treatment choices.",
+    "Your diagnosis is more than a name. It is the information doctors use to build a plan — and you do not need every answer on day one.",
   ],
 
-  firstDecisionsTitle: "Your first 3 decisions",
-  firstDecisions: [
-    {
-      title: "Decision 1",
-      focus: "Do I fully understand my diagnosis?",
-      clarifyIntro: "Before discussing treatment options, make sure you understand:",
-      clarify: [
-        "What type of lung cancer do I have?",
-        "Was my diagnosis confirmed through pathology?",
-        "Do I know the exact subtype?",
-      ],
-      why: "Different types of lung cancer can have different treatment approaches.",
-    },
-    {
-      title: "Decision 2",
-      focus: "Is there information that could change my treatment options?",
-      clarifyIntro: "Ask whether additional testing may be important.",
-      clarify: [],
-      examplesIntro: "Examples may include:",
-      examples: [
-        "Biomarker testing",
-        "Molecular testing",
-        "Additional pathology review",
-      ],
-      askIntro: "Questions to ask:",
-      ask: [
-        "Could additional test results change which treatments are considered?",
-        "Should these tests be completed before choosing a treatment plan?",
-      ],
-      why: "For some patients, additional information may open different treatment options.",
-    },
-    {
-      title: "Decision 3",
-      focus: "Do I understand my treatment choices?",
-      clarifyIntro: "Before deciding, try to understand:",
-      clarify: [
-        "What options are available?",
-        "What is the goal of each option?",
-        "What are the possible benefits and trade-offs?",
-        "Are there alternatives?",
-      ],
-      why: "The best choice depends on your cancer details, health situation, and personal goals.",
-    },
+  doesNotDecideTitle: "Make sure you have the information needed",
+  doesNotDecideLead:
+    "Many treatment discussions depend on having enough information — pathology, imaging, stage, biomarker testing when relevant, and your health.",
+  doesNotDecideItems: [
+    "The useful question is not “Why are we waiting?”",
+    "It is “Is there important information that could change my options?”",
+    "Ask how urgent your situation is — not every wait is the same",
   ],
-
-  timingTitle: "Do I need to decide immediately?",
-  timingLead:
-    "Some decisions may require timely discussion, but many treatment choices depend on having complete information first.",
-  timingDependsIntro: "The right timing depends on:",
-  timingDependsOn: [
-    "Cancer type",
-    "Stage",
-    "Test results",
-    "Your healthcare team's advice",
+  doesNotDecideNotes: [
+    "If symptoms worsen, seek urgent care rather than waiting for elective sequencing.",
   ],
-  timingClose:
-    "Ask your care team which questions need a timely discussion, and which can wait until key information is available. If symptoms worsen, seek urgent care rather than waiting for elective sequencing.",
+  doesNotDecideClose:
+    "Open the cards beside this step for biomarkers and what “waiting” may mean.",
 
-  timelineTitle: "A typical decision path after diagnosis",
-  timelineSteps: [
-    "Diagnosis confirmed",
-    "Understand cancer type and stage",
-    "Review whether additional testing matters",
-    "Discuss treatment options",
-    "Make a treatment plan with your care team",
-  ],
-  timelineNote:
-    "Every person's timeline is different. Some decisions may happen quickly, while others require additional information before moving forward. This is not a fixed medical pathway.",
-
-  prepTitle: "Information that can help your next medical discussion",
-  prepItems: [
-    "Pathology report",
-    "Imaging reports and scans",
-    "Cancer stage information",
-    "Biomarker / molecular testing results",
-    "Previous treatment information (if any)",
-    "Current medications",
-    "Your questions and concerns",
-  ],
-
-  mistakesTitle: "Common mistakes after a lung cancer diagnosis",
+  mistakesTitle: "Common early missteps after diagnosis",
   mistakes: [
     {
-      mistake: "Choosing treatment before understanding your diagnosis",
-      why: "Different lung cancer types and stages may lead to different options.",
+      mistake: "Trying to choose a treatment before understanding the diagnosis",
+      why: "Type, stage, and key tests shape which options belong in the conversation.",
     },
     {
-      mistake:
-        "Assuming the first treatment recommendation is the only option",
-      why: "Understanding alternatives can help you have a more informed discussion.",
+      mistake: "Comparing every online treatment before knowing your situation",
+      why: "Focus first on your diagnosis and questions for your care team.",
     },
     {
-      mistake:
-        "Searching for the “best hospital” before understanding what expertise you need",
-      why: "The right care team depends on your cancer situation and treatment needs.",
+      mistake: "Believing you must solve the whole journey this week",
+      why: "Your next step matters more than every future decision.",
     },
   ],
 
-  secondOpinionTitle: "Should I consider a second opinion?",
-  secondOpinionLead: "A second opinion may be especially valuable when:",
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may be especially useful when:",
   secondOpinionWhen: [
-    "Your diagnosis is complex",
-    "Major treatment decisions are involved",
-    "You received different recommendations",
-    "You want to understand alternatives",
+    "Decisions feel complex",
+    "Surgery or another major step is being considered",
+    "Multiple options exist",
+    "You want more confidence",
   ],
-  secondOpinionClose:
-    "A second opinion does not mean your current doctor is wrong. It can help confirm information, explore options, and make decisions with greater confidence.",
-  secondOpinionCtaLabel:
-    "Should I get a second opinion after lung cancer diagnosis?",
+  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionCtaLabel: "Second opinion decision guide",
   secondOpinionHref: SECOND_OPINION,
 
-  doctorTitle: "Questions you may want to discuss with your care team",
+  doctorTitle: "Doctor Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What type of lung cancer do I have — and what stage is it?",
+    "What information are we still waiting for?",
+    "What decision comes next, and how urgent is it?",
+    "Would another opinion or additional specialist be helpful?",
+  ],
   doctorGroups: [
     {
-      heading: "About diagnosis",
+      heading: "Understanding my diagnosis",
       questions: [
         "What type of lung cancer do I have?",
-        "How was my diagnosis confirmed?",
-        "What information is still uncertain?",
+        "What stage is it?",
+        "What information are we still waiting for?",
       ],
     },
     {
-      heading: "About testing",
+      heading: "Understanding my next step",
       questions: [
-        "Do I need biomarker testing?",
-        "Could test results change my options?",
-        "Should testing happen before treatment?",
+        "What decision comes next?",
+        "How urgent is this decision?",
+        "What information could change my options?",
       ],
     },
     {
-      heading: "About treatment",
+      heading: "Understanding my care team",
       questions: [
-        "What treatment options are available?",
-        "Why are you recommending this approach?",
-        "What alternatives should I understand?",
-        "What are the main trade-offs?",
+        "Who will coordinate my care?",
+        "Should I see additional specialists?",
+        "Would another opinion be helpful?",
       ],
     },
   ],
 
-  scenarioTitle: "Example: A patient deciding what to do after diagnosis",
+  scenarioTitle: "Example: The first week after diagnosis",
   scenarioTag: "Illustrative decision scenario",
   scenarioDisclaimer: "Not a real patient story",
   scenarioBody: [
-    "A person receives a lung cancer diagnosis and feels pressure to choose treatment quickly.",
-    "Instead of immediately choosing an option, they focus on understanding:",
+    "A person receives a lung cancer diagnosis and feels pressure to choose treatment immediately.",
+    "Their first thought is: “I have to decide everything now.”",
+    "Instead, they focus on:",
   ],
   scenarioFocus: [
-    "whether the diagnosis information is complete",
-    "whether additional testing could affect choices",
-    "what treatment options exist",
-    "what questions they should ask their care team",
+    "What type and stage do I have?",
+    "What information is still pending?",
+    "How urgent is the next decision?",
+    "What questions should I bring to my care team?",
   ],
   scenarioClose:
-    "Different patients may make different decisions depending on their medical situation and personal goals.",
+    "The focus shifts from solving the whole journey to taking a clear next step.",
 
   nextStepTitle: "Your next step",
-  nextStepLead: "You do not need to solve every decision today. A useful next step is:",
+  nextStepLead: "You do not need every answer today. This week, focus on:",
   nextStepActions: [
-    { label: "Confirm your lung cancer type and stage" },
-    { label: "Ask whether additional testing may affect your options" },
-    { label: "Prepare questions before your next medical discussion" },
+    { label: "Clarify your cancer type and stage — or what is still pending." },
+    {
+      label:
+        "Ask whether biomarker or other testing could change the options you discuss.",
+    },
+    {
+      label: "Prepare a short question list and keep your key reports together.",
+    },
   ],
-  nextStepCtaLabel: "Compare Lung Cancer Treatment Options",
-  nextStepHref: TREATMENT_COMPARE,
-  nextStepCtaMeta: "Treatment Comparison Decision Center",
+  nextStepCtaLabel: "Biomarker Testing Decision",
+  nextStepHref: BIOMARKER,
+  nextStepCtaMeta: "When more information may change options",
+  nextStepSecondaryCtaLabel: "Second Opinion Decision",
+  nextStepSecondaryHref: SECOND_OPINION,
+  nextStepSecondaryMeta: "When you want more confidence",
 
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Biomarker Testing",
-      question: "Could test results change my treatment options?",
-      cta: "Explore Biomarker Decision",
+      title: "Need cancer-type orientation?",
+      question: "What type of lung cancer do I have?",
+      cta: "Understanding Types",
+      href: "/cancers/lung-cancer/understanding-types",
+    },
+    {
+      title: "Wondering about biomarkers?",
+      question: "Do I need biomarker testing before choosing treatment?",
+      cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
-      title: "Treatment Comparison",
-      question: "How should I compare lung cancer treatment options?",
-      cta: "Explore Treatment Decision",
-      href: TREATMENT_COMPARE,
-    },
-    {
-      title: "Second Opinion",
-      question: "Should I get another expert opinion?",
-      cta: "Explore Second Opinion Decision",
+      title: "Want more confidence?",
+      question: "Should I get a second opinion after lung cancer diagnosis?",
+      cta: "Second opinion",
       href: SECOND_OPINION,
     },
   ],

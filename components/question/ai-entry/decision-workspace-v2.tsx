@@ -332,6 +332,60 @@ function StepMain({
           </p>
         </div>
       );
+    case "nd-understand":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "nd-information":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Many treatment discussions depend on having enough information —
+            pathology, imaging, stage, biomarker testing when relevant, and your
+            health.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "What do we already know?",
+              "What is still pending?",
+              "Would pending results change the options we discuss?",
+              "How urgent is the next decision?",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The useful question is not “Why are we waiting?” It is “Is there
+            important information that could change my options?”
+          </p>
+        </div>
+      );
+    case "nd-ahead":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            You will not make every decision today. Cancer care is usually a
+            series of decisions — information decisions, treatment decisions, and
+            planning decisions that fit your life.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Information — type, stage, biomarkers, more evaluation",
+              "Treatment — which approaches to discuss when the picture is clearer",
+              "Planning — how care fits daily life, support, and priorities",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Your next decision matters more than every future decision.
+          </p>
+        </div>
+      );
     case "qol-understand":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "qol-symptoms":
@@ -619,7 +673,7 @@ export function DecisionWorkspaceV2({
     >
       <header className="mb-8 animate-rise">
         <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]">
-          Decision Path
+          {path.pathEyebrow ?? "Decision Path"}
         </p>
         <h2 className="mt-1.5 font-heading text-2xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-3xl">
           {path.pathTitle}
@@ -627,6 +681,22 @@ export function DecisionWorkspaceV2({
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
           {path.pathSubtitle}
         </p>
+        {path.orientationTrail?.length ? (
+          <ol className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm">
+            {path.orientationTrail.map((label, index) => (
+              <li key={label} className="flex items-center gap-2">
+                {index > 0 ? (
+                  <span className="text-[var(--muted)]" aria-hidden>
+                    →
+                  </span>
+                ) : null}
+                <span className="rounded-md border border-[var(--line)] bg-white/80 px-2.5 py-1 font-medium text-[var(--ink)]">
+                  {label}
+                </span>
+              </li>
+            ))}
+          </ol>
+        ) : null}
       </header>
 
       <ol ref={listRef} className="relative">

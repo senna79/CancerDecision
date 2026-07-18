@@ -22,6 +22,10 @@ export type EntryPathStep = {
 export type EntryPathV2 = {
   pathTitle: string;
   pathSubtitle: string;
+  /** Eyebrow above path title — defaults to “Decision Path” */
+  pathEyebrow?: string;
+  /** Optional simple trail under the path title (Orientation entries) */
+  orientationTrail?: string[];
   completedLabels: [string, string, string, string];
   practicalPoints?: string[];
   steps: EntryPathStep[];
@@ -52,6 +56,8 @@ export const QUALITY_OF_LIFE_SLUG =
   "how-should-quality-of-life-factor-into-lung-cancer-decisions";
 export const FOLLOW_UP_SLUG =
   "how-do-i-monitor-my-health-after-lung-cancer-treatment";
+export const NEWLY_DIAGNOSED_SLUG =
+  "what-decisions-matter-most-after-new-lung-cancer-diagnosis";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -1263,6 +1269,128 @@ const FOLLOW_UP_PATH: EntryPathV2 = {
   ],
 };
 
+const NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
+  pathEyebrow: "Orientation path",
+  pathTitle: "Your First Steps After Diagnosis",
+  pathSubtitle:
+    "You are not lost — you are at the start. Get clear, check information, see what comes next, then prepare for the conversation.",
+  orientationTrail: [
+    "Diagnosis",
+    "Understand",
+    "Information",
+    "Next conversation",
+  ],
+  completedLabels: [
+    "Clarity on your diagnosis",
+    "Whether key information is complete",
+    "What decisions may come next",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "What you already know about type and stage",
+    "What information is still pending",
+    "How urgent the next decision is",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Get clear on your diagnosis",
+      lead: "Patient question: what exactly do I have?",
+      main: "nd-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people are newly diagnosed with lung cancer.",
+        },
+        {
+          id: "nd-more-tests",
+          title: "Why do doctors need more tests after diagnosis?",
+          summary: "A biopsy may confirm cancer — more detail may still matter.",
+        },
+        {
+          id: "nd-not-immediate",
+          title: "Why can’t my doctor tell me the treatment immediately?",
+          summary: "The best plan depends on a more complete picture.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Make sure you have the information needed",
+      lead: "Patient question: do we know enough to choose a treatment?",
+      main: "nd-information",
+      cards: [
+        {
+          id: "nd-biomarker",
+          title: "Could biomarker testing change my treatment options?",
+          summary: "Ask whether results would change what you discuss.",
+        },
+        {
+          id: "nd-waiting",
+          title: "Does waiting for more information mean treatment is delayed?",
+          summary: "Not every wait is the same — ask how urgent it is.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "Understand the decisions ahead",
+      lead: "Patient question: what decisions will I eventually need to make?",
+      main: "nd-ahead",
+      cards: [
+        {
+          id: "nd-focus-first",
+          title: "What decision should I focus on first?",
+          summary: "Your next decision matters more than every future one.",
+        },
+        {
+          id: "nd-not-expert",
+          title: "Do I need to understand every treatment before my first appointment?",
+          summary: "No — know what you know, what you don’t, and what to ask.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "Prepare for your next important conversation",
+      lead: "Patient question: how can I make my appointments more useful?",
+      main: "checklist",
+      cards: [
+        {
+          id: "nd-this-week",
+          title: "I just received a diagnosis. What should I do this week?",
+          summary: "Three focuses — not the whole journey at once.",
+        },
+        {
+          id: "nd-second-opinion",
+          title: "Should I get a second opinion right away?",
+          summary: "About confidence — not distrust.",
+        },
+        {
+          id: "nd-records",
+          title: "What information should I keep from the beginning?",
+          summary: "Pathology, imaging, biomarkers, recommendations.",
+        },
+        {
+          id: "nd-overwhelmed",
+          title: "I feel overwhelmed. Is that normal?",
+          summary: "Yes — a clear next step can reduce feeling lost.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might frame the first week.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
@@ -1273,6 +1401,7 @@ const PATHS: Record<string, EntryPathV2> = {
   [RECURRENCE_SLUG]: RECURRENCE_PATH,
   [QUALITY_OF_LIFE_SLUG]: QUALITY_OF_LIFE_PATH,
   [FOLLOW_UP_SLUG]: FOLLOW_UP_PATH,
+  [NEWLY_DIAGNOSED_SLUG]: NEWLY_DIAGNOSED_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {
