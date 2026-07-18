@@ -277,25 +277,16 @@ export function DecisionWorkspaceV2({
       id="decision-path"
       className="decision-path-canvas mt-6 scroll-mt-24 rounded-xl border border-[var(--accent)]/15 bg-white/70 px-4 py-5 md:px-7 md:py-7"
     >
-      <header className="mb-7 animate-rise">
-        <p className="text-[0.7rem] font-semibold uppercase tracking-[0.16em] text-[var(--accent)]">
-          {path.pathTitle}
+      <header className="mb-8 animate-rise">
+        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]">
+          Decision Path
         </p>
-        <p className="mt-1.5 max-w-2xl text-sm text-[var(--muted)]">
+        <h2 className="mt-1.5 font-heading text-2xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-3xl">
+          {path.pathTitle}
+        </h2>
+        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
           {path.pathSubtitle}
         </p>
-        <ol className="mt-3 flex flex-wrap gap-x-3 gap-y-1 text-[0.7rem] text-[var(--muted)]">
-          {numberedSteps.map((s) => (
-            <li key={s.id}>
-              <a
-                href={`#path-step-${s.id}`}
-                className="font-medium text-[var(--accent)]/80 hover:text-[var(--accent)] hover:underline"
-              >
-                {s.number}. {s.title.replace(/\?$/, "")}
-              </a>
-            </li>
-          ))}
-        </ol>
       </header>
 
       <ol ref={listRef} className="relative">

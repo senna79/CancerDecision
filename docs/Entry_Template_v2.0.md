@@ -10,7 +10,7 @@ Only two jobs:
 1. **H1** — Is this my question?  
 2. **Direct Answer** — 2–3 sentences (compact; no repeated H1)  
 
-The Decision Path begins immediately below — no solid “start path” button (it steals focus from the real next actions).
+The Decision Path begins immediately below with a **prominent path title** (h2) — no “start path” button or jump CTA in the hero.
 
 Moved out of hero (kept elsewhere):
 
