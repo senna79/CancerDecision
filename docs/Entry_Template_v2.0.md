@@ -21,24 +21,26 @@ Do not delete depth for SEO/AI. Collapse it for anxious human readers.
 2. **Plain-language gloss** — translate jargon once  
 3. **Light journey strip** — `You are here: A → B → C` (not a Decision Map hero)  
 4. **One-minute answer** — Direct Answer / citation block  
-5. **Quick actions** — dual intent: understand the decision / prepare for the visit (+ light jumps)  
-6. **Why this matters** — one module, no triple restatement  
-7. **Does everyone need the same thing?** — trust + personalization (when relevant)  
-8. **Highest-anxiety timing question** — e.g. will waiting delay care?  
-9. **How is it done / another procedure?** — sample source, biopsy?, risks  
-10. **How long for results?** — no fixed days; ask sample sent / window / wait-or-not  
-11. **When this decision usually appears** — 2–3 situations  
-12. **What it can / cannot decide alone** — including “no actionable finding”  
-13. **Cost & insurance principles** — on main path, short; no fixed prices  
-14. **Questions you can ask your doctor** — checklist groups (before testing / before treatment / if incomplete)  
-15. **Your next step** — 3 concrete actions (brand-critical)  
-16. **Continue journey** — related Moments  
-17. **More about this decision** — `<details>`: examples, mistakes, deeper modules  
-18. **Sources & Review** — trust footer  
+5. **Who this may help** — 3–4 fit bullets under H1  
+6. **Quick actions** — dual intent: understand / prepare for visit  
+7. **Reading guide** — 3-minute path → checklist → next step; details optional  
+8. **Why this matters** — one module, no triple restatement  
+9. **Does everyone need the same tests?** — trust + personalization (when relevant)  
+10. **Highest-anxiety timing question** — e.g. will waiting delay care?  
+11. **How is it done / another procedure?** — sample source, biopsy?, risks  
+12. **How long for results?** — no fixed days; ask sample sent / window / wait-or-not  
+13. **What it can / cannot decide alone** — including “no actionable finding”  
+14. **Cost & insurance principles** — on main path, short; no fixed prices  
+15. **Questions you can ask your doctor** — leave-confirms + checklist groups  
+16. **Your next step** — 3 concrete actions (brand-critical)  
+17. **Continue journey** — related Moments  
+18. **More about this decision** — `<details>`: when it matters, deeper explanation, mistakes, examples  
+19. **Sources & Review** — trust footer  
 
 ### Practical reality layer (Biomarker sample)
 
 - Main path: who needs it · delay · how done · results turnaround · cost questions  
+- Folded: when it matters + deeper explanation modules  
 - Out of scope for this Entry: stage-by-stage nursing care (belongs on Journey Overview / other Moments)  
 
 ## What not to put first

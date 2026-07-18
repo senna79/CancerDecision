@@ -12,7 +12,9 @@ import { AiEntryFlagshipBody } from "@/components/question/ai-entry/flagship-bod
 import { AiEntryFlagshipBodyV2 } from "@/components/question/ai-entry/flagship-body-v2";
 import { DecisionContext } from "@/components/question/ai-entry/decision-context";
 import { EntryQuickActions } from "@/components/question/ai-entry/entry-quick-actions";
+import { EntryReadingGuide } from "@/components/question/ai-entry/entry-reading-guide";
 import { JourneyYouAreHere } from "@/components/question/ai-entry/journey-you-are-here";
+import { WhoThisIsFor } from "@/components/question/ai-entry/who-this-is-for";
 import { AiEntrySections } from "@/components/question/ai-entry-sections";
 import { CitationBlock } from "@/components/question/citation-block";
 import {
@@ -235,6 +237,15 @@ export default async function QuestionPage({
         </p>
       ) : null}
 
+      {entryV2 &&
+      entryV2Config?.audienceTitle &&
+      entryV2Config.audienceItems?.length ? (
+        <WhoThisIsFor
+          title={entryV2Config.audienceTitle}
+          items={entryV2Config.audienceItems}
+        />
+      ) : null}
+
       {flagship && entryV2 ? (
         <JourneyYouAreHere
           modules={flagship}
@@ -265,7 +276,12 @@ export default async function QuestionPage({
         <SummaryPanel summary={question.summary} />
       )}
 
-      {flagship && entryV2 ? <EntryQuickActions /> : null}
+      {flagship && entryV2 ? (
+        <>
+          <EntryQuickActions />
+          <EntryReadingGuide />
+        </>
+      ) : null}
 
       {flagship && !entryV2 ? (
         <p className="mt-4 text-sm text-[var(--muted)]">

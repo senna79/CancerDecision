@@ -10,6 +10,9 @@ export type EntryTemplateV2Config = {
   plainLanguageGloss: string;
   /** Label above Direct Answer */
   oneMinuteLabel: string;
+  /** Fast fit check under H1 */
+  audienceTitle?: string;
+  audienceItems?: string[];
 };
 
 const BIOMARKER_SLUG =
@@ -20,6 +23,13 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
     plainLanguageGloss:
       "Biomarker testing looks for features of your cancer that may affect which treatments your doctors discuss.",
     oneMinuteLabel: "One-minute answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Were recently diagnosed with lung cancer",
+      "Are deciding on a first treatment plan",
+      "Are considering a second opinion and want complete information",
+      "Need to know whether more information is needed before locking a plan",
+    ],
   },
 };
 

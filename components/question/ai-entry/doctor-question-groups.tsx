@@ -17,6 +17,28 @@ export function DoctorQuestionGroups({
           Use this as a visit checklist — pick the questions that match where you
           are now. You do not need to ask every item.
         </p>
+
+        {modules.doctorLeaveTitle && modules.doctorLeaveItems?.length ? (
+          <div className="mt-4 rounded-md border border-amber-800/15 bg-white/80 px-4 py-3">
+            <p className="text-sm font-semibold text-[var(--ink)]">
+              {modules.doctorLeaveTitle}
+            </p>
+            <ul className="mt-2 space-y-2">
+              {modules.doctorLeaveItems.map((item) => (
+                <li
+                  key={item}
+                  className="flex gap-3 text-sm font-medium text-[var(--ink)]"
+                >
+                  <span className="text-[var(--accent)]" aria-hidden>
+                    □
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : null}
+
         <div className="mt-5 space-y-5">
           {modules.doctorGroups.map((group) => (
             <div key={group.heading}>

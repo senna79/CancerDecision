@@ -33,7 +33,6 @@ export function AiEntryFlagshipBodyV2({
       <TimingAnxiety modules={modules} />
       <HowTestingDone modules={modules} />
       <ResultsTurnaround modules={modules} />
-      <DecisionTriggers modules={modules} />
       <DoesNotDecide modules={modules} />
       <CostConsiderations modules={modules} />
       <DoctorQuestionGroups modules={modules} />
@@ -41,6 +40,7 @@ export function AiEntryFlagshipBodyV2({
       <RelatedDecisionPaths modules={modules} />
 
       <MoreAboutDecision>
+        <DecisionTriggers modules={modules} />
         <InformationGap modules={modules} />
         <AffectDecisions modules={modules} />
         <ValueSituations modules={modules} />

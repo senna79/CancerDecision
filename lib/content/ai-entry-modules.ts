@@ -289,6 +289,9 @@ export type AiEntryFlagshipModules = {
 
   doctorTitle?: string;
   doctorGroups?: AiEntryQuestionGroup[];
+  /** Short “before you leave the appointment” confirms */
+  doctorLeaveTitle?: string;
+  doctorLeaveItems?: string[];
 
   scenarioTitle: string;
   scenarioTag: string;
@@ -965,7 +968,7 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
     "Ask your care team whether testing is complete and whether results could change the options you should discuss.",
   ],
 
-  whoNeedsTitle: "Does everyone need the same biomarker testing?",
+  whoNeedsTitle: "Does everyone need the same tests?",
   whoNeedsLead:
     "No. Not every person with lung cancer needs the same tests at the same time — and asking about testing is not the same as being “upsold.”",
   whoNeedsBody: [
@@ -1163,6 +1166,12 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 
   doctorTitle: "Questions you can ask your doctor",
+  doctorLeaveTitle: "Before you leave your appointment, make sure you know:",
+  doctorLeaveItems: [
+    "Is biomarker testing complete — or still pending?",
+    "Are we waiting for results before choosing a plan?",
+    "Could those results change my treatment options?",
+  ],
   doctorGroups: [
     {
       heading: "Before testing",
