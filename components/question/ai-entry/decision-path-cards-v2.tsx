@@ -1,6 +1,5 @@
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import { getEntryTemplateV2Config } from "@/lib/content/entry-template-v2";
-import { AffectDecisions } from "./affect-decisions";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
 import { ContentBridge } from "./content-bridge";
@@ -219,26 +218,12 @@ export function DecisionPathCardDetail({
       return <SecondOpinionBridge modules={modules} />;
     case "mistakes":
       return <CommonMistakes modules={modules} />;
+    case "scenario":
+      return <IllustrativeScenario modules={modules} />;
+    case "value":
+      return <ValueSituations modules={modules} />;
     case "doctor":
       return <DoctorQuestionGroups modules={modules} />;
-    case "deeper":
-      return (
-        <div className="space-y-2">
-          {modules.infoGapTitle ? (
-            <InformationGap modules={modules} />
-          ) : null}
-          {modules.valueSituations?.length ? (
-            <ValueSituations modules={modules} />
-          ) : null}
-          {modules.affectBlocks?.length ? (
-            <AffectDecisions modules={modules} />
-          ) : null}
-          {modules.mistakes?.length ? (
-            <CommonMistakes modules={modules} />
-          ) : null}
-          <IllustrativeScenario modules={modules} />
-        </div>
-      );
     default:
       return null;
   }

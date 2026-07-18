@@ -147,14 +147,19 @@ const BIOMARKER_PATH: EntryPathV2 = {
       main: "checklist",
       cards: [
         {
-          id: "doctor",
-          title: "Full doctor questions checklist",
-          summary: "Grouped questions you can take to the appointment.",
+          id: "mistakes",
+          title: "Common mistakes",
+          summary: "Pitfalls when thinking about biomarker testing.",
         },
         {
-          id: "deeper",
-          title: "Common mistakes & an example",
-          summary: "Pitfalls to avoid and an illustrative scenario.",
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might frame this decision.",
+        },
+        {
+          id: "value",
+          title: "When testing may matter most",
+          summary: "Situations where this decision often comes up.",
         },
       ],
     },
@@ -252,14 +257,14 @@ const SECOND_OPINION_PATH: EntryPathV2 = {
       main: "checklist",
       cards: [
         {
-          id: "doctor",
-          title: "Full doctor questions checklist",
-          summary: "Grouped questions for diagnosis, treatment, and expertise.",
-        },
-        {
-          id: "deeper",
+          id: "scenario",
           title: "An example scenario",
           summary: "How someone might frame the decision.",
+        },
+        {
+          id: "value",
+          title: "When a second opinion may help most",
+          summary: "Situations where another review is often useful.",
         },
       ],
     },
@@ -357,12 +362,7 @@ const TREATMENT_COMPARE_PATH: EntryPathV2 = {
       main: "checklist",
       cards: [
         {
-          id: "doctor",
-          title: "Full doctor questions checklist",
-          summary: "Questions you can take to the appointment.",
-        },
-        {
-          id: "deeper",
+          id: "scenario",
           title: "An example comparison",
           summary: "How someone might structure the conversation.",
         },

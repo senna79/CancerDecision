@@ -32,10 +32,11 @@ Light eyebrows above patient-facing step titles — not big headlines, not water
 
 ## Layout
 
-**Desktop (~70 / 30)**
+**Desktop (~62 / 38 · golden split)**
 
 - Left — numbered Decision Path (must-walk story)  
 - Right — accordion **Questions you may have** for that step only  
+- Step 4 doctor checklist stays on the main axis (takeaway + full groups), not in the right rail
 
 **Mobile:** step story → that step’s cards → next step.
 

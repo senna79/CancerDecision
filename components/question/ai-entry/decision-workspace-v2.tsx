@@ -10,6 +10,7 @@ import {
 import { cn } from "@/lib/utils";
 import { DecisionPathCardDetail } from "./decision-path-cards-v2";
 import { DoctorChecklistTakeaway } from "./doctor-checklist-takeaway";
+import { DoctorQuestionGroups } from "./doctor-question-groups";
 import { DoesNotDecide } from "./does-not-decide";
 import { WhyDecisionMatters } from "./why-decision-matters";
 
@@ -145,12 +146,10 @@ function StepMain({
   step,
   path,
   modules,
-  onOpenDoctor,
 }: {
   step: EntryPathStep;
   path: EntryPathV2;
   modules: AiEntryFlagshipModules;
-  onOpenDoctor: () => void;
 }) {
   switch (step.main) {
     case "biomarker-understand":
@@ -234,17 +233,13 @@ function StepMain({
           : modules.doctorGroups?.[0]?.questions?.slice(0, 4) ?? [];
       const leaveTitle =
         modules.doctorLeaveTitle ?? "Before leaving your appointment, ask:";
-      return leaveItems.length ? (
-        <DoctorChecklistTakeaway
-          lead={leaveTitle}
-          items={leaveItems}
-          onOpenFull={onOpenDoctor}
-        />
-      ) : (
-        <p className="text-sm text-[var(--ink-soft)]">
-          Open the doctor checklist beside this step for questions to take to
-          your next visit.
-        </p>
+      return (
+        <div className="space-y-5">
+          {leaveItems.length ? (
+            <DoctorChecklistTakeaway lead={leaveTitle} items={leaveItems} />
+          ) : null}
+          <DoctorQuestionGroups modules={modules} embedded omitLeave />
+        </div>
       );
     }
     default:
@@ -314,7 +309,7 @@ export function DecisionWorkspaceV2({
               className="path-step-reveal relative"
               style={{ transitionDelay: `${index * 60}ms` }}
             >
-              <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,7fr)_minmax(220px,3fr)] lg:gap-8">
+              <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,62fr)_minmax(240px,38fr)] lg:gap-8">
                 <div className="relative min-w-0 pl-11 md:pl-12">
                   {!isLast ? (
                     <span
@@ -339,12 +334,7 @@ export function DecisionWorkspaceV2({
                     <p className="mt-1.5 text-sm text-[var(--muted)]">{step.lead}</p>
                   ) : null}
                   <div className="mt-3.5">
-                    <StepMain
-                      step={step}
-                      path={path}
-                      modules={modules}
-                      onOpenDoctor={() => setOpenId("doctor")}
-                    />
+                    <StepMain step={step} path={path} modules={modules} />
                   </div>
                 </div>
 

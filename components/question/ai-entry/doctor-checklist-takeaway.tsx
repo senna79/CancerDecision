@@ -3,17 +3,15 @@
 import { useState } from "react";
 import { cn } from "@/lib/utils";
 
-/** Clinic takeaway — copy the doctor checklist to your notes */
+/** Clinic takeaway — short leave list with Copy; full groups render below */
 export function DoctorChecklistTakeaway({
   title = "Doctor Conversation Checklist",
   lead,
   items,
-  onOpenFull,
 }: {
   title?: string;
   lead: string;
   items: string[];
-  onOpenFull?: () => void;
 }) {
   const [copied, setCopied] = useState(false);
 
@@ -73,16 +71,6 @@ export function DoctorChecklistTakeaway({
           </li>
         ))}
       </ul>
-
-      {onOpenFull ? (
-        <button
-          type="button"
-          onClick={onOpenFull}
-          className="mt-4 text-sm font-semibold text-[var(--accent)] hover:underline"
-        >
-          Open full doctor checklist →
-        </button>
-      ) : null}
     </div>
   );
 }
