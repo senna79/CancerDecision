@@ -9,6 +9,7 @@
 
 import {
   BIOMARKER_SLUG,
+  CARE_CENTER_SLUG,
   CLINICAL_TRIAL_SLUG,
   FOLLOW_UP_SLUG,
   NEWLY_DIAGNOSED_SLUG,
@@ -54,6 +55,18 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Feel lost about what happens next",
       "Want to understand treatment goals without assuming care is ending",
       "Need a clear next step — not the whole journey at once",
+    ],
+  },
+  [CARE_CENTER_SLUG]: {
+    plainLanguageGloss:
+      "Choosing lung cancer care is not only about finding a famous hospital — it is about finding a team with the right expertise, coordination, access, and communication for your situation. Many people combine specialist planning with local treatment.",
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Wonder whether you need a more specialized cancer team",
+      "Are deciding between local care and a larger cancer center",
+      "Want multidisciplinary review, trials, or clearer options",
+      "Need to know what to look for — without shopping by reputation alone",
     ],
   },
   [BIOMARKER_SLUG]: {

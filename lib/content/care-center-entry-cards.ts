@@ -1,0 +1,76 @@
+/** Hang-card bodies for Care Center / Care Team Decision Path (Entry Template v2) */
+
+export const CARE_CENTER_ENTRY_CARDS = {
+  everyone: {
+    lead: "No. Many people receive excellent lung cancer care close to home. The right level of care depends on:",
+    items: [
+      "Your cancer situation and decision complexity",
+      "Expertise available nearby",
+      "Whether you need multidisciplinary review, trials, or specialized services",
+    ],
+    close:
+      "Some patients stay local. Others combine specialist guidance with local treatment.",
+  },
+  vsSecondOpinion: {
+    lead: "A second opinion is another expert review of a specific decision — diagnosis, options, or plan. Choosing a care team is about where and how your care is organized over time.",
+    close:
+      "You may use both: a second opinion to gain clarity, and a care-team decision to decide who coordinates ongoing care.",
+  },
+  hybrid: {
+    lead: "Many people build a care network rather than choosing one building. For example:",
+    items: [
+      "Specialized center — diagnosis review, treatment planning, complex decisions",
+      "Local center — regular treatments, monitoring, and follow-up closer to home",
+    ],
+    close:
+      "The best approach is not always choosing one location. It is building the right care network.",
+  },
+  tumorBoard: {
+    lead: "A tumor board is a group of specialists who review cancer cases together. For lung cancer, this may include surgeons, medical oncologists, radiation oncologists, radiologists, and pathologists.",
+    close:
+      "The useful question is not only “Who is my doctor?” It is “Will my case be reviewed by a team when needed?”",
+  },
+  travel: {
+    lead: "Consider complexity of your case, expertise available locally, how often treatment visits are needed, and family support.",
+    close:
+      "Some patients travel for planning or complex care, then receive regular treatment closer to home.",
+  },
+  nci: {
+    lead: "In the United States, NCI-designated cancer centers meet specific standards for cancer research and care. They may offer specialized expertise and access to clinical studies.",
+    close:
+      "A designation is one signal — not a ranking. The right center still depends on your cancer type, needs, location, and practical fit. Outside the U.S., people often look for comprehensive or tertiary specialist centres with similar team-based care.",
+  },
+  famous: {
+    lead: "Not necessarily. The best center is the one that provides appropriate expertise, clear communication, and access to the care you need.",
+    close: "Reputation alone does not tell you whether a team fits your situation.",
+  },
+  remoteReview: {
+    lead: "Many centers offer case review or second-opinion services before an in-person visit. Ask what records they need and whether a remote review is available.",
+    close: "This can help you decide whether travel is worth it before you go.",
+  },
+  afford: {
+    lead: "If travel is difficult, consider local specialists with lung cancer experience, remote consultations where available, or expert review while continuing local care.",
+    close:
+      "Ask about referral requirements and who would coordinate care with your local team.",
+  },
+  records: {
+    lead: "Prepare copies of:",
+    items: [
+      "Pathology and biopsy reports",
+      "Imaging reports and scan images when available",
+      "Biomarker results",
+      "Treatment history and current recommendations",
+    ],
+    close:
+      "Also write one sentence: what expertise or clarity you are hoping another team can provide.",
+  },
+  coordination: {
+    lead: "Before changing where you receive care, ask:",
+    items: [
+      "Who coordinates my care day to day?",
+      "How would follow-up work with my local team?",
+      "Who should I contact with questions between visits?",
+    ],
+    close: "Good expertise without coordination can still leave care fragmented.",
+  },
+} as const;

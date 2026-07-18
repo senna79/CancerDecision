@@ -60,6 +60,8 @@ export const NEWLY_DIAGNOSED_SLUG =
   "what-decisions-matter-most-after-new-lung-cancer-diagnosis";
 export const STAGE_IV_SLUG =
   "how-to-choose-treatment-options-for-stage-iv-lung-cancer";
+export const CARE_CENTER_SLUG =
+  "do-i-need-different-lung-cancer-center-or-specialized-expertise";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -1525,6 +1527,133 @@ const STAGE_IV_PATH: EntryPathV2 = {
   ],
 };
 
+const CARE_CENTER_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Choosing Your Lung Cancer Care Team",
+  pathSubtitle:
+    "Clarify when another team may help → understand care setups → know what to look for → prepare records and questions.",
+  orientationTrail: [
+    "When it helps",
+    "Care setups",
+    "What to look for",
+    "Prepare",
+  ],
+  completedLabels: [
+    "When another team may help",
+    "How care setups differ",
+    "What to look for in a team",
+    "Questions and records to prepare",
+  ],
+  practicalPoints: [
+    "What decision or expertise gap you are trying to improve",
+    "Whether hybrid care (specialist + local) could fit",
+    "How follow-up would be coordinated",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "When should I consider a specialized team?",
+      lead: "Patient question: do I need to go to a major cancer center?",
+      main: "cc-when",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people wonder about specialized lung cancer expertise.",
+        },
+        {
+          id: "cc-everyone",
+          title: "Does everyone need a major cancer center?",
+          summary: "No — the right level of care depends on your situation.",
+        },
+        {
+          id: "cc-vs-second-opinion",
+          title: "How is this different from a second opinion?",
+          summary: "Second opinion reviews a decision; care team shapes ongoing care.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Understand different care setups",
+      lead: "Patient question: what kinds of cancer care centers exist?",
+      main: "cc-setups",
+      cards: [
+        {
+          id: "cc-hybrid",
+          title: "Can I combine a specialist center with local care?",
+          summary: "Many people build a care network — not one location only.",
+        },
+        {
+          id: "cc-tumor-board",
+          title: "What is a tumor board?",
+          summary: "Specialists reviewing cases together — not just one doctor.",
+        },
+        {
+          id: "cc-travel",
+          title: "Should I travel far for cancer treatment?",
+          summary: "Weigh complexity, local expertise, visit frequency, and support.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I look for in a lung cancer team?",
+      lead: "Patient question: how do I evaluate a care team?",
+      main: "cc-look-for",
+      cards: [
+        {
+          id: "cc-nci",
+          title: "What does NCI-designated mean?",
+          summary: "A U.S. research-and-care signal — one factor, not a ranking.",
+        },
+        {
+          id: "cc-famous",
+          title: "Should I choose the most famous cancer center?",
+          summary: "Not necessarily — fit matters more than reputation alone.",
+        },
+        {
+          id: "cc-remote-review",
+          title: "Can a center review my case before I visit?",
+          summary: "Many offer remote review — ask what records they need.",
+        },
+        {
+          id: "cc-afford",
+          title: "What if travel is hard or expensive?",
+          summary: "Local expertise, remote consults, and coordinated review.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "Prepare before contacting a care team",
+      lead: "Patient question: what should I bring and ask?",
+      main: "checklist",
+      cards: [
+        {
+          id: "cc-records",
+          title: "What medical information should I prepare?",
+          summary: "Reports, scans, biomarkers — plus your expertise goal.",
+        },
+        {
+          id: "cc-coordination",
+          title: "How do I keep care from becoming fragmented?",
+          summary: "Ask who coordinates care and how follow-up will work.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might decide whether another team helps.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
@@ -1537,6 +1666,7 @@ const PATHS: Record<string, EntryPathV2> = {
   [FOLLOW_UP_SLUG]: FOLLOW_UP_PATH,
   [NEWLY_DIAGNOSED_SLUG]: NEWLY_DIAGNOSED_PATH,
   [STAGE_IV_SLUG]: STAGE_IV_PATH,
+  [CARE_CENTER_SLUG]: CARE_CENTER_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {

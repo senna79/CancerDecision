@@ -1388,326 +1388,227 @@ export const TREATMENT_COMPARISON_FLAGSHIP: AiEntryFlagshipModules = {
 };
 
 /** Lung Cancer AI Entry #5 — Care Center & Expertise */
+/** Lung Cancer AI Entry — Care Center / Care Team (Decision Path v2) */
 export const CARE_CENTER_FLAGSHIP: AiEntryFlagshipModules = {
   cancerLabel: "Lung Cancer",
-  decisionMoment: "Whether additional expertise may improve your care decision",
-  exploring: "Care Center & Expertise Decision",
+  decisionMoment: "How to choose the right lung cancer care team",
+  exploring: "Care team & center decision",
   subtitle:
-    "Understand when another center, specialist team, or additional expertise may help your cancer decision.",
+    "The right care team can help you understand your diagnosis, compare options, and make decisions with confidence — without shopping by hospital name alone.",
   relatedDecisions: [
     { label: "Second Opinion", href: SECOND_OPINION },
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
-    { label: "Clinical Trials", href: CARE_MAP },
-    { label: "International Care Options", href: GLOBAL_CARE },
+    { label: "Biomarker Testing", href: BIOMARKER },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
+    { label: "Clinical Trials", href: CLINICAL_TRIAL },
   ],
   journeyLabel: "Lung Cancer Decision Journey",
   journeyPath: [
-    { label: "Treatment Comparison", href: TREATMENT_COMPARE },
     { label: "Second Opinion", href: SECOND_OPINION },
-    { label: "Care Center & Expertise", current: true },
+    { label: "Care Team", current: true },
+    { label: "Treatment Options", href: TREATMENT_COMPARE },
   ],
 
-  triggersTitle: "You may be considering another center if:",
+  triggersTitle: "You may be facing this if:",
   triggerGroups: [
     {
-      heading: "Your diagnosis is complex",
-      lead: "You want to understand:",
+      heading: "You wonder whether local care is enough",
+      lead: "You may be asking:",
       items: [
-        "Is my diagnosis complete?",
-        "Does my situation require specialized expertise?",
-        "Would another team provide useful insight?",
+        "Do I need a more specialized lung cancer team?",
+        "Would another center change my options?",
       ],
     },
     {
-      heading: "You are facing an important treatment decision",
-      lead: "You want to explore:",
+      heading: "Your decision feels complex",
+      lead: "You may want:",
       items: [
-        "Whether other approaches exist",
-        "How different specialists think about your case",
-        "What trade-offs you should understand",
+        "Multidisciplinary review",
+        "More experience with situations like yours",
       ],
     },
     {
-      heading: "Your cancer situation is uncommon",
+      heading: "You want access to additional services",
       lead: "Examples:",
       items: [
-        "Rare cancer characteristics",
-        "Difficult treatment decisions",
-        "Limited experience locally",
-      ],
-    },
-    {
-      heading: "You want access to specialized resources",
-      lead: "Examples:",
-      items: [
-        "Multidisciplinary teams",
+        "Biomarker expertise",
         "Clinical trials",
-        "Specialized programs",
+        "Clearer communication about options",
+      ],
+    },
+    {
+      heading: "Travel or logistics feel hard",
+      lead: "You may be considering:",
+      items: [
+        "Whether hybrid care could work",
+        "Whether a remote case review is available first",
       ],
     },
   ],
 
-  whyTitle:
-    "The best cancer care is not only about finding the most famous center",
-  whyLead: "After a lung cancer diagnosis, many patients wonder:",
+  whyTitle: "When should I consider a specialized team?",
+  whyLead:
+    "Many patients receive excellent care close to home. A specialized cancer team may be especially helpful when decisions are complex, local experience feels limited, surgery or combined treatments are uncertain, or you need multidisciplinary review or trial access.",
   whyBody: [
-    "“Should I stay with my current doctor?” or “Should I look for another center?”",
-    "This is an important decision. However, the goal is not simply finding the biggest hospital or the most well-known doctor.",
-    "The goal is finding the right expertise for your specific decision.",
+    "Choosing care is not only about finding a famous hospital.",
+    "Look for expertise with your lung cancer type, coordination across specialists, access to needed testing and treatments, and clear communication.",
+    "The best care team is the one that fits your cancer, your situation, and your goals.",
   ],
   whyQuestions: [],
-  whyDependsIntro: "The value of another center depends on:",
-  whyDependsOn: [
-    "Your cancer type",
-    "Your cancer stage",
-    "Treatment complexity",
-    "Available expertise",
-    "Your personal priorities",
-  ],
-  whyClose: [],
-
-  goalFrameworkTitle:
-    "A different center is valuable only if it helps answer an important question",
-  goalFrameworkLead:
-    "Before searching for another hospital or country, clarify your goal.",
-  goalFrameworkBlocks: [
-    {
-      title: "Goal 1: Confirm my diagnosis",
-      questionsIntro: "You may be looking for:",
-      questions: [
-        "Pathology review",
-        "Confirmation of cancer type",
-        "Clarification of stage",
-      ],
-    },
-    {
-      title: "Goal 2: Understand treatment choices",
-      questionsIntro: "You may be looking for:",
-      questions: [
-        "Different treatment perspectives",
-        "Alternative approaches",
-        "Better understanding of trade-offs",
-      ],
-    },
-    {
-      title: "Goal 3: Find specialized expertise",
-      questionsIntro: "You may be looking for:",
-      questions: [
-        "Doctors who frequently treat similar cases",
-        "Multidisciplinary review",
-        "Experience with complex situations",
-      ],
-    },
-    {
-      title: "Goal 4: Explore additional options",
-      questionsIntro: "You may be looking for:",
-      questions: [
-        "Clinical trials",
-        "Specialized programs",
-        "New care pathways",
-      ],
-    },
-  ],
-  goalNotLabel: "The first question is not:",
-  goalNotQuestion: "Where is the best hospital?",
-  goalBetterLabel: "The better question is:",
-  goalBetterQuestion: "What expertise do I need for my decision?",
-
-  valueTitle: "Situations where another team may help",
-  valueSituations: [
-    {
-      title: "Complex decisions",
-      examples: [
-        "Multiple reasonable treatment approaches",
-        "Difficult risk-benefit decisions",
-      ],
-    },
-    {
-      title: "Rare or uncommon cases",
-      examples: [
-        "Less common cancer features",
-        "Limited local experience",
-      ],
-    },
-    {
-      title: "Need for multiple specialists",
-      examples: [
-        "Surgery decisions",
-        "Combined treatment approaches",
-        "Complex care planning",
-      ],
-    },
-    {
-      title: "Exploring advanced options",
-      examples: ["Clinical trials", "Specialized treatment programs"],
-    },
+  whyNotLabel: "The first question is not:",
+  whyNotQuestion: "Where is the most famous hospital?",
+  whyBetterLabel: "The better question is:",
+  whyBetterQuestion:
+    "What expertise and coordination do I need for this decision?",
+  whyClose: [
+    "A specialized center is most valuable when you need deeper expertise, clearer options, or a stronger care network — not simply a new location.",
   ],
 
-  infoGapTitle: "The goal is better decisions, not simply a different location",
-  infoGapKnownIntro:
-    "A new center may provide valuable input. However, another center may not always change the recommendation. A useful evaluation is whether this center provides:",
-  infoGapKnown: [
-    "Relevant experience",
-    "Clear explanation of options",
-    "Strong reasoning behind recommendations",
-    "Expertise that matches my situation",
+  doesNotDecideTitle: "Understand different care setups",
+  doesNotDecideLead:
+    "Cancer care is organized in different ways. Knowing the setups helps you choose a network — not only a building.",
+  doesNotDecideItems: [
+    "Academic or university-linked centers — often more specialized experience, multidisciplinary review, and trial access",
+    "Community cancer centers — often more convenient for ongoing treatment close to home",
+    "Hybrid approach — specialist center for planning or complex decisions; local center for regular treatment and follow-up",
   ],
-  infoGapClose: [
-    "The value comes from better decision support, not simply changing locations.",
+  doesNotDecideNotes: [
+    "Outside the U.S., people often look for comprehensive or tertiary specialist centres with team-based care — the useful idea is the same: expertise + coordination + practical fit.",
   ],
+  doesNotDecideClose:
+    "The best approach is not always choosing one location. It is building the right care network.",
 
-  evaluateTitle: "Compare expertise, not only reputation",
-  evaluateLead: "Use these questions when evaluating another cancer center.",
-  evaluateBlocks: [
-    {
-      title: "1. Experience with similar cases",
-      intro: "Ask:",
-      items: [
-        "Does this team regularly treat patients like me?",
-        "Do they have experience with my cancer situation?",
-      ],
-    },
-    {
-      title: "2. Decision quality",
-      intro: "Ask:",
-      items: [
-        "Do they explain why options are recommended?",
-        "Do they discuss alternatives and trade-offs?",
-      ],
-    },
-    {
-      title: "3. Team expertise",
-      intro: "Ask:",
-      items: [
-        "Are multiple specialists involved?",
-        "Is my case reviewed from different perspectives?",
-      ],
-    },
-    {
-      title: "4. Practical fit",
-      intro: "Consider:",
-      items: [
-        "Cost",
-        "Travel",
-        "Communication",
-        "Follow-up coordination",
-      ],
-    },
-  ],
-
-  bridge: {
-    title: "When looking beyond your country may provide value",
-    body: [
-      "Some patients explore international expertise when they are seeking experience with complex or uncommon cases, additional medical review, access to specialized programs, or different treatment resources.",
-      "However, international care is not automatically the best option.",
-      "Important questions: What specific advantage am I seeking? Could this change my decision? How would ongoing care be coordinated?",
-    ],
-    ctaLabel: "When is lung cancer care abroad worth considering?",
-    ctaHref: GLOBAL_CARE,
-  },
-
-  mistakesTitle: "Common mistakes when choosing where to receive care",
+  mistakesTitle: "Common mistakes when choosing a care team",
   mistakes: [
     {
       mistake: "Choosing based only on reputation",
-      why: "The most famous center may not always be the best match for your situation.",
+      why: "The most famous center may not be the best match for your situation.",
     },
     {
-      mistake:
-        "Looking for a different answer instead of better understanding",
-      why: "A useful opinion explains the reasoning behind decisions.",
-    },
-    {
-      mistake: "Changing centers without a clear goal",
+      mistake: "Changing centers without a clear expertise goal",
       why: "A different location does not automatically improve a decision.",
     },
     {
-      mistake: "Ignoring follow-up care",
-      why: "Cancer care often requires long-term coordination.",
+      mistake: "Ignoring coordination and follow-up",
+      why: "Strong expertise without a plan for day-to-day care can still leave treatment fragmented.",
     },
   ],
 
-  doctorTitle: "Questions that can help evaluate another care option",
+  secondOpinionTitle: "When a second opinion belongs in this decision",
+  secondOpinionLead:
+    "A second opinion reviews a specific decision. A care-team choice shapes where and how care is organized. A second opinion may help when:",
+  secondOpinionWhen: [
+    "You want confirmation before a major step",
+    "Options feel unclear",
+    "You want more confidence in the reasoning",
+  ],
+  secondOpinionClose:
+    "Use the second-opinion guide for that review — then return here if you are choosing who coordinates ongoing care.",
+  secondOpinionCtaLabel: "Second opinion decision guide",
+  secondOpinionHref: SECOND_OPINION,
+
+  doctorTitle: "Care Team Conversation Checklist",
+  doctorLeaveTitle: "Before leaving the conversation, ask:",
+  doctorLeaveItems: [
+    "How often does this team treat patients with my type of lung cancer?",
+    "Will my case be reviewed by specialists together when needed?",
+    "Are additional tests, options, or trials worth discussing?",
+    "Who coordinates my care — and how would follow-up work with my local team?",
+  ],
   doctorGroups: [
     {
       heading: "About expertise",
       questions: [
-        "Does this team treat patients with my type of lung cancer?",
-        "How much experience do they have with similar situations?",
+        "How experienced are you with my cancer type?",
+        "Who will participate in my care?",
+        "Will my case be discussed in a multidisciplinary review when needed?",
       ],
     },
     {
-      heading: "About decisions",
+      heading: "About my options",
       questions: [
-        "Would they approach my situation differently?",
-        "What additional perspective could they provide?",
+        "Are there treatment options I should consider?",
+        "Are additional tests needed?",
+        "Are clinical trials available for my situation?",
       ],
     },
     {
-      heading: "About logistics",
+      heading: "About coordination",
       questions: [
-        "How would care coordination work?",
-        "What challenges should I consider?",
+        "Who coordinates my care day to day?",
+        "Who should I contact with questions?",
+        "How would care work with my local team if I combine centers?",
       ],
     },
   ],
 
-  scenarioTitle: "Example: Deciding whether another center may help",
+  scenarioTitle: "Example: Deciding whether another team may help",
   scenarioTag: "Illustrative decision scenario",
   scenarioDisclaimer: "Not a real patient story",
   scenarioBody: [
-    "A person with lung cancer receives a treatment recommendation locally.",
-    "They wonder: “Should I look for another hospital?”",
-    "Instead of starting with a search for the most famous center, they ask:",
+    "A person receives a local treatment recommendation and wonders whether they should look for a more famous hospital.",
+    "Instead of starting with rankings, they ask:",
   ],
   scenarioFocus: [
     "What decision am I trying to improve?",
-    "What expertise am I looking for?",
-    "Would another team provide meaningful additional information?",
+    "Do I need more experience, multidisciplinary review, or trial access?",
+    "Could a specialist plan plus local treatment work?",
+    "How would follow-up be coordinated?",
   ],
   scenarioClose:
-    "They compare options based on expertise, decision quality, and practical factors.",
+    "They evaluate teams by expertise, communication, access, and practical fit — not by reputation alone.",
 
   nextStepTitle: "Your next step",
-  nextStepLead: "If you are considering another cancer center:",
+  nextStepLead: "If you are choosing a lung cancer care team:",
   nextStepActions: [
     {
-      label: "Identify what you want to improve.",
+      label: "Name the gap you want to improve.",
       examples: [
-        "Confirm diagnosis",
-        "Compare treatment options",
-        "Find specialized expertise",
+        "Confirm information",
+        "Compare options",
+        "Access specialized expertise or trials",
       ],
     },
-    { label: "Prepare your medical information." },
-    { label: "Evaluate centers based on expertise and fit." },
+    {
+      label:
+        "Ask whether hybrid care — specialist planning with local treatment — could fit.",
+    },
+    {
+      label:
+        "Prepare records and ask about experience, multidisciplinary review, and coordination.",
+    },
   ],
-  nextStepCtaLabel: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
+  nextStepCtaLabel: "Second Opinion Decision",
   nextStepHref: SECOND_OPINION,
-  nextStepCtaMeta: "Second Opinion Journey",
-  nextStepSecondaryCtaLabel: "How Should I Compare Lung Cancer Treatment Options?",
+  nextStepCtaMeta: "When you want another review of a specific decision",
+  nextStepSecondaryCtaLabel: "Treatment Options Decision",
   nextStepSecondaryHref: TREATMENT_COMPARE,
-  nextStepSecondaryMeta: "Treatment Comparison Journey",
+  nextStepSecondaryMeta: "When you are ready to compare approaches",
 
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Wondering if the plan fits real life?",
-      question: "Can My Lung Cancer Treatment Plan Work With My Real Life?",
-      cta: "Treatment Feasibility",
-      href: COST_LOGISTICS,
-    },
-    {
-      title: "Need more confidence?",
-      question: "Should I Get a Second Opinion After Lung Cancer Diagnosis?",
-      cta: "Second Opinion Journey",
+      title: "Need more confidence on a specific plan?",
+      question: "Should I get a second opinion after lung cancer diagnosis?",
+      cta: "Second opinion",
       href: SECOND_OPINION,
     },
     {
-      title: "Comparing treatment choices?",
-      question: "How Should I Compare Lung Cancer Treatment Options?",
-      cta: "Treatment Comparison Journey",
+      title: "Wondering about biomarkers?",
+      question: "Do I need biomarker testing before choosing treatment?",
+      cta: "Biomarker testing",
+      href: BIOMARKER,
+    },
+    {
+      title: "Ready to compare approaches?",
+      question: "How should I compare lung cancer treatment options?",
+      cta: "Treatment options",
       href: TREATMENT_COMPARE,
+    },
+    {
+      title: "Considering a trial?",
+      question: "Should I consider a clinical trial for lung cancer?",
+      cta: "Clinical trials",
+      href: CLINICAL_TRIAL,
     },
   ],
 };

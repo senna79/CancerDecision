@@ -10,6 +10,7 @@ import { QUALITY_OF_LIFE_ENTRY_CARDS } from "@/lib/content/quality-of-life-entry
 import { FOLLOW_UP_ENTRY_CARDS } from "@/lib/content/follow-up-entry-cards";
 import { NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/newly-diagnosed-entry-cards";
 import { STAGE_IV_ENTRY_CARDS } from "@/lib/content/stage-iv-entry-cards";
+import { CARE_CENTER_ENTRY_CARDS } from "@/lib/content/care-center-entry-cards";
 import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
@@ -1470,6 +1471,97 @@ export function DecisionPathCardDetail({
         <BulletCard
           lead={STAGE_IV_ENTRY_CARDS.haveSay.lead}
           close={STAGE_IV_ENTRY_CARDS.haveSay.close}
+        />
+      );
+    case "cc-everyone":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.everyone.lead}
+          items={CARE_CENTER_ENTRY_CARDS.everyone.items}
+          close={CARE_CENTER_ENTRY_CARDS.everyone.close}
+        />
+      );
+    case "cc-vs-second-opinion":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={CARE_CENTER_ENTRY_CARDS.vsSecondOpinion.lead}
+            close={CARE_CENTER_ENTRY_CARDS.vsSecondOpinion.close}
+          />
+          <p>
+            <Link
+              href="/questions/should-i-get-second-opinion-after-lung-cancer-diagnosis"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Second opinion decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "cc-hybrid":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.hybrid.lead}
+          items={CARE_CENTER_ENTRY_CARDS.hybrid.items}
+          close={CARE_CENTER_ENTRY_CARDS.hybrid.close}
+        />
+      );
+    case "cc-tumor-board":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.tumorBoard.lead}
+          close={CARE_CENTER_ENTRY_CARDS.tumorBoard.close}
+        />
+      );
+    case "cc-travel":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.travel.lead}
+          close={CARE_CENTER_ENTRY_CARDS.travel.close}
+        />
+      );
+    case "cc-nci":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.nci.lead}
+          close={CARE_CENTER_ENTRY_CARDS.nci.close}
+        />
+      );
+    case "cc-famous":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.famous.lead}
+          close={CARE_CENTER_ENTRY_CARDS.famous.close}
+        />
+      );
+    case "cc-remote-review":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.remoteReview.lead}
+          close={CARE_CENTER_ENTRY_CARDS.remoteReview.close}
+        />
+      );
+    case "cc-afford":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.afford.lead}
+          close={CARE_CENTER_ENTRY_CARDS.afford.close}
+        />
+      );
+    case "cc-records":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.records.lead}
+          items={CARE_CENTER_ENTRY_CARDS.records.items}
+          close={CARE_CENTER_ENTRY_CARDS.records.close}
+        />
+      );
+    case "cc-coordination":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.coordination.lead}
+          items={CARE_CENTER_ENTRY_CARDS.coordination.items}
+          close={CARE_CENTER_ENTRY_CARDS.coordination.close}
         />
       );
     case "second-opinion": {

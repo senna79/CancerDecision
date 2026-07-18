@@ -440,6 +440,60 @@ function StepMain({
           </p>
         </div>
       );
+    case "cc-when":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "cc-setups":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Cancer care is organized in different ways. Knowing the setups helps
+            you choose a network — not only a building.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Academic or university-linked centers — specialized experience, multidisciplinary review, trial access",
+              "Community cancer centers — convenient ongoing treatment closer to home",
+              "Hybrid approach — specialist planning for complex decisions; local care for regular treatment and follow-up",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The best approach is not always choosing one location. It is building
+            the right care network.
+          </p>
+        </div>
+      );
+    case "cc-look-for":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Evaluate a lung cancer team by fit — not by reputation alone. Focus
+            on experience, multidisciplinary care, access to needed services, and
+            clear communication.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Lung cancer experience — how often does this team treat cases like yours?",
+              "Multidisciplinary care — surgeons, oncologists, radiation, radiology, pathology, supportive care",
+              "Access — biomarker testing, pathology review, trials, supportive services",
+              "Communication — clear options, answered questions, understandable reasoning",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Credentials such as NCI designation can be one useful signal. They
+            are not a substitute for asking whether the team fits your situation.
+          </p>
+        </div>
+      );
     case "qol-understand":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "qol-symptoms":
