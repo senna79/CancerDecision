@@ -37,7 +37,7 @@ export function CancerJourneyNav({
     <div className="space-y-6">
       <div>
         <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-          Choose a cancer type
+          Cancer type
         </p>
         <div
           role="listbox"
@@ -46,6 +46,7 @@ export function CancerJourneyNav({
         >
           {ordered.map((cancer) => {
             const active = cancer.slug === selectedSlug;
+            const complete = cancer.slug === LUNG_SLUG;
             return (
               <button
                 key={cancer.slug}
@@ -61,16 +62,14 @@ export function CancerJourneyNav({
                 )}
               >
                 {cancer.name}
-                {cancer.slug === LUNG_SLUG ? (
-                  <span
-                    className={cn(
-                      "ml-1.5 text-[10px] font-medium uppercase tracking-[0.08em]",
-                      active ? "text-white/70" : "text-[var(--muted)]"
-                    )}
-                  >
-                    Complete
-                  </span>
-                ) : null}
+                <span
+                  className={cn(
+                    "ml-1.5 text-[10px] font-medium uppercase tracking-[0.08em]",
+                    active ? "text-white/70" : "text-[var(--muted)]"
+                  )}
+                >
+                  {complete ? "Complete" : "In development"}
+                </span>
               </button>
             );
           })}
@@ -101,23 +100,30 @@ export function CancerJourneyNav({
           }
         />
       ) : selected ? (
-        <div className="rounded-lg border border-[var(--line)] bg-white/80 px-5 py-6 md:px-7">
+        <div className="border border-[var(--line)] bg-white/80 px-5 py-6 md:px-7">
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-            Building next
+            In development
           </p>
-          <h2 className="mt-1 font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)]">
-            {selected.name} decision guide
-          </h2>
+          <h3 className="mt-1 font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)]">
+            {selected.name} decision journey
+          </h3>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
-            Lung cancer is the first complete journey. {selected.name} uses the
-            same decision framework and will deepen over time.
+            Lung cancer is the first complete journey. {selected.name} will use
+            the same framework — choose a cancer situation, then a decision path.
           </p>
-          <p className="mt-4">
+          <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
+            <button
+              type="button"
+              onClick={() => setSelectedSlug(LUNG_SLUG)}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Start with lung cancer instead →
+            </button>
             <Link
               href={`/cancers/${selected.slug}`}
-              className="text-sm font-semibold text-[var(--accent)] hover:underline"
+              className="font-semibold text-[var(--ink-soft)] hover:text-[var(--accent)] hover:underline"
             >
-              Open the {selected.name} center →
+              Preview the {selected.name} center
             </Link>
           </p>
         </div>

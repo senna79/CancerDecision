@@ -5,9 +5,9 @@ import { getCancers, getStories } from "@/lib/queries";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildMetadata({
-  title: "Navigate Cancer Treatment Decisions",
+  title: "Navigate Cancer Decisions — Know Your Next Step",
   description:
-    "Cancer Next Step helps you understand options, prepare better questions, and know what to do next. Start with lung cancer — the first complete cancer decision journey.",
+    "Cancer Next Step helps you understand options, prepare better questions, and know what to do next. Lung cancer is the first complete decision journey — more cancer journeys are in development.",
   path: "/",
   keywords: [
     "cancer next step",
@@ -29,7 +29,10 @@ export default async function HomePage() {
     slug: c.slug,
     name: c.name,
   }));
-  const otherCancers = cancers.filter((c) => c.slug !== "lung-cancer");
+  const orderedCancers = [
+    ...cancers.filter((c) => c.slug === "lung-cancer"),
+    ...cancers.filter((c) => c.slug !== "lung-cancer"),
+  ];
 
   return (
     <div>
@@ -43,21 +46,47 @@ export default async function HomePage() {
           className="pointer-events-none absolute -right-24 top-10 h-[28rem] w-[28rem] rounded-full bg-[conic-gradient(from_180deg_at_50%_50%,rgba(15,118,110,0.18),transparent_55%,rgba(49,92,84,0.14))] blur-2xl animate-fade"
         />
         <div className="relative mx-auto w-full max-w-6xl px-5 py-14 md:px-8 md:py-20">
-          <p className="animate-rise font-heading text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl md:text-6xl lg:text-7xl">
+          <h1 className="animate-rise font-heading text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl md:text-6xl lg:text-7xl">
             Cancer Next Step
-          </p>
-          <p className="animate-rise-delay mt-3 max-w-2xl text-base font-medium tracking-[-0.01em] text-[var(--ink-soft)] md:text-lg">
-            Understand your options. Know your next step.
-          </p>
-          <h1 className="animate-rise-delay mt-5 max-w-3xl font-heading text-2xl font-medium tracking-[-0.02em] text-[var(--ink-soft)] md:text-3xl">
-            Know your next step in a cancer decision
           </h1>
-          <p className="animate-rise-delay mt-4 max-w-2xl text-lg leading-relaxed text-[var(--muted)]">
-            Not an encyclopedia. A navigation path — so you leave knowing what
-            to do next, not only what cancer is.
+          <p className="animate-rise-delay mt-4 max-w-2xl text-lg font-medium tracking-[-0.01em] text-[var(--ink-soft)] md:text-xl">
+            Understand your options. Prepare better questions. Know your next
+            step.
           </p>
+          <p className="animate-rise-delay mt-4 max-w-2xl text-base leading-relaxed text-[var(--muted)] md:text-lg">
+            Not an encyclopedia — a decision path. Lung cancer is the first
+            complete journey; more cancers will follow the same framework.
+          </p>
+          <div className="animate-rise-delay mt-8 flex flex-wrap items-center gap-4">
+            <a
+              href="#choose-cancer"
+              className="inline-flex items-center justify-center rounded-md bg-[var(--ink)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--accent)]"
+            >
+              Start with lung cancer
+            </a>
+            <a
+              href="#journeys-in-development"
+              className="text-sm font-semibold text-[var(--accent)] hover:underline"
+            >
+              See journeys in development
+            </a>
+          </div>
+        </div>
+      </section>
 
-          <div className="animate-rise-delay mt-10 max-w-3xl">
+      <section
+        id="choose-cancer"
+        className="scroll-mt-20 border-t border-[var(--line)] bg-[var(--paper-deep)]/40"
+      >
+        <div className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8">
+          <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
+            Choose your cancer
+          </h2>
+          <p className="mt-2 max-w-2xl text-[var(--muted)]">
+            Then tell us where you are — so you land on the next decision, not
+            a library of everything.
+          </p>
+          <div className="mt-8 max-w-3xl">
             <CancerJourneyNav
               cancers={cancerOptions}
               lungMoments={LUNG_DECISION_MOMENTS}
@@ -66,29 +95,46 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8">
+      <section
+        id="journeys-in-development"
+        className="scroll-mt-20 mx-auto w-full max-w-6xl px-5 py-14 md:px-8"
+      >
         <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-          Other cancer guides
+          Cancer journeys in development
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--muted)]">
-          Lung cancer is the first complete case. Other centers share the same
-          decision framework and will deepen over time — not a different product.
+          Same decision framework across cancers. Lung cancer is complete today;
+          others deepen over time — not a different product.
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {otherCancers.map((cancer) => (
-            <Link
-              key={cancer.id}
-              href={`/cancers/${cancer.slug}`}
-              className="group border-b border-[var(--line)] py-3 transition hover:border-[var(--accent)]"
-            >
-              <h3 className="font-heading text-lg font-semibold text-[var(--ink)] group-hover:text-[var(--accent)]">
-                {cancer.name}
-              </h3>
-              <p className="mt-1 line-clamp-2 text-sm text-[var(--muted)]">
-                {cancer.overview}
-              </p>
-            </Link>
-          ))}
+          {orderedCancers.map((cancer) => {
+            const complete = cancer.slug === "lung-cancer";
+            return (
+              <Link
+                key={cancer.id}
+                href={
+                  complete
+                    ? "/cancers/lung-cancer#decision-moment"
+                    : `/cancers/${cancer.slug}`
+                }
+                className="group border-b border-[var(--line)] py-3 transition hover:border-[var(--accent)]"
+              >
+                <div className="flex items-baseline justify-between gap-2">
+                  <h3 className="font-heading text-lg font-semibold text-[var(--ink)] group-hover:text-[var(--accent)]">
+                    {cancer.name}
+                  </h3>
+                  <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
+                    {complete ? "Complete" : "In development"}
+                  </span>
+                </div>
+                <p className="mt-1 line-clamp-2 text-sm text-[var(--muted)]">
+                  {complete
+                    ? "The first complete Cancer Next Step decision journey."
+                    : "Uses the same decision framework — depth coming next."}
+                </p>
+              </Link>
+            );
+          })}
         </div>
       </section>
 
@@ -98,8 +144,8 @@ export default async function HomePage() {
             Illustrative decision journeys
           </h2>
           <p className="mt-2 max-w-2xl text-[var(--muted)]">
-            Examples of how patients compare options — not miracle recoveries,
-            and not verified testimonials.
+            Product examples of how people compare options and prepare questions
+            — not miracle recoveries, and not verified testimonials.
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {stories.map((story) => (
