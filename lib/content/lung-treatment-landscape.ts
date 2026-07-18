@@ -54,6 +54,8 @@ export const LUNG_TREATMENT_LANDSCAPE = {
     {
       title: "How far it has spread",
       body: "Earlier-stage disease more often includes local treatments (surgery and/or radiation). More advanced disease more often starts with systemic therapy — sometimes with radiation for specific problems.",
+      href: "/cancers/lung-cancer/understanding-stage",
+      linkLabel: "What does my lung cancer stage mean?",
     },
     {
       title: "Whether key information is complete",

@@ -118,7 +118,14 @@ export default async function CancerDecisionCenterPage({
                   href="/cancers/lung-cancer/understanding-types"
                   className="font-semibold text-[var(--accent)] hover:underline"
                 >
-                  Cancer types
+                  Types
+                </Link>
+                {" · "}
+                <Link
+                  href="/cancers/lung-cancer/understanding-stage"
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  Stage
                 </Link>
                 {" · "}
                 <Link
@@ -150,14 +157,21 @@ export default async function CancerDecisionCenterPage({
               href="/cancers/lung-cancer/understanding-types"
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              What type of lung cancer do I have?
+              What type do I have?
+            </Link>
+            {" · "}
+            <Link
+              href="/cancers/lung-cancer/understanding-stage"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              What does my stage mean?
             </Link>
             {" · "}
             <Link
               href="/cancers/lung-cancer/treatment-landscape"
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              How do treatment directions relate?
+              How do treatments relate?
             </Link>
           </p>
         </div>
@@ -218,6 +232,21 @@ export default async function CancerDecisionCenterPage({
                 className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
               >
                 Open Understanding Types →
+              </Link>
+            </li>
+            <li>
+              <p className="font-semibold text-[var(--ink)]">
+                Understanding lung cancer stage
+              </p>
+              <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
+                Orient to what stage means, early vs advanced discussions, and
+                questions to ask before choosing a path.
+              </p>
+              <Link
+                href="/cancers/lung-cancer/understanding-stage"
+                className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+              >
+                Open Understanding Stage →
               </Link>
             </li>
             <li>

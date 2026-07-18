@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { DoctorChecklistTakeaway } from "@/components/question/ai-entry/doctor-checklist-takeaway";
-import { LUNG_UNDERSTANDING_TYPES } from "@/lib/content/lung-understanding-types";
+import { LUNG_UNDERSTANDING_STAGE } from "@/lib/content/lung-understanding-stage";
 
-const content = LUNG_UNDERSTANDING_TYPES;
+const content = LUNG_UNDERSTANDING_STAGE;
 
 function BulletList({ items }: { items: readonly string[] }) {
   return (
@@ -20,7 +20,7 @@ function BulletList({ items }: { items: readonly string[] }) {
   );
 }
 
-export function UnderstandingTypes() {
+export function UnderstandingStage() {
   return (
     <article className="space-y-14 md:space-y-16">
       <header
@@ -77,7 +77,6 @@ export function UnderstandingTypes() {
           <p>{content.directAnswer.lead}</p>
           <p>{content.directAnswer.intro}</p>
           <BulletList items={content.directAnswer.points} />
-          <p>{content.directAnswer.bodyClose}</p>
           <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
             {content.directAnswer.close}
           </p>
@@ -85,53 +84,89 @@ export function UnderstandingTypes() {
       </section>
 
       <section
-        id={content.typeMap.id}
-        aria-labelledby="type-map-title"
+        id={content.whatStageDescribes.id}
+        aria-labelledby="what-stage-describes-title"
         className="scroll-mt-24"
       >
         <h2
-          id="type-map-title"
+          id="what-stage-describes-title"
           className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
         >
-          {content.typeMap.title}
+          {content.whatStageDescribes.title}
         </h2>
         <p className="mt-2 max-w-2xl text-[var(--muted)]">
-          {content.typeMap.lead}
+          {content.whatStageDescribes.lead}
         </p>
 
-        <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-10">
-          {content.typeMap.types.map((type) => (
+        <ol className="mt-6 space-y-5">
+          {content.whatStageDescribes.questions.map((item) => (
+            <li key={item.id} id={item.id} className="flex gap-3">
+              <span
+                className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-[var(--line)] bg-white text-[11px] font-bold text-[var(--muted)]"
+                aria-hidden
+              >
+                {item.number}
+              </span>
+              <div>
+                <p className="font-semibold text-[var(--ink)]">{item.title}</p>
+                <p className="mt-1 text-sm leading-relaxed text-[var(--ink-soft)] md:text-base">
+                  {item.body}
+                </p>
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <p className="mt-6 max-w-2xl border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+          {content.whatStageDescribes.takeaway}
+        </p>
+      </section>
+
+      <section
+        id={content.stageMap.id}
+        aria-labelledby="stage-map-title"
+        className="scroll-mt-24"
+      >
+        <h2
+          id="stage-map-title"
+          className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
+        >
+          {content.stageMap.title}
+        </h2>
+        <p className="mt-2 max-w-2xl text-[var(--muted)]">
+          {content.stageMap.lead}
+        </p>
+
+        <div className="mt-8 grid gap-8 lg:grid-cols-3 lg:gap-8">
+          {content.stageMap.bands.map((band) => (
             <div
-              key={type.id}
-              id={type.id}
+              key={band.id}
+              id={band.id}
               className="scroll-mt-24 border-t-2 border-[var(--accent)]/50 pt-4"
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
-                {type.tag}
-              </p>
-              <h3 className="mt-1.5 font-heading text-xl font-semibold text-[var(--ink)] md:text-2xl">
-                {type.name}
+              <h3 className="font-heading text-xl font-semibold text-[var(--ink)]">
+                {band.name}
               </h3>
               <div className="mt-3 space-y-3 text-sm leading-relaxed text-[var(--ink-soft)] md:text-base">
-                <p>{type.body}</p>
-                {type.bulletsIntro ? <p>{type.bulletsIntro}</p> : null}
-                <BulletList items={type.bullets} />
-                <div className="pt-2">
-                  <p className="font-semibold text-[var(--ink)]">
-                    {type.whyTitle}
+                <p>
+                  <span className="font-semibold text-[var(--ink)]">
+                    What it generally means:{" "}
+                  </span>
+                  {band.means}
+                </p>
+                <p>{band.discussionsIntro}</p>
+                <BulletList items={band.discussions} />
+                <p className="text-sm text-[var(--muted)]">{band.note}</p>
+                {"entryHref" in band && band.entryHref && band.entryLabel ? (
+                  <p>
+                    <Link
+                      href={band.entryHref}
+                      className="text-sm font-semibold text-[var(--accent)] hover:underline"
+                    >
+                      {band.entryLabel} →
+                    </Link>
                   </p>
-                  {type.whyIntro ? (
-                    <p className="mt-1.5">{type.whyIntro}</p>
-                  ) : null}
-                  {type.whyItems.length > 1 || type.whyIntro ? (
-                    <div className="mt-1.5">
-                      <BulletList items={type.whyItems} />
-                    </div>
-                  ) : (
-                    <p className="mt-1.5">{type.whyItems[0]}</p>
-                  )}
-                </div>
-                <p className="text-sm text-[var(--muted)]">{type.note}</p>
+                ) : null}
               </div>
             </div>
           ))}
@@ -185,6 +220,41 @@ export function UnderstandingTypes() {
       </section>
 
       <section
+        id={content.myths.id}
+        aria-labelledby="myths-title"
+        className="scroll-mt-24"
+      >
+        <h2
+          id="myths-title"
+          className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
+        >
+          {content.myths.title}
+        </h2>
+        <p className="mt-2 max-w-2xl text-[var(--muted)]">{content.myths.lead}</p>
+
+        <div className="mt-6 space-y-6">
+          {content.myths.items.map((item) => (
+            <div
+              key={item.id}
+              id={item.id}
+              className="border-l-2 border-[var(--line)] pl-4"
+            >
+              <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[var(--muted)]">
+                Myth
+              </p>
+              <p className="mt-1 font-medium text-[var(--ink)]">{item.myth}</p>
+              <p className="mt-3 text-xs font-semibold uppercase tracking-[0.12em] text-[var(--accent)]">
+                Reality
+              </p>
+              <p className="mt-1 text-sm leading-relaxed text-[var(--ink-soft)] md:text-base">
+                {item.reality}
+              </p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      <section
         id={content.faqs.id}
         aria-labelledby="common-questions-title"
         className="scroll-mt-24"
@@ -218,9 +288,6 @@ export function UnderstandingTypes() {
                 {"bullets" in faq && faq.bullets ? (
                   <BulletList items={faq.bullets} />
                 ) : null}
-                {"close" in faq && faq.close ? (
-                  <p className="font-medium text-[var(--ink)]">{faq.close}</p>
-                ) : null}
               </div>
             </details>
           ))}
@@ -228,28 +295,28 @@ export function UnderstandingTypes() {
       </section>
 
       <section
-        id={content.pathology.id}
-        aria-labelledby="pathology-title"
+        id={content.stageReport.id}
+        aria-labelledby="stage-report-title"
         className="scroll-mt-24"
       >
         <h2
-          id="pathology-title"
+          id="stage-report-title"
           className="font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
         >
-          {content.pathology.title}
+          {content.stageReport.title}
         </h2>
         <p className="mt-3 max-w-2xl text-lg text-[var(--ink-soft)]">
-          {content.pathology.heroSentence}
+          {content.stageReport.heroSentence}
         </p>
         <p className="mt-2 max-w-2xl text-[var(--muted)]">
-          {content.pathology.reassure}
+          {content.stageReport.reassure}
         </p>
         <p className="mt-5 font-medium text-[var(--ink)]">
-          {content.pathology.prompt}
+          {content.stageReport.prompt}
         </p>
 
         <ol className="mt-5 space-y-5">
-          {content.pathology.finders.map((finder, index) => (
+          {content.stageReport.finders.map((finder, index) => (
             <li key={finder.id} id={finder.id} className="flex gap-3">
               <span
                 className="mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border border-[var(--line)] bg-white text-[11px] font-bold text-[var(--muted)]"
@@ -271,7 +338,7 @@ export function UnderstandingTypes() {
         </ol>
 
         <p className="mt-6 max-w-2xl border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
-          {content.pathology.close}
+          {content.stageReport.close}
         </p>
       </section>
 
@@ -369,27 +436,22 @@ export function UnderstandingTypes() {
           ))}
         </ul>
 
-        <p className="mt-6 text-sm text-[var(--muted)]">
-          Also useful:{" "}
-          <Link
-            href={content.related.stageHref}
-            className="font-semibold text-[var(--accent)] hover:underline"
-          >
-            {content.related.stageLabel}
-          </Link>{" "}
-          — {content.related.stageHint}
-        </p>
-        <p className="mt-2 text-sm text-[var(--muted)]">
-          Also useful:{" "}
-          <Link
-            href={content.related.landscapeHref}
-            className="font-semibold text-[var(--accent)] hover:underline"
-          >
-            {content.related.landscapeLabel}
-          </Link>{" "}
-          — {content.related.landscapeHint}
-        </p>
-        <p className="mt-3 text-sm text-[var(--muted)]">
+        <ul className="mt-6 space-y-2 text-sm text-[var(--muted)]">
+          {content.related.secondary.map((link) => (
+            <li key={link.href}>
+              Also useful:{" "}
+              <Link
+                href={link.href}
+                className="font-semibold text-[var(--accent)] hover:underline"
+              >
+                {link.label}
+              </Link>{" "}
+              — {link.hint}
+            </li>
+          ))}
+        </ul>
+
+        <p className="mt-4 text-sm text-[var(--muted)]">
           Prefer situation-based navigation?{" "}
           <Link
             href="/cancers/lung-cancer#decision-moment"

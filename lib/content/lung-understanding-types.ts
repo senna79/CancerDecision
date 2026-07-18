@@ -301,6 +301,9 @@ export const LUNG_UNDERSTANDING_TYPES = {
     landscapeLabel: "Lung Cancer Treatment Landscape",
     landscapeHint:
       "a map of treatment directions after you know your type.",
+    stageHref: "/cancers/lung-cancer/understanding-stage",
+    stageLabel: "Understanding Stage",
+    stageHint: "what stage means for the options you may discuss next.",
   },
 
   sources: {
