@@ -37,7 +37,7 @@ Light eyebrows above patient-facing step titles — not big headlines, not water
 
 - Left — numbered Decision Path (must-walk story)  
 - Right — accordion **Questions you may have** for that step only  
-- Step 4 doctor checklist stays on the main axis (takeaway + full groups), not in the right rail
+- Step 4: short leave checklist + Copy always visible; longer question bank collapsed by situation (no fake checkboxes / no select-to-generate)
 
 **Mobile:** step story → that step’s cards → next step.
 
