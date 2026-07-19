@@ -116,4 +116,24 @@ export const TREATMENT_PROGRESSION_ENTRY_CARDS = {
     ],
     close: "Understanding the plan can reduce uncertainty.",
   },
+  targetedStops: {
+    lead: "When targeted therapy stops working, the next step is usually a reassessment — not an assumption that nothing remains.",
+    items: [
+      "Where the cancer is progressing",
+      "Whether new testing (tissue or blood) could change options",
+      "Other approved treatments, combinations, local therapy, or trials",
+      "What matters most to you now — control, symptoms, or daily life",
+    ],
+    ask: "What has changed, what options do I have now, and do we need new biomarker information?",
+  },
+  noMoreChemo: {
+    lead: "“No more chemotherapy” can mean different things. Clarify before you assume all options are closed.",
+    ask: [
+      "Does that mean chemotherapy is no longer helpful — or that another approach fits better?",
+      "Are targeted therapy, immunotherapy, trials, or local treatments still on the table?",
+      "Should we discuss supportive care goals alongside cancer-directed options?",
+    ],
+    close:
+      "Ask what is still being considered — and what the next useful decision is.",
+  },
 } as const;

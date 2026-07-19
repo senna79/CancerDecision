@@ -86,4 +86,16 @@ export const STAGE_IV_ENTRY_CARDS = {
     lead: "Yes. Your preferences matter. Good cancer care includes discussing medical options, expected benefits, risks, and what matters most to you.",
     close: "You are part of the decision — not only the recipient of a plan.",
   },
+  askList: {
+    lead: "After a Stage IV diagnosis, focus questions on the next useful decision.",
+    ask: [
+      "What are the goals of treatment in my situation?",
+      "Has comprehensive biomarker testing been done?",
+      "What options are we comparing — and why this recommendation?",
+      "Are clinical trials relevant for me now?",
+      "How will treatment affect daily life, work, and symptoms?",
+      "What should I do this week while we wait for results or next visits?",
+    ],
+    close: "You do not need every answer today — you need a clear next step.",
+  },
 } as const;

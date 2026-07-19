@@ -104,4 +104,26 @@ export const CLINICAL_TRIAL_ENTRY_CARDS = {
     lead: "A second opinion may help when the trial decision is complex, multiple options exist, or you want more confidence.",
     close: "The goal is better understanding — not delaying care unnecessarily.",
   },
+  nearMe: {
+    lead: "Start with your care team — they often know which trials fit your situation and which centers are practical.",
+    items: [
+      "Ask what trials are open at your center or partner hospitals",
+      "Ask whether travel or hybrid participation is required",
+      "Use trusted trial finders only after you know your diagnosis details and biomarkers",
+    ],
+    ask: [
+      "Are there trials relevant to my situation near me — or worth traveling for?",
+      "What records do I need to check eligibility?",
+    ],
+    close: "“Near me” matters — but fit matters more than distance alone.",
+  },
+  stage4: {
+    lead: "Clinical trials are commonly discussed for Stage IV lung cancer — including early in care, not only after other options fail.",
+    items: [
+      "Some trials compare a new approach with standard first-line care",
+      "Biomarker results often affect which trials are relevant",
+      "A trial is one option to compare — not a requirement",
+    ],
+    ask: "Are there clinical trials that may be relevant now, and how would they compare with standard options?",
+  },
 } as const;

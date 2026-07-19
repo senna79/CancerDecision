@@ -132,4 +132,24 @@ export const RECURRENCE_ENTRY_CARDS = {
     close:
       "It can be discussed alongside cancer treatment, not only when treatment options are limited.",
   },
+  afterLobectomy: {
+    lead: "Recurrence after lobectomy is a new decision point. Doctors usually reassess:",
+    items: [
+      "Where the cancer returned — local area, lymph nodes, or elsewhere",
+      "How long after surgery it appeared",
+      "What treatments you have already received",
+      "Whether new testing could change options",
+    ],
+    ask: "Given that I had a lobectomy, what options make sense now — and why?",
+  },
+  afterImmuno: {
+    lead: "If cancer returns after immunotherapy, prior treatment history is part of the next comparison.",
+    items: [
+      "How long immunotherapy helped",
+      "Whether the cancer changed in ways that need new testing",
+      "What other systemic, local, or trial options remain",
+      "How quality of life and goals should shape the next step",
+    ],
+    ask: "After immunotherapy, what are my options now — and do we need updated biomarkers?",
+  },
 } as const;

@@ -88,4 +88,24 @@ export const CARE_CENTER_ENTRY_CARDS = {
     ],
     close: "Expertise without coordination can still make a plan hard to follow.",
   },
+  whoTreats: {
+    lead: "Lung cancer care often involves more than one specialist. Roles may include:",
+    items: [
+      "Medical oncologist — systemic treatments such as chemotherapy, immunotherapy, or targeted therapy",
+      "Thoracic surgeon — surgery decisions and operations",
+      "Radiation oncologist — radiation planning and treatment",
+      "Pulmonologist — lung function and some diagnostic procedures",
+    ],
+    ask: "Who is leading my overall plan — and when should other specialists join?",
+    close: "The useful question is who coordinates your decisions — not only who has the biggest title.",
+  },
+  thoracicOnc: {
+    lead: "A thoracic oncologist focuses on cancers of the chest, including lung cancer. Some centers use this title for medical oncologists with deep lung-cancer expertise; others refer to a multidisciplinary thoracic team.",
+    ask: [
+      "Does my doctor primarily treat lung cancer?",
+      "Will my case be reviewed by a thoracic multidisciplinary team when needed?",
+    ],
+    close:
+      "Specialization is one signal of fit — communication and access still matter.",
+  },
 } as const;

@@ -13,6 +13,7 @@ import { STAGE_IV_ENTRY_CARDS } from "@/lib/content/stage-iv-entry-cards";
 import { CARE_CENTER_ENTRY_CARDS } from "@/lib/content/care-center-entry-cards";
 import { FEASIBILITY_ENTRY_CARDS } from "@/lib/content/feasibility-entry-cards";
 import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
+import { BIOMARKER_ENTRY_CARDS } from "@/lib/content/biomarker-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
 import { ContentBridge } from "./content-bridge";
@@ -1608,6 +1609,174 @@ export function DecisionPathCardDetail({
           close={CARE_CENTER_ENTRY_CARDS.multiSite.close}
         />
       );
+    case "bm-comprehensive":
+      return (
+        <BulletCard
+          lead={BIOMARKER_ENTRY_CARDS.comprehensive.lead}
+          items={BIOMARKER_ENTRY_CARDS.comprehensive.items}
+          ask={BIOMARKER_ENTRY_CARDS.comprehensive.ask}
+        />
+      );
+    case "bm-ask-tested":
+      return (
+        <BulletCard
+          lead={BIOMARKER_ENTRY_CARDS.askTested.lead}
+          ask={BIOMARKER_ENTRY_CARDS.askTested.ask}
+          close={BIOMARKER_ENTRY_CARDS.askTested.close}
+        />
+      );
+    case "so-why-important":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.whyImportant.lead}
+          items={SECOND_OPINION_ENTRY_CARDS.whyImportant.items}
+          close={SECOND_OPINION_ENTRY_CARDS.whyImportant.close}
+        />
+      );
+    case "tx-chemo-vs-immuno":
+      return (
+        <BulletCard
+          lead={TREATMENT_OPTIONS_ENTRY_CARDS.chemoVsImmuno.lead}
+          items={TREATMENT_OPTIONS_ENTRY_CARDS.chemoVsImmuno.items}
+          ask={TREATMENT_OPTIONS_ENTRY_CARDS.chemoVsImmuno.ask}
+        />
+      );
+    case "tx-targeted-vs-immuno":
+      return (
+        <BulletCard
+          lead={TREATMENT_OPTIONS_ENTRY_CARDS.targetedVsImmuno.lead}
+          items={TREATMENT_OPTIONS_ENTRY_CARDS.targetedVsImmuno.items}
+          ask={TREATMENT_OPTIONS_ENTRY_CARDS.targetedVsImmuno.ask}
+          close={TREATMENT_OPTIONS_ENTRY_CARDS.targetedVsImmuno.close}
+        />
+      );
+    case "surgery-sbrt":
+      return (
+        <BulletCard
+          lead={SURGERY_ENTRY_CARDS.sbrt.lead}
+          items={SURGERY_ENTRY_CARDS.sbrt.items}
+          ask={SURGERY_ENTRY_CARDS.sbrt.ask}
+        />
+      );
+    case "surgery-ask-surgeon":
+      return (
+        <BulletCard
+          lead={SURGERY_ENTRY_CARDS.askSurgeon.lead}
+          ask={SURGERY_ENTRY_CARDS.askSurgeon.ask}
+        />
+      );
+    case "trial-near-me":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.nearMe.lead}
+          items={CLINICAL_TRIAL_ENTRY_CARDS.nearMe.items}
+          ask={CLINICAL_TRIAL_ENTRY_CARDS.nearMe.ask}
+          close={CLINICAL_TRIAL_ENTRY_CARDS.nearMe.close}
+        />
+      );
+    case "trial-stage4":
+      return (
+        <BulletCard
+          lead={CLINICAL_TRIAL_ENTRY_CARDS.stage4.lead}
+          items={CLINICAL_TRIAL_ENTRY_CARDS.stage4.items}
+          close={`Ask: “${CLINICAL_TRIAL_ENTRY_CARDS.stage4.ask}”`}
+        />
+      );
+    case "prog-targeted-stops":
+      return (
+        <BulletCard
+          lead={TREATMENT_PROGRESSION_ENTRY_CARDS.targetedStops.lead}
+          items={TREATMENT_PROGRESSION_ENTRY_CARDS.targetedStops.items}
+          close={`Ask: “${TREATMENT_PROGRESSION_ENTRY_CARDS.targetedStops.ask}”`}
+        />
+      );
+    case "prog-no-more-chemo":
+      return (
+        <BulletCard
+          lead={TREATMENT_PROGRESSION_ENTRY_CARDS.noMoreChemo.lead}
+          ask={TREATMENT_PROGRESSION_ENTRY_CARDS.noMoreChemo.ask}
+          close={TREATMENT_PROGRESSION_ENTRY_CARDS.noMoreChemo.close}
+        />
+      );
+    case "rec-after-lobectomy":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.afterLobectomy.lead}
+          items={RECURRENCE_ENTRY_CARDS.afterLobectomy.items}
+          close={`Ask: “${RECURRENCE_ENTRY_CARDS.afterLobectomy.ask}”`}
+        />
+      );
+    case "rec-after-immuno":
+      return (
+        <BulletCard
+          lead={RECURRENCE_ENTRY_CARDS.afterImmuno.lead}
+          items={RECURRENCE_ENTRY_CARDS.afterImmuno.items}
+          close={`Ask: “${RECURRENCE_ENTRY_CARDS.afterImmuno.ask}”`}
+        />
+      );
+    case "qol-work":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.workDuring.lead}
+          ask={QUALITY_OF_LIFE_ENTRY_CARDS.workDuring.ask}
+          close={QUALITY_OF_LIFE_ENTRY_CARDS.workDuring.close}
+        />
+      );
+    case "qol-palliative-home":
+      return (
+        <BulletCard
+          lead={QUALITY_OF_LIFE_ENTRY_CARDS.palliativeHome.lead}
+          items={QUALITY_OF_LIFE_ENTRY_CARDS.palliativeHome.items}
+          close={`Ask: “${QUALITY_OF_LIFE_ENTRY_CARDS.palliativeHome.ask}” ${QUALITY_OF_LIFE_ENTRY_CARDS.palliativeHome.close}`}
+        />
+      );
+    case "nd-start-right-away":
+      return (
+        <BulletCard
+          lead={NEWLY_DIAGNOSED_ENTRY_CARDS.startRightAway.lead}
+          ask={NEWLY_DIAGNOSED_ENTRY_CARDS.startRightAway.ask}
+          close={NEWLY_DIAGNOSED_ENTRY_CARDS.startRightAway.close}
+        />
+      );
+    case "nd-ask-oncologist":
+      return (
+        <BulletCard
+          lead={NEWLY_DIAGNOSED_ENTRY_CARDS.askOncologist.lead}
+          ask={NEWLY_DIAGNOSED_ENTRY_CARDS.askOncologist.ask}
+          close={NEWLY_DIAGNOSED_ENTRY_CARDS.askOncologist.close}
+        />
+      );
+    case "nd-ask-thoracic":
+      return (
+        <BulletCard
+          lead={NEWLY_DIAGNOSED_ENTRY_CARDS.askThoracic.lead}
+          ask={NEWLY_DIAGNOSED_ENTRY_CARDS.askThoracic.ask}
+        />
+      );
+    case "siv-ask":
+      return (
+        <BulletCard
+          lead={STAGE_IV_ENTRY_CARDS.askList.lead}
+          ask={STAGE_IV_ENTRY_CARDS.askList.ask}
+          close={STAGE_IV_ENTRY_CARDS.askList.close}
+        />
+      );
+    case "cc-who-treats":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.whoTreats.lead}
+          items={CARE_CENTER_ENTRY_CARDS.whoTreats.items}
+          close={`Ask: “${CARE_CENTER_ENTRY_CARDS.whoTreats.ask}” ${CARE_CENTER_ENTRY_CARDS.whoTreats.close}`}
+        />
+      );
+    case "cc-thoracic-onc":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.thoracicOnc.lead}
+          ask={CARE_CENTER_ENTRY_CARDS.thoracicOnc.ask}
+          close={CARE_CENTER_ENTRY_CARDS.thoracicOnc.close}
+        />
+      );
     case "fe-belongs":
       return (
         <BulletCard
@@ -1620,6 +1789,22 @@ export function DecisionPathCardDetail({
         <BulletCard
           lead={FEASIBILITY_ENTRY_CARDS.notPrices.lead}
           close={FEASIBILITY_ENTRY_CARDS.notPrices.close}
+        />
+      );
+    case "fe-cost-ask":
+      return (
+        <BulletCard
+          lead={FEASIBILITY_ENTRY_CARDS.costAsk.lead}
+          ask={FEASIBILITY_ENTRY_CARDS.costAsk.ask}
+          close={FEASIBILITY_ENTRY_CARDS.costAsk.close}
+        />
+      );
+    case "fu-plan-include":
+      return (
+        <BulletCard
+          lead={FOLLOW_UP_ENTRY_CARDS.planInclude.lead}
+          items={FOLLOW_UP_ENTRY_CARDS.planInclude.items}
+          close={`Ask: “${FOLLOW_UP_ENTRY_CARDS.planInclude.ask}”`}
         />
       );
     case "second-opinion": {

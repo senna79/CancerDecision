@@ -29,6 +29,17 @@ export const SECOND_OPINION_ENTRY_CARDS = {
     close:
       "Asking for another review is about confidence and clarity — not about distrust.",
   },
+  whyImportant: {
+    lead: "Lung cancer decisions often involve subtypes, biomarkers, and more than one reasonable plan.",
+    items: [
+      "Confirm the diagnosis and staging picture",
+      "Check whether important testing is missing",
+      "Hear whether another approach is also reasonable",
+      "Gain confidence before surgery or a major therapy choice",
+    ],
+    close:
+      "A second opinion can confirm the current plan — confirmation is also a useful outcome.",
+  },
   canChange: {
     lead: "Yes, but not always. A second opinion may:",
     outcomes: [

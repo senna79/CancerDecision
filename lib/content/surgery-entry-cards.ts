@@ -112,4 +112,26 @@ export const SURGERY_ENTRY_CARDS = {
       "Are treatment decisions reviewed by multiple specialists?",
     ],
   },
+  sbrt: {
+    lead: "SBRT (stereotactic body radiation therapy) is a focused radiation approach sometimes discussed as an alternative to surgery for selected early cancers.",
+    items: [
+      "Surgery removes tissue; SBRT treats a target area with radiation",
+      "Fitness for surgery, tumor location, and overall health affect which is discussed",
+      "Neither is automatically “better” for every person",
+    ],
+    ask: [
+      "For my situation, how do surgery and SBRT compare on goals and trade-offs?",
+      "What would recovery and follow-up look like for each option?",
+    ],
+  },
+  askSurgeon: {
+    lead: "Before deciding, make the surgery conversation concrete.",
+    ask: [
+      "What is the goal of surgery in my plan?",
+      "What are my alternatives if I do not have surgery?",
+      "What type of operation are you recommending, and why?",
+      "What recovery and breathing changes should I expect?",
+      "Would another surgical opinion be reasonable before we proceed?",
+    ],
+  },
 } as const;

@@ -152,4 +152,29 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
       "How would participation affect my current plan?",
     ],
   },
+  chemoVsImmuno: {
+    lead: "Chemotherapy and immunotherapy are different tools — not simply “stronger” vs “gentler.”",
+    items: [
+      "Chemotherapy uses medicines that affect rapidly dividing cells, including cancer cells",
+      "Immunotherapy helps the immune system recognize and attack cancer cells",
+      "They may be used alone, together, or in sequence depending on your situation",
+    ],
+    ask: [
+      "What is each treatment trying to achieve for me?",
+      "Could biomarker results change which approach fits better?",
+    ],
+  },
+  targetedVsImmuno: {
+    lead: "Targeted therapy and immunotherapy also work differently.",
+    items: [
+      "Targeted therapy uses specific cancer features (biomarkers) to guide medicine choice",
+      "Immunotherapy engages the immune system; biomarkers such as PD-L1 may affect discussion",
+      "Having a targetable feature can change which options are preferred",
+    ],
+    ask: [
+      "Do I have biomarker results that point toward targeted therapy?",
+      "If not, how does immunotherapy compare with my other options?",
+    ],
+    close: "The comparison belongs with your care team — not a general ranking.",
+  },
 } as const;

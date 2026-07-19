@@ -118,4 +118,15 @@ export const FOLLOW_UP_ENTRY_CARDS = {
       "You want more confidence",
     ],
   },
+  planInclude: {
+    lead: "A clear follow-up plan usually covers:",
+    items: [
+      "Visit and scan schedule — and why that timing fits you",
+      "Which symptoms to report between visits",
+      "Who to call for urgent vs routine concerns",
+      "How long-term treatment effects will be watched",
+      "What records to keep for future decisions",
+    ],
+    ask: "Can we write down my follow-up plan — schedule, symptoms, and contacts?",
+  },
 } as const;

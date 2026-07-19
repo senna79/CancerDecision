@@ -66,4 +66,36 @@ export const NEWLY_DIAGNOSED_ENTRY_CARDS = {
     close:
       "A structured next-step plan can help reduce the feeling of being lost.",
   },
+  startRightAway: {
+    lead: "Not always. Some situations need prompt action; others benefit from waiting for key information first.",
+    ask: [
+      "How urgent is my situation?",
+      "What needs to happen this week?",
+      "What can wait for biomarker or staging results?",
+    ],
+    close:
+      "Ask for a clear timeline — rushing and waiting both have trade-offs.",
+  },
+  askOncologist: {
+    lead: "Focus on questions that clarify your next decision — not every possible detail.",
+    ask: [
+      "What type and stage of lung cancer do I have?",
+      "What additional information do we still need?",
+      "Has biomarker testing been ordered — and could results change options?",
+      "What are my treatment options, and why this recommendation?",
+      "How soon do we need to decide?",
+      "Are clinical trials or a second opinion worth discussing now?",
+    ],
+    close: "Bring a written list. One clear next step beats fifty unanswered questions.",
+  },
+  askThoracic: {
+    lead: "If surgery is being discussed, a thoracic surgeon conversation should clarify fit — not only technique.",
+    ask: [
+      "Is surgery appropriate for my situation, and what is the goal?",
+      "What are the alternatives if I do not have surgery?",
+      "How much of your practice is lung cancer surgery?",
+      "What recovery and breathing changes should I expect?",
+      "Would a second opinion before surgery be reasonable?",
+    ],
+  },
 } as const;

@@ -172,6 +172,16 @@ const BIOMARKER_PATH: EntryPathV2 = {
           summary: "What affects turnaround — without a fixed calendar.",
         },
         {
+          id: "bm-comprehensive",
+          title: "What does “comprehensive” biomarker testing mean?",
+          summary: "Broad panels vs limited tests — and what to confirm was checked.",
+        },
+        {
+          id: "bm-ask-tested",
+          title: "Has my tumor been tested for the biomarkers that matter?",
+          summary: "A direct question that belongs in your next visit.",
+        },
+        {
           id: "delay",
           title: "What if treatment feels urgent?",
           summary: "Waiting is not automatically an unsafe delay.",
@@ -262,6 +272,11 @@ const SECOND_OPINION_PATH: EntryPathV2 = {
           id: "so-disrespect",
           title: "Is asking for a second opinion disrespectful to my doctor?",
           summary: "How to frame confidence — not distrust.",
+        },
+        {
+          id: "so-why-important",
+          title: "Why is a second opinion important for lung cancer?",
+          summary: "Clarity, confirmation, and options you may not have heard.",
         },
       ],
     },
@@ -456,6 +471,16 @@ const TREATMENT_COMPARE_PATH: EntryPathV2 = {
           title: "Can I take time to decide between treatments?",
           summary: "Ask how urgent the decision is — and what you are waiting for.",
         },
+        {
+          id: "tx-chemo-vs-immuno",
+          title: "How do chemotherapy and immunotherapy differ?",
+          summary: "Different tools — compare purpose, not just “stronger.”",
+        },
+        {
+          id: "tx-targeted-vs-immuno",
+          title: "How do targeted therapy and immunotherapy differ?",
+          summary: "One uses cancer features; the other engages the immune system.",
+        },
       ],
     },
     {
@@ -557,6 +582,11 @@ const SURGERY_PATH: EntryPathV2 = {
           title: "When might surgery not be the best option?",
           summary: "Why another path may fit better.",
         },
+        {
+          id: "surgery-sbrt",
+          title: "How does SBRT (focused radiation) compare with surgery?",
+          summary: "Two local treatments — ask which fits your situation.",
+        },
       ],
     },
     {
@@ -611,6 +641,11 @@ const SURGERY_PATH: EntryPathV2 = {
           summary: "Experience and team review — not only reputation.",
         },
         {
+          id: "surgery-ask-surgeon",
+          title: "What should I ask a thoracic surgeon before deciding?",
+          summary: "Goals, alternatives, recovery, and second-opinion timing.",
+        },
+        {
           id: "scenario",
           title: "An example scenario",
           summary: "How someone might frame the surgery decision.",
@@ -662,6 +697,11 @@ const CLINICAL_TRIAL_PATH: EntryPathV2 = {
           id: "trial-not-subject",
           title: "Does joining a clinical trial mean I am a test subject?",
           summary: "Research with structure — and your choice to participate.",
+        },
+        {
+          id: "trial-stage4",
+          title: "Are clinical trials relevant for Stage IV lung cancer?",
+          summary: "Often discussed — fit still depends on your situation.",
         },
       ],
     },
@@ -715,6 +755,11 @@ const CLINICAL_TRIAL_PATH: EntryPathV2 = {
           id: "trial-if-not",
           title: "What happens if the trial does not work?",
           summary: "Options afterward — and whether you can stop.",
+        },
+        {
+          id: "trial-near-me",
+          title: "How do I find clinical trials near me?",
+          summary: "Ask your team first — then use trusted trial finders.",
         },
       ],
     },
@@ -846,6 +891,11 @@ const TREATMENT_PROGRESSION_PATH: EntryPathV2 = {
           title: "When should I consider a clinical trial?",
           summary: "When standard options are changing or features match.",
         },
+        {
+          id: "prog-targeted-stops",
+          title: "What are my options if targeted therapy stops working?",
+          summary: "Reassess — including whether new testing could change choices.",
+        },
       ],
     },
     {
@@ -859,6 +909,11 @@ const TREATMENT_PROGRESSION_PATH: EntryPathV2 = {
           id: "prog-mistakes",
           title: "What mistakes do patients make when treatment changes?",
           summary: "No options left, chasing “new,” skipping goals.",
+        },
+        {
+          id: "prog-no-more-chemo",
+          title: "What if my oncologist says there are no more chemotherapy options?",
+          summary: "Clarify what “no more” means — and what else may still be discussed.",
         },
         {
           id: "second-opinion",
@@ -928,6 +983,11 @@ const RECURRENCE_PATH: EntryPathV2 = {
           title: "Can lung cancer come back after surgery?",
           summary: "Why follow-up matters — and what gets reassessed.",
         },
+        {
+          id: "rec-after-lobectomy",
+          title: "What if lung cancer comes back after lobectomy?",
+          summary: "Location and prior treatment shape the next comparison.",
+        },
       ],
     },
     {
@@ -941,6 +1001,11 @@ const RECURRENCE_PATH: EntryPathV2 = {
           id: "rec-biopsy",
           title: "Will I need another biopsy after recurrence?",
           summary: "Only when testing could change the options.",
+        },
+        {
+          id: "rec-after-immuno",
+          title: "What if lung cancer comes back after immunotherapy?",
+          summary: "Prior treatment history is part of the next decision.",
         },
         {
           id: "rec-characteristics",
@@ -1063,6 +1128,11 @@ const QUALITY_OF_LIFE_PATH: EntryPathV2 = {
           title: "Can quality of life affect which treatment I choose?",
           summary: "Benefit, risks, and personal goals all count.",
         },
+        {
+          id: "qol-work",
+          title: "Can I work during lung cancer treatment?",
+          summary: "Often possible with planning — ask what a treatment week looks like.",
+        },
       ],
     },
     {
@@ -1136,6 +1206,11 @@ const QUALITY_OF_LIFE_PATH: EntryPathV2 = {
           summary: "They are not the same thing.",
         },
         {
+          id: "qol-palliative-home",
+          title: "What does palliative care at home involve?",
+          summary: "Comfort and support where you live — ask what is available.",
+        },
+        {
           id: "qol-family",
           title: "How can my family help without taking over decisions?",
           summary: "Support your choices — keep your preferences central.",
@@ -1202,6 +1277,11 @@ const FOLLOW_UP_PATH: EntryPathV2 = {
           id: "fu-who-manages",
           title: "Who manages my care after treatment?",
           summary: "Know who to contact for different concerns.",
+        },
+        {
+          id: "fu-plan-include",
+          title: "What should my follow-up plan include?",
+          summary: "Schedule, symptoms to report, and who to call between visits.",
         },
       ],
     },
@@ -1359,6 +1439,11 @@ const NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
           title: "Does waiting for more information mean treatment is delayed?",
           summary: "Not every wait is the same — ask how urgent it is.",
         },
+        {
+          id: "nd-start-right-away",
+          title: "Should I start treatment right away after diagnosis?",
+          summary: "Urgency varies — ask what must happen now vs after key results.",
+        },
       ],
     },
     {
@@ -1391,6 +1476,16 @@ const NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
           id: "nd-this-week",
           title: "I just received a diagnosis. What should I do this week?",
           summary: "Three focuses — not the whole journey at once.",
+        },
+        {
+          id: "nd-ask-oncologist",
+          title: "What questions should I ask my oncologist after diagnosis?",
+          summary: "A focused ask list — not fifty questions at once.",
+        },
+        {
+          id: "nd-ask-thoracic",
+          title: "What should I ask a thoracic surgeon?",
+          summary: "Goals, alternatives, experience, and recovery expectations.",
         },
         {
           id: "nd-second-opinion",
@@ -1540,6 +1635,11 @@ const STAGE_IV_PATH: EntryPathV2 = {
           summary: "Yes — your preferences belong in the conversation.",
         },
         {
+          id: "siv-ask",
+          title: "What questions should I ask for Stage IV lung cancer?",
+          summary: "Goals, biomarkers, options, and what matters in daily life.",
+        },
+        {
           id: "scenario",
           title: "An example scenario",
           summary: "How someone might frame the first conversations.",
@@ -1588,6 +1688,16 @@ const CARE_CENTER_PATH: EntryPathV2 = {
           id: "cc-everyone",
           title: "Does everyone need a major cancer center?",
           summary: "No — the right level of care depends on your situation.",
+        },
+        {
+          id: "cc-who-treats",
+          title: "Who treats lung cancer — and which specialist do I need?",
+          summary: "Roles differ — ask who leads decisions for your situation.",
+        },
+        {
+          id: "cc-thoracic-onc",
+          title: "What is a thoracic oncologist?",
+          summary: "A specialist focused on cancers of the chest, including lung cancer.",
         },
         {
           id: "cc-vs-second-opinion",
@@ -1748,7 +1858,13 @@ const FEASIBILITY_PATH: EntryPathV2 = {
       title: "What should I ask about practical fit?",
       lead: "Patient question: what three questions help most?",
       main: "fe-ask",
-      cards: [],
+      cards: [
+        {
+          id: "fe-cost-ask",
+          title: "What cost and logistics questions should I ask?",
+          summary: "Name constraints early — without needing exact prices first.",
+        },
+      ],
     },
     {
       id: "conversation",

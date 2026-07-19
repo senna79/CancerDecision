@@ -11,4 +11,15 @@ export const FEASIBILITY_ENTRY_CARDS = {
     close:
       "The useful step is naming constraints early with your care team — then choosing the decision page that fits your question.",
   },
+  costAsk: {
+    lead: "You do not need exact prices before you ask useful questions.",
+    ask: [
+      "What time, travel, and visit load should I expect with this plan?",
+      "What costs or authorization steps should I understand early?",
+      "If this plan is hard to sustain, what could be adjusted?",
+      "Who can help with financial counseling or support resources?",
+    ],
+    close:
+      "Naming constraints early helps your team compare workable options — not only medical ones.",
+  },
 } as const;

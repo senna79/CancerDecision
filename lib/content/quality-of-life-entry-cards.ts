@@ -119,4 +119,26 @@ export const QUALITY_OF_LIFE_ENTRY_CARDS = {
     ],
     close: "You do not have to make every decision alone.",
   },
+  workDuring: {
+    lead: "Many people continue some work during treatment — others need time off for parts of care. It depends on treatment type, side effects, and job demands.",
+    ask: [
+      "What does a typical treatment week look like for my plan?",
+      "Which side effects most often affect work?",
+      "Are schedule adjustments possible if work becomes hard?",
+    ],
+    close:
+      "Tell your team what your work requires — planning is part of the decision, not a separate problem.",
+  },
+  palliativeHome: {
+    lead: "Palliative or supportive care at home focuses on comfort, symptoms, and daily function where you live. It can run alongside cancer treatment.",
+    items: [
+      "Symptom and medication support",
+      "Nursing or home-care visits when available",
+      "Help with equipment, comfort, and family guidance",
+      "Coordination with your oncology team",
+    ],
+    ask: "What home-based supportive care is available for my situation — and how do we start it?",
+    close:
+      "Ask early. Home support is not only for the final stage of illness.",
+  },
 } as const;
