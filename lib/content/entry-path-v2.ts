@@ -134,7 +134,7 @@ const BIOMARKER_PATH: EntryPathV2 = {
         },
         {
           id: "if-none",
-          title: "What if no actionable biomarker is found?",
+          title: "What if lung cancer has no targetable mutation?",
           summary: "Why “no match” is not the same as “no options.”",
         },
         {
@@ -158,7 +158,7 @@ const BIOMARKER_PATH: EntryPathV2 = {
         },
         {
           id: "biopsy",
-          title: "Will I need another biopsy?",
+          title: "Do I need another biopsy for biomarker testing?",
           summary: "When a new sample may be discussed — and when it may not.",
         },
         {
@@ -168,7 +168,7 @@ const BIOMARKER_PATH: EntryPathV2 = {
         },
         {
           id: "turnaround",
-          title: "How long does testing take?",
+          title: "How long does biomarker testing take for lung cancer?",
           summary: "What affects turnaround — without a fixed calendar.",
         },
         {
@@ -183,7 +183,7 @@ const BIOMARKER_PATH: EntryPathV2 = {
         },
         {
           id: "delay",
-          title: "What if treatment feels urgent?",
+          title: "Should I wait for biomarker results before starting treatment?",
           summary: "Waiting is not automatically an unsafe delay.",
         },
         {
@@ -405,7 +405,7 @@ const TREATMENT_COMPARE_PATH: EntryPathV2 = {
         },
         {
           id: "tx-newer",
-          title: "Are newer treatments always better?",
+          title: "Is the newest lung cancer treatment always best for me?",
           summary: "Fit matters more than novelty.",
         },
       ],
@@ -453,7 +453,7 @@ const TREATMENT_COMPARE_PATH: EntryPathV2 = {
         },
         {
           id: "tx-cant-manage",
-          title: "What if I cannot manage the recommended schedule?",
+          title: "Can my lung cancer treatment plan work with my real life?",
           summary: "Say so early — plans can sometimes be adjusted.",
         },
         {
@@ -569,7 +569,7 @@ const SURGERY_PATH: EntryPathV2 = {
       cards: [
         {
           id: "surgery-before",
-          title: "Could I need treatment before surgery?",
+          title: "Do I need treatment before lung cancer surgery?",
           summary: "When medicines or other care come first.",
         },
         {
@@ -579,7 +579,7 @@ const SURGERY_PATH: EntryPathV2 = {
         },
         {
           id: "surgery-when-not",
-          title: "When might surgery not be the best option?",
+          title: "When is surgery not right for my lung cancer?",
           summary: "Why another path may fit better.",
         },
         {
@@ -685,7 +685,7 @@ const CLINICAL_TRIAL_PATH: EntryPathV2 = {
         },
         {
           id: "trial-not-last",
-          title: "Are clinical trials only for people who have no other options?",
+          title: "Are clinical trials only a last resort for lung cancer?",
           summary: "Why “last resort” is a common misunderstanding.",
         },
         {
@@ -738,7 +738,7 @@ const CLINICAL_TRIAL_PATH: EntryPathV2 = {
       cards: [
         {
           id: "trial-better",
-          title: "Are clinical trials better than standard treatment?",
+          title: "Clinical trial vs standard treatment — how should I compare?",
           summary: "Not automatically — fit and uncertainty both matter.",
         },
         {
@@ -748,7 +748,7 @@ const CLINICAL_TRIAL_PATH: EntryPathV2 = {
         },
         {
           id: "trial-daily-life",
-          title: "Will a clinical trial affect my daily life?",
+          title: "How would a lung cancer clinical trial affect daily life?",
           summary: "Visits, travel, and what a normal week may look like.",
         },
         {
@@ -825,7 +825,7 @@ const TREATMENT_PROGRESSION_PATH: EntryPathV2 = {
         },
         {
           id: "prog-not-worse",
-          title: "Does treatment stopping mean my cancer is getting worse?",
+          title: "What does it mean if lung cancer treatment stops working?",
           summary: "Reassessing is not the same as having no options.",
         },
         {
@@ -873,7 +873,7 @@ const TREATMENT_PROGRESSION_PATH: EntryPathV2 = {
       cards: [
         {
           id: "prog-options",
-          title: "What treatment options exist after the first treatment?",
+          title: "What are my options if lung cancer treatment stops working?",
           summary: "Approved treatments, combinations, trials, supportive care.",
         },
         {
@@ -965,7 +965,7 @@ const RECURRENCE_PATH: EntryPathV2 = {
         },
         {
           id: "rec-not-failed",
-          title: "Does recurrence mean my treatment failed?",
+          title: "Lung cancer came back — does that mean treatment failed?",
           summary: "Reassessing is not the same as everything failed.",
         },
         {
@@ -980,7 +980,7 @@ const RECURRENCE_PATH: EntryPathV2 = {
         },
         {
           id: "rec-after-surgery",
-          title: "Can lung cancer come back after surgery?",
+          title: "What if lung cancer comes back after surgery?",
           summary: "Why follow-up matters — and what gets reassessed.",
         },
         {
@@ -1178,7 +1178,7 @@ const QUALITY_OF_LIFE_PATH: EntryPathV2 = {
         },
         {
           id: "qol-cost",
-          title: "Should cost be part of the treatment conversation?",
+          title: "Lung cancer treatment cost — what should I ask?",
           summary: "Yes at a high level — affordability and time belong on the table.",
         },
         {
@@ -1202,7 +1202,7 @@ const QUALITY_OF_LIFE_PATH: EntryPathV2 = {
       cards: [
         {
           id: "qol-hospice",
-          title: "What is the difference between supportive care and hospice care?",
+          title: "Palliative care vs hospice for lung cancer — what’s the difference?",
           summary: "They are not the same thing.",
         },
         {
@@ -1265,7 +1265,7 @@ const FOLLOW_UP_PATH: EntryPathV2 = {
         },
         {
           id: "fu-cancer-gone",
-          title: "Does finishing treatment mean the cancer is gone forever?",
+          title: "What happens after lung cancer treatment ends?",
           summary: "A milestone — and a reason follow-up continues.",
         },
         {
@@ -1294,7 +1294,7 @@ const FOLLOW_UP_PATH: EntryPathV2 = {
       cards: [
         {
           id: "fu-scan-frequency",
-          title: "How often should I get scans after treatment?",
+          title: "What scan schedule should I expect after lung cancer treatment?",
           summary: "Appropriate monitoring — not simply more testing.",
         },
         {
@@ -1417,7 +1417,7 @@ const NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
         },
         {
           id: "nd-not-immediate",
-          title: "Why can’t my doctor tell me the treatment immediately?",
+          title: "How soon do I need treatment after lung cancer diagnosis?",
           summary: "The best plan depends on a more complete picture.",
         },
       ],
@@ -1436,7 +1436,7 @@ const NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
         },
         {
           id: "nd-waiting",
-          title: "Does waiting for more information mean treatment is delayed?",
+          title: "Should I start treatment right away — or wait for more information?",
           summary: "Not every wait is the same — ask how urgent it is.",
         },
         {
@@ -1489,7 +1489,7 @@ const NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
         },
         {
           id: "nd-second-opinion",
-          title: "Should I get a second opinion right away?",
+          title: "Should I get a second opinion after a lung cancer diagnosis?",
           summary: "About confidence — not distrust.",
         },
         {
@@ -1587,7 +1587,7 @@ const STAGE_IV_PATH: EntryPathV2 = {
       cards: [
         {
           id: "siv-biomarker",
-          title: "Why does biomarker testing matter in Stage IV?",
+          title: "Should I wait for biomarkers with stage 4 lung cancer?",
           summary: "Some characteristics may change which options are discussed.",
         },
         {
@@ -1597,7 +1597,7 @@ const STAGE_IV_PATH: EntryPathV2 = {
         },
         {
           id: "siv-clinical-trial",
-          title: "Are clinical trials worth considering?",
+          title: "Should I consider a clinical trial for stage 4 lung cancer?",
           summary: "One option to discuss — depending on fit and eligibility.",
         },
       ],
@@ -1611,7 +1611,7 @@ const STAGE_IV_PATH: EntryPathV2 = {
       cards: [
         {
           id: "siv-first",
-          title: "I just heard “Stage IV.” What should I do first?",
+          title: "Stage 4 lung cancer — what should I do first?",
           summary: "Three focuses — not the whole journey at once.",
         },
         {
@@ -1686,7 +1686,7 @@ const CARE_CENTER_PATH: EntryPathV2 = {
         },
         {
           id: "cc-everyone",
-          title: "Does everyone need a major cancer center?",
+          title: "Do I need a major cancer center for lung cancer?",
           summary: "No — the right level of care depends on your situation.",
         },
         {
@@ -1715,7 +1715,7 @@ const CARE_CENTER_PATH: EntryPathV2 = {
       cards: [
         {
           id: "cc-hybrid",
-          title: "Can I combine a specialist center with local care?",
+          title: "Can I get lung cancer treatment locally after seeing a specialist?",
           summary: "Many people build a care network — not one location only.",
         },
         {
