@@ -265,6 +265,39 @@
   margin-left: -2px;
 }
 
+/* Deep-linked hang card — make the answer the visual focus */
+.path-question-item--featured {
+  margin: 0.35rem 0 0.75rem;
+  border: 1px solid color-mix(in oklab, var(--accent) 45%, var(--line));
+  border-left: 3px solid var(--accent);
+  border-radius: 0.5rem;
+  background: #fff;
+  box-shadow: 0 10px 28px rgba(23, 48, 42, 0.08);
+}
+
+.path-question-item--featured .path-question-answer {
+  color: var(--ink);
+}
+
+.path-question-rail--has-featured .path-question-item:not(.path-question-item--featured) {
+  opacity: 0.42;
+  transition: opacity 220ms ease;
+}
+
+.path-question-rail--has-featured
+  .path-question-item:not(.path-question-item--featured):hover {
+  opacity: 0.85;
+}
+
+.path-step--holds-featured > .grid > div:first-child {
+  border-radius: 0.5rem;
+  background: linear-gradient(
+    180deg,
+    rgba(15, 118, 110, 0.05),
+    transparent 70%
+  );
+}
+
 @media (prefers-reduced-motion: reduce) {
   .path-step-reveal {
     opacity: 1;

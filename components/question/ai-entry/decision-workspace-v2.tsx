@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import {
   getEntryPathV2,
@@ -45,43 +45,100 @@ function useStepReveal() {
   return ref;
 }
 
+function readCardFromUrl() {
+  if (typeof window === "undefined") return null;
+  const fromQuery = new URLSearchParams(window.location.search).get("card");
+  if (fromQuery?.trim()) return fromQuery.trim();
+  const hash = window.location.hash;
+  if (hash.startsWith("#card-")) {
+    const id = decodeURIComponent(hash.slice("#card-".length)).trim();
+    return id || null;
+  }
+  return null;
+}
+
+function syncCardToUrl(cardId: string | null) {
+  if (typeof window === "undefined") return;
+  const url = new URL(window.location.href);
+  if (cardId) {
+    url.searchParams.set("card", cardId);
+  } else {
+    url.searchParams.delete("card");
+  }
+  // Prefer ?card= over hash so the browser does not fight scroll position.
+  if (url.hash.startsWith("#card-")) {
+    url.hash = "";
+  }
+  const next = `${url.pathname}${url.search}${url.hash}`;
+  window.history.replaceState(null, "", next);
+}
+
 function StepCards({
   step,
   openId,
+  featuredId,
   onToggle,
   slug,
   modules,
 }: {
   step: EntryPathStep & { number: number };
   openId: string | null;
+  featuredId: string | null;
   onToggle: (id: string) => void;
   slug: string;
   modules: AiEntryFlagshipModules;
 }) {
+  const railHasFeatured = Boolean(
+    featuredId && step.cards.some((card) => card.id === featuredId)
+  );
+
   return (
-    <div className="path-question-rail">
+    <div
+      className={cn(
+        "path-question-rail",
+        railHasFeatured && "path-question-rail--has-featured"
+      )}
+    >
       <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
         Questions you may have
       </p>
       <ul className="mt-2">
         {step.cards.map((card) => {
           const open = openId === card.id;
+          const featured = open && featuredId === card.id;
           return (
             <li
               key={card.id}
+              id={`card-${card.id}`}
               className={cn(
-                "path-question-item",
-                open && "path-question-item--open"
+                "path-question-item scroll-mt-28",
+                open && "path-question-item--open",
+                featured && "path-question-item--featured"
               )}
             >
+              {featured ? (
+                <p className="px-3 pt-3 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+                  Answering your question
+                </p>
+              ) : null}
               <button
                 type="button"
                 aria-expanded={open}
                 onClick={() => onToggle(card.id)}
-                className="flex w-full items-start gap-2 px-2 py-2.5 text-left transition hover:bg-white/70"
+                className={cn(
+                  "flex w-full items-start gap-2 text-left transition",
+                  featured
+                    ? "px-3 py-3 hover:bg-transparent"
+                    : "px-2 py-2.5 hover:bg-white/70"
+                )}
               >
                 <span className="min-w-0 flex-1">
-                  <span className="block text-sm font-semibold text-[var(--ink)]">
+                  <span
+                    className={cn(
+                      "block font-semibold text-[var(--ink)]",
+                      featured ? "text-base md:text-lg" : "text-sm"
+                    )}
+                  >
                     {card.title}
                   </span>
                   {!open ? (
@@ -116,21 +173,36 @@ function StepCards({
               >
                 <div className="overflow-hidden">
                   {open ? (
-                    <div className="px-2 pb-3">
-                      <div className="max-h-[min(50vh,26rem)] overflow-y-auto pr-1">
+                    <div className={cn(featured ? "px-3 pb-4" : "px-2 pb-3")}>
+                      <div
+                        className={cn(
+                          "path-question-answer pr-1",
+                          featured
+                            ? "max-h-none overflow-visible text-[0.95rem] leading-relaxed md:text-base"
+                            : "max-h-[min(50vh,26rem)] overflow-y-auto"
+                        )}
+                      >
                         <DecisionPathCardDetail
                           id={card.id}
                           slug={slug}
                           modules={modules}
                         />
                       </div>
-                      <button
-                        type="button"
-                        onClick={() => onToggle(card.id)}
-                        className="mt-2 text-sm font-semibold text-[var(--accent)] hover:underline"
-                      >
-                        Close
-                      </button>
+                      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+                        <a
+                          href={`#path-step-${step.id}`}
+                          className="text-sm font-semibold text-[var(--accent)] hover:underline"
+                        >
+                          Back to Step {step.number} →
+                        </a>
+                        <button
+                          type="button"
+                          onClick={() => onToggle(card.id)}
+                          className="text-sm font-semibold text-[var(--muted)] hover:text-[var(--accent)] hover:underline"
+                        >
+                          Close
+                        </button>
+                      </div>
                     </div>
                   ) : null}
                 </div>
@@ -900,18 +972,62 @@ export function DecisionWorkspaceV2({
 }) {
   const path = getEntryPathV2(slug);
   const [openId, setOpenId] = useState<string | null>(null);
+  const [featuredId, setFeaturedId] = useState<string | null>(null);
   const listRef = useStepReveal();
+  const deepLinkDone = useRef(false);
+
+  const validCardIds = useMemo(() => {
+    if (!path) return new Set<string>();
+    return new Set(
+      path.steps.flatMap((step) => step.cards.map((card) => card.id))
+    );
+  }, [path]);
+
+  useEffect(() => {
+    if (!path || deepLinkDone.current) return;
+    const fromUrl = readCardFromUrl();
+    if (!fromUrl || !validCardIds.has(fromUrl)) {
+      deepLinkDone.current = true;
+      return;
+    }
+    deepLinkDone.current = true;
+    setOpenId(fromUrl);
+    setFeaturedId(fromUrl);
+    syncCardToUrl(fromUrl);
+
+    const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timer = window.setTimeout(() => {
+      document
+        .getElementById(`card-${fromUrl}`)
+        ?.scrollIntoView({
+          behavior: reduced ? "auto" : "smooth",
+          block: "start",
+        });
+    }, 80);
+    return () => window.clearTimeout(timer);
+  }, [path, validCardIds]);
 
   if (!path) return null;
 
   function toggleCard(id: string) {
-    setOpenId((current) => (current === id ? null : id));
+    setOpenId((current) => {
+      const next = current === id ? null : id;
+      setFeaturedId(next);
+      syncCardToUrl(next);
+      return next;
+    });
   }
 
   const numberedSteps = path.steps.map((step, index) => ({
     ...step,
     number: index + 1,
   }));
+
+  const featuredStep = featuredId
+    ? numberedSteps.find((step) =>
+        step.cards.some((card) => card.id === featuredId)
+      )
+    : null;
 
   return (
     <div
@@ -928,6 +1044,17 @@ export function DecisionWorkspaceV2({
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
           {path.pathSubtitle}
         </p>
+        {featuredStep ? (
+          <p className="mt-4 max-w-2xl rounded-md border border-[var(--accent)]/25 bg-[rgba(15,118,110,0.06)] px-3 py-2.5 text-sm text-[var(--ink-soft)]">
+            <span className="font-semibold text-[var(--accent)]">
+              Opened from a specific question
+            </span>
+            {" — "}
+            you are in Step {featuredStep.number}. The highlighted answer is
+            below; the Decision Path on the left (or above on mobile) is the
+            full guide.
+          </p>
+        ) : null}
         {path.orientationTrail?.length ? (
           <ol className="mt-5 flex flex-wrap items-center gap-x-2 gap-y-2 text-sm">
             {path.orientationTrail.map((label, index) => (
@@ -949,12 +1076,18 @@ export function DecisionWorkspaceV2({
       <ol ref={listRef} className="relative">
         {numberedSteps.map((step, index) => {
           const isLast = index === numberedSteps.length - 1;
+          const stepHoldsFeatured = Boolean(
+            featuredId && step.cards.some((card) => card.id === featuredId)
+          );
           return (
             <li
               key={step.id}
               id={`path-step-${step.id}`}
               data-path-step
-              className="path-step-reveal relative"
+              className={cn(
+                "path-step-reveal relative",
+                stepHoldsFeatured && "path-step--holds-featured"
+              )}
               style={{ transitionDelay: `${index * 60}ms` }}
             >
               <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,62fr)_minmax(240px,38fr)] lg:gap-8">
@@ -967,7 +1100,12 @@ export function DecisionWorkspaceV2({
                   ) : null}
                   <span
                     aria-hidden
-                    className="absolute left-0 top-0.5 flex size-8 items-center justify-center rounded-full bg-[var(--accent)] text-sm font-bold text-white md:size-9"
+                    className={cn(
+                      "absolute left-0 top-0.5 flex size-8 items-center justify-center rounded-full text-sm font-bold text-white md:size-9",
+                      stepHoldsFeatured
+                        ? "bg-[var(--accent)] ring-[6px] ring-[rgba(15,118,110,0.14)]"
+                        : "bg-[var(--accent)]"
+                    )}
                   >
                     {step.number}
                   </span>
@@ -996,6 +1134,11 @@ export function DecisionWorkspaceV2({
                     step={step}
                     openId={
                       step.cards.some((c) => c.id === openId) ? openId : null
+                    }
+                    featuredId={
+                      step.cards.some((c) => c.id === featuredId)
+                        ? featuredId
+                        : null
                     }
                     onToggle={toggleCard}
                     slug={slug}
