@@ -53,13 +53,23 @@ export async function generateMetadata({
   const { slug } = await params;
   const data = await getQuestionPage(slug);
   if (!data) return {};
+  const portfolioIntents = getAiEntryBySlug(slug)?.searchIntents ?? [];
+  const keywords = Array.from(
+    new Set(
+      [
+        ...data.question.seo_keywords,
+        ...portfolioIntents,
+        ...data.question.key_factors.slice(0, 4),
+      ].filter(Boolean)
+    )
+  ).slice(0, 16);
   return buildMetadata({
     title: data.question.seo_title || data.question.title,
     description:
       data.question.seo_description || data.question.summary.slice(0, 160),
     path: `/questions/${slug}`,
-    keywords: data.question.seo_keywords.length
-      ? data.question.seo_keywords
+    keywords: keywords.length
+      ? keywords
       : data.question.key_factors.slice(0, 6),
   });
 }

@@ -1,6 +1,9 @@
 /**
  * Lung Cancer AI Entry Portfolio v1 — acquisition layer for AEO.
  * See docs/Lung_Cancer_AI_Entry_Spec_v1.0.md
+ *
+ * searchIntents = patient/caregiver long-tail phrasings that should resolve
+ * to this Entry (not a keyword farm). Keep decision-shaped; avoid gene walls.
  */
 
 export type AiEntryId =
@@ -39,9 +42,15 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     momentId: "diagnosis",
     searchIntents: [
       "just diagnosed with lung cancer what happens next",
+      "I was diagnosed with lung cancer what next",
       "newly diagnosed lung cancer next steps",
       "what to do after a lung cancer diagnosis",
       "lung cancer first steps after diagnosis",
+      "what happens after lung cancer diagnosis",
+      "I just found out I have lung cancer",
+      "what should I ask my oncologist after lung cancer diagnosis",
+      "how soon do I need treatment after lung cancer diagnosis",
+      "what tests happen after lung cancer diagnosis",
     ],
     relatedEntryIds: [
       "biomarker",
@@ -58,8 +67,15 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     momentId: "second-opinion",
     searchIntents: [
       "should I get a second opinion lung cancer",
+      "do I need a second opinion for lung cancer",
       "second opinion after lung cancer diagnosis",
       "should I get a second opinion after lung cancer diagnosis",
+      "second opinion before lung cancer treatment",
+      "second opinion before lung cancer surgery",
+      "is a second opinion worth it for lung cancer",
+      "is it rude to get a second opinion for lung cancer",
+      "what records do I need for a lung cancer second opinion",
+      "how to get a cancer second opinion",
     ],
     relatedEntryIds: [
       "newly-diagnosed",
@@ -79,9 +95,18 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     slug: "do-i-need-biomarker-testing-before-lung-cancer-treatment",
     momentId: "biomarkers",
     searchIntents: [
-      "biomarker testing before lung cancer treatment",
       "do I need biomarker testing before lung cancer treatment",
+      "biomarker testing before lung cancer treatment",
+      "do I need biomarker testing for lung cancer",
+      "does every lung cancer patient need biomarker testing",
       "molecular testing before lung cancer therapy",
+      "genomic testing lung cancer before treatment",
+      "NGS testing lung cancer do I need it",
+      "should I wait for biomarker results before starting treatment",
+      "can biomarker testing delay lung cancer treatment",
+      "how long does biomarker testing take lung cancer",
+      "is biopsy the same as biomarker testing",
+      "what if lung cancer has no targetable mutation",
     ],
     relatedEntryIds: [
       "newly-diagnosed",
@@ -100,8 +125,17 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     momentId: "treatments",
     searchIntents: [
       "how should I compare lung cancer treatment options",
+      "lung cancer treatment options",
       "lung cancer treatment options comparison",
       "lung cancer treatment benefits and trade-offs",
+      "compare lung cancer treatments",
+      "best treatment for lung cancer",
+      "how doctors choose lung cancer treatment",
+      "chemotherapy vs immunotherapy lung cancer",
+      "targeted therapy vs immunotherapy lung cancer",
+      "treatment options for elderly lung cancer patients",
+      "can I take time to decide on lung cancer treatment",
+      "how long is lung cancer treatment",
     ],
     relatedEntryIds: [
       "biomarker",
@@ -122,10 +156,17 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     momentId: "care-center",
     searchIntents: [
       "how to choose lung cancer care team",
+      "how to choose an oncologist for lung cancer",
       "do I need a different lung cancer center",
+      "should I go to a cancer center for lung cancer",
+      "best lung cancer hospital",
+      "best cancer center for lung cancer",
+      "local oncologist vs cancer center",
+      "academic vs community cancer center lung cancer",
       "lung cancer specialist second center",
       "specialized lung cancer expertise",
       "NCI designated cancer center lung cancer",
+      "can I get lung cancer treatment locally after seeing a specialist",
     ],
     relatedEntryIds: [
       "second-opinion",
@@ -143,10 +184,15 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     momentId: "stage-iv",
     searchIntents: [
       "what should I know after stage IV lung cancer diagnosis",
+      "what does stage 4 lung cancer mean",
       "stage 4 lung cancer what next",
       "stage IV lung cancer treatment decisions",
+      "stage 4 lung cancer treatment options",
+      "can stage 4 lung cancer be treated",
       "advanced lung cancer next steps",
+      "metastatic lung cancer what happens next",
       "how to choose treatment options for stage IV lung cancer",
+      "stage 4 lung cancer immunotherapy decisions",
     ],
     relatedEntryIds: [
       "biomarker",
@@ -166,8 +212,16 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     momentId: "clinical-trial",
     searchIntents: [
       "should I consider a clinical trial for lung cancer",
+      "should I join a lung cancer clinical trial",
+      "lung cancer clinical trials",
       "lung cancer clinical trial decision",
       "clinical trial vs standard treatment lung cancer",
+      "are clinical trials only for last resort lung cancer",
+      "are lung cancer clinical trials safe",
+      "clinical trial pros and cons lung cancer",
+      "how to find lung cancer clinical trials",
+      "lung cancer clinical trial eligibility",
+      "experimental treatment lung cancer what to ask",
     ],
     relatedEntryIds: [
       "stage-iv",
@@ -187,9 +241,14 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     momentId: "recurrence",
     searchIntents: [
       "what are my options if lung cancer comes back",
-      "lung cancer recurrence treatment decisions",
+      "lung cancer came back what next",
       "lung cancer returned what next",
+      "recurrent lung cancer treatment decisions",
+      "lung cancer recurrence treatment decisions",
       "options after lung cancer recurrence",
+      "cancer returned after lung surgery what next",
+      "local vs metastatic lung cancer recurrence",
+      "should biomarkers be retested if lung cancer returns",
     ],
     relatedEntryIds: [
       "treatment-comparison",
@@ -211,8 +270,13 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     searchIntents: [
       "what are my options if lung cancer treatment stops working",
       "lung cancer treatment no longer working",
+      "lung cancer treatment stopped working what next",
       "lung cancer treatment progression decisions",
       "what to do when lung cancer treatment fails",
+      "progression on immunotherapy lung cancer what next",
+      "progression on targeted therapy lung cancer",
+      "scan shows progression but I feel fine lung cancer",
+      "should I switch lung cancer treatment",
     ],
     relatedEntryIds: [
       "recurrence",
@@ -233,9 +297,16 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     momentId: "surgery-decision",
     searchIntents: [
       "should surgery be part of lung cancer treatment",
+      "do I need surgery for lung cancer",
+      "can lung cancer be removed by surgery",
       "lung cancer surgery decision",
-      "lung cancer surgery vs other treatments",
       "is surgery right for my lung cancer",
+      "lung cancer surgery vs other treatments",
+      "lung cancer surgery risks",
+      "lung cancer surgery recovery time",
+      "am I too old for lung cancer surgery",
+      "surgery vs radiation for early lung cancer",
+      "can stage 4 lung cancer have surgery",
     ],
     relatedEntryIds: [
       "newly-diagnosed",
@@ -253,10 +324,17 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     slug: "how-should-quality-of-life-factor-into-lung-cancer-decisions",
     momentId: "quality-of-life",
     searchIntents: [
+      "how should quality of life factor into lung cancer decisions",
       "balance lung cancer treatment and quality of life",
+      "living with lung cancer decisions",
       "supportive care lung cancer decisions",
       "treatment burden and daily life lung cancer",
-      "how should quality of life factor into lung cancer decisions",
+      "can I work during lung cancer treatment",
+      "lung cancer treatment side effects what can change",
+      "palliative care vs hospice lung cancer",
+      "how to support someone with lung cancer",
+      "is stopping lung cancer treatment giving up",
+      "managing lung cancer symptoms during treatment",
     ],
     relatedEntryIds: [
       "follow-up",
@@ -274,10 +352,15 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     slug: "how-do-i-monitor-my-health-after-lung-cancer-treatment",
     momentId: "follow-up-monitoring",
     searchIntents: [
+      "how do I monitor my health after lung cancer treatment",
       "monitor health after lung cancer treatment",
       "lung cancer follow-up care plan",
+      "survivorship care plan lung cancer",
+      "scan schedule after lung cancer treatment",
       "symptoms to report after lung cancer treatment",
       "fear of recurrence after lung cancer",
+      "anxiety between scans lung cancer",
+      "who manages lung cancer follow-up oncology or primary care",
     ],
     relatedEntryIds: [
       "recurrence",
@@ -297,6 +380,8 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
       "lung cancer treatment cost and logistics",
       "lung cancer treatment travel and time",
       "realistic lung cancer treatment plan",
+      "can I travel during lung cancer treatment",
+      "lung cancer treatment cost what to ask",
     ],
     relatedEntryIds: [
       "care-center",
