@@ -1,6 +1,6 @@
 /**
  * Homepage / lung center: situation layer before Decision Moments.
- * Patients pick where they are; then see 2–3 primary guides (+ optional Also).
+ * Directory tree — each situation always shows 2–3 primary guides (+ optional Also).
  */
 
 export type SituationBucket = {

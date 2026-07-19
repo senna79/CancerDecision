@@ -14,7 +14,7 @@ type CancerOption = {
 const LUNG_SLUG = "lung-cancer";
 
 /**
- * Homepage nav: pick a cancer → show that cancer’s Start here path (lung is complete).
+ * Homepage nav: pick a cancer → open that cancer’s decision map (lung is complete).
  */
 export function CancerJourneyNav({
   cancers,
