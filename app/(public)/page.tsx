@@ -63,10 +63,10 @@ export default async function HomePage() {
           </p>
           <div className="animate-rise-delay mt-8 flex flex-wrap items-center gap-4">
             <a
-              href="#choose-cancer"
+              href="#decision-moment"
               className="inline-flex items-center justify-center rounded-md bg-[var(--ink)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--accent)]"
             >
-              Start with lung cancer
+              Where are you in your journey?
             </a>
             <a
               href="#common-decision-paths"

@@ -64,6 +64,7 @@ export function SituationGuidedRouter({
   activeId,
   footer,
   cancerLabel = "lung cancer",
+  variant = "full",
 }: {
   moments: DecisionMoment[];
   buckets?: SituationBucket[];
@@ -73,9 +74,14 @@ export function SituationGuidedRouter({
   footer?: ReactNode;
   /** Used in the section title */
   cancerLabel?: string;
+  /** full = hub/home; compact = Entry page ending for organic traffic */
+  variant?: "full" | "compact";
 }) {
+  const compact = variant === "compact";
   const initialOpen = bucketContaining(activeId, buckets);
-  const [openId, setOpenId] = useState<string | null>(initialOpen);
+  const [openId, setOpenId] = useState<string | null>(
+    compact ? null : initialOpen
+  );
 
   const momentsByBucket = useMemo(() => {
     const map = new Map<
@@ -93,21 +99,44 @@ export function SituationGuidedRouter({
 
   return (
     <section
-      id="decision-moment"
-      className="scroll-mt-24 rounded-lg border border-[var(--accent)]/30 bg-white/90 p-5 md:p-7"
+      id={compact ? "where-next-decision" : "decision-moment"}
+      className={cn(
+        "scroll-mt-24 rounded-lg border bg-white/90",
+        compact
+          ? "border-[var(--line)] p-4 md:p-5"
+          : "border-[var(--accent)]/30 p-5 md:p-7"
+      )}
     >
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-        Start here · about 3 minutes
+      <p
+        className={cn(
+          "text-xs font-semibold uppercase tracking-[0.14em]",
+          compact ? "text-[var(--muted)]" : "text-[var(--accent)]"
+        )}
+      >
+        {compact ? "Continue exploring" : "Start here · about 3 minutes"}
       </p>
-      <h2 className="mt-1 font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl">
-        Where are you in your {cancerLabel} journey?
+      <h2
+        className={cn(
+          "mt-1 font-heading font-semibold tracking-[-0.02em] text-[var(--ink)]",
+          compact ? "text-xl md:text-2xl" : "text-2xl md:text-3xl"
+        )}
+      >
+        {compact
+          ? "Still deciding something else?"
+          : `Where are you in your ${cancerLabel} journey?`}
       </h2>
-      <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
-        Open the situation that matches you — then pick one guide. You do not
-        need to read every page.
+      <p
+        className={cn(
+          "mt-2 max-w-2xl leading-relaxed text-[var(--muted)]",
+          compact ? "text-sm" : "text-sm md:text-base"
+        )}
+      >
+        {compact
+          ? "If this page was not your main question, open the situation that fits — then pick one next guide."
+          : "Open the situation that matches you — then pick one guide. You do not need to read every page."}
       </p>
 
-      {orientationLinks.length ? (
+      {!compact && orientationLinks.length ? (
         <p className="mt-4 max-w-2xl border-l-2 border-[var(--accent)]/40 pl-3 text-sm text-[var(--ink-soft)]">
           <span className="font-semibold text-[var(--ink)]">
             Need orientation first?{" "}

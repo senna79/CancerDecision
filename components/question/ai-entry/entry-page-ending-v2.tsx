@@ -1,6 +1,8 @@
 import Link from "next/link";
+import { SituationGuidedRouter } from "@/components/journey/situation-guided-router";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import { getEntryPathV2 } from "@/lib/content/entry-path-v2";
+import { LUNG_DECISION_MOMENTS } from "@/lib/journey/decision-moments";
 import type { DecisionGraphNode } from "@/lib/os/decision-graph";
 
 const panelClass =
@@ -46,6 +48,11 @@ export function EntryPageEndingV2({
     modules.journeyPath.length > 0
       ? modules.journeyPath
       : [{ label: currentLabel, current: true as const }];
+
+  const activeMoment = LUNG_DECISION_MOMENTS.find(
+    (moment) => moment.href === `/questions/${slug}`
+  );
+  const showLungRouter = cancerSlug === "lung-cancer" || !cancerSlug;
 
   return (
     <div id="after-decision-path" className="mt-10 scroll-mt-24 space-y-3">
@@ -122,6 +129,30 @@ export function EntryPageEndingV2({
           ) : null}
         </div>
       </section>
+
+      {/* 2b — Situation router for organic landers who need a different path */}
+      {showLungRouter ? (
+        <SituationGuidedRouter
+          variant="compact"
+          moments={LUNG_DECISION_MOMENTS}
+          activeId={activeMoment?.id}
+          orientationLinks={[]}
+          cancerLabel="lung cancer"
+          footer={
+            cancerSlug ? (
+              <>
+                Prefer the full center?{" "}
+                <Link
+                  href={`/cancers/${cancerSlug}#decision-moment`}
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  Open the lung decision center
+                </Link>
+              </>
+            ) : null
+          }
+        />
+      ) : null}
 
       {/* 3 — Journey position only (no duplicate CTAs) */}
       <aside
