@@ -1128,9 +1128,9 @@ export function DecisionWorkspaceV2({
                     openId={
                       step.cards.some((c) => c.id === openId) ? openId : null
                     }
-                    featuredId={
-                      step.cards.some((c) => c.id === featuredId)
-                        ? featuredId
+                    landedId={
+                      step.cards.some((c) => c.id === landedId)
+                        ? landedId
                         : null
                     }
                     onToggle={toggleCard}
