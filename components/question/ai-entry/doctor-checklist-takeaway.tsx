@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import { AddToPrepButton } from "@/components/prep-sheet/add-to-prep-button";
 import { usePrepSheet } from "@/components/prep-sheet/prep-sheet-provider";
 import { cn } from "@/lib/utils";
@@ -12,6 +12,19 @@ function escapeHtml(value: string) {
     .replaceAll("<", "&lt;")
     .replaceAll(">", "&gt;")
     .replaceAll('"', "&quot;");
+}
+
+/** Deduped checklist + prep-sheet asks (e.g. from “More questions by situation”). */
+function mergeCopyItems(checklist: string[], prepAskTexts: string[]) {
+  const seen = new Set<string>();
+  const out: string[] = [];
+  for (const text of [...checklist, ...prepAskTexts]) {
+    const key = text.trim().toLowerCase();
+    if (!key || seen.has(key)) continue;
+    seen.add(key);
+    out.push(text.trim());
+  }
+  return out;
 }
 
 /** Clinic takeaway — short leave list with Copy + Print + Add to prep sheet */
@@ -29,14 +42,21 @@ export function DoctorChecklistTakeaway({
   sourceHref?: string;
 }) {
   const [copied, setCopied] = useState(false);
-  const { addItem, hasItem, ready } = usePrepSheet();
+  const { addItem, hasItem, ready, state } = usePrepSheet();
   const label = sourceLabel ?? title;
+
+  const copyItems = useMemo(() => {
+    const prepAsks = state.items
+      .filter((item) => item.section === "ask")
+      .map((item) => item.text);
+    return mergeCopyItems(items, prepAsks);
+  }, [items, state.items]);
 
   const plainText = [
     title,
     lead,
     "",
-    ...items.map((item) => `☐ ${item}`),
+    ...copyItems.map((item) => `☐ ${item}`),
     "",
     "From Cancer Next Step — educational decision support, not medical advice.",
   ].join("\n");
@@ -55,7 +75,7 @@ export function DoctorChecklistTakeaway({
   }
 
   function handlePrint() {
-    const list = items
+    const list = copyItems
       .map((item) => `<li>☐ ${escapeHtml(item)}</li>`)
       .join("");
     const html = `<!DOCTYPE html>
@@ -171,7 +191,7 @@ export function DoctorChecklistTakeaway({
         >
           prep sheet
         </Link>
-        , or copy/print this list before your visit.
+        — Copy/Print includes this list plus any questions you added below.
       </p>
     </div>
   );
