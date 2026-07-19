@@ -49,16 +49,9 @@ export default async function HomePage() {
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(15,118,110,0.12),transparent_45%),linear-gradient(120deg,rgba(231,238,233,0.85),rgba(243,246,244,0.35))]"
         />
         <div className="relative mx-auto w-full max-w-6xl px-5 py-10 md:px-8 md:py-14">
-          <p className="animate-rise text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]">
-            Decision Navigation
-          </p>
-          <h1 className="animate-rise mt-2 font-heading text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl md:text-6xl">
-            Cancer Next Step
-          </h1>
-
-          <p className="animate-rise-delay mt-6 max-w-2xl font-heading text-xl font-medium tracking-[-0.02em] text-[var(--ink-soft)] md:text-2xl">
+          <h1 className="animate-rise max-w-2xl font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-4xl md:text-5xl">
             Navigate your cancer journey with confidence.
-          </p>
+          </h1>
           <div className="animate-rise-delay mt-4 max-w-xl space-y-1 text-base text-[var(--muted)] md:text-lg">
             <p>Understand your options.</p>
             <p>Prepare better questions.</p>
