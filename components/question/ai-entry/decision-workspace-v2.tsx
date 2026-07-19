@@ -76,27 +76,28 @@ function syncCardToUrl(cardId: string | null) {
 function StepCards({
   step,
   openId,
-  featuredId,
+  landedId,
   onToggle,
   slug,
   modules,
 }: {
   step: EntryPathStep & { number: number };
   openId: string | null;
-  featuredId: string | null;
+  /** Card opened via ?card= / #card- landing */
+  landedId: string | null;
   onToggle: (id: string) => void;
   slug: string;
   modules: AiEntryFlagshipModules;
 }) {
-  const railHasFeatured = Boolean(
-    featuredId && step.cards.some((card) => card.id === featuredId)
+  const railHasOpen = Boolean(
+    openId && step.cards.some((card) => card.id === openId)
   );
 
   return (
     <div
       className={cn(
         "path-question-rail",
-        railHasFeatured && "path-question-rail--has-featured"
+        railHasOpen && "path-question-rail--has-open"
       )}
     >
       <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
@@ -105,19 +106,18 @@ function StepCards({
       <ul className="mt-2">
         {step.cards.map((card) => {
           const open = openId === card.id;
-          const featured = open && featuredId === card.id;
+          const fromLanding = open && landedId === card.id;
           return (
             <li
               key={card.id}
               id={`card-${card.id}`}
               className={cn(
                 "path-question-item scroll-mt-28",
-                open && "path-question-item--open",
-                featured && "path-question-item--featured"
+                open && "path-question-item--open"
               )}
             >
-              {featured ? (
-                <p className="px-3 pt-3 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+              {fromLanding ? (
+                <p className="px-3.5 pt-3.5 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
                   Answering your question
                 </p>
               ) : null}
@@ -127,8 +127,8 @@ function StepCards({
                 onClick={() => onToggle(card.id)}
                 className={cn(
                   "flex w-full items-start gap-2 text-left transition",
-                  featured
-                    ? "px-3 py-3 hover:bg-transparent"
+                  open
+                    ? "px-3.5 py-3 hover:bg-transparent"
                     : "px-2 py-2.5 hover:bg-white/70"
                 )}
               >
@@ -136,7 +136,7 @@ function StepCards({
                   <span
                     className={cn(
                       "block font-semibold text-[var(--ink)]",
-                      featured ? "text-base md:text-lg" : "text-sm"
+                      open ? "text-base md:text-lg" : "text-sm"
                     )}
                   >
                     {card.title}
@@ -173,22 +173,15 @@ function StepCards({
               >
                 <div className="overflow-hidden">
                   {open ? (
-                    <div className={cn(featured ? "px-3 pb-4" : "px-2 pb-3")}>
-                      <div
-                        className={cn(
-                          "path-question-answer pr-1",
-                          featured
-                            ? "max-h-none overflow-visible text-[0.95rem] leading-relaxed md:text-base"
-                            : "max-h-[min(50vh,26rem)] overflow-y-auto"
-                        )}
-                      >
+                    <div className="px-3.5 pb-4">
+                      <div className="path-question-answer max-h-none overflow-visible pr-1 text-[0.95rem] leading-relaxed text-[var(--ink)] md:text-base">
                         <DecisionPathCardDetail
                           id={card.id}
                           slug={slug}
                           modules={modules}
                         />
                       </div>
-                      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2">
+                      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[var(--accent)]/15 pt-3">
                         <a
                           href={`#path-step-${step.id}`}
                           className="text-sm font-semibold text-[var(--accent)] hover:underline"
@@ -972,7 +965,8 @@ export function DecisionWorkspaceV2({
 }) {
   const path = getEntryPathV2(slug);
   const [openId, setOpenId] = useState<string | null>(null);
-  const [featuredId, setFeaturedId] = useState<string | null>(null);
+  /** Set only when the page opened via ?card= / #card- */
+  const [landedId, setLandedId] = useState<string | null>(null);
   const listRef = useStepReveal();
   const deepLinkDone = useRef(false);
 
@@ -992,7 +986,7 @@ export function DecisionWorkspaceV2({
     }
     deepLinkDone.current = true;
     setOpenId(fromUrl);
-    setFeaturedId(fromUrl);
+    setLandedId(fromUrl);
     syncCardToUrl(fromUrl);
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -1010,12 +1004,10 @@ export function DecisionWorkspaceV2({
   if (!path) return null;
 
   function toggleCard(id: string) {
-    setOpenId((current) => {
-      const next = current === id ? null : id;
-      setFeaturedId(next);
-      syncCardToUrl(next);
-      return next;
-    });
+    const next = openId === id ? null : id;
+    setOpenId(next);
+    if (next !== landedId) setLandedId(null);
+    syncCardToUrl(next);
   }
 
   const numberedSteps = path.steps.map((step, index) => ({
@@ -1023,11 +1015,12 @@ export function DecisionWorkspaceV2({
     number: index + 1,
   }));
 
-  const featuredStep = featuredId
-    ? numberedSteps.find((step) =>
-        step.cards.some((card) => card.id === featuredId)
-      )
-    : null;
+  const landedStep =
+    landedId && openId === landedId
+      ? numberedSteps.find((step) =>
+          step.cards.some((card) => card.id === landedId)
+        )
+      : null;
 
   return (
     <div
@@ -1044,13 +1037,13 @@ export function DecisionWorkspaceV2({
         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
           {path.pathSubtitle}
         </p>
-        {featuredStep ? (
+        {landedStep ? (
           <p className="mt-4 max-w-2xl rounded-md border border-[var(--accent)]/25 bg-[rgba(15,118,110,0.06)] px-3 py-2.5 text-sm text-[var(--ink-soft)]">
             <span className="font-semibold text-[var(--accent)]">
               Opened from a specific question
             </span>
             {" — "}
-            you are in Step {featuredStep.number}. The highlighted answer is
+            you are in Step {landedStep.number}. The highlighted answer is
             below; the Decision Path on the left (or above on mobile) is the
             full guide.
           </p>
@@ -1076,8 +1069,8 @@ export function DecisionWorkspaceV2({
       <ol ref={listRef} className="relative">
         {numberedSteps.map((step, index) => {
           const isLast = index === numberedSteps.length - 1;
-          const stepHoldsFeatured = Boolean(
-            featuredId && step.cards.some((card) => card.id === featuredId)
+          const stepHoldsOpen = Boolean(
+            openId && step.cards.some((card) => card.id === openId)
           );
           return (
             <li
@@ -1086,7 +1079,7 @@ export function DecisionWorkspaceV2({
               data-path-step
               className={cn(
                 "path-step-reveal relative",
-                stepHoldsFeatured && "path-step--holds-featured"
+                stepHoldsOpen && "path-step--holds-open"
               )}
               style={{ transitionDelay: `${index * 60}ms` }}
             >
@@ -1102,7 +1095,7 @@ export function DecisionWorkspaceV2({
                     aria-hidden
                     className={cn(
                       "absolute left-0 top-0.5 flex size-8 items-center justify-center rounded-full text-sm font-bold text-white md:size-9",
-                      stepHoldsFeatured
+                      stepHoldsOpen
                         ? "bg-[var(--accent)] ring-[6px] ring-[rgba(15,118,110,0.14)]"
                         : "bg-[var(--accent)]"
                     )}
