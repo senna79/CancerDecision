@@ -16,6 +16,8 @@ export type SituationBucket = {
 export type OrientationLink = {
   label: string;
   href: string;
+  /** Short line under the tile title */
+  hint: string;
 };
 
 /** Not a 7th situation — orientation before choosing a decision path */
@@ -23,14 +25,17 @@ export const LUNG_ORIENTATION_LINKS: OrientationLink[] = [
   {
     label: "Types",
     href: "/cancers/lung-cancer/understanding-types",
+    hint: "NSCLC, SCLC, and why the type shapes decisions.",
   },
   {
     label: "Stage",
     href: "/cancers/lung-cancer/understanding-stage",
+    hint: "What stage means for options — not a prognosis table.",
   },
   {
     label: "Treatment map",
     href: "/cancers/lung-cancer/treatment-landscape",
+    hint: "The main treatment families, so comparisons make sense.",
   },
 ];
 

@@ -145,24 +145,42 @@ export function SituationGuidedRouter({
       </p>
 
       {!compact && orientationLinks.length ? (
-        <p className="mt-4 max-w-2xl border-l-2 border-[var(--accent)]/40 pl-3 text-sm text-[var(--ink-soft)]">
-          <span className="font-semibold text-[var(--ink)]">
-            Need orientation first?{" "}
-          </span>
-          {orientationLinks.map((link, index) => (
-            <span key={link.href}>
-              {index > 0 ? (
-                <span className="text-[var(--muted)]"> · </span>
-              ) : null}
-              <Link
-                href={link.href}
-                className="font-semibold text-[var(--accent)] hover:underline"
-              >
-                {link.label}
-              </Link>
-            </span>
-          ))}
-        </p>
+        <div className="mt-6 rounded-lg border border-[var(--accent)]/25 bg-[rgba(15,118,110,0.04)] p-4 md:p-5">
+          <div className="flex flex-wrap items-baseline justify-between gap-2">
+            <div>
+              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+                Before the 6 situations
+              </p>
+              <h3 className="mt-1 font-heading text-lg font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-xl">
+                Need orientation first?
+              </h3>
+              <p className="mt-1 max-w-2xl text-sm text-[var(--ink-soft)]">
+                Short knowledge guides — open one if you still need the basics
+                before picking a decision situation below.
+              </p>
+            </div>
+          </div>
+          <ul className="mt-4 grid gap-3 sm:grid-cols-3">
+            {orientationLinks.map((link) => (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  className="group flex h-full min-h-[7.5rem] flex-col rounded-md border border-[var(--line)] bg-white px-4 py-4 transition hover:border-[var(--accent)]/50 hover:bg-[rgba(15,118,110,0.05)]"
+                >
+                  <span className="font-heading text-lg font-semibold tracking-[-0.02em] text-[var(--ink)] group-hover:text-[var(--accent)]">
+                    {link.label}
+                  </span>
+                  <span className="mt-2 flex-1 text-sm leading-relaxed text-[var(--ink-soft)]">
+                    {link.hint}
+                  </span>
+                  <span className="mt-3 text-sm font-semibold text-[var(--accent)]">
+                    Open guide →
+                  </span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
       ) : null}
 
       <ol className="mt-6 space-y-5 md:space-y-6">
