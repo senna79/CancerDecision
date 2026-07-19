@@ -19,6 +19,7 @@ import { FOLLOW_UP_ENTRY_CARDS } from "@/lib/content/follow-up-entry-cards";
 import { NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/newly-diagnosed-entry-cards";
 import { STAGE_IV_ENTRY_CARDS } from "@/lib/content/stage-iv-entry-cards";
 import { CARE_CENTER_ENTRY_CARDS } from "@/lib/content/care-center-entry-cards";
+import { GLOBAL_CARE_ENTRY_CARDS } from "@/lib/content/global-care-entry-cards";
 import { FEASIBILITY_ENTRY_CARDS } from "@/lib/content/feasibility-entry-cards";
 import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
 import { BIOMARKER_ENTRY_CARDS } from "@/lib/content/biomarker-entry-cards";
@@ -1556,6 +1557,134 @@ function DecisionPathCardDetailInner({
         <BulletCard
           lead={STAGE_IV_ENTRY_CARDS.haveSay.lead}
           close={STAGE_IV_ENTRY_CARDS.haveSay.close}
+        />
+      );
+    case "gc-default-upgrade":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.defaultUpgrade.lead}
+          close={GLOBAL_CARE_ENTRY_CARDS.defaultUpgrade.close}
+        />
+      );
+    case "gc-capability-gap":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.capabilityGap.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.capabilityGap.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.capabilityGap.close}
+        />
+      );
+    case "gc-vs-care-team":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={GLOBAL_CARE_ENTRY_CARDS.vsCareTeam.lead}
+            close={GLOBAL_CARE_ENTRY_CARDS.vsCareTeam.close}
+          />
+          <p>
+            <Link
+              href="/questions/do-i-need-different-lung-cancer-center-or-specialized-expertise"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Care team decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "gc-vs-second-opinion":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={GLOBAL_CARE_ENTRY_CARDS.vsSecondOpinion.lead}
+            close={GLOBAL_CARE_ENTRY_CARDS.vsSecondOpinion.close}
+          />
+          <p>
+            <Link
+              href="/questions/should-i-get-second-opinion-after-lung-cancer-diagnosis"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Second opinion decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "gc-remote-first":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.remoteFirst.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.remoteFirst.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.remoteFirst.close}
+        />
+      );
+    case "gc-stay-local":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.stayLocal.lead}
+          close={GLOBAL_CARE_ENTRY_CARDS.stayLocal.close}
+        />
+      );
+    case "gc-hybrid-travel":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.hybridTravel.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.hybridTravel.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.hybridTravel.close}
+        />
+      );
+    case "gc-fitness-travel":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.fitnessTravel.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.fitnessTravel.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.fitnessTravel.close}
+        />
+      );
+    case "gc-follow-up-home":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.followUpHome.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.followUpHome.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.followUpHome.close}
+        />
+      );
+    case "gc-total-cost":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.totalCost.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.totalCost.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.totalCost.close}
+        />
+      );
+    case "gc-family-pressure":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.familyPressure.lead}
+          close={`Ask: “${GLOBAL_CARE_ENTRY_CARDS.familyPressure.ask}” ${GLOBAL_CARE_ENTRY_CARDS.familyPressure.close}`}
+        />
+      );
+    case "gc-records":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.records.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.records.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.records.close}
+          itemSection="bring"
+        />
+      );
+    case "gc-before-booking":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.beforeBooking.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.beforeBooking.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.beforeBooking.close}
+        />
+      );
+    case "gc-conflict":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.conflict.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.conflict.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.conflict.close}
         />
       );
     case "cc-everyone":

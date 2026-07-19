@@ -1399,6 +1399,7 @@ export const CARE_CENTER_FLAGSHIP: AiEntryFlagshipModules = {
     "The right care team can help you understand your diagnosis, compare options, and make decisions with confidence — without shopping by hospital name alone.",
   relatedDecisions: [
     { label: "Second Opinion", href: SECOND_OPINION },
+    { label: "Care Abroad", href: GLOBAL_CARE },
     { label: "Biomarker Testing", href: BIOMARKER },
     { label: "Treatment Options", href: TREATMENT_COMPARE },
     { label: "Clinical Trials", href: CLINICAL_TRIAL },
@@ -1407,7 +1408,7 @@ export const CARE_CENTER_FLAGSHIP: AiEntryFlagshipModules = {
   journeyPath: [
     { label: "Second Opinion", href: SECOND_OPINION },
     { label: "Care Team", current: true },
-    { label: "Treatment Options", href: TREATMENT_COMPARE },
+    { label: "Care Abroad", href: GLOBAL_CARE },
   ],
 
   triggersTitle: "You may be facing this if:",
@@ -3529,6 +3530,230 @@ export const BRAIN_METS_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 };
 
+/** Lung Cancer AI Entry — Care abroad / another city */
+export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Lung Cancer",
+  decisionMoment: "When to consider care in another city or country",
+  exploring: "Care abroad decision",
+  subtitle:
+    "Cross-border or distant care is a branch of the journey when a specific capability is missing locally — not a default upgrade to a more famous hospital.",
+  relatedDecisions: [
+    { label: "Care Team", href: CARE_CENTER },
+    { label: "Second Opinion", href: SECOND_OPINION },
+    { label: "Clinical Trials", href: CLINICAL_TRIAL },
+    { label: "Treatment Fit", href: COST_LOGISTICS },
+  ],
+  journeyLabel: "Lung Cancer Decision Journey",
+  journeyPath: [
+    { label: "Care Team", href: CARE_CENTER },
+    { label: "Care Abroad", current: true },
+    { label: "Second Opinion", href: SECOND_OPINION },
+  ],
+
+  triggersTitle: "You may be facing this if:",
+  triggerGroups: [
+    {
+      heading: "You heard about care elsewhere",
+      lead: "You may be asking:",
+      items: [
+        "Is treatment abroad worth considering for my lung cancer?",
+        "Would another city offer something I cannot get locally?",
+      ],
+    },
+    {
+      heading: "A specific capability seems missing",
+      lead: "Examples:",
+      items: [
+        "A specialized technique or trial",
+        "Specialty pathology or multidisciplinary review",
+      ],
+    },
+    {
+      heading: "Family or friends are pushing travel",
+      lead: "You may need:",
+      items: [
+        "A clearer reason than hope or fear",
+        "A one-sentence capability gap before booking",
+      ],
+    },
+    {
+      heading: "Logistics feel uncertain",
+      lead: "You may be weighing:",
+      items: [
+        "Remote review versus flights",
+        "Cost, companion support, and home follow-up",
+      ],
+    },
+  ],
+
+  whyTitle: "When should I consider care elsewhere?",
+  whyLead:
+    "Lung cancer care in another city or country may help when a specific capability — technique, trial, or specialty review — is missing locally. It is not automatically better because a hospital is more famous.",
+  whyBody: [
+    "Start by naming the capability gap in one sentence.",
+    "When safe, try remote review of records before booking travel.",
+    "Confirm who manages complications and follow-up after you return home.",
+  ],
+  whyQuestions: [],
+  whyNotLabel: "The first question is not:",
+  whyNotQuestion: "Where is the best international hospital?",
+  whyBetterLabel: "The better question is:",
+  whyBetterQuestion:
+    "What specific capability is missing locally — and does travel change my options?",
+  whyClose: [
+    "If you cannot name the gap, pause. Travel is a tool for access — not a substitute for a clear decision.",
+  ],
+
+  doesNotDecideTitle: "Compare remote review, travel, and staying local",
+  doesNotDecideLead:
+    "Leaving home is one option among several. Match the path to the gap.",
+  doesNotDecideItems: [
+    "Remote international or specialist review — clarifies whether travel is needed",
+    "Travel for a specific procedure, trial, or in-person planning visit",
+    "Stay local with clarified sequencing and stronger continuity",
+    "Hybrid — travel for a focused step; ongoing care closer to home",
+  ],
+  doesNotDecideNotes: [
+    "Remote review first is often the lowest-burden way to test whether a capability gap is real.",
+  ],
+  doesNotDecideClose:
+    "Choose the lightest path that answers the clinical question — not the farthest hospital by default.",
+
+  mistakesTitle: "Common mistakes when considering care abroad",
+  mistakes: [
+    {
+      mistake: "Booking travel before naming the capability gap",
+      why: "Without a specific missing piece, distance rarely improves the decision.",
+    },
+    {
+      mistake: "Skipping remote review when it is available",
+      why: "Many questions can be answered with records before flights.",
+    },
+    {
+      mistake: "Leaving without a home follow-up plan",
+      why: "Complications after return are part of the decision episode.",
+    },
+  ],
+
+  secondOpinionTitle: "When a second opinion belongs before travel",
+  secondOpinionLead:
+    "A second opinion reviews a decision. Travel moves your body. A remote or local second opinion may help when:",
+  secondOpinionWhen: [
+    "You need clarity before deciding whether to leave home",
+    "Local and family advice conflict about going abroad",
+    "You want written reasoning your home team can respond to",
+  ],
+  secondOpinionClose:
+    "Use the second-opinion guide for the review — then return here if travel itself is still the open question.",
+  secondOpinionCtaLabel: "Second opinion decision guide",
+  secondOpinionHref: SECOND_OPINION,
+
+  doctorTitle: "Care Abroad Conversation Checklist",
+  doctorLeaveTitle: "Before leaving the conversation, ask:",
+  doctorLeaveItems: [
+    "What specific capability am I seeking that is missing locally?",
+    "Can records be reviewed remotely before I travel?",
+    "Who manages complications and follow-up after I return home?",
+    "Would travel interrupt urgent therapy without clear added value?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About the capability gap",
+      questions: [
+        "Is there a technique, trial, or review elsewhere that changes my options?",
+        "How would that change survival, side effects, or only convenience?",
+        "Is an equivalent option available closer to home?",
+      ],
+    },
+    {
+      heading: "About remote review vs travel",
+      questions: [
+        "Can my pathology and imaging be reviewed remotely first?",
+        "What would an in-person visit add that remote review cannot?",
+        "How urgent is any travel decision?",
+      ],
+    },
+    {
+      heading: "About continuity",
+      questions: [
+        "Who coordinates care after I return?",
+        "How are records shared both ways?",
+        "What happens if I need urgent care mid-trip or after return?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Deciding whether travel is warranted",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A family hears that a center abroad offers advanced options and starts pricing flights.",
+    "Instead of booking, they pause and ask:",
+  ],
+  scenarioFocus: [
+    "What capability are we seeking in one sentence?",
+    "Can a remote review answer that first?",
+    "Who would manage care after return?",
+    "Would travel delay something urgent here?",
+  ],
+  scenarioClose:
+    "Remote review shows local care is equivalent for their case. They stay local — and keep the abroad option only if a future gap appears.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If you are considering care in another city or country:",
+  nextStepActions: [
+    {
+      label: "Write the capability gap in one sentence.",
+      examples: [
+        "Specialized technique",
+        "Trial access",
+        "Specialty review missing locally",
+      ],
+    },
+    {
+      label: "Try remote review before booking travel when clinically safe.",
+    },
+    {
+      label:
+        "Confirm home follow-up and complication coverage before you leave.",
+    },
+  ],
+  nextStepCtaLabel: "Care Team Decision",
+  nextStepHref: CARE_CENTER,
+  nextStepCtaMeta: "When the question is who should coordinate ongoing care",
+  nextStepSecondaryCtaLabel: "Second Opinion Decision",
+  nextStepSecondaryHref: SECOND_OPINION,
+  nextStepSecondaryMeta: "When you need another review before deciding to travel",
+
+  relatedPathsTitle: "Continue your lung cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Choosing who coordinates care?",
+      question: "Do I need a different lung cancer center or specialized expertise?",
+      cta: "Care team",
+      href: CARE_CENTER,
+    },
+    {
+      title: "Need confidence on a specific plan?",
+      question: "Should I get a second opinion after lung cancer diagnosis?",
+      cta: "Second opinion",
+      href: SECOND_OPINION,
+    },
+    {
+      title: "Considering a trial?",
+      question: "Should I consider a clinical trial for lung cancer?",
+      cta: "Clinical trials",
+      href: CLINICAL_TRIAL,
+    },
+    {
+      title: "Worried about travel and real life?",
+      question: "Can my lung cancer treatment plan work with my real life?",
+      cta: "Treatment fit",
+      href: COST_LOGISTICS,
+    },
+  ],
+};
+
 const FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> = {
   "what-decisions-matter-most-after-new-lung-cancer-diagnosis":
     NEWLY_DIAGNOSED_FLAGSHIP,
@@ -3540,6 +3765,7 @@ const FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> = {
     TREATMENT_COMPARISON_FLAGSHIP,
   "do-i-need-different-lung-cancer-center-or-specialized-expertise":
     CARE_CENTER_FLAGSHIP,
+  "when-to-consider-lung-cancer-care-abroad": GLOBAL_CARE_FLAGSHIP,
   "how-to-choose-treatment-options-for-stage-iv-lung-cancer":
     STAGE_IV_FLAGSHIP,
   "should-i-consider-a-clinical-trial-for-lung-cancer":

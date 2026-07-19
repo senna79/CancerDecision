@@ -66,6 +66,8 @@ export const FEASIBILITY_SLUG =
   "can-my-lung-cancer-treatment-plan-work-with-my-real-life";
 export const BRAIN_METS_SLUG =
   "what-are-my-options-if-lung-cancer-spreads-to-the-brain";
+export const GLOBAL_CARE_SLUG =
+  "when-to-consider-lung-cancer-care-abroad";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -2042,6 +2044,149 @@ const BRAIN_METS_PATH: EntryPathV2 = {
   ],
 };
 
+const GLOBAL_CARE_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "When to Consider Care in Another City or Country",
+  pathSubtitle:
+    "Name the capability gap → compare remote review vs travel → check logistics and follow-up → prepare questions before booking.",
+  orientationTrail: [
+    "Capability gap",
+    "Remote vs travel",
+    "Logistics & follow-up",
+    "Prepare",
+  ],
+  completedLabels: [
+    "When another city or country may help",
+    "Remote review versus travel",
+    "Logistics, cost, and home follow-up",
+    "Questions to ask before you book",
+  ],
+  practicalPoints: [
+    "The capability gap written in one sentence",
+    "Whether remote review can answer the question first",
+    "Who manages complications after you return home",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "When should I consider care elsewhere?",
+      lead: "Patient question: is lung cancer care abroad worth it?",
+      main: "gc-when",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary:
+            "When people wonder about care in another city or country.",
+        },
+        {
+          id: "gc-default-upgrade",
+          title: "Is care abroad automatically better?",
+          summary: "No — only when a specific capability is missing locally.",
+        },
+        {
+          id: "gc-capability-gap",
+          title: "What is a capability gap?",
+          summary: "Name the missing technique, trial, or specialty review.",
+        },
+        {
+          id: "gc-vs-care-team",
+          title: "How is this different from choosing a care team?",
+          summary: "Care team = ongoing network; travel = a named access gap.",
+        },
+        {
+          id: "gc-vs-second-opinion",
+          title: "How is this different from a second opinion?",
+          summary: "Review first; travel only if in-person access is required.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Compare remote review, travel, and staying local",
+      lead: "Patient question: do I need to fly, or can records be reviewed first?",
+      main: "gc-options",
+      cards: [
+        {
+          id: "gc-remote-first",
+          title: "Should I try remote review before travel?",
+          summary: "Often yes — clarify the gap before booking flights.",
+        },
+        {
+          id: "gc-stay-local",
+          title: "When is staying local the better choice?",
+          summary: "Equivalent care, urgent therapy, or no follow-up plan.",
+        },
+        {
+          id: "gc-hybrid-travel",
+          title: "Can I travel for part of care and stay local for the rest?",
+          summary: "Many people build a hybrid network across locations.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What must be true before travel makes sense?",
+      lead: "Patient question: what logistics and risks should I check?",
+      main: "gc-practical",
+      cards: [
+        {
+          id: "gc-fitness-travel",
+          title: "Am I well enough to travel?",
+          summary: "Travel fitness is a medical question, not only logistics.",
+        },
+        {
+          id: "gc-follow-up-home",
+          title: "Who manages care after I return home?",
+          summary: "Confirm continuity before you leave — not after.",
+        },
+        {
+          id: "gc-total-cost",
+          title: "How do I compare total cost and burden?",
+          summary: "Count the whole episode, including repeat visits.",
+        },
+        {
+          id: "gc-family-pressure",
+          title: "What if family is pushing for care abroad?",
+          summary: "Return the conversation to a named capability gap.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "Prepare before you book travel",
+      lead: "Patient question: what should I ask and bring?",
+      main: "checklist",
+      cards: [
+        {
+          id: "gc-records",
+          title: "What records should I prepare?",
+          summary: "Complete package plus one sentence you want answered.",
+        },
+        {
+          id: "gc-before-booking",
+          title: "What should I confirm before booking flights?",
+          summary: "Gap, remote support, home follow-up, and urgent-therapy timing.",
+        },
+        {
+          id: "gc-conflict",
+          title: "What if local and abroad recommendations conflict?",
+          summary: "Ask what changes — then get a written local response.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might decide whether travel is warranted.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
@@ -2057,6 +2202,7 @@ const PATHS: Record<string, EntryPathV2> = {
   [CARE_CENTER_SLUG]: CARE_CENTER_PATH,
   [FEASIBILITY_SLUG]: FEASIBILITY_PATH,
   [BRAIN_METS_SLUG]: BRAIN_METS_PATH,
+  [GLOBAL_CARE_SLUG]: GLOBAL_CARE_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {

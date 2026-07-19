@@ -14,6 +14,7 @@ import {
   FEASIBILITY_SLUG,
   FOLLOW_UP_SLUG,
   BRAIN_METS_SLUG,
+  GLOBAL_CARE_SLUG,
   NEWLY_DIAGNOSED_SLUG,
   QUALITY_OF_LIFE_SLUG,
   RECURRENCE_SLUG,
@@ -69,6 +70,18 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Are deciding between local care and a larger cancer center",
       "Want multidisciplinary review, trials, or clearer options",
       "Need to know what to look for — without shopping by reputation alone",
+    ],
+  },
+  [GLOBAL_CARE_SLUG]: {
+    plainLanguageGloss:
+      "Lung cancer care in another city or country is worth considering when a specific capability — technique, trial, or specialty review — is missing locally, not as a default upgrade. Name the gap, try remote review when safe, and confirm home follow-up before travel.",
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Wonder whether care abroad or in another city would help",
+      "Heard about a specialized technique, trial, or review elsewhere",
+      "Need to compare remote review versus travel",
+      "Want a clear checklist before booking flights",
     ],
   },
   [FEASIBILITY_SLUG]: {

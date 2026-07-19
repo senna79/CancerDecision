@@ -517,7 +517,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "when-to-consider-lung-cancer-care-abroad",
       category: "global_care",
       summary:
-        "Lung cancer care abroad is worth considering when a specific capability — technique, trial, or specialty review — is missing locally, not as a default upgrade. Start by naming the capability gap in one sentence, try remote review before travel when safe, and confirm home follow-up and complication coverage before booking flights.",
+        "Lung cancer care in another city or country is worth considering when a specific capability — technique, trial, or specialty review — is missing locally, not as a default upgrade.\n\nName the gap in one sentence. When safe, try remote review of records before booking travel. Confirm who manages complications and follow-up after you return home.\n\nIf you cannot name the capability gap, pause — distance alone rarely improves the decision.",
       why: "Families sometimes assume abroad equals better, but the real question is whether a specific capability is missing locally.",
       factors: [
         "Specific expertise or technology sought",
@@ -1556,7 +1556,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     5: {
       summary:
-        "Lung cancer care abroad is worth considering when a specific capability — technique, trial, or specialty review — is missing locally, not as a default upgrade. This matters when remote review suggests a real gap you can act on with sustainable logistics. It may not help when local care is already equivalent, or when travel would interrupt urgent therapy without clear added value. Next: write the capability gap in one sentence, try remote review first when safe, then use What to do next before booking travel.",
+        "Lung cancer care in another city or country is worth considering when a specific capability — technique, trial, or specialty review — is missing locally, not as a default upgrade.\n\nName the gap in one sentence. When safe, try remote review of records before booking travel. Confirm who manages complications and follow-up after you return home.\n\nIf you cannot name the capability gap, pause — distance alone rarely improves the decision.",
       decision_triggers: [
         "You heard another country offers a specialized technique or trial",
         "A remote review suggested a capability missing locally",

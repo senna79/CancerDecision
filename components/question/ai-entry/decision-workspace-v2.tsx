@@ -544,6 +544,58 @@ function StepMain({
           </p>
         </div>
       );
+    case "gc-when":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "gc-options":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Leaving home is one option among several. Match the path to the
+            capability gap — not to the farthest hospital.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Remote specialist review — clarifies whether travel is needed",
+              "Travel for a specific procedure, trial, or planning visit",
+              "Stay local when care is equivalent or travel would interrupt urgent therapy",
+              "Hybrid — travel for a focused step; ongoing care closer to home",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Choose the lightest path that answers the clinical question.
+          </p>
+        </div>
+      );
+    case "gc-practical":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Before travel makes sense, several practical pieces need to be true
+            — medical fitness, home follow-up, and total episode burden.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Travel fitness — symptoms, oxygen needs, companion support",
+              "Home follow-up — who manages complications after return",
+              "Total cost — fees, lodging, repeat visits, time away",
+              "Timing — travel must not interrupt urgent local therapy without clear benefit",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            If follow-up after return is unclear, the episode is incomplete.
+          </p>
+        </div>
+      );
     case "cc-when":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "cc-setups":
