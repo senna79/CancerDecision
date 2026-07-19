@@ -107,7 +107,7 @@ export function DoctorChecklistTakeaway({
     printWindow.print();
   }
 
-  function handleAddAll(event: React.MouseEvent<HTMLButtonElement>) {
+  function handleAddAll(event: MouseEvent<HTMLButtonElement>) {
     const rect = event.currentTarget.getBoundingClientRect();
     const newlyAdded = items.filter((item) => !hasItem("ask", item));
     if (newlyAdded.length) {
