@@ -180,7 +180,6 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       },
     },
 
-    // ——— Tier 2 · planned (skeleton only) ———
     {
       id: "node-global",
       slug: "global-care",
@@ -191,7 +190,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       why_this_matters:
         "This matters only when a specific capability is missing locally — not as a default upgrade.",
       tier: 2,
-      status: "planned",
+      status: "active",
       stage: "global",
       sort_order: 10,
       optional: true,
@@ -203,7 +202,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       patient_router: {
         label: "I’m wondering about care in another city or country",
         hint: "Explore only when a capability gap is real.",
-        nextStep: "Next: name the capability gap before travel.",
+        nextStep: "See what to do next",
       },
     },
     {

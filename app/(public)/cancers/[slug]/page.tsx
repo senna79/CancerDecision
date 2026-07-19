@@ -262,6 +262,16 @@ export default async function CancerDecisionCenterPage({
           capability is missing locally — not a default destination.
         </p>
         <ul className="space-y-2">
+          {isLung ? (
+            <li>
+              <Link
+                href="/questions/when-to-consider-lung-cancer-care-abroad"
+                className="text-[var(--accent)] hover:underline"
+              >
+                When to consider lung cancer care abroad
+              </Link>
+            </li>
+          ) : null}
           {globalOptions.map((opt) => (
             <li key={opt.id}>
               <Link

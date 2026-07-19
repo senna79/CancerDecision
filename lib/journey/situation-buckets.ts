@@ -64,8 +64,12 @@ export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
   {
     id: "another-opinion",
     label: "I’m unsure about my plan or care team",
-    hint: "Want more confidence, another review, or different expertise.",
-    momentIds: ["second-opinion", "care-center-expertise"],
+    hint: "Want more confidence, another review, different expertise, or care elsewhere.",
+    momentIds: [
+      "second-opinion",
+      "care-center-expertise",
+      "global-care",
+    ],
   },
   {
     id: "cancer-changed",

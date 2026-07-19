@@ -24,6 +24,7 @@ export type AiEntryId =
   | "biomarker"
   | "treatment-comparison"
   | "care-center"
+  | "global-care"
   | "stage-iv"
   | "clinical-trial"
   | "recurrence"
@@ -96,6 +97,7 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
       "treatment-comparison",
       "biomarker",
       "care-center",
+      "global-care",
       "stage-iv",
       "clinical-trial",
       "recurrence",
@@ -178,10 +180,35 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     ],
     relatedEntryIds: [
       "second-opinion",
+      "global-care",
       "biomarker",
       "treatment-comparison",
       "clinical-trial",
       "treatment-feasibility",
+    ],
+  },
+  {
+    id: "global-care",
+    label: "Care abroad / another city",
+    decisionLabel: "When to consider lung cancer care abroad",
+    slug: "when-to-consider-lung-cancer-care-abroad",
+    momentId: "global-care",
+    searchIntents: [
+      "when to consider lung cancer care abroad",
+      "lung cancer treatment abroad",
+      "is lung cancer care abroad worth it",
+      "should I travel for lung cancer treatment",
+      "lung cancer medical tourism",
+      "international lung cancer second opinion",
+      "go abroad for lung cancer treatment",
+      "cross border lung cancer care",
+    ],
+    relatedEntryIds: [
+      "care-center",
+      "second-opinion",
+      "clinical-trial",
+      "treatment-feasibility",
+      "treatment-comparison",
     ],
   },
   {

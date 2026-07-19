@@ -7,14 +7,16 @@ const STORE_PATH = path.join(process.cwd(), "data", "store.json");
 
 let memoryStore: KnowledgeGraphStore | null = null;
 
-async function ensureStoreFile(): Promise<void> {
-  const dir = path.dirname(STORE_PATH);
-  await fs.mkdir(dir, { recursive: true });
+/**
+ * Persist seed to disk when possible. On read-only hosts (e.g. Vercel
+ * serverless), skip writes — readStore falls back to in-memory seed.
+ */
+async function tryPersistSeed(seed: KnowledgeGraphStore): Promise<void> {
   try {
-    await fs.access(STORE_PATH);
-  } catch {
-    const seed = createSeedData();
+    await fs.mkdir(path.dirname(STORE_PATH), { recursive: true });
     await fs.writeFile(STORE_PATH, JSON.stringify(seed, null, 2), "utf8");
+  } catch {
+    // Read-only or missing volume — memory seed is enough for public pages.
   }
 }
 
@@ -54,16 +56,27 @@ function normalizeStore(store: KnowledgeGraphStore): KnowledgeGraphStore {
 
 export async function readStore(): Promise<KnowledgeGraphStore> {
   if (memoryStore) return structuredClone(memoryStore);
-  await ensureStoreFile();
-  const raw = await fs.readFile(STORE_PATH, "utf8");
-  memoryStore = normalizeStore(JSON.parse(raw) as KnowledgeGraphStore);
+
+  try {
+    const raw = await fs.readFile(STORE_PATH, "utf8");
+    memoryStore = normalizeStore(JSON.parse(raw) as KnowledgeGraphStore);
+  } catch {
+    const seed = normalizeStore(createSeedData());
+    memoryStore = seed;
+    await tryPersistSeed(seed);
+  }
+
   return structuredClone(memoryStore);
 }
 
 export async function writeStore(store: KnowledgeGraphStore): Promise<void> {
-  await ensureStoreFile();
   memoryStore = structuredClone(store);
-  await fs.writeFile(STORE_PATH, JSON.stringify(store, null, 2), "utf8");
+  try {
+    await fs.mkdir(path.dirname(STORE_PATH), { recursive: true });
+    await fs.writeFile(STORE_PATH, JSON.stringify(store, null, 2), "utf8");
+  } catch {
+    // Keep in-memory store so the request can succeed on read-only hosts.
+  }
 }
 
 export async function updateStore(
