@@ -1,6 +1,14 @@
+"use client";
+
 import Link from "next/link";
+import { PrepItemRow } from "@/components/prep-sheet/add-to-prep-button";
+import {
+  PrepSourceProvider,
+  usePrepSource,
+} from "@/components/prep-sheet/prep-source-context";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import { getEntryTemplateV2Config } from "@/lib/content/entry-template-v2";
+import type { PrepSection } from "@/lib/prep-sheet/types";
 import { SURGERY_ENTRY_CARDS } from "@/lib/content/surgery-entry-cards";
 import { CLINICAL_TRIAL_ENTRY_CARDS } from "@/lib/content/clinical-trial-entry-cards";
 import { SECOND_OPINION_ENTRY_CARDS } from "@/lib/content/second-opinion-entry-cards";
@@ -41,23 +49,44 @@ function BulletCard({
   items,
   close,
   ask,
+  itemSection,
+  sourceLabel,
+  sourceHref,
 }: {
   lead: string;
   items?: readonly string[];
   close?: string;
   ask?: readonly string[];
+  /** When set, each item can be added to the prep sheet (e.g. records to bring). */
+  itemSection?: PrepSection;
+  sourceLabel?: string;
+  sourceHref?: string;
 }) {
+  const prepSource = usePrepSource();
+  const label = sourceLabel ?? prepSource.label;
+  const href = sourceHref ?? prepSource.href;
+
   return (
     <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
       <p>{lead}</p>
       {items?.length ? (
         <ul className="space-y-1.5">
-          {items.map((item) => (
-            <li key={item} className="flex gap-2.5 text-[var(--ink)]">
-              <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
-              <span>{item}</span>
-            </li>
-          ))}
+          {items.map((item) =>
+            itemSection ? (
+              <PrepItemRow
+                key={item}
+                section={itemSection}
+                text={item}
+                sourceLabel={label}
+                sourceHref={href}
+              />
+            ) : (
+              <li key={item} className="flex gap-2.5 text-[var(--ink)]">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            )
+          )}
         </ul>
       ) : null}
       {ask?.length ? (
@@ -65,10 +94,13 @@ function BulletCard({
           <p className="font-medium text-[var(--ink)]">Ask:</p>
           <ul className="mt-1.5 space-y-1.5">
             {ask.map((item) => (
-              <li key={item} className="flex gap-2.5 text-[var(--ink)]">
-                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
-                <span>{item}</span>
-              </li>
+              <PrepItemRow
+                key={item}
+                section="ask"
+                text={item}
+                sourceLabel={label}
+                sourceHref={href}
+              />
             ))}
           </ul>
         </div>
@@ -252,6 +284,25 @@ function MySituationCard({
 
 /** Accordion card bodies for Entry Template v2 paths — one question per card */
 export function DecisionPathCardDetail({
+  id,
+  slug,
+  modules,
+}: {
+  id: string;
+  slug: string;
+  modules: AiEntryFlagshipModules;
+}) {
+  return (
+    <PrepSourceProvider
+      label={modules.decisionMoment}
+      href={`/questions/${slug}`}
+    >
+      <DecisionPathCardDetailInner id={id} slug={slug} modules={modules} />
+    </PrepSourceProvider>
+  );
+}
+
+function DecisionPathCardDetailInner({
   id,
   slug,
   modules,
@@ -466,6 +517,7 @@ export function DecisionPathCardDetail({
         <BulletCard
           lead={SECOND_OPINION_ENTRY_CARDS.records.lead}
           items={SECOND_OPINION_ENTRY_CARDS.records.items}
+          itemSection="bring"
         />
       );
     case "so-specialist":
@@ -1270,6 +1322,7 @@ export function DecisionPathCardDetail({
           lead={FOLLOW_UP_ENTRY_CARDS.keepRecords.lead}
           items={FOLLOW_UP_ENTRY_CARDS.keepRecords.records}
           close={FOLLOW_UP_ENTRY_CARDS.keepRecords.close}
+          itemSection="bring"
         />
       );
     case "fu-second-opinion":
@@ -1374,6 +1427,7 @@ export function DecisionPathCardDetail({
           lead={NEWLY_DIAGNOSED_ENTRY_CARDS.records.lead}
           items={NEWLY_DIAGNOSED_ENTRY_CARDS.records.items}
           close={NEWLY_DIAGNOSED_ENTRY_CARDS.records.close}
+          itemSection="bring"
         />
       );
     case "nd-overwhelmed":
@@ -1584,6 +1638,7 @@ export function DecisionPathCardDetail({
           lead={CARE_CENTER_ENTRY_CARDS.records.lead}
           items={CARE_CENTER_ENTRY_CARDS.records.items}
           close={CARE_CENTER_ENTRY_CARDS.records.close}
+          itemSection="bring"
         />
       );
     case "cc-coordination":

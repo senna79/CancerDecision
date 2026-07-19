@@ -292,6 +292,8 @@ export function UnderstandingTypes() {
             title={content.checklist.title}
             lead={content.checklist.leaveTitle}
             items={[...content.checklist.leaveItems]}
+            sourceLabel={content.checklist.title}
+            sourceHref="/cancers/lung-cancer/understanding-types"
           />
         </div>
 

@@ -309,6 +309,8 @@ export function TreatmentLandscape() {
             title={content.checklist.title}
             lead={content.checklist.leaveTitle}
             items={[...content.checklist.leaveItems]}
+            sourceLabel={content.checklist.title}
+            sourceHref="/cancers/lung-cancer/treatment-landscape"
           />
         </div>
 

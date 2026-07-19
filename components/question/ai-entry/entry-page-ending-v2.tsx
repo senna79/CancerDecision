@@ -103,6 +103,15 @@ export function EntryPageEndingV2({
                 {modules.nextStepCtaMeta}
               </p>
             ) : null}
+            <p className="mt-4 text-sm text-[var(--ink-soft)]">
+              Saved questions for your visit?{" "}
+              <Link
+                href="/prep-sheet"
+                className="font-semibold text-[var(--accent)] hover:underline"
+              >
+                Open your prep sheet →
+              </Link>
+            </p>
           </div>
 
           {related.length > 0 ? (

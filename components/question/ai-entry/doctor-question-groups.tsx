@@ -1,3 +1,10 @@
+"use client";
+
+import {
+  AddToPrepButton,
+  PrepItemRow,
+} from "@/components/prep-sheet/add-to-prep-button";
+import { usePrepSource } from "@/components/prep-sheet/prep-source-context";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 
 /** Grouped doctor questions — optional expansion under Step 4 takeaway (Template v2) */
@@ -5,13 +12,21 @@ export function DoctorQuestionGroups({
   modules,
   embedded = false,
   omitLeave = false,
+  sourceLabel,
+  sourceHref,
 }: {
   modules: AiEntryFlagshipModules;
   /** Compact collapsed bank under Step 4 takeaway */
   embedded?: boolean;
   /** Skip leave-items when the takeaway above already shows them */
   omitLeave?: boolean;
+  sourceLabel?: string;
+  sourceHref?: string;
 }) {
+  const prepSource = usePrepSource();
+  const label = sourceLabel ?? prepSource.label ?? modules.decisionMoment;
+  const href = sourceHref ?? prepSource.href;
+
   if (!modules.doctorTitle || !modules.doctorGroups?.length) return null;
 
   const showLeave =
@@ -65,13 +80,13 @@ export function DoctorQuestionGroups({
                 </summary>
                 <ul className="space-y-2 border-t border-[var(--line)]/70 px-3 py-3 text-sm text-[var(--ink-soft)]">
                   {group.questions.map((q) => (
-                    <li key={q} className="flex gap-2.5 leading-relaxed">
-                      <span
-                        className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]"
-                        aria-hidden
-                      />
-                      <span>{q}</span>
-                    </li>
+                    <PrepItemRow
+                      key={q}
+                      section="ask"
+                      text={q}
+                      sourceLabel={label}
+                      sourceHref={href}
+                    />
                   ))}
                 </ul>
               </details>
@@ -100,16 +115,13 @@ export function DoctorQuestionGroups({
             </p>
             <ul className="mt-2 space-y-2">
               {modules.doctorLeaveItems!.map((item) => (
-                <li
+                <PrepItemRow
                   key={item}
-                  className="flex gap-3 text-sm font-medium text-[var(--ink)]"
-                >
-                  <span
-                    className="mt-1 size-3.5 shrink-0 rounded-[2px] border border-amber-900/40"
-                    aria-hidden
-                  />
-                  <span>{item}</span>
-                </li>
+                  section="ask"
+                  text={item}
+                  sourceLabel={label}
+                  sourceHref={href}
+                />
               ))}
             </ul>
           </div>
@@ -127,7 +139,15 @@ export function DoctorQuestionGroups({
                     key={q}
                     className="rounded-md border border-amber-800/10 bg-white/70 px-3 py-2.5 leading-relaxed text-[var(--ink)]"
                   >
-                    {q}
+                    <div className="flex items-start gap-2.5">
+                      <span className="min-w-0 flex-1">{q}</span>
+                      <AddToPrepButton
+                        section="ask"
+                        text={q}
+                        sourceLabel={label}
+                        sourceHref={href}
+                      />
+                    </div>
                   </li>
                 ))}
               </ul>

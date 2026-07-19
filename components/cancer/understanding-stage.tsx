@@ -359,6 +359,8 @@ export function UnderstandingStage() {
             title={content.checklist.title}
             lead={content.checklist.leaveTitle}
             items={[...content.checklist.leaveItems]}
+            sourceLabel={content.checklist.title}
+            sourceHref="/cancers/lung-cancer/understanding-stage"
           />
         </div>
 

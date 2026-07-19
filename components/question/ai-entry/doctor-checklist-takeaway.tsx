@@ -1,6 +1,9 @@
 "use client";
 
+import Link from "next/link";
 import { useState } from "react";
+import { AddToPrepButton } from "@/components/prep-sheet/add-to-prep-button";
+import { usePrepSheet } from "@/components/prep-sheet/prep-sheet-provider";
 import { cn } from "@/lib/utils";
 
 function escapeHtml(value: string) {
@@ -11,17 +14,23 @@ function escapeHtml(value: string) {
     .replaceAll('"', "&quot;");
 }
 
-/** Clinic takeaway — short leave list with Copy + Print; full groups render below */
+/** Clinic takeaway — short leave list with Copy + Print + Add to prep sheet */
 export function DoctorChecklistTakeaway({
   title = "Doctor Conversation Checklist",
   lead,
   items,
+  sourceLabel,
+  sourceHref,
 }: {
   title?: string;
   lead: string;
   items: string[];
+  sourceLabel?: string;
+  sourceHref?: string;
 }) {
   const [copied, setCopied] = useState(false);
+  const { addItem, hasItem, ready } = usePrepSheet();
+  const label = sourceLabel ?? title;
 
   const plainText = [
     title,
@@ -31,6 +40,9 @@ export function DoctorChecklistTakeaway({
     "",
     "From Cancer Next Step — educational decision support, not medical advice.",
   ].join("\n");
+
+  const allAdded =
+    ready && items.length > 0 && items.every((item) => hasItem("ask", item));
 
   async function handleCopy() {
     try {
@@ -75,6 +87,17 @@ export function DoctorChecklistTakeaway({
     printWindow.print();
   }
 
+  function handleAddAll() {
+    for (const item of items) {
+      addItem({
+        section: "ask",
+        text: item,
+        sourceLabel: label,
+        sourceHref,
+      });
+    }
+  }
+
   return (
     <div className="rounded-lg border border-amber-800/15 bg-amber-50/80 px-4 py-4 md:px-5">
       <div className="flex flex-wrap items-start justify-between gap-3">
@@ -88,6 +111,19 @@ export function DoctorChecklistTakeaway({
           <p className="mt-1 text-sm font-medium text-[var(--ink-soft)]">{lead}</p>
         </div>
         <div className="flex flex-wrap gap-2">
+          <button
+            type="button"
+            onClick={handleAddAll}
+            disabled={!ready || allAdded || items.length === 0}
+            className={cn(
+              "rounded-md border px-3 py-1.5 text-sm font-semibold transition disabled:opacity-40",
+              allAdded
+                ? "border-[var(--accent)] bg-[rgba(15,118,110,0.08)] text-[var(--accent)]"
+                : "border-amber-900/20 bg-white/90 text-[var(--ink)] hover:border-amber-900/40"
+            )}
+          >
+            {allAdded ? "On prep sheet" : "Add all to prep"}
+          </button>
           <button
             type="button"
             onClick={handleCopy}
@@ -112,18 +148,30 @@ export function DoctorChecklistTakeaway({
 
       <ul className="mt-4 space-y-2.5 text-sm text-[var(--ink)] md:text-base">
         {items.map((item) => (
-          <li key={item} className="flex gap-2.5">
+          <li key={item} className="flex items-start gap-2.5">
             <span
               className="mt-1 size-3.5 shrink-0 rounded-[2px] border border-amber-900/40"
               aria-hidden
             />
-            <span>{item}</span>
+            <span className="min-w-0 flex-1">{item}</span>
+            <AddToPrepButton
+              section="ask"
+              text={item}
+              sourceLabel={label}
+              sourceHref={sourceHref}
+            />
           </li>
         ))}
       </ul>
       <p className="mt-3 text-xs text-[var(--muted)]">
-        Copy or print this list before your visit — you do not need to finish
-        every page first.
+        Add items to your{" "}
+        <Link
+          href="/prep-sheet"
+          className="font-semibold text-[var(--accent)] hover:underline"
+        >
+          prep sheet
+        </Link>
+        , or copy/print this list before your visit.
       </p>
     </div>
   );

@@ -147,10 +147,12 @@ function StepMain({
   step,
   path,
   modules,
+  slug,
 }: {
   step: EntryPathStep;
   path: EntryPathV2;
   modules: AiEntryFlagshipModules;
+  slug: string;
 }) {
   switch (step.main) {
     case "biomarker-understand":
@@ -819,9 +821,20 @@ function StepMain({
       return (
         <div className="space-y-5">
           {leaveItems.length ? (
-            <DoctorChecklistTakeaway lead={leaveTitle} items={leaveItems} />
+            <DoctorChecklistTakeaway
+              lead={leaveTitle}
+              items={leaveItems}
+              sourceLabel={modules.decisionMoment}
+              sourceHref={`/questions/${slug}`}
+            />
           ) : null}
-          <DoctorQuestionGroups modules={modules} embedded omitLeave />
+          <DoctorQuestionGroups
+            modules={modules}
+            embedded
+            omitLeave
+            sourceLabel={modules.decisionMoment}
+            sourceHref={`/questions/${slug}`}
+          />
         </div>
       );
     }
@@ -924,7 +937,12 @@ export function DecisionWorkspaceV2({
                     <p className="mt-1.5 text-sm text-[var(--muted)]">{step.lead}</p>
                   ) : null}
                   <div className="mt-3.5">
-                    <StepMain step={step} path={path} modules={modules} />
+                    <StepMain
+                      step={step}
+                      path={path}
+                      modules={modules}
+                      slug={slug}
+                    />
                   </div>
                 </div>
 
