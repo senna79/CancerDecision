@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { PrepSheetHeaderLink } from "@/components/prep-sheet/prep-sheet-header-link";
 
 const links = [
   { href: "/cancers", label: "Cancers" },
@@ -29,7 +28,6 @@ export function SiteHeader() {
               {link.label}
             </Link>
           ))}
-          <PrepSheetHeaderLink />
         </nav>
       </div>
     </header>

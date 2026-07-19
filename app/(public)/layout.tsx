@@ -1,5 +1,6 @@
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
+import { PrepSheetFab } from "@/components/prep-sheet/prep-sheet-fab";
 import { PrepSheetProvider } from "@/components/prep-sheet/prep-sheet-provider";
 
 export default function PublicLayout({
@@ -12,6 +13,7 @@ export default function PublicLayout({
       <SiteHeader />
       <main className="flex-1">{children}</main>
       <SiteFooter />
+      <PrepSheetFab />
     </PrepSheetProvider>
   );
 }
