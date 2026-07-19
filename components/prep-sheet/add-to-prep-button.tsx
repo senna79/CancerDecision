@@ -17,16 +17,23 @@ export function AddToPrepButton({
   sourceHref?: string;
   className?: string;
 }) {
-  const { ready, hasItem, toggleItem } = usePrepSheet();
+  const { ready, hasItem, toggleItem, launchAddFlight } = usePrepSheet();
   const active = ready && hasItem(section, text);
 
   return (
     <button
       type="button"
       disabled={!ready}
-      onClick={() =>
-        toggleItem({ section, text, sourceLabel, sourceHref })
-      }
+      onClick={(event) => {
+        if (!active) {
+          const rect = event.currentTarget.getBoundingClientRect();
+          launchAddFlight(
+            { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 },
+            text
+          );
+        }
+        toggleItem({ section, text, sourceLabel, sourceHref });
+      }}
       className={cn(
         "shrink-0 rounded border px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.06em] transition",
         active

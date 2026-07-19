@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
+import { useMemo, useState, type MouseEvent } from "react";
 import { AddToPrepButton } from "@/components/prep-sheet/add-to-prep-button";
 import { usePrepSheet } from "@/components/prep-sheet/prep-sheet-provider";
 import { cn } from "@/lib/utils";
@@ -42,7 +42,7 @@ export function DoctorChecklistTakeaway({
   sourceHref?: string;
 }) {
   const [copied, setCopied] = useState(false);
-  const { addItem, hasItem, ready, state } = usePrepSheet();
+  const { addItem, hasItem, ready, state, launchAddFlight } = usePrepSheet();
   const label = sourceLabel ?? title;
 
   const copyItems = useMemo(() => {
@@ -107,7 +107,17 @@ export function DoctorChecklistTakeaway({
     printWindow.print();
   }
 
-  function handleAddAll() {
+  function handleAddAll(event: React.MouseEvent<HTMLButtonElement>) {
+    const rect = event.currentTarget.getBoundingClientRect();
+    const newlyAdded = items.filter((item) => !hasItem("ask", item));
+    if (newlyAdded.length) {
+      launchAddFlight(
+        { x: rect.left + rect.width / 2, y: rect.top + rect.height / 2 },
+        newlyAdded.length === 1
+          ? newlyAdded[0]
+          : `${newlyAdded.length} questions`
+      );
+    }
     for (const item of items) {
       addItem({
         section: "ask",
