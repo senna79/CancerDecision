@@ -1,5 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import { DecisionMapFold } from "@/components/cancer/decision-map-fold";
+import { DecisionMapLocator } from "@/components/cancer/decision-map-locator";
 import { DecisionMapView } from "@/components/cancer/decision-map";
 import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
@@ -107,24 +109,23 @@ export default async function CancerDecisionCenterPage({
       </p>
 
       {isLung ? (
-        <div className="mt-8 max-w-3xl space-y-6">
+        <div className="mt-8 max-w-3xl space-y-5">
           <SituationGuidedRouter
             moments={LUNG_DECISION_MOMENTS}
             activeId={activeMoment?.id}
             footer={
-              decisionMap ? (
-                <>
-                  Prefer the full graph?{" "}
-                  <a
-                    href="#decision-map"
-                    className="font-semibold text-[var(--accent)] hover:underline"
-                  >
-                    Jump to the Decision Map
-                  </a>
-                </>
-              ) : null
+              <>
+                Unsure where you are on the map?{" "}
+                <a
+                  href="#map-locator"
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  See nearby decisions
+                </a>
+              </>
             }
           />
+          <DecisionMapLocator activeNodeId={activeMoment?.nodeId} />
         </div>
       ) : null}
 
@@ -134,7 +135,7 @@ export default async function CancerDecisionCenterPage({
         </Section>
       ) : null}
 
-      {decisionMap ? (
+      {!isLung && decisionMap ? (
         <DecisionMapView
           map={decisionMap}
           questionTitles={questionTitles}
@@ -315,6 +316,18 @@ export default async function CancerDecisionCenterPage({
           ))}
         </div>
       </Section>
+
+      {isLung && decisionMap ? (
+        <DecisionMapFold>
+          <DecisionMapView
+            map={decisionMap}
+            questionTitles={questionTitles}
+            treatmentNames={treatmentNames}
+            storyTitles={storyTitles}
+            embedded
+          />
+        </DecisionMapFold>
+      ) : null}
 
       <MedicalDisclaimer
         reviewedAt={cancer.content_reviewed_at}

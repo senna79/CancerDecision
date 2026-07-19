@@ -150,17 +150,23 @@ export function DecisionMapView({
   questionTitles = {},
   treatmentNames = {},
   storyTitles = {},
+  /** When true, omit the page-level section chrome (used inside a fold). */
+  embedded = false,
 }: {
   map: DecisionMap;
   questionTitles?: Record<string, string>;
   treatmentNames?: Record<string, string>;
   storyTitles?: Record<string, string>;
+  embedded?: boolean;
 }) {
   const nodes = sortedNodes(map);
   const entry = nodes[0];
+  // Parallel fork cards — keep sort_order so numbered labels (5, 6, …) stay sequential
   const forkTargets =
     entry != null
-      ? outgoingNodes(map, entry).filter((n) => !n.optional)
+      ? outgoingNodes(map, entry)
+          .filter((n) => !n.optional)
+          .sort((a, b) => a.sort_order - b.sort_order)
       : [];
   const forkIds = new Set(forkTargets.map((n) => n.id));
   const rest = nodes.filter(
@@ -168,19 +174,26 @@ export function DecisionMapView({
   );
 
   return (
-    <section id="decision-map" className="scroll-mt-24 py-8">
-      <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-        {map.title}
-      </h2>
-      <p className="mt-2 max-w-3xl text-[var(--muted)] leading-relaxed">
-        {map.intro}
-      </p>
-      <p className="mt-3 max-w-3xl text-sm text-[var(--ink-soft)]">
-        Use this map to answer three questions: Where am I? Why does this node
-        matter? What can I choose next? Nodes are driven by the Decision OS —
-        only active Moments are shown (more guides stay in the skeleton until
-        ready).
-      </p>
+    <section
+      id={embedded ? undefined : "decision-map"}
+      className={embedded ? "py-2" : "scroll-mt-24 py-8"}
+    >
+      {embedded ? null : (
+        <>
+          <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
+            {map.title}
+          </h2>
+          <p className="mt-2 max-w-3xl text-[var(--muted)] leading-relaxed">
+            {map.intro}
+          </p>
+          <p className="mt-3 max-w-3xl text-sm text-[var(--ink-soft)]">
+            Use this map to answer three questions: Where am I? Why does this
+            node matter? What can I choose next? Nodes are driven by the
+            Decision OS — only active Moments are shown (more guides stay in the
+            skeleton until ready).
+          </p>
+        </>
+      )}
 
       {entry ? (
         <div id={entry.id} className="mt-8 scroll-mt-24">

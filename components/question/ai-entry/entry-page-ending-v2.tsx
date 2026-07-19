@@ -150,12 +150,12 @@ export function EntryPageEndingV2({
           footer={
             cancerSlug ? (
               <>
-                Prefer the full center?{" "}
+                Want nearby decisions on the map?{" "}
                 <Link
-                  href={`/cancers/${cancerSlug}#decision-moment`}
+                  href={`/cancers/${cancerSlug}?moment=${activeMoment?.id ?? "newly-diagnosed"}#map-locator`}
                   className="font-semibold text-[var(--accent)] hover:underline"
                 >
-                  Open the lung decision center
+                  See where this sits →
                 </Link>
               </>
             ) : null
@@ -175,10 +175,10 @@ export function EntryPageEndingV2({
           </p>
           {cancerSlug ? (
             <Link
-              href={`/cancers/${cancerSlug}#decision-map`}
+              href={`/cancers/${cancerSlug}?moment=${activeMoment?.id ?? "newly-diagnosed"}#map-locator`}
               className="text-xs font-semibold text-[var(--accent)] hover:underline"
             >
-              Full map →
+              Where this sits →
             </Link>
           ) : null}
         </div>

@@ -40,69 +40,46 @@ export default async function HomePage() {
 
   return (
     <div>
-      <section className="relative overflow-hidden">
+      <section
+        id="choose-cancer"
+        className="relative scroll-mt-20 overflow-hidden"
+      >
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(15,118,110,0.12),transparent_45%),linear-gradient(120deg,rgba(231,238,233,0.85),rgba(243,246,244,0.35))]"
         />
-        <div className="relative mx-auto w-full max-w-6xl px-5 py-7 md:px-8 md:py-9">
-          <h1 className="animate-rise font-heading text-3xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-4xl md:text-5xl">
+        <div className="relative mx-auto w-full max-w-6xl px-5 py-10 md:px-8 md:py-14">
+          <p className="animate-rise text-[11px] font-semibold uppercase tracking-[0.16em] text-[var(--muted)]">
+            Decision Navigation
+          </p>
+          <h1 className="animate-rise mt-2 font-heading text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl md:text-6xl">
             Cancer Next Step
           </h1>
-          <p className="animate-rise-delay mt-2.5 max-w-2xl text-base font-medium tracking-[-0.01em] text-[var(--ink-soft)] md:text-lg">
-            Understand your options. Prepare better questions. Know your next
-            step.
-          </p>
-          <p className="animate-rise-delay mt-2 max-w-2xl text-sm text-[var(--muted)] md:text-base">
-            Not an encyclopedia — a decision path.
-          </p>
-        </div>
-      </section>
 
-      <section
-        id="choose-cancer"
-        className="scroll-mt-20 border-t border-[var(--line)] bg-[var(--paper-deep)]/40"
-      >
-        <div className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8">
-          <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-            Choose your cancer
-          </h2>
-          <p className="mt-2 max-w-2xl text-[var(--muted)]">
-            Then tell us where you are — so you land on the next decision, not
-            a library of everything.
+          <p className="animate-rise-delay mt-6 max-w-2xl font-heading text-xl font-medium tracking-[-0.02em] text-[var(--ink-soft)] md:text-2xl">
+            Navigate your cancer journey with confidence.
           </p>
-          <div className="mt-8 max-w-3xl">
-            <CancerJourneyNav
-              cancers={cancerOptions}
-              lungMoments={LUNG_DECISION_MOMENTS}
-            />
+          <div className="animate-rise-delay mt-4 max-w-xl space-y-1 text-base text-[var(--muted)] md:text-lg">
+            <p>Understand your options.</p>
+            <p>Prepare better questions.</p>
+            <p>Know your next step.</p>
           </div>
-        </div>
-      </section>
 
-      <section
-        aria-label="How Cancer Next Step helps"
-        className="border-y border-[var(--line)]"
-      >
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-3 px-5 py-8 md:flex-row md:items-baseline md:gap-10 md:px-8">
-          <p className="shrink-0 text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-            How it helps
-          </p>
-          <p className="font-heading text-xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-2xl">
-            <span className="text-[var(--accent)]">Understand</span>
-            <span className="mx-2 text-[var(--muted)]" aria-hidden>
-              ·
-            </span>
-            <span className="text-[var(--accent)]">Compare</span>
-            <span className="mx-2 text-[var(--muted)]" aria-hidden>
-              ·
-            </span>
-            <span className="text-[var(--accent)]">Prepare</span>
-          </p>
-          <p className="max-w-xl text-sm text-[var(--muted)] md:ml-auto">
-            Clarify your situation, weigh what matters, then walk into the next
-            conversation with better questions.
-          </p>
+          <div className="animate-rise-delay mt-10 border-t border-[var(--line)]/80 pt-8">
+            <h2 className="font-heading text-2xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-3xl">
+              Start with your cancer journey.
+            </h2>
+            <p className="mt-2 max-w-2xl text-[var(--muted)] md:text-lg">
+              Choose your cancer type and we&apos;ll guide you to the decisions
+              that matter most.
+            </p>
+            <div className="mt-6 max-w-3xl">
+              <CancerJourneyNav
+                cancers={cancerOptions}
+                lungMoments={LUNG_DECISION_MOMENTS}
+              />
+            </div>
+          </div>
         </div>
       </section>
 
@@ -175,10 +152,10 @@ export default async function HomePage() {
           </ol>
           <p className="mt-6">
             <Link
-              href="/cancers/lung-cancer#decision-moment"
+              href="/cancers/lung-cancer#map-locator"
               className="text-sm font-semibold text-[var(--accent)] hover:underline"
             >
-              Open the full lung decision center →
+              See where decisions sit on the map →
             </Link>
           </p>
         </div>

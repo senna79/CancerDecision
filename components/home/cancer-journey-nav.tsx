@@ -13,6 +13,14 @@ type CancerOption = {
 
 const LUNG_SLUG = "lung-cancer";
 
+/** First-viewport order on the homepage */
+const HERO_SLUGS = [
+  "lung-cancer",
+  "breast-cancer",
+  "prostate-cancer",
+  "brain-tumor",
+] as const;
+
 /**
  * Homepage nav: pick a cancer → open that cancer’s decision map (lung is complete).
  */
@@ -23,58 +31,90 @@ export function CancerJourneyNav({
   cancers: CancerOption[];
   lungMoments: DecisionMoment[];
 }) {
-  const ordered = [
-    ...cancers.filter((c) => c.slug === LUNG_SLUG),
-    ...cancers.filter((c) => c.slug !== LUNG_SLUG),
-  ];
-  const [selectedSlug, setSelectedSlug] = useState(
-    ordered[0]?.slug === LUNG_SLUG ? LUNG_SLUG : ordered[0]?.slug ?? LUNG_SLUG
+  const bySlug = new Map(cancers.map((c) => [c.slug, c]));
+  const heroCancers = HERO_SLUGS.map((slug) => bySlug.get(slug)).filter(
+    (c): c is CancerOption => Boolean(c)
   );
-  const selected = ordered.find((c) => c.slug === selectedSlug) ?? ordered[0];
+  const moreCancers = cancers.filter(
+    (c) => !(HERO_SLUGS as readonly string[]).includes(c.slug)
+  );
+
+  const [selectedSlug, setSelectedSlug] = useState(LUNG_SLUG);
+  const [showMore, setShowMore] = useState(false);
+  const selected =
+    cancers.find((c) => c.slug === selectedSlug) ?? heroCancers[0];
   const isLung = selectedSlug === LUNG_SLUG;
 
   return (
     <div className="space-y-6">
-      <div>
-        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-          Cancer type
-        </p>
-        <div
-          role="listbox"
-          aria-label="Cancer type"
-          className="mt-3 flex flex-wrap gap-x-1 gap-y-2"
-        >
-          {ordered.map((cancer) => {
+      <div
+        role="listbox"
+        aria-label="Cancer type"
+        className="flex flex-wrap gap-2"
+      >
+        {heroCancers.map((cancer) => {
+          const active = cancer.slug === selectedSlug;
+          return (
+            <button
+              key={cancer.slug}
+              type="button"
+              role="option"
+              aria-selected={active}
+              onClick={() => setSelectedSlug(cancer.slug)}
+              className={cn(
+                "rounded-md border px-4 py-2.5 text-sm font-semibold transition md:text-base",
+                active
+                  ? "border-[var(--ink)] bg-[var(--ink)] text-white"
+                  : "border-[var(--line)] bg-white/80 text-[var(--ink)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+              )}
+            >
+              {cancer.name}
+            </button>
+          );
+        })}
+        {moreCancers.length > 0 ? (
+          <button
+            type="button"
+            aria-expanded={showMore}
+            onClick={() => setShowMore((v) => !v)}
+            className={cn(
+              "rounded-md border border-dashed px-4 py-2.5 text-sm font-semibold transition md:text-base",
+              showMore
+                ? "border-[var(--accent)] text-[var(--accent)]"
+                : "border-[var(--line)] text-[var(--muted)] hover:border-[var(--accent)] hover:text-[var(--accent)]"
+            )}
+          >
+            More coming soon
+          </button>
+        ) : (
+          <span className="rounded-md border border-dashed border-[var(--line)] px-4 py-2.5 text-sm font-semibold text-[var(--muted)] md:text-base">
+            More coming soon
+          </span>
+        )}
+      </div>
+
+      {showMore && moreCancers.length > 0 ? (
+        <div className="flex flex-wrap gap-2">
+          {moreCancers.map((cancer) => {
             const active = cancer.slug === selectedSlug;
-            const complete = cancer.slug === LUNG_SLUG;
             return (
               <button
                 key={cancer.slug}
                 type="button"
-                role="option"
-                aria-selected={active}
                 onClick={() => setSelectedSlug(cancer.slug)}
                 className={cn(
-                  "rounded-md px-3 py-1.5 text-sm font-semibold transition",
+                  "rounded-md border px-3 py-2 text-sm font-semibold transition",
                   active
-                    ? "bg-[var(--ink)] text-white"
-                    : "text-[var(--ink-soft)] hover:bg-[var(--paper-deep)] hover:text-[var(--ink)]"
+                    ? "border-[var(--ink)] bg-[var(--ink)] text-white"
+                    : "border-[var(--line)] bg-white/70 text-[var(--ink-soft)] hover:border-[var(--accent)]"
                 )}
               >
                 {cancer.name}
-                <span
-                  className={cn(
-                    "ml-1.5 text-[10px] font-medium uppercase tracking-[0.08em]",
-                    active ? "text-white/70" : "text-[var(--muted)]"
-                  )}
-                >
-                  {complete ? "Complete" : "In development"}
-                </span>
               </button>
             );
           })}
         </div>
-      </div>
+      ) : null}
 
       {isLung ? (
         <SituationGuidedRouter
@@ -82,12 +122,12 @@ export function CancerJourneyNav({
           cancerLabel="lung cancer"
           footer={
             <>
-              Prefer the full center?{" "}
+              Want nearby decisions on the map?{" "}
               <Link
-                href="/cancers/lung-cancer#decision-moment"
+                href="/cancers/lung-cancer#map-locator"
                 className="font-semibold text-[var(--accent)] hover:underline"
               >
-                Open the lung decision center
+                See where this sits →
               </Link>
               {" · "}
               <Link
@@ -109,7 +149,8 @@ export function CancerJourneyNav({
           </h3>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
             Lung cancer is the first complete journey. {selected.name} will use
-            the same framework — choose a cancer situation, then a decision path.
+            the same framework — choose a cancer situation, then a decision
+            path.
           </p>
           <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
             <button
