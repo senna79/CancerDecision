@@ -342,6 +342,8 @@ const COST_LOGISTICS =
   "/questions/can-my-lung-cancer-treatment-plan-work-with-my-real-life";
 const FOLLOW_UP =
   "/questions/how-do-i-monitor-my-health-after-lung-cancer-treatment";
+const BRAIN_METS =
+  "/questions/what-are-my-options-if-lung-cancer-spreads-to-the-brain";
 const CARE_MAP = "/cancers/lung-cancer#decision-map";
 
 /** Lung Cancer Orientation Entry — Newly Diagnosed */
@@ -3291,6 +3293,242 @@ export const TREATMENT_FEASIBILITY_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 };
 
+/** Lung Cancer AI Entry — Brain metastases */
+export const BRAIN_METS_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Lung Cancer",
+  decisionMoment: "How to make decisions when lung cancer is in the brain",
+  exploring: "Brain Metastases Decision",
+  subtitle:
+    "If lung cancer is found in the brain, the next step is not one standard plan. The decision starts with understanding the brain findings, the rest of your disease, and what you want to protect.",
+  relatedDecisions: [
+    { label: "Stage IV Options", href: STAGE_IV },
+    { label: "Treatment Change", href: TREATMENT_PROGRESSION },
+    { label: "Second Opinion", href: SECOND_OPINION },
+    { label: "Quality of Life", href: QUALITY_OF_LIFE },
+  ],
+  journeyLabel: "Lung Cancer Decision Journey",
+  journeyPath: [
+    { label: "Stage IV / Advanced", href: STAGE_IV },
+    { label: "Brain Metastases", current: true },
+    { label: "Treatment Change", href: TREATMENT_PROGRESSION },
+  ],
+
+  triggersTitle: "You may be facing this decision if:",
+  triggerGroups: [
+    {
+      heading: "Scans show lung cancer in the brain",
+      lead: "You may be wondering:",
+      items: [
+        "What does this mean for my options?",
+        "What information do we need before deciding?",
+      ],
+    },
+    {
+      heading: "You were told you have brain metastases",
+      lead: "You may want to understand:",
+      items: [
+        "Whether local treatment, systemic therapy, or both come next",
+        "How urgent the next step is",
+      ],
+    },
+    {
+      heading: "Neurologic symptoms led to a brain scan",
+      lead: "You may be asking:",
+      items: [
+        "Are we treating symptoms, cancer, or both?",
+        "What should I prepare for the next conversation?",
+      ],
+    },
+    {
+      heading: "Your care team is comparing several approaches",
+      lead: "You may want clarity on:",
+      items: [
+        "How brain-directed and whole-body plans fit together",
+        "What trade-offs matter for daily life",
+      ],
+    },
+  ],
+
+  whyTitle: "Does finding lung cancer in the brain change everything?",
+  whyLead:
+    "Brain metastases mean lung cancer has been found in the brain. That changes the conversation — it does not automatically mean there is only one next step, or that there are no options left.",
+  whyBody: [
+    "Doctors usually look at the brain findings and the rest of your disease together: how many lesions are present, whether you have symptoms, how much cancer is active elsewhere, what treatments you have already had, and what matters most to you now.",
+    "Some neurologic changes need urgent care first. For a planned decision conversation, the useful question is not “Is this the end?” It is “What is the goal for these findings, and which options are realistic for me?”",
+  ],
+  whyQuestions: [],
+  whyNotLabel: "The first question is not:",
+  whyNotQuestion: "What is the single best brain cancer treatment?",
+  whyBetterLabel: "The more useful question is:",
+  whyBetterQuestion:
+    "What information do we need so we can compare realistic options for my brain findings and the rest of my cancer?",
+  whyClose: [
+    "Brain involvement is a new decision point. The next step depends on understanding the whole picture — not reacting to one word on a report.",
+  ],
+
+  doesNotDecideTitle: "What information should guide the next discussion?",
+  doesNotDecideLead:
+    "Before choosing a path, teams usually clarify the imaging, symptoms, disease outside the brain, prior treatments, biomarker results when relevant, and your goals. Sometimes the most important next step is making sure that picture is complete.",
+  doesNotDecideItems: [
+    "Number, size, and location of brain findings often shape local treatment talks",
+    "Cancer elsewhere in the body often shapes systemic choices at the same time",
+    "More than one specialty may be involved — ask who is coordinating the plan",
+  ],
+  doesNotDecideNotes: [
+    "A clear information picture prevents decisions driven only by fear.",
+  ],
+  doesNotDecideClose:
+    "Open the cards beside this step for imaging details, biomarkers, and who should be at the table.",
+
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead:
+    "A second opinion can be useful when brain metastases decisions involve several specialties, unclear sequencing, or major trade-offs. It may help you:",
+  secondOpinionWhen: [
+    "Clarify whether local treatment, systemic therapy, or both should lead",
+    "Review whether key information is already complete",
+    "Feel more confident — or hear another realistic option",
+  ],
+  secondOpinionClose:
+    "It does not always change the plan — sometimes it confirms the reasoning.",
+  secondOpinionCtaLabel: "Second opinion decision guide",
+  secondOpinionHref: SECOND_OPINION,
+
+  mistakesTitle: "Common mistakes after hearing about brain metastases",
+  mistakes: [
+    {
+      mistake: "Assuming brain involvement means there are no options",
+      why: "Many people still have choices to compare — the question is which ones fit now.",
+    },
+    {
+      mistake: "Focusing only on the brain and ignoring disease elsewhere",
+      why: "A durable plan often has to account for both.",
+    },
+    {
+      mistake: "Rushing a major choice before key information is clear",
+      why: "Unless symptoms are urgent, knowing what would change the options can prevent a fear-only decision.",
+    },
+    {
+      mistake: "Leaving daily function and support out of the conversation",
+      why: "Steroids, cognition, travel, and home support shape whether a plan is workable.",
+    },
+  ],
+
+  doctorTitle: "Doctor Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What exactly do the brain findings show, in plain language?",
+    "What is the goal for treating the brain findings — and for cancer elsewhere?",
+    "Which options are realistic for me, and how do they compare?",
+    "What would change the recommendation if we learned one more piece of information?",
+  ],
+  doctorGroups: [
+    {
+      heading: "Understanding the findings",
+      questions: [
+        "What exactly do the brain findings show, in plain language?",
+        "Are my symptoms related to these findings?",
+        "What information do we still need before deciding?",
+      ],
+    },
+    {
+      heading: "Comparing options",
+      questions: [
+        "Which local brain treatments are being considered for me, and why?",
+        "How does systemic therapy fit with the brain plan?",
+        "What benefit do we expect — and what are the main risks or burdens?",
+      ],
+    },
+    {
+      heading: "Daily life and next steps",
+      questions: [
+        "How might treatment affect thinking, energy, steroids, or safety?",
+        "How will we know if the plan is helping?",
+        "Are clinical trials or a second opinion relevant now?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Making a decision after brain metastases are found",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person with lung cancer learns that a scan shows spots in the brain.",
+    "Their first thought is: “Does this mean there is nothing left to do?”",
+    "Instead of freezing on that fear, they ask:",
+  ],
+  scenarioFocus: [
+    "What do these findings show, and do I have symptoms that need urgent attention?",
+    "What is happening with cancer outside the brain?",
+    "Which options are realistic — local, systemic, both, or supportive care focused on symptoms?",
+    "What matters most to protect in daily life right now?",
+  ],
+  scenarioClose:
+    "The focus shifts from reacting to the word “brain” to comparing a clear next decision.",
+
+  bridges: [
+    {
+      title: "Second opinion",
+      body: [
+        "A second opinion can be useful when brain metastases decisions involve several specialties, unclear sequencing, or major trade-offs.",
+        "It may help clarify whether local treatment, systemic therapy, or both should lead — and whether key information is already complete.",
+      ],
+      ctaLabel: "Second opinion decision guide",
+      ctaHref: SECOND_OPINION,
+    },
+  ],
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If lung cancer has been found in the brain:",
+  nextStepActions: [
+    {
+      label:
+        "Get a plain-language summary of the brain findings, symptoms, and cancer elsewhere.",
+    },
+    {
+      label:
+        "Ask which options are realistic and how local and systemic plans fit together.",
+    },
+    {
+      label: "Compare approaches by:",
+      examples: [
+        "Goal",
+        "Expected benefit and risks",
+        "Effects on daily life",
+        "What you want to protect",
+      ],
+    },
+  ],
+  nextStepCtaLabel: "Stage IV / Advanced Decision",
+  nextStepHref: STAGE_IV,
+  nextStepCtaMeta: "When advanced disease choices need a broader frame",
+  nextStepSecondaryCtaLabel: "Treatment Change Decision",
+  nextStepSecondaryHref: TREATMENT_PROGRESSION,
+  nextStepSecondaryMeta: "When the current plan is no longer working as expected",
+
+  relatedPathsTitle: "Continue your lung cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Facing advanced disease choices?",
+      question: "How do I choose treatment options for Stage IV lung cancer?",
+      cta: "Stage IV options",
+      href: STAGE_IV,
+    },
+    {
+      title: "Need another review?",
+      question: "Should I get a second opinion after lung cancer diagnosis?",
+      cta: "Second opinion",
+      href: SECOND_OPINION,
+    },
+    {
+      title: "Balancing daily life?",
+      question:
+        "How should quality of life factor into lung cancer decisions?",
+      cta: "Quality of life",
+      href: QUALITY_OF_LIFE,
+    },
+  ],
+};
+
 const FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> = {
   "what-decisions-matter-most-after-new-lung-cancer-diagnosis":
     NEWLY_DIAGNOSED_FLAGSHIP,
@@ -3317,6 +3555,8 @@ const FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> = {
     FOLLOW_UP_FLAGSHIP,
   "can-my-lung-cancer-treatment-plan-work-with-my-real-life":
     TREATMENT_FEASIBILITY_FLAGSHIP,
+  "what-are-my-options-if-lung-cancer-spreads-to-the-brain":
+    BRAIN_METS_FLAGSHIP,
 };
 
 export function getAiEntryFlagshipModules(

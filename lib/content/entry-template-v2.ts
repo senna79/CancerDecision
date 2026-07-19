@@ -13,6 +13,7 @@ import {
   CLINICAL_TRIAL_SLUG,
   FEASIBILITY_SLUG,
   FOLLOW_UP_SLUG,
+  BRAIN_METS_SLUG,
   NEWLY_DIAGNOSED_SLUG,
   QUALITY_OF_LIFE_SLUG,
   RECURRENCE_SLUG,
@@ -164,6 +165,18 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Scans show a new area of concern after treatment",
       "Symptoms appear after a period of control",
       "You want to understand what options exist if cancer comes back",
+    ],
+  },
+  [BRAIN_METS_SLUG]: {
+    plainLanguageGloss:
+      "If lung cancer is found in the brain, the next step is not one standard plan — doctors compare local brain-directed options, systemic therapy, trials, and supportive care based on the imaging, symptoms, disease elsewhere, and your goals.",
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Scans show lung cancer in the brain",
+      "You were told you have brain metastases",
+      "Neurologic symptoms led to a brain scan",
+      "You need to prepare questions before comparing brain-directed and systemic options",
     ],
   },
   [QUALITY_OF_LIFE_SLUG]: {

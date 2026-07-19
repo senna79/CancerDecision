@@ -65,9 +65,10 @@ export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
   {
     id: "cancer-changed",
     label: "My cancer or treatment has changed",
-    hint: "Advanced disease, recurrence, or a plan that stopped working.",
+    hint: "Advanced disease, brain metastases, recurrence, or a plan that stopped working.",
     momentIds: [
       "stage-iv-options",
+      "brain-mets",
       "recurrence",
       "treatment-progression",
     ],

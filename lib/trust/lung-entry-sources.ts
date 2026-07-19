@@ -33,6 +33,8 @@ export const LUNG_FLAGSHIP_SOURCES_BY_QUESTION_N: Record<number, number[]> = {
   33: [2, 5, 1, 10, 6, 8],
   // Module #13 — Long-Term Monitoring & Follow-Up
   34: [9, 1, 10, 11, 4],
+  // Entry #14 — Brain Metastases
+  35: [9, 1, 10, 11, 4],
 };
 
 export const LUNG_FLAGSHIP_QUESTION_NS = Object.keys(

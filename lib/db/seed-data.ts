@@ -1193,6 +1193,30 @@ export function createSeedData(): KnowledgeGraphStore {
         "What activities can I safely return to?",
       ],
     },
+    {
+      n: 35,
+      cancer: 1,
+      title:
+        "What Are My Options If Lung Cancer Spreads to the Brain?",
+      slug: "what-are-my-options-if-lung-cancer-spreads-to-the-brain",
+      category: "treatment",
+      summary:
+        "When lung cancer is found in the brain, the next step is not one standard plan for everyone. Doctors usually look at how many lesions are present, whether you have symptoms, how much cancer is active elsewhere, prior treatments, and your goals — then compare local brain-directed options, systemic therapy, clinical trials, and supportive care.\n\nBrain involvement changes the conversation. It does not automatically mean there are no options left.\n\nA useful first question for your care team is: “What is the goal for these brain findings, which options are realistic for me, and what information should guide that choice?”",
+      why: "Brain metastases create fear and fragmented advice across specialties. Patients need a clear decision path that holds brain findings and whole-body options together.",
+      factors: [
+        "What the brain imaging shows in plain language",
+        "Whether symptoms need urgent attention",
+        "How much cancer is active outside the brain",
+        "Local versus systemic options — and how they fit together",
+        "Effects on thinking, steroids, daily life, and support at home",
+      ],
+      doctorQs: [
+        "What exactly do the brain findings show, in plain language?",
+        "What is the goal for treating the brain findings — and for cancer elsewhere?",
+        "Which options are realistic for me, and how do they compare?",
+        "What would change the recommendation if we learned one more piece of information?",
+      ],
+    },
   ];
 
   const questions = questionDefs.map((q) => ({
@@ -2205,6 +2229,72 @@ export function createSeedData(): KnowledgeGraphStore {
         "symptoms to report after lung cancer treatment",
         "who manages lung cancer follow-up oncology or primary care",
         "what should my follow-up plan include after lung cancer",
+      ],
+    },
+    35: {
+      summary:
+        "When lung cancer is found in the brain, the next step is not one standard plan for everyone. Doctors usually look at how many lesions are present, whether you have symptoms, how much cancer is active elsewhere, prior treatments, and your goals — then compare local brain-directed options, systemic therapy, clinical trials, and supportive care.\n\nBrain involvement changes the conversation. It does not automatically mean there are no options left.\n\nA useful first question for your care team is: “What is the goal for these brain findings, which options are realistic for me, and what information should guide that choice?”",
+      decision_triggers: [
+        "Scans show lung cancer in the brain",
+        "You were told you have brain metastases",
+        "Neurologic symptoms led to a brain scan",
+        "Your team is comparing local and systemic options",
+      ],
+      decision_context:
+        "Brain metastases are a new decision point. Clarify the findings and symptoms, understand disease outside the brain, then compare local, systemic, trial, and supportive options against your goals — not against fear alone.",
+      when_this_may_help: [
+        "You recently learned lung cancer was found in the brain",
+        "You need to prepare questions before comparing brain-directed and whole-body plans",
+        "You want to know what information should guide the next choice",
+        "You are considering a second opinion or clinical trial discussion",
+      ],
+      when_it_may_not_help: [
+        "Sudden severe neurologic symptoms need emergency care first",
+        "Your care team has already explained a time-critical next step and why",
+      ],
+      timing_considerations: [
+        "Symptom control may be urgent even while options are still being compared",
+        "Ask which decisions need a timely discussion versus which can wait for key information",
+        "Sequencing of local and systemic treatment may matter — ask why a proposed order was chosen",
+        "Personal goals and daily function remain part of the decision",
+      ],
+      options_and_tradeoffs: [
+        "Benefit — Clear goals for brain and body: a plan that fits the whole picture",
+        "Trade-off — More specialties involved: more appointments and possible conflicting advice",
+        "Benefit — Comparing local and systemic options: fewer fear-only choices",
+        "Trade-off — Waiting for information: calendar delay when symptoms are stable",
+        "Benefit — Naming daily-life effects early: a more workable plan",
+        "Trade-off — Facing cognition, steroids, or travel limits: harder emotional conversations",
+      ],
+      records_to_prepare: [
+        "Brain imaging reports and images when available",
+        "Recent body staging scans",
+        "Pathology and biomarker results",
+        "Treatment history and current medications, including steroids",
+        "A short list of symptoms and what matters most to you now",
+      ],
+      next_steps: [
+        "Get a plain-language summary of the brain findings and disease elsewhere",
+        "Ask which options are realistic and how they compare",
+        "Clarify what is urgent versus what can wait",
+        "Consider whether a second opinion or trial discussion would help",
+      ],
+      if_opinions_conflict: [
+        "Ask what each recommendation assumes about the imaging and disease outside the brain",
+        "Compare options side by side using the same questions: goal, benefit, risk, fit",
+        "A second opinion may help when sequencing or specialty advice feels unclear",
+      ],
+      body: null,
+      seo_title: "What Are My Options If Lung Cancer Spreads to the Brain?",
+      seo_description:
+        "A decision guide for lung cancer brain metastases — what the findings mean, what information guides next options, and questions to ask before choosing a plan.",
+      seo_keywords: [
+        "what are my options if lung cancer spreads to the brain",
+        "lung cancer brain metastases what next",
+        "lung cancer spread to brain treatment decisions",
+        "brain mets from lung cancer what should I ask",
+        "options when lung cancer is in the brain",
+        "questions to ask oncologist about brain metastases lung cancer",
       ],
     },
   };

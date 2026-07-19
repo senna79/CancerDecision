@@ -31,7 +31,8 @@ export type AiEntryId =
   | "surgery"
   | "quality-of-life"
   | "follow-up"
-  | "treatment-feasibility";
+  | "treatment-feasibility"
+  | "brain-mets";
 
 export type AiEntry = {
   id: AiEntryId;
@@ -207,6 +208,7 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
       "quality-of-life",
       "clinical-trial",
       "newly-diagnosed",
+      "brain-mets",
     ],
   },
   {
@@ -263,6 +265,7 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
       "care-center",
       "stage-iv",
       "treatment-progression",
+      "brain-mets",
     ],
   },
   {
@@ -292,6 +295,37 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
       "second-opinion",
       "care-center",
       "stage-iv",
+      "quality-of-life",
+      "brain-mets",
+    ],
+  },
+  {
+    id: "brain-mets",
+    label: "Brain metastases",
+    decisionLabel:
+      "What to do when lung cancer is found in the brain",
+    slug: "what-are-my-options-if-lung-cancer-spreads-to-the-brain",
+    momentId: "brain-mets",
+    searchIntents: [
+      "what are my options if lung cancer spreads to the brain",
+      "lung cancer brain metastases what next",
+      "lung cancer spread to brain treatment decisions",
+      "brain mets from lung cancer what should I ask",
+      "should I get radiation for lung cancer brain metastases",
+      "lung cancer brain lesions what happens next",
+      "options when lung cancer is in the brain",
+      "do biomarkers matter with lung cancer brain metastases",
+      "second opinion for lung cancer brain metastases",
+      "questions to ask oncologist about brain metastases lung cancer",
+    ],
+    relatedEntryIds: [
+      "stage-iv",
+      "treatment-progression",
+      "recurrence",
+      "biomarker",
+      "second-opinion",
+      "clinical-trial",
+      "care-center",
       "quality-of-life",
     ],
   },

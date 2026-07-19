@@ -22,6 +22,7 @@ import { CARE_CENTER_ENTRY_CARDS } from "@/lib/content/care-center-entry-cards";
 import { FEASIBILITY_ENTRY_CARDS } from "@/lib/content/feasibility-entry-cards";
 import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
 import { BIOMARKER_ENTRY_CARDS } from "@/lib/content/biomarker-entry-cards";
+import { BRAIN_METS_ENTRY_CARDS } from "@/lib/content/brain-mets-entry-cards";
 import { ClarifyTopics } from "./clarify-topics";
 import { CommonMistakes } from "./common-mistakes";
 import { ContentBridge } from "./content-bridge";
@@ -1936,6 +1937,161 @@ function DecisionPathCardDetailInner({
     }
     case "mistakes":
       return <CommonMistakes modules={modules} />;
+    case "bm-what-means":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.whatMeans.lead}
+          close={BRAIN_METS_ENTRY_CARDS.whatMeans.close}
+        />
+      );
+    case "bm-still-options":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.stillOptions.lead}
+          close={BRAIN_METS_ENTRY_CARDS.stillOptions.close}
+        />
+      );
+    case "bm-scan-vs-symptoms":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.scanVsSymptoms.lead}
+          items={BRAIN_METS_ENTRY_CARDS.scanVsSymptoms.items}
+          close={BRAIN_METS_ENTRY_CARDS.scanVsSymptoms.close}
+        />
+      );
+    case "bm-urgent":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.urgent.lead}
+          items={BRAIN_METS_ENTRY_CARDS.urgent.items}
+          close={BRAIN_METS_ENTRY_CARDS.urgent.close}
+        />
+      );
+    case "bm-what-matters":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.whatMatters.lead}
+          items={BRAIN_METS_ENTRY_CARDS.whatMatters.items}
+          close={BRAIN_METS_ENTRY_CARDS.whatMatters.close}
+        />
+      );
+    case "bm-number-location":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.numberLocation.lead}
+          close={BRAIN_METS_ENTRY_CARDS.numberLocation.close}
+        />
+      );
+    case "bm-body-disease":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.bodyDisease.lead}
+          close={BRAIN_METS_ENTRY_CARDS.bodyDisease.close}
+        />
+      );
+    case "bm-biomarkers":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.biomarkers.lead}
+          ask={BRAIN_METS_ENTRY_CARDS.biomarkers.ask}
+        />
+      );
+    case "bm-who-involved":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.whoInvolved.lead}
+          items={BRAIN_METS_ENTRY_CARDS.whoInvolved.items}
+          close={BRAIN_METS_ENTRY_CARDS.whoInvolved.close}
+        />
+      );
+    case "bm-local-options":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.localOptions.lead}
+          close={BRAIN_METS_ENTRY_CARDS.localOptions.close}
+        />
+      );
+    case "bm-systemic-options":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.systemicOptions.lead}
+          close={BRAIN_METS_ENTRY_CARDS.systemicOptions.close}
+        />
+      );
+    case "bm-how-compare":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.howCompare.lead}
+          items={BRAIN_METS_ENTRY_CARDS.howCompare.items}
+          close={BRAIN_METS_ENTRY_CARDS.howCompare.close}
+        />
+      );
+    case "bm-daily-life":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={BRAIN_METS_ENTRY_CARDS.dailyLife.lead}
+            items={BRAIN_METS_ENTRY_CARDS.dailyLife.items}
+            close={BRAIN_METS_ENTRY_CARDS.dailyLife.close}
+          />
+          <p>
+            <Link
+              href="/questions/how-should-quality-of-life-factor-into-lung-cancer-decisions"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Quality of life decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "bm-trial":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={BRAIN_METS_ENTRY_CARDS.trial.lead}
+            ask={BRAIN_METS_ENTRY_CARDS.trial.ask}
+          />
+          <p>
+            <Link
+              href="/questions/should-i-consider-a-clinical-trial-for-lung-cancer"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Clinical trial decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "bm-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{BRAIN_METS_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {BRAIN_METS_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "bm-family":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.family.lead}
+          items={BRAIN_METS_ENTRY_CARDS.family.topics}
+          close={BRAIN_METS_ENTRY_CARDS.family.close}
+        />
+      );
+    case "bm-records":
+      return (
+        <BulletCard
+          lead={BRAIN_METS_ENTRY_CARDS.records.lead}
+          items={BRAIN_METS_ENTRY_CARDS.records.items}
+          close={BRAIN_METS_ENTRY_CARDS.records.close}
+          itemSection="bring"
+        />
+      );
     case "scenario":
       return <IllustrativeScenario modules={modules} />;
     case "value":

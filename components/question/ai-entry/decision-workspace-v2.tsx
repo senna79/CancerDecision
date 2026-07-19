@@ -335,6 +335,51 @@ function StepMain({
           </p>
         </div>
       );
+    case "brain-mets-understand":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "brain-mets-info":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Before choosing a path, teams usually clarify the brain imaging,
+            symptoms, how much cancer is active elsewhere, prior treatments,
+            biomarker results when relevant, and your goals.
+          </p>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Sometimes the most important next step is not picking a treatment
+            immediately. It is making sure the team has the information that
+            would change the options.
+          </p>
+        </div>
+      );
+    case "brain-mets-compare":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Possible approaches may include local treatment aimed at the brain
+            findings, systemic therapy for cancer elsewhere — and sometimes for
+            the brain — clinical trials, supportive care focused on symptoms, or
+            a sequenced combination.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Goal for the brain findings and for disease elsewhere",
+              "Expected benefit and main risks",
+              "Effects on thinking, steroids, and daily life",
+              "Timing — what is urgent versus what can wait",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The goal is not “find the strongest treatment.” It is “find the
+            approach that best fits my situation now.”
+          </p>
+        </div>
+      );
     case "nd-understand":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "nd-information":

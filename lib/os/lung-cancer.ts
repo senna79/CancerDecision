@@ -295,6 +295,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-second-opinion",
         "node-clinical-trial",
         "node-treatment-progression",
+        "node-brain-mets",
       ],
       patient_router: {
         label: "My lung cancer has come back — what now?",
@@ -328,6 +329,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-second-opinion",
         "node-clinical-trial",
         "node-recurrence",
+        "node-brain-mets",
         "node-cancer-center",
         "node-qol",
       ],
@@ -367,11 +369,47 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-clinical-trial",
         "node-second-opinion",
         "node-treatment-progression",
+        "node-brain-mets",
         "node-qol",
       ],
       patient_router: {
         label: "I was diagnosed with Stage IV / advanced lung cancer",
         hint: "How to choose a path with goals, trade-offs, and priorities.",
+        nextStep: "See what to do next",
+      },
+    },
+    {
+      id: "node-brain-mets",
+      slug: "brain-mets",
+      label: "6b. Brain metastases decision",
+      state_label: "Brain metastases",
+      summary:
+        "When lung cancer is found in the brain — clarify the findings, compare local and systemic options with disease elsewhere, and prepare the next conversation.",
+      why_this_matters:
+        "Brain metastases create high fear and fragmented specialty advice; patients need a decision path that holds brain findings and whole-body options together.",
+      tier: 1,
+      status: "active",
+      stage: "treatment",
+      sort_order: 6.5,
+      ai_entry_slug:
+        "what-are-my-options-if-lung-cancer-spreads-to-the-brain",
+      question_slugs: [
+        "what-are-my-options-if-lung-cancer-spreads-to-the-brain",
+      ],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: [
+        "node-stage-iv",
+        "node-biomarkers",
+        "node-second-opinion",
+        "node-clinical-trial",
+        "node-treatment-progression",
+        "node-cancer-center",
+        "node-qol",
+      ],
+      patient_router: {
+        label: "Lung cancer was found in my brain — what now?",
+        hint: "What brain findings mean, then how to compare realistic next options.",
         nextStep: "See what to do next",
       },
     },

@@ -64,6 +64,8 @@ export const CARE_CENTER_SLUG =
   "do-i-need-different-lung-cancer-center-or-specialized-expertise";
 export const FEASIBILITY_SLUG =
   "can-my-lung-cancer-treatment-plan-work-with-my-real-life";
+export const BRAIN_METS_SLUG =
+  "what-are-my-options-if-lung-cancer-spreads-to-the-brain";
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -1883,6 +1885,163 @@ const FEASIBILITY_PATH: EntryPathV2 = {
   ],
 };
 
+const BRAIN_METS_PATH: EntryPathV2 = {
+  pathTitle: "Brain Metastases Decision Path",
+  pathSubtitle:
+    "What brain findings mean → what guides the next choice → how to compare approaches → what to ask.",
+  completedLabels: [
+    "What brain involvement means for the next decision",
+    "What information should guide the discussion",
+    "How to compare brain-directed and whole-body approaches",
+    "Questions for the next conversation",
+  ],
+  practicalPoints: [
+    "Goal for the brain findings and for cancer elsewhere",
+    "Expected benefit, risks, and effects on thinking or daily life",
+    "Timing — what is urgent versus what can wait for clearer information",
+    "Support at home, steroids, travel, and what you want to protect",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Does finding lung cancer in the brain change everything?",
+      lead: "Patient question: what do brain metastases mean for my next decision?",
+      main: "brain-mets-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people face a brain metastases decision.",
+        },
+        {
+          id: "bm-what-means",
+          title: "What does it mean if lung cancer has spread to the brain?",
+          summary: "A new location — not an automatic next plan.",
+        },
+        {
+          id: "bm-still-options",
+          title: "Does brain involvement mean there are no options left?",
+          summary: "It changes the conversation — it does not erase choice.",
+        },
+        {
+          id: "bm-scan-vs-symptoms",
+          title: "Is a scan finding the same as symptoms I can feel?",
+          summary: "Symptoms and imaging can create different priorities.",
+        },
+        {
+          id: "bm-urgent",
+          title: "When is a brain finding an emergency?",
+          summary: "Sudden neurologic changes need urgent care first.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "What information should guide the next discussion?",
+      lead: "Patient question: what do doctors need to know before comparing options?",
+      main: "brain-mets-info",
+      cards: [
+        {
+          id: "bm-what-matters",
+          title: "What details matter most before we choose a path?",
+          summary: "Imaging, symptoms, body disease, history, and goals.",
+        },
+        {
+          id: "bm-number-location",
+          title: "Do the number and location of brain lesions change options?",
+          summary: "Why the imaging picture shapes local treatment talks.",
+        },
+        {
+          id: "bm-body-disease",
+          title: "Why does cancer outside the brain still matter?",
+          summary: "Brain and body plans are often considered together.",
+        },
+        {
+          id: "bm-biomarkers",
+          title: "Do biomarker results still matter with brain metastases?",
+          summary: "Molecular information can still shape systemic choices.",
+        },
+        {
+          id: "bm-who-involved",
+          title: "Who should be involved in this decision?",
+          summary: "Oncology, radiation, surgery, and symptom support.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title:
+        "How do I compare approaches that may involve the brain and the rest of my body?",
+      lead: "Patient question: how do I weigh local treatment, systemic therapy, and daily life?",
+      main: "brain-mets-compare",
+      cards: [
+        {
+          id: "bm-local-options",
+          title: "What local brain treatments might doctors discuss?",
+          summary: "Focused radiation, broader radiation, or surgery — when relevant.",
+        },
+        {
+          id: "bm-systemic-options",
+          title: "What about systemic treatment if the cancer is also elsewhere?",
+          summary: "Whole-body options and how they relate to the brain plan.",
+        },
+        {
+          id: "bm-how-compare",
+          title: "How should I compare the options on the table?",
+          summary: "Goal, benefit, risk, timing, and fit — same questions each time.",
+        },
+        {
+          id: "bm-daily-life",
+          title: "How could treatment affect thinking, steroids, and daily life?",
+          summary: "Practical realities that belong in the decision.",
+        },
+        {
+          id: "bm-trial",
+          title: "Should I ask about a clinical trial?",
+          summary: "When research options may fit brain metastases decisions.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I ask before deciding what comes next?",
+      lead: "Patient question: how do I prepare for the conversation?",
+      main: "checklist",
+      cards: [
+        {
+          id: "second-opinion",
+          title: "Would a second opinion help with brain metastases?",
+          summary: "When another review may add clarity or confidence.",
+        },
+        {
+          id: "bm-mistakes",
+          title: "What mistakes are common after hearing about brain mets?",
+          summary: "Fear-only decisions and missing the whole picture.",
+        },
+        {
+          id: "bm-family",
+          title: "How do we talk about this as a family?",
+          summary: "Plain language, priorities, and how others can help.",
+        },
+        {
+          id: "bm-records",
+          title: "What records should I bring to the appointment?",
+          summary: "Imaging, pathology, biomarkers, and your priorities.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might move from shock to a clearer next question.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
@@ -1897,6 +2056,7 @@ const PATHS: Record<string, EntryPathV2> = {
   [STAGE_IV_SLUG]: STAGE_IV_PATH,
   [CARE_CENTER_SLUG]: CARE_CENTER_PATH,
   [FEASIBILITY_SLUG]: FEASIBILITY_PATH,
+  [BRAIN_METS_SLUG]: BRAIN_METS_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {
