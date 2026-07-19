@@ -2099,6 +2099,11 @@ function DecisionPathCardDetailInner({
     case "doctor":
       return <DoctorQuestionGroups modules={modules} />;
     default:
-      return null;
+      return (
+        <p className="text-sm text-[var(--muted)]">
+          This question card is not available yet. Use the Decision Path steps
+          on the left (or above on mobile) to continue.
+        </p>
+      );
   }
 }

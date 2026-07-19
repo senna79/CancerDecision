@@ -165,41 +165,32 @@ function StepCards({
                   </svg>
                 </span>
               </button>
-              <div
-                className={cn(
-                  "grid transition-[grid-template-rows] duration-300 ease-out",
-                  open ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
-                )}
-              >
-                <div className="overflow-hidden">
-                  {open ? (
-                    <div className="px-3.5 pb-4">
-                      <div className="path-question-answer max-h-none overflow-visible pr-1 text-[0.95rem] leading-relaxed text-[var(--ink)] md:text-base">
-                        <DecisionPathCardDetail
-                          id={card.id}
-                          slug={slug}
-                          modules={modules}
-                        />
-                      </div>
-                      <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[var(--accent)]/15 pt-3">
-                        <a
-                          href={`#path-step-${step.id}`}
-                          className="text-sm font-semibold text-[var(--accent)] hover:underline"
-                        >
-                          Back to Step {step.number} →
-                        </a>
-                        <button
-                          type="button"
-                          onClick={() => onToggle(card.id)}
-                          className="text-sm font-semibold text-[var(--muted)] hover:text-[var(--accent)] hover:underline"
-                        >
-                          Close
-                        </button>
-                      </div>
-                    </div>
-                  ) : null}
+              {open ? (
+                <div className="px-3.5 pb-4">
+                  <div className="path-question-answer min-h-[4.5rem] text-[0.95rem] leading-relaxed text-[var(--ink)] md:text-base">
+                    <DecisionPathCardDetail
+                      id={card.id}
+                      slug={slug}
+                      modules={modules}
+                    />
+                  </div>
+                  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[var(--accent)]/15 pt-3">
+                    <a
+                      href={`#path-step-${step.id}`}
+                      className="text-sm font-semibold text-[var(--accent)] hover:underline"
+                    >
+                      Back to Step {step.number} →
+                    </a>
+                    <button
+                      type="button"
+                      onClick={() => onToggle(card.id)}
+                      className="text-sm font-semibold text-[var(--muted)] hover:text-[var(--accent)] hover:underline"
+                    >
+                      Close
+                    </button>
+                  </div>
                 </div>
-              </div>
+              ) : null}
             </li>
           );
         })}
@@ -991,12 +982,12 @@ export function DecisionWorkspaceV2({
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const timer = window.setTimeout(() => {
-      document
-        .getElementById(`card-${fromUrl}`)
-        ?.scrollIntoView({
-          behavior: reduced ? "auto" : "smooth",
-          block: "start",
-        });
+      const el = document.getElementById(`card-${fromUrl}`);
+      el?.closest<HTMLElement>("[data-path-step]")?.classList.add("is-visible");
+      el?.scrollIntoView({
+        behavior: reduced ? "auto" : "smooth",
+        block: "start",
+      });
     }, 80);
     return () => window.clearTimeout(timer);
   }, [path, validCardIds]);
@@ -1008,6 +999,13 @@ export function DecisionWorkspaceV2({
     setOpenId(next);
     if (next !== landedId) setLandedId(null);
     syncCardToUrl(next);
+    if (next) {
+      // Ensure the step is visible if reveal animation has not fired yet.
+      document
+        .getElementById(`card-${next}`)
+        ?.closest<HTMLElement>("[data-path-step]")
+        ?.classList.add("is-visible");
+    }
   }
 
   const numberedSteps = path.steps.map((step, index) => ({
@@ -1122,7 +1120,7 @@ export function DecisionWorkspaceV2({
                   </div>
                 </div>
 
-                <div className="min-w-0 pl-11 lg:sticky lg:top-24 lg:pl-0 lg:pt-7 lg:self-start">
+                <div className="min-w-0 overflow-visible pl-11 lg:sticky lg:top-24 lg:pl-0 lg:pt-7 lg:self-start">
                   <StepCards
                     step={step}
                     openId={
