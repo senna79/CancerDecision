@@ -43,38 +43,19 @@ export default async function HomePage() {
       <section className="relative overflow-hidden">
         <div
           aria-hidden
-          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(15,118,110,0.16),transparent_40%),radial-gradient(circle_at_80%_10%,rgba(23,48,42,0.12),transparent_35%),linear-gradient(120deg,rgba(231,238,233,0.9),rgba(243,246,244,0.4))]"
+          className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(15,118,110,0.12),transparent_45%),linear-gradient(120deg,rgba(231,238,233,0.85),rgba(243,246,244,0.35))]"
         />
-        <div
-          aria-hidden
-          className="pointer-events-none absolute -right-24 top-10 h-[28rem] w-[28rem] rounded-full bg-[conic-gradient(from_180deg_at_50%_50%,rgba(15,118,110,0.18),transparent_55%,rgba(49,92,84,0.14))] blur-2xl animate-fade"
-        />
-        <div className="relative mx-auto w-full max-w-6xl px-5 py-14 md:px-8 md:py-20">
-          <h1 className="animate-rise font-heading text-4xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-5xl md:text-6xl lg:text-7xl">
+        <div className="relative mx-auto w-full max-w-6xl px-5 py-7 md:px-8 md:py-9">
+          <h1 className="animate-rise font-heading text-3xl font-semibold tracking-[-0.04em] text-[var(--ink)] sm:text-4xl md:text-5xl">
             Cancer Next Step
           </h1>
-          <p className="animate-rise-delay mt-4 max-w-2xl text-lg font-medium tracking-[-0.01em] text-[var(--ink-soft)] md:text-xl">
+          <p className="animate-rise-delay mt-2.5 max-w-2xl text-base font-medium tracking-[-0.01em] text-[var(--ink-soft)] md:text-lg">
             Understand your options. Prepare better questions. Know your next
             step.
           </p>
-          <p className="animate-rise-delay mt-4 max-w-2xl text-base leading-relaxed text-[var(--muted)] md:text-lg">
-            Not an encyclopedia — a decision path. Lung cancer is the first
-            complete journey; more cancers will follow the same framework.
+          <p className="animate-rise-delay mt-2 max-w-2xl text-sm text-[var(--muted)] md:text-base">
+            Not an encyclopedia — a decision path.
           </p>
-          <div className="animate-rise-delay mt-8 flex flex-wrap items-center gap-4">
-            <a
-              href="#decision-moment"
-              className="inline-flex items-center justify-center rounded-md bg-[var(--ink)] px-5 py-2.5 text-sm font-semibold text-white transition hover:bg-[var(--accent)]"
-            >
-              Where are you in your journey?
-            </a>
-            <a
-              href="#common-decision-paths"
-              className="text-sm font-semibold text-[var(--accent)] hover:underline"
-            >
-              Explore decision questions
-            </a>
-          </div>
         </div>
       </section>
 
