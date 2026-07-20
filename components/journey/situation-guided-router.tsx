@@ -18,17 +18,22 @@ function MomentLink({
   moment,
   isActive,
   compact,
+  tone = "primary",
 }: {
   moment: DecisionMoment;
   isActive: boolean;
   compact?: boolean;
+  /** Primary = start-here guides; also = secondary related links */
+  tone?: "primary" | "also";
 }) {
+  const isAlso = tone === "also";
+
   return (
     <Link
       href={moment.href}
       className={cn(
         "group block rounded-md transition",
-        compact ? "px-2.5 py-1.5" : "px-3 py-2",
+        compact || isAlso ? "px-2.5 py-1.5" : "px-3 py-2",
         isActive
           ? "bg-[rgba(15,118,110,0.1)]"
           : "hover:bg-[rgba(15,118,110,0.06)]"
@@ -36,13 +41,18 @@ function MomentLink({
     >
       <span
         className={cn(
-          "block font-medium text-[var(--ink)] group-hover:text-[var(--accent)]",
-          compact ? "text-sm" : "text-sm md:text-[0.95rem]"
+          "block group-hover:text-[var(--accent)]",
+          isAlso
+            ? "text-sm font-medium text-[var(--ink-soft)]"
+            : cn(
+                "font-semibold text-[var(--ink)]",
+                compact ? "text-sm" : "text-sm md:text-[0.95rem]"
+              )
         )}
       >
         {moment.label}
       </span>
-      {!compact ? (
+      {!compact && !isAlso ? (
         <span className="mt-0.5 block text-sm text-[var(--ink-soft)]">
           {moment.hint}
         </span>
@@ -230,14 +240,15 @@ export function SituationGuidedRouter({
                       return (
                         <TreeBranch key={item.moment.id} last={isLast}>
                           {showAlsoLabel ? (
-                            <p className="mb-0.5 px-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-                              Also
+                            <p className="mb-1 mt-2 px-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+                              Also related
                             </p>
                           ) : null}
                           <MomentLink
                             moment={item.moment}
                             isActive={activeId === item.moment.id}
                             compact={compact}
+                            tone={item.kind === "also" ? "also" : "primary"}
                           />
                         </TreeBranch>
                       );

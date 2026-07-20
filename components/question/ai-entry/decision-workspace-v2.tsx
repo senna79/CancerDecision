@@ -15,18 +15,31 @@ import { DoctorQuestionGroups } from "./doctor-question-groups";
 import { DoesNotDecide } from "./does-not-decide";
 import { WhyDecisionMatters } from "./why-decision-matters";
 
+function revealPathSteps(root: HTMLElement | null) {
+  if (!root) return;
+  root
+    .querySelectorAll<HTMLElement>("[data-path-step]")
+    .forEach((el) => el.classList.add("is-visible"));
+  const canvas = root.closest<HTMLElement>(".decision-path-canvas");
+  canvas?.removeAttribute("data-path-animate");
+}
+
 function useStepReveal() {
   const ref = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
     const root = ref.current;
     if (!root) return;
+    const canvas = root.closest<HTMLElement>(".decision-path-canvas");
     const items = root.querySelectorAll<HTMLElement>("[data-path-step]");
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduced) {
-      items.forEach((el) => el.classList.add("is-visible"));
+    if (reduced || items.length === 0) {
+      revealPathSteps(root);
       return;
     }
+
+    canvas?.setAttribute("data-path-animate", "pending");
+
     const io = new IntersectionObserver(
       (entries) => {
         for (const entry of entries) {
@@ -35,11 +48,23 @@ function useStepReveal() {
             io.unobserve(entry.target);
           }
         }
+        if (
+          [...items].every((el) => el.classList.contains("is-visible"))
+        ) {
+          canvas?.removeAttribute("data-path-animate");
+        }
       },
-      { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+      { threshold: 0.08, rootMargin: "0px 0px -4% 0px" }
     );
     items.forEach((el) => io.observe(el));
-    return () => io.disconnect();
+
+    // Failsafe: never leave the path blank after remount / URL sync.
+    const safety = window.setTimeout(() => revealPathSteps(root), 320);
+    return () => {
+      io.disconnect();
+      window.clearTimeout(safety);
+      canvas?.removeAttribute("data-path-animate");
+    };
   }, []);
 
   return ref;
@@ -70,7 +95,9 @@ function syncCardToUrl(cardId: string | null) {
     url.hash = "";
   }
   const next = `${url.pathname}${url.search}${url.hash}`;
-  window.history.replaceState(null, "", next);
+  // Preserve Next.js history state so replaceState does not soft-remount
+  // the App Router tree (which used to reset path-step opacity to 0).
+  window.history.replaceState(window.history.state, "", next);
 }
 
 function StepCards({
@@ -89,9 +116,18 @@ function StepCards({
   slug: string;
   modules: AiEntryFlagshipModules;
 }) {
+  const [showOthers, setShowOthers] = useState(false);
   const railHasOpen = Boolean(
     openId && step.cards.some((card) => card.id === openId)
   );
+  const hiddenCount = railHasOpen
+    ? step.cards.filter((card) => card.id !== openId).length
+    : 0;
+
+  useEffect(() => {
+    // Reset when this rail closes or switches open card.
+    setShowOthers(false);
+  }, [openId]);
 
   return (
     <div
@@ -107,10 +143,12 @@ function StepCards({
         {step.cards.map((card) => {
           const open = openId === card.id;
           const fromLanding = open && landedId === card.id;
+          const concealed = railHasOpen && !showOthers && !open;
           return (
             <li
               key={card.id}
               id={`card-${card.id}`}
+              hidden={concealed}
               className={cn(
                 "path-question-item scroll-mt-28",
                 open && "path-question-item--open"
@@ -167,7 +205,7 @@ function StepCards({
               </button>
               {open ? (
                 <div className="px-3.5 pb-4">
-                  <div className="path-question-answer min-h-[4.5rem] text-[0.95rem] leading-relaxed text-[var(--ink)] md:text-base">
+                  <div className="path-question-answer text-[0.95rem] leading-relaxed text-[var(--ink)] md:text-base">
                     <DecisionPathCardDetail
                       id={card.id}
                       slug={slug}
@@ -195,6 +233,17 @@ function StepCards({
           );
         })}
       </ul>
+      {railHasOpen && hiddenCount > 0 && !showOthers ? (
+        <button
+          type="button"
+          onClick={() => setShowOthers(true)}
+          className="mt-2 text-sm font-semibold text-[var(--accent)] hover:underline"
+        >
+          {hiddenCount === 1
+            ? "Show 1 other question on this step"
+            : `Show ${hiddenCount} other questions on this step`}
+        </button>
+      ) : null}
     </div>
   );
 }
@@ -1034,15 +1083,19 @@ export function DecisionWorkspaceV2({
 
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const timer = window.setTimeout(() => {
+      revealPathSteps(listRef.current);
       const el = document.getElementById(`card-${fromUrl}`);
-      el?.closest<HTMLElement>("[data-path-step]")?.classList.add("is-visible");
       el?.scrollIntoView({
         behavior: reduced ? "auto" : "smooth",
-        block: "start",
+        block: "nearest",
       });
     }, 80);
     return () => window.clearTimeout(timer);
-  }, [path, validCardIds]);
+  }, [path, validCardIds, listRef]);
+
+  useEffect(() => {
+    if (openId) revealPathSteps(listRef.current);
+  }, [openId, listRef]);
 
   if (!path) return null;
 
@@ -1051,12 +1104,15 @@ export function DecisionWorkspaceV2({
     setOpenId(next);
     if (next !== landedId) setLandedId(null);
     syncCardToUrl(next);
+    // URL sync can remount this tree; keep every step readable.
+    revealPathSteps(listRef.current);
     if (next) {
-      // Ensure the step is visible if reveal animation has not fired yet.
-      document
-        .getElementById(`card-${next}`)
-        ?.closest<HTMLElement>("[data-path-step]")
-        ?.classList.add("is-visible");
+      window.requestAnimationFrame(() => {
+        document.getElementById(`card-${next}`)?.scrollIntoView({
+          behavior: "smooth",
+          block: "nearest",
+        });
+      });
     }
   }
 
@@ -1133,7 +1189,16 @@ export function DecisionWorkspaceV2({
               )}
               style={{ transitionDelay: `${index * 60}ms` }}
             >
-              <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,62fr)_minmax(240px,38fr)] lg:gap-8">
+              <div
+                className={cn(
+                  "grid items-start gap-5",
+                  // Open answers are tall — stack full-width so the left column
+                  // does not leave a large empty cell beside the hang card.
+                  stepHoldsOpen
+                    ? "grid-cols-1"
+                    : "lg:grid-cols-[minmax(0,62fr)_minmax(240px,38fr)] lg:gap-8"
+                )}
+              >
                 <div className="relative min-w-0 pl-11 md:pl-12">
                   {!isLast ? (
                     <span
@@ -1172,7 +1237,13 @@ export function DecisionWorkspaceV2({
                   </div>
                 </div>
 
-                <div className="min-w-0 overflow-visible pl-11 lg:sticky lg:top-24 lg:pl-0 lg:pt-7 lg:self-start">
+                <div
+                  className={cn(
+                    "min-w-0 overflow-visible pl-11 lg:self-start",
+                    stepHoldsOpen ? "lg:pl-11" : "lg:pl-0 lg:pt-7",
+                    !stepHoldsOpen && "lg:sticky lg:top-24"
+                  )}
+                >
                   <StepCards
                     step={step}
                     openId={
