@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DecisionNodeBadge } from "@/components/brand/decision-marks";
 import {
   getDecisionGraphNodeById,
   LUNG_DECISION_GRAPH,
@@ -19,19 +20,23 @@ function LocatorCard({
 }) {
   const roleLabel =
     role === "current" ? "You are here" : role === "previous" ? "Before" : "Next";
+  const isCurrent = role === "current";
 
   return (
     <li
       className={
-        role === "current"
+        isCurrent
           ? "rounded-md border border-[var(--accent)]/40 bg-[rgba(15,118,110,0.06)] px-4 py-4"
           : "rounded-md border border-[var(--line)] bg-white/80 px-4 py-4"
       }
     >
-      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-        {roleLabel}
-      </p>
-      <p className="mt-1 font-heading text-lg font-semibold tracking-[-0.02em] text-[var(--ink)]">
+      <div className="flex items-center gap-2">
+        <DecisionNodeBadge active={isCurrent} className="size-6" />
+        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+          {roleLabel}
+        </p>
+      </div>
+      <p className="mt-2 font-heading text-lg font-semibold tracking-[-0.02em] text-[var(--ink)]">
         {link.stateLabel || cleanLabel(link.label)}
       </p>
       {link.summary ? (

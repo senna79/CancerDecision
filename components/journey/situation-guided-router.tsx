@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { DecisionMarkBadge } from "@/components/brand/decision-marks";
+import { markForSituationBucket } from "@/lib/brand/situation-marks";
 import {
   filterMomentsByIds,
   type DecisionMoment,
@@ -184,7 +186,7 @@ export function SituationGuidedRouter({
       ) : null}
 
       <ol className="mt-6 space-y-5 md:space-y-6">
-        {momentsByBucket.map(({ bucket, primary, also }, index) => {
+        {momentsByBucket.map(({ bucket, primary, also }) => {
           const hasActive =
             primary.some((m) => m.id === activeId) ||
             also.some((m) => m.id === activeId);
@@ -192,6 +194,7 @@ export function SituationGuidedRouter({
             ...primary.map((moment) => ({ kind: "primary" as const, moment })),
             ...also.map((moment) => ({ kind: "also" as const, moment })),
           ];
+          const markId = markForSituationBucket(bucket.id);
 
           return (
             <li
@@ -203,17 +206,11 @@ export function SituationGuidedRouter({
               )}
             >
               <div className="flex gap-3">
-                <span
-                  className={cn(
-                    "mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border text-[11px] font-bold",
-                    hasActive
-                      ? "border-[var(--accent)] bg-[var(--accent)] text-white"
-                      : "border-[var(--line)] bg-[var(--paper)] text-[var(--muted)]"
-                  )}
-                  aria-hidden
-                >
-                  {index + 1}
-                </span>
+                <DecisionMarkBadge
+                  id={markId}
+                  active={hasActive}
+                  className="mt-0.5 size-6"
+                />
                 <div className="min-w-0 flex-1">
                   <h3 className="font-heading text-base font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-lg">
                     {bucket.label}

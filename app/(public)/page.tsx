@@ -1,5 +1,7 @@
 import Link from "next/link";
+import { DecisionMarkBadge } from "@/components/brand/decision-marks";
 import { CancerJourneyNav } from "@/components/home/cancer-journey-nav";
+import { JOURNEY_PHASE_MARKS } from "@/lib/brand/situation-marks";
 import {
   HOME_COMMON_DECISION_PATHS,
   HOME_FEATURED_LUNG_JOURNEY,
@@ -50,18 +52,19 @@ export default async function HomePage() {
           className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_0%,rgba(15,118,110,0.12),transparent_45%),linear-gradient(120deg,rgba(231,238,233,0.85),rgba(243,246,244,0.35))]"
         />
         <div className="relative mx-auto w-full max-w-6xl px-5 py-10 md:px-8 md:py-14">
-          <h1 className="animate-rise max-w-2xl font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-4xl md:text-5xl">
-            Navigate the next cancer decision with confidence.
-          </h1>
-          <div className="animate-rise-delay mt-4 max-w-xl space-y-1 text-base text-[var(--muted)] md:text-lg">
-            <p>Understand the options.</p>
-            <p>Prepare better questions.</p>
-            <p>Know the next step.</p>
+          <div className="animate-rise max-w-2xl">
+            <h1 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-4xl md:text-5xl md:leading-[1.12]">
+              Navigate the next cancer decision with confidence.
+            </h1>
+            <p className="animate-rise-delay mt-5 text-base leading-relaxed text-[var(--muted)] md:text-lg">
+              Understand the options · Prepare better questions · Know the next
+              step.
+            </p>
+            <p className="animate-rise-delay mt-3 max-w-xl text-base leading-relaxed text-[var(--ink-soft)]">
+              For patients and the people helping them decide — match the
+              situation to the next decision.
+            </p>
           </div>
-          <p className="animate-rise-delay mt-4 max-w-xl text-sm text-[var(--ink-soft)] md:text-base">
-            For patients and the people helping them decide — match the
-            situation to the next decision.
-          </p>
 
           <div className="animate-rise-delay mt-10 border-t border-[var(--line)]/80 pt-8">
             <h2 className="font-heading text-2xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-3xl">
@@ -132,21 +135,25 @@ export default async function HomePage() {
             follow-up.
           </p>
           <ol className="mt-8 grid gap-0 sm:grid-cols-2 lg:grid-cols-4">
-            {HOME_FEATURED_LUNG_JOURNEY.map((step, index) => (
-              <li key={step.href}>
-                <Link
-                  href={step.href}
-                  className="group flex items-baseline gap-3 border-b border-[var(--line)] py-4 lg:border-b-0 lg:border-l lg:border-[var(--line)] lg:px-5 lg:py-2 lg:first:border-l-0 lg:first:pl-0"
-                >
-                  <span className="font-heading text-sm font-semibold text-[var(--accent)]">
-                    {index + 1}
-                  </span>
-                  <span className="font-heading text-lg font-semibold text-[var(--ink)] group-hover:text-[var(--accent)]">
-                    {step.label}
-                  </span>
-                </Link>
-              </li>
-            ))}
+            {HOME_FEATURED_LUNG_JOURNEY.map((step, index) => {
+              const markId = JOURNEY_PHASE_MARKS[index] ?? "diagnosis";
+              return (
+                <li key={step.href} className="relative">
+                  <Link
+                    href={step.href}
+                    className="group flex items-center gap-3 border-b border-[var(--line)] py-4 lg:border-b-0 lg:border-l lg:border-[var(--line)] lg:px-5 lg:py-2 lg:first:border-l-0 lg:first:pl-0"
+                  >
+                    <DecisionMarkBadge
+                      id={markId}
+                      className="size-7 transition group-hover:border-[var(--accent)]/50"
+                    />
+                    <span className="font-heading text-lg font-semibold text-[var(--ink)] group-hover:text-[var(--accent)]">
+                      {step.label}
+                    </span>
+                  </Link>
+                </li>
+              );
+            })}
           </ol>
           <p className="mt-6">
             <Link

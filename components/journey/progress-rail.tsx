@@ -1,13 +1,7 @@
 import Link from "next/link";
+import { DecisionNodeMark } from "@/components/brand/decision-marks";
 import type { JourneyContext } from "@/lib/journey/engine";
 import { cn } from "@/lib/utils";
-
-function statusMarker(status: JourneyContext["steps"][number]["status"]) {
-  if (status === "done") return "✓";
-  if (status === "current") return "→";
-  if (status === "optional") return "◇";
-  return "○";
-}
 
 export function JourneyProgressRail({
   journey,
@@ -83,16 +77,16 @@ export function JourneyProgressRail({
                 )}
                 aria-current={isCurrent ? "step" : undefined}
               >
-                <span
+                <DecisionNodeMark
+                  active={isCurrent || step.status === "done"}
                   className={cn(
-                    "w-4 shrink-0 text-center font-semibold",
-                    isCurrent && "text-[var(--accent)]",
-                    step.status === "done" && "text-[var(--accent)]"
+                    "size-4 shrink-0",
+                    isCurrent || step.status === "done"
+                      ? "text-[var(--accent)]"
+                      : "text-[var(--muted)]",
+                    step.status === "optional" && "opacity-70"
                   )}
-                  aria-hidden
-                >
-                  {statusMarker(step.status)}
-                </span>
+                />
                 <span>
                   {step.stateLabel}
                   {isCurrent ? " (current)" : ""}
@@ -104,7 +98,7 @@ export function JourneyProgressRail({
         })}
       </ol>
       <p className="mt-3 text-[11px] text-[var(--muted)]">
-        ✓ earlier on your path · → you are here · ○ still ahead · ◇ optional
+        Filled node = on your path · open node = still ahead
       </p>
     </div>
   );
