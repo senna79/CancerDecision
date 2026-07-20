@@ -100,34 +100,19 @@ function syncCardToUrl(cardId: string | null) {
   window.history.replaceState(window.history.state, "", next);
 }
 
+/** Right rail: question list only — answers open in the main path column. */
 function StepCards({
   step,
   openId,
-  landedId,
   onToggle,
-  slug,
-  modules,
 }: {
   step: EntryPathStep & { number: number };
   openId: string | null;
-  /** Card opened via ?card= / #card- landing */
-  landedId: string | null;
   onToggle: (id: string) => void;
-  slug: string;
-  modules: AiEntryFlagshipModules;
 }) {
-  const [showOthers, setShowOthers] = useState(false);
   const railHasOpen = Boolean(
     openId && step.cards.some((card) => card.id === openId)
   );
-  const hiddenCount = railHasOpen
-    ? step.cards.filter((card) => card.id !== openId).length
-    : 0;
-
-  useEffect(() => {
-    // Reset when this rail closes or switches open card.
-    setShowOthers(false);
-  }, [openId]);
 
   return (
     <div
@@ -142,48 +127,36 @@ function StepCards({
       <ul className="mt-2">
         {step.cards.map((card) => {
           const open = openId === card.id;
-          const fromLanding = open && landedId === card.id;
-          const concealed = railHasOpen && !showOthers && !open;
           return (
             <li
               key={card.id}
               id={`card-${card.id}`}
-              hidden={concealed}
               className={cn(
                 "path-question-item scroll-mt-28",
-                open && "path-question-item--open"
+                open && "path-question-item--selected"
               )}
             >
-              {fromLanding ? (
-                <p className="px-3.5 pt-3.5 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-                  Answering your question
-                </p>
-              ) : null}
               <button
                 type="button"
                 aria-expanded={open}
+                aria-controls={open ? `card-answer-${card.id}` : undefined}
                 onClick={() => onToggle(card.id)}
-                className={cn(
-                  "flex w-full items-start gap-2 text-left transition",
-                  open
-                    ? "px-3.5 py-3 hover:bg-transparent"
-                    : "px-2 py-2.5 hover:bg-white/70"
-                )}
+                className="flex w-full items-start gap-2 px-2 py-2.5 text-left transition hover:bg-white/70"
               >
                 <span className="min-w-0 flex-1">
                   <span
                     className={cn(
-                      "block font-semibold text-[var(--ink)]",
-                      open ? "text-base md:text-lg" : "text-sm"
+                      "block text-sm font-semibold",
+                      open
+                        ? "text-[var(--accent)]"
+                        : "text-[var(--ink)] group-hover:text-[var(--accent)]"
                     )}
                   >
                     {card.title}
                   </span>
-                  {!open ? (
-                    <span className="mt-0.5 block text-xs leading-relaxed text-[var(--muted)]">
-                      {card.summary}
-                    </span>
-                  ) : null}
+                  <span className="mt-0.5 block text-xs leading-relaxed text-[var(--muted)]">
+                    {card.summary}
+                  </span>
                 </span>
                 <span
                   aria-hidden
@@ -203,47 +176,72 @@ function StepCards({
                   </svg>
                 </span>
               </button>
-              {open ? (
-                <div className="px-3.5 pb-4">
-                  <div className="path-question-answer text-[0.95rem] leading-relaxed text-[var(--ink)] md:text-base">
-                    <DecisionPathCardDetail
-                      id={card.id}
-                      slug={slug}
-                      modules={modules}
-                    />
-                  </div>
-                  <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[var(--accent)]/15 pt-3">
-                    <a
-                      href={`#path-step-${step.id}`}
-                      className="text-sm font-semibold text-[var(--accent)] hover:underline"
-                    >
-                      Back to Step {step.number} →
-                    </a>
-                    <button
-                      type="button"
-                      onClick={() => onToggle(card.id)}
-                      className="text-sm font-semibold text-[var(--muted)] hover:text-[var(--accent)] hover:underline"
-                    >
-                      Close
-                    </button>
-                  </div>
-                </div>
-              ) : null}
             </li>
           );
         })}
       </ul>
-      {railHasOpen && hiddenCount > 0 && !showOthers ? (
+    </div>
+  );
+}
+
+/** Open hang-card answer — main path width (left column). */
+function StepAnswerPanel({
+  step,
+  openId,
+  landedId,
+  onClose,
+  slug,
+  modules,
+}: {
+  step: EntryPathStep & { number: number };
+  openId: string;
+  landedId: string | null;
+  onClose: () => void;
+  slug: string;
+  modules: AiEntryFlagshipModules;
+}) {
+  const card = step.cards.find((c) => c.id === openId);
+  if (!card) return null;
+  const fromLanding = landedId === openId;
+
+  return (
+    <div
+      id={`card-answer-${card.id}`}
+      className="path-question-answer-panel mt-5 scroll-mt-28"
+      role="region"
+      aria-label={card.title}
+    >
+      {fromLanding ? (
+        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+          Answering your question
+        </p>
+      ) : (
+        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+          From questions beside this step
+        </p>
+      )}
+      <h3 className="mt-1 font-heading text-lg font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-xl">
+        {card.title}
+      </h3>
+      <div className="path-question-answer mt-3 text-[0.95rem] leading-relaxed text-[var(--ink)] md:text-base">
+        <DecisionPathCardDetail
+          id={card.id}
+          slug={slug}
+          modules={modules}
+        />
+      </div>
+      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[var(--accent)]/15 pt-3">
         <button
           type="button"
-          onClick={() => setShowOthers(true)}
-          className="mt-2 text-sm font-semibold text-[var(--accent)] hover:underline"
+          onClick={onClose}
+          className="text-sm font-semibold text-[var(--accent)] hover:underline"
         >
-          {hiddenCount === 1
-            ? "Show 1 other question on this step"
-            : `Show ${hiddenCount} other questions on this step`}
+          Close answer
         </button>
-      ) : null}
+        <span className="text-sm text-[var(--muted)]">
+          Or pick another question in the list
+        </span>
+      </div>
     </div>
   );
 }
@@ -1084,7 +1082,9 @@ export function DecisionWorkspaceV2({
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const timer = window.setTimeout(() => {
       revealPathSteps(listRef.current);
-      const el = document.getElementById(`card-${fromUrl}`);
+      const el =
+        document.getElementById(`card-answer-${fromUrl}`) ??
+        document.getElementById(`card-${fromUrl}`);
       el?.scrollIntoView({
         behavior: reduced ? "auto" : "smooth",
         block: "nearest",
@@ -1108,7 +1108,10 @@ export function DecisionWorkspaceV2({
     revealPathSteps(listRef.current);
     if (next) {
       window.requestAnimationFrame(() => {
-        document.getElementById(`card-${next}`)?.scrollIntoView({
+        (
+          document.getElementById(`card-answer-${next}`) ??
+          document.getElementById(`card-${next}`)
+        )?.scrollIntoView({
           behavior: "smooth",
           block: "nearest",
         });
@@ -1149,9 +1152,8 @@ export function DecisionWorkspaceV2({
               Opened from a specific question
             </span>
             {" — "}
-            you are in Step {landedStep.number}. The highlighted answer is
-            below; the Decision Path on the left (or above on mobile) is the
-            full guide.
+            you are in Step {landedStep.number}. The answer opens in the path
+            below; the full question list stays beside the step.
           </p>
         ) : null}
         {path.orientationTrail?.length ? (
@@ -1189,16 +1191,7 @@ export function DecisionWorkspaceV2({
               )}
               style={{ transitionDelay: `${index * 60}ms` }}
             >
-              <div
-                className={cn(
-                  "grid items-start gap-5",
-                  // Open answers are tall — stack full-width so the left column
-                  // does not leave a large empty cell beside the hang card.
-                  stepHoldsOpen
-                    ? "grid-cols-1"
-                    : "lg:grid-cols-[minmax(0,62fr)_minmax(240px,38fr)] lg:gap-8"
-                )}
-              >
+              <div className="grid items-start gap-5 lg:grid-cols-[minmax(0,62fr)_minmax(240px,38fr)] lg:gap-8">
                 <div className="relative min-w-0 pl-11 md:pl-12">
                   {!isLast ? (
                     <span
@@ -1235,28 +1228,29 @@ export function DecisionWorkspaceV2({
                       slug={slug}
                     />
                   </div>
+                  {stepHoldsOpen && openId ? (
+                    <StepAnswerPanel
+                      step={step}
+                      openId={openId}
+                      landedId={
+                        step.cards.some((c) => c.id === landedId)
+                          ? landedId
+                          : null
+                      }
+                      onClose={() => toggleCard(openId)}
+                      slug={slug}
+                      modules={modules}
+                    />
+                  ) : null}
                 </div>
 
-                <div
-                  className={cn(
-                    "min-w-0 overflow-visible pl-11 lg:self-start",
-                    stepHoldsOpen ? "lg:pl-11" : "lg:pl-0 lg:pt-7",
-                    !stepHoldsOpen && "lg:sticky lg:top-24"
-                  )}
-                >
+                <div className="min-w-0 overflow-visible pl-11 lg:sticky lg:top-24 lg:pl-0 lg:pt-7 lg:self-start">
                   <StepCards
                     step={step}
                     openId={
                       step.cards.some((c) => c.id === openId) ? openId : null
                     }
-                    landedId={
-                      step.cards.some((c) => c.id === landedId)
-                        ? landedId
-                        : null
-                    }
                     onToggle={toggleCard}
-                    slug={slug}
-                    modules={modules}
                   />
                 </div>
               </div>

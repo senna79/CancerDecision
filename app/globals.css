@@ -267,33 +267,39 @@
   border-top: 1px solid color-mix(in oklab, var(--line) 80%, transparent);
 }
 
-/* Open hang card — always a clear answer panel, not just a left rule */
-.path-question-rail .path-question-item--open {
-  margin: 0.4rem 0 0.85rem;
-  border: 1px solid color-mix(in oklab, var(--accent) 42%, var(--line));
-  border-left: 4px solid var(--accent);
-  border-radius: 0.55rem;
-  background: #fff;
-  box-shadow:
-    0 1px 0 rgba(15, 118, 110, 0.06),
-    0 12px 32px rgba(23, 48, 42, 0.1);
+/* Selected hang card in the right rail — list stays fully visible */
+.path-question-rail .path-question-item--selected {
+  border-radius: 0.45rem;
+  border: 1px solid color-mix(in oklab, var(--accent) 40%, var(--line));
+  border-left: 3px solid var(--accent);
+  background: rgba(15, 118, 110, 0.06);
 }
 
-.path-question-item--open .path-question-answer {
-  display: block;
-  color: var(--ink);
-  visibility: visible;
-  opacity: 1;
-}
-
-.path-question-rail--has-open .path-question-item:not(.path-question-item--open) {
-  opacity: 0.4;
+.path-question-rail--has-open
+  .path-question-item:not(.path-question-item--selected) {
+  opacity: 0.78;
   transition: opacity 220ms ease;
 }
 
 .path-question-rail--has-open
-  .path-question-item:not(.path-question-item--open):hover {
-  opacity: 0.88;
+  .path-question-item:not(.path-question-item--selected):hover {
+  opacity: 1;
+}
+
+/* Answer opens in the main path column at reading width */
+.path-question-answer-panel {
+  border: 1px solid color-mix(in oklab, var(--accent) 42%, var(--line));
+  border-left: 4px solid var(--accent);
+  border-radius: 0.55rem;
+  background: #fff;
+  padding: 1rem 1.1rem 1.15rem;
+  box-shadow:
+    0 1px 0 rgba(15, 118, 110, 0.06),
+    0 12px 32px rgba(23, 48, 42, 0.08);
+}
+
+.path-question-answer-panel .path-question-answer {
+  color: var(--ink);
 }
 
 .path-step--holds-open > .grid > div:first-child {
