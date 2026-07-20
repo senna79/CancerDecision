@@ -11,7 +11,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "Navigate Cancer Decisions — Know Your Next Step",
   description:
-    "Cancer Next Step helps you understand options, prepare better questions, and know what to do next. Lung cancer is the first complete decision journey — more cancer journeys are in development.",
+    "Cancer Next Step helps patients and the people supporting them match a cancer situation to the next decision — understand options, prepare questions, know the next step. Lung cancer is the first complete journey.",
   path: "/",
   ogType: "website",
   keywords: [
@@ -51,21 +51,25 @@ export default async function HomePage() {
         />
         <div className="relative mx-auto w-full max-w-6xl px-5 py-10 md:px-8 md:py-14">
           <h1 className="animate-rise max-w-2xl font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)] sm:text-4xl md:text-5xl">
-            Navigate your cancer journey with confidence.
+            Navigate the next cancer decision with confidence.
           </h1>
           <div className="animate-rise-delay mt-4 max-w-xl space-y-1 text-base text-[var(--muted)] md:text-lg">
-            <p>Understand your options.</p>
+            <p>Understand the options.</p>
             <p>Prepare better questions.</p>
-            <p>Know your next step.</p>
+            <p>Know the next step.</p>
           </div>
+          <p className="animate-rise-delay mt-4 max-w-xl text-sm text-[var(--ink-soft)] md:text-base">
+            For patients and the people helping them decide — match the
+            situation to the next decision.
+          </p>
 
           <div className="animate-rise-delay mt-10 border-t border-[var(--line)]/80 pt-8">
             <h2 className="font-heading text-2xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-3xl">
-              Start with your cancer journey.
+              Start from the situation.
             </h2>
             <p className="mt-2 max-w-2xl text-[var(--muted)] md:text-lg">
-              Choose your cancer type and we&apos;ll guide you to the decisions
-              that matter most.
+              Choose a cancer type, then the decision that matters most right
+              now.
             </p>
             <div className="mt-6 max-w-3xl">
               <CancerJourneyNav

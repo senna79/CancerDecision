@@ -38,13 +38,13 @@ export type EntryTemplateV2Config = {
 export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = {
   [NEWLY_DIAGNOSED_SLUG]: {
     plainLanguageGloss:
-      "After a lung cancer diagnosis, you do not need every answer immediately — first understand your type and stage, whether more information is needed, and how to prepare for the next conversation.",
-    oneMinuteLabel: "What should I do first?",
+      "After a lung cancer diagnosis, you do not need every answer immediately — first understand the type and stage, whether more information is needed, and how to prepare for the next conversation. This helps whether you are the patient or helping someone decide.",
+    oneMinuteLabel: "What should we do first?",
     audienceTitle: "This page may help if you:",
     audienceItems: [
-      "Were just told you have lung cancer",
-      "Feel pressure to choose a treatment before you understand your situation",
-      "Are unsure what information still matters",
+      "Are facing a new lung cancer diagnosis — as the patient or a family member",
+      "Feel pressure to choose a treatment before the situation is clear",
+      "Are unsure what tests or information still matter",
       "Want a clear next step — not the whole journey at once",
     ],
   },
@@ -98,12 +98,12 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
   },
   [BIOMARKER_SLUG]: {
     plainLanguageGloss:
-      "Biomarker testing looks for features of your cancer that may affect which treatments your doctors discuss.",
+      "Biomarker testing looks for features of the cancer that may affect which treatments doctors discuss — often part of what to check after a new diagnosis, before locking a first plan.",
     oneMinuteLabel: "Direct answer",
     audienceTitle: "This page may help if you:",
     audienceItems: [
-      "Were recently diagnosed with lung cancer",
-      "Are deciding on a first treatment plan",
+      "Are sorting out what tests matter after a lung cancer diagnosis",
+      "Are deciding on a first treatment plan — for yourself or someone you support",
       "Are considering a second opinion and want complete information",
       "Need to know whether more information is needed before locking a plan",
     ],

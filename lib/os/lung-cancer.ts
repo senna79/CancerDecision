@@ -38,7 +38,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-second-opinion",
       ],
       patient_router: {
-        label: "I was just diagnosed — I don’t know what comes first",
+        label: "Just diagnosed — not sure what comes first",
         hint: "What to sort out first after a new diagnosis.",
         nextStep: "See what to do next",
       },
@@ -65,7 +65,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       story_slugs: ["biomarker-result-changed-lung-cancer-treatment-plan"],
       next_moment_ids: ["node-compare", "node-second-opinion"],
       patient_router: {
-        label: "Should I get biomarker testing before choosing treatment?",
+        label: "Is biomarker testing needed before choosing treatment?",
         hint: "Whether genetic or molecular testing should happen before locking a plan.",
         nextStep: "See what to do next",
       },
@@ -114,7 +114,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "Combination approaches",
       ],
       patient_router: {
-        label: "I need to compare treatment options",
+        label: "Need to compare treatment options",
         hint: "How to compare choices without picking a single “best” treatment.",
         nextStep: "See what to do next",
       },
@@ -141,7 +141,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       story_slugs: ["choosing-second-opinion-before-lung-surgery"],
       next_moment_ids: ["node-compare", "node-global"],
       patient_router: {
-        label: "I’m considering a second opinion",
+        label: "Considering a second opinion",
         hint: "When another review may help — and when waiting is fine.",
         nextStep: "See what to do next",
       },
@@ -173,8 +173,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-global",
       ],
       patient_router: {
-        label: "I’m wondering if I need another center or specialist",
-        hint: "When you may need different expertise — not a more famous hospital.",
+        label: "Wondering about another center or specialist",
+        hint: "When different expertise may help — not a more famous hospital.",
         nextStep: "See what to do next",
       },
     },
@@ -199,7 +199,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
       story_slugs: ["comparing-local-and-international-lung-cancer-options"],
       next_moment_ids: [],
       patient_router: {
-        label: "I’m wondering about care in another city or country",
+        label: "Wondering about care in another city or country",
         hint: "Explore only when a capability gap is real.",
         nextStep: "See what to do next",
       },
@@ -233,8 +233,8 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-follow-up",
       ],
       patient_router: {
-        label: "I’m wondering whether surgery should be part of my plan",
-        hint: "Whether surgery belongs in your plan among other options.",
+        label: "Wondering whether surgery should be part of the plan",
+        hint: "Whether surgery belongs among other options.",
         nextStep: "See what to do next",
       },
     },
@@ -265,7 +265,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-cancer-center",
       ],
       patient_router: {
-        label: "I’m wondering whether a clinical trial is relevant",
+        label: "Wondering whether a clinical trial is relevant",
         hint: "Whether a research treatment is worth discussing now.",
         nextStep: "See what to do next",
       },
@@ -296,7 +296,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-brain-mets",
       ],
       patient_router: {
-        label: "My lung cancer has come back — what now?",
+        label: "Lung cancer has come back — what now?",
         hint: "What to reassess when cancer returns, then compare next options.",
         nextStep: "See what to do next",
       },
@@ -332,7 +332,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-qol",
       ],
       patient_router: {
-        label: "My treatment is no longer working — what now?",
+        label: "Treatment is no longer working — what now?",
         hint: "What to do when the current plan is no longer working.",
         nextStep: "See what to do next",
       },
@@ -371,7 +371,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-qol",
       ],
       patient_router: {
-        label: "I was diagnosed with Stage IV / advanced lung cancer",
+        label: "Diagnosed with Stage IV / advanced lung cancer",
         hint: "How to choose a path with goals, trade-offs, and priorities.",
         nextStep: "See what to do next",
       },
@@ -406,7 +406,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-qol",
       ],
       patient_router: {
-        label: "Lung cancer was found in my brain — what now?",
+        label: "Lung cancer was found in the brain — what now?",
         hint: "What brain findings mean, then how to compare realistic next options.",
         nextStep: "See what to do next",
       },
@@ -441,7 +441,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-costs",
       ],
       patient_router: {
-        label: "How do I include my daily life in this decision?",
+        label: "How to include daily life in this decision",
         hint: "How to bring daily life and personal priorities into the discussion.",
         nextStep: "See what to do next",
       },
@@ -475,7 +475,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-second-opinion",
       ],
       patient_router: {
-        label: "I’ve finished treatment — what should I watch for?",
+        label: "Finished treatment — what to watch for",
         hint: "Follow-up plans, symptoms to report, and life after treatment.",
         nextStep: "See what to do next",
       },
@@ -511,7 +511,7 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-clinical-trial",
       ],
       patient_router: {
-        label: "I’m wondering if this plan can work with my real life",
+        label: "Wondering if this plan can work with real life",
         hint: "Practical fit — then Care Team, Treatment Options, or Quality of Life.",
         nextStep: "See where to go next",
       },

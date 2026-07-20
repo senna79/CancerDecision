@@ -131,7 +131,7 @@ export function SituationGuidedRouter({
       >
         {compact
           ? "Still deciding something else?"
-          : `Where are you in your ${cancerLabel} journey?`}
+          : `Where is this ${cancerLabel} decision right now?`}
       </h2>
       <p
         className={cn(
