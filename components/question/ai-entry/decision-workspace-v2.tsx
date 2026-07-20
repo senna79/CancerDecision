@@ -598,15 +598,15 @@ function StepMain({
       return (
         <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
           <p>
-            Leaving home is one option among several. Match the path to the
-            capability gap — not to the farthest hospital.
+            Leaving home is one option among several. Match the path to your
+            reason for exploring — not to the farthest or most famous hospital.
           </p>
           <ul className="space-y-1.5 text-[var(--ink)]">
             {[
               "Remote specialist review — clarifies whether travel is needed",
               "Travel for a specific procedure, trial, or planning visit",
-              "Stay local when care is equivalent or travel would interrupt urgent therapy",
-              "Hybrid — travel for a focused step; ongoing care closer to home",
+              "Stay where you are when the path already matches your need, or travel would interrupt urgent therapy",
+              "Hybrid — travel for a focused step; continue care where it fits your life",
             ].map((item) => (
               <li key={item} className="flex gap-2.5">
                 <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
@@ -624,12 +624,13 @@ function StepMain({
         <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
           <p>
             Before travel makes sense, several practical pieces need to be true
-            — medical fitness, home follow-up, and total episode burden.
+            — medical fitness for the trip, total episode burden, and a clear
+            written next step from the center you contact.
           </p>
           <ul className="space-y-1.5 text-[var(--ink)]">
             {[
               "Travel fitness — symptoms, oxygen needs, companion support",
-              "Home follow-up — who manages complications after return",
+              "Written next steps — what the international desk / receiving team will provide after the visit",
               "Total cost — fees, lodging, repeat visits, time away",
               "Timing — travel must not interrupt urgent local therapy without clear benefit",
             ].map((item) => (
@@ -640,7 +641,9 @@ function StepMain({
             ))}
           </ul>
           <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
-            If follow-up after return is unclear, the episode is incomplete.
+            Aftercare logistics are for the receiving center&apos;s international
+            team to clarify — not a problem you must solve with a home doctor
+            before you explore options.
           </p>
         </div>
       );

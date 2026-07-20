@@ -121,4 +121,38 @@ export const CARE_CENTER_ENTRY_CARDS = {
     close:
       "Specialization is one signal of fit — communication and access still matter.",
   },
+  howCompare: {
+    lead: "When you compare care teams or centers, use the same questions for each — not fame or brand names:",
+    items: [
+      "Clinical expertise — experience with your cancer situation; multidisciplinary review when needed",
+      "Treatment access — techniques, trials, or services that match your decision",
+      "Communication — clear answers, who leads the plan, how questions are handled between visits",
+      "Coordination — how follow-up works with local care if more than one site is involved",
+      "Practical fit — travel, wait times, language, and whether the plan can work with your life",
+    ],
+    close:
+      "You are comparing fit for your decision — not crowning a “best hospital.” Use Explore Care Options below for the same factor list when you are ready to look at listed centers.",
+  },
+  whenAbroadBranch: {
+    lead: "Looking for another center becomes a cross-border question only when the gap you need cannot be closed nearby — or when international-patient support is part of what you need.",
+    items: [
+      "A technique, trial, or review path is not available where you are",
+      "You need coordinated international-patient support (records, language, written next steps)",
+      "Cost or coverage makes the local path hard to continue — and you are comparing total episode practicality, not country rankings",
+      "Remote outside review already suggests an in-person step that requires travel",
+    ],
+    close:
+      "If you cannot name the gap in one sentence, stay on care-team fit first. When the gap clearly requires leaving the country (or another city), open the care-abroad decision guide.",
+  },
+  multidisciplinary: {
+    lead: "Multidisciplinary support means more than “many doctors in one building.” In practice, it usually includes:",
+    items: [
+      "Specialists who treat lung cancer regularly reviewing the case together when decisions are complex",
+      "Shared planning across surgery, systemic therapy, and radiation when more than one modality is on the table",
+      "A clear lead for day-to-day decisions — so teamwork does not become fragmented care",
+      "A path to ask for team review again when the situation changes",
+    ],
+    close:
+      "Ask: “When would my case go to a multidisciplinary review — and who coordinates afterward?” That answer often matters more than a brochure claiming team-based care.",
+  },
 } as const;

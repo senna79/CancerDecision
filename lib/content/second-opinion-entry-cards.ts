@@ -134,4 +134,49 @@ export const SECOND_OPINION_ENTRY_CARDS = {
     lead: "Many patients involve family because they may help with remembering information, asking questions, and discussing practical concerns.",
     close: "Choose the support that helps you make decisions comfortably.",
   },
+  vsTravel: {
+    lead: "A second opinion is another expert review of a decision. Traveling for care is a logistics choice after you know whether review or treatment must happen in person.",
+    items: [
+      "Start with a records-based (often remote) second opinion when the question can be answered from pathology, imaging, and the current plan",
+      "Consider travel when the outside review says an exam, procedure, trial screening, or in-person planning visit is required",
+      "Compare burden — cost, time away, and fitness — against whether a written remote opinion would already change your next step",
+    ],
+    close:
+      "Remote second opinion often comes before flights — not after. If travel is the real question, open the care-abroad decision guide next.",
+  },
+  afterTwoHospitals: {
+    lead: "Two opinions can still leave you unsure. Another review may still help when something concrete remains unfinished:",
+    items: [
+      "The two plans disagree on goal, treatment type, timing, or major trade-offs — and you need the reasoning compared in writing",
+      "Important testing (pathology, imaging, or biomarkers) looks incomplete or was never re-reviewed",
+      "You still cannot name which recommendation fits your goals, even after both visits",
+      "A new decision point has appeared (progression, side effects, or a new option)",
+    ],
+    close:
+      "More opinions are useful when they answer a named gap — not when you are only hoping someone will finally “agree with you.”",
+  },
+  recordsPackage: {
+    lead: "A second opinion is only as usable as the file you send. Aim for a package that lets another doctor reconstruct the full picture:",
+    items: [
+      "Pathology and biopsy reports (and slides if requested)",
+      "Imaging reports plus scan images when available",
+      "Biomarker / molecular results",
+      "Treatment history and the current recommendation you are reacting to",
+      "One-sentence question you want answered",
+      "Medication list and key allergies",
+    ],
+    close:
+      "Incomplete records are a common reason outside reviews cannot help. Ask the reviewing team for their preferred checklist before the appointment.",
+  },
+  disagreePlan: {
+    lead: "Disagreeing with the current plan is a valid reason for an outside review. Focus the review — do not only ask someone to “pick a side”:",
+    items: [
+      "Which part you reject — the goal, the treatment type, the timing, or the trade-offs",
+      "What decision you want re-examined in writing",
+      "Whether pathology, imaging, or biomarkers should be re-reviewed as part of that question",
+      "Whether a remote records review is enough, or an in-person visit is required",
+    ],
+    close:
+      "A clear disagreement plus a clear question is more useful than “find me a better plan.” You do not need approval from the team you disagree with before you seek another review.",
+  },
 } as const;

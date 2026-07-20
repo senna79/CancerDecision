@@ -25,6 +25,8 @@ Deliver the **Care Navigation commercial layer** on top of Decision OS — witho
 
 **Out of this phase:** Breast journey (separate plan); US insurance matching; record uploads; hospital rankings; free-text clinical messages; silent lead pixels on Entry views.
 
+**Standing content rule (agreed):** Do **not** build country × cancer “medical advantage” comparison pages or league tables. Cross-border “why explore” covers access gaps, lost confidence, rejecting the current plan, international-patient support, cost/coverage, and paths not available locally — plus Care Options compare factors and factual Partner Profiles. Do **not** lead with country rankings or “last try / hail Mary” as a primary reason.
+
 **We are not building a “hospital marketplace.”**  
 Positioning stays **Decision guides + Care Navigation** — Partners are an optional resource layer, not the product identity.
 
@@ -118,7 +120,7 @@ Education is not rewritten for pay; ties are disclosed; users choose whether to 
 | **Clinical expertise** | Experience with your cancer type; multidisciplinary team |
 | **Treatment access** | Clinical trials; advanced therapies (as available) |
 | **Practical factors** | Travel; language; international patient support |
-| **Continuity** | Coordination with your current / home care team |
+| **Continuity** | Clear review goal + complete records + **written after-visit next steps from the receiving center’s international desk**. **Do not** make “who handles emergencies at home” or home-doctor approval a patient pre-decision gate (aftercare design is the receiving program’s job; many patients explore abroad because they are already unhappy with current care). |
 
 **CTA:** Explore care options → `/care-partners` (or Partner list).  
 **Forbid:** rankings; “for your stage go to X”; implying Partners are the only centers.
@@ -287,6 +289,10 @@ Validate interest before collecting personal data.
 | 2026-07-20 | Milestones: A Care Options → B Profiles → C Leads |
 | 2026-07-20 | Reject “marketplace” as product identity |
 | 2026-07-20 | v1.2 incorporates external review (UI freeze, form, Continuity, isolation) |
+| 2026-07-20 | No country×cancer advantage comparisons; capability gap + Care Options + Partner facts only |
+| 2026-07-20 | Continuity ≠ ask home doctor permission; drop “seek local MD advice before going abroad” |
+| 2026-07-20 | Aftercare / complications = receiving-center international desk duty, not a patient pre-decision gate with home MD |
+| 2026-07-20 | Cross-border “why explore” list: access, lost confidence, reject current plan, intl support, cost/coverage, path not available locally; no country rankings; no “last try” as primary reason |
 
 ---
 

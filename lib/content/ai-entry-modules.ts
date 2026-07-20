@@ -3536,7 +3536,7 @@ export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
   decisionMoment: "When to consider care in another city or country",
   exploring: "Care abroad decision",
   subtitle:
-    "Cross-border or distant care is a branch of the journey when a specific capability is missing locally — not a default upgrade to a more famous hospital.",
+    "Cross-border or distant care is worth exploring for access, trust, cost, or support reasons — not as a default upgrade to a more famous hospital or country.",
   relatedDecisions: [
     { label: "Care Team", href: CARE_CENTER },
     { label: "Second Opinion", href: SECOND_OPINION },
@@ -3553,55 +3553,59 @@ export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
   triggersTitle: "You may be facing this if:",
   triggerGroups: [
     {
-      heading: "You heard about care elsewhere",
+      heading: "Access looks different elsewhere",
       lead: "You may be asking:",
       items: [
-        "Is treatment abroad worth considering for my lung cancer?",
-        "Would another city offer something I cannot get locally?",
+        "Is there a technique, trial, or path I cannot get where I am?",
+        "Would another center change what is possible for my case?",
       ],
     },
     {
-      heading: "A specific capability seems missing",
-      lead: "Examples:",
+      heading: "Trust in the current plan is low",
+      lead: "You may be feeling:",
       items: [
-        "A specialized technique or trial",
-        "Specialty pathology or multidisciplinary review",
+        "I have already seen more than one team and still lack confidence",
+        "I do not accept the current recommendation and want an outside review",
       ],
     },
     {
-      heading: "Family or friends are pushing travel",
+      heading: "Cost or support is the blocker",
       lead: "You may need:",
       items: [
-        "A clearer reason than hope or fear",
-        "A one-sentence capability gap before booking",
+        "A path that is hard to continue because of cost or coverage",
+        "International-patient coordination (records, language, written plan)",
       ],
     },
     {
-      heading: "Logistics feel uncertain",
-      lead: "You may be weighing:",
+      heading: "Family is pushing travel",
+      lead: "You may need:",
       items: [
-        "Remote review versus flights",
-        "Cost, companion support, and home follow-up",
+        "A clearer reason than hope or fear alone",
+        "One sentence for why you are exploring before anyone books flights",
       ],
     },
   ],
 
   whyTitle: "When should I consider care elsewhere?",
   whyLead:
-    "Lung cancer care in another city or country may help when a specific capability — technique, trial, or specialty review — is missing locally. It is not automatically better because a hospital is more famous.",
+    "People consider care in another city or country when one or more of these are true — not because a hospital or country is simply “more famous”:",
   whyBody: [
-    "Start by naming the capability gap in one sentence.",
-    "When safe, try remote review of records before booking travel.",
-    "Confirm who manages complications and follow-up after you return home.",
+    "A different technique, trial, or treatment path may not be available where you are",
+    "You have already seen more than one team and still lack confidence in the plan",
+    "You do not accept the current recommendation and want an outside review",
+    "You need coordinated international-patient support (records, language, written plan)",
+    "Cost or coverage makes the local path hard to continue",
+    "You are exploring whether another center can access a path you cannot get locally",
   ],
   whyQuestions: [],
   whyNotLabel: "The first question is not:",
-  whyNotQuestion: "Where is the best international hospital?",
+  whyNotQuestion: "Which country is best for lung cancer?",
   whyBetterLabel: "The better question is:",
   whyBetterQuestion:
-    "What specific capability is missing locally — and does travel change my options?",
+    "Which of these reasons is true for me — and what would travel actually change?",
   whyClose: [
-    "If you cannot name the gap, pause. Travel is a tool for access — not a substitute for a clear decision.",
+    "Name your reason in plain language first. Then compare remote review versus travel, and ask the receiving center’s international desk for a written next-step plan.",
+    "Feeling that this is a “last try” is human — but desperation alone is not a clinical reason to book flights. Tie the next step to a clear question an outside center can answer.",
   ],
 
   doesNotDecideTitle: "Compare remote review, travel, and staying local",
@@ -3610,8 +3614,8 @@ export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
   doesNotDecideItems: [
     "Remote international or specialist review — clarifies whether travel is needed",
     "Travel for a specific procedure, trial, or in-person planning visit",
-    "Stay local with clarified sequencing and stronger continuity",
-    "Hybrid — travel for a focused step; ongoing care closer to home",
+    "Stay local when care already matches the gap",
+    "Hybrid — travel for a focused step; continue care where it fits your life",
   ],
   doesNotDecideNotes: [
     "Remote review first is often the lowest-burden way to test whether a capability gap is real.",
@@ -3630,18 +3634,18 @@ export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
       why: "Many questions can be answered with records before flights.",
     },
     {
-      mistake: "Leaving without a home follow-up plan",
-      why: "Complications after return are part of the decision episode.",
+      mistake: "Booking without a written next-step plan from the receiving center",
+      why: "Aftercare and episode design belong with their international desk — get it in writing.",
     },
   ],
 
   secondOpinionTitle: "When a second opinion belongs before travel",
   secondOpinionLead:
-    "A second opinion reviews a decision. Travel moves your body. A remote or local second opinion may help when:",
+    "A second opinion reviews a decision. Travel moves your body. A remote or specialist second opinion may help when:",
   secondOpinionWhen: [
     "You need clarity before deciding whether to leave home",
-    "Local and family advice conflict about going abroad",
-    "You want written reasoning your home team can respond to",
+    "Family advice conflicts about going abroad",
+    "You want written reasoning you can use for your next step",
   ],
   secondOpinionClose:
     "Use the second-opinion guide for the review — then return here if travel itself is still the open question.",
@@ -3651,9 +3655,9 @@ export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
   doctorTitle: "Care Abroad Conversation Checklist",
   doctorLeaveTitle: "Before leaving the conversation, ask:",
   doctorLeaveItems: [
-    "What specific capability am I seeking that is missing locally?",
+    "Which reason am I exploring for — access, confidence, cost, or support?",
     "Can records be reviewed remotely before I travel?",
-    "Who manages complications and follow-up after I return home?",
+    "What written next-step / aftercare plan will the receiving center’s international desk provide?",
     "Would travel interrupt urgent therapy without clear added value?",
   ],
   doctorGroups: [
@@ -3662,7 +3666,7 @@ export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
       questions: [
         "Is there a technique, trial, or review elsewhere that changes my options?",
         "How would that change survival, side effects, or only convenience?",
-        "Is an equivalent option available closer to home?",
+        "Is an equivalent option available without travel?",
       ],
     },
     {
@@ -3674,11 +3678,11 @@ export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
       ],
     },
     {
-      heading: "About continuity",
+      heading: "About the receiving center",
       questions: [
-        "Who coordinates care after I return?",
-        "How are records shared both ways?",
-        "What happens if I need urgent care mid-trip or after return?",
+        "What written next-step plan will I receive after the visit?",
+        "How does the international desk support aftercare questions for this episode?",
+        "How will notes and imaging be shared with me?",
       ],
     },
   ],
@@ -3693,11 +3697,11 @@ export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
   scenarioFocus: [
     "What capability are we seeking in one sentence?",
     "Can a remote review answer that first?",
-    "Who would manage care after return?",
+    "What written next steps will the receiving center provide?",
     "Would travel delay something urgent here?",
   ],
   scenarioClose:
-    "Remote review shows local care is equivalent for their case. They stay local — and keep the abroad option only if a future gap appears.",
+    "Remote review shows care for their gap is already available without travel. They stay put — and keep the abroad option only if a future gap appears.",
 
   nextStepTitle: "Your next step",
   nextStepLead: "If you are considering care in another city or country:",
@@ -3715,7 +3719,7 @@ export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
     },
     {
       label:
-        "Confirm home follow-up and complication coverage before you leave.",
+        "Ask the receiving center’s international desk for a written next-step plan.",
     },
   ],
   nextStepCtaLabel: "Care Team Decision",

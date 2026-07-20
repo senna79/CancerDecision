@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { TrackLink } from "@/components/analytics/track-link";
-import { SituationGuidedRouter } from "@/components/journey/situation-guided-router";
+import { CareOptionsSection } from "@/components/care-navigation/care-options-section";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
+import { showsCareOptionsOnEntry } from "@/lib/care-partners/entry-slugs";
 import { getEntryPathV2 } from "@/lib/content/entry-path-v2";
 import { LUNG_DECISION_MOMENTS } from "@/lib/journey/decision-moments";
 import type { DecisionGraphNode } from "@/lib/os/decision-graph";
@@ -53,7 +54,6 @@ export function EntryPageEndingV2({
   const activeMoment = LUNG_DECISION_MOMENTS.find(
     (moment) => moment.href === `/questions/${slug}`
   );
-  const showLungRouter = cancerSlug === "lung-cancer" || !cancerSlug;
 
   return (
     <div id="after-decision-path" className="mt-10 scroll-mt-24 space-y-3">
@@ -146,28 +146,9 @@ export function EntryPageEndingV2({
         </div>
       </section>
 
-      {/* 2b — Situation router for organic landers who need a different path */}
-      {showLungRouter ? (
-        <SituationGuidedRouter
-          variant="compact"
-          moments={LUNG_DECISION_MOMENTS}
-          activeId={activeMoment?.id}
-          orientationLinks={[]}
-          cancerLabel="lung cancer"
-          footer={
-            cancerSlug ? (
-              <>
-                Want nearby decisions on the map?{" "}
-                <Link
-                  href={`/cancers/${cancerSlug}?moment=${activeMoment?.id ?? "newly-diagnosed"}#map-locator`}
-                  className="font-semibold text-[var(--accent)] hover:underline"
-                >
-                  See where this sits →
-                </Link>
-              </>
-            ) : null
-          }
-        />
+      {/* Care Options — immediately under Continue; commercial sibling, not clinical path */}
+      {showsCareOptionsOnEntry(slug) ? (
+        <CareOptionsSection source={slug} variant="panel" />
       ) : null}
 
       {/* 3 — Journey position only (no duplicate CTAs) */}

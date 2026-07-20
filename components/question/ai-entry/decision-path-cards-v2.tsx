@@ -578,6 +578,59 @@ function DecisionPathCardDetailInner({
           close={SECOND_OPINION_ENTRY_CARDS.family.close}
         />
       );
+    case "so-vs-travel":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={SECOND_OPINION_ENTRY_CARDS.vsTravel.lead}
+            items={SECOND_OPINION_ENTRY_CARDS.vsTravel.items}
+            close={SECOND_OPINION_ENTRY_CARDS.vsTravel.close}
+          />
+          <p>
+            <Link
+              href="/questions/when-to-consider-lung-cancer-care-abroad"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Care abroad decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "so-after-two-hospitals":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.afterTwoHospitals.lead}
+          items={SECOND_OPINION_ENTRY_CARDS.afterTwoHospitals.items}
+          close={SECOND_OPINION_ENTRY_CARDS.afterTwoHospitals.close}
+        />
+      );
+    case "so-records-package":
+      return (
+        <BulletCard
+          lead={SECOND_OPINION_ENTRY_CARDS.recordsPackage.lead}
+          items={SECOND_OPINION_ENTRY_CARDS.recordsPackage.items}
+          close={SECOND_OPINION_ENTRY_CARDS.recordsPackage.close}
+          itemSection="bring"
+        />
+      );
+    case "so-disagree-plan":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={SECOND_OPINION_ENTRY_CARDS.disagreePlan.lead}
+            items={SECOND_OPINION_ENTRY_CARDS.disagreePlan.items}
+            close={SECOND_OPINION_ENTRY_CARDS.disagreePlan.close}
+          />
+          <p>
+            <Link
+              href="#explore-care-options"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Explore Care Options →
+            </Link>
+          </p>
+        </div>
+      );
     case "clarify":
       return <ClarifyTopics modules={modules} />;
     case "may-not":
@@ -1577,6 +1630,48 @@ function DecisionPathCardDetailInner({
           close={STAGE_IV_ENTRY_CARDS.haveSay.close}
         />
       );
+    case "gc-explore-reasons":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.exploreReasons.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.exploreReasons.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.exploreReasons.close}
+        />
+      );
+    case "gc-lost-confidence":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.lostConfidence.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.lostConfidence.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.lostConfidence.close}
+        />
+      );
+    case "gc-disagree-plan":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.disagreePlan.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.disagreePlan.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.disagreePlan.close}
+        />
+      );
+    case "gc-last-try-boundary":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={GLOBAL_CARE_ENTRY_CARDS.lastTryBoundary.lead}
+            items={GLOBAL_CARE_ENTRY_CARDS.lastTryBoundary.items}
+            close={GLOBAL_CARE_ENTRY_CARDS.lastTryBoundary.close}
+          />
+          <p>
+            <Link
+              href="#explore-care-options"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Explore Care Options →
+            </Link>
+          </p>
+        </div>
+      );
     case "gc-default-upgrade":
       return (
         <BulletCard
@@ -1634,6 +1729,32 @@ function DecisionPathCardDetailInner({
           close={GLOBAL_CARE_ENTRY_CARDS.remoteFirst.close}
         />
       );
+    case "gc-remote-vs-travel-compare":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.remoteVsTravelCompare.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.remoteVsTravelCompare.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.remoteVsTravelCompare.close}
+        />
+      );
+    case "gc-compare-centers":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={GLOBAL_CARE_ENTRY_CARDS.compareCenters.lead}
+            items={GLOBAL_CARE_ENTRY_CARDS.compareCenters.items}
+            close={GLOBAL_CARE_ENTRY_CARDS.compareCenters.close}
+          />
+          <p>
+            <Link
+              href="#explore-care-options"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Explore Care Options →
+            </Link>
+          </p>
+        </div>
+      );
     case "gc-stay-local":
       return (
         <BulletCard
@@ -1657,6 +1778,24 @@ function DecisionPathCardDetailInner({
           close={GLOBAL_CARE_ENTRY_CARDS.fitnessTravel.close}
         />
       );
+    case "gc-intl-support":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={GLOBAL_CARE_ENTRY_CARDS.intlSupport.lead}
+            items={GLOBAL_CARE_ENTRY_CARDS.intlSupport.items}
+            close={GLOBAL_CARE_ENTRY_CARDS.intlSupport.close}
+          />
+          <p>
+            <Link
+              href="/care-partners"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Explore Partner Profiles →
+            </Link>
+          </p>
+        </div>
+      );
     case "gc-follow-up-home":
       return (
         <BulletCard
@@ -1666,11 +1805,20 @@ function DecisionPathCardDetailInner({
         />
       );
     case "gc-total-cost":
+    case "gc-compare-total-cost":
       return (
         <BulletCard
-          lead={GLOBAL_CARE_ENTRY_CARDS.totalCost.lead}
-          items={GLOBAL_CARE_ENTRY_CARDS.totalCost.items}
-          close={GLOBAL_CARE_ENTRY_CARDS.totalCost.close}
+          lead={GLOBAL_CARE_ENTRY_CARDS.compareTotalCost.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.compareTotalCost.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.compareTotalCost.close}
+        />
+      );
+    case "gc-cost-blocking":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.costBlocking.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.costBlocking.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.costBlocking.close}
         />
       );
     case "gc-family-pressure":
@@ -1688,6 +1836,39 @@ function DecisionPathCardDetailInner({
           close={GLOBAL_CARE_ENTRY_CARDS.records.close}
           itemSection="bring"
         />
+      );
+    case "gc-records-abroad":
+      return (
+        <BulletCard
+          lead={GLOBAL_CARE_ENTRY_CARDS.recordsAbroad.lead}
+          items={GLOBAL_CARE_ENTRY_CARDS.recordsAbroad.items}
+          close={GLOBAL_CARE_ENTRY_CARDS.recordsAbroad.close}
+          itemSection="bring"
+        />
+      );
+    case "gc-questions-before-contact":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={GLOBAL_CARE_ENTRY_CARDS.questionsBeforeContact.lead}
+            items={GLOBAL_CARE_ENTRY_CARDS.questionsBeforeContact.items}
+            close={GLOBAL_CARE_ENTRY_CARDS.questionsBeforeContact.close}
+          />
+          <p className="flex flex-wrap gap-x-4 gap-y-1">
+            <Link
+              href="/care-partners"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Explore Partner Profiles →
+            </Link>
+            <Link
+              href="/transparency"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Transparency →
+            </Link>
+          </p>
+        </div>
       );
     case "gc-before-booking":
       return (
@@ -1978,6 +2159,50 @@ function DecisionPathCardDetailInner({
           lead={CARE_CENTER_ENTRY_CARDS.thoracicOnc.lead}
           ask={CARE_CENTER_ENTRY_CARDS.thoracicOnc.ask}
           close={CARE_CENTER_ENTRY_CARDS.thoracicOnc.close}
+        />
+      );
+    case "cc-how-compare":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={CARE_CENTER_ENTRY_CARDS.howCompare.lead}
+            items={CARE_CENTER_ENTRY_CARDS.howCompare.items}
+            close={CARE_CENTER_ENTRY_CARDS.howCompare.close}
+          />
+          <p>
+            <Link
+              href="#explore-care-options"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Explore Care Options →
+            </Link>
+          </p>
+        </div>
+      );
+    case "cc-when-abroad-branch":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={CARE_CENTER_ENTRY_CARDS.whenAbroadBranch.lead}
+            items={CARE_CENTER_ENTRY_CARDS.whenAbroadBranch.items}
+            close={CARE_CENTER_ENTRY_CARDS.whenAbroadBranch.close}
+          />
+          <p>
+            <Link
+              href="/questions/when-to-consider-lung-cancer-care-abroad"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Care abroad decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "cc-multidisciplinary":
+      return (
+        <BulletCard
+          lead={CARE_CENTER_ENTRY_CARDS.multidisciplinary.lead}
+          items={CARE_CENTER_ENTRY_CARDS.multidisciplinary.items}
+          close={CARE_CENTER_ENTRY_CARDS.multidisciplinary.close}
         />
       );
     case "fe-belongs":

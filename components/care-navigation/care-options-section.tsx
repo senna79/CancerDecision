@@ -27,7 +27,9 @@ const FACTOR_BLOCKS = [
   {
     title: "Continuity",
     points: [
-      "Coordination with your current / home care team",
+      "A clear goal for the outside review (second opinion, trial screen, or surgery view)",
+      "Complete records so the outside team can assess your case",
+      "A written plan for what happens after the visit — not a one-off conversation with no next step",
     ],
   },
 ] as const;
@@ -35,45 +37,71 @@ const FACTOR_BLOCKS = [
 type CareOptionsSectionProps = {
   /** Analytics source, e.g. entry slug or "global-care-hub" */
   source: string;
+  /**
+   * `panel` — sits in Entry page ending (right under Continue after this decision).
+   * `page` — hub pages with more vertical room.
+   */
+  variant?: "panel" | "page";
   className?: string;
 };
 
 /**
- * Neutral Care Options module — sibling to Decision content, never inside
- * DecisionWorkspace clinical path. Naming: Explore Care Options (not recommend).
+ * Neutral Care Options module — never inside DecisionWorkspace clinical path.
+ * Naming: Explore Care Options (not recommend).
  */
 export function CareOptionsSection({
   source,
+  variant = "page",
   className = "",
 }: CareOptionsSectionProps) {
+  const isPanel = variant === "panel";
+
   return (
     <section
       id="explore-care-options"
       aria-labelledby="explore-care-options-heading"
-      className={`mt-12 border-t border-[var(--line)] pt-10 ${className}`}
+      className={
+        isPanel
+          ? `scroll-mt-24 rounded-xl border-2 border-[var(--accent)]/35 bg-[linear-gradient(180deg,rgba(15,118,110,0.07)_0%,rgba(255,255,255,0.92)_42%)] px-5 py-5 shadow-[0_10px_28px_rgba(15,118,110,0.08)] md:px-6 md:py-6 ${className}`
+          : `mt-12 scroll-mt-24 rounded-xl border-2 border-[var(--accent)]/35 bg-[linear-gradient(180deg,rgba(15,118,110,0.07)_0%,rgba(255,255,255,0.92)_42%)] px-5 py-6 shadow-[0_10px_28px_rgba(15,118,110,0.08)] md:px-7 md:py-8 ${className}`
+      }
     >
       <CareOptionsViewBeacon source={source} />
-      <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+      <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
         Explore Care Options
       </p>
       <h2
         id="explore-care-options-heading"
-        className="mt-2 font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
+        className={
+          isPanel
+            ? "mt-2 font-heading text-xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-2xl"
+            : "mt-2 font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
+        }
       >
         Factors to consider when exploring care centers
       </h2>
-      <p className="mt-3 max-w-2xl text-[var(--ink-soft)] leading-relaxed">
-        If you are exploring treatment centers or a second opinion across
-        borders, these factors may help you compare options.
+      <p className="mt-2 max-w-2xl text-sm text-[var(--ink-soft)] leading-relaxed md:text-[0.95rem]">
+        People explore across borders for access gaps, lost confidence, cost, or
+        international-patient support — not country rankings. If you are already
+        exploring, these factors may help you compare centers.
       </p>
 
-      <div className="mt-8 grid gap-6 sm:grid-cols-2">
+      <div
+        className={
+          isPanel
+            ? "mt-5 grid gap-4 sm:grid-cols-2"
+            : "mt-8 grid gap-6 sm:grid-cols-2"
+        }
+      >
         {FACTOR_BLOCKS.map((block) => (
-          <div key={block.title}>
-            <h3 className="font-heading text-lg font-semibold text-[var(--ink)]">
+          <div
+            key={block.title}
+            className="rounded-lg border border-[var(--accent)]/15 bg-white/80 px-3.5 py-3"
+          >
+            <h3 className="font-heading text-base font-semibold text-[var(--ink)]">
               {block.title}
             </h3>
-            <ul className="mt-2 list-disc space-y-1.5 pl-5 text-sm text-[var(--ink-soft)] leading-relaxed">
+            <ul className="mt-1.5 list-disc space-y-1 pl-5 text-sm text-[var(--ink-soft)] leading-relaxed">
               {block.points.map((point) => (
                 <li key={point}>{point}</li>
               ))}
@@ -82,16 +110,16 @@ export function CareOptionsSection({
         ))}
       </div>
 
-      <div className="mt-8 flex flex-wrap items-baseline gap-x-5 gap-y-2">
+      <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
         <Link
           href="/care-partners"
-          className="text-sm font-semibold text-[var(--accent)] hover:underline"
+          className="inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
         >
           Explore Partner Profiles →
         </Link>
         <Link
           href="/transparency"
-          className="text-sm text-[var(--muted)] hover:text-[var(--accent)] hover:underline"
+          className="text-sm font-medium text-[var(--ink-soft)] hover:text-[var(--accent)] hover:underline"
         >
           How partnerships work
         </Link>

@@ -268,6 +268,18 @@ const SECOND_OPINION_PATH: EntryPathV2 = {
           summary: "A support tool — not a sign something is wrong.",
         },
         {
+          id: "so-after-two-hospitals",
+          title:
+            "I’ve already had two opinions — when does another review still help?",
+          summary: "When a named gap remains — not when you only want agreement.",
+        },
+        {
+          id: "so-disagree-plan",
+          title:
+            "I disagree with the plan — what should the outside review focus on?",
+          summary: "Name the disagreement; ask for a written re-examination.",
+        },
+        {
           id: "so-delay",
           title: "Will a second opinion delay my treatment?",
           summary: "Balance informed decisions with timely care.",
@@ -302,6 +314,11 @@ const SECOND_OPINION_PATH: EntryPathV2 = {
           summary: "Compare reasoning — not who is “right.”",
         },
         {
+          id: "so-vs-travel",
+          title: "Second opinion vs traveling for care — which first?",
+          summary: "Review first; travel only if in-person access is required.",
+        },
+        {
           id: "so-pathology",
           title: "Should my diagnosis or biopsy be reviewed again?",
           summary: "When another pathology or imaging review may help.",
@@ -319,6 +336,11 @@ const SECOND_OPINION_PATH: EntryPathV2 = {
           id: "so-records",
           title: "What records should I bring for a second opinion?",
           summary: "A practical checklist before the appointment.",
+        },
+        {
+          id: "so-records-package",
+          title: "What records make a second opinion usable?",
+          summary: "Full package plus one sentence you want answered.",
         },
         {
           id: "so-specialist",
@@ -1728,9 +1750,19 @@ const CARE_CENTER_PATH: EntryPathV2 = {
           summary: "Specialists reviewing cases together — not just one doctor.",
         },
         {
+          id: "cc-multidisciplinary",
+          title: "What does multidisciplinary support mean in practice?",
+          summary: "Team review, clear lead, and when cases go back to the group.",
+        },
+        {
           id: "cc-travel",
           title: "Should I travel far for cancer treatment?",
           summary: "Weigh complexity, local expertise, visit frequency, and support.",
+        },
+        {
+          id: "cc-when-abroad-branch",
+          title: "When does “another center” become “another country”?",
+          summary: "Only when a named gap requires leaving home — not by reputation.",
         },
       ],
     },
@@ -1756,6 +1788,11 @@ const CARE_CENTER_PATH: EntryPathV2 = {
           title: "How do I choose a hospital for complex lung cancer care?",
           summary:
             "Match capabilities to your decision — tumor board, biomarkers, coordination.",
+        },
+        {
+          id: "cc-how-compare",
+          title: "How should I compare care teams or centers?",
+          summary: "Same factors for each — not fame or brand rankings.",
         },
         {
           id: "cc-remote-review",
@@ -2054,23 +2091,23 @@ const GLOBAL_CARE_PATH: EntryPathV2 = {
   pathEyebrow: "Decision path",
   pathTitle: "When to Consider Care in Another City or Country",
   pathSubtitle:
-    "Name the capability gap → compare remote review vs travel → check logistics and follow-up → prepare questions before booking.",
+    "Name the capability gap → compare remote review vs travel → check logistics and cost → prepare questions before booking.",
   orientationTrail: [
     "Capability gap",
     "Remote vs travel",
-    "Logistics & follow-up",
+    "Logistics & cost",
     "Prepare",
   ],
   completedLabels: [
-    "When another city or country may help",
+    "Why people explore care across borders",
     "Remote review versus travel",
-    "Logistics, cost, and home follow-up",
+    "Logistics, cost, and written next steps",
     "Questions to ask before you book",
   ],
   practicalPoints: [
-    "The capability gap written in one sentence",
+    "Your reason for exploring, in one sentence",
     "Whether remote review can answer the question first",
-    "Who manages complications after you return home",
+    "What written next steps the receiving center will provide",
   ],
   steps: [
     {
@@ -2087,14 +2124,37 @@ const GLOBAL_CARE_PATH: EntryPathV2 = {
             "When people wonder about care in another city or country.",
         },
         {
+          id: "gc-explore-reasons",
+          title: "Why do people explore care across borders?",
+          summary:
+            "Access gaps, lost confidence, cost, support — not country rankings.",
+        },
+        {
+          id: "gc-lost-confidence",
+          title:
+            "I’ve seen more than one team and still don’t trust the plan",
+          summary: "Lost confidence is a valid reason — still name the next question.",
+        },
+        {
+          id: "gc-disagree-plan",
+          title: "What if I don’t accept the current recommendation?",
+          summary: "Focus the outside review — you don’t need permission to explore.",
+        },
+        {
+          id: "gc-last-try-boundary",
+          title: "What if this feels like a last try?",
+          summary: "Acknowledge the feeling — then require a clear question.",
+        },
+        {
           id: "gc-default-upgrade",
           title: "Is care abroad automatically better?",
-          summary: "No — only when a specific capability is missing locally.",
+          summary:
+            "No — fame or country reputation alone is not a reason to travel.",
         },
         {
           id: "gc-capability-gap",
           title: "What is a capability gap?",
-          summary: "Name the missing technique, trial, or specialty review.",
+          summary: "One common reason: a missing technique, trial, or review.",
         },
         {
           id: "gc-vs-care-team",
@@ -2121,9 +2181,19 @@ const GLOBAL_CARE_PATH: EntryPathV2 = {
           summary: "Often yes — clarify the gap before booking flights.",
         },
         {
+          id: "gc-remote-vs-travel-compare",
+          title: "Remote review vs travel — what am I comparing?",
+          summary: "Different questions and burdens — travel is not always stronger.",
+        },
+        {
+          id: "gc-compare-centers",
+          title: "How should I compare two cancer centers?",
+          summary: "Same factors for each — not rankings or country labels.",
+        },
+        {
           id: "gc-stay-local",
           title: "When is staying local the better choice?",
-          summary: "Equivalent care, urgent therapy, or no follow-up plan.",
+          summary: "Equivalent care for your gap, or travel would interrupt urgent therapy.",
         },
         {
           id: "gc-hybrid-travel",
@@ -2145,19 +2215,30 @@ const GLOBAL_CARE_PATH: EntryPathV2 = {
           summary: "Travel fitness is a medical question, not only logistics.",
         },
         {
-          id: "gc-follow-up-home",
-          title: "Who manages care after I return home?",
-          summary: "Confirm continuity before you leave — not after.",
+          id: "gc-intl-support",
+          title: "What does international-patient support actually include?",
+          summary: "Services and written plans — not a promise of better medicine.",
         },
         {
-          id: "gc-total-cost",
-          title: "How do I compare total cost and burden?",
-          summary: "Count the whole episode, including repeat visits.",
+          id: "gc-follow-up-home",
+          title: "What aftercare will the receiving center provide?",
+          summary:
+            "Ask their international desk for a written next-step plan — not your home doctor for permission.",
+        },
+        {
+          id: "gc-compare-total-cost",
+          title: "What belongs in a total cost comparison?",
+          summary: "Whole episode — not only the first invoice or “cheaper abroad.”",
+        },
+        {
+          id: "gc-cost-blocking",
+          title: "What if cost or coverage is blocking care where I am?",
+          summary: "A real constraint — not proof that travel is better medicine.",
         },
         {
           id: "gc-family-pressure",
-          title: "What if family is pushing for care abroad?",
-          summary: "Return the conversation to a named capability gap.",
+          title: "Family wants me to go abroad — what should we decide first?",
+          summary: "Name the reason for exploring before anyone books flights.",
         },
       ],
     },
@@ -2174,14 +2255,26 @@ const GLOBAL_CARE_PATH: EntryPathV2 = {
           summary: "Complete package plus one sentence you want answered.",
         },
         {
+          id: "gc-records-abroad",
+          title:
+            "What records do I need for an international or remote review?",
+          summary: "Full package for outside review — ask the desk for their checklist.",
+        },
+        {
+          id: "gc-questions-before-contact",
+          title: "What should I ask before I contact a center abroad?",
+          summary: "Short checklist before Partner Profiles or international desks.",
+        },
+        {
           id: "gc-before-booking",
           title: "What should I confirm before booking flights?",
-          summary: "Gap, remote support, home follow-up, and urgent-therapy timing.",
+          summary:
+            "Reason, remote support, receiving-center next steps, and urgent-therapy timing.",
         },
         {
           id: "gc-conflict",
-          title: "What if local and abroad recommendations conflict?",
-          summary: "Ask what changes — then get a written local response.",
+          title: "What if recommendations from different centers conflict?",
+          summary: "Ask what changes clinically — then decide your next step.",
         },
         {
           id: "scenario",

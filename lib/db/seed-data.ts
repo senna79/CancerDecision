@@ -517,7 +517,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "when-to-consider-lung-cancer-care-abroad",
       category: "global_care",
       summary:
-        "Lung cancer care in another city or country is worth considering when a specific capability — technique, trial, or specialty review — is missing locally, not as a default upgrade.\n\nName the gap in one sentence. When safe, try remote review of records before booking travel. Confirm who manages complications and follow-up after you return home.\n\nIf you cannot name the capability gap, pause — distance alone rarely improves the decision.",
+        "People consider lung cancer care in another city or country for several reasons \u2014 not because a hospital or country is simply more famous:\n\n\u2022 A different technique, trial, or path may not be available where you are\n\u2022 You have already seen more than one team and still lack confidence\n\u2022 You do not accept the current plan and want an outside review\n\u2022 You need international-patient support (records, language, written plan)\n\u2022 Cost or coverage makes the local path hard to continue\n\nName your reason in one sentence. When safe, try remote review before travel. Ask the receiving center\u2019s international desk for a written next-step plan. Desperation alone is not a clinical reason to book flights.",
       why: "Families sometimes assume abroad equals better, but the real question is whether a specific capability is missing locally.",
       factors: [
         "Specific expertise or technology sought",
@@ -906,7 +906,7 @@ export function createSeedData(): KnowledgeGraphStore {
       ],
       doctorQs: [
         "Is the abroad capability meaningfully different for my risk group?",
-        "Who manages complications after I return?",
+        "What written next-step plan will the international desk provide?",
         "Can I get the same modality regionally?",
       ],
     },
@@ -1556,7 +1556,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     5: {
       summary:
-        "Lung cancer care in another city or country is worth considering when a specific capability — technique, trial, or specialty review — is missing locally, not as a default upgrade.\n\nName the gap in one sentence. When safe, try remote review of records before booking travel. Confirm who manages complications and follow-up after you return home.\n\nIf you cannot name the capability gap, pause — distance alone rarely improves the decision.",
+        "People consider lung cancer care in another city or country for several reasons \u2014 not because a hospital or country is simply more famous:\n\n\u2022 A different technique, trial, or path may not be available where you are\n\u2022 You have already seen more than one team and still lack confidence\n\u2022 You do not accept the current plan and want an outside review\n\u2022 You need international-patient support (records, language, written plan)\n\u2022 Cost or coverage makes the local path hard to continue\n\nName your reason in one sentence. When safe, try remote review before travel. Ask the receiving center\u2019s international desk for a written next-step plan. Desperation alone is not a clinical reason to book flights.",
       decision_triggers: [
         "You heard another country offers a specialized technique or trial",
         "A remote review suggested a capability missing locally",
@@ -1564,49 +1564,47 @@ export function createSeedData(): KnowledgeGraphStore {
         "Family members are pushing for international care without a defined gap",
       ],
       decision_context:
-        "Cross-border care is a branch of the path, not a default upgrade. Name the capability gap first, then compare remote review versus travel, total episode cost, and who manages complications after you return home.",
+        "Cross-border care is a branch of the path, not a default upgrade. Common reasons include access gaps, lost confidence after multiple opinions, cost or coverage pressure, and need for international-patient coordination \u2014 not country rankings. Then compare remote review versus travel and what written next steps the receiving center will provide.",
       when_this_may_help: [
         "A defined technique, trial, or specialty review is unavailable locally",
         "Remote second opinion suggests a capability gap worth exploring",
-        "You can sustain travel, lodging, companion support, and follow-up logistics",
-        "Local and foreign recommendations differ on a material clinical point",
+        "You can sustain travel, lodging, and companion support for the episode",
+        "Centers differ on a material clinical point you want clarified",
       ],
       when_it_may_not_help: [
-        "Local care already offers an equivalent evidence-aligned option",
+        "Local care already offers an equivalent evidence-aligned option for your gap",
         "Travel would interrupt urgent therapy without clear added value",
-        "No home follow-up plan exists after return",
       ],
       timing_considerations: [
         "Try remote international review before booking travel when clinically safe",
-        "Do not interrupt urgent local therapy for elective travel without a clear capability gap",
-        "Confirm who manages complications after you return before you leave",
+        "Do not interrupt urgent therapy for elective travel without a clear capability gap",
+        "Ask the receiving center’s international desk for a written next-step plan",
         "Compare total episode timing including repeat visits, not only the first appointment abroad",
       ],
       options_and_tradeoffs: [
         "Benefit — Remote international review only: lower cost/burden; clarifies whether travel is needed",
         "Trade-off — Remote only: limited exam; may still leave logistics unanswered",
         "Benefit — Travel for a specific procedure or trial: potential access gain",
-        "Trade-off — Travel: continuity risk, cost, and complication coverage abroad",
-        "Benefit — Stay local with clarified sequencing: strongest continuity",
-        "Trade-off — Stay local: may lack a niche capability if the gap is real",
+        "Trade-off — Travel: cost, time away, and episode logistics to clarify with the international desk",
+        "Benefit — Stay without travel when the gap is already covered: lower burden",
+        "Trade-off — Staying: may lack a niche capability if the gap is real",
       ],
       records_to_prepare: [
         "Complete imaging and pathology package",
         "Written one-sentence question you want the foreign center to answer",
         "Insurance / self-pay estimate worksheet",
-        "Home-team follow-up contact plan",
       ],
       next_steps: [
         "Define the exact capability gap in one sentence",
         "Try remote review before booking travel when safe",
-        "Confirm who manages complications after you return home",
+        "Ask the receiving center’s international desk for a written next-step plan",
       ],
       if_opinions_conflict: [
         "Ask whether the abroad recommendation changes survival, side effects, or only convenience",
-        "Have your local team respond to the foreign plan in writing",
-        "Do not travel until continuity and emergency coverage are clear",
+        "Get the plan you will follow in writing from the center you choose next",
+        "Do not travel until the receiving center’s next-step plan is clear",
       ],
-      body: "Cross-border care should answer a specific clinical question. If you cannot name the capability gap, pause before booking flights. Continuity after return is part of the decision — not an afterthought.",
+      body: "Cross-border care should answer a specific clinical question. If you cannot name the capability gap, pause before booking flights. Written next steps from the receiving center’s international desk are part of a serious episode — not homework for a home doctor before you explore.",
       seo_title: "When Is Lung Cancer Treatment Abroad Worth Considering?",
       seo_description:
         "When lung cancer care abroad may help, when it may not, and what to decide before travel — capability gap first.",
@@ -2408,7 +2406,7 @@ export function createSeedData(): KnowledgeGraphStore {
       lessons_learned: [
         "Name the capability gap in one sentence before booking flights",
         "Remote review can prevent unnecessary travel when options are equivalent",
-        "Home follow-up and complication coverage are part of the decision",
+        "A written next-step plan from the receiving center is part of the episode",
       ],
       status: "published" as const,
       content_reviewed_at: reviewed,
@@ -2581,7 +2579,7 @@ export function createSeedData(): KnowledgeGraphStore {
       country_code: "US",
       summary:
         "A practical framework for comparing cross-border cancer care: capability fit, continuity, records, cost, and follow-up.",
-      body: "Cross-border care is a decision about a specific capability gap, not a general upgrade. Start with remote records review, define the exact question a foreign center will answer, and plan home follow-up before travel.",
+      body: "Cross-border care is a decision about a specific capability gap, not a general upgrade. Start with remote records review, define the exact question a foreign center will answer, and get a written next-step plan from their international desk.",
       cost_notes:
         "Include clinical fees, flights, lodging, companion costs, translator needs, and repeat-visit probability.",
       status: "published" as const,
