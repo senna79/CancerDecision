@@ -53,7 +53,7 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     label: "Newly diagnosed",
     decisionLabel: "What happens next after a new diagnosis",
     slug: "what-decisions-matter-most-after-new-lung-cancer-diagnosis",
-    momentId: "diagnosis",
+    momentId: "newly-diagnosed",
     searchIntents: [
       "just diagnosed with lung cancer what happens next",
       "I was diagnosed with lung cancer what next",
@@ -114,7 +114,7 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     label: "Biomarker decision",
     decisionLabel: "Whether additional information may change treatment choices",
     slug: "do-i-need-biomarker-testing-before-lung-cancer-treatment",
-    momentId: "biomarkers",
+    momentId: "biomarker-testing",
     searchIntents: [
       "do I need biomarker testing before lung cancer treatment",
       "do I need biomarker testing for lung cancer",
@@ -146,7 +146,7 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     label: "Treatment comparison",
     decisionLabel: "How to compare treatment choices",
     slug: "how-to-compare-surgery-and-systemic-therapy-lung-cancer",
-    momentId: "treatments",
+    momentId: "treatment-comparison",
     searchIntents: [
       "how should I compare lung cancer treatment options",
       "lung cancer treatment options comparison",
@@ -174,12 +174,14 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     label: "Care center & expertise",
     decisionLabel: "How to choose the right lung cancer care team",
     slug: "do-i-need-different-lung-cancer-center-or-specialized-expertise",
-    momentId: "care-center",
+    momentId: "care-center-expertise",
     searchIntents: [
       "how to choose lung cancer care team",
       "lung cancer care team",
       "who treats lung cancer",
       "how to choose an oncologist for lung cancer",
+      "how do I choose a hospital for complex lung cancer care",
+      "how to choose hospital for lung cancer",
       "do I need a different lung cancer center",
       "should I go to a cancer center for lung cancer",
       "does my care team specialize in lung cancer",
@@ -226,7 +228,7 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
     label: "Stage IV / advanced",
     decisionLabel: "What to know after a Stage IV diagnosis",
     slug: "how-to-choose-treatment-options-for-stage-iv-lung-cancer",
-    momentId: "stage-iv",
+    momentId: "stage-iv-options",
     searchIntents: [
       "what should I know after stage IV lung cancer diagnosis",
       "stage 4 lung cancer what next",
@@ -452,6 +454,8 @@ export const LUNG_AI_ENTRY_PORTFOLIO: AiEntry[] = [
       "lung cancer treatment travel and time",
       "can I travel during lung cancer treatment",
       "lung cancer treatment cost what to ask",
+      "what should I know about lung cancer treatment costs",
+      "lung cancer treatment costs questions to ask",
       "can I get lung cancer treatment close to home",
     ],
     relatedEntryIds: [

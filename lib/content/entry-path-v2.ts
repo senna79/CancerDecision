@@ -1752,6 +1752,12 @@ const CARE_CENTER_PATH: EntryPathV2 = {
           summary: "Not necessarily — fit matters more than reputation alone.",
         },
         {
+          id: "cc-capabilities",
+          title: "How do I choose a hospital for complex lung cancer care?",
+          summary:
+            "Match capabilities to your decision — tumor board, biomarkers, coordination.",
+        },
+        {
           id: "cc-remote-review",
           title: "Can a center review my case before I visit?",
           summary: "Many offer remote review — ask what records they need.",

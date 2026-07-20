@@ -44,6 +44,19 @@ export const CARE_CENTER_ENTRY_CARDS = {
     lead: "Not necessarily. The best center is the one that provides appropriate expertise, clear communication, and access to the care you need.",
     close: "Reputation alone does not tell you whether a team fits your situation.",
   },
+  /** Absorbed from retired hospital-selection orphan */
+  capabilities: {
+    lead: "For complex lung cancer care, match capabilities to your decision — not brand names. Look for:",
+    items: [
+      "Multidisciplinary thoracic oncology / tumor board access",
+      "Timely biomarker and pathology review",
+      "Surgery or procedure experience for your situation",
+      "Clinical trial access when relevant",
+      "Clear care coordination (including hybrid local + specialty care)",
+    ],
+    close:
+      "Ask what happens if you need a capability this team does not offer — that answer often matters more than reputation.",
+  },
   remoteReview: {
     lead: "Many centers offer case review or second-opinion services before an in-person visit. Ask what records they need and whether a remote review is available.",
     close: "This can help you decide whether travel is worth it before you go.",

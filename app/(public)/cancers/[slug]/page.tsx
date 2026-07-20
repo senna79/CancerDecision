@@ -17,6 +17,7 @@ import {
 import { getCancerDecisionCenter, getCancers } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { isIndexableCancerSlug } from "@/lib/seo/indexing";
+import { isRetiredLungQuestionSlug } from "@/lib/seo/retired-lung-questions";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export async function generateStaticParams() {
@@ -65,8 +66,11 @@ export default async function CancerDecisionCenterPage({
     secondOpinionQuestions,
   } = data;
 
+  const visibleQuestions = questions.filter(
+    (q) => !isRetiredLungQuestionSlug(q.slug)
+  );
   const questionTitles = Object.fromEntries(
-    questions.map((q) => [q.slug, q.title])
+    visibleQuestions.map((q) => [q.slug, q.title])
   );
   const treatmentNames = Object.fromEntries(
     treatments.map((t) => [t.slug, t.name])
@@ -154,7 +158,7 @@ export default async function CancerDecisionCenterPage({
 
       <Section title="Common Patient Decisions">
         <ul className="space-y-2">
-          {questions.map((q) => (
+          {visibleQuestions.map((q) => (
             <li key={q.id}>
               <Link
                 href={`/questions/${q.slug}`}

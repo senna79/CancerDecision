@@ -5,6 +5,7 @@ import {
   LUNG_SUPPORTING_GUIDE_PATHS,
 } from "@/lib/seo/indexing";
 import { isAiEntrySlug } from "@/lib/seo/ai-entry-portfolio";
+import { isRetiredLungQuestionSlug } from "@/lib/seo/retired-lung-questions";
 import { absoluteUrl } from "@/lib/seo/metadata";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -12,7 +13,10 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   const lung = cancers.find((c) => c.slug === INDEXABLE_CANCER_SLUG);
   const lungQuestions = questions.filter(
-    (q) => lung != null && q.cancer_id === lung.id
+    (q) =>
+      lung != null &&
+      q.cancer_id === lung.id &&
+      !isRetiredLungQuestionSlug(q.slug)
   );
   const lungStories = stories.filter(
     (s) => lung != null && s.cancer_id === lung.id

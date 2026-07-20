@@ -688,9 +688,27 @@ function DecisionPathCardDetailInner({
       );
     case "tx-cant-manage":
       return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{TREATMENT_OPTIONS_ENTRY_CARDS.cantManage.lead}</p>
+          <p className="font-medium text-[var(--ink)]">
+            {TREATMENT_OPTIONS_ENTRY_CARDS.cantManage.close}
+          </p>
+          <p>
+            <Link
+              href={TREATMENT_OPTIONS_ENTRY_CARDS.cantManage.nextHref}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              {TREATMENT_OPTIONS_ENTRY_CARDS.cantManage.nextLabel}
+            </Link>
+          </p>
+        </div>
+      );
+    case "cc-capabilities":
+      return (
         <BulletCard
-          lead={TREATMENT_OPTIONS_ENTRY_CARDS.cantManage.lead}
-          close={TREATMENT_OPTIONS_ENTRY_CARDS.cantManage.close}
+          lead={CARE_CENTER_ENTRY_CARDS.capabilities.lead}
+          items={CARE_CENTER_ENTRY_CARDS.capabilities.items}
+          close={CARE_CENTER_ENTRY_CARDS.capabilities.close}
         />
       );
     case "tx-qol":

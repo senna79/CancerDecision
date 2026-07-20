@@ -499,7 +499,6 @@ export const LUNG_CANCER_DECISION_OS: CancerDecisionOs = {
         "can-my-lung-cancer-treatment-plan-work-with-my-real-life",
       question_slugs: [
         "can-my-lung-cancer-treatment-plan-work-with-my-real-life",
-        "lung-cancer-treatment-costs-what-to-ask",
       ],
       treatment_slugs: [],
       story_slugs: ["comparing-local-and-international-lung-cancer-options"],

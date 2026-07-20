@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
 import { DecisionJourneyNav } from "@/components/journey/decision-journey-nav";
@@ -38,12 +38,15 @@ import {
   medicalWebPageJsonLd,
   questionAnswerJsonLd,
 } from "@/lib/seo/json-ld";
-import { isIndexableCancerSlug } from "@/lib/seo/indexing";
+import { isIndexableQuestionSlug } from "@/lib/seo/indexing";
+import { retiredLungQuestionRedirect } from "@/lib/seo/retired-lung-questions";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export async function generateStaticParams() {
   const questions = await getQuestions();
-  return questions.map((q) => ({ slug: q.slug }));
+  return questions
+    .filter((q) => !retiredLungQuestionRedirect(q.slug))
+    .map((q) => ({ slug: q.slug }));
 }
 
 export async function generateMetadata({
@@ -52,6 +55,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  if (retiredLungQuestionRedirect(slug)) return {};
   const data = await getQuestionPage(slug);
   if (!data) return {};
   const portfolioIntents = getAiEntryBySlug(slug)?.searchIntents ?? [];
@@ -72,7 +76,7 @@ export async function generateMetadata({
     keywords: keywords.length
       ? keywords
       : data.question.key_factors.slice(0, 6),
-    index: isIndexableCancerSlug(data.cancer?.slug),
+    index: isIndexableQuestionSlug(slug, data.cancer?.slug),
   });
 }
 
@@ -82,6 +86,8 @@ export default async function QuestionPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const retiredTo = retiredLungQuestionRedirect(slug);
+  if (retiredTo) permanentRedirect(retiredTo);
   const data = await getQuestionPage(slug);
   if (!data) notFound();
 

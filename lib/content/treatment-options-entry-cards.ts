@@ -98,6 +98,8 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
   cantManage: {
     lead: "Say so early. Teams may discuss local treatment, schedule changes, supportive services, or another approach that still fits your goals.",
     close: "A plan only works if it can be followed.",
+    nextHref: "/questions/can-my-lung-cancer-treatment-plan-work-with-my-real-life",
+    nextLabel: "Open Practical Fit — cost, travel, time, and support →",
   },
   ifNotWorking: {
     lead: "Treatment decisions can change over time. If a treatment is not working as expected, doctors may consider:",
