@@ -16,6 +16,7 @@ import {
 } from "@/lib/journey/decision-moments";
 import { getCancerDecisionCenter, getCancers } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
+import { isIndexableCancerSlug } from "@/lib/seo/indexing";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export async function generateStaticParams() {
@@ -37,6 +38,7 @@ export async function generateMetadata({
       data.cancer.seo_description || data.cancer.overview.slice(0, 160),
     path: `/cancers/${slug}`,
     keywords: data.cancer.seo_keywords,
+    index: isIndexableCancerSlug(slug),
   });
 }
 

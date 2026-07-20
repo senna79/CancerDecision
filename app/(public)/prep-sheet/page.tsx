@@ -6,6 +6,7 @@ export const metadata = buildMetadata({
   description:
     "Collect questions to ask and records to bring before your lung cancer appointment. Copy or print your prep sheet — educational decision support, not medical advice.",
   path: "/prep-sheet",
+  index: false,
   keywords: [
     "cancer appointment checklist",
     "questions to ask oncologist",

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { NotebookPen } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { usePrepSheet } from "@/components/prep-sheet/prep-sheet-provider";
@@ -11,6 +12,7 @@ export function PrepSheetFab() {
   const pathname = usePathname();
   const { ready, count, fabBump } = usePrepSheet();
   const [bumping, setBumping] = useState(false);
+  const hasItems = ready && count > 0;
 
   useEffect(() => {
     if (!fabBump) return;
@@ -26,26 +28,32 @@ export function PrepSheetFab() {
       id="prep-sheet-fab"
       href="/prep-sheet"
       className={cn(
-        "fixed bottom-5 right-5 z-40 flex items-center gap-2 rounded-md border px-3.5 py-2.5 text-sm font-semibold shadow-md transition md:bottom-7 md:right-7",
-        count > 0
-          ? "border-[var(--accent)] bg-[var(--accent)] text-white hover:bg-[#0d655e]"
-          : "border-[var(--line)] bg-white text-[var(--ink)] hover:border-[var(--accent)]/40 hover:text-[var(--accent)]",
+        "fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-lg border px-3.5 py-2.5 text-sm font-semibold shadow-sm backdrop-blur-md transition md:bottom-7 md:right-7",
+        hasItems
+          ? "border-[var(--accent)]/35 bg-[rgba(15,118,110,0.12)] text-[var(--ink)] hover:border-[var(--accent)]/55 hover:bg-[rgba(15,118,110,0.18)]"
+          : "border-[var(--line)] bg-white/90 text-[var(--ink-soft)] hover:border-[var(--accent)]/40 hover:text-[var(--accent)]",
         bumping && "prep-fab-bump"
       )}
       aria-label={
-        ready && count > 0
+        hasItems
           ? `Prep sheet, ${count} items`
           : "Open appointment prep sheet"
       }
     >
-      <span aria-hidden className="text-base leading-none">
-        ☐
+      <NotebookPen
+        aria-hidden
+        className={cn(
+          "size-[1.125rem] shrink-0 stroke-[1.75]",
+          hasItems ? "text-[var(--accent)]" : "text-[var(--muted)]"
+        )}
+      />
+      <span className={hasItems ? "text-[var(--ink)]" : undefined}>
+        Prep sheet
       </span>
-      <span>Prep sheet</span>
-      {ready && count > 0 ? (
+      {hasItems ? (
         <span
           key={count}
-          className="inline-flex min-w-[1.25rem] items-center justify-center rounded bg-white/20 px-1.5 text-[11px] font-bold tabular-nums prep-fab-count"
+          className="inline-flex min-w-[1.35rem] items-center justify-center rounded-md bg-[var(--accent)] px-1.5 py-0.5 text-[11px] font-bold tabular-nums leading-none text-white prep-fab-count"
         >
           {count > 99 ? "99+" : count}
         </span>

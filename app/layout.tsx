@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Source_Sans_3 } from "next/font/google";
 import "./globals.css";
-import { SITE_NAME } from "@/lib/seo/metadata";
+import { SITE_NAME, SITE_URL } from "@/lib/seo/metadata";
 
 const sourceSans = Source_Sans_3({
   variable: "--font-sans",
@@ -16,12 +16,21 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: {
     default: SITE_NAME,
     template: `%s | ${SITE_NAME}`,
   },
   description:
-    "An AI-powered cancer decision knowledge platform helping patients understand diagnosis, compare treatment options, and explore global medical choices.",
+    "Cancer Next Step helps patients understand options, prepare better questions, and know their next step. Lung cancer is the first complete decision journey.",
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

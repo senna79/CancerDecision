@@ -10,6 +10,7 @@ import { StoryDisclosure } from "@/components/trust/story-disclosure";
 import { TrustStrip } from "@/components/trust/trust-strip";
 import { getStories, getStoryPage } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
+import { isIndexableCancerSlug } from "@/lib/seo/indexing";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export async function generateStaticParams() {
@@ -31,6 +32,7 @@ export async function generateMetadata({
       data.story.seo_description || data.story.decision_challenge.slice(0, 160),
     path: `/stories/${slug}`,
     keywords: data.story.seo_keywords,
+    index: isIndexableCancerSlug(data.cancer?.slug),
   });
 }
 

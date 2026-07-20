@@ -1,4 +1,50 @@
 import { absoluteUrl, SITE_NAME } from "./metadata";
+import { SITE_ORGANIZATION } from "./organization";
+
+function organizationNode(extra?: Record<string, unknown>) {
+  return {
+    "@type": "Organization" as const,
+    name: SITE_ORGANIZATION.name,
+    url: SITE_ORGANIZATION.url,
+    ...extra,
+  };
+}
+
+/** Sitewide Organization + WebSite graph for E-E-A-T / AI discovery. */
+export function organizationWebSiteJsonLd() {
+  const orgId = absoluteUrl("/#organization");
+  const siteId = absoluteUrl("/#website");
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": orgId,
+        name: SITE_ORGANIZATION.name,
+        legalName: SITE_ORGANIZATION.legalName,
+        url: SITE_ORGANIZATION.url,
+        description: SITE_ORGANIZATION.description,
+        publishingPrinciples: SITE_ORGANIZATION.publishingPrinciples,
+        knowsAbout: [
+          "Lung cancer decision making",
+          "Cancer patient education",
+          "Second opinion preparation",
+          "Treatment option comparison",
+        ],
+      },
+      {
+        "@type": "WebSite",
+        "@id": siteId,
+        name: SITE_NAME,
+        url: SITE_ORGANIZATION.url,
+        description: SITE_ORGANIZATION.description,
+        inLanguage: "en",
+        publisher: { "@id": orgId },
+      },
+    ],
+  };
+}
 
 export function breadcrumbJsonLd(
   items: Array<{ name: string; path: string }>
@@ -28,11 +74,21 @@ export function articleJsonLd(input: {
     headline: input.title,
     description: input.description,
     mainEntityOfPage: absoluteUrl(input.path),
+    url: absoluteUrl(input.path),
     dateModified: input.dateModified ?? undefined,
     datePublished: input.datePublished ?? undefined,
-    author: {
+    inLanguage: "en",
+    isAccessibleForFree: true,
+    author: organizationNode(),
+    publisher: organizationNode({
+      logo: {
+        "@type": "ImageObject",
+        url: absoluteUrl("/opengraph-image"),
+      },
+    }),
+    reviewedBy: {
       "@type": "Organization",
-      name: SITE_NAME,
+      name: SITE_ORGANIZATION.editorialReviewerName,
     },
   };
 }
@@ -139,9 +195,13 @@ export function medicalWebPageJsonLd(input: {
     significantLink: input.significantLinkUrl
       ? absoluteUrl(input.significantLinkUrl)
       : undefined,
-    publisher: {
+    inLanguage: "en",
+    isAccessibleForFree: true,
+    publisher: organizationNode(),
+    author: organizationNode(),
+    reviewedBy: {
       "@type": "Organization",
-      name: SITE_NAME,
+      name: SITE_ORGANIZATION.editorialReviewerName,
     },
   };
 }

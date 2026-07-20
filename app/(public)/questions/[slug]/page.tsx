@@ -38,6 +38,7 @@ import {
   medicalWebPageJsonLd,
   questionAnswerJsonLd,
 } from "@/lib/seo/json-ld";
+import { isIndexableCancerSlug } from "@/lib/seo/indexing";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export async function generateStaticParams() {
@@ -71,6 +72,7 @@ export async function generateMetadata({
     keywords: keywords.length
       ? keywords
       : data.question.key_factors.slice(0, 6),
+    index: isIndexableCancerSlug(data.cancer?.slug),
   });
 }
 

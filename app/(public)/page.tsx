@@ -13,6 +13,7 @@ export const metadata = buildMetadata({
   description:
     "Cancer Next Step helps you understand options, prepare better questions, and know what to do next. Lung cancer is the first complete decision journey — more cancer journeys are in development.",
   path: "/",
+  ogType: "website",
   keywords: [
     "cancer next step",
     "cancer decision",
