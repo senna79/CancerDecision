@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { TrackLink } from "@/components/analytics/track-link";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 
 /** North-star CTA — leave with a clear next action */
@@ -41,20 +41,30 @@ export function YourNextStep({
           Continue your Journey
         </p>
         <div className="mt-3 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
-          <Link
+          <TrackLink
             href={modules.nextStepHref}
+            event="next_step_click"
+            eventProps={{
+              href: modules.nextStepHref,
+              role: "primary",
+            }}
             className="inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
           >
             {modules.nextStepCtaLabel} →
-          </Link>
+          </TrackLink>
           {modules.nextStepSecondaryHref &&
           modules.nextStepSecondaryCtaLabel ? (
-            <Link
+            <TrackLink
               href={modules.nextStepSecondaryHref}
+              event="next_step_click"
+              eventProps={{
+                href: modules.nextStepSecondaryHref,
+                role: "secondary",
+              }}
               className="inline-flex rounded-md border border-[var(--accent)] bg-white/90 px-4 py-2.5 text-sm font-semibold text-[var(--ink)] hover:bg-white"
             >
               {modules.nextStepSecondaryCtaLabel} →
-            </Link>
+            </TrackLink>
           ) : null}
         </div>
         <p className="mt-2 text-xs text-[var(--muted)]">

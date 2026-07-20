@@ -1,9 +1,27 @@
 import type { Metadata } from "next";
 
 const SITE_NAME = "Cancer Next Step";
-const SITE_URL = (
+
+/**
+ * Canonical production host is www (apex 308s there).
+ * Normalize bare apex so mis-set deploy env cannot emit non-www canonicals.
+ */
+function resolveSiteUrl(raw: string): string {
+  const trimmed = raw.replace(/\/$/, "");
+  try {
+    const url = new URL(trimmed);
+    if (url.hostname === "cancernextstep.com") {
+      url.hostname = "www.cancernextstep.com";
+    }
+    return url.origin;
+  } catch {
+    return trimmed;
+  }
+}
+
+const SITE_URL = resolveSiteUrl(
   process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000"
-).replace(/\/$/, "");
+);
 
 export function absoluteUrl(path: string): string {
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;

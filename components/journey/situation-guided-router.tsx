@@ -1,5 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
+import { TrackLink } from "@/components/analytics/track-link";
 import { DecisionMarkBadge } from "@/components/brand/decision-marks";
 import { markForSituationBucket } from "@/lib/brand/situation-marks";
 import {
@@ -29,8 +30,13 @@ function MomentLink({
   const isAlso = tone === "also";
 
   return (
-    <Link
+    <TrackLink
       href={moment.href}
+      event="situation_click"
+      eventProps={{
+        moment: moment.id,
+        tone,
+      }}
       className={cn(
         "group block rounded-md transition",
         compact || isAlso ? "px-2.5 py-1.5" : "px-3 py-2",
@@ -57,7 +63,7 @@ function MomentLink({
           {moment.hint}
         </span>
       ) : null}
-    </Link>
+    </TrackLink>
   );
 }
 

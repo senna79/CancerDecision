@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -17,11 +18,23 @@ export default function AboutPage() {
       </h1>
       <div className="mt-8 space-y-6 text-[var(--ink-soft)] leading-relaxed">
         <p>
-          Cancer Next Step helps patients understand diagnosis context, compare
-          treatment options, explore care questions, and learn from structured
-          decision scenarios — so you can know what to do next. It is
-          educational guidance for conversations with clinicians — not a care
-          service.
+          Cancer Next Step helps people understand diagnosis context, compare
+          treatment options, prepare questions, and — when relevant — explore
+          care options across borders. It is educational guidance for
+          conversations with clinicians — not a care service or hospital
+          marketplace.
+        </p>
+        <p>
+          Some healthcare organizations may compensate us when you choose to
+          contact their services. That does not change our educational Decision
+          Paths. Read{" "}
+          <Link
+            href="/transparency"
+            className="font-semibold text-[var(--accent)] hover:underline"
+          >
+            Transparency
+          </Link>{" "}
+          for how partnerships work.
         </p>
         <div>
           <h2 className="font-heading text-2xl font-semibold text-[var(--ink)]">

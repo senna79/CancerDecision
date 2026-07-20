@@ -90,6 +90,7 @@ Each Moment is a **tree root**, not a single page.
 | Map UI | `components/cancer/decision-map.tsx` |
 | Trust | `docs/CancerDecision_Source_Trust_Framework_v1.0.md` |
 | Entry Template v2.0 | `docs/Entry_Template_v2.0.md` (Biomarker sample) |
+| Care Navigation phase | `docs/Cancer_Decision_Care_Navigation_Positioning_v1.0.md` |
 
 ---
 
@@ -97,8 +98,10 @@ Each Moment is a **tree root**, not a single page.
 
 - No empty Question pages for planned moments  
 - No new cancer types until lung citation → journey is proven  
-- No hospital directory / AI diagnosis  
+- No hospital directory / AI diagnosis as part of Decision Moments  
 - No complex graph canvas UI  
+
+**Commercial care navigation** (Partner profiles, consented leads, transparency) is specified separately and must not alter Decision Moment clinical copy — see `docs/Cancer_Decision_Care_Navigation_Positioning_v1.0.md` (Phase Spec v1.1).
 
 ---
 

@@ -12,14 +12,18 @@ export function SiteFooter() {
             Understand your options. Know your next step.
           </p>
           <p className="mt-2 max-w-md leading-relaxed">
-            Decision navigation for patients exploring diagnosis, treatment
-            comparisons, and care questions. Educational only — not medical
-            advice.
+            Decision guides and care navigation for people facing cancer
+            choices. Educational only — not medical advice. Some care
+            organizations may compensate us when you contact them; see
+            Transparency.
           </p>
         </div>
-        <div className="flex gap-6">
+        <div className="flex flex-wrap gap-x-6 gap-y-2">
           <Link href="/about" className="hover:text-[var(--accent)]">
             Trust & Disclaimer
+          </Link>
+          <Link href="/transparency" className="hover:text-[var(--accent)]">
+            Transparency
           </Link>
           <Link href="/cancers" className="hover:text-[var(--accent)]">
             Cancer Library

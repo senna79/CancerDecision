@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TrackLink } from "@/components/analytics/track-link";
 import { SituationGuidedRouter } from "@/components/journey/situation-guided-router";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import { getEntryPathV2 } from "@/lib/content/entry-path-v2";
@@ -92,12 +93,18 @@ export function EntryPageEndingV2({
             <p className="mt-1 text-sm text-[var(--muted)]">
               One clear move after this page — not a new reading list.
             </p>
-            <Link
+            <TrackLink
               href={modules.nextStepHref}
+              event="next_step_click"
+              eventProps={{
+                slug,
+                href: modules.nextStepHref,
+                role: "primary",
+              }}
               className="mt-4 inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
             >
               {modules.nextStepCtaLabel} →
-            </Link>
+            </TrackLink>
             {modules.nextStepCtaMeta ? (
               <p className="mt-2 text-xs text-[var(--muted)]">
                 {modules.nextStepCtaMeta}

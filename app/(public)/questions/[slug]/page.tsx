@@ -11,8 +11,11 @@ import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { AiEntryFlagshipBody } from "@/components/question/ai-entry/flagship-body";
 import { AiEntryFlagshipBodyV2 } from "@/components/question/ai-entry/flagship-body-v2";
 import { DecisionContext } from "@/components/question/ai-entry/decision-context";
+import { EntryViewBeacon } from "@/components/analytics/entry-view-beacon";
+import { CareOptionsSection } from "@/components/care-navigation/care-options-section";
 import { EntryHeroV2 } from "@/components/question/ai-entry/entry-hero-v2";
 import { EntryPageEndingV2 } from "@/components/question/ai-entry/entry-page-ending-v2";
+import { showsCareOptionsOnEntry } from "@/lib/care-partners/entry-slugs";
 import { AiEntrySections } from "@/components/question/ai-entry-sections";
 import { CitationBlock } from "@/components/question/citation-block";
 import { usesEntryTemplateV2 } from "@/lib/content/entry-template-v2";
@@ -227,6 +230,13 @@ export default async function QuestionPage({
 
       <TrustStrip reviewedAt={question.content_reviewed_at} />
 
+      {aiEntry || flagship ? (
+        <EntryViewBeacon
+          slug={question.slug}
+          template={entryV2 ? "v2" : flagship ? "v1" : "classic"}
+        />
+      ) : null}
+
       {journey && cancer && !entryV2 ? (
         <JourneyProgressRail journey={journey} cancerSlug={cancer.slug} />
       ) : null}
@@ -343,6 +353,9 @@ export default async function QuestionPage({
               cancerSlug={cancer?.slug}
               cancerName={cancer?.name}
             />
+          ) : null}
+          {entryV2 && showsCareOptionsOnEntry(question.slug) ? (
+            <CareOptionsSection source={question.slug} />
           ) : null}
           {journey && cancer && !entryV2 ? (
             <JourneyStepNav journey={journey} cancerSlug={cancer.slug} />

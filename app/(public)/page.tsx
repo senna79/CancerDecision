@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { TrackLink } from "@/components/analytics/track-link";
 import { DecisionMarkBadge } from "@/components/brand/decision-marks";
 import { CancerJourneyNav } from "@/components/home/cancer-journey-nav";
 import { JOURNEY_PHASE_MARKS } from "@/lib/brand/situation-marks";
@@ -104,17 +105,19 @@ export default async function HomePage() {
         <ul className="mt-8 divide-y divide-[var(--line)] border-y border-[var(--line)]">
           {HOME_COMMON_DECISION_PATHS.map((item) => (
             <li key={item.href}>
-              <Link
+              <TrackLink
                 href={item.href}
+                event="home_question_click"
+                eventProps={{ href: item.href }}
                 className="group flex items-baseline justify-between gap-4 py-4 transition hover:bg-[rgba(15,118,110,0.04)]"
               >
-                <span className="font-heading text-lg font-semibold text-[var(--ink)] group-hover:text-[var(--accent)] md:text-xl">
+                <span className="text-base font-semibold text-[var(--ink)] group-hover:text-[var(--accent)] md:text-[1.05rem]">
                   {item.question}
                 </span>
                 <span className="shrink-0 text-sm font-semibold text-[var(--accent)]">
                   Open →
                 </span>
-              </Link>
+              </TrackLink>
             </li>
           ))}
         </ul>

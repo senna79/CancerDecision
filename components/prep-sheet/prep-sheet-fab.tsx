@@ -5,6 +5,7 @@ import { NotebookPen } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { usePrepSheet } from "@/components/prep-sheet/prep-sheet-provider";
+import { trackEvent } from "@/lib/analytics/track";
 import { cn } from "@/lib/utils";
 
 /** Persistent bottom-right entry to the appointment prep sheet */
@@ -27,6 +28,12 @@ export function PrepSheetFab() {
     <Link
       id="prep-sheet-fab"
       href="/prep-sheet"
+      onClick={() =>
+        trackEvent("prep_sheet_open", {
+          path: pathname || "/",
+          items: count,
+        })
+      }
       className={cn(
         "fixed bottom-5 right-5 z-40 flex items-center gap-2.5 rounded-lg border px-3.5 py-2.5 text-sm font-semibold shadow-sm backdrop-blur-md transition md:bottom-7 md:right-7",
         hasItems

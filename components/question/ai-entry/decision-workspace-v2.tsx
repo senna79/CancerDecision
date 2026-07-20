@@ -8,6 +8,7 @@ import {
   type EntryPathStep,
   type EntryPathV2,
 } from "@/lib/content/entry-path-v2";
+import { trackEvent } from "@/lib/analytics/track";
 import { cn } from "@/lib/utils";
 import { DecisionPathCardDetail } from "./decision-path-cards-v2";
 import { DoctorChecklistTakeaway } from "./doctor-checklist-takeaway";
@@ -1104,6 +1105,10 @@ export function DecisionWorkspaceV2({
     setOpenId(next);
     if (next !== landedId) setLandedId(null);
     syncCardToUrl(next);
+    trackEvent(next ? "hang_card_open" : "hang_card_close", {
+      slug,
+      card: id,
+    });
     // URL sync can remount this tree; keep every step readable.
     revealPathSteps(listRef.current);
     if (next) {

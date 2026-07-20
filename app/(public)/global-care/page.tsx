@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { CareOptionsSection } from "@/components/care-navigation/care-options-section";
 import { Markdown } from "@/components/content/markdown";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
@@ -112,6 +113,8 @@ export default async function GlobalCarePage() {
           })}
         </div>
       </section>
+
+      <CareOptionsSection source="global-care-hub" />
 
       <MedicalDisclaimer
         reviewedAt={primary?.content_reviewed_at}
