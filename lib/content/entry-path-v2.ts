@@ -2127,7 +2127,7 @@ const GLOBAL_CARE_PATH: EntryPathV2 = {
           id: "gc-explore-reasons",
           title: "Why do people explore care across borders?",
           summary:
-            "Access gaps, lost confidence, cost, support — not country rankings.",
+            "Access, lost confidence, reject plan, intl support, cost, missing local path.",
         },
         {
           id: "gc-lost-confidence",
@@ -2263,7 +2263,7 @@ const GLOBAL_CARE_PATH: EntryPathV2 = {
         {
           id: "gc-questions-before-contact",
           title: "What should I ask before I contact a center abroad?",
-          summary: "Short checklist before Partner Profiles or international desks.",
+          summary: "Short checklist before contacting a center or opening the Guide.",
         },
         {
           id: "gc-before-booking",

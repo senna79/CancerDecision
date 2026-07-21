@@ -3,6 +3,8 @@
  * Template v1: #1–#9 Tier-1 AI Entries + #10–#12 supporting modules.
  */
 
+import { GLOBAL_CARE_EXPLORE_REASONS } from "@/lib/content/global-care-entry-cards";
+
 export type AiEntryDecisionCard = {
   title: string;
   focus: string;
@@ -3589,14 +3591,7 @@ export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
   whyTitle: "When should I consider care elsewhere?",
   whyLead:
     "People consider care in another city or country when one or more of these are true — not because a hospital or country is simply “more famous”:",
-  whyBody: [
-    "A different technique, trial, or treatment path may not be available where you are",
-    "You have already seen more than one team and still lack confidence in the plan",
-    "You do not accept the current recommendation and want an outside review",
-    "You need coordinated international-patient support (records, language, written plan)",
-    "Cost or coverage makes the local path hard to continue",
-    "You are exploring whether another center can access a path you cannot get locally",
-  ],
+  whyBody: [...GLOBAL_CARE_EXPLORE_REASONS],
   whyQuestions: [],
   whyNotLabel: "The first question is not:",
   whyNotQuestion: "Which country is best for lung cancer?",

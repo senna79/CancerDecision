@@ -1,14 +1,51 @@
 /** Hang-card bodies for Care Abroad / Another City Decision Path (Entry Template v2) */
 
-/** Why people explore cross-border care — access, trust, cost, support (not country rankings). */
+/**
+ * Why people explore cross-border care (canonical six — not country rankings):
+ * access · lost confidence · reject plan · international desk · cost · path not available locally
+ */
 export const GLOBAL_CARE_EXPLORE_REASONS = [
-  "A different technique, trial, or treatment path may not be available where you are",
+  "Access where you are is limited (specialists, wait times, or coordinated review)",
   "You have already seen more than one team and still lack confidence in the plan",
   "You do not accept the current recommendation and want an outside review",
   "You need coordinated international-patient support (records, language, written plan)",
   "Cost or coverage makes the local path hard to continue",
-  "You are exploring whether another center can access a path you cannot get locally",
+  "A technique, trial, or treatment path is not available locally",
 ] as const;
+
+const EXPLORE_REASONS_BULLETS = GLOBAL_CARE_EXPLORE_REASONS.map(
+  (r) => `- ${r}`
+).join("\n");
+
+/** Care abroad Entry Direct Answer (`question.summary`) — shared with seed/store. */
+export const GLOBAL_CARE_DIRECT_ANSWER_SUMMARY = `People consider lung cancer care in another city or country for one or more of these reasons — not because a hospital or country is simply more famous:
+
+${EXPLORE_REASONS_BULLETS}
+
+Name your reason in one sentence. When safe, try remote review before travel. Ask the receiving center’s international desk for a written next-step plan. Desperation alone is not a clinical reason to book flights.`;
+
+/** Compact gloss for Entry Template v2 config (hero-adjacent copy). */
+export const GLOBAL_CARE_DIRECT_ANSWER_GLOSS =
+  "People consider care in another city or country for access limits, lost confidence, rejecting the current plan, international-patient support, cost or coverage pressure, or a path not available locally — not because a country or hospital is simply more famous. Name your reason, try remote review when safe, and ask the receiving center’s international desk for a written next-step plan.";
+
+/** Primary `/global-care` hub article summary + body (CMS seed). */
+export const GLOBAL_CARE_HUB_PRIMARY_SUMMARY =
+  "Why people explore care across borders — six reasons — then how to compare remote review, travel, and written next steps without country rankings.";
+
+export const GLOBAL_CARE_HUB_PRIMARY_BODY = `Cross-border care is worth exploring for a named reason — not as a default upgrade to a more famous hospital or country.
+
+People usually explore when one or more of these are true:
+
+${EXPLORE_REASONS_BULLETS}
+
+**What to do next**
+
+1. Write your reason in one sentence.
+2. When clinically safe, try remote records review before booking flights.
+3. Ask the receiving center’s international desk for a written next-step plan (not a country ranking).
+4. Compare centers on the same factors: clinical expertise, treatment access, practical fit, and continuity.
+
+Desperation alone (“one last try”) is understandable — but it is not a clinical reason to book travel. Tie the next step to a clear question an outside center can answer.`;
 
 export const GLOBAL_CARE_ENTRY_CARDS = {
   exploreReasons: {
@@ -188,7 +225,7 @@ export const GLOBAL_CARE_ENTRY_CARDS = {
       "Use cost as a practical constraint, not as a ranking of countries. Ask any international desk for a written outline of typical episode costs before you commit.",
   },
   questionsBeforeContact: {
-    lead: "Before you contact a center abroad (or open a Partner Profile), have short answers ready:",
+    lead: "Before you contact a center abroad, have short answers ready:",
     items: [
       "My reason for exploring, in one sentence (access, confidence, cost, or support)",
       "Can you review records remotely first?",
@@ -197,7 +234,7 @@ export const GLOBAL_CARE_ENTRY_CARDS = {
       "How do you share notes and imaging with me?",
     ],
     close:
-      "Clear questions make contact useful. Exploring a Partner Profile is optional and is not a medical recommendation — see Transparency if a listing may involve compensation.",
+      "Clear questions make contact useful. Next, open the International Medical Guide to compare centers with the same factors — not country rankings. See Transparency if a future Partner listing may involve compensation.",
   },
   familyPressure: {
     lead: "Families sometimes push for international care out of hope or fear. A useful response is to name the reason for exploring first.",

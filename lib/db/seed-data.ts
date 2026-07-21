@@ -1,4 +1,10 @@
 import type { KnowledgeGraphStore } from "@/types/database";
+import {
+  GLOBAL_CARE_DIRECT_ANSWER_SUMMARY,
+  GLOBAL_CARE_EXPLORE_REASONS,
+  GLOBAL_CARE_HUB_PRIMARY_BODY,
+  GLOBAL_CARE_HUB_PRIMARY_SUMMARY,
+} from "@/lib/content/global-care-entry-cards";
 import { buildDecisionMapFromOs } from "@/lib/os/build-decision-map";
 import { LUNG_CANCER_DECISION_OS } from "@/lib/os/lung-cancer";
 import {
@@ -516,8 +522,7 @@ export function createSeedData(): KnowledgeGraphStore {
       title: "When should I consider lung cancer care abroad?",
       slug: "when-to-consider-lung-cancer-care-abroad",
       category: "global_care",
-      summary:
-        "People consider lung cancer care in another city or country for several reasons \u2014 not because a hospital or country is simply more famous:\n\n\u2022 A different technique, trial, or path may not be available where you are\n\u2022 You have already seen more than one team and still lack confidence\n\u2022 You do not accept the current plan and want an outside review\n\u2022 You need international-patient support (records, language, written plan)\n\u2022 Cost or coverage makes the local path hard to continue\n\nName your reason in one sentence. When safe, try remote review before travel. Ask the receiving center\u2019s international desk for a written next-step plan. Desperation alone is not a clinical reason to book flights.",
+      summary: GLOBAL_CARE_DIRECT_ANSWER_SUMMARY,
       why: "Families sometimes assume abroad equals better, but the real question is whether a specific capability is missing locally.",
       factors: [
         "Specific expertise or technology sought",
@@ -1555,22 +1560,17 @@ export function createSeedData(): KnowledgeGraphStore {
       ],
     },
     5: {
-      summary:
-        "People consider lung cancer care in another city or country for several reasons \u2014 not because a hospital or country is simply more famous:\n\n\u2022 A different technique, trial, or path may not be available where you are\n\u2022 You have already seen more than one team and still lack confidence\n\u2022 You do not accept the current plan and want an outside review\n\u2022 You need international-patient support (records, language, written plan)\n\u2022 Cost or coverage makes the local path hard to continue\n\nName your reason in one sentence. When safe, try remote review before travel. Ask the receiving center\u2019s international desk for a written next-step plan. Desperation alone is not a clinical reason to book flights.",
+      summary: GLOBAL_CARE_DIRECT_ANSWER_SUMMARY,
       decision_triggers: [
-        "You heard another country offers a specialized technique or trial",
-        "A remote review suggested a capability missing locally",
-        "You are comparing total cost and logistics of staying vs traveling",
-        "Family members are pushing for international care without a defined gap",
+        "Access where you are feels limited for your lung cancer decision",
+        "You have lost confidence after more than one local opinion",
+        "You do not accept the current recommendation",
+        "Cost, coverage, or a missing local path is blocking care",
+        "You need international-patient support or are weighing remote review versus travel",
       ],
       decision_context:
-        "Cross-border care is a branch of the path, not a default upgrade. Common reasons include access gaps, lost confidence after multiple opinions, cost or coverage pressure, and need for international-patient coordination \u2014 not country rankings. Then compare remote review versus travel and what written next steps the receiving center will provide.",
-      when_this_may_help: [
-        "A defined technique, trial, or specialty review is unavailable locally",
-        "Remote second opinion suggests a capability gap worth exploring",
-        "You can sustain travel, lodging, and companion support for the episode",
-        "Centers differ on a material clinical point you want clarified",
-      ],
+        "Cross-border care is a branch of the path, not a default upgrade. Common reasons: access limits, lost confidence, rejecting the current plan, international-patient support, cost or coverage, and a path not available locally — not country rankings. Then compare remote review versus travel and what written next steps the receiving center will provide.",
+      when_this_may_help: [...GLOBAL_CARE_EXPLORE_REASONS],
       when_it_may_not_help: [
         "Local care already offers an equivalent evidence-aligned option for your gap",
         "Travel would interrupt urgent therapy without clear added value",
@@ -1595,7 +1595,7 @@ export function createSeedData(): KnowledgeGraphStore {
         "Insurance / self-pay estimate worksheet",
       ],
       next_steps: [
-        "Define the exact capability gap in one sentence",
+        "Name your reason for exploring in one sentence",
         "Try remote review before booking travel when safe",
         "Ask the receiving center’s international desk for a written next-step plan",
       ],
@@ -1604,10 +1604,10 @@ export function createSeedData(): KnowledgeGraphStore {
         "Get the plan you will follow in writing from the center you choose next",
         "Do not travel until the receiving center’s next-step plan is clear",
       ],
-      body: "Cross-border care should answer a specific clinical question. If you cannot name the capability gap, pause before booking flights. Written next steps from the receiving center’s international desk are part of a serious episode — not homework for a home doctor before you explore.",
+      body: "Cross-border care should answer a specific question tied to access, trust, cost, or support — not a country ranking. If you cannot name your reason, pause before booking flights. Written next steps from the receiving center’s international desk are part of a serious episode.",
       seo_title: "When Is Lung Cancer Treatment Abroad Worth Considering?",
       seo_description:
-        "When lung cancer care abroad may help, when it may not, and what to decide before travel — capability gap first.",
+        "Six reasons people explore lung cancer care abroad — access, confidence, plan disagreement, international support, cost, and missing local paths — and what to decide before travel.",
       seo_keywords: [
         "lung cancer treatment abroad",
         "when is cancer care abroad worth it",
@@ -2577,18 +2577,17 @@ export function createSeedData(): KnowledgeGraphStore {
       title: "How to evaluate cancer care across countries",
       slug: "how-to-evaluate-cancer-care-across-countries",
       country_code: "US",
-      summary:
-        "A practical framework for comparing cross-border cancer care: capability fit, continuity, records, cost, and follow-up.",
-      body: "Cross-border care is a decision about a specific capability gap, not a general upgrade. Start with remote records review, define the exact question a foreign center will answer, and get a written next-step plan from their international desk.",
+      summary: GLOBAL_CARE_HUB_PRIMARY_SUMMARY,
+      body: GLOBAL_CARE_HUB_PRIMARY_BODY,
       cost_notes:
-        "Include clinical fees, flights, lodging, companion costs, translator needs, and repeat-visit probability.",
+        "Include clinical fees, flights, lodging, companion costs, translator needs, and repeat-visit probability — the whole episode, not only the first invoice.",
       status: "published" as const,
       content_reviewed_at: reviewed,
       created_at: ts,
       updated_at: ts,
       ...seo(
         "International Medical Guide for Cancer Decisions",
-        "Evaluate cancer treatment abroad with a structured decision framework.",
+        "Six reasons people explore cancer care across borders — and how to compare options without country rankings.",
         ["medical travel", "cancer care abroad", "global care"]
       ),
     },
@@ -2599,17 +2598,19 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "lung-cancer-specialized-care-abroad",
       country_code: "DE",
       summary:
-        "Patients sometimes travel for complex thoracic surgery, proton access, or trial matching. Confirm whether remote review can answer the question first.",
-      body: "For lung cancer, abroad care is most coherent when a defined service—such as a complex resection or a trial—is unavailable locally. Continuity of systemic therapy after return is essential.",
+        "For lung cancer, the same six explore reasons apply — especially a missing local path, lost confidence after multiple opinions, or need for international-patient support. Confirm whether remote review can answer the question first.",
+      body: `For lung cancer, abroad care is most coherent when your reason matches one of the six explore reasons (access limits, lost confidence, rejecting the current plan, international-patient support, cost or coverage, or a path not available locally) — not when a country simply sounds more advanced.
+
+Common lung-cancer examples of a missing local path include a complex thoracic procedure, a trial you may qualify for, or multidisciplinary review you cannot get where you are. Continuity of systemic therapy and a written next-step plan from the receiving center’s international desk still matter after any visit.`,
       cost_notes:
-        "Complex surgery packages and proton courses can differ widely; request itemized estimates.",
+        "Complex surgery packages and proton courses can differ widely; request itemized estimates for the full episode.",
       status: "published" as const,
       content_reviewed_at: reviewed,
       created_at: ts,
       updated_at: ts,
       ...seo(
         "Lung Cancer Care Abroad",
-        "Decision factors for considering specialized lung cancer care in another country.",
+        "When lung cancer care abroad may help — six explore reasons, not country rankings.",
         ["lung cancer abroad", "medical travel"]
       ),
     },

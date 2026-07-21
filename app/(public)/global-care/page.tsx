@@ -15,7 +15,7 @@ import { buildMetadata } from "@/lib/seo/metadata";
 export const metadata = buildMetadata({
   title: "International Medical Guide",
   description:
-    "A structured guide to evaluating cancer care across countries, including continuity, cost, and follow-up planning.",
+    "Six reasons people explore cancer care across borders — access, confidence, plan disagreement, international support, cost, and missing local paths — and how to compare options without country rankings.",
   path: "/global-care",
   keywords: ["cancer care abroad", "medical travel", "global oncology"],
 });
@@ -43,7 +43,7 @@ export default async function GlobalCarePage() {
           articleJsonLd({
             title: "International Medical Guide",
             description:
-              "Evaluate cancer treatment abroad with a structured decision framework.",
+              "Six reasons people explore cancer care across borders — and how to compare options without country rankings.",
             path: "/global-care",
             dateModified: primary?.content_reviewed_at,
             datePublished: primary?.created_at,
@@ -57,8 +57,11 @@ export default async function GlobalCarePage() {
         International Medical Guide
       </h1>
       <p className="mt-3 max-w-2xl text-[var(--muted)]">
-        Cross-border care is a decision about a specific capability gap—not a
-        general upgrade. Use this guide to structure the comparison.
+        People explore care across borders for access limits, lost confidence,
+        rejecting the current plan, international-patient support, cost or
+        coverage, or a path not available locally — not because a country is
+        simply more famous. Use this guide to name your reason and structure the
+        comparison.
       </p>
 
       <div className="mt-10 space-y-8">

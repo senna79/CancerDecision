@@ -1,5 +1,13 @@
 import Link from "next/link";
 import { CareOptionsViewBeacon } from "@/components/care-navigation/care-options-view-beacon";
+import {
+  CARE_OPTIONS_FOOTNOTE,
+  CARE_OPTIONS_TITLE,
+  CARE_TRANSPARENCY_CTA_LABEL,
+  CARE_TRANSPARENCY_PATH,
+  getCareOptionsIntro,
+  getCareOptionsPrimaryCta,
+} from "@/lib/care-navigation/conversion";
 
 const FACTOR_BLOCKS = [
   {
@@ -48,6 +56,7 @@ type CareOptionsSectionProps = {
 /**
  * Neutral Care Options module — never inside DecisionWorkspace clinical path.
  * Naming: Explore Care Options (not recommend).
+ * Funnel: three Entries → this module → International Medical Guide (/global-care).
  */
 export function CareOptionsSection({
   source,
@@ -55,6 +64,8 @@ export function CareOptionsSection({
   className = "",
 }: CareOptionsSectionProps) {
   const isPanel = variant === "panel";
+  const intro = getCareOptionsIntro(source);
+  const primary = getCareOptionsPrimaryCta(source);
 
   return (
     <section
@@ -78,12 +89,10 @@ export function CareOptionsSection({
             : "mt-2 font-heading text-2xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-3xl"
         }
       >
-        Factors to consider when exploring care centers
+        {CARE_OPTIONS_TITLE}
       </h2>
       <p className="mt-2 max-w-2xl text-sm text-[var(--ink-soft)] leading-relaxed md:text-[0.95rem]">
-        People explore across borders for access gaps, lost confidence, cost, or
-        international-patient support — not country rankings. If you are already
-        exploring, these factors may help you compare centers.
+        {intro}
       </p>
 
       <div
@@ -112,22 +121,20 @@ export function CareOptionsSection({
 
       <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
         <Link
-          href="/care-partners"
+          href={primary.href}
           className="inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
         >
-          Explore Partner Profiles →
+          {primary.label} →
         </Link>
         <Link
-          href="/transparency"
+          href={CARE_TRANSPARENCY_PATH}
           className="text-sm font-medium text-[var(--ink-soft)] hover:text-[var(--accent)] hover:underline"
         >
-          How partnerships work
+          {CARE_TRANSPARENCY_CTA_LABEL}
         </Link>
       </div>
       <p className="mt-3 max-w-2xl text-xs text-[var(--muted)] leading-relaxed">
-        Partner Profiles are optional listings of organizations that may offer
-        international patient services. Exploring a profile is not a medical
-        recommendation.
+        {CARE_OPTIONS_FOOTNOTE}
       </p>
     </section>
   );

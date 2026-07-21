@@ -131,7 +131,7 @@ export const CARE_CENTER_ENTRY_CARDS = {
       "Practical fit — travel, wait times, language, and whether the plan can work with your life",
     ],
     close:
-      "You are comparing fit for your decision — not crowning a “best hospital.” Use Explore Care Options below for the same factor list when you are ready to look at listed centers.",
+      "You are comparing fit for your decision — not crowning a “best hospital.” Use Explore Care Options below for the same factor list, then open the International Medical Guide.",
   },
   whenAbroadBranch: {
     lead: "Looking for another center becomes a cross-border question only when the gap you need cannot be closed nearby — or when international-patient support is part of what you need.",

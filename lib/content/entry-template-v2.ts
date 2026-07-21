@@ -24,6 +24,7 @@ import {
   TREATMENT_COMPARE_SLUG,
   TREATMENT_PROGRESSION_SLUG,
 } from "./entry-path-v2";
+import { GLOBAL_CARE_DIRECT_ANSWER_GLOSS } from "./global-care-entry-cards";
 
 export type EntryTemplateV2Config = {
   /** One plain-language gloss (used in cards / SEO helpers) */
@@ -73,15 +74,15 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
     ],
   },
   [GLOBAL_CARE_SLUG]: {
-    plainLanguageGloss:
-      "People consider lung cancer care in another city or country for access gaps, lost confidence in the current plan, cost or coverage pressure, or need for international-patient support — not because a country or hospital is simply more famous. Name your reason, try remote review when safe, and ask the receiving center’s international desk for a written next-step plan.",
+    plainLanguageGloss: GLOBAL_CARE_DIRECT_ANSWER_GLOSS,
     oneMinuteLabel: "Direct answer",
     audienceTitle: "This page may help if you:",
     audienceItems: [
       "Wonder whether care abroad or in another city would help",
       "Have lost confidence after more than one local opinion",
-      "Cannot continue the local path because of access, cost, or coverage",
-      "Need to compare remote review versus travel before booking",
+      "Do not accept the current plan and want an outside review",
+      "Cannot continue the local path because of access, cost, or a missing path",
+      "Need international-patient support or to compare remote review versus travel",
     ],
   },
   [FEASIBILITY_SLUG]: {

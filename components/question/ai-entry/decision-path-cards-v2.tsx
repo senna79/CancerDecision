@@ -19,6 +19,14 @@ import { FOLLOW_UP_ENTRY_CARDS } from "@/lib/content/follow-up-entry-cards";
 import { NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/newly-diagnosed-entry-cards";
 import { STAGE_IV_ENTRY_CARDS } from "@/lib/content/stage-iv-entry-cards";
 import { CARE_CENTER_ENTRY_CARDS } from "@/lib/content/care-center-entry-cards";
+import {
+  CARE_CONVERSION_CTA_LABEL,
+  CARE_CONVERSION_PATH,
+  CARE_OPTIONS_ANCHOR,
+  CARE_OPTIONS_SOFT_CTA_LABEL,
+  CARE_TRANSPARENCY_CTA_LABEL,
+  CARE_TRANSPARENCY_PATH,
+} from "@/lib/care-navigation/conversion";
 import { GLOBAL_CARE_ENTRY_CARDS } from "@/lib/content/global-care-entry-cards";
 import { FEASIBILITY_ENTRY_CARDS } from "@/lib/content/feasibility-entry-cards";
 import { TREATMENT_PROGRESSION_ENTRY_CARDS } from "@/lib/content/treatment-progression-entry-cards";
@@ -623,10 +631,10 @@ function DecisionPathCardDetailInner({
           />
           <p>
             <Link
-              href="#explore-care-options"
+              href={CARE_OPTIONS_ANCHOR}
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              Explore Care Options →
+              {CARE_OPTIONS_SOFT_CTA_LABEL} →
             </Link>
           </p>
         </div>
@@ -1664,10 +1672,10 @@ function DecisionPathCardDetailInner({
           />
           <p>
             <Link
-              href="#explore-care-options"
+              href={CARE_OPTIONS_ANCHOR}
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              Explore Care Options →
+              {CARE_OPTIONS_SOFT_CTA_LABEL} →
             </Link>
           </p>
         </div>
@@ -1747,10 +1755,10 @@ function DecisionPathCardDetailInner({
           />
           <p>
             <Link
-              href="#explore-care-options"
+              href={CARE_OPTIONS_ANCHOR}
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              Explore Care Options →
+              {CARE_OPTIONS_SOFT_CTA_LABEL} →
             </Link>
           </p>
         </div>
@@ -1788,10 +1796,10 @@ function DecisionPathCardDetailInner({
           />
           <p>
             <Link
-              href="/care-partners"
+              href={CARE_CONVERSION_PATH}
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              Explore Partner Profiles →
+              {CARE_CONVERSION_CTA_LABEL} →
             </Link>
           </p>
         </div>
@@ -1856,16 +1864,16 @@ function DecisionPathCardDetailInner({
           />
           <p className="flex flex-wrap gap-x-4 gap-y-1">
             <Link
-              href="/care-partners"
+              href={CARE_CONVERSION_PATH}
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              Explore Partner Profiles →
+              {CARE_CONVERSION_CTA_LABEL} →
             </Link>
             <Link
-              href="/transparency"
+              href={CARE_TRANSPARENCY_PATH}
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              Transparency →
+              {CARE_TRANSPARENCY_CTA_LABEL} →
             </Link>
           </p>
         </div>
@@ -2171,10 +2179,10 @@ function DecisionPathCardDetailInner({
           />
           <p>
             <Link
-              href="#explore-care-options"
+              href={CARE_OPTIONS_ANCHOR}
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              Explore Care Options →
+              {CARE_OPTIONS_SOFT_CTA_LABEL} →
             </Link>
           </p>
         </div>

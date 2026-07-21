@@ -1,5 +1,13 @@
 import Link from "next/link";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
+import {
+  CARE_ABROAD_ENTRY_CTA_LABEL,
+  CARE_ABROAD_ENTRY_PATH,
+  CARE_CONVERSION_CTA_LABEL,
+  CARE_CONVERSION_PATH,
+  CARE_TRANSPARENCY_CTA_LABEL,
+  CARE_TRANSPARENCY_PATH,
+} from "@/lib/care-navigation/conversion";
 import { getActiveCarePartners } from "@/lib/care-partners/fixtures";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -38,19 +46,25 @@ export default function CarePartnersIndexPage() {
       {partners.length === 0 ? (
         <div className="mt-10 rounded-lg border border-[var(--line)] bg-white/60 px-5 py-8">
           <p className="text-[var(--ink-soft)] leading-relaxed">
-            Partner Profiles will appear here as organizations are added. In
-            the meantime, open a decision guide below — Explore Care Options
-            appears after the Decision Path.
+            Partner Profiles will appear here as organizations are added. Until
+            then, continue with the same conversion path used after Care Options
+            on the three decision Entries.
           </p>
-          <ul className="mt-4 list-disc space-y-2 pl-5 text-sm text-[var(--ink-soft)]">
-            <li>
-              <Link
-                href="/questions/when-to-consider-lung-cancer-care-abroad"
-                className="text-[var(--accent)] hover:underline"
-              >
-                When to consider care abroad
-              </Link>
-            </li>
+          <div className="mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
+            <Link
+              href={CARE_CONVERSION_PATH}
+              className="inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
+            >
+              {CARE_CONVERSION_CTA_LABEL} →
+            </Link>
+            <Link
+              href={CARE_ABROAD_ENTRY_PATH}
+              className="text-sm font-medium text-[var(--accent)] hover:underline"
+            >
+              {CARE_ABROAD_ENTRY_CTA_LABEL} →
+            </Link>
+          </div>
+          <ul className="mt-6 list-disc space-y-2 pl-5 text-sm text-[var(--ink-soft)]">
             <li>
               <Link
                 href="/questions/do-i-need-different-lung-cancer-center-or-specialized-expertise"
@@ -94,10 +108,10 @@ export default function CarePartnersIndexPage() {
 
       <p className="mt-10 text-sm text-[var(--muted)]">
         <Link
-          href="/transparency"
+          href={CARE_TRANSPARENCY_PATH}
           className="font-semibold text-[var(--accent)] hover:underline"
         >
-          How partnerships work
+          {CARE_TRANSPARENCY_CTA_LABEL}
         </Link>
         {" · "}
         <Link href="/about" className="hover:text-[var(--accent)] hover:underline">
