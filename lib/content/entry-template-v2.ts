@@ -24,7 +24,13 @@ import {
   TREATMENT_COMPARE_SLUG,
   TREATMENT_PROGRESSION_SLUG,
 } from "./entry-path-v2";
+import {
+  BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_SUBTYPE_SLUG,
+} from "./breast-entry-slugs";
 import { GLOBAL_CARE_DIRECT_ANSWER_GLOSS } from "./global-care-entry-cards";
+import { BREAST_NEWLY_DIAGNOSED_GLOSS } from "./breast-newly-diagnosed-entry-cards";
+import { BREAST_SUBTYPE_GLOSS } from "./breast-subtype-entry-cards";
 
 export type EntryTemplateV2Config = {
   /** One plain-language gloss (used in cards / SEO helpers) */
@@ -47,6 +53,28 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Feel pressure to choose a treatment before the situation is clear",
       "Are unsure what tests or information still matter",
       "Want a clear next step — not the whole journey at once",
+    ],
+  },
+  [BREAST_NEWLY_DIAGNOSED_SLUG]: {
+    plainLanguageGloss: BREAST_NEWLY_DIAGNOSED_GLOSS,
+    oneMinuteLabel: "What should we do first?",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Are facing a new breast cancer diagnosis — as the patient or a family member",
+      "Are waiting on subtype (receptor / HER2) or staging results",
+      "Feel pressure to choose surgery before the sequence is clear",
+      "Want a clear next step — not the whole journey at once",
+    ],
+  },
+  [BREAST_SUBTYPE_SLUG]: {
+    plainLanguageGloss: BREAST_SUBTYPE_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Are waiting on receptor / HER2 results after a breast cancer diagnosis",
+      "Wonder whether subtype results should arrive before surgery or systemic therapy",
+      "Heard about genomic assays (Oncotype-class) and want to know if they matter",
+      "Need to separate tumor subtype from germline genetic counseling",
     ],
   },
   [STAGE_IV_SLUG]: {

@@ -260,6 +260,7 @@ function StepMain({
 }) {
   switch (step.main) {
     case "biomarker-understand":
+    case "bst-understand":
       return (
         <div className="space-y-3">
           <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
@@ -485,6 +486,7 @@ function StepMain({
         </div>
       );
     case "nd-understand":
+    case "bnd-understand":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "nd-information":
       return (
@@ -513,6 +515,33 @@ function StepMain({
           </p>
         </div>
       );
+    case "bnd-information":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Many first plans depend on having enough information — subtype
+            (receptors / HER2), imaging and stage, genetics when relevant, and
+            your health.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "What do we already know about subtype and stage?",
+              "What is still pending?",
+              "Would pending results change options or sequencing?",
+              "How urgent is the next decision?",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The useful question is not “Why are we waiting?” It is “Is there
+            important information that could change my options or sequencing?”
+          </p>
+        </div>
+      );
     case "nd-ahead":
       return (
         <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
@@ -525,6 +554,32 @@ function StepMain({
             {[
               "Information — type, stage, biomarkers, more evaluation",
               "Treatment — which approaches to discuss when the picture is clearer",
+              "Planning — how care fits daily life, support, and priorities",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Your next decision matters more than every future decision.
+          </p>
+        </div>
+      );
+    case "bnd-ahead":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            You will not make every decision today. Breast cancer care is usually
+            a series of decisions — information, sequencing, surgery or systemic
+            choices, and planning that fits your life.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Information — subtype, stage, genetics when relevant",
+              "Sequencing — whether treatment starts before or after surgery",
+              "Treatment — surgery and systemic options when the picture is clearer",
               "Planning — how care fits daily life, support, and priorities",
             ].map((item) => (
               <li key={item} className="flex gap-2.5">

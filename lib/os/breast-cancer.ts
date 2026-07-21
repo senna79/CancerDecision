@@ -1,0 +1,258 @@
+import type { CancerDecisionOs } from "@/lib/os/types";
+import {
+  BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_SECOND_OPINION_SLUG,
+  BREAST_SEQUENCING_SLUG,
+  BREAST_SUBTYPE_SLUG,
+  BREAST_SURGERY_SLUG,
+  BREAST_TREATMENT_COMPARE_SLUG,
+} from "@/lib/content/breast-entry-slugs";
+
+/**
+ * Breast Cancer Decision OS v1 — P0 moments (active) + P1 skeleton (planned).
+ * Clinical spine: Diagnosis → Subtype → Stage context → Surgery/local → Systemic sequencing.
+ */
+export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
+  cancer_slug: "breast-cancer",
+  title: "Breast Cancer Decision Map",
+  intro:
+    "A branching journey from newly diagnosed to the next decision. Subtype and sequencing often sit before a final surgery choice. Each active node links to a decision guide — not a personal care plan.",
+  moments: [
+    {
+      id: "node-diagnosis",
+      slug: "newly-diagnosed",
+      label: "1. Newly diagnosed",
+      state_label: "Diagnosis confirmed",
+      summary:
+        "Confirm what is known, which results are outstanding (subtype, imaging, genetics when relevant), and which decisions are time-sensitive.",
+      why_this_matters:
+        "This matters because early sequencing mistakes are hard to undo — you need to know which results change the first plan.",
+      tier: 1,
+      status: "active",
+      stage: "diagnosis",
+      sort_order: 1,
+      ai_entry_slug: BREAST_NEWLY_DIAGNOSED_SLUG,
+      question_slugs: [BREAST_NEWLY_DIAGNOSED_SLUG],
+      treatment_slugs: [],
+      story_slugs: ["comparing-lumpectomy-and-mastectomy-priorities"],
+      next_moment_ids: [
+        "node-subtype",
+        "node-sequencing",
+        "node-surgery",
+        "node-second-opinion",
+      ],
+      patient_router: {
+        label: "Just diagnosed — not sure what comes first",
+        hint: "What to sort out first after a new breast cancer diagnosis.",
+        nextStep: "See what to do next",
+      },
+    },
+    {
+      id: "node-subtype",
+      slug: "subtype-testing",
+      label: "2. Confirm subtype & biology",
+      state_label: "Subtype / receptor testing",
+      summary:
+        "Make sure receptor, HER2, and related biology results are complete enough to shape first-line choices — or decide when waiting is not safe.",
+      why_this_matters:
+        "This matters because subtype often changes which systemic options and sequencing make sense.",
+      tier: 1,
+      status: "active",
+      stage: "testing",
+      sort_order: 2,
+      ai_entry_slug: BREAST_SUBTYPE_SLUG,
+      question_slugs: [BREAST_SUBTYPE_SLUG],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: [
+        "node-sequencing",
+        "node-compare",
+        "node-surgery",
+        "node-second-opinion",
+      ],
+      patient_router: {
+        label: "Do I need subtype results before choosing treatment?",
+        hint: "Receptor / HER2 / genomic results and whether they change the first plan.",
+        nextStep: "See what to do next",
+      },
+    },
+    {
+      id: "node-sequencing",
+      slug: "treatment-sequencing",
+      label: "3. Treatment before or after surgery?",
+      state_label: "Neoadjuvant vs adjuvant",
+      summary:
+        "Decide whether systemic therapy should start before surgery (neoadjuvant) or after — a breast-distinctive fork.",
+      why_this_matters:
+        "This matters because sequencing can affect surgery options, response assessment, and what information you need first.",
+      tier: 1,
+      status: "active",
+      stage: "treatment",
+      sort_order: 3,
+      ai_entry_slug: BREAST_SEQUENCING_SLUG,
+      question_slugs: [BREAST_SEQUENCING_SLUG],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: ["node-surgery", "node-compare", "node-second-opinion"],
+      patient_router: {
+        label: "Should treatment start before or after surgery?",
+        hint: "Neoadjuvant versus adjuvant sequencing for your situation.",
+        nextStep: "See what to do next",
+      },
+    },
+    {
+      id: "node-surgery",
+      slug: "surgery-decision",
+      label: "4. Lumpectomy vs mastectomy",
+      state_label: "Surgery choice",
+      summary:
+        "Compare breast-conserving surgery and mastectomy when both may be reasonable — including genetics and reconstruction timing as hang-card context.",
+      why_this_matters:
+        "This matters because two oncologically sound options can still feel very different personally.",
+      tier: 1,
+      status: "active",
+      stage: "treatment",
+      sort_order: 4,
+      ai_entry_slug: BREAST_SURGERY_SLUG,
+      question_slugs: [BREAST_SURGERY_SLUG],
+      treatment_slugs: ["surgery"],
+      story_slugs: ["comparing-lumpectomy-and-mastectomy-priorities"],
+      next_moment_ids: ["node-compare", "node-second-opinion"],
+      patient_router: {
+        label: "How should I choose between lumpectomy and mastectomy?",
+        hint: "Compare two surgery paths without ranking hospitals.",
+        nextStep: "See what to do next",
+      },
+    },
+    {
+      id: "node-second-opinion",
+      slug: "second-opinion",
+      label: "5. Second opinion",
+      state_label: "Another review",
+      summary:
+        "Decide whether another expert review helps before surgery or systemic therapy.",
+      why_this_matters:
+        "This matters when the plan feels irreversible, recommendations conflict, or you want more confidence.",
+      tier: 1,
+      status: "active",
+      stage: "second_opinion",
+      sort_order: 5,
+      ai_entry_slug: BREAST_SECOND_OPINION_SLUG,
+      question_slugs: [BREAST_SECOND_OPINION_SLUG],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: ["node-surgery", "node-compare", "node-sequencing"],
+      patient_router: {
+        label: "Should I get a second opinion before major treatment?",
+        hint: "When another review may help before surgery or systemic therapy.",
+        nextStep: "See what to do next",
+      },
+    },
+    {
+      id: "node-compare",
+      slug: "treatment-comparison",
+      label: "6. Systemic therapy options",
+      state_label: "Systemic options by subtype",
+      summary:
+        "Compare systemic options for your subtype (HR+ / HER2+ / TNBC) — goals, sequencing, and trade-offs — not a flat drug menu.",
+      why_this_matters:
+        "This matters because subtype forks the conversation more sharply than a single “best chemo” list.",
+      tier: 1,
+      status: "active",
+      stage: "treatment",
+      sort_order: 6,
+      ai_entry_slug: BREAST_TREATMENT_COMPARE_SLUG,
+      question_slugs: [BREAST_TREATMENT_COMPARE_SLUG],
+      treatment_slugs: ["chemotherapy", "targeted-therapy", "immunotherapy"],
+      story_slugs: [],
+      next_moment_ids: ["node-second-opinion"],
+      facets: [
+        "Endocrine therapy",
+        "Chemotherapy",
+        "HER2-targeted therapy",
+        "Immunotherapy (selected TNBC)",
+        "Neoadjuvant vs adjuvant timing",
+      ],
+      patient_router: {
+        label: "How do I choose systemic therapy for my subtype?",
+        hint: "Compare options by subtype — not a ranking of drug names.",
+        nextStep: "See what to do next",
+      },
+    },
+    // ——— P1 skeleton (planned) ———
+    {
+      id: "node-genetics",
+      slug: "genetics",
+      label: "Genetic counseling / BRCA",
+      state_label: "Germline genetics",
+      summary:
+        "Whether genetic counseling and BRCA-class testing should happen before surgery — and how results may change the operation.",
+      why_this_matters:
+        "Germline risk is not the same as tumor subtype — it can change surgery and family implications.",
+      tier: 2,
+      status: "planned",
+      stage: "testing",
+      sort_order: 7,
+      ai_entry_slug: null,
+      question_slugs: [],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: ["node-surgery"],
+    },
+    {
+      id: "node-reconstruction",
+      slug: "reconstruction",
+      label: "Reconstruction timing",
+      state_label: "Reconstruction",
+      summary:
+        "How reconstruction timing and choices fit into the cancer decision.",
+      why_this_matters:
+        "Reconstruction is part of the surgery conversation for many people — not a separate afterthought only.",
+      tier: 2,
+      status: "planned",
+      stage: "treatment",
+      sort_order: 8,
+      ai_entry_slug: null,
+      question_slugs: [],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: ["node-surgery"],
+    },
+    {
+      id: "node-stage-iv",
+      slug: "stage-iv-options",
+      label: "Metastatic / stage IV options",
+      state_label: "Metastatic disease",
+      summary: "Options when breast cancer is metastatic or stage IV.",
+      why_this_matters:
+        "Goals and trade-offs shift when disease is advanced — patients need a clear decision path.",
+      tier: 2,
+      status: "planned",
+      stage: "treatment",
+      sort_order: 9,
+      ai_entry_slug: null,
+      question_slugs: [],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: [],
+    },
+    {
+      id: "node-recurrence",
+      slug: "recurrence",
+      label: "If breast cancer comes back",
+      state_label: "Recurrence",
+      summary: "What to sort out if breast cancer returns after treatment.",
+      why_this_matters:
+        "Recurrence is a new decision point — not automatically the same plan as before.",
+      tier: 2,
+      status: "planned",
+      stage: "recurrence",
+      sort_order: 10,
+      ai_entry_slug: null,
+      question_slugs: [],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: [],
+    },
+  ],
+};

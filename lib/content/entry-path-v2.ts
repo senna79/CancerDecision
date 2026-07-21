@@ -3,6 +3,11 @@
  * OS stages: Understand → Compare → Practical → Conversation
  */
 
+import {
+  BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_SUBTYPE_SLUG,
+} from "@/lib/content/breast-entry-slugs";
+
 export type EntryPathCard = {
   id: string;
   title: string;
@@ -68,6 +73,8 @@ export const BRAIN_METS_SLUG =
   "what-are-my-options-if-lung-cancer-spreads-to-the-brain";
 export const GLOBAL_CARE_SLUG =
   "when-to-consider-lung-cancer-care-abroad";
+
+export { BREAST_NEWLY_DIAGNOSED_SLUG, BREAST_SUBTYPE_SLUG };
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -2286,6 +2293,269 @@ const GLOBAL_CARE_PATH: EntryPathV2 = {
   ],
 };
 
+const BREAST_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
+  pathEyebrow: "Orientation path",
+  pathTitle: "Your First Steps After a Breast Cancer Diagnosis",
+  pathSubtitle:
+    "You are not lost — you are at the start. Get clear, check subtype and staging information, see what comes next, then prepare for the conversation.",
+  orientationTrail: [
+    "Diagnosis",
+    "Subtype & info",
+    "What comes next",
+    "Next conversation",
+  ],
+  completedLabels: [
+    "Clarity on your diagnosis",
+    "Whether subtype and staging information is complete",
+    "What decisions may come next",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "What you already know about subtype and stage",
+    "What information is still pending",
+    "Whether treatment may start before or after surgery",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Get clear on your diagnosis",
+      lead: "Patient question: what exactly do I have?",
+      main: "bnd-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people are newly diagnosed with breast cancer.",
+        },
+        {
+          id: "bnd-more-tests",
+          title: "Why do doctors need more tests after diagnosis?",
+          summary: "A biopsy may confirm cancer — subtype and staging may still matter.",
+        },
+        {
+          id: "bnd-not-immediate",
+          title: "How soon do I need treatment after breast cancer diagnosis?",
+          summary: "The best sequence depends on a more complete picture.",
+        },
+        {
+          id: "bnd-overwhelmed",
+          title: "Is it normal to feel overwhelmed after diagnosis?",
+          summary: "Yes — a next-step plan helps more than solving everything today.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Make sure you have the information needed",
+      lead: "Patient question: do we know enough to choose a first plan?",
+      main: "bnd-information",
+      cards: [
+        {
+          id: "bnd-subtype",
+          title: "Could subtype results change my treatment options?",
+          summary: "Receptor / HER2 status often shapes systemic choices and sequencing.",
+        },
+        {
+          id: "bnd-waiting",
+          title: "Should I start treatment right away — or wait for more information?",
+          summary: "Not every wait is the same — ask how urgent it is.",
+        },
+        {
+          id: "bnd-start-right-away",
+          title: "Should I start treatment right away after diagnosis?",
+          summary: "Urgency varies — ask what must happen now vs after key results.",
+        },
+        {
+          id: "bnd-genetics",
+          title: "Do I need genetic counseling before surgery?",
+          summary: "Germline genetics ≠ tumor subtype — ask if it could change the operation.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "Understand the decisions ahead",
+      lead: "Patient question: what decisions will I eventually need to make?",
+      main: "bnd-ahead",
+      cards: [
+        {
+          id: "bnd-focus-first",
+          title: "What decision should I focus on first?",
+          summary: "Your next decision matters more than every future one.",
+        },
+        {
+          id: "bnd-not-expert",
+          title: "Do I need to understand every treatment before my first appointment?",
+          summary: "No — know what you know, what you don’t, and what to ask.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "Prepare for your next important conversation",
+      lead: "Patient question: how can I make my appointments more useful?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bnd-this-week",
+          title: "I just received a diagnosis. What should I do this week?",
+          summary: "Three focuses — not the whole journey at once.",
+        },
+        {
+          id: "bnd-ask-oncologist",
+          title: "What questions should I ask my oncologist after diagnosis?",
+          summary: "A focused ask list — not fifty questions at once.",
+        },
+        {
+          id: "bnd-ask-surgeon",
+          title: "What should I ask a breast surgeon?",
+          summary: "Sequencing, lumpectomy vs mastectomy fit, genetics, reconstruction.",
+        },
+        {
+          id: "bnd-second-opinion",
+          title: "Should I get a second opinion after a breast cancer diagnosis?",
+          summary: "About confidence — not distrust.",
+        },
+        {
+          id: "bnd-records",
+          title: "What information should I keep from the beginning?",
+          summary: "Reports and results that travel with you.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_SUBTYPE_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Breast Cancer Subtype Testing Decision Path",
+  pathSubtitle:
+    "Why subtype matters → whether results could change options → what testing involves → what to ask.",
+  completedLabels: [
+    "Why subtype testing matters",
+    "How results may affect choices",
+    "What to know while waiting",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Which receptor / HER2 results are back vs pending",
+    "Whether a genomic assay is relevant for your decision",
+    "Whether germline genetics is a separate next step before surgery",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why does subtype testing matter?",
+      lead: "Patient question: why is my doctor talking about receptors and HER2?",
+      main: "bst-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When subtype results come up after diagnosis or before locking a plan.",
+        },
+        {
+          id: "bst-what-is",
+          title: "What is breast cancer subtype testing?",
+          summary: "Tumor biology — receptors, HER2, and related features.",
+        },
+        {
+          id: "bst-look-for",
+          title: "What does the test look for?",
+          summary: "ER/PR, HER2, triple-negative, and sometimes genomic assays.",
+        },
+        {
+          id: "bst-everyone",
+          title: "Does everyone need the same subtype tests?",
+          summary: "Standard biology vs decision-specific extra assays.",
+        },
+        {
+          id: "bst-vs-genetics",
+          title: "How is subtype different from genetic counseling?",
+          summary: "Tumor biology ≠ germline risk — both can matter.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Could subtype results change my treatment options?",
+      lead: "Patient question: what would these results actually be used for?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "bst-change-options",
+          title: "Can subtype results change my treatment plan?",
+          summary: "Often yes — options and sequencing, not one automatic drug.",
+        },
+        {
+          id: "bst-genomic",
+          title: "What about genomic assays like Oncotype?",
+          summary: "When they refine chemo vs endocrine discussions.",
+        },
+        {
+          id: "bst-incomplete",
+          title: "What if my subtype results are incomplete?",
+          summary: "Clarify re-testing and whether major steps should wait.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I know while testing is underway?",
+      lead: "Patient question: what will I actually go through?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "bst-how-done",
+          title: "How is subtype testing done?",
+          summary: "Usually pathology on biopsy or surgical tissue.",
+        },
+        {
+          id: "bst-waiting",
+          title: "Should I wait for subtype results before starting treatment?",
+          summary: "Not every wait is the same — ask how urgent it is.",
+        },
+        {
+          id: "bst-cost",
+          title: "Cost and insurance for extra assays",
+          summary: "Questions instead of guessing a price.",
+        },
+        {
+          id: "bst-this-week",
+          title: "I’m waiting on results — what should I do this week?",
+          summary: "Confirm orders, timing, and what would change.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bst-mistakes",
+          title: "What are common mistakes around subtype testing?",
+          summary: "Locking too early, confusing genetics, over-reading labels.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might wait for HER2 before locking surgery.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
@@ -2302,7 +2572,10 @@ const PATHS: Record<string, EntryPathV2> = {
   [FEASIBILITY_SLUG]: FEASIBILITY_PATH,
   [BRAIN_METS_SLUG]: BRAIN_METS_PATH,
   [GLOBAL_CARE_SLUG]: GLOBAL_CARE_PATH,
+  [BREAST_NEWLY_DIAGNOSED_SLUG]: BREAST_NEWLY_DIAGNOSED_PATH,
+  [BREAST_SUBTYPE_SLUG]: BREAST_SUBTYPE_PATH,
 };
+
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {
   return PATHS[slug] ?? null;

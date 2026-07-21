@@ -7,6 +7,7 @@ export type {
   PatientRouterCopy,
 } from "@/lib/os/types";
 export { LUNG_CANCER_DECISION_OS } from "@/lib/os/lung-cancer";
+export { BREAST_CANCER_DECISION_OS } from "@/lib/os/breast-cancer";
 export {
   buildDecisionMapFromOs,
   getActiveMoments,

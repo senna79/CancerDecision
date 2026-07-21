@@ -40,13 +40,20 @@ import {
   questionAnswerJsonLd,
 } from "@/lib/seo/json-ld";
 import { isIndexableQuestionSlug } from "@/lib/seo/indexing";
+import { breastLegacyQuestionRedirect } from "@/lib/content/breast-entry-slugs";
 import { retiredLungQuestionRedirect } from "@/lib/seo/retired-lung-questions";
 import { buildMetadata } from "@/lib/seo/metadata";
+
+function legacyQuestionRedirect(slug: string): string | undefined {
+  return (
+    retiredLungQuestionRedirect(slug) ?? breastLegacyQuestionRedirect(slug)
+  );
+}
 
 export async function generateStaticParams() {
   const questions = await getQuestions();
   return questions
-    .filter((q) => !retiredLungQuestionRedirect(q.slug))
+    .filter((q) => !legacyQuestionRedirect(q.slug))
     .map((q) => ({ slug: q.slug }));
 }
 
@@ -56,7 +63,7 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  if (retiredLungQuestionRedirect(slug)) return {};
+  if (legacyQuestionRedirect(slug)) return {};
   const data = await getQuestionPage(slug);
   if (!data) return {};
   const portfolioIntents = getAiEntryBySlug(slug)?.searchIntents ?? [];
@@ -87,7 +94,7 @@ export default async function QuestionPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
-  const retiredTo = retiredLungQuestionRedirect(slug);
+  const retiredTo = legacyQuestionRedirect(slug);
   if (retiredTo) permanentRedirect(retiredTo);
   const data = await getQuestionPage(slug);
   if (!data) notFound();

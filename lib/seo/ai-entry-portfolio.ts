@@ -18,6 +18,13 @@
  * (LUNGevity, ALA, MSK, forums) — not Keyword Planner volume/competition.
  */
 
+import {
+  getBreastAiEntryBySlug,
+  getRelatedBreastAiEntries,
+  isBreastAiEntrySlug,
+  type BreastAiEntry,
+} from "@/lib/seo/breast-ai-entry-portfolio";
+
 export type AiEntryId =
   | "newly-diagnosed"
   | "second-opinion"
@@ -472,13 +479,23 @@ const byId = Object.fromEntries(
 ) as Record<AiEntryId, AiEntry>;
 
 export function isAiEntrySlug(slug: string): boolean {
-  return slugSet.has(slug);
+  return slugSet.has(slug) || isBreastAiEntrySlug(slug);
 }
 
-export function getAiEntryBySlug(slug: string): AiEntry | null {
-  return LUNG_AI_ENTRY_PORTFOLIO.find((e) => e.slug === slug) ?? null;
+export function getAiEntryBySlug(slug: string): AiEntry | BreastAiEntry | null {
+  return (
+    LUNG_AI_ENTRY_PORTFOLIO.find((e) => e.slug === slug) ??
+    getBreastAiEntryBySlug(slug)
+  );
 }
 
-export function getRelatedAiEntries(entry: AiEntry): AiEntry[] {
-  return entry.relatedEntryIds.map((id) => byId[id]).filter(Boolean);
+export function getRelatedAiEntries(
+  entry: AiEntry | BreastAiEntry
+): Array<AiEntry | BreastAiEntry> {
+  if ("id" in entry && String(entry.id).startsWith("breast-")) {
+    return getRelatedBreastAiEntries(entry as BreastAiEntry);
+  }
+  return (entry as AiEntry).relatedEntryIds
+    .map((id) => byId[id])
+    .filter(Boolean);
 }

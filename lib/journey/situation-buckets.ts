@@ -39,6 +39,71 @@ export const LUNG_ORIENTATION_LINKS: OrientationLink[] = [
   },
 ];
 
+/** Breast orientation — pages ship with orientation content; links reserved. */
+export const BREAST_ORIENTATION_LINKS: OrientationLink[] = [
+  {
+    label: "Subtype",
+    href: "/cancers/breast-cancer/understanding-subtype",
+    hint: "Receptor/HER2 status and why it shapes the first plan.",
+  },
+  {
+    label: "Stage",
+    href: "/cancers/breast-cancer/understanding-stage",
+    hint: "What stage (including locally advanced / nodes) means for options — not a prognosis table.",
+  },
+  {
+    label: "Treatment map",
+    href: "/cancers/breast-cancer/treatment-landscape",
+    hint: "The main treatment families, so comparisons make sense.",
+  },
+];
+
+export const BREAST_SITUATION_BUCKETS: SituationBucket[] = [
+  {
+    id: "recently-diagnosed",
+    label: "Recently diagnosed",
+    hint: "New diagnosis, or waiting on pathology / receptor / HER2 results and what comes first.",
+    momentIds: ["newly-diagnosed", "subtype-testing", "second-opinion"],
+    alsoMomentIds: ["treatment-sequencing"],
+  },
+  {
+    id: "choosing-treatment",
+    label: "Choosing a treatment",
+    hint: "Comparing surgery, sequencing, or systemic options.",
+    momentIds: [
+      "treatment-sequencing",
+      "surgery-decision",
+      "treatment-comparison",
+    ],
+    alsoMomentIds: ["subtype-testing"],
+  },
+  {
+    id: "another-opinion",
+    label: "Unsure about the plan or care team",
+    hint: "Want more confidence, another review, or different expertise.",
+    momentIds: ["second-opinion", "surgery-decision"],
+    alsoMomentIds: ["treatment-sequencing"],
+  },
+  {
+    id: "cancer-changed",
+    label: "Cancer or treatment has changed",
+    hint: "Metastatic disease, progression, or a plan that stopped working.",
+    momentIds: ["stage-iv-options", "recurrence"],
+  },
+  {
+    id: "real-life",
+    label: "Treatment feels hard on life or logistics",
+    hint: "Daily life, side effects, time, cost, work, fertility, and whether the plan is workable.",
+    momentIds: ["surgery-decision", "treatment-comparison"],
+  },
+  {
+    id: "after-treatment",
+    label: "Finished treatment / in follow-up",
+    hint: "Monitoring, late effects, and life after treatment.",
+    momentIds: ["recurrence", "second-opinion"],
+  },
+];
+
 export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
   {
     id: "recently-diagnosed",

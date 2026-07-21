@@ -1,11 +1,19 @@
 import type { KnowledgeGraphStore } from "@/types/database";
 import {
+  BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_SEQUENCING_SLUG,
+  BREAST_SUBTYPE_SLUG,
+} from "@/lib/content/breast-entry-slugs";
+import { BREAST_NEWLY_DIAGNOSED_DIRECT_ANSWER } from "@/lib/content/breast-newly-diagnosed-entry-cards";
+import { BREAST_SUBTYPE_DIRECT_ANSWER } from "@/lib/content/breast-subtype-entry-cards";
+import {
   GLOBAL_CARE_DIRECT_ANSWER_SUMMARY,
   GLOBAL_CARE_EXPLORE_REASONS,
   GLOBAL_CARE_HUB_PRIMARY_BODY,
   GLOBAL_CARE_HUB_PRIMARY_SUMMARY,
 } from "@/lib/content/global-care-entry-cards";
 import { buildDecisionMapFromOs } from "@/lib/os/build-decision-map";
+import { BREAST_CANCER_DECISION_OS } from "@/lib/os/breast-cancer";
 import { LUNG_CANCER_DECISION_OS } from "@/lib/os/lung-cancer";
 import {
   LUNG_FLAGSHIP_QUESTION_NS,
@@ -63,15 +71,15 @@ export function createSeedData(): KnowledgeGraphStore {
       name: "Breast Cancer",
       slug: "breast-cancer",
       overview:
-        "Breast cancer pathways include surgery choices, reconstruction timing, systemic therapy sequencing, and genetic risk decisions. This center structures the questions patients commonly face after diagnosis.",
+        "Breast cancer decisions often follow diagnosis → subtype biology → stage → surgery/local treatment → systemic sequencing. This center is building a situation-based Decision Journey (starting with newly diagnosed) so patients can leave with a clear next step — not an encyclopedia.",
       status: "published" as const,
       content_reviewed_at: reviewed,
       created_at: ts,
       updated_at: ts,
       ...seo(
         "Breast Cancer Decision Center",
-        "Explore breast cancer decision questions, treatment comparisons, and patient decision stories.",
-        ["breast cancer", "lumpectomy", "chemotherapy decisions"]
+        "Breast cancer decision guides: what comes first after diagnosis, subtype, sequencing, surgery, and second opinions.",
+        ["breast cancer", "newly diagnosed breast cancer", "lumpectomy", "HER2"]
       ),
     },
     {
@@ -628,15 +636,15 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 10,
       cancer: 3,
-      title: "What should I ask after a new breast cancer diagnosis?",
-      slug: "what-to-ask-after-new-breast-cancer-diagnosis",
+      title:
+        "What decisions matter most after a new breast cancer diagnosis?",
+      slug: BREAST_NEWLY_DIAGNOSED_SLUG,
       category: "diagnosis",
-      summary:
-        "Priority questions include subtype, stage, need for genetic counseling, and whether systemic therapy comes before surgery. Clarifying the decision sequence reduces overwhelm.",
-      why: "Breast cancer care involves multiple specialists quickly; patients need a decision roadmap.",
+      summary: BREAST_NEWLY_DIAGNOSED_DIRECT_ANSWER,
+      why: "Breast cancer care involves multiple specialists quickly; patients need a decision roadmap, not every answer on day one.",
       factors: [
         "Receptor and HER2 status",
-        "Imaging completeness",
+        "Imaging completeness and stage",
         "Genetic counseling indications",
         "Neoadjuvant versus upfront surgery pathway",
         "Fertility and life-stage considerations",
@@ -645,6 +653,51 @@ export function createSeedData(): KnowledgeGraphStore {
         "What is my cancer subtype and stage?",
         "Do I need genetic counseling before surgery?",
         "Will systemic therapy start before or after surgery?",
+      ],
+    },
+    {
+      n: 36,
+      cancer: 3,
+      title:
+        "Do I need my breast cancer subtype results before choosing treatment?",
+      slug: BREAST_SUBTYPE_SLUG,
+      category: "diagnosis",
+      summary: BREAST_SUBTYPE_DIRECT_ANSWER,
+      why: "Patients feel pressure to choose quickly; subtype often reshapes the first plan.",
+      factors: [
+        "ER / PR and HER2 status",
+        "Whether genomic assays are relevant",
+        "How results affect sequencing before or after surgery",
+        "Urgency versus waiting for complete biology",
+        "Difference between tumor subtype and germline genetics",
+      ],
+      doctorQs: [
+        "Has receptor and HER2 testing been ordered — and when will results return?",
+        "Would those results change surgery or systemic sequencing?",
+        "Do I also need genetic counseling before a final surgery choice?",
+      ],
+    },
+    {
+      n: 37,
+      cancer: 3,
+      title:
+        "Should breast cancer treatment start before or after surgery?",
+      slug: BREAST_SEQUENCING_SLUG,
+      category: "treatment",
+      summary:
+        "Some people start systemic therapy before surgery (neoadjuvant); others have surgery first. The better sequence depends on subtype, stage/extent, and what your team is trying to learn or achieve.\n\nThis is not about which approach is “stronger” in the abstract. It is about which sequence fits your cancer and goals.\n\nAsk: “For my subtype and stage, should treatment start before or after surgery — and what would change that recommendation?”",
+      why: "Sequencing is a breast-distinctive fork that patients often hear about without a clear comparison frame.",
+      factors: [
+        "Subtype and stage / nodal status",
+        "Goals of neoadjuvant therapy (shrink, assess response, enable surgery options)",
+        "Whether surgery first still leaves systemic therapy afterward",
+        "Timeline and practical fit",
+        "What information is still pending",
+      ],
+      doctorQs: [
+        "For my situation, should systemic therapy start before or after surgery?",
+        "What would change that recommendation?",
+        "How will we know if neoadjuvant therapy is working?",
       ],
     },
     {
@@ -2982,6 +3035,11 @@ Common lung-cancer examples of a missing local path include a complex thoracic p
       LUNG_CANCER_DECISION_OS,
       id("cancer", 1),
       id("map", 1)
+    ),
+    buildDecisionMapFromOs(
+      BREAST_CANCER_DECISION_OS,
+      id("cancer", 3),
+      id("map", 2)
     ),
   ];
 
