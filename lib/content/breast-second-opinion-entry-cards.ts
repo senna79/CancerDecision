@@ -25,11 +25,11 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
       "Confirmation of the current plan is also a useful outcome.",
   },
   delay: {
-    lead: "Timing depends on urgency. Ask your care team:",
+    lead: "A second opinion is valuable when it helps clarify a major decision. Timing depends on urgency — ask what must move now and what can continue while you seek another review.",
     ask: [
-      "How urgent is my next treatment decision?",
-      "What information are we still waiting for?",
-      "Is there enough time for another focused review?",
+      "How urgent is my next treatment step?",
+      "Is there time for a focused second opinion?",
+      "What can continue while I seek another opinion?",
     ],
     close:
       "The goal is informed decision-making without unsafe delay.",

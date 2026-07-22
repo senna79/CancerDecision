@@ -22,6 +22,16 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
     close:
       "Earlier discussion can still help even if you stay with standard care. Ask whether joining fits your goals — not only whether a trial exists.",
   },
+  notImmediately: {
+    lead: "Not everyone needs a trial search immediately after diagnosis. First understand your subtype, stage, and standard options — then ask whether trials add meaningful alternatives for you.",
+    ask: [
+      "Do I need to look for trials right now, or after key results are back?",
+      "For my subtype and stage, when would a trial discussion be most useful?",
+      "What standard options should I understand before comparing a study?",
+    ],
+    close:
+      "Skipping an early trial search is not the same as missing every opportunity. Ask for the right timing for your situation.",
+  },
   notTestSubject: {
     lead: "Clinical trials involve research, but they follow structured safety processes. You should understand:",
     items: [

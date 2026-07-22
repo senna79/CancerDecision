@@ -46,9 +46,14 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
     ask: "Would subtype results change the options we consider — or when surgery should happen?",
   },
   waiting: {
-    lead: "Not every delay is the same. Doctors balance the need for subtype, staging, and genetics information with the urgency of treatment.",
-    ask: "How urgent is my situation?",
-    close: "Ask what needs to happen quickly — and what can wait for results.",
+    lead: "Many people worry that waiting for test results means the cancer is being left untreated. The useful question is whether the information being collected could change your treatment plan — and whether that wait is safe for you.",
+    ask: [
+      "What results are we waiting for?",
+      "Could these results change surgery or treatment order?",
+      "Is this waiting period safe for my situation?",
+    ],
+    close:
+      "Waiting for important information is different from delaying care without a plan.",
   },
   focusFirst: {
     lead: "Usually the first focus is:",
@@ -137,8 +142,14 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
 export const BREAST_NEWLY_DIAGNOSED_GLOSS =
   "After a breast cancer diagnosis, you do not need every answer immediately — first understand subtype and stage, whether treatment should start before or after surgery, and how to prepare for the next conversation.";
 
-export const BREAST_NEWLY_DIAGNOSED_DIRECT_ANSWER = `After a new breast cancer diagnosis, you do not need every answer immediately. First clarify what is known and what is still pending — especially subtype (receptors / HER2), stage or extent, and whether treatment should start before or after surgery.
+export const BREAST_NEWLY_DIAGNOSED_DIRECT_ANSWER = `After a new breast cancer diagnosis, you do not need every answer immediately.
 
-Ask what must happen this week, what can wait for results, and whether genetic counseling could change a surgery choice. Prepare a short question list and keep your key reports together.
+In the first days and weeks, the focus is usually:
+1. Confirm your breast cancer subtype (ER/PR/HER2)
+2. Understand stage and extent
+3. Know whether treatment should start before or after surgery
+4. Prepare questions for your care team
 
-Your next step is clarity and sequencing — not choosing every treatment today.`;
+Ask what must happen this week, what can wait for results, and whether genetic counseling could change a surgery choice. Keep your key reports together.
+
+Your next step is clarity and treatment order — not choosing every treatment today. Doctors call this “sequencing”: deciding what happens first, such as medicine before surgery or surgery before medicine.`;

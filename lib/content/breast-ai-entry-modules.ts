@@ -29,6 +29,7 @@ const BREAST_GENETICS = `/questions/${BREAST_GENETICS_SLUG}`;
 const BREAST_RECONSTRUCTION = `/questions/${BREAST_RECONSTRUCTION_SLUG}`;
 const BREAST_RADIATION = `/questions/${BREAST_RADIATION_SLUG}`;
 const BREAST_CARE_TEAM = `/questions/${BREAST_CARE_TEAM_SLUG}`;
+const BREAST_QOL = `/questions/${BREAST_QOL_SLUG}`;
 
 /** Breast Cancer Orientation Entry — Newly Diagnosed (P0 #1) */
 export const BREAST_NEWLY_DIAGNOSED_FLAGSHIP: AiEntryFlagshipModules = {
@@ -36,11 +37,12 @@ export const BREAST_NEWLY_DIAGNOSED_FLAGSHIP: AiEntryFlagshipModules = {
   decisionMoment: "What happens next after a new diagnosis",
   exploring: "Orientation after diagnosis",
   subtitle:
-    "A breast cancer diagnosis brings many questions. This guide helps you understand what information you need — especially subtype and sequencing — and how to prepare for conversations without solving the whole journey today.",
+    "A breast cancer diagnosis brings many questions. This guide helps you understand what information you need — especially subtype and treatment order — and how to prepare for conversations without solving the whole journey today.",
   relatedDecisions: [
     { label: "Subtype testing", href: BREAST_SUBTYPE },
     { label: "Genetic counseling", href: BREAST_GENETICS },
     { label: "Treatment sequencing", href: BREAST_SEQUENCING },
+    { label: "Quality of life", href: BREAST_QOL },
     { label: "Second opinion", href: BREAST_SECOND },
   ],
   journeyLabel: "Breast Cancer Decision Journey",
@@ -134,12 +136,12 @@ export const BREAST_NEWLY_DIAGNOSED_FLAGSHIP: AiEntryFlagshipModules = {
     "Multiple options exist",
     "You want more confidence",
   ],
-  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionClose: "It helps you understand your options before the next irreversible step.",
   secondOpinionCtaLabel: "Breast second opinion guide",
   secondOpinionHref: BREAST_SECOND,
 
   doctorTitle: "Doctor Conversation Checklist",
-  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveTitle: "Copy this question list before your appointment:",
   doctorLeaveItems: [
     "What subtype of breast cancer do I have — and what stage is it?",
     "What information are we still waiting for?",
@@ -209,9 +211,9 @@ export const BREAST_NEWLY_DIAGNOSED_FLAGSHIP: AiEntryFlagshipModules = {
   nextStepCtaLabel: "Subtype testing decision",
   nextStepHref: BREAST_SUBTYPE,
   nextStepCtaMeta: "When receptor / HER2 results may change options",
-  nextStepSecondaryCtaLabel: "Treatment sequencing",
-  nextStepSecondaryHref: BREAST_SEQUENCING,
-  nextStepSecondaryMeta: "Before vs after surgery",
+  nextStepSecondaryCtaLabel: "How treatment affects daily life",
+  nextStepSecondaryHref: BREAST_QOL,
+  nextStepSecondaryMeta: "Work, energy, and what you need to protect",
 
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
@@ -223,17 +225,18 @@ export const BREAST_NEWLY_DIAGNOSED_FLAGSHIP: AiEntryFlagshipModules = {
       href: BREAST_SUBTYPE,
     },
     {
+      title: "Wondering about daily life?",
+      question:
+        "How should quality of life factor into breast cancer decisions?",
+      cta: "Quality of life",
+      href: BREAST_QOL,
+    },
+    {
       title: "Unsure about timing?",
       question:
         "Should breast cancer treatment start before or after surgery?",
       cta: "Treatment sequencing",
       href: BREAST_SEQUENCING,
-    },
-    {
-      title: "Comparing surgery options?",
-      question: "How should I choose between lumpectomy and mastectomy?",
-      cta: "Surgery choice",
-      href: BREAST_SURGERY,
     },
   ],
 };
@@ -1902,7 +1905,7 @@ export const BREAST_RADIATION_FLAGSHIP: AiEntryFlagshipModules = {
     "How radiation decisions factor into breast cancer treatment",
   exploring: "Radiation after lumpectomy or mastectomy — fit and timing",
   subtitle:
-    "Ask how radiation fits your surgery path, reconstruction timing, schedule, and life — before locking a local plan around assumptions.",
+    "How radiation fits lumpectomy, mastectomy, reconstruction, and timing — before locking a local plan around assumptions.",
   relatedDecisions: [
     { label: "Surgery choice", href: BREAST_SURGERY },
     { label: "Reconstruction timing", href: BREAST_RECONSTRUCTION },

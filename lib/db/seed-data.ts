@@ -730,8 +730,7 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 38,
       cancer: 3,
-      title:
-        "Do I need genetic counseling / BRCA testing before breast cancer surgery?",
+      title: "Should I talk about genetic testing before breast cancer surgery?",
       slug: BREAST_GENETICS_SLUG,
       category: "diagnosis",
       summary: BREAST_GENETICS_DIRECT_ANSWER,
@@ -774,8 +773,7 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 40,
       cancer: 3,
-      title:
-        "How should radiation factor into my breast cancer treatment?",
+      title: "Will I need radiation after breast cancer surgery?",
       slug: BREAST_RADIATION_SLUG,
       category: "treatment",
       summary: BREAST_RADIATION_DIRECT_ANSWER,

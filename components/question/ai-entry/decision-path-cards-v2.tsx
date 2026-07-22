@@ -1612,7 +1612,8 @@ function DecisionPathCardDetailInner({
       return (
         <BulletCard
           lead={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.waiting.lead}
-          close={`Ask: “${BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.waiting.ask}” ${BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.waiting.close}`}
+          ask={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.waiting.ask}
+          close={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.waiting.close}
         />
       );
     case "bnd-start-right-away":
@@ -1755,6 +1756,32 @@ function DecisionPathCardDetailInner({
               className="font-semibold text-[var(--accent)] hover:underline"
             >
               Genetic counseling before surgery guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "bst-biopsy-not-enough":
+      return (
+        <BulletCard
+          lead={BREAST_SUBTYPE_ENTRY_CARDS.biopsyNotEnough.lead}
+          ask={BREAST_SUBTYPE_ENTRY_CARDS.biopsyNotEnough.ask}
+          close={BREAST_SUBTYPE_ENTRY_CARDS.biopsyNotEnough.close}
+        />
+      );
+    case "bst-subtype-means":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={BREAST_SUBTYPE_ENTRY_CARDS.subtypeMeans.lead}
+            items={BREAST_SUBTYPE_ENTRY_CARDS.subtypeMeans.items}
+            close={BREAST_SUBTYPE_ENTRY_CARDS.subtypeMeans.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${BREAST_TREATMENT_COMPARE_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Systemic options by subtype →
             </Link>
           </p>
         </div>
@@ -2863,6 +2890,7 @@ function DecisionPathCardDetailInner({
       return (
         <BulletCard
           lead={BREAST_RADIATION_ENTRY_CARDS.whyMatters.lead}
+          ask={BREAST_RADIATION_ENTRY_CARDS.whyMatters.ask}
           close={BREAST_RADIATION_ENTRY_CARDS.whyMatters.close}
         />
       );
@@ -3572,6 +3600,14 @@ function DecisionPathCardDetailInner({
           lead={BREAST_CLINICAL_TRIAL_ENTRY_CARDS.askEarly.lead}
           ask={BREAST_CLINICAL_TRIAL_ENTRY_CARDS.askEarly.ask}
           close={BREAST_CLINICAL_TRIAL_ENTRY_CARDS.askEarly.close}
+        />
+      );
+    case "btrial-not-immediately":
+      return (
+        <BulletCard
+          lead={BREAST_CLINICAL_TRIAL_ENTRY_CARDS.notImmediately.lead}
+          ask={BREAST_CLINICAL_TRIAL_ENTRY_CARDS.notImmediately.ask}
+          close={BREAST_CLINICAL_TRIAL_ENTRY_CARDS.notImmediately.close}
         />
       );
     case "btrial-not-subject":

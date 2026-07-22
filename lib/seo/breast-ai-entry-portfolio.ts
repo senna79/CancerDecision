@@ -71,8 +71,11 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
       "questions to ask oncologist after breast cancer diagnosis",
       "how soon do I need treatment after breast cancer diagnosis",
       "should I start treatment right away after breast cancer diagnosis",
+      "can I wait after breast cancer diagnosis",
+      "is waiting for breast cancer surgery dangerous",
       "breast cancer stage treatment timeline",
       "does stage decide breast cancer treatment timeline",
+      "first steps after breast cancer diagnosis",
     ],
     relatedEntryIds: [
       "breast-subtype-testing",
@@ -95,6 +98,9 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
       "biomarker testing breast cancer before choosing treatment",
       "what does PR-positive mean breast cancer",
       "what does progesterone receptor positive mean",
+      "why can't treatment be chosen from biopsy alone breast cancer",
+      "what does ER positive HER2 positive triple negative mean for treatment",
+      "how does breast cancer subtype affect treatment decisions",
     ],
     relatedEntryIds: [
       "breast-newly-diagnosed",
@@ -111,6 +117,8 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
     momentId: "genetics",
     searchIntents: [
       "do I need genetic counseling before breast cancer surgery",
+      "should I talk about genetic testing before breast cancer surgery",
+      "should I get genetic testing before breast cancer surgery",
       "BRCA testing before breast cancer surgery",
       "is BRCA the only gene that matters breast cancer",
       "can you get breast cancer without the BRCA gene",
@@ -220,6 +228,8 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
       "can I say no to radiation breast cancer",
       "radiation after lumpectomy breast cancer",
       "do I need radiation after mastectomy",
+      "will I need radiation after breast cancer surgery",
+      "why are doctors discussing radiation before surgery",
       "how long is breast cancer radiation",
       "5 day radiation treatment for breast cancer",
       "is shorter radiation an option breast cancer",
@@ -248,6 +258,8 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
       "should I get a second opinion before breast cancer surgery",
       "how to get a second opinion for breast cancer",
       "breast cancer second opinion before treatment",
+      "can I get a second opinion without delaying treatment",
+      "should I delay treatment for a second opinion breast cancer",
     ],
     relatedEntryIds: [
       "breast-care-team",
@@ -413,6 +425,7 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
       "breast cancer clinical trial options",
       "are clinical trials only last resort breast cancer",
       "clinical trial vs standard treatment breast cancer",
+      "do I need to look for clinical trials immediately after breast cancer diagnosis",
     ],
     relatedEntryIds: [
       "breast-treatment-comparison",

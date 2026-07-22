@@ -142,7 +142,7 @@ export const BREAST_QOL_ENTRY_CARDS = {
 export const BREAST_QOL_GLOSS =
   "Quality of life belongs in breast cancer decisions — not as “treatment vs life,” but as how the plan can support cancer goals and the daily life you need to protect, including symptoms, energy, work, and body image.";
 
-export const BREAST_QOL_DIRECT_ANSWER = `Breast cancer decisions are not only about controlling cancer. They are also about helping you live as well as possible while receiving care — energy, work, family roles, comfort, and body image all belong in the conversation.
+export const BREAST_QOL_DIRECT_ANSWER = `Breast cancer decisions include both cancer control and the life you need to protect while receiving care — energy, work, family roles, comfort, and body image all belong in the conversation.
 
 Ask: “How can this plan support both my cancer goals and the life I need to protect right now?”
 

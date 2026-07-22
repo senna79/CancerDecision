@@ -178,7 +178,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
 export const BREAST_GENETICS_GLOSS =
   "Genetic counseling asks whether inherited risk testing (for example BRCA-class) should happen before surgery — and how results may change the operation. It is not the same as tumor subtype (ER/PR/HER2).";
 
-export const BREAST_GENETICS_DIRECT_ANSWER = `Some people benefit from genetic counseling before a final breast cancer surgery choice — especially when results could change lumpectomy vs mastectomy, or whether surgery on the other breast enters the discussion.
+export const BREAST_GENETICS_DIRECT_ANSWER = `Some people should talk about genetic testing before a final breast cancer surgery choice. Genetic counseling helps decide whether inherited-risk testing (for example BRCA-class) is useful — and how a result could change lumpectomy vs mastectomy, or whether surgery on the other breast enters the discussion.
 
 Germline genetics (inherited risk) is not the same as tumor subtype. Ask: “Do I need counseling before surgery — would a result change the operation — and is it safe to wait?”
 

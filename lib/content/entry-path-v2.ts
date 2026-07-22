@@ -2391,8 +2391,8 @@ const BREAST_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
         },
         {
           id: "bnd-waiting",
-          title: "Should I start treatment right away — or wait for more information?",
-          summary: "Not every wait is the same — ask how urgent it is.",
+          title: "Can I wait a few weeks after a breast cancer diagnosis?",
+          summary: "Waiting for key results ≠ delaying care without a plan.",
         },
         {
           id: "bnd-start-right-away",
@@ -2526,9 +2526,19 @@ const BREAST_SUBTYPE_PATH: EntryPathV2 = {
       main: "does-not-decide",
       cards: [
         {
+          id: "bst-biopsy-not-enough",
+          title: "Why can’t treatment be chosen from the biopsy result alone?",
+          summary: "Confirming cancer ≠ locking the full first plan.",
+        },
+        {
+          id: "bst-subtype-means",
+          title: "How do ER-positive, HER2-positive, and triple-negative affect decisions?",
+          summary: "Different biology — different next conversations, not a drug menu.",
+        },
+        {
           id: "bst-change-options",
           title: "Can subtype results change my treatment plan?",
-          summary: "Often yes — options and sequencing, not one automatic drug.",
+          summary: "Often yes — options and treatment order, not one automatic drug.",
         },
         {
           id: "bst-genomic",
@@ -3137,8 +3147,8 @@ const BREAST_SECOND_OPINION_PATH: EntryPathV2 = {
         },
         {
           id: "bso-delay",
-          title: "Will a second opinion delay my treatment?",
-          summary: "Balance informed decisions with timely care.",
+          title: "Can I get a second opinion without delaying treatment?",
+          summary: "Ask urgency, what can continue, and what needs a pause.",
         },
         {
           id: "bso-disrespect",
@@ -3927,6 +3937,11 @@ const BREAST_CLINICAL_TRIAL_PATH: EntryPathV2 = {
           summary: "Ask early — trials are not only a last resort.",
         },
         {
+          id: "btrial-not-immediately",
+          title: "Do I need to look for trials immediately after diagnosis?",
+          summary: "Not always — subtype and standard options often come first.",
+        },
+        {
           id: "btrial-not-subject",
           title: "Does joining a trial mean I am a test subject?",
           summary: "Research with structure — and your choice to participate.",
@@ -4457,8 +4472,8 @@ const BREAST_RADIATION_PATH: EntryPathV2 = {
         },
         {
           id: "brad-why-matters",
-          title: "Why clarify radiation before locking surgery?",
-          summary: "It can tip the local plan and weeks of daily life.",
+          title: "Why are doctors discussing radiation before surgery?",
+          summary: "It can tip surgery path, reconstruction timing, and schedule.",
         },
         {
           id: "brad-surgery-choice",

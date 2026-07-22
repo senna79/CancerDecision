@@ -46,6 +46,26 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
     close:
       "A result does not automatically pick one drug. It shapes which options belong on the table.",
   },
+  biopsyNotEnough: {
+    lead: "A biopsy confirms cancer, but treatment decisions often need more information about the cancer’s biology and extent before locking a first plan.",
+    ask: [
+      "What does my biopsy already tell us?",
+      "What information is still missing?",
+      "Would missing information change my first treatment decision?",
+    ],
+    close:
+      "Confirming cancer and choosing a full plan are different steps — ask what still needs to be clear.",
+  },
+  subtypeMeans: {
+    lead: "ER-positive, HER2-positive, and triple-negative describe different cancer biology. They are not a ranking of “better” or “worse” by themselves — they change which decisions come next.",
+    items: [
+      "Which systemic treatment families are usually discussed",
+      "Whether treatment before surgery is more often on the table",
+      "What information doctors still need before locking a first plan",
+    ],
+    close:
+      "Ask: “What does my subtype mean for the decisions I need to make next?” — not only what the label is called.",
+  },
   genomic: {
     lead: "For some early hormone receptor–positive cancers, doctors discuss genomic assays (Oncotype-class and similar) to refine whether chemotherapy adds enough benefit beyond endocrine therapy.",
     ask: [
@@ -124,8 +144,10 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
 export const BREAST_SUBTYPE_GLOSS =
   "Breast cancer subtype testing (receptors / HER2, and sometimes genomic assays) helps decide which systemic options and sequencing to discuss — before locking a first plan. It is tumor biology, not germline genetics.";
 
-export const BREAST_SUBTYPE_DIRECT_ANSWER = `For many people, receptor (ER/PR) and HER2 results — and sometimes genomic assays — change which systemic options and sequencing make sense. Ask whether pending subtype results would change the plan before locking surgery or systemic therapy.
+export const BREAST_SUBTYPE_DIRECT_ANSWER = `A biopsy can confirm breast cancer, but doctors often still need subtype results — ER/PR and HER2, and sometimes genomic assays — before choosing systemic options or treatment order.
+
+For many people, those results change which medicine families are discussed and whether treatment should start before or after surgery. Ask whether pending subtype results would change the plan before locking surgery or systemic therapy.
 
 Subtype is tumor biology. It is not the same as germline genetic counseling (BRCA-class testing), which may separately affect surgery choices.
 
-A useful question: “Would subtype results change the options we discuss — or when surgery should happen?”`;
+A useful question: “What does my subtype mean for the decisions I need to make next?”`;

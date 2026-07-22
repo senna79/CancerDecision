@@ -7,7 +7,12 @@ export const BREAST_RADIATION_ENTRY_CARDS = {
       "This guide helps you understand when radiation enters the conversation and what to ask — not how to design a radiation plan yourself.",
   },
   whyMatters: {
-    lead: "Radiation can change which surgery path feels workable, how reconstruction is timed, and what your calendar looks like for weeks. Clarifying radiation early prevents locking lumpectomy or reconstruction without knowing the trade-offs.",
+    lead: "Radiation is not only a treatment after surgery. It can affect which surgery path, reconstruction timing, and schedule make sense — so doctors often discuss it before you lock a local plan.",
+    ask: [
+      "If I choose lumpectomy, what radiation is expected?",
+      "If I choose mastectomy, could radiation still be needed?",
+      "How would radiation change reconstruction timing?",
+    ],
     close:
       "Ask what radiation would involve for each surgery path — before assuming mastectomy avoids radiation.",
   },
@@ -187,7 +192,9 @@ export const BREAST_RADIATION_ENTRY_CARDS = {
 export const BREAST_RADIATION_GLOSS =
   "Radiation often follows lumpectomy and is sometimes needed after mastectomy. Ask how radiation fits each surgery path, reconstruction timing, schedule, and side effects — before locking a local plan.";
 
-export const BREAST_RADIATION_DIRECT_ANSWER = `Radiation is a common part of breast cancer local treatment — especially after lumpectomy. After mastectomy it is situational. The useful question is not “Is radiation the strongest option?” It is “How does radiation fit my surgery path, reconstruction timing, calendar, and goals?”
+export const BREAST_RADIATION_DIRECT_ANSWER = `Many people ask whether they will need radiation after breast cancer surgery. After lumpectomy, radiation is often part of the plan. After mastectomy, it is situational — not automatically zero.
+
+The useful question is not “Is radiation the strongest option?” It is “How does radiation fit my surgery path, reconstruction timing, calendar, and goals?”
 
 Ask: “If I choose lumpectomy, what radiation would I need? If I choose mastectomy, am I still likely to need radiation — and how would that change reconstruction?”
 

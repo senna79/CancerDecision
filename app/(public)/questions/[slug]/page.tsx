@@ -41,7 +41,10 @@ import {
 } from "@/lib/seo/json-ld";
 import { isIndexableQuestionSlug } from "@/lib/seo/indexing";
 import { breastLegacyQuestionRedirect } from "@/lib/content/breast-entry-slugs";
-import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
+import {
+  cancerSituationMapHref,
+  momentIdForEntrySlug,
+} from "@/lib/journey/decision-moments";
 import { retiredLungQuestionRedirect } from "@/lib/seo/retired-lung-questions";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -280,6 +283,20 @@ export default async function QuestionPage({
           ) : (
             <SummaryPanel summary={question.summary} />
           )}
+          {cancer ? (
+            <p className="mt-4 text-sm text-[var(--ink-soft)]">
+              Not sure this is your step?{" "}
+              <Link
+                href={cancerSituationMapHref(
+                  cancer.slug,
+                  momentIdForEntrySlug(question.slug)
+                )}
+                className="font-semibold text-[var(--accent)] hover:underline"
+              >
+                Start from your situation →
+              </Link>
+            </p>
+          ) : null}
         </EntryHeroV2>
       ) : (
         <>

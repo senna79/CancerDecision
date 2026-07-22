@@ -170,7 +170,7 @@ export function EntryPageEndingV2({
               )}
               className="text-xs font-semibold text-[var(--accent)] hover:underline"
             >
-              Where this sits →
+              Where are you in your journey? →
             </Link>
           ) : null}
         </div>
