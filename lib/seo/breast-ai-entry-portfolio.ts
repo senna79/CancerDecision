@@ -4,7 +4,13 @@
  */
 
 import {
+  BREAST_CARE_TEAM_SLUG,
+  BREAST_GENETICS_SLUG,
+  BREAST_METASTATIC_SLUG,
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_RECURRENCE_SLUG,
+  BREAST_RADIATION_SLUG,
+  BREAST_RECONSTRUCTION_SLUG,
   BREAST_SECOND_OPINION_SLUG,
   BREAST_SEQUENCING_SLUG,
   BREAST_SUBTYPE_SLUG,
@@ -18,7 +24,13 @@ export type BreastAiEntryId =
   | "breast-treatment-sequencing"
   | "breast-surgery-decision"
   | "breast-second-opinion"
-  | "breast-treatment-comparison";
+  | "breast-treatment-comparison"
+  | "breast-genetics"
+  | "breast-reconstruction"
+  | "breast-radiation"
+  | "breast-care-team"
+  | "breast-metastatic"
+  | "breast-recurrence";
 
 export type BreastAiEntry = {
   id: BreastAiEntryId;
@@ -46,10 +58,10 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
       "questions to ask oncologist after breast cancer diagnosis",
       "how soon do I need treatment after breast cancer diagnosis",
       "should I start treatment right away after breast cancer diagnosis",
-      "do I need genetic counseling before breast cancer surgery",
     ],
     relatedEntryIds: [
       "breast-subtype-testing",
+      "breast-genetics",
       "breast-treatment-sequencing",
       "breast-second-opinion",
       "breast-surgery-decision",
@@ -68,8 +80,28 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
     ],
     relatedEntryIds: [
       "breast-newly-diagnosed",
+      "breast-genetics",
       "breast-treatment-sequencing",
       "breast-treatment-comparison",
+    ],
+  },
+  {
+    id: "breast-genetics",
+    label: "Genetic counseling",
+    decisionLabel: "Genetic counseling / BRCA before surgery",
+    slug: BREAST_GENETICS_SLUG,
+    momentId: "genetics",
+    searchIntents: [
+      "do I need genetic counseling before breast cancer surgery",
+      "BRCA testing before breast cancer surgery",
+      "genetic testing change lumpectomy vs mastectomy",
+      "should I wait for genetic results before mastectomy",
+    ],
+    relatedEntryIds: [
+      "breast-surgery-decision",
+      "breast-subtype-testing",
+      "breast-newly-diagnosed",
+      "breast-second-opinion",
     ],
   },
   {
@@ -100,9 +132,51 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
       "lumpectomy vs mastectomy how to choose",
     ],
     relatedEntryIds: [
+      "breast-radiation",
+      "breast-reconstruction",
+      "breast-genetics",
       "breast-treatment-sequencing",
       "breast-second-opinion",
       "breast-newly-diagnosed",
+    ],
+  },
+  {
+    id: "breast-reconstruction",
+    label: "Reconstruction timing",
+    decisionLabel: "Reconstruction timing and choices",
+    slug: BREAST_RECONSTRUCTION_SLUG,
+    momentId: "reconstruction",
+    searchIntents: [
+      "breast reconstruction timing after mastectomy",
+      "immediate vs delayed breast reconstruction",
+      "does radiation affect breast reconstruction",
+      "do I have to reconstruct after mastectomy",
+    ],
+    relatedEntryIds: [
+      "breast-surgery-decision",
+      "breast-radiation",
+      "breast-genetics",
+      "breast-treatment-sequencing",
+      "breast-second-opinion",
+    ],
+  },
+  {
+    id: "breast-radiation",
+    label: "Radiation decisions",
+    decisionLabel: "How radiation fits the local plan",
+    slug: BREAST_RADIATION_SLUG,
+    momentId: "radiation-decision",
+    searchIntents: [
+      "radiation after lumpectomy breast cancer",
+      "do I need radiation after mastectomy",
+      "breast cancer radiation schedule side effects",
+      "does radiation affect breast reconstruction timing",
+    ],
+    relatedEntryIds: [
+      "breast-surgery-decision",
+      "breast-reconstruction",
+      "breast-treatment-sequencing",
+      "breast-second-opinion",
     ],
   },
   {
@@ -116,9 +190,29 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
       "breast cancer second opinion before treatment",
     ],
     relatedEntryIds: [
+      "breast-care-team",
       "breast-newly-diagnosed",
       "breast-surgery-decision",
       "breast-treatment-sequencing",
+    ],
+  },
+  {
+    id: "breast-care-team",
+    label: "Care team / center",
+    decisionLabel: "Choosing a breast cancer care team",
+    slug: BREAST_CARE_TEAM_SLUG,
+    momentId: "care-center-expertise",
+    searchIntents: [
+      "how do I choose a breast cancer care team or center",
+      "do I need a major breast cancer center",
+      "breast cancer multidisciplinary team",
+      "specialist vs local breast cancer treatment",
+    ],
+    relatedEntryIds: [
+      "breast-second-opinion",
+      "breast-surgery-decision",
+      "breast-treatment-sequencing",
+      "breast-genetics",
     ],
   },
   {
@@ -135,6 +229,46 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
       "breast-subtype-testing",
       "breast-treatment-sequencing",
       "breast-second-opinion",
+      "breast-metastatic",
+    ],
+  },
+  {
+    id: "breast-metastatic",
+    label: "Metastatic / Stage IV",
+    decisionLabel: "Options for metastatic breast cancer",
+    slug: BREAST_METASTATIC_SLUG,
+    momentId: "stage-iv-options",
+    searchIntents: [
+      "what are my options for metastatic stage IV breast cancer",
+      "stage 4 breast cancer treatment options",
+      "metastatic breast cancer next steps",
+      "does stage IV breast cancer mean nothing can be done",
+    ],
+    relatedEntryIds: [
+      "breast-treatment-comparison",
+      "breast-second-opinion",
+      "breast-care-team",
+      "breast-subtype-testing",
+      "breast-recurrence",
+    ],
+  },
+  {
+    id: "breast-recurrence",
+    label: "Recurrence",
+    decisionLabel: "What to sort out if breast cancer comes back",
+    slug: BREAST_RECURRENCE_SLUG,
+    momentId: "recurrence",
+    searchIntents: [
+      "what should I sort out if breast cancer comes back",
+      "breast cancer recurrence treatment options",
+      "does breast cancer recurrence mean treatment failed",
+      "local vs distant breast cancer recurrence",
+    ],
+    relatedEntryIds: [
+      "breast-metastatic",
+      "breast-treatment-comparison",
+      "breast-second-opinion",
+      "breast-care-team",
     ],
   },
 ];

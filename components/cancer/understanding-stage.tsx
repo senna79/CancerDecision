@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { DoctorChecklistTakeaway } from "@/components/question/ai-entry/doctor-checklist-takeaway";
+import { BREAST_UNDERSTANDING_STAGE } from "@/lib/content/breast-understanding-stage";
 import { LUNG_UNDERSTANDING_STAGE } from "@/lib/content/lung-understanding-stage";
 
-const content = LUNG_UNDERSTANDING_STAGE;
+export type UnderstandingStageContent =
+  | typeof LUNG_UNDERSTANDING_STAGE
+  | typeof BREAST_UNDERSTANDING_STAGE;
 
 function BulletList({ items }: { items: readonly string[] }) {
   return (
@@ -20,7 +23,11 @@ function BulletList({ items }: { items: readonly string[] }) {
   );
 }
 
-export function UnderstandingStage() {
+export function UnderstandingStage({
+  content = LUNG_UNDERSTANDING_STAGE,
+}: {
+  content?: UnderstandingStageContent;
+}) {
   return (
     <article className="space-y-14 md:space-y-16">
       <header
@@ -360,7 +367,7 @@ export function UnderstandingStage() {
             lead={content.checklist.leaveTitle}
             items={[...content.checklist.leaveItems]}
             sourceLabel={content.checklist.title}
-            sourceHref="/cancers/lung-cancer/understanding-stage"
+            sourceHref={content.path}
           />
         </div>
 
@@ -456,7 +463,7 @@ export function UnderstandingStage() {
         <p className="mt-4 text-sm text-[var(--muted)]">
           Prefer situation-based navigation?{" "}
           <Link
-            href="/cancers/lung-cancer#decision-moment"
+            href={content.related.mapHref}
             className="font-semibold text-[var(--accent)] hover:underline"
           >
             Back to where you are now

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { DecisionNodeMark } from "@/components/brand/decision-marks";
+import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
 import type { JourneyContext } from "@/lib/journey/engine";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +31,7 @@ export function JourneyProgressRail({
           </p>
         </div>
         <Link
-          href={`/cancers/${cancerSlug}#decision-map`}
+          href={cancerSituationMapHref(cancerSlug)}
           className="text-xs font-semibold text-[var(--accent)] hover:underline"
         >
           Full map →
@@ -58,7 +59,7 @@ export function JourneyProgressRail({
         {journey.steps.map((step) => {
           const href = step.primaryQuestionSlug
             ? `/questions/${step.primaryQuestionSlug}`
-            : `/cancers/${cancerSlug}#decision-map`;
+            : cancerSituationMapHref(cancerSlug);
           const isCurrent = step.status === "current";
           return (
             <li key={step.node.id}>

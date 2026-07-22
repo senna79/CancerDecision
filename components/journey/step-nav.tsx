@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
 import type { JourneyContext } from "@/lib/journey/engine";
 
 export function JourneyStepNav({
@@ -53,7 +54,7 @@ export function JourneyStepNav({
           </Link>
         ) : (
           <Link
-            href={`/cancers/${cancerSlug}#decision-map`}
+            href={cancerSituationMapHref(cancerSlug)}
             className="rounded-lg border border-[var(--accent)] bg-[rgba(15,118,110,0.08)] px-4 py-3"
           >
             <p className="text-xs uppercase tracking-[0.12em] text-[var(--accent)]">

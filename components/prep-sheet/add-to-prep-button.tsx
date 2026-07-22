@@ -9,12 +9,14 @@ export function AddToPrepButton({
   text,
   sourceLabel,
   sourceHref,
+  cancerSlug,
   className,
 }: {
   section: PrepSection;
   text: string;
   sourceLabel?: string;
   sourceHref?: string;
+  cancerSlug?: string;
   className?: string;
 }) {
   const { ready, hasItem, toggleItem, launchAddFlight } = usePrepSheet();
@@ -32,7 +34,7 @@ export function AddToPrepButton({
             text
           );
         }
-        toggleItem({ section, text, sourceLabel, sourceHref });
+        toggleItem({ section, text, sourceLabel, sourceHref, cancerSlug });
       }}
       className={cn(
         "shrink-0 rounded border px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-[0.06em] transition",
@@ -54,11 +56,13 @@ export function PrepItemRow({
   text,
   sourceLabel,
   sourceHref,
+  cancerSlug,
 }: {
   section: PrepSection;
   text: string;
   sourceLabel?: string;
   sourceHref?: string;
+  cancerSlug?: string;
 }) {
   return (
     <li className="flex items-start gap-2.5 text-[var(--ink)]">
@@ -72,6 +76,7 @@ export function PrepItemRow({
         text={text}
         sourceLabel={sourceLabel}
         sourceHref={sourceHref}
+        cancerSlug={cancerSlug}
       />
     </li>
   );

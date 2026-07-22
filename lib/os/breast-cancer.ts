@@ -1,6 +1,12 @@
 import type { CancerDecisionOs } from "@/lib/os/types";
 import {
+  BREAST_CARE_TEAM_SLUG,
+  BREAST_GENETICS_SLUG,
+  BREAST_METASTATIC_SLUG,
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_RECURRENCE_SLUG,
+  BREAST_RADIATION_SLUG,
+  BREAST_RECONSTRUCTION_SLUG,
   BREAST_SECOND_OPINION_SLUG,
   BREAST_SEQUENCING_SLUG,
   BREAST_SUBTYPE_SLUG,
@@ -9,7 +15,7 @@ import {
 } from "@/lib/content/breast-entry-slugs";
 
 /**
- * Breast Cancer Decision OS v1 — P0 moments (active) + P1 skeleton (planned).
+ * Breast Cancer Decision OS v1 — P0 + active P1 moments (including Metastatic + Recurrence).
  * Clinical spine: Diagnosis → Subtype → Stage context → Surgery/local → Systemic sequencing.
  */
 export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
@@ -37,6 +43,7 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
       story_slugs: ["comparing-lumpectomy-and-mastectomy-priorities"],
       next_moment_ids: [
         "node-subtype",
+        "node-genetics",
         "node-sequencing",
         "node-surgery",
         "node-second-opinion",
@@ -65,6 +72,7 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
       treatment_slugs: [],
       story_slugs: [],
       next_moment_ids: [
+        "node-genetics",
         "node-sequencing",
         "node-compare",
         "node-surgery",
@@ -117,7 +125,13 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
       question_slugs: [BREAST_SURGERY_SLUG],
       treatment_slugs: ["surgery"],
       story_slugs: ["comparing-lumpectomy-and-mastectomy-priorities"],
-      next_moment_ids: ["node-compare", "node-second-opinion"],
+      next_moment_ids: [
+        "node-genetics",
+        "node-radiation",
+        "node-reconstruction",
+        "node-compare",
+        "node-second-opinion",
+      ],
       patient_router: {
         label: "How do I choose between lumpectomy and mastectomy?",
         hint: "Compare two surgery paths — including what genetics and reconstruction may change.",
@@ -141,7 +155,12 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
       question_slugs: [BREAST_SECOND_OPINION_SLUG],
       treatment_slugs: [],
       story_slugs: [],
-      next_moment_ids: ["node-surgery", "node-compare", "node-sequencing"],
+      next_moment_ids: [
+        "node-care-team",
+        "node-surgery",
+        "node-compare",
+        "node-sequencing",
+      ],
       patient_router: {
         label:
           "Should I get a second opinion before surgery or systemic therapy?",
@@ -181,7 +200,6 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
         nextStep: "Start here",
       },
     },
-    // ——— P1 skeleton (planned) ———
     {
       id: "node-genetics",
       slug: "genetics",
@@ -191,15 +209,21 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
         "Whether genetic counseling and BRCA-class testing should happen before surgery — and how results may change the operation.",
       why_this_matters:
         "Germline risk is not the same as tumor subtype — it can change surgery and family implications.",
-      tier: 2,
-      status: "planned",
+      tier: 1,
+      status: "active",
       stage: "testing",
       sort_order: 7,
-      ai_entry_slug: null,
-      question_slugs: [],
+      ai_entry_slug: BREAST_GENETICS_SLUG,
+      question_slugs: [BREAST_GENETICS_SLUG],
       treatment_slugs: [],
       story_slugs: [],
-      next_moment_ids: ["node-surgery"],
+      next_moment_ids: ["node-surgery", "node-second-opinion"],
+      patient_router: {
+        label:
+          "Do I need genetic counseling before breast cancer surgery?",
+        hint: "Inherited risk (BRCA-class) vs surgery timing — not the same as tumor subtype.",
+        nextStep: "Start here",
+      },
     },
     {
       id: "node-reconstruction",
@@ -210,51 +234,131 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
         "How reconstruction timing and choices fit into the cancer decision.",
       why_this_matters:
         "Reconstruction is part of the surgery conversation for many people — not a separate afterthought only.",
-      tier: 2,
-      status: "planned",
+      tier: 1,
+      status: "active",
       stage: "treatment",
       sort_order: 8,
-      ai_entry_slug: null,
-      question_slugs: [],
+      ai_entry_slug: BREAST_RECONSTRUCTION_SLUG,
+      question_slugs: [BREAST_RECONSTRUCTION_SLUG],
+      treatment_slugs: ["surgery"],
+      story_slugs: [],
+      next_moment_ids: [
+        "node-surgery",
+        "node-radiation",
+        "node-second-opinion",
+      ],
+      patient_router: {
+        label:
+          "How do reconstruction timing and choices fit into my cancer decision?",
+        hint: "Immediate vs delayed vs none — inside mastectomy, radiation, and recovery.",
+        nextStep: "Start here",
+      },
+    },
+    {
+      id: "node-radiation",
+      slug: "radiation-decision",
+      label: "Radiation decisions",
+      state_label: "Radiation",
+      summary:
+        "How radiation decisions factor into breast-conserving treatment, mastectomy plans, and reconstruction timing.",
+      why_this_matters:
+        "Radiation often follows lumpectomy and is sometimes needed after mastectomy — assumptions can tip the whole local plan.",
+      tier: 1,
+      status: "active",
+      stage: "treatment",
+      sort_order: 9,
+      ai_entry_slug: BREAST_RADIATION_SLUG,
+      question_slugs: [BREAST_RADIATION_SLUG],
       treatment_slugs: [],
       story_slugs: [],
-      next_moment_ids: ["node-surgery"],
+      next_moment_ids: [
+        "node-surgery",
+        "node-reconstruction",
+        "node-second-opinion",
+      ],
+      patient_router: {
+        label:
+          "How should radiation factor into my breast cancer treatment?",
+        hint: "After lumpectomy or mastectomy — schedule, side effects, and reconstruction impact.",
+        nextStep: "Start here",
+      },
+    },
+    {
+      id: "node-care-team",
+      slug: "care-center-expertise",
+      label: "Care team / center",
+      state_label: "Care team",
+      summary:
+        "How to choose a breast cancer care team or center — expertise, coordination, and hybrid setups.",
+      why_this_matters:
+        "Fragmented teams can conflict on surgery, sequencing, radiation, and reconstruction even when each specialist is skilled.",
+      tier: 1,
+      status: "active",
+      stage: "second_opinion",
+      sort_order: 12,
+      ai_entry_slug: BREAST_CARE_TEAM_SLUG,
+      question_slugs: [BREAST_CARE_TEAM_SLUG],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: ["node-second-opinion", "node-surgery", "node-compare"],
+      patient_router: {
+        label: "How do I choose a breast cancer care team or center?",
+        hint: "Expertise and coordination — not hospital fame. Hybrid care is often workable.",
+        nextStep: "Start here",
+      },
     },
     {
       id: "node-stage-iv",
       slug: "stage-iv-options",
       label: "Metastatic / stage IV options",
       state_label: "Metastatic disease",
-      summary: "Options when breast cancer is metastatic or stage IV.",
+      summary:
+        "Options when breast cancer is metastatic or stage IV — control, symptoms, and quality of life.",
       why_this_matters:
-        "Goals and trade-offs shift when disease is advanced — patients need a clear decision path.",
-      tier: 2,
-      status: "planned",
+        "Goals and trade-offs shift when disease is advanced — patients need a clear decision path that is not “nothing can be done.”",
+      tier: 1,
+      status: "active",
       stage: "treatment",
-      sort_order: 9,
-      ai_entry_slug: null,
-      question_slugs: [],
+      sort_order: 13,
+      ai_entry_slug: BREAST_METASTATIC_SLUG,
+      question_slugs: [BREAST_METASTATIC_SLUG],
       treatment_slugs: [],
       story_slugs: [],
-      next_moment_ids: [],
+      next_moment_ids: ["node-compare", "node-second-opinion", "node-care-team"],
+      patient_router: {
+        label: "What are my options for metastatic / Stage IV breast cancer?",
+        hint: "Active treatment, control, and quality of life — shaped by subtype and goals.",
+        nextStep: "Start here",
+      },
     },
     {
       id: "node-recurrence",
       slug: "recurrence",
       label: "If breast cancer comes back",
       state_label: "Recurrence",
-      summary: "What to sort out if breast cancer returns after treatment.",
+      summary:
+        "What to sort out if breast cancer returns after treatment — a new decision point, not an auto-replay.",
       why_this_matters:
-        "Recurrence is a new decision point — not automatically the same plan as before.",
-      tier: 2,
-      status: "planned",
+        "Recurrence is a new decision point — location, prior therapy, and re-testing shape the next options.",
+      tier: 1,
+      status: "active",
       stage: "recurrence",
-      sort_order: 10,
-      ai_entry_slug: null,
-      question_slugs: [],
+      sort_order: 14,
+      ai_entry_slug: BREAST_RECURRENCE_SLUG,
+      question_slugs: [BREAST_RECURRENCE_SLUG],
       treatment_slugs: [],
       story_slugs: [],
-      next_moment_ids: [],
+      next_moment_ids: [
+        "node-stage-iv",
+        "node-compare",
+        "node-second-opinion",
+        "node-care-team",
+      ],
+      patient_router: {
+        label: "What should I sort out if breast cancer comes back?",
+        hint: "A new decision point — location, prior therapy, and whether subtype should be re-checked.",
+        nextStep: "Start here",
+      },
     },
   ],
 };

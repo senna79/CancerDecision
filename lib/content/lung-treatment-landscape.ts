@@ -334,6 +334,7 @@ export const LUNG_TREATMENT_LANDSCAPE = {
         hint: "if you still need to orient to what stage means",
       },
     ],
+    mapHref: "/cancers/lung-cancer#decision-moment",
   },
 
   sources: {

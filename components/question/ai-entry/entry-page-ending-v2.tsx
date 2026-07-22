@@ -4,7 +4,10 @@ import { CareOptionsSection } from "@/components/care-navigation/care-options-se
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import { showsCareOptionsOnEntry } from "@/lib/care-partners/entry-slugs";
 import { getEntryPathV2 } from "@/lib/content/entry-path-v2";
-import { LUNG_DECISION_MOMENTS } from "@/lib/journey/decision-moments";
+import {
+  cancerSituationMapHref,
+  momentIdForEntrySlug,
+} from "@/lib/journey/decision-moments";
 import type { DecisionGraphNode } from "@/lib/os/decision-graph";
 
 const panelClass =
@@ -51,9 +54,7 @@ export function EntryPageEndingV2({
       ? modules.journeyPath
       : [{ label: currentLabel, current: true as const }];
 
-  const activeMoment = LUNG_DECISION_MOMENTS.find(
-    (moment) => moment.href === `/questions/${slug}`
-  );
+  const activeMomentId = momentIdForEntrySlug(slug);
 
   return (
     <div id="after-decision-path" className="mt-10 scroll-mt-24 space-y-3">
@@ -163,7 +164,10 @@ export function EntryPageEndingV2({
           </p>
           {cancerSlug ? (
             <Link
-              href={`/cancers/${cancerSlug}?moment=${activeMoment?.id ?? "newly-diagnosed"}#map-locator`}
+              href={cancerSituationMapHref(
+                cancerSlug,
+                activeMomentId ?? "newly-diagnosed"
+              )}
               className="text-xs font-semibold text-[var(--accent)] hover:underline"
             >
               Where this sits →

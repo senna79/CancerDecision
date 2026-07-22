@@ -1,10 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 import { SituationGuidedRouter } from "@/components/journey/situation-guided-router";
 import type { DecisionMoment } from "@/lib/journey/decision-moments";
 import {
+  BREAST_ORIENTATION_LINKS,
   BREAST_SITUATION_BUCKETS,
   LUNG_ORIENTATION_LINKS,
   LUNG_SITUATION_BUCKETS,
@@ -43,11 +45,15 @@ export function CancerJourneyNav({
   cancers,
   lungMoments,
   breastMoments,
+  initialSlug = LUNG_SLUG,
 }: {
   cancers: CancerOption[];
   lungMoments: DecisionMoment[];
   breastMoments: DecisionMoment[];
+  /** From `/?cancer=` so returning from a breast Entry keeps the breast map */
+  initialSlug?: string;
 }) {
+  const router = useRouter();
   const bySlug = new Map(cancers.map((c) => [c.slug, c]));
   const heroCancers = HERO_SLUGS.map((slug) => bySlug.get(slug)).filter(
     (c): c is CancerOption => Boolean(c)
@@ -56,10 +62,23 @@ export function CancerJourneyNav({
     (c) => !(HERO_SLUGS as readonly string[]).includes(c.slug)
   );
 
-  const [selectedSlug, setSelectedSlug] = useState(LUNG_SLUG);
+  const [selectedSlug, setSelectedSlug] = useState(initialSlug);
   const [showMore, setShowMore] = useState(false);
   const selected =
     cancers.find((c) => c.slug === selectedSlug) ?? heroCancers[0];
+
+  useEffect(() => {
+    setSelectedSlug(initialSlug);
+  }, [initialSlug]);
+
+  function selectCancer(slug: string) {
+    setSelectedSlug(slug);
+    const href =
+      slug === LUNG_SLUG
+        ? "/#choose-cancer"
+        : `/?cancer=${encodeURIComponent(slug)}#choose-cancer`;
+    router.replace(href, { scroll: false });
+  }
 
   const journeyBySlug: Record<string, JourneyConfig> = {
     [LUNG_SLUG]: {
@@ -67,14 +86,13 @@ export function CancerJourneyNav({
       cancerLabel: "lung cancer",
       buckets: LUNG_SITUATION_BUCKETS,
       orientationLinks: LUNG_ORIENTATION_LINKS,
-      mapHref: "/cancers/lung-cancer#map-locator",
+      mapHref: "/cancers/lung-cancer#decision-moment",
     },
     [BREAST_SLUG]: {
       moments: breastMoments,
       cancerLabel: "breast cancer",
       buckets: BREAST_SITUATION_BUCKETS,
-      // Orientation routes ship with content pages; hide until then.
-      orientationLinks: [],
+      orientationLinks: BREAST_ORIENTATION_LINKS,
       mapHref: "/cancers/breast-cancer#decision-moment",
     },
   };
@@ -96,7 +114,7 @@ export function CancerJourneyNav({
               type="button"
               role="option"
               aria-selected={active}
-              onClick={() => setSelectedSlug(cancer.slug)}
+              onClick={() => selectCancer(cancer.slug)}
               className={cn(
                 "rounded-md border px-4 py-2.5 text-sm font-semibold transition md:text-base",
                 active
@@ -137,7 +155,7 @@ export function CancerJourneyNav({
               <button
                 key={cancer.slug}
                 type="button"
-                onClick={() => setSelectedSlug(cancer.slug)}
+                onClick={() => selectCancer(cancer.slug)}
                 className={cn(
                   "rounded-md border px-3 py-2 text-sm font-semibold transition",
                   active
@@ -198,14 +216,14 @@ export function CancerJourneyNav({
           <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
             <button
               type="button"
-              onClick={() => setSelectedSlug(LUNG_SLUG)}
+              onClick={() => selectCancer(LUNG_SLUG)}
               className="font-semibold text-[var(--accent)] hover:underline"
             >
               Start with lung cancer →
             </button>
             <button
               type="button"
-              onClick={() => setSelectedSlug(BREAST_SLUG)}
+              onClick={() => selectCancer(BREAST_SLUG)}
               className="font-semibold text-[var(--accent)] hover:underline"
             >
               Or breast cancer →

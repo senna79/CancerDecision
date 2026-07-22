@@ -4,7 +4,13 @@
  */
 
 import {
+  BREAST_CARE_TEAM_SLUG,
+  BREAST_GENETICS_SLUG,
+  BREAST_METASTATIC_SLUG,
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_RECURRENCE_SLUG,
+  BREAST_RADIATION_SLUG,
+  BREAST_RECONSTRUCTION_SLUG,
   BREAST_SECOND_OPINION_SLUG,
   BREAST_SEQUENCING_SLUG,
   BREAST_SUBTYPE_SLUG,
@@ -2779,7 +2785,7 @@ const BREAST_SURGERY_PATH: EntryPathV2 = {
         {
           id: "bsur-reconstruction",
           title: "How do reconstruction timing and choices fit in?",
-          summary: "Hang-card context — not a separate Entry yet.",
+          summary: "Immediate vs delayed vs none — open the full guide when needed.",
         },
         {
           id: "bsur-recurrence",
@@ -3106,6 +3112,797 @@ const BREAST_SECOND_OPINION_PATH: EntryPathV2 = {
   ],
 };
 
+const BREAST_GENETICS_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Genetic Counseling Before Surgery Decision Path",
+  pathSubtitle:
+    "Why genetics before surgery matters → how results change options → timing → what to ask.",
+  completedLabels: [
+    "Why genetics before surgery matters",
+    "How results may change the operation",
+    "What timing and waiting involve",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Whether counseling is recommended before you lock surgery",
+    "Whether a result would change lumpectomy vs mastectomy (or the other breast)",
+    "What is safe to start while counseling or results are pending",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why does genetic counseling before surgery matter?",
+      lead: "Patient question: is this about my cancer type — or inherited risk?",
+      main: "bgen-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When inherited-risk counseling may affect surgery timing.",
+        },
+        {
+          id: "bgen-what-is",
+          title: "What is genetic counseling in breast cancer?",
+          summary: "Germline risk conversation — not tumor subtype.",
+        },
+        {
+          id: "bgen-why-before-surgery",
+          title: "Why talk about this before locking surgery?",
+          summary: "Results can change an irreversible operation.",
+        },
+        {
+          id: "bgen-who-may-need",
+          title: "Who is more often referred for counseling?",
+          summary: "Risk factors help — your team still decides for you.",
+        },
+        {
+          id: "bgen-vs-subtype",
+          title: "How is this different from subtype testing?",
+          summary: "Tumor biology ≠ inherited risk.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How could results change my surgery options?",
+      lead: "Patient question: what would a result actually change?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "bgen-positive-change",
+          title: "How might a pathogenic result change surgery?",
+          summary: "Mastectomy and the other breast may enter the talk.",
+        },
+        {
+          id: "bgen-negative-or-vus",
+          title: "What about a negative result or a VUS?",
+          summary: "Not all results should redesign the operation.",
+        },
+        {
+          id: "bgen-wait-or-not",
+          title: "Should I wait for results before surgery?",
+          summary: "Wait when results would change the operation — ask about safety.",
+        },
+        {
+          id: "bgen-other-breast",
+          title: "Does this mean surgery on the other breast?",
+          summary: "A separate decision — not automatic.",
+        },
+        {
+          id: "bgen-family",
+          title: "What about my family’s risk?",
+          summary: "Counseling includes relatives — without making you the sole messenger.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I know about timing and next steps?",
+      lead: "Patient question: how long does this take, and what can proceed?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "bgen-timeline",
+          title: "How long do counseling and results usually take?",
+          summary: "Days to weeks — ask for a local timeline.",
+        },
+        {
+          id: "bgen-process",
+          title: "What does the counseling process look like?",
+          summary: "Conversation first, then decide whether to test.",
+        },
+        {
+          id: "bgen-pending",
+          title: "What should be clear before locking surgery?",
+          summary: "Recommendation, impact, safety of waiting, handoff.",
+        },
+        {
+          id: "bgen-this-week",
+          title: "What should I do this week?",
+          summary: "Ask, refer, and clarify wait vs proceed.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bgen-mistakes",
+          title: "What are common mistakes around genetics before surgery?",
+          summary: "Subtype mix-ups, locking too early, over-reading a VUS.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might wait on purpose before locking surgery.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_METASTATIC_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Metastatic Breast Cancer Decision Path",
+  pathSubtitle:
+    "What Stage IV means → goals and subtype forks → practical next steps → questions for your team.",
+  completedLabels: [
+    "What metastatic / Stage IV means",
+    "How goals and options differ",
+    "What to clarify this week",
+    "Questions for your care team",
+  ],
+  practicalPoints: [
+    "What the goal of the next treatment is in plain language",
+    "Whether subtype still changes which option families come first",
+    "What is known vs still pending before locking a plan",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "What does metastatic breast cancer mean for decisions?",
+      lead: "Patient question: does Stage IV mean nothing can be done?",
+      main: "bmet-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people face metastatic or Stage IV breast cancer decisions.",
+        },
+        {
+          id: "bmet-what-is",
+          title: "What does metastatic / Stage IV mean?",
+          summary: "Cancer beyond breast and regional nodes — a different decision frame.",
+        },
+        {
+          id: "bmet-active-care",
+          title: "Can I still receive active treatment?",
+          summary: "Many people receive care aimed at control, symptoms, and quality of life.",
+        },
+        {
+          id: "bmet-not-giving-up",
+          title: "Do different goals mean doctors are giving up?",
+          summary: "No — goals design active care around your situation.",
+        },
+        {
+          id: "bmet-subtype",
+          title: "Does subtype still matter in metastatic disease?",
+          summary: "HR+, HER2+, and TNBC still fork medicine families.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How should I compare metastatic options?",
+      lead: "Patient question: which plan fits my goals — not only intensity?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "bmet-different-plans",
+          title: "Why do people with Stage IV hear different plans?",
+          summary: "Subtype, extent, prior treatment, health, and goals differ.",
+        },
+        {
+          id: "bmet-strongest",
+          title: "Is the strongest treatment always best?",
+          summary: "Not always — benefit, side effects, and daily life decide fit.",
+        },
+        {
+          id: "bmet-local-therapy",
+          title: "Do surgery or radiation still matter?",
+          summary: "Sometimes — for specific sites or symptoms, not as a curative package.",
+        },
+        {
+          id: "bmet-info-needed",
+          title: "What information should be clear before locking a plan?",
+          summary: "Subtype, extent, prior response, and symptoms needing control.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I clarify this week?",
+      lead: "Patient question: what belongs in the next conversation?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "bmet-second-opinion",
+          title: "When may a second opinion help?",
+          summary: "Complex options, conflict, or need for more confidence.",
+        },
+        {
+          id: "bmet-clinical-trial",
+          title: "Should I ask about a clinical trial?",
+          summary: "Trials may fit depending on subtype, prior treatment, and eligibility.",
+        },
+        {
+          id: "bmet-this-week",
+          title: "What should I do this week?",
+          summary: "Confirm what is known, ask the goal, write priorities.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bmet-mistakes",
+          title: "What are common metastatic-decision mistakes?",
+          summary: "Assuming no options, ignoring subtype, chasing “strongest.”",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might focus the first metastatic conversations.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_RECURRENCE_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Breast Cancer Recurrence Decision Path",
+  pathSubtitle:
+    "What recurrence means → what has changed → how to compare options → what to ask.",
+  completedLabels: [
+    "What recurrence really means",
+    "How location and prior therapy change options",
+    "What to clarify this week",
+    "Questions for your care team",
+  ],
+  practicalPoints: [
+    "Where cancer returned — local, regional, or distant",
+    "Whether subtype should be re-checked",
+    "Which option families remain open after prior therapy",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "What does recurrence mean for the next decision?",
+      lead: "Patient question: does recurrence mean treatment failed?",
+      main: "brr-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people face a breast cancer recurrence decision.",
+        },
+        {
+          id: "brr-what-is",
+          title: "What does recurrence mean?",
+          summary: "A new decision point — not an automatic replay of the first plan.",
+        },
+        {
+          id: "brr-not-failed",
+          title: "Does recurrence mean treatment failed?",
+          summary: "Not necessarily — it means the situation needs reassessment.",
+        },
+        {
+          id: "brr-local-vs-distant",
+          title: "Are all recurrences the same?",
+          summary: "Local, regional, and distant return are different frames.",
+        },
+        {
+          id: "brr-vs-metastatic",
+          title: "How is this different from metastatic / Stage IV?",
+          summary: "Distant recurrence may overlap; local/regional often differs.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How should I compare options after recurrence?",
+      lead: "Patient question: do we repeat the first plan — or reopen the comparison?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "brr-retest",
+          title: "Should subtype be re-tested?",
+          summary: "Biology can change — ask when a new test would change options.",
+        },
+        {
+          id: "brr-prior-treatment",
+          title: "How does prior treatment shape the next plan?",
+          summary: "History informs what remains open — it does not auto-repeat.",
+        },
+        {
+          id: "brr-still-treatable",
+          title: "Is recurrence still treatable?",
+          summary: "Many people receive active treatment after cancer returns.",
+        },
+        {
+          id: "brr-same-plan",
+          title: "Do we simply repeat the first package?",
+          summary: "Usually not — location and history reopen the comparison.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I clarify this week?",
+      lead: "Patient question: what belongs in the next conversation?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "brr-second-opinion",
+          title: "When may a second opinion help?",
+          summary: "Complex options, conflict, or need for more confidence.",
+        },
+        {
+          id: "brr-clinical-trial",
+          title: "Should I ask about a clinical trial?",
+          summary: "Trials may fit depending on subtype, prior therapy, and eligibility.",
+        },
+        {
+          id: "brr-this-week",
+          title: "What should I do this week?",
+          summary: "Confirm location, ask about re-testing, write priorities.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "brr-mistakes",
+          title: "What are common mistakes after recurrence?",
+          summary: "Assuming no options, auto-repeating, skipping location questions.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might focus the first recurrence conversations.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_CARE_TEAM_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Choosing Your Breast Cancer Care Team",
+  pathSubtitle:
+    "Why team choice matters → second opinion vs new team → what to look for → what to prepare.",
+  completedLabels: [
+    "Why care-team choice matters",
+    "How setups and options differ",
+    "What to look for and how travel fits",
+    "Questions and records to prepare",
+  ],
+  practicalPoints: [
+    "What gap you are trying to fix — expertise, coordination, or confidence",
+    "Whether a second opinion, new primary team, or hybrid setup fits",
+    "How records and ownership would work across sites",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why does choosing a care team matter?",
+      lead: "Patient question: do I need a major cancer center?",
+      main: "bcare-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people wonder about specialized breast cancer expertise.",
+        },
+        {
+          id: "bcare-what-is",
+          title: "What does “choosing a care team” mean?",
+          summary: "Who coordinates the journey — not only a building name.",
+        },
+        {
+          id: "bcare-everyone",
+          title: "Do I need a major cancer center?",
+          summary: "No — the right level depends on your situation.",
+        },
+        {
+          id: "bcare-vs-second-opinion",
+          title: "How is this different from a second opinion?",
+          summary: "Second opinion reviews a fork; care team owns ongoing care.",
+        },
+        {
+          id: "bcare-who-treats",
+          title: "Who treats breast cancer on a typical team?",
+          summary: "Surgery, medical oncology, radiation, plastics, genetics, navigators.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How should I compare care setups?",
+      lead: "Patient question: stay local, switch teams, or build a hybrid plan?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "bcare-when-helps",
+          title: "When may another team help?",
+          summary: "Complexity, conflict, missing expertise, or poor coordination.",
+        },
+        {
+          id: "bcare-hybrid",
+          title: "Can I combine specialist planning with local treatment?",
+          summary: "Many people build a network — not one location only.",
+        },
+        {
+          id: "bcare-multidisciplinary",
+          title: "What does multidisciplinary care mean in practice?",
+          summary: "Team review so local and systemic plans do not conflict.",
+        },
+        {
+          id: "bcare-capabilities",
+          title: "What capabilities should I match to my decisions?",
+          summary: "Tumor board, pathology, surgery/reconstruction, genetics access.",
+        },
+        {
+          id: "bcare-famous",
+          title: "Is the most famous center automatically best?",
+          summary: "Reputation is not a ranking for your case.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I know about travel, records, and handoffs?",
+      lead: "Patient question: how do I make another team workable?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "bcare-travel",
+          title: "Should I travel far for breast cancer care?",
+          summary: "Weigh complexity, visit frequency, and support.",
+        },
+        {
+          id: "bcare-records",
+          title: "What records should I prepare?",
+          summary: "Pathology, imaging, genetics notes, current recommendations.",
+        },
+        {
+          id: "bcare-coordination",
+          title: "How should multi-site care be coordinated?",
+          summary: "Name who owns surgery, medicines, radiation, reconstruction.",
+        },
+        {
+          id: "bcare-this-week",
+          title: "What should I do this week?",
+          summary: "Name the gap, pick a setup, prepare one clear ask.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bcare-mistakes",
+          title: "What are common mistakes around choosing a care team?",
+          summary: "Fame-chasing, mixing up second opinions, traveling without a plan.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might choose a hybrid network over relocating everything.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_RADIATION_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Breast Radiation Decision Path",
+  pathSubtitle:
+    "Why radiation matters → after lumpectomy vs mastectomy → schedule and reconstruction → what to ask.",
+  completedLabels: [
+    "Why radiation decisions matter",
+    "How radiation fits each surgery path",
+    "What schedule and reconstruction involve",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Whether radiation is expected after lumpectomy in your case",
+    "How likely radiation is after mastectomy",
+    "Schedule, side effects, and reconstruction timing impact",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why do radiation decisions matter?",
+      lead: "Patient question: is radiation just a detail after surgery — or part of choosing surgery?",
+      main: "brad-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When radiation may tip surgery, reconstruction, or calendar plans.",
+        },
+        {
+          id: "brad-what-is",
+          title: "What is radiation in the breast cancer plan?",
+          summary: "Local treatment after surgery — not a drug ranking.",
+        },
+        {
+          id: "brad-why-matters",
+          title: "Why clarify radiation before locking surgery?",
+          summary: "It can tip the local plan and weeks of daily life.",
+        },
+        {
+          id: "brad-surgery-choice",
+          title: "How does radiation tip lumpectomy vs mastectomy?",
+          summary: "Compare full local packages, not operation names alone.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How does radiation fit each path?",
+      lead: "Patient question: what should I expect after lumpectomy or mastectomy?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "brad-after-lumpectomy",
+          title: "What does radiation after lumpectomy usually mean?",
+          summary: "Often part of the conservation package.",
+        },
+        {
+          id: "brad-after-mastectomy",
+          title: "When is radiation discussed after mastectomy?",
+          summary: "Situational — not automatically zero.",
+        },
+        {
+          id: "brad-reconstruction",
+          title: "How does radiation change reconstruction?",
+          summary: "Timing and method may shift — ask early.",
+        },
+        {
+          id: "brad-sequencing",
+          title: "Where does radiation sit in the overall sequence?",
+          summary: "Usually after surgery; coordinates with systemic therapy.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I know about schedule and daily life?",
+      lead: "Patient question: what will this mean week to week?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "brad-schedule",
+          title: "What does the treatment schedule look like?",
+          summary: "Weeks, visits, and whether shorter options fit.",
+        },
+        {
+          id: "brad-side-effects",
+          title: "What side effects should I ask about?",
+          summary: "Skin, fatigue, and longer-term questions.",
+        },
+        {
+          id: "brad-practical",
+          title: "How do travel, work, and caregiving fit?",
+          summary: "Daily commitment and support options.",
+        },
+        {
+          id: "brad-pending",
+          title: "What should be clear before locking surgery?",
+          summary: "Expected / maybe / unlikely — by surgery path.",
+        },
+        {
+          id: "brad-this-week",
+          title: "What should I do this week?",
+          summary: "Path answers, reconstruction impact, calendar sketch.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "brad-mistakes",
+          title: "What are common mistakes around radiation decisions?",
+          summary: "Mastectomy myths, skipping the package, locking too early.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might stop choosing surgery only to avoid radiation.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_RECONSTRUCTION_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Breast Reconstruction Timing Decision Path",
+  pathSubtitle:
+    "Why timing matters → immediate vs delayed vs none → radiation and recovery → what to ask.",
+  completedLabels: [
+    "Why reconstruction timing matters",
+    "How immediate, delayed, and none compare",
+    "What radiation and recovery involve",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Whether immediate, delayed, or no reconstruction fits your cancer plan",
+    "Whether radiation is likely and how it changes timing",
+    "Recovery load and how many operations the sequence may involve",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why does reconstruction timing matter?",
+      lead: "Patient question: is this a cosmetic choice — or part of the cancer plan?",
+      main: "brec-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When reconstruction timing sits inside a mastectomy plan.",
+        },
+        {
+          id: "brec-what-is",
+          title: "What is breast reconstruction in this decision?",
+          summary: "Rebuilding shape after mastectomy — optional, not required.",
+        },
+        {
+          id: "brec-why-in-plan",
+          title: "Why discuss it before locking surgery?",
+          summary: "Timing can affect recovery, radiation, and operations.",
+        },
+        {
+          id: "brec-who-faces",
+          title: "When do these questions usually come up?",
+          summary: "Most often with mastectomy — ask what applies to you.",
+        },
+        {
+          id: "brec-not-required",
+          title: "Do I have to reconstruct?",
+          summary: "No — not reconstructing is a valid path.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How should I compare reconstruction paths?",
+      lead: "Patient question: immediate, delayed, or none — and which method family?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "brec-immediate",
+          title: "What does immediate reconstruction usually involve?",
+          summary: "Starts with mastectomy — sometimes as a first stage.",
+        },
+        {
+          id: "brec-delayed",
+          title: "What does delayed reconstruction usually involve?",
+          summary: "Cancer treatment and healing first — reconstruct later.",
+        },
+        {
+          id: "brec-methods",
+          title: "What method families are discussed most often?",
+          summary: "Implant-based vs autologous (tissue) — high level.",
+        },
+        {
+          id: "brec-radiation",
+          title: "How does radiation change the decision?",
+          summary: "Often reshapes timing and durability considerations.",
+        },
+        {
+          id: "brec-genetics-bilateral",
+          title: "How do genetics or bilateral surgery fit in?",
+          summary: "Symmetry and staging may change — not automatic.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I know about recovery and treatment timing?",
+      lead: "Patient question: what will this mean week to week?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "brec-recovery",
+          title: "What does recovery look like?",
+          summary: "First weeks, work, and number of operations.",
+        },
+        {
+          id: "brec-systemic-timing",
+          title: "How does systemic therapy timing fit?",
+          summary: "Reconstruction should not fight needed medicines.",
+        },
+        {
+          id: "brec-pending",
+          title: "What should be clear before locking timing?",
+          summary: "Mastectomy plan, radiation, genetics, candidacy.",
+        },
+        {
+          id: "brec-this-week",
+          title: "What should I do this week?",
+          summary: "Timing path, radiation question, plastic surgery consult.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "brec-mistakes",
+          title: "What are common mistakes around reconstruction timing?",
+          summary: "Afterthoughts, ignoring radiation, must-reconstruct myths.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might choose timing inside a cancer plan.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
@@ -3128,6 +3925,12 @@ const PATHS: Record<string, EntryPathV2> = {
   [BREAST_SURGERY_SLUG]: BREAST_SURGERY_PATH,
   [BREAST_SECOND_OPINION_SLUG]: BREAST_SECOND_OPINION_PATH,
   [BREAST_TREATMENT_COMPARE_SLUG]: BREAST_SYSTEMIC_PATH,
+  [BREAST_GENETICS_SLUG]: BREAST_GENETICS_PATH,
+  [BREAST_RECONSTRUCTION_SLUG]: BREAST_RECONSTRUCTION_PATH,
+  [BREAST_RADIATION_SLUG]: BREAST_RADIATION_PATH,
+  [BREAST_CARE_TEAM_SLUG]: BREAST_CARE_TEAM_PATH,
+  [BREAST_METASTATIC_SLUG]: BREAST_METASTATIC_PATH,
+  [BREAST_RECURRENCE_SLUG]: BREAST_RECURRENCE_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {

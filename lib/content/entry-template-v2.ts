@@ -28,12 +28,24 @@ import {
   BREAST_NEWLY_DIAGNOSED_SLUG,
   BREAST_SECOND_OPINION_SLUG,
   BREAST_SEQUENCING_SLUG,
+  BREAST_CARE_TEAM_SLUG,
+  BREAST_GENETICS_SLUG,
+  BREAST_METASTATIC_SLUG,
+  BREAST_RADIATION_SLUG,
+  BREAST_RECURRENCE_SLUG,
+  BREAST_RECONSTRUCTION_SLUG,
   BREAST_SUBTYPE_SLUG,
   BREAST_SURGERY_SLUG,
   BREAST_TREATMENT_COMPARE_SLUG,
 } from "./breast-entry-slugs";
 import { GLOBAL_CARE_DIRECT_ANSWER_GLOSS } from "./global-care-entry-cards";
+import { BREAST_CARE_TEAM_GLOSS } from "./breast-care-team-entry-cards";
+import { BREAST_GENETICS_GLOSS } from "./breast-genetics-entry-cards";
+import { BREAST_METASTATIC_GLOSS } from "./breast-metastatic-entry-cards";
 import { BREAST_NEWLY_DIAGNOSED_GLOSS } from "./breast-newly-diagnosed-entry-cards";
+import { BREAST_RECURRENCE_GLOSS } from "./breast-recurrence-entry-cards";
+import { BREAST_RADIATION_GLOSS } from "./breast-radiation-entry-cards";
+import { BREAST_RECONSTRUCTION_GLOSS } from "./breast-reconstruction-entry-cards";
 import { BREAST_SECOND_OPINION_GLOSS } from "./breast-second-opinion-entry-cards";
 import { BREAST_SEQUENCING_GLOSS } from "./breast-sequencing-entry-cards";
 import { BREAST_SUBTYPE_GLOSS } from "./breast-subtype-entry-cards";
@@ -127,6 +139,72 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Want to understand option families instead of a flat drug menu",
       "Need to connect systemic therapy with sequencing before or after surgery",
       "Are weighing side effects, fertility, duration, and goals",
+    ],
+  },
+  [BREAST_GENETICS_SLUG]: {
+    plainLanguageGloss: BREAST_GENETICS_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Wonder whether genetic counseling should happen before breast cancer surgery",
+      "Need to separate germline genetics from tumor subtype testing",
+      "Want to know how a BRCA-class result could change the operation",
+      "Are deciding whether it is safe to wait for results before locking a date",
+    ],
+  },
+  [BREAST_RECONSTRUCTION_SLUG]: {
+    plainLanguageGloss: BREAST_RECONSTRUCTION_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Are considering mastectomy and wondering about reconstruction timing",
+      "Need to compare immediate vs delayed vs no reconstruction",
+      "Want to know how radiation or systemic therapy changes the plan",
+      "Are weighing implant vs tissue options at a high level — not a photo contest",
+    ],
+  },
+  [BREAST_RADIATION_SLUG]: {
+    plainLanguageGloss: BREAST_RADIATION_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Wonder whether radiation is part of lumpectomy or mastectomy for you",
+      "Need to know how radiation changes reconstruction timing",
+      "Want a realistic schedule and side-effect picture",
+      "Are choosing surgery partly to accept or avoid radiation",
+    ],
+  },
+  [BREAST_CARE_TEAM_SLUG]: {
+    plainLanguageGloss: BREAST_CARE_TEAM_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Wonder whether you need a major breast cancer center",
+      "Need to separate a second opinion from changing your whole team",
+      "Want to build a hybrid plan (specialist + local treatment)",
+      "Are unsure who should coordinate surgery, medicines, and radiation",
+    ],
+  },
+  [BREAST_METASTATIC_SLUG]: {
+    plainLanguageGloss: BREAST_METASTATIC_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Were told you have metastatic or Stage IV breast cancer",
+      "Feel lost about what happens next — or fear that care is ending",
+      "Want to understand treatment goals without assuming “nothing can be done”",
+      "Need to connect subtype with metastatic option families",
+    ],
+  },
+  [BREAST_RECURRENCE_SLUG]: {
+    plainLanguageGloss: BREAST_RECURRENCE_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Were told breast cancer has returned after treatment",
+      "Wonder whether the first plan simply repeats",
+      "Need to know if subtype should be re-tested",
+      "Want to separate local, regional, and distant recurrence frames",
     ],
   },
   [STAGE_IV_SLUG]: {

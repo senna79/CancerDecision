@@ -49,13 +49,47 @@ export const BREAST_DECISION_MOMENTS: DecisionMoment[] = momentsFromOs(
   "breast-cancer"
 );
 
-export function getDecisionMoment(id: string | null | undefined) {
+export function getDecisionMoment(
+  id: string | null | undefined,
+  cancerSlug?: string | null
+) {
   if (!id) return null;
+  if (cancerSlug === "breast-cancer") {
+    return BREAST_DECISION_MOMENTS.find((m) => m.id === id) ?? null;
+  }
+  if (cancerSlug === "lung-cancer") {
+    return LUNG_DECISION_MOMENTS.find((m) => m.id === id) ?? null;
+  }
   return (
     LUNG_DECISION_MOMENTS.find((m) => m.id === id) ??
     BREAST_DECISION_MOMENTS.find((m) => m.id === id) ??
     null
   );
+}
+
+/** Look up the situation Moment id for an Entry question slug. */
+export function momentIdForEntrySlug(slug: string): string | null {
+  const href = `/questions/${slug}`;
+  return (
+    LUNG_DECISION_MOMENTS.find((m) => m.href === href)?.id ??
+    BREAST_DECISION_MOMENTS.find((m) => m.href === href)?.id ??
+    null
+  );
+}
+
+/**
+ * Canonical return URL for a cancer’s situation → decision path map
+ * (homepage / Entry “back to map” / prep sheet).
+ */
+export function cancerSituationMapHref(
+  cancerSlug: string,
+  momentId?: string | null
+): string {
+  const hash = "#decision-moment";
+  if (momentId) {
+    return `/cancers/${cancerSlug}?moment=${encodeURIComponent(momentId)}${hash}`;
+  }
+  return `/cancers/${cancerSlug}${hash}`;
 }
 
 export function filterMomentsByIds(

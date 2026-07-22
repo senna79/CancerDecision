@@ -25,6 +25,8 @@ type AddPrepInput = {
   text: string;
   sourceLabel?: string;
   sourceHref?: string;
+  /** Keep prep-sheet “back to map” on the cancer the user is reading */
+  cancerSlug?: string;
 };
 
 export type PrepFlyChip = {
@@ -162,7 +164,11 @@ export function PrepSheetProvider({ children }: { children: ReactNode }) {
         sourceHref: input.sourceHref,
         addedAt: Date.now(),
       };
-      return { ...prev, items: [...prev.items, next] };
+      return {
+        ...prev,
+        cancerSlug: input.cancerSlug || prev.cancerSlug,
+        items: [...prev.items, next],
+      };
     });
   }, []);
 
@@ -187,6 +193,7 @@ export function PrepSheetProvider({ children }: { children: ReactNode }) {
         if (!text) return prev;
         return {
           ...prev,
+          cancerSlug: input.cancerSlug || prev.cancerSlug,
           items: [
             ...prev.items,
             {

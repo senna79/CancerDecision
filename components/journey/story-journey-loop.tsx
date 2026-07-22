@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
 import type { DecisionMapNode } from "@/types/database";
 
 export function StoryJourneyLoop({
@@ -88,7 +89,7 @@ export function StoryJourneyLoop({
 
       <div className="mt-5 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
         <Link
-          href={`/cancers/${cancerSlug}#decision-map`}
+          href={cancerSituationMapHref(cancerSlug)}
           className="inline-flex rounded-md bg-[var(--accent)] px-4 py-2.5 text-sm font-semibold text-white hover:bg-[#0d655e]"
         >
           Open {cancerName} Decision Map

@@ -1,4 +1,5 @@
 import type { Question } from "@/types/database";
+import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
 import type { JourneyContext } from "@/lib/journey/engine";
 
 export type NextActionBundle = {
@@ -47,7 +48,7 @@ export function buildNextActionBundle(
     continueHref = `/questions/${journey.next.questionSlug}`;
   } else if (cancerSlug) {
     continueLabel = "Review the full decision map";
-    continueHref = `/cancers/${cancerSlug}#decision-map`;
+    continueHref = cancerSituationMapHref(cancerSlug);
   }
 
   return {

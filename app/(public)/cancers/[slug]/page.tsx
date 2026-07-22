@@ -16,6 +16,7 @@ import {
   LUNG_DECISION_MOMENTS,
 } from "@/lib/journey/decision-moments";
 import {
+  BREAST_ORIENTATION_LINKS,
   BREAST_SITUATION_BUCKETS,
   LUNG_ORIENTATION_LINKS,
   LUNG_SITUATION_BUCKETS,
@@ -92,7 +93,7 @@ export default async function CancerDecisionCenterPage({
       ? LUNG_DECISION_MOMENTS
       : [];
   const activeMoment = hasSituationNav
-    ? getDecisionMoment(momentParam)
+    ? getDecisionMoment(momentParam, cancer.slug)
     : null;
 
   return (
@@ -137,7 +138,9 @@ export default async function CancerDecisionCenterPage({
           <SituationGuidedRouter
             moments={journeyMoments}
             buckets={isBreast ? BREAST_SITUATION_BUCKETS : LUNG_SITUATION_BUCKETS}
-            orientationLinks={isBreast ? [] : LUNG_ORIENTATION_LINKS}
+            orientationLinks={
+              isBreast ? BREAST_ORIENTATION_LINKS : LUNG_ORIENTATION_LINKS
+            }
             cancerLabel={isBreast ? "breast cancer" : "lung cancer"}
             activeId={activeMoment?.id}
             footer={
@@ -153,8 +156,8 @@ export default async function CancerDecisionCenterPage({
                 </>
               ) : (
                 <>
-                  Orientation guides (subtype / stage / treatment map) come next.
-                  For now, open a decision guide below.
+                  Prefer a short orientation first? Use Subtype, Stage, or
+                  Treatment map above — then open a decision guide.
                 </>
               )
             }
@@ -256,11 +259,53 @@ export default async function CancerDecisionCenterPage({
         </Section>
       ) : isBreast ? (
         <Section title="Supporting guides">
-          <p className="text-sm text-[var(--muted)] leading-relaxed">
-            Short orientation pages for subtype, stage, and treatment families
-            are next. Until then, start from the situation map above — especially
-            Newly diagnosed and Subtype testing.
-          </p>
+          <ul className="space-y-4">
+            <li>
+              <p className="font-semibold text-[var(--ink)]">
+                Understanding breast cancer subtype
+              </p>
+              <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
+                Orient to HR+, HER2+, and triple-negative biology, what to find
+                on your pathology report, and how subtype changes the first plan.
+              </p>
+              <Link
+                href="/cancers/breast-cancer/understanding-subtype"
+                className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+              >
+                Open Understanding Subtype →
+              </Link>
+            </li>
+            <li>
+              <p className="font-semibold text-[var(--ink)]">
+                Understanding breast cancer stage
+              </p>
+              <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
+                Orient to early, locally advanced / nodes, and advanced extent —
+                why stage changes options and sequencing, not a prognosis table.
+              </p>
+              <Link
+                href="/cancers/breast-cancer/understanding-stage"
+                className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+              >
+                Open Understanding Stage →
+              </Link>
+            </li>
+            <li>
+              <p className="font-semibold text-[var(--ink)]">
+                Treatment Landscape
+              </p>
+              <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
+                Orient to surgery, radiation, endocrine, chemo, targeted/immuno,
+                and reconstruction families — so later comparisons make sense.
+              </p>
+              <Link
+                href="/cancers/breast-cancer/treatment-landscape"
+                className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+              >
+                Open Treatment Landscape →
+              </Link>
+            </li>
+          </ul>
         </Section>
       ) : (
         <Section title="Treatment Options">

@@ -55,7 +55,7 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
     lead: "Some people need genetic counseling before a final surgery choice — especially with family history or other risk factors. Tumor subtype is not the same as germline genetics.",
     ask: "Do I need genetic counseling before surgery — and would results change the operation?",
     close:
-      "Until a dedicated genetics guide ships, ask this early if it might change lumpectomy vs mastectomy.",
+      "Ask early if it might change lumpectomy vs mastectomy — then open the genetics decision guide for the full path.",
   },
   records: {
     lead: "Keep copies of:",

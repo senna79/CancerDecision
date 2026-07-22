@@ -9,6 +9,7 @@ import {
 } from "@/lib/content/home-decision-paths";
 import {
   BREAST_DECISION_MOMENTS,
+  cancerSituationMapHref,
   LUNG_DECISION_MOMENTS,
 } from "@/lib/journey/decision-moments";
 import { getCancers, getStories } from "@/lib/queries";
@@ -30,7 +31,12 @@ export const metadata = buildMetadata({
   ],
 });
 
-export default async function HomePage() {
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ cancer?: string }>;
+}) {
+  const { cancer: cancerParam } = await searchParams;
   const [cancers, stories] = await Promise.all([
     getCancers(),
     getStories({ limit: 3 }),
@@ -44,6 +50,8 @@ export default async function HomePage() {
     ...cancers.filter((c) => c.slug === "lung-cancer"),
     ...cancers.filter((c) => c.slug !== "lung-cancer"),
   ];
+  const initialJourneySlug =
+    cancerParam === "breast-cancer" ? "breast-cancer" : "lung-cancer";
 
   return (
     <div>
@@ -83,6 +91,7 @@ export default async function HomePage() {
                 cancers={cancerOptions}
                 lungMoments={LUNG_DECISION_MOMENTS}
                 breastMoments={BREAST_DECISION_MOMENTS}
+                initialSlug={initialJourneySlug}
               />
             </div>
           </div>
@@ -164,7 +173,7 @@ export default async function HomePage() {
           </ol>
           <p className="mt-6">
             <Link
-              href="/cancers/lung-cancer#map-locator"
+              href={cancerSituationMapHref("lung-cancer")}
               className="text-sm font-semibold text-[var(--accent)] hover:underline"
             >
               See where decisions sit on the map →
@@ -186,13 +195,15 @@ export default async function HomePage() {
         </p>
         <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           {orderedCancers.map((cancer) => {
+            const hasSituationMap =
+              cancer.slug === "lung-cancer" || cancer.slug === "breast-cancer";
             const complete = cancer.slug === "lung-cancer";
             return (
               <Link
                 key={cancer.id}
                 href={
-                  complete
-                    ? "/cancers/lung-cancer#decision-moment"
+                  hasSituationMap
+                    ? cancerSituationMapHref(cancer.slug)
                     : `/cancers/${cancer.slug}`
                 }
                 className="group border-b border-[var(--line)] py-3 transition hover:border-[var(--accent)]"
@@ -208,7 +219,9 @@ export default async function HomePage() {
                 <p className="mt-1 line-clamp-2 text-sm text-[var(--muted)]">
                   {complete
                     ? "The first complete Cancer Next Step decision journey."
-                    : "Uses the same decision framework — depth coming next."}
+                    : cancer.slug === "breast-cancer"
+                      ? "Situation map and P0 decision guides are live — more situations unlock next."
+                      : "Uses the same decision framework — depth coming next."}
                 </p>
               </Link>
             );

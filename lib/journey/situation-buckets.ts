@@ -39,7 +39,7 @@ export const LUNG_ORIENTATION_LINKS: OrientationLink[] = [
   },
 ];
 
-/** Breast orientation — pages ship with orientation content; links reserved. */
+/** Breast orientation — same strip as lung Types / Stage / Landscape. */
 export const BREAST_ORIENTATION_LINKS: OrientationLink[] = [
   {
     label: "Subtype",
@@ -69,7 +69,7 @@ export const BREAST_SITUATION_BUCKETS: SituationBucket[] = [
     label: "Newly diagnosed or waiting for results",
     hint: "Your first decisions usually depend on confirming the cancer type, subtype, and what information is needed before treatment choices.",
     momentIds: ["newly-diagnosed", "subtype-testing", "second-opinion"],
-    alsoMomentIds: ["treatment-sequencing"],
+    alsoMomentIds: ["genetics", "treatment-sequencing", "stage-iv-options"],
   },
   {
     id: "choosing-treatment",
@@ -80,35 +80,40 @@ export const BREAST_SITUATION_BUCKETS: SituationBucket[] = [
       "surgery-decision",
       "treatment-comparison",
     ],
-    alsoMomentIds: ["subtype-testing"],
+    alsoMomentIds: [
+      "genetics",
+      "reconstruction",
+      "radiation-decision",
+      "subtype-testing",
+      "stage-iv-options",
+    ],
   },
   {
     id: "another-opinion",
     label: "Unsure about your treatment plan or care team",
     hint: "When you want another perspective, more expertise, or a clearer understanding before moving forward.",
-    momentIds: ["second-opinion"],
+    momentIds: ["second-opinion", "care-center-expertise"],
     alsoMomentIds: ["surgery-decision", "treatment-sequencing"],
   },
   {
     id: "cancer-changed",
     label: "Cancer or treatment has changed",
     hint: "Metastatic disease, progression, or a plan that stopped working.",
-    // P1 Moments — bucket stays in the shell, hidden until active.
     momentIds: ["stage-iv-options", "recurrence"],
+    alsoMomentIds: ["treatment-comparison", "second-opinion", "care-center-expertise"],
   },
   {
     id: "real-life",
     label: "Balancing treatment with everyday life",
     hint: "Questions about side effects, work, fertility, family, cost, and whether the plan is workable day to day.",
-    // No Practical Fit / QoL Entry yet — hide until that Moment ships.
-    momentIds: [],
+    momentIds: ["reconstruction", "radiation-decision"],
   },
   {
     id: "after-treatment",
     label: "Finished treatment / in follow-up",
-    hint: "Monitoring, late effects, and life after treatment.",
-    // Recurrence guide is P1 — hide until that Moment is active.
+    hint: "Monitoring, late effects, and life after treatment — including what to sort out if cancer returns.",
     momentIds: ["recurrence"],
+    alsoMomentIds: ["second-opinion", "stage-iv-options"],
   },
 ];
 

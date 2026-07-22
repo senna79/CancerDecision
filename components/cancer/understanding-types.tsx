@@ -1,8 +1,11 @@
 import Link from "next/link";
 import { DoctorChecklistTakeaway } from "@/components/question/ai-entry/doctor-checklist-takeaway";
+import { BREAST_UNDERSTANDING_SUBTYPE } from "@/lib/content/breast-understanding-subtype";
 import { LUNG_UNDERSTANDING_TYPES } from "@/lib/content/lung-understanding-types";
 
-const content = LUNG_UNDERSTANDING_TYPES;
+export type UnderstandingTypesContent =
+  | typeof LUNG_UNDERSTANDING_TYPES
+  | typeof BREAST_UNDERSTANDING_SUBTYPE;
 
 function BulletList({ items }: { items: readonly string[] }) {
   return (
@@ -20,7 +23,17 @@ function BulletList({ items }: { items: readonly string[] }) {
   );
 }
 
-export function UnderstandingTypes() {
+export function UnderstandingTypes({
+  content = LUNG_UNDERSTANDING_TYPES,
+}: {
+  content?: UnderstandingTypesContent;
+}) {
+  const typeCount = content.typeMap.types.length;
+  const typeGridClass =
+    typeCount >= 3
+      ? "mt-8 grid gap-8 md:grid-cols-3 md:gap-8"
+      : "mt-8 grid gap-8 md:grid-cols-2 md:gap-10";
+
   return (
     <article className="space-y-14 md:space-y-16">
       <header
@@ -99,7 +112,7 @@ export function UnderstandingTypes() {
           {content.typeMap.lead}
         </p>
 
-        <div className="mt-8 grid gap-8 md:grid-cols-2 md:gap-10">
+        <div className={typeGridClass}>
           {content.typeMap.types.map((type) => (
             <div
               key={type.id}
@@ -293,7 +306,7 @@ export function UnderstandingTypes() {
             lead={content.checklist.leaveTitle}
             items={[...content.checklist.leaveItems]}
             sourceLabel={content.checklist.title}
-            sourceHref="/cancers/lung-cancer/understanding-types"
+            sourceHref={content.path}
           />
         </div>
 
@@ -371,30 +384,35 @@ export function UnderstandingTypes() {
           ))}
         </ul>
 
-        <p className="mt-6 text-sm text-[var(--muted)]">
-          Also useful:{" "}
-          <Link
-            href={content.related.stageHref}
-            className="font-semibold text-[var(--accent)] hover:underline"
-          >
-            {content.related.stageLabel}
-          </Link>{" "}
-          — {content.related.stageHint}
-        </p>
-        <p className="mt-2 text-sm text-[var(--muted)]">
-          Also useful:{" "}
-          <Link
-            href={content.related.landscapeHref}
-            className="font-semibold text-[var(--accent)] hover:underline"
-          >
-            {content.related.landscapeLabel}
-          </Link>{" "}
-          — {content.related.landscapeHint}
-        </p>
+        {"stageHref" in content.related && content.related.stageHref ? (
+          <p className="mt-6 text-sm text-[var(--muted)]">
+            Also useful:{" "}
+            <Link
+              href={content.related.stageHref}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              {content.related.stageLabel}
+            </Link>{" "}
+            — {content.related.stageHint}
+          </p>
+        ) : null}
+        {"landscapeHref" in content.related &&
+        content.related.landscapeHref ? (
+          <p className="mt-2 text-sm text-[var(--muted)]">
+            Also useful:{" "}
+            <Link
+              href={content.related.landscapeHref}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              {content.related.landscapeLabel}
+            </Link>{" "}
+            — {content.related.landscapeHint}
+          </p>
+        ) : null}
         <p className="mt-3 text-sm text-[var(--muted)]">
           Prefer situation-based navigation?{" "}
           <Link
-            href="/cancers/lung-cancer#decision-moment"
+            href={content.related.mapHref}
             className="font-semibold text-[var(--accent)] hover:underline"
           >
             Back to where you are now

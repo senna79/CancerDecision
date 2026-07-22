@@ -1,13 +1,25 @@
 import type { KnowledgeGraphStore } from "@/types/database";
 import {
+  BREAST_CARE_TEAM_SLUG,
+  BREAST_GENETICS_SLUG,
+  BREAST_METASTATIC_SLUG,
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_RECURRENCE_SLUG,
+  BREAST_RADIATION_SLUG,
+  BREAST_RECONSTRUCTION_SLUG,
   BREAST_SECOND_OPINION_SLUG,
   BREAST_SEQUENCING_SLUG,
   BREAST_SUBTYPE_SLUG,
   BREAST_SURGERY_SLUG,
   BREAST_TREATMENT_COMPARE_SLUG,
 } from "@/lib/content/breast-entry-slugs";
+import { BREAST_CARE_TEAM_DIRECT_ANSWER } from "@/lib/content/breast-care-team-entry-cards";
+import { BREAST_GENETICS_DIRECT_ANSWER } from "@/lib/content/breast-genetics-entry-cards";
+import { BREAST_METASTATIC_DIRECT_ANSWER } from "@/lib/content/breast-metastatic-entry-cards";
 import { BREAST_NEWLY_DIAGNOSED_DIRECT_ANSWER } from "@/lib/content/breast-newly-diagnosed-entry-cards";
+import { BREAST_RECURRENCE_DIRECT_ANSWER } from "@/lib/content/breast-recurrence-entry-cards";
+import { BREAST_RADIATION_DIRECT_ANSWER } from "@/lib/content/breast-radiation-entry-cards";
+import { BREAST_RECONSTRUCTION_DIRECT_ANSWER } from "@/lib/content/breast-reconstruction-entry-cards";
 import { BREAST_SECOND_OPINION_DIRECT_ANSWER } from "@/lib/content/breast-second-opinion-entry-cards";
 import { BREAST_SEQUENCING_DIRECT_ANSWER } from "@/lib/content/breast-sequencing-entry-cards";
 import { BREAST_SUBTYPE_DIRECT_ANSWER } from "@/lib/content/breast-subtype-entry-cards";
@@ -703,6 +715,135 @@ export function createSeedData(): KnowledgeGraphStore {
         "For my situation, should systemic therapy start before or after surgery?",
         "What would change that recommendation?",
         "How will we know if neoadjuvant therapy is working?",
+      ],
+    },
+    {
+      n: 38,
+      cancer: 3,
+      title:
+        "Do I need genetic counseling / BRCA testing before breast cancer surgery?",
+      slug: BREAST_GENETICS_SLUG,
+      category: "diagnosis",
+      summary: BREAST_GENETICS_DIRECT_ANSWER,
+      why: "Germline results can change irreversible surgery choices; patients need timing guidance distinct from tumor subtype.",
+      factors: [
+        "Personal and family history criteria for counseling",
+        "Whether a result would change lumpectomy vs mastectomy",
+        "Contralateral / risk-reducing surgery discussions",
+        "Safety of waiting versus parallel workup",
+        "Difference between germline genetics and tumor subtype",
+      ],
+      doctorQs: [
+        "Do I need genetic counseling before a final surgery choice?",
+        "Would a positive result change the operation?",
+        "Is it safe to wait for results — and what can proceed now?",
+      ],
+    },
+    {
+      n: 39,
+      cancer: 3,
+      title:
+        "How do breast reconstruction timing and choices fit into the cancer decision?",
+      slug: BREAST_RECONSTRUCTION_SLUG,
+      category: "treatment",
+      summary: BREAST_RECONSTRUCTION_DIRECT_ANSWER,
+      why: "Reconstruction timing interacts with mastectomy, radiation, and recovery — patients need a fit frame, not a photo gallery.",
+      factors: [
+        "Immediate vs delayed vs no reconstruction",
+        "Likelihood of post-mastectomy radiation",
+        "Implant-based vs autologous method families",
+        "Number of operations and recovery load",
+        "Systemic therapy sequencing around surgery",
+      ],
+      doctorQs: [
+        "Is immediate, delayed, or no reconstruction realistic for my plan?",
+        "Am I likely to need radiation — and how does that change timing?",
+        "What method families fit me at a high level?",
+      ],
+    },
+    {
+      n: 40,
+      cancer: 3,
+      title:
+        "How should radiation factor into my breast cancer treatment?",
+      slug: BREAST_RADIATION_SLUG,
+      category: "treatment",
+      summary: BREAST_RADIATION_DIRECT_ANSWER,
+      why: "Radiation often follows lumpectomy and is sometimes needed after mastectomy — assumptions can tip surgery and reconstruction.",
+      factors: [
+        "Radiation after lumpectomy as a common package",
+        "Likelihood of post-mastectomy radiation",
+        "Impact on reconstruction timing",
+        "Treatment schedule and visit burden",
+        "Side effects and practical fit",
+      ],
+      doctorQs: [
+        "If I choose lumpectomy, what radiation would I need?",
+        "If I choose mastectomy, am I likely to need radiation anyway?",
+        "How would radiation change reconstruction timing?",
+      ],
+    },
+    {
+      n: 41,
+      cancer: 3,
+      title: "How do I choose a breast cancer care team or center?",
+      slug: BREAST_CARE_TEAM_SLUG,
+      category: "second_opinion",
+      summary: BREAST_CARE_TEAM_DIRECT_ANSWER,
+      why: "Patients conflate hospital fame with fit; they need a frame for expertise, coordination, and hybrid care.",
+      factors: [
+        "Decision complexity and missing local expertise",
+        "Multidisciplinary coordination across specialties",
+        "Second opinion vs changing the primary team",
+        "Hybrid specialist + local treatment setups",
+        "Travel burden and record handoffs",
+      ],
+      doctorQs: [
+        "Who leads my case — and which specialists are on my team?",
+        "Would a second opinion be enough — or should I change my primary team?",
+        "Can planning happen elsewhere with treatment closer to home?",
+      ],
+    },
+    {
+      n: 42,
+      cancer: 3,
+      title: "What are my options for metastatic / Stage IV breast cancer?",
+      slug: BREAST_METASTATIC_SLUG,
+      category: "treatment",
+      summary: BREAST_METASTATIC_DIRECT_ANSWER,
+      why: "Patients hear Stage IV and assume care is ending; they need a frame for active treatment, goals, and subtype-shaped options.",
+      factors: [
+        "Control, symptoms, and quality-of-life goals",
+        "Subtype (HR+ / HER2+ / TNBC) option families",
+        "Extent of disease and prior treatment response",
+        "Whether local therapy helps a specific site",
+        "Second opinion or clinical trial fit",
+      ],
+      doctorQs: [
+        "What is the goal of the next treatment in plain language?",
+        "Does my subtype change which option families come first?",
+        "What decision comes next — and how urgent is it?",
+      ],
+    },
+    {
+      n: 43,
+      cancer: 3,
+      title: "What should I sort out if breast cancer comes back?",
+      slug: BREAST_RECURRENCE_SLUG,
+      category: "treatment",
+      summary: BREAST_RECURRENCE_DIRECT_ANSWER,
+      why: "Patients hear recurrence and assume the first plan repeats or options have ended; they need a frame for location, re-testing, and prior therapy.",
+      factors: [
+        "Local vs regional vs distant recurrence",
+        "Whether subtype should be re-tested",
+        "Prior surgery, radiation, and medicines",
+        "Goals for control, symptoms, and daily life",
+        "Second opinion or clinical trial fit",
+      ],
+      doctorQs: [
+        "Where exactly has the cancer returned?",
+        "Would re-testing subtype change the options we discuss?",
+        "Given what we already used, which option families belong now?",
       ],
     },
     {

@@ -41,6 +41,7 @@ import {
 } from "@/lib/seo/json-ld";
 import { isIndexableQuestionSlug } from "@/lib/seo/indexing";
 import { breastLegacyQuestionRedirect } from "@/lib/content/breast-entry-slugs";
+import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
 import { retiredLungQuestionRedirect } from "@/lib/seo/retired-lung-questions";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -193,7 +194,7 @@ export default async function QuestionPage({
                 ? journey.map.title
                 : null,
             partOfUrl: cancer
-              ? `/cancers/${cancer.slug}#decision-map`
+              ? cancerSituationMapHref(cancer.slug)
               : null,
             relatedLinks: graphRelatedLinks,
             significantLinkUrl: significantNext,
@@ -214,11 +215,21 @@ export default async function QuestionPage({
 
       <Breadcrumbs
         items={[
-          { label: "Home", href: "/" },
+          {
+            label: "Home",
+            href: cancer
+              ? cancer.slug === "lung-cancer"
+                ? "/#choose-cancer"
+                : `/?cancer=${cancer.slug}#choose-cancer`
+              : "/",
+          },
           ...(cancer
             ? [
                 { label: "Cancers", href: "/cancers" },
-                { label: cancer.name, href: `/cancers/${cancer.slug}` },
+                {
+                  label: cancer.name,
+                  href: cancerSituationMapHref(cancer.slug),
+                },
               ]
             : []),
           {
@@ -328,7 +339,7 @@ export default async function QuestionPage({
             question.title
           }
           partOf={{
-            href: `/cancers/${cancer.slug}#decision-map`,
+            href: cancerSituationMapHref(cancer.slug),
             label: `${cancer.name} Decision Journey`,
           }}
           related={relationshipRelated}
@@ -365,7 +376,7 @@ export default async function QuestionPage({
           {cancer && !entryV2 ? (
             <div className="mt-6 text-sm text-[var(--muted)]">
               <Link
-                href={`/cancers/${cancer.slug}#decision-map`}
+                href={cancerSituationMapHref(cancer.slug)}
                 className="font-semibold text-[var(--accent)] hover:underline"
               >
                 Open full {cancer.name} Decision Map →
@@ -470,7 +481,7 @@ export default async function QuestionPage({
           {cancer ? (
             <div className="mt-6 text-sm text-[var(--muted)]">
               <Link
-                href={`/cancers/${cancer.slug}#decision-map`}
+                href={cancerSituationMapHref(cancer.slug)}
                 className="font-semibold text-[var(--accent)] hover:underline"
               >
                 Open full {cancer.name} Decision Map →

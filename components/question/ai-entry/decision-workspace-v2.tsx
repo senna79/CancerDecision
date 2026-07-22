@@ -290,6 +290,66 @@ function StepMain({
           <WhyDecisionMatters modules={modules} embedded />
         </div>
       );
+    case "bgen-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Before locking surgery, ask whether inherited-risk counseling could
+            change the operation — germline genetics is not tumor subtype.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "brec-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Reconstruction is optional — when it is discussed, fit timing to the
+            cancer plan (mastectomy, radiation, recovery), not to online photos.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "brad-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Clarify whether radiation is expected after each surgery path —
+            mastectomy does not automatically mean “no radiation.”
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "bcare-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Name the gap first — expertise, coordination, or confidence — before
+            choosing a famous hospital or relocating all care.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "bmet-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Stage IV changes the frame — not to “nothing can be done,” but to
+            control, symptoms, and quality of life shaped by subtype and goals.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "brr-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Recurrence is a new decision point — start with where cancer
+            returned and what changed, not with replaying the first plan.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
     case "bso-understand":
       return (
         <div className="space-y-3">

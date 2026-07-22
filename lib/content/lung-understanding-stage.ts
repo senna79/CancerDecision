@@ -371,6 +371,7 @@ export const LUNG_UNDERSTANDING_STAGE = {
         hint: "a map of treatment directions after you know type and stage",
       },
     ],
+    mapHref: "/cancers/lung-cancer#decision-moment",
   },
 
   sources: {

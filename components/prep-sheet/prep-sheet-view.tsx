@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePrepSheet } from "@/components/prep-sheet/prep-sheet-provider";
+import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
 import { formatPrepSheetText } from "@/lib/prep-sheet/types";
 import { cn } from "@/lib/utils";
 
@@ -105,13 +106,13 @@ export function PrepSheetView() {
             Your sheet is empty
           </p>
           <p className="mt-2 text-sm text-[var(--muted)]">
-            Open a lung decision guide and tap{" "}
+            Open a decision guide and tap{" "}
             <span className="font-semibold text-[var(--ink)]">Add</span> next
             to questions you want to ask — or records to bring.
           </p>
           <p className="mt-4">
             <Link
-              href="/cancers/lung-cancer#decision-moment"
+              href={cancerSituationMapHref(state.cancerSlug)}
               className="text-sm font-semibold text-[var(--accent)] hover:underline"
             >
               Where are you in your journey? →

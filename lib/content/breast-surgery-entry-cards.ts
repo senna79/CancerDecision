@@ -51,7 +51,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "Should we wait for genetics if the result could change the operation?",
     ],
     close:
-      "Until a dedicated genetics guide ships, treat this as a hang-card question — ask early if it might change the operation.",
+      "Ask early if genetics might change the operation — then open the genetics decision guide for the full timing path.",
   },
   reconstruction: {
     lead: "Reconstruction timing (immediate vs delayed) and whether to reconstruct at all are part of many mastectomy conversations — and sometimes affect surgical planning.",
@@ -61,7 +61,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "How would reconstruction affect recovery and systemic therapy timing?",
     ],
     close:
-      "Reconstruction is hang-card context here — not a separate Entry yet. Ask what fits your cancer timeline and preferences.",
+      "Ask what fits your cancer timeline and preferences — then open the reconstruction decision guide for the full timing path.",
   },
   recurrence: {
     lead: "People often fear that keeping the breast means higher risk. For appropriate candidates, local recurrence risk differences are part of a nuanced conversation — not a reason to assume mastectomy is always safer.",
@@ -93,6 +93,8 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "If I choose mastectomy, am I likely to need radiation anyway?",
       "Would radiation change reconstruction timing?",
     ],
+    close:
+      "Ask for expected / maybe / unlikely answers by surgery path — then open the radiation decision guide for the full path.",
   },
   pending: {
     lead: "Before locking surgery, confirm whether key information is still pending:",

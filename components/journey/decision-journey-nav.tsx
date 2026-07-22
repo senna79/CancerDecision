@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
 import type { DecisionGraphNode } from "@/lib/os/decision-graph";
 
 function LinkList({
@@ -63,7 +64,7 @@ export function DecisionJourneyNav({
           </p>
         </div>
         <Link
-          href={`/cancers/${cancerSlug}#decision-map`}
+          href={cancerSituationMapHref(cancerSlug)}
           className="text-xs font-semibold text-[var(--accent)] hover:underline"
         >
           Full map →

@@ -304,6 +304,7 @@ export const LUNG_UNDERSTANDING_TYPES = {
     stageHref: "/cancers/lung-cancer/understanding-stage",
     stageLabel: "Understanding Stage",
     stageHint: "what stage means for the options you may discuss next.",
+    mapHref: "/cancers/lung-cancer#decision-moment",
   },
 
   sources: {

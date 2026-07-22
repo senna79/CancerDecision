@@ -24,7 +24,7 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
   vsGenetics: {
     lead: "Tumor subtype (ER/PR/HER2) describes the cancer. Germline genetics (for example BRCA-related counseling) describes inherited risk and can change surgery choices for some people.",
     close:
-      "Ask about both if either could change your next step — but do not treat them as the same test.",
+      "Ask about both if either could change your next step — but do not treat them as the same test. Open the genetics guide when surgery timing depends on inherited-risk results.",
   },
   changeOptions: {
     lead: "Yes, often. Subtype results may change:",
