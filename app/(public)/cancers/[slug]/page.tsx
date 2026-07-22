@@ -11,9 +11,15 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
 import { TrustStrip } from "@/components/trust/trust-strip";
 import {
+  BREAST_DECISION_MOMENTS,
   getDecisionMoment,
   LUNG_DECISION_MOMENTS,
 } from "@/lib/journey/decision-moments";
+import {
+  BREAST_SITUATION_BUCKETS,
+  LUNG_ORIENTATION_LINKS,
+  LUNG_SITUATION_BUCKETS,
+} from "@/lib/journey/situation-buckets";
 import { getCancerDecisionCenter, getCancers } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { isIndexableCancerSlug } from "@/lib/seo/indexing";
@@ -76,8 +82,18 @@ export default async function CancerDecisionCenterPage({
     treatments.map((t) => [t.slug, t.name])
   );
   const storyTitles = Object.fromEntries(stories.map((s) => [s.slug, s.title]));
+
   const isLung = cancer.slug === "lung-cancer";
-  const activeMoment = isLung ? getDecisionMoment(momentParam) : null;
+  const isBreast = cancer.slug === "breast-cancer";
+  const hasSituationNav = isLung || isBreast;
+  const journeyMoments = isBreast
+    ? BREAST_DECISION_MOMENTS
+    : isLung
+      ? LUNG_DECISION_MOMENTS
+      : [];
+  const activeMoment = hasSituationNav
+    ? getDecisionMoment(momentParam)
+    : null;
 
   return (
     <div className="mx-auto w-full max-w-6xl px-5 py-10 md:px-8">
@@ -111,37 +127,51 @@ export default async function CancerDecisionCenterPage({
       <p className="mt-3 max-w-3xl text-[var(--muted)]">
         {isLung
           ? "Lung cancer is our first complete cancer decision journey. Any stage — newly diagnosed, comparing options, second opinion, or care center expertise. Pick where you are; leave knowing your next step."
-          : "Start from the decision you are facing, then explore questions, treatments, and illustrative journeys for this cancer type."}
+          : isBreast
+            ? "Breast cancer decision journey — start from your situation. Core guides cover newly diagnosed, subtype testing, sequencing, surgery, second opinion, and systemic options. More situations unlock as we ship."
+            : "Start from the decision you are facing, then explore questions, treatments, and illustrative journeys for this cancer type."}
       </p>
 
-      {isLung ? (
+      {hasSituationNav ? (
         <div className="mt-8 max-w-3xl space-y-5">
           <SituationGuidedRouter
-            moments={LUNG_DECISION_MOMENTS}
+            moments={journeyMoments}
+            buckets={isBreast ? BREAST_SITUATION_BUCKETS : LUNG_SITUATION_BUCKETS}
+            orientationLinks={isBreast ? [] : LUNG_ORIENTATION_LINKS}
+            cancerLabel={isBreast ? "breast cancer" : "lung cancer"}
             activeId={activeMoment?.id}
             footer={
-              <>
-                Unsure where you are on the map?{" "}
-                <a
-                  href="#map-locator"
-                  className="font-semibold text-[var(--accent)] hover:underline"
-                >
-                  See nearby decisions
-                </a>
-              </>
+              isLung ? (
+                <>
+                  Unsure where you are on the map?{" "}
+                  <a
+                    href="#map-locator"
+                    className="font-semibold text-[var(--accent)] hover:underline"
+                  >
+                    See nearby decisions
+                  </a>
+                </>
+              ) : (
+                <>
+                  Orientation guides (subtype / stage / treatment map) come next.
+                  For now, open a decision guide below.
+                </>
+              )
             }
           />
-          <DecisionMapLocator activeNodeId={activeMoment?.nodeId} />
+          {isLung ? (
+            <DecisionMapLocator activeNodeId={activeMoment?.nodeId} />
+          ) : null}
         </div>
       ) : null}
 
-      {!isLung ? (
+      {!hasSituationNav ? (
         <Section title="Cancer Overview">
           <Markdown content={cancer.overview} />
         </Section>
       ) : null}
 
-      {!isLung && decisionMap ? (
+      {!hasSituationNav && decisionMap ? (
         <DecisionMapView
           map={decisionMap}
           questionTitles={questionTitles}
@@ -150,7 +180,7 @@ export default async function CancerDecisionCenterPage({
         />
       ) : null}
 
-      {isLung ? (
+      {hasSituationNav ? (
         <Section title="About this decision center">
           <Markdown content={cancer.overview} />
         </Section>
@@ -223,6 +253,14 @@ export default async function CancerDecisionCenterPage({
               </Link>
             </li>
           </ul>
+        </Section>
+      ) : isBreast ? (
+        <Section title="Supporting guides">
+          <p className="text-sm text-[var(--muted)] leading-relaxed">
+            Short orientation pages for subtype, stage, and treatment families
+            are next. Until then, start from the situation map above — especially
+            Newly diagnosed and Subtype testing.
+          </p>
         </Section>
       ) : (
         <Section title="Treatment Options">
@@ -323,7 +361,7 @@ export default async function CancerDecisionCenterPage({
         </div>
       </Section>
 
-      {isLung && decisionMap ? (
+      {hasSituationNav && decisionMap ? (
         <DecisionMapFold>
           <DecisionMapView
             map={decisionMap}

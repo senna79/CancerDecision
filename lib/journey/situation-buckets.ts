@@ -100,7 +100,8 @@ export const BREAST_SITUATION_BUCKETS: SituationBucket[] = [
     id: "after-treatment",
     label: "Finished treatment / in follow-up",
     hint: "Monitoring, late effects, and life after treatment.",
-    momentIds: ["recurrence", "second-opinion"],
+    // Recurrence guide is P1 — hide this bucket until that Moment is active.
+    momentIds: ["recurrence"],
   },
 ];
 

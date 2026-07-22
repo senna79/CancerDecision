@@ -117,11 +117,13 @@ export function SituationGuidedRouter({
 }) {
   const compact = variant === "compact";
 
-  const momentsByBucket = buckets.map((bucket) => ({
-    bucket,
-    primary: filterMomentsByIds(moments, bucket.momentIds),
-    also: filterMomentsByIds(moments, bucket.alsoMomentIds ?? []),
-  }));
+  const momentsByBucket = buckets
+    .map((bucket) => ({
+      bucket,
+      primary: filterMomentsByIds(moments, bucket.momentIds),
+      also: filterMomentsByIds(moments, bucket.alsoMomentIds ?? []),
+    }))
+    .filter(({ primary, also }) => primary.length > 0 || also.length > 0);
 
   return (
     <section

@@ -7,7 +7,10 @@ import {
   HOME_COMMON_DECISION_PATHS,
   HOME_FEATURED_LUNG_JOURNEY,
 } from "@/lib/content/home-decision-paths";
-import { LUNG_DECISION_MOMENTS } from "@/lib/journey/decision-moments";
+import {
+  BREAST_DECISION_MOMENTS,
+  LUNG_DECISION_MOMENTS,
+} from "@/lib/journey/decision-moments";
 import { getCancers, getStories } from "@/lib/queries";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -79,6 +82,7 @@ export default async function HomePage() {
               <CancerJourneyNav
                 cancers={cancerOptions}
                 lungMoments={LUNG_DECISION_MOMENTS}
+                breastMoments={BREAST_DECISION_MOMENTS}
               />
             </div>
           </div>

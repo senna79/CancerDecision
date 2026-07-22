@@ -4,6 +4,11 @@ import Link from "next/link";
 import { useState } from "react";
 import { SituationGuidedRouter } from "@/components/journey/situation-guided-router";
 import type { DecisionMoment } from "@/lib/journey/decision-moments";
+import {
+  BREAST_SITUATION_BUCKETS,
+  LUNG_ORIENTATION_LINKS,
+  LUNG_SITUATION_BUCKETS,
+} from "@/lib/journey/situation-buckets";
 import { cn } from "@/lib/utils";
 
 type CancerOption = {
@@ -12,6 +17,7 @@ type CancerOption = {
 };
 
 const LUNG_SLUG = "lung-cancer";
+const BREAST_SLUG = "breast-cancer";
 
 /** First-viewport order on the homepage */
 const HERO_SLUGS = [
@@ -21,15 +27,26 @@ const HERO_SLUGS = [
   "brain-tumor",
 ] as const;
 
+type JourneyConfig = {
+  moments: DecisionMoment[];
+  cancerLabel: string;
+  buckets: typeof LUNG_SITUATION_BUCKETS;
+  orientationLinks: typeof LUNG_ORIENTATION_LINKS;
+  mapHref: string;
+};
+
 /**
- * Homepage nav: pick a cancer → open that cancer’s decision map (lung is complete).
+ * Homepage nav: pick a cancer → open that cancer’s decision map.
+ * Lung is complete; breast P0 navigation is live (orientation pages deferred).
  */
 export function CancerJourneyNav({
   cancers,
   lungMoments,
+  breastMoments,
 }: {
   cancers: CancerOption[];
   lungMoments: DecisionMoment[];
+  breastMoments: DecisionMoment[];
 }) {
   const bySlug = new Map(cancers.map((c) => [c.slug, c]));
   const heroCancers = HERO_SLUGS.map((slug) => bySlug.get(slug)).filter(
@@ -43,7 +60,26 @@ export function CancerJourneyNav({
   const [showMore, setShowMore] = useState(false);
   const selected =
     cancers.find((c) => c.slug === selectedSlug) ?? heroCancers[0];
-  const isLung = selectedSlug === LUNG_SLUG;
+
+  const journeyBySlug: Record<string, JourneyConfig> = {
+    [LUNG_SLUG]: {
+      moments: lungMoments,
+      cancerLabel: "lung cancer",
+      buckets: LUNG_SITUATION_BUCKETS,
+      orientationLinks: LUNG_ORIENTATION_LINKS,
+      mapHref: "/cancers/lung-cancer#map-locator",
+    },
+    [BREAST_SLUG]: {
+      moments: breastMoments,
+      cancerLabel: "breast cancer",
+      buckets: BREAST_SITUATION_BUCKETS,
+      // Orientation routes ship with content pages; hide until then.
+      orientationLinks: [],
+      mapHref: "/cancers/breast-cancer#decision-moment",
+    },
+  };
+
+  const journey = journeyBySlug[selectedSlug];
 
   return (
     <div className="space-y-6">
@@ -116,18 +152,26 @@ export function CancerJourneyNav({
         </div>
       ) : null}
 
-      {isLung ? (
+      {journey ? (
         <SituationGuidedRouter
-          moments={lungMoments}
-          cancerLabel="lung cancer"
+          moments={journey.moments}
+          buckets={journey.buckets}
+          orientationLinks={journey.orientationLinks}
+          cancerLabel={journey.cancerLabel}
           footer={
             <>
-              Want nearby decisions on the map?{" "}
+              {selectedSlug === BREAST_SLUG ? (
+                <>
+                  Breast journey is live for core decisions — more situations
+                  unlock as guides ship.{" "}
+                </>
+              ) : null}
+              Want the full center?{" "}
               <Link
-                href="/cancers/lung-cancer#map-locator"
+                href={journey.mapHref}
                 className="font-semibold text-[var(--accent)] hover:underline"
               >
-                See where this sits →
+                Open {selected?.name} Decision Center →
               </Link>
               {" · "}
               <Link
@@ -148,9 +192,8 @@ export function CancerJourneyNav({
             {selected.name} decision journey
           </h3>
           <p className="mt-2 max-w-2xl text-sm leading-relaxed text-[var(--muted)] md:text-base">
-            Lung cancer is the first complete journey. {selected.name} will use
-            the same framework — choose a cancer situation, then a decision
-            path.
+            Lung and breast use the situation → decision path framework.{" "}
+            {selected.name} will follow the same pattern.
           </p>
           <p className="mt-4 flex flex-wrap gap-x-4 gap-y-2 text-sm">
             <button
@@ -158,7 +201,14 @@ export function CancerJourneyNav({
               onClick={() => setSelectedSlug(LUNG_SLUG)}
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              Start with lung cancer instead →
+              Start with lung cancer →
+            </button>
+            <button
+              type="button"
+              onClick={() => setSelectedSlug(BREAST_SLUG)}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Or breast cancer →
             </button>
             <Link
               href={`/cancers/${selected.slug}`}
