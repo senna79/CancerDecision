@@ -13,12 +13,14 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
       "The right time depends on your situation — not only on “running out of options.”",
   },
   askEarly: {
-    lead: "For some people, discussing trials early may identify options before surgery timing, sequencing, or first medicines are locked.",
+    lead: "Joining a breast cancer clinical trial is a decision — not a requirement. For some people, discussing trials early may identify options before surgery timing, sequencing, or first medicines are locked; for others, standard care remains the better fit.",
     ask: [
       "Are there clinical trials that should be considered before I lock my treatment plan?",
+      "What would joining change about visits, travel, and what treatment I receive?",
       "Would waiting for a trial screen change the next irreversible step?",
     ],
-    close: "Earlier discussion can still help even if you stay with standard care.",
+    close:
+      "Earlier discussion can still help even if you stay with standard care. Ask whether joining fits your goals — not only whether a trial exists.",
   },
   notTestSubject: {
     lead: "Clinical trials involve research, but they follow structured safety processes. You should understand:",

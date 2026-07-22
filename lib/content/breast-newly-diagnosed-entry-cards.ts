@@ -2,8 +2,34 @@
 
 export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
   moreTests: {
-    lead: "A biopsy may confirm cancer, but additional information is often needed before a first plan is clear — especially subtype (receptors / HER2), imaging for extent, and sometimes genetic counseling.",
-    close: "Different decisions require different information.",
+    lead: "A biopsy may confirm cancer, but more scans or staging tests are often ordered so the team understands extent — for example lymph nodes or distant sites — before locking a first plan. Subtype testing (ER/PR/HER2) is also part of that clearer picture.",
+    ask: [
+      "Why is this scan or test being ordered for my next decision?",
+      "What would a positive or negative finding change?",
+      "What can proceed while we wait for results?",
+    ],
+    close:
+      "Different decisions require different information — ask what each test is for, not only what it is called.",
+  },
+  diagnosisToSurgery: {
+    lead: "There is no single universal number of days from diagnosis to surgery. Many people have weeks while subtype, imaging, genetics, or sequencing decisions become clear — and that wait is often intentional, not neglect.",
+    ask: [
+      "What is a safe timeline to surgery for my situation?",
+      "What results should be back before we lock a date?",
+      "Would medicines before surgery change that timeline?",
+    ],
+    close:
+      "Ask for your personal window — internet “average days” rarely match a real plan.",
+  },
+  stageTimeline: {
+    lead: "Stage helps describe how far cancer appears to have spread — but it does not produce a fixed “Stage X = Y weeks of treatment” calendar. Timeline also depends on subtype, whether medicines come before surgery, radiation plans, and your health.",
+    ask: [
+      "What stage do you think I have so far — and what could still change it?",
+      "For my stage and subtype, what usually sets the pace: surgery first, medicines first, or more testing?",
+      "What is a realistic near-term timeline for me — not an internet average by stage?",
+    ],
+    close:
+      "Ask for your path’s pacing factors. One stage label is not a treatment schedule by itself.",
   },
   notImmediate: {
     lead: "Because the best sequence depends on a more complete picture. Doctors may need information about:",
@@ -84,7 +110,7 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
       "Ask for a clear timeline — rushing and waiting both have trade-offs.",
   },
   askOncologist: {
-    lead: "Focus on questions that clarify your next decision — not every possible detail.",
+    lead: "A first oncology visit usually reviews what is known so far, what is still pending, and which decisions come next — not a final lifelong plan in one hour. Expect talk about subtype, stage/extent, sequencing, and near-term options.",
     ask: [
       "What subtype of breast cancer do I have — and what stage is it?",
       "What additional information do we still need?",
@@ -93,7 +119,8 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
       "What are my treatment options, and why this recommendation?",
       "How soon do we need to decide?",
     ],
-    close: "Bring a written list. One clear next step beats fifty unanswered questions.",
+    close:
+      "Bring records and a written list. One clear next step beats fifty unanswered questions.",
   },
   askSurgeon: {
     lead: "If surgery is being discussed, clarify fit and sequencing — not only technique.",

@@ -14,12 +14,12 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
       "A second opinion is a decision-support tool — not a sign that something is wrong with your current team.",
   },
   whyBreast: {
-    lead: "Breast cancer decisions often involve subtype biology, sequencing, surgery choice, and personal priorities at once.",
+    lead: "A second opinion before breast cancer surgery is often most useful when subtype, sequencing, surgery choice, and personal priorities still intersect — and you want confidence before an irreversible local plan.",
     items: [
       "Confirm whether both lumpectomy and mastectomy are reasonable",
       "Check whether sequencing recommendations fit your subtype and stage",
       "Ask whether key testing or genetics is still missing",
-      "Gain confidence before an irreversible local plan",
+      "Gain confidence before locking surgery or reconstruction timing",
     ],
     close:
       "Confirmation of the current plan is also a useful outcome.",
@@ -79,6 +79,17 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
     ],
     close:
       "Tell the reviewing team the one decision you need help with.",
+  },
+  howToGet: {
+    lead: "Getting a breast cancer second opinion usually means: name the decision you want reviewed, gather records, ask about urgency, then book a focused consultation (in-person or remote) with a breast specialist or multidisciplinary team.",
+    steps: [
+      "Write one sentence: the decision you need help with",
+      "Collect pathology (with ER/PR/HER2), imaging, and the current plan",
+      "Ask your current team whether waiting for the review is safe",
+      "Book the review and send records ahead when possible",
+    ],
+    close:
+      "A clear question plus complete records beats “please look at everything.”",
   },
   records: {
     lead: "Bring the complete picture when you can:",

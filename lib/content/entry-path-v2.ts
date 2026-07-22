@@ -2352,13 +2352,23 @@ const BREAST_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
         },
         {
           id: "bnd-more-tests",
-          title: "Why do doctors need more tests after diagnosis?",
+          title: "Why do I need more scans after a breast cancer diagnosis?",
           summary: "A biopsy may confirm cancer — subtype and staging may still matter.",
         },
         {
           id: "bnd-not-immediate",
           title: "How soon do I need treatment after breast cancer diagnosis?",
           summary: "The best sequence depends on a more complete picture.",
+        },
+        {
+          id: "bnd-diagnosis-to-surgery",
+          title: "How long from diagnosis to surgery?",
+          summary: "Often weeks, not days — ask what waits for key results.",
+        },
+        {
+          id: "bnd-stage-timeline",
+          title: "Does my stage decide my treatment timeline?",
+          summary: "Stage matters — but subtype and sequencing also set the pace.",
         },
         {
           id: "bnd-overwhelmed",
@@ -2429,8 +2439,8 @@ const BREAST_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
         },
         {
           id: "bnd-ask-oncologist",
-          title: "What questions should I ask my oncologist after diagnosis?",
-          summary: "A focused ask list — not fifty questions at once.",
+          title: "What should I expect at my first oncology appointment?",
+          summary: "What happens in the visit — and a focused ask list.",
         },
         {
           id: "bnd-ask-surgeon",
@@ -2492,6 +2502,11 @@ const BREAST_SUBTYPE_PATH: EntryPathV2 = {
           summary: "ER/PR, HER2, triple-negative, and sometimes genomic assays.",
         },
         {
+          id: "bst-pr",
+          title: "What does PR-positive mean?",
+          summary: "Progesterone receptor status — usually read with ER and HER2.",
+        },
+        {
           id: "bst-everyone",
           title: "Does everyone need the same subtype tests?",
           summary: "Standard biology vs decision-specific extra assays.",
@@ -2541,7 +2556,7 @@ const BREAST_SUBTYPE_PATH: EntryPathV2 = {
         },
         {
           id: "bst-waiting",
-          title: "Should I wait for subtype results before starting treatment?",
+          title: "Do I need ER/PR/HER2 results before choosing treatment?",
           summary: "Not every wait is the same — ask how urgent it is.",
         },
         {
@@ -2609,8 +2624,8 @@ const BREAST_SEQUENCING_PATH: EntryPathV2 = {
         },
         {
           id: "bseq-what-is",
-          title: "What does treatment before or after surgery mean?",
-          summary: "Neoadjuvant vs adjuvant — goals, not jargon.",
+          title: "What is neoadjuvant chemotherapy?",
+          summary: "Medicines before surgery — goals, not jargon.",
         },
         {
           id: "bseq-why-matters",
@@ -2638,13 +2653,33 @@ const BREAST_SEQUENCING_PATH: EntryPathV2 = {
       cards: [
         {
           id: "bseq-before",
-          title: "Why start systemic therapy before surgery?",
+          title: "Why do chemo before surgery?",
           summary: "Shrink, assess response, refine surgery options.",
+        },
+        {
+          id: "bseq-normal-before",
+          title: "Is chemo before surgery normal?",
+          summary: "Common for some subtypes and stages — ask if it fits you.",
         },
         {
           id: "bseq-after",
           title: "Why have surgery first, then systemic therapy?",
           summary: "When upfront surgery still leaves medicines afterward.",
+        },
+        {
+          id: "bseq-nodes-clear",
+          title: "Do I still need chemo if lymph nodes are clear?",
+          summary: "Node status matters — it is not the only factor.",
+        },
+        {
+          id: "bseq-gap-after-surgery",
+          title: "How soon after surgery does chemo start?",
+          summary: "Usually after healing — ask for your window.",
+        },
+        {
+          id: "bseq-chemo-or-radiation",
+          title: "Should chemo or radiation come first?",
+          summary: "Usually coordinated after surgery — ask for your sequence.",
         },
         {
           id: "bseq-what-changes",
@@ -2750,7 +2785,7 @@ const BREAST_SURGERY_PATH: EntryPathV2 = {
         },
         {
           id: "bsur-similar-control",
-          title: "Can both options offer similar cancer control?",
+          title: "Is lumpectomy as safe as mastectomy?",
           summary: "For many appropriate candidates — ask for your situation.",
         },
         {
@@ -2773,6 +2808,11 @@ const BREAST_SURGERY_PATH: EntryPathV2 = {
       main: "does-not-decide",
       cards: [
         {
+          id: "bsur-pros-cons",
+          title: "What are the pros and cons of lumpectomy vs mastectomy?",
+          summary: "Trade-offs side by side — not a winner-takes-all list.",
+        },
+        {
           id: "bsur-lumpectomy",
           title: "What does choosing lumpectomy usually involve?",
           summary: "Conservation plus radiation for most people.",
@@ -2788,6 +2828,11 @@ const BREAST_SURGERY_PATH: EntryPathV2 = {
           summary: "Germline risk ≠ tumor subtype — ask early.",
         },
         {
+          id: "bsur-subtype",
+          title: "Does subtype change the surgery choice?",
+          summary: "Subtype mainly forks medicines — surgery still needs local fit.",
+        },
+        {
           id: "bsur-reconstruction",
           title: "How do reconstruction timing and choices fit in?",
           summary: "Immediate vs delayed vs none — open the full guide when needed.",
@@ -2799,7 +2844,7 @@ const BREAST_SURGERY_PATH: EntryPathV2 = {
         },
         {
           id: "bsur-bilateral",
-          title: "Should I also consider surgery on the other breast?",
+          title: "Should I remove the other breast?",
           summary: "A separate decision — not automatic.",
         },
       ],
@@ -2813,13 +2858,23 @@ const BREAST_SURGERY_PATH: EntryPathV2 = {
       cards: [
         {
           id: "bsur-recovery",
-          title: "What does recovery look like for each option?",
+          title: "How does recovery differ for lumpectomy vs mastectomy?",
           summary: "First weeks, work, and restrictions.",
         },
         {
+          id: "bsur-double-recovery",
+          title: "What is recovery like after double mastectomy?",
+          summary: "Often longer — ask about drains, work, and reconstruction.",
+        },
+        {
+          id: "bsur-lymphedema",
+          title: "What should I know about lymphedema after breast surgery?",
+          summary: "Risk varies — ask prevention and early signs.",
+        },
+        {
           id: "bsur-radiation",
-          title: "How does radiation fit into each path?",
-          summary: "Usually after lumpectomy; situational after mastectomy.",
+          title: "Do I need radiation after lumpectomy?",
+          summary: "Usually yes with conservation; situational after mastectomy.",
         },
         {
           id: "bsur-pending",
@@ -2915,12 +2970,12 @@ const BREAST_SYSTEMIC_PATH: EntryPathV2 = {
       cards: [
         {
           id: "bsys-hr",
-          title: "What if my cancer is hormone receptor–positive (HR+)?",
+          title: "What does ER+/PR+/HER2− mean for treatment?",
           summary: "Endocrine-led discussions — chemo is situational.",
         },
         {
           id: "bsys-her2",
-          title: "What if my cancer is HER2-positive?",
+          title: "What does HER2-positive treatment usually involve?",
           summary: "HER2-targeted therapy usually belongs in the plan.",
         },
         {
@@ -2929,13 +2984,58 @@ const BREAST_SYSTEMIC_PATH: EntryPathV2 = {
           summary: "Chemo often leads; immunotherapy in selected cases.",
         },
         {
+          id: "bsys-when-chemo",
+          title: "When do I need chemotherapy for breast cancer?",
+          summary: "Depends on subtype, stage, and risk — not one rule.",
+        },
+        {
+          id: "bsys-stage1-chemo",
+          title: "Does Stage 1 breast cancer need chemo?",
+          summary: "Sometimes — subtype and risk still tip the answer.",
+        },
+        {
+          id: "bsys-cdk46",
+          title: "When are CDK4/6 inhibitors used?",
+          summary: "Often in HR+ settings — early or metastatic depending on plan.",
+        },
+        {
+          id: "bsys-tnbc-immuno",
+          title: "Is immunotherapy used for triple-negative breast cancer?",
+          summary: "Selected situations — not automatic for every TNBC.",
+        },
+        {
+          id: "bsys-er-good-or-bad",
+          title: "Is estrogen receptor–positive good or bad?",
+          summary: "It is a treatment fork — not a simple good/bad label.",
+        },
+        {
+          id: "bsys-ovarian",
+          title: "What is ovarian suppression in breast cancer treatment?",
+          summary: "For some premenopausal HR+ plans — ask if it applies.",
+        },
+        {
+          id: "bsys-skip-endocrine",
+          title: "Can I skip hormone therapy after lumpectomy?",
+          summary: "For HR+ disease it is often part of the package — ask risk change.",
+        },
+        {
+          id: "bsys-endocrine-duration",
+          title: "How long is endocrine therapy for breast cancer?",
+          summary: "Often years — ask what duration and why for you.",
+        },
+        {
+          id: "bsys-tnbc-stage1",
+          title: "What are treatment options for Stage 1 triple-negative breast cancer?",
+          summary: "Still a TNBC fork — chemo often leads; ask about your risk.",
+        },
+        {
           id: "bsys-goals",
           title: "What goal is systemic therapy trying to achieve?",
           summary: "Clarify purpose before comparing regimens.",
         },
         {
           id: "bsys-genomic",
-          title: "Could a genomic assay change chemo discussions?",
+          title: "Could Oncotype or a genomic assay change whether I need chemo?",
           summary: "Relevant for some early HR+ / HER2− cancers.",
         },
       ],
@@ -2953,13 +3053,18 @@ const BREAST_SYSTEMIC_PATH: EntryPathV2 = {
           summary: "Ask by medicine family — not by fear alone.",
         },
         {
+          id: "bsys-chemo-rounds",
+          title: "How many rounds of chemo is normal?",
+          summary: "Regimens vary — ask what yours is trying to achieve.",
+        },
+        {
           id: "bsys-timeline",
           title: "What is the expected timeline and visit burden?",
           summary: "Duration, weekly rhythm, and life logistics.",
         },
         {
           id: "bsys-fertility",
-          title: "Could this plan affect fertility or menopause?",
+          title: "Should I consider fertility preservation before treatment?",
           summary: "Raise life-stage goals before locking therapy.",
         },
         {
@@ -3027,7 +3132,7 @@ const BREAST_SECOND_OPINION_PATH: EntryPathV2 = {
         },
         {
           id: "bso-why-breast",
-          title: "Why can a second opinion matter for breast cancer?",
+          title: "Should I get a second opinion before breast cancer surgery?",
           summary: "Subtype, sequencing, and surgery often intersect.",
         },
         {
@@ -3078,6 +3183,11 @@ const BREAST_SECOND_OPINION_PATH: EntryPathV2 = {
       lead: "Patient question: what records and timing make this worth it?",
       main: "practical-points",
       cards: [
+        {
+          id: "bso-how-to-get",
+          title: "How do I get a second opinion for breast cancer?",
+          summary: "Name the decision, gather records, book a focused review.",
+        },
         {
           id: "bso-records",
           title: "What records should I bring?",
@@ -3162,6 +3272,11 @@ const BREAST_GENETICS_PATH: EntryPathV2 = {
           summary: "Risk factors help — your team still decides for you.",
         },
         {
+          id: "bgen-tnbc",
+          title: "Do I need genetic testing for triple-negative breast cancer?",
+          summary: "TNBC often raises counseling — ask if criteria apply to you.",
+        },
+        {
           id: "bgen-vs-subtype",
           title: "How is this different from subtype testing?",
           summary: "Tumor biology ≠ inherited risk.",
@@ -3177,8 +3292,18 @@ const BREAST_GENETICS_PATH: EntryPathV2 = {
       cards: [
         {
           id: "bgen-positive-change",
-          title: "How might a pathogenic result change surgery?",
+          title: "Does a positive genetic result change surgery?",
           summary: "Mastectomy and the other breast may enter the talk.",
+        },
+        {
+          id: "bgen-only-brca",
+          title: "Is BRCA the only gene that matters?",
+          summary: "BRCA is common in conversation — panels often include more.",
+        },
+        {
+          id: "bgen-brca-shows",
+          title: "What does the BRCA test show?",
+          summary: "Inherited risk — not the same as tumor ER/PR/HER2.",
         },
         {
           id: "bgen-negative-or-vus",
@@ -3187,7 +3312,7 @@ const BREAST_GENETICS_PATH: EntryPathV2 = {
         },
         {
           id: "bgen-wait-or-not",
-          title: "Should I wait for results before surgery?",
+          title: "Should I wait for genetic results before surgery?",
           summary: "Wait when results would change the operation — ask about safety.",
         },
         {
@@ -3196,9 +3321,14 @@ const BREAST_GENETICS_PATH: EntryPathV2 = {
           summary: "A separate decision — not automatic.",
         },
         {
+          id: "bgen-without-brca",
+          title: "Can you get breast cancer without the BRCA gene?",
+          summary: "Yes — most diagnoses are not driven by a known BRCA mutation.",
+        },
+        {
           id: "bgen-family",
-          title: "What about my family’s risk?",
-          summary: "Counseling includes relatives — without making you the sole messenger.",
+          title: "If my parent had breast cancer, what does that mean for me?",
+          summary: "Family history can raise questions — it does not decide your risk alone.",
         },
       ],
     },
@@ -3211,7 +3341,7 @@ const BREAST_GENETICS_PATH: EntryPathV2 = {
       cards: [
         {
           id: "bgen-timeline",
-          title: "How long do counseling and results usually take?",
+          title: "How long do genetic results take?",
           summary: "Days to weeks — ask for a local timeline.",
         },
         {
@@ -3289,8 +3419,8 @@ const BREAST_METASTATIC_PATH: EntryPathV2 = {
         },
         {
           id: "bmet-active-care",
-          title: "Can I still receive active treatment?",
-          summary: "Many people receive care aimed at control, symptoms, and quality of life.",
+          title: "Does Stage IV mean nothing can be done?",
+          summary: "No — many people receive active care for control and quality of life.",
         },
         {
           id: "bmet-not-giving-up",
@@ -3327,6 +3457,21 @@ const BREAST_METASTATIC_PATH: EntryPathV2 = {
           summary: "Sometimes — for specific sites or symptoms, not as a curative package.",
         },
         {
+          id: "bmet-options",
+          title: "What are treatment options for metastatic breast cancer?",
+          summary: "Option families by subtype and goals — not one fixed list.",
+        },
+        {
+          id: "bmet-bone",
+          title: "What if metastatic breast cancer is in the bone?",
+          summary: "Systemic therapy still leads — local care may help symptoms.",
+        },
+        {
+          id: "bmet-living",
+          title: "What does living with metastatic breast cancer mean day to day?",
+          summary: "Ongoing decisions — treatment, symptoms, and life priorities.",
+        },
+        {
           id: "bmet-info-needed",
           title: "What information should be clear before locking a plan?",
           summary: "Subtype, extent, prior response, and symptoms needing control.",
@@ -3340,6 +3485,11 @@ const BREAST_METASTATIC_PATH: EntryPathV2 = {
       lead: "Patient question: what belongs in the next conversation?",
       main: "practical-points",
       cards: [
+        {
+          id: "bmet-what-to-ask",
+          title: "What should I ask my doctor about Stage IV breast cancer?",
+          summary: "Goals, options, trade-offs, and what starts now.",
+        },
         {
           id: "bmet-second-opinion",
           title: "When may a second opinion help?",
@@ -3425,7 +3575,7 @@ const BREAST_RECURRENCE_PATH: EntryPathV2 = {
         },
         {
           id: "brr-vs-metastatic",
-          title: "How is this different from metastatic / Stage IV?",
+          title: "What’s the difference between local recurrence and metastatic disease?",
           summary: "Distant recurrence may overlap; local/regional often differs.",
         },
       ],
@@ -3439,7 +3589,7 @@ const BREAST_RECURRENCE_PATH: EntryPathV2 = {
       cards: [
         {
           id: "brr-retest",
-          title: "Should subtype be re-tested?",
+          title: "Should subtype be retested after recurrence?",
           summary: "Biology can change — ask when a new test would change options.",
         },
         {
@@ -3451,6 +3601,11 @@ const BREAST_RECURRENCE_PATH: EntryPathV2 = {
           id: "brr-still-treatable",
           title: "Is recurrence still treatable?",
           summary: "Many people receive active treatment after cancer returns.",
+        },
+        {
+          id: "brr-after-mastectomy",
+          title: "What if breast cancer comes back after mastectomy?",
+          summary: "Location still shapes the next plan — not an automatic replay.",
         },
         {
           id: "brr-same-plan",
@@ -3604,8 +3759,18 @@ const BREAST_QOL_PATH: EntryPathV2 = {
         },
         {
           id: "bqol-work",
-          title: "Can I work during breast cancer treatment?",
+          title: "Can I work while getting chemotherapy?",
           summary: "Often possible with planning — ask what a week looks like.",
+        },
+        {
+          id: "bqol-time-off",
+          title: "How much time off work is typical with breast cancer?",
+          summary: "Varies by surgery, chemo, and radiation — ask for your plan.",
+        },
+        {
+          id: "bqol-return-work",
+          title: "What about returning to work after breast cancer treatment?",
+          summary: "Plan a phased return — energy and follow-up still matter.",
         },
         {
           id: "bqol-this-week",
@@ -3695,8 +3860,13 @@ const BREAST_PRACTICAL_FIT_PATH: EntryPathV2 = {
       cards: [
         {
           id: "bfe-cost-ask",
-          title: "What cost and logistics questions should I ask?",
-          summary: "Name constraints early — without needing exact prices first.",
+          title: "How much does breast cancer treatment cost?",
+          summary: "Costs accumulate across the pathway — ask useful questions, not a quote.",
+        },
+        {
+          id: "bfe-insurance",
+          title: "Is breast cancer treatment covered by insurance?",
+          summary: "Often partly — ask what is covered vs out of pocket for your plan.",
         },
       ],
     },
@@ -3753,8 +3923,8 @@ const BREAST_CLINICAL_TRIAL_PATH: EntryPathV2 = {
         },
         {
           id: "btrial-ask-early",
-          title: "Should I ask about trials before locking treatment?",
-          summary: "Why earlier discussion can still help.",
+          title: "Should I join a breast cancer clinical trial?",
+          summary: "Ask early — trials are not only a last resort.",
         },
         {
           id: "btrial-not-subject",
@@ -3874,7 +4044,7 @@ const BREAST_FOLLOW_UP_PATH: EntryPathV2 = {
         },
         {
           id: "bfu-what-happens",
-          title: "What happens after breast cancer treatment ends?",
+          title: "What does follow-up look like after treatment ends?",
           summary: "A milestone — and a reason follow-up continues.",
         },
         {
@@ -3903,8 +4073,23 @@ const BREAST_FOLLOW_UP_PATH: EntryPathV2 = {
       cards: [
         {
           id: "bfu-schedule",
-          title: "What schedule should I expect?",
+          title: "How often do I see my oncologist after breast cancer?",
           summary: "Appropriate monitoring — not simply more testing.",
+        },
+        {
+          id: "bfu-guidelines",
+          title: "What shapes my breast cancer follow-up schedule?",
+          summary: "Guideline frameworks plus your personal risk and treatments.",
+        },
+        {
+          id: "bfu-cancer-free",
+          title: "When are you considered cancer-free after breast cancer?",
+          summary: "Labels vary — ask what “NED” or surveillance means for you.",
+        },
+        {
+          id: "bfu-mammo-type",
+          title: "Screening vs diagnostic mammogram after breast cancer — which is it?",
+          summary: "After cancer, imaging is often diagnostic — ask your plan.",
         },
         {
           id: "bfu-more-scans",
@@ -3942,7 +4127,7 @@ const BREAST_FOLLOW_UP_PATH: EntryPathV2 = {
         },
         {
           id: "bfu-fear",
-          title: "How do I handle fear of recurrence?",
+          title: "What helps with fear of recurrence after breast cancer?",
           summary: "A plan, clear signals, and support — not alone.",
         },
         {
@@ -4130,6 +4315,11 @@ const BREAST_CARE_TEAM_PATH: EntryPathV2 = {
           summary: "No — the right level depends on your situation.",
         },
         {
+          id: "bcare-choose-hospital",
+          title: "How should I choose a breast cancer hospital or center?",
+          summary: "Match capabilities to your decisions — not ranking lists alone.",
+        },
+        {
           id: "bcare-vs-second-opinion",
           title: "How is this different from a second opinion?",
           summary: "Second opinion reviews a fork; care team owns ongoing care.",
@@ -4138,6 +4328,11 @@ const BREAST_CARE_TEAM_PATH: EntryPathV2 = {
           id: "bcare-who-treats",
           title: "Who treats breast cancer on a typical team?",
           summary: "Surgery, medical oncology, radiation, plastics, genetics, navigators.",
+        },
+        {
+          id: "bcare-pick-surgeon",
+          title: "How do I pick a breast cancer surgeon?",
+          summary: "Experience with your decision — not only a famous name.",
         },
       ],
     },
@@ -4281,17 +4476,22 @@ const BREAST_RADIATION_PATH: EntryPathV2 = {
       cards: [
         {
           id: "brad-after-lumpectomy",
-          title: "What does radiation after lumpectomy usually mean?",
+          title: "Do I need radiation after lumpectomy?",
           summary: "Often part of the conservation package.",
         },
         {
+          id: "brad-skip-after-lumpectomy",
+          title: "What if I skip radiation after lumpectomy?",
+          summary: "Not a routine default — ask what risk changes for you.",
+        },
+        {
           id: "brad-after-mastectomy",
-          title: "When is radiation discussed after mastectomy?",
+          title: "Do I need radiation after mastectomy?",
           summary: "Situational — not automatically zero.",
         },
         {
           id: "brad-reconstruction",
-          title: "How does radiation change reconstruction?",
+          title: "Does radiation change reconstruction?",
           summary: "Timing and method may shift — ask early.",
         },
         {
@@ -4310,13 +4510,38 @@ const BREAST_RADIATION_PATH: EntryPathV2 = {
       cards: [
         {
           id: "brad-schedule",
-          title: "What does the treatment schedule look like?",
+          title: "How long is breast cancer radiation?",
           summary: "Weeks, visits, and whether shorter options fit.",
         },
         {
+          id: "brad-shorter",
+          title: "Is shorter (including 5-day) radiation an option?",
+          summary: "Sometimes — candidacy depends on your situation.",
+        },
+        {
+          id: "brad-when-starts",
+          title: "When does radiation start after surgery?",
+          summary: "Usually after healing — and coordinated with systemic therapy.",
+        },
+        {
+          id: "brad-wait",
+          title: "How long can I wait for radiation after surgery?",
+          summary: "There is usually a window — ask what is still safe for you.",
+        },
+        {
+          id: "brad-refuse",
+          title: "Can I say no to radiation?",
+          summary: "A real conversation — ask what risk changes for you.",
+        },
+        {
           id: "brad-side-effects",
-          title: "What side effects should I ask about?",
-          summary: "Skin, fatigue, and longer-term questions.",
+          title: "What side effects should I expect from radiation after lumpectomy?",
+          summary: "Skin, fatigue, and longer-term questions — ask for your plan.",
+        },
+        {
+          id: "brad-during",
+          title: "What should I know about daily life during radiation?",
+          summary: "Skin care, fatigue, and what to ask about activity.",
         },
         {
           id: "brad-practical",
@@ -4416,6 +4641,11 @@ const BREAST_RECONSTRUCTION_PATH: EntryPathV2 = {
       main: "does-not-decide",
       cards: [
         {
+          id: "brec-immediate-vs-delayed",
+          title: "How should I choose immediate vs delayed reconstruction?",
+          summary: "Compare timing paths before locking a method.",
+        },
+        {
           id: "brec-immediate",
           title: "What does immediate reconstruction usually involve?",
           summary: "Starts with mastectomy — sometimes as a first stage.",
@@ -4431,9 +4661,29 @@ const BREAST_RECONSTRUCTION_PATH: EntryPathV2 = {
           summary: "Implant-based vs autologous (tissue) — high level.",
         },
         {
+          id: "brec-expanders",
+          title: "What are tissue expanders in breast reconstruction?",
+          summary: "A common staged implant pathway — temporary stretch first.",
+        },
+        {
+          id: "brec-stages",
+          title: "What are the stages of breast reconstruction?",
+          summary: "Often more than one operation — ask for your sequence.",
+        },
+        {
           id: "brec-radiation",
-          title: "How does radiation change the decision?",
+          title: "Does radiation change reconstruction?",
           summary: "Often reshapes timing and durability considerations.",
+        },
+        {
+          id: "brec-implants-radiation",
+          title: "Does radiation damage breast implants?",
+          summary: "It can affect tissue and implant outcomes — ask early.",
+        },
+        {
+          id: "brec-after-radiation",
+          title: "How long after radiation can I have reconstruction?",
+          summary: "Often delayed until healing — ask for your window.",
         },
         {
           id: "brec-genetics-bilateral",

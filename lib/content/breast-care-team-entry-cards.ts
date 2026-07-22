@@ -16,6 +16,16 @@ export const BREAST_CARE_TEAM_ENTRY_CARDS = {
     close:
       "Some people stay local. Others combine specialist planning with treatment closer to home.",
   },
+  chooseHospital: {
+    lead: "“Best hospital” lists are a weak starting point. Choose a breast cancer center by matching capabilities to your decisions — multidisciplinary review, pathology quality, surgery/reconstruction experience, radiation and systemic coordination, genetics access, and clear communication.",
+    ask: [
+      "Does this center regularly handle decisions like mine?",
+      "Will my case get multidisciplinary review when the plan is complex?",
+      "Can I combine specialist planning here with treatment closer to home?",
+    ],
+    close:
+      "Rankings do not tell you whether a team fits your fork. Capabilities and coordination do.",
+  },
   vsSecondOpinion: {
     lead: "A second opinion is another expert review of a specific decision — surgery, sequencing, or systemic options. Choosing a care team is about where and how care is organized over time.",
     close:
@@ -33,6 +43,16 @@ export const BREAST_CARE_TEAM_ENTRY_CARDS = {
     ],
     close:
       "Ask who leads your case — and when other specialists join the conversation.",
+  },
+  pickSurgeon: {
+    lead: "Pick a breast cancer surgeon for the decision in front of you — lumpectomy vs mastectomy, oncoplastic options, axillary surgery, and how they coordinate with genetics, radiation, and reconstruction.",
+    ask: [
+      "How often do you treat situations like mine?",
+      "Do you work with plastic surgery, genetics, and radiation in a coordinated plan?",
+      "Would you support a second opinion before irreversible surgery if I want one?",
+    ],
+    close:
+      "Experience with your fork and clear communication usually matter more than the most famous name alone.",
   },
   multidisciplinary: {
     lead: "Multidisciplinary care means key specialists review your situation together (or in a coordinated sequence) so surgery, medicines, radiation, and reconstruction do not conflict.",

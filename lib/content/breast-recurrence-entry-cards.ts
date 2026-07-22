@@ -22,9 +22,9 @@ export const BREAST_RECURRENCE_ENTRY_CARDS = {
       "Ask where recurrence was found — the location often changes which option families belong first.",
   },
   vsMetastatic: {
-    lead: "If cancer has returned in distant sites, the conversation may overlap with metastatic / Stage IV planning. If it is local or regional, surgery, radiation, and systemic options may be weighed differently.",
+    lead: "Local recurrence usually means cancer has returned in the breast, chest wall, or nearby surgical area. Metastatic (distant) disease means cancer is found farther away — bone, liver, lung, brain, or other sites — and often overlaps with Stage IV planning. Regional return in nearby nodes sits between those frames.",
     close:
-      "Use the location and goals to pick the right decision frame — not the word “recurrence” alone.",
+      "Ask where it returned. Location usually changes which option families come first — not the word “recurrence” alone.",
   },
   retest: {
     lead: "Cancer biology can change over time. Doctors may consider whether subtype / receptor and HER2 status should be re-checked, especially when it could change medicine options.",
@@ -43,6 +43,16 @@ export const BREAST_RECURRENCE_ENTRY_CARDS = {
       "Which option families remain open",
     ],
     close: "History informs the next plan — it does not automatically repeat the last one.",
+  },
+  afterMastectomy: {
+    lead: "If breast cancer returns after mastectomy, the next plan still depends on where it returned — chest wall/local area, regional nodes, or distant sites — plus prior treatments and current subtype. It is not automatically “the same package again,” and it is not automatically Stage IV.",
+    ask: [
+      "Where has cancer returned — and how does that change options?",
+      "Should subtype be retested before locking the next plan?",
+      "Would surgery, radiation, systemic therapy, or a trial come first?",
+    ],
+    close:
+      "Ask for location + history + goals. “After mastectomy” alone does not pick the path.",
   },
   stillTreatable: {
     lead: "Yes — many people receive active treatment after recurrence. Goals may include:",

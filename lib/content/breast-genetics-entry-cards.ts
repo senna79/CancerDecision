@@ -23,6 +23,26 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
     close:
       "Ask: “Do I meet criteria for genetic counseling before surgery — and why or why not?”",
   },
+  tnbcGenetics: {
+    lead: "Triple-negative breast cancer often raises genetic counseling — many teams discuss germline testing because hereditary findings can change surgery planning and family risk conversations. It is common to ask, not automatic that every TNBC person has a BRCA mutation.",
+    ask: [
+      "Do I meet criteria for genetic counseling because of TNBC?",
+      "Would a result change lumpectomy vs mastectomy for me?",
+      "Should counseling happen before I lock surgery?",
+    ],
+    close:
+      "Ask whether TNBC alone tips counseling for you — and what a result would change.",
+  },
+  brcaShows: {
+    lead: "A BRCA test (often as part of a broader panel) looks for inherited gene changes that can raise lifetime cancer risk and, when positive, may change surgery and family counseling. It does not report tumor ER/PR/HER2 subtype.",
+    ask: [
+      "What would a positive BRCA (or related gene) result change for my surgery?",
+      "What does a negative result mean — and what does it not mean?",
+      "Are we testing BRCA only, or a multi-gene panel?",
+    ],
+    close:
+      "Ask what the test can and cannot answer before treating it like a tumor-biology report.",
+  },
   vsSubtype: {
     lead: "Tumor subtype describes the cancer’s biology. Germline genetics describes inherited risk that can affect surgery and family implications.",
     close:
@@ -37,6 +57,16 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
     ],
     close:
       "Ask what a positive result would change for your operation — in plain language — before assuming one path.",
+  },
+  onlyBrca: {
+    lead: "BRCA1 and BRCA2 are the genes people hear about most — but they are not the only ones that can matter. Many counseling conversations use a multi-gene panel that may include other high- or moderate-risk genes.",
+    ask: [
+      "Are we testing only BRCA, or a broader panel — and why for my situation?",
+      "Which results would change surgery vs only change screening or family counseling?",
+      "If a non-BRCA gene is found, how would that affect my operation?",
+    ],
+    close:
+      "You do not need to memorize gene names. Ask which genes are on the panel and which results would change the surgery decision.",
   },
   negativeOrVus: {
     lead: "A negative result does not mean “zero risk,” and a VUS (variant of uncertain significance) is not the same as a positive result.",
@@ -63,10 +93,25 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
     close:
       "Ask whether the other breast is recommended, optional, or something that can wait.",
   },
-  family: {
-    lead: "Genetic counseling often includes what results could mean for relatives — and how (or whether) family members might pursue their own counseling.",
+  withoutBrca: {
+    lead: "Yes. Most people diagnosed with breast cancer do not have a known BRCA1 or BRCA2 mutation. Breast cancer can occur without those genes — and a negative BRCA result does not mean cancer was “impossible” or that family history never matters.",
+    ask: [
+      "If BRCA testing is negative, what does that mean for my surgery and family counseling?",
+      "Should we use a broader gene panel for my situation?",
+      "Does my family history still change screening recommendations for relatives?",
+    ],
     close:
-      "You do not have to become the family educator overnight. Ask what the counseling team recommends sharing, and when.",
+      "BRCA is important when positive — it is not the only explanation for breast cancer.",
+  },
+  family: {
+    lead: "A parent (or other close relative) with breast cancer can raise questions about inherited risk — but it does not by itself mean you will get the same cancer, or that you must have a BRCA mutation.",
+    ask: [
+      "Does my family history meet criteria for genetic counseling?",
+      "What would a positive or negative result change for me and for relatives?",
+      "What screening is recommended for family members either way?",
+    ],
+    close:
+      "Ask for a counseling referral when history is concerning — do not self-calculate lifetime risk from one relative’s story.",
   },
   timeline: {
     lead: "Counseling and testing can take days to weeks depending on access, prior records, and lab turnaround.",

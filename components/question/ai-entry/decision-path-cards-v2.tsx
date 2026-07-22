@@ -1563,6 +1563,7 @@ function DecisionPathCardDetailInner({
       return (
         <BulletCard
           lead={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.moreTests.lead}
+          ask={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.moreTests.ask}
           close={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.moreTests.close}
         />
       );
@@ -1572,6 +1573,22 @@ function DecisionPathCardDetailInner({
           lead={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.notImmediate.lead}
           items={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.notImmediate.factors}
           close={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.notImmediate.close}
+        />
+      );
+    case "bnd-diagnosis-to-surgery":
+      return (
+        <BulletCard
+          lead={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.diagnosisToSurgery.lead}
+          ask={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.diagnosisToSurgery.ask}
+          close={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.diagnosisToSurgery.close}
+        />
+      );
+    case "bnd-stage-timeline":
+      return (
+        <BulletCard
+          lead={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.stageTimeline.lead}
+          ask={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.stageTimeline.ask}
+          close={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.stageTimeline.close}
         />
       );
     case "bnd-subtype":
@@ -1708,6 +1725,14 @@ function DecisionPathCardDetailInner({
           lead={BREAST_SUBTYPE_ENTRY_CARDS.lookFor.lead}
           items={BREAST_SUBTYPE_ENTRY_CARDS.lookFor.items}
           close={BREAST_SUBTYPE_ENTRY_CARDS.lookFor.close}
+        />
+      );
+    case "bst-pr":
+      return (
+        <BulletCard
+          lead={BREAST_SUBTYPE_ENTRY_CARDS.prPositive.lead}
+          ask={BREAST_SUBTYPE_ENTRY_CARDS.prPositive.ask}
+          close={BREAST_SUBTYPE_ENTRY_CARDS.prPositive.close}
         />
       );
     case "bst-everyone":
@@ -1860,12 +1885,44 @@ function DecisionPathCardDetailInner({
           close={BREAST_SEQUENCING_ENTRY_CARDS.beforeSurgery.close}
         />
       );
+    case "bseq-normal-before":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.normalBefore.lead}
+          items={BREAST_SEQUENCING_ENTRY_CARDS.normalBefore.items}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.normalBefore.close}
+        />
+      );
     case "bseq-after":
       return (
         <BulletCard
           lead={BREAST_SEQUENCING_ENTRY_CARDS.afterSurgery.lead}
           items={BREAST_SEQUENCING_ENTRY_CARDS.afterSurgery.items}
           close={BREAST_SEQUENCING_ENTRY_CARDS.afterSurgery.close}
+        />
+      );
+    case "bseq-nodes-clear":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.nodesClear.lead}
+          ask={BREAST_SEQUENCING_ENTRY_CARDS.nodesClear.ask}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.nodesClear.close}
+        />
+      );
+    case "bseq-gap-after-surgery":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.gapAfterSurgery.lead}
+          ask={BREAST_SEQUENCING_ENTRY_CARDS.gapAfterSurgery.ask}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.gapAfterSurgery.close}
+        />
+      );
+    case "bseq-chemo-or-radiation":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.chemoOrRadiation.lead}
+          ask={BREAST_SEQUENCING_ENTRY_CARDS.chemoOrRadiation.ask}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.chemoOrRadiation.close}
         />
       );
     case "bseq-what-changes":
@@ -1983,6 +2040,14 @@ function DecisionPathCardDetailInner({
           </p>
         </div>
       );
+    case "bsur-pros-cons":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.prosCons.lead}
+          items={BREAST_SURGERY_ENTRY_CARDS.prosCons.items}
+          close={BREAST_SURGERY_ENTRY_CARDS.prosCons.close}
+        />
+      );
     case "bsur-lumpectomy":
       return (
         <BulletCard
@@ -2013,6 +2078,24 @@ function DecisionPathCardDetailInner({
               className="font-semibold text-[var(--accent)] hover:underline"
             >
               Genetic counseling before surgery guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "bsur-subtype":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={BREAST_SURGERY_ENTRY_CARDS.subtype.lead}
+            ask={BREAST_SURGERY_ENTRY_CARDS.subtype.ask}
+            close={BREAST_SURGERY_ENTRY_CARDS.subtype.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${BREAST_SUBTYPE_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Subtype testing guide →
             </Link>
           </p>
         </div>
@@ -2055,6 +2138,23 @@ function DecisionPathCardDetailInner({
         <BulletCard
           lead={BREAST_SURGERY_ENTRY_CARDS.recovery.lead}
           ask={BREAST_SURGERY_ENTRY_CARDS.recovery.ask}
+          close={BREAST_SURGERY_ENTRY_CARDS.recovery.close}
+        />
+      );
+    case "bsur-double-recovery":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.doubleRecovery.lead}
+          ask={BREAST_SURGERY_ENTRY_CARDS.doubleRecovery.ask}
+          close={BREAST_SURGERY_ENTRY_CARDS.doubleRecovery.close}
+        />
+      );
+    case "bsur-lymphedema":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.lymphedema.lead}
+          ask={BREAST_SURGERY_ENTRY_CARDS.lymphedema.ask}
+          close={BREAST_SURGERY_ENTRY_CARDS.lymphedema.close}
         />
       );
     case "bsur-radiation":
@@ -2177,6 +2277,14 @@ function DecisionPathCardDetailInner({
           ask={BREAST_SECOND_OPINION_ENTRY_CARDS.pathology.ask}
         />
       );
+    case "bso-how-to-get":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.howToGet.lead}
+          items={BREAST_SECOND_OPINION_ENTRY_CARDS.howToGet.steps}
+          close={BREAST_SECOND_OPINION_ENTRY_CARDS.howToGet.close}
+        />
+      );
     case "bso-records":
       return (
         <BulletCard
@@ -2287,6 +2395,78 @@ function DecisionPathCardDetailInner({
           close={BREAST_SYSTEMIC_ENTRY_CARDS.tnbc.close}
         />
       );
+    case "bsys-when-chemo":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.whenChemo.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.whenChemo.ask}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.whenChemo.close}
+        />
+      );
+    case "bsys-stage1-chemo":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.stage1Chemo.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.stage1Chemo.ask}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.stage1Chemo.close}
+        />
+      );
+    case "bsys-cdk46":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.cdk46.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.cdk46.ask}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.cdk46.close}
+        />
+      );
+    case "bsys-tnbc-immuno":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.tnbcImmuno.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.tnbcImmuno.ask}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.tnbcImmuno.close}
+        />
+      );
+    case "bsys-er-good-or-bad":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.erGoodOrBad.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.erGoodOrBad.ask}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.erGoodOrBad.close}
+        />
+      );
+    case "bsys-ovarian":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.ovarian.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.ovarian.ask}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.ovarian.close}
+        />
+      );
+    case "bsys-skip-endocrine":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.skipEndocrine.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.skipEndocrine.ask}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.skipEndocrine.close}
+        />
+      );
+    case "bsys-endocrine-duration":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.endocrineDuration.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.endocrineDuration.ask}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.endocrineDuration.close}
+        />
+      );
+    case "bsys-tnbc-stage1":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.tnbcStage1.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.tnbcStage1.ask}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.tnbcStage1.close}
+        />
+      );
     case "bsys-goals":
       return (
         <BulletCard
@@ -2308,6 +2488,14 @@ function DecisionPathCardDetailInner({
         <BulletCard
           lead={BREAST_SYSTEMIC_ENTRY_CARDS.sideEffects.lead}
           ask={BREAST_SYSTEMIC_ENTRY_CARDS.sideEffects.ask}
+        />
+      );
+    case "bsys-chemo-rounds":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.chemoRounds.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.chemoRounds.ask}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.chemoRounds.close}
         />
       );
     case "bsys-timeline":
@@ -2368,6 +2556,14 @@ function DecisionPathCardDetailInner({
           close={BREAST_GENETICS_ENTRY_CARDS.whoMayNeed.close}
         />
       );
+    case "bgen-tnbc":
+      return (
+        <BulletCard
+          lead={BREAST_GENETICS_ENTRY_CARDS.tnbcGenetics.lead}
+          ask={BREAST_GENETICS_ENTRY_CARDS.tnbcGenetics.ask}
+          close={BREAST_GENETICS_ENTRY_CARDS.tnbcGenetics.close}
+        />
+      );
     case "bgen-vs-subtype":
       return (
         <BulletCard
@@ -2381,6 +2577,22 @@ function DecisionPathCardDetailInner({
           lead={BREAST_GENETICS_ENTRY_CARDS.positiveChange.lead}
           items={BREAST_GENETICS_ENTRY_CARDS.positiveChange.items}
           close={BREAST_GENETICS_ENTRY_CARDS.positiveChange.close}
+        />
+      );
+    case "bgen-only-brca":
+      return (
+        <BulletCard
+          lead={BREAST_GENETICS_ENTRY_CARDS.onlyBrca.lead}
+          ask={BREAST_GENETICS_ENTRY_CARDS.onlyBrca.ask}
+          close={BREAST_GENETICS_ENTRY_CARDS.onlyBrca.close}
+        />
+      );
+    case "bgen-brca-shows":
+      return (
+        <BulletCard
+          lead={BREAST_GENETICS_ENTRY_CARDS.brcaShows.lead}
+          ask={BREAST_GENETICS_ENTRY_CARDS.brcaShows.ask}
+          close={BREAST_GENETICS_ENTRY_CARDS.brcaShows.close}
         />
       );
     case "bgen-negative-or-vus":
@@ -2406,10 +2618,19 @@ function DecisionPathCardDetailInner({
           close={BREAST_GENETICS_ENTRY_CARDS.otherBreast.close}
         />
       );
+    case "bgen-without-brca":
+      return (
+        <BulletCard
+          lead={BREAST_GENETICS_ENTRY_CARDS.withoutBrca.lead}
+          ask={BREAST_GENETICS_ENTRY_CARDS.withoutBrca.ask}
+          close={BREAST_GENETICS_ENTRY_CARDS.withoutBrca.close}
+        />
+      );
     case "bgen-family":
       return (
         <BulletCard
           lead={BREAST_GENETICS_ENTRY_CARDS.family.lead}
+          ask={BREAST_GENETICS_ENTRY_CARDS.family.ask}
           close={BREAST_GENETICS_ENTRY_CARDS.family.close}
         />
       );
@@ -2487,6 +2708,14 @@ function DecisionPathCardDetailInner({
           close={BREAST_RECONSTRUCTION_ENTRY_CARDS.notRequired.close}
         />
       );
+    case "brec-immediate-vs-delayed":
+      return (
+        <BulletCard
+          lead={BREAST_RECONSTRUCTION_ENTRY_CARDS.immediateVsDelayed.lead}
+          items={BREAST_RECONSTRUCTION_ENTRY_CARDS.immediateVsDelayed.items}
+          close={BREAST_RECONSTRUCTION_ENTRY_CARDS.immediateVsDelayed.close}
+        />
+      );
     case "brec-immediate":
       return (
         <BulletCard
@@ -2511,6 +2740,22 @@ function DecisionPathCardDetailInner({
           close={BREAST_RECONSTRUCTION_ENTRY_CARDS.methods.close}
         />
       );
+    case "brec-expanders":
+      return (
+        <BulletCard
+          lead={BREAST_RECONSTRUCTION_ENTRY_CARDS.expanders.lead}
+          ask={BREAST_RECONSTRUCTION_ENTRY_CARDS.expanders.ask}
+          close={BREAST_RECONSTRUCTION_ENTRY_CARDS.expanders.close}
+        />
+      );
+    case "brec-stages":
+      return (
+        <BulletCard
+          lead={BREAST_RECONSTRUCTION_ENTRY_CARDS.stages.lead}
+          ask={BREAST_RECONSTRUCTION_ENTRY_CARDS.stages.ask}
+          close={BREAST_RECONSTRUCTION_ENTRY_CARDS.stages.close}
+        />
+      );
     case "brec-radiation":
       return (
         <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
@@ -2528,6 +2773,22 @@ function DecisionPathCardDetailInner({
             </Link>
           </p>
         </div>
+      );
+    case "brec-implants-radiation":
+      return (
+        <BulletCard
+          lead={BREAST_RECONSTRUCTION_ENTRY_CARDS.implantsRadiation.lead}
+          ask={BREAST_RECONSTRUCTION_ENTRY_CARDS.implantsRadiation.ask}
+          close={BREAST_RECONSTRUCTION_ENTRY_CARDS.implantsRadiation.close}
+        />
+      );
+    case "brec-after-radiation":
+      return (
+        <BulletCard
+          lead={BREAST_RECONSTRUCTION_ENTRY_CARDS.afterRadiation.lead}
+          ask={BREAST_RECONSTRUCTION_ENTRY_CARDS.afterRadiation.ask}
+          close={BREAST_RECONSTRUCTION_ENTRY_CARDS.afterRadiation.close}
+        />
       );
     case "brec-genetics-bilateral":
       return (
@@ -2620,6 +2881,14 @@ function DecisionPathCardDetailInner({
           close={BREAST_RADIATION_ENTRY_CARDS.afterLumpectomy.close}
         />
       );
+    case "brad-skip-after-lumpectomy":
+      return (
+        <BulletCard
+          lead={BREAST_RADIATION_ENTRY_CARDS.skipAfterLumpectomy.lead}
+          ask={BREAST_RADIATION_ENTRY_CARDS.skipAfterLumpectomy.ask}
+          close={BREAST_RADIATION_ENTRY_CARDS.skipAfterLumpectomy.close}
+        />
+      );
     case "brad-after-mastectomy":
       return (
         <BulletCard
@@ -2661,11 +2930,52 @@ function DecisionPathCardDetailInner({
           close={BREAST_RADIATION_ENTRY_CARDS.schedule.close}
         />
       );
+    case "brad-shorter":
+      return (
+        <BulletCard
+          lead={BREAST_RADIATION_ENTRY_CARDS.shorter.lead}
+          ask={BREAST_RADIATION_ENTRY_CARDS.shorter.ask}
+          close={BREAST_RADIATION_ENTRY_CARDS.shorter.close}
+        />
+      );
+    case "brad-when-starts":
+      return (
+        <BulletCard
+          lead={BREAST_RADIATION_ENTRY_CARDS.whenStarts.lead}
+          ask={BREAST_RADIATION_ENTRY_CARDS.whenStarts.ask}
+          close={BREAST_RADIATION_ENTRY_CARDS.whenStarts.close}
+        />
+      );
+    case "brad-wait":
+      return (
+        <BulletCard
+          lead={BREAST_RADIATION_ENTRY_CARDS.wait.lead}
+          ask={BREAST_RADIATION_ENTRY_CARDS.wait.ask}
+          close={BREAST_RADIATION_ENTRY_CARDS.wait.close}
+        />
+      );
+    case "brad-refuse":
+      return (
+        <BulletCard
+          lead={BREAST_RADIATION_ENTRY_CARDS.refuse.lead}
+          ask={BREAST_RADIATION_ENTRY_CARDS.refuse.ask}
+          close={BREAST_RADIATION_ENTRY_CARDS.refuse.close}
+        />
+      );
     case "brad-side-effects":
       return (
         <BulletCard
           lead={BREAST_RADIATION_ENTRY_CARDS.sideEffects.lead}
           ask={BREAST_RADIATION_ENTRY_CARDS.sideEffects.ask}
+          close={BREAST_RADIATION_ENTRY_CARDS.sideEffects.close}
+        />
+      );
+    case "brad-during":
+      return (
+        <BulletCard
+          lead={BREAST_RADIATION_ENTRY_CARDS.during.lead}
+          ask={BREAST_RADIATION_ENTRY_CARDS.during.ask}
+          close={BREAST_RADIATION_ENTRY_CARDS.during.close}
         />
       );
     case "brad-practical":
@@ -2720,6 +3030,14 @@ function DecisionPathCardDetailInner({
           close={BREAST_CARE_TEAM_ENTRY_CARDS.everyone.close}
         />
       );
+    case "bcare-choose-hospital":
+      return (
+        <BulletCard
+          lead={BREAST_CARE_TEAM_ENTRY_CARDS.chooseHospital.lead}
+          ask={BREAST_CARE_TEAM_ENTRY_CARDS.chooseHospital.ask}
+          close={BREAST_CARE_TEAM_ENTRY_CARDS.chooseHospital.close}
+        />
+      );
     case "bcare-vs-second-opinion":
       return (
         <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
@@ -2743,6 +3061,14 @@ function DecisionPathCardDetailInner({
           lead={BREAST_CARE_TEAM_ENTRY_CARDS.whoTreats.lead}
           items={BREAST_CARE_TEAM_ENTRY_CARDS.whoTreats.items}
           close={BREAST_CARE_TEAM_ENTRY_CARDS.whoTreats.close}
+        />
+      );
+    case "bcare-pick-surgeon":
+      return (
+        <BulletCard
+          lead={BREAST_CARE_TEAM_ENTRY_CARDS.pickSurgeon.lead}
+          ask={BREAST_CARE_TEAM_ENTRY_CARDS.pickSurgeon.ask}
+          close={BREAST_CARE_TEAM_ENTRY_CARDS.pickSurgeon.close}
         />
       );
     case "bcare-when-helps":
@@ -2891,12 +3217,44 @@ function DecisionPathCardDetailInner({
           close={BREAST_METASTATIC_ENTRY_CARDS.localTherapy.close}
         />
       );
+    case "bmet-options":
+      return (
+        <BulletCard
+          lead={BREAST_METASTATIC_ENTRY_CARDS.options.lead}
+          ask={BREAST_METASTATIC_ENTRY_CARDS.options.ask}
+          close={BREAST_METASTATIC_ENTRY_CARDS.options.close}
+        />
+      );
+    case "bmet-bone":
+      return (
+        <BulletCard
+          lead={BREAST_METASTATIC_ENTRY_CARDS.bone.lead}
+          ask={BREAST_METASTATIC_ENTRY_CARDS.bone.ask}
+          close={BREAST_METASTATIC_ENTRY_CARDS.bone.close}
+        />
+      );
+    case "bmet-living":
+      return (
+        <BulletCard
+          lead={BREAST_METASTATIC_ENTRY_CARDS.living.lead}
+          ask={BREAST_METASTATIC_ENTRY_CARDS.living.ask}
+          close={BREAST_METASTATIC_ENTRY_CARDS.living.close}
+        />
+      );
     case "bmet-info-needed":
       return (
         <BulletCard
           lead={BREAST_METASTATIC_ENTRY_CARDS.infoNeeded.lead}
           items={BREAST_METASTATIC_ENTRY_CARDS.infoNeeded.items}
           close={BREAST_METASTATIC_ENTRY_CARDS.infoNeeded.close}
+        />
+      );
+    case "bmet-what-to-ask":
+      return (
+        <BulletCard
+          lead={BREAST_METASTATIC_ENTRY_CARDS.whatToAsk.lead}
+          ask={BREAST_METASTATIC_ENTRY_CARDS.whatToAsk.ask}
+          close={BREAST_METASTATIC_ENTRY_CARDS.whatToAsk.close}
         />
       );
     case "bmet-second-opinion":
@@ -3006,6 +3364,14 @@ function DecisionPathCardDetailInner({
           lead={BREAST_RECURRENCE_ENTRY_CARDS.stillTreatable.lead}
           items={BREAST_RECURRENCE_ENTRY_CARDS.stillTreatable.items}
           close={BREAST_RECURRENCE_ENTRY_CARDS.stillTreatable.close}
+        />
+      );
+    case "brr-after-mastectomy":
+      return (
+        <BulletCard
+          lead={BREAST_RECURRENCE_ENTRY_CARDS.afterMastectomy.lead}
+          ask={BREAST_RECURRENCE_ENTRY_CARDS.afterMastectomy.ask}
+          close={BREAST_RECURRENCE_ENTRY_CARDS.afterMastectomy.close}
         />
       );
     case "brr-same-plan":
@@ -3152,6 +3518,22 @@ function DecisionPathCardDetailInner({
           lead={BREAST_QOL_ENTRY_CARDS.work.lead}
           ask={BREAST_QOL_ENTRY_CARDS.work.ask}
           close={BREAST_QOL_ENTRY_CARDS.work.close}
+        />
+      );
+    case "bqol-time-off":
+      return (
+        <BulletCard
+          lead={BREAST_QOL_ENTRY_CARDS.timeOff.lead}
+          ask={BREAST_QOL_ENTRY_CARDS.timeOff.ask}
+          close={BREAST_QOL_ENTRY_CARDS.timeOff.close}
+        />
+      );
+    case "bqol-return-work":
+      return (
+        <BulletCard
+          lead={BREAST_QOL_ENTRY_CARDS.returnWork.lead}
+          ask={BREAST_QOL_ENTRY_CARDS.returnWork.ask}
+          close={BREAST_QOL_ENTRY_CARDS.returnWork.close}
         />
       );
     case "bqol-this-week":
@@ -3326,6 +3708,30 @@ function DecisionPathCardDetailInner({
           lead={BREAST_FOLLOW_UP_ENTRY_CARDS.schedule.lead}
           ask={BREAST_FOLLOW_UP_ENTRY_CARDS.schedule.ask}
           close={BREAST_FOLLOW_UP_ENTRY_CARDS.schedule.close}
+        />
+      );
+    case "bfu-guidelines":
+      return (
+        <BulletCard
+          lead={BREAST_FOLLOW_UP_ENTRY_CARDS.guidelines.lead}
+          ask={BREAST_FOLLOW_UP_ENTRY_CARDS.guidelines.ask}
+          close={BREAST_FOLLOW_UP_ENTRY_CARDS.guidelines.close}
+        />
+      );
+    case "bfu-cancer-free":
+      return (
+        <BulletCard
+          lead={BREAST_FOLLOW_UP_ENTRY_CARDS.cancerFree.lead}
+          ask={BREAST_FOLLOW_UP_ENTRY_CARDS.cancerFree.ask}
+          close={BREAST_FOLLOW_UP_ENTRY_CARDS.cancerFree.close}
+        />
+      );
+    case "bfu-mammo-type":
+      return (
+        <BulletCard
+          lead={BREAST_FOLLOW_UP_ENTRY_CARDS.mammoType.lead}
+          ask={BREAST_FOLLOW_UP_ENTRY_CARDS.mammoType.ask}
+          close={BREAST_FOLLOW_UP_ENTRY_CARDS.mammoType.close}
         />
       );
     case "bfu-more-scans":
@@ -3530,6 +3936,14 @@ function DecisionPathCardDetailInner({
           lead={BREAST_PRACTICAL_FIT_ENTRY_CARDS.costAsk.lead}
           ask={BREAST_PRACTICAL_FIT_ENTRY_CARDS.costAsk.ask}
           close={BREAST_PRACTICAL_FIT_ENTRY_CARDS.costAsk.close}
+        />
+      );
+    case "bfe-insurance":
+      return (
+        <BulletCard
+          lead={BREAST_PRACTICAL_FIT_ENTRY_CARDS.insurance.lead}
+          ask={BREAST_PRACTICAL_FIT_ENTRY_CARDS.insurance.ask}
+          close={BREAST_PRACTICAL_FIT_ENTRY_CARDS.insurance.close}
         />
       );
     case "siv-active-treatment":

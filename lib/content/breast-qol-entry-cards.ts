@@ -77,14 +77,34 @@ export const BREAST_QOL_ENTRY_CARDS = {
       "Raising these topics early helps avoid locking a path that fights your priorities.",
   },
   work: {
-    lead: "Many people continue some work during breast cancer treatment — others need time off for surgery recovery, chemotherapy cycles, or daily radiation. It depends on the plan and job demands.",
+    lead: "Many people continue some work during chemotherapy — others need partial or full time off around infusion weeks, low blood counts, or side effects. It depends on the regimen, your job’s physical/cognitive demands, and support at work.",
     ask: [
-      "What does a typical treatment week look like for my plan?",
+      "What does a typical chemo week look like for my plan?",
       "Which side effects most often affect work or caregiving?",
-      "Are schedule adjustments possible if daily life becomes hard?",
+      "Are schedule adjustments or dose timing options possible if work becomes hard?",
     ],
     close:
       "Tell your team what your week requires — planning is part of the decision.",
+  },
+  timeOff: {
+    lead: "There is no universal “average time off” that fits everyone. Surgery recovery, chemotherapy cycles, daily radiation courses, and reconstruction each add different windows — and many people mix work with treatment rather than taking one continuous leave.",
+    ask: [
+      "For my planned surgery, chemo, and/or radiation, what time-off windows are typical?",
+      "Which phases usually need full leave vs reduced hours?",
+      "What paperwork or timing should I start with work or caregivers now?",
+    ],
+    close:
+      "Ask for a calendar by treatment phase. Online averages hide the fork that matters for you.",
+  },
+  returnWork: {
+    lead: "Returning to work after breast cancer treatment is often gradual. Energy, follow-up visits, ongoing endocrine therapy side effects, and emotional recovery can continue after “active treatment” ends.",
+    ask: [
+      "What phased return makes sense for my treatment and job demands?",
+      "Which late effects should we plan around at work?",
+      "Who can help with work letters, restrictions, or schedule adjustments?",
+    ],
+    close:
+      "A return-to-work plan is part of survivorship — not proof that everything is finished overnight.",
   },
   thisWeek: {
     lead: "If quality of life is part of the decision, focus on:",

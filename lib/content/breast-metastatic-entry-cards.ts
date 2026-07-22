@@ -7,7 +7,7 @@ export const BREAST_METASTATIC_ENTRY_CARDS = {
       "Stage IV is serious — and it is not the same as “nothing can be done.” Many people receive active treatment aimed at control, symptoms, and quality of life.",
   },
   activeCare: {
-    lead: "Many people with metastatic breast cancer receive active treatment. Depending on the situation, care may focus on:",
+    lead: "No. Stage IV does not mean “nothing can be done.” Many people with metastatic breast cancer receive active treatment. Depending on the situation, care may focus on:",
     items: [
       "Slowing or shrinking cancer where possible",
       "Reducing symptoms so daily life is more manageable",
@@ -16,6 +16,26 @@ export const BREAST_METASTATIC_ENTRY_CARDS = {
     ],
     close:
       "Ask what goals are realistic for your situation — in plain language.",
+  },
+  bone: {
+    lead: "When metastatic breast cancer involves bone, systemic therapy (by subtype) usually remains the backbone. Local treatments such as radiation, surgery, or bone-strengthening medicines may be added for pain, fracture risk, or specific sites — not as a stand-alone “cure the bone” package.",
+    ask: [
+      "How does bone involvement change my systemic plan?",
+      "Would radiation or other local treatment help pain or stability?",
+      "Do I need bone-strengthening medicine, and what monitoring does it need?",
+    ],
+    close:
+      "Ask about both cancer control and bone safety — bone mets are common and actively managed.",
+  },
+  living: {
+    lead: "Living with metastatic breast cancer usually means ongoing decisions — which treatment comes next, how to manage symptoms, and how to protect what matters in daily life. It is a different rhythm from early-stage “finish treatment and watch,” not an absence of options.",
+    ask: [
+      "What does a typical month of care look like on this plan?",
+      "How will we balance cancer control with energy, work, and family roles?",
+      "What support is available for symptoms, emotions, and practical needs?",
+    ],
+    close:
+      "Ask for a living plan — goals, monitoring, and who to call — not only the next drug name.",
   },
   notGivingUp: {
     lead: "Different goals do not mean doctors are giving up. They mean the plan is designed around control, symptoms, and living with cancer — not only around a single curative path.",
@@ -67,6 +87,28 @@ export const BREAST_METASTATIC_ENTRY_CARDS = {
     ],
     close:
       "Ask what can wait for more information — and what should start now for comfort or safety.",
+  },
+  options: {
+    lead: "Metastatic treatment options are usually discussed as families that fit your subtype, prior therapy, and goals — not one fixed “Stage IV list.” Common families include endocrine therapy (for HR+), HER2-targeted therapy (for HER2+), chemotherapy, immunotherapy in selected TNBC settings, other targeted agents, local therapy for specific sites, supportive care, and clinical trials.",
+    ask: [
+      "For my subtype and prior treatment, which option families come first?",
+      "What is the goal of the next line — control, symptoms, or both?",
+      "How will we know if the plan is working, and what comes after?",
+    ],
+    close:
+      "Ask for the first-line recommendation and the backup path — not every possible drug name at once.",
+  },
+  whatToAsk: {
+    lead: "A focused Stage IV conversation usually covers goals, options, trade-offs, and what starts now:",
+    ask: [
+      "What is the goal of treatment right now — in plain language?",
+      "Which option do you recommend first, and why for my subtype?",
+      "What side effects and visit burden should I expect?",
+      "What symptoms should make me call urgently?",
+      "Should we discuss a second opinion or a clinical trial?",
+    ],
+    close:
+      "Leave with a goal statement, a near-term plan, and a contact rule — that is a useful visit.",
   },
   secondOpinion: {
     lead: "A second opinion may help when options feel complex, recommendations conflict, or you want more confidence before locking a first metastatic plan.",

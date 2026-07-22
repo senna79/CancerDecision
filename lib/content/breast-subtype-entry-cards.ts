@@ -17,6 +17,16 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
     close:
       "You do not need a textbook of every assay name. You need to know which results are back, which are pending, and whether they change the next decision.",
   },
+  prPositive: {
+    lead: "PR-positive means the cancer cells have progesterone receptors. Doctors usually interpret PR together with ER and HER2 — not as a stand-alone label. Many PR+ cancers are also ER+ and fall into hormone receptor–positive planning.",
+    ask: [
+      "For my report, what do ER, PR, and HER2 each mean for the plan?",
+      "If PR and ER differ, how does that change options?",
+      "Does PR status change endocrine therapy recommendations for me?",
+    ],
+    close:
+      "Ask for the combined receptor picture. PR alone rarely picks a full treatment path.",
+  },
   everyone: {
     lead: "Almost everyone with invasive breast cancer needs receptor and HER2 information. Exactly which additional tests (and when) depends on stage, the decision in front of you, and what is already known.",
     ask: "For my situation, which subtype results matter before we choose a plan — and which can wait?",
@@ -47,10 +57,10 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
       "Not everyone needs this assay. Ask whether it would change your decision — not whether it exists in general.",
   },
   waiting: {
-    lead: "Not every wait is the same. Doctors balance the need for subtype information with how urgent treatment is.",
+    lead: "For most invasive breast cancers, ER/PR and HER2 results should be clear before locking systemic therapy or sequencing. Doctors still balance that need with how urgent treatment is — not every wait is the same.",
     ask: [
-      "How urgent is my situation?",
-      "Which results would change the options we discuss?",
+      "Do we have ER, PR, and HER2 results before choosing treatment?",
+      "Which of those results would change the options we discuss?",
       "What can safely wait — and what should not?",
     ],
     close:

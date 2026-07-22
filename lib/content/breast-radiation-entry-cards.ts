@@ -21,6 +21,16 @@ export const BREAST_RADIATION_ENTRY_CARDS = {
     close:
       "If you are not willing or able to complete radiation, ask whether conservation is still the right path.",
   },
+  skipAfterLumpectomy: {
+    lead: "Skipping radiation after lumpectomy is not a routine default. For many people who choose conservation, radiation is part of the cancer-control package. Whether anyone can safely omit or shorten radiation depends on age, tumor features, margins, and other factors — ask for your situation.",
+    ask: [
+      "If I skip radiation after lumpectomy, how does that change my risk?",
+      "Am I a candidate for a shorter course — or for omitting radiation?",
+      "If I cannot complete radiation, is conservation still the right surgery?",
+    ],
+    close:
+      "Do not assume skipping radiation is equivalent to mastectomy. Ask what is recommended for you before locking conservation.",
+  },
   afterMastectomy: {
     lead: "After mastectomy, radiation is situational — more often discussed with larger tumors, node involvement, or other risk features. Mastectomy does not automatically mean “no radiation.”",
     ask: [
@@ -37,22 +47,74 @@ export const BREAST_RADIATION_ENTRY_CARDS = {
       "Compare the full local plan — surgery plus expected radiation — not the operation name alone.",
   },
   schedule: {
-    lead: "Schedules vary. Many courses run over several weeks with daily treatments; some people are candidates for shorter courses. Exact recommendations depend on your situation and center.",
+    lead: "Length varies. Many courses run over several weeks with weekday treatments; some people are candidates for shorter courses (sometimes discussed as one to a few weeks). Exact recommendations depend on your situation and center.",
     ask: [
-      "What schedule is most likely for me — and are shorter options appropriate?",
-      "How many visits per week, and for how long?",
+      "How long would radiation last for me — and are shorter options appropriate?",
+      "How many visits per week, and for how many weeks?",
       "What happens if a session is missed?",
     ],
     close:
       "Ask for a realistic calendar before locking work, travel, or caregiving plans.",
   },
-  sideEffects: {
-    lead: "Common short-term effects can include skin changes, fatigue, and breast or chest-wall discomfort. Longer-term effects are less common but worth asking about for your body and prior treatments.",
+  shorter: {
+    lead: "Shorter radiation courses — including regimens sometimes discussed as about one week (for example 5-treatment schedules in selected people) — can be appropriate for some early breast cancers. Not everyone is a candidate; age, tumor features, surgery type, and center protocols matter.",
     ask: [
-      "What side effects are most common in my situation?",
-      "What should I watch for during and after treatment?",
-      "How might radiation affect the heart, lungs, or reconstructed tissue if relevant?",
+      "Am I a candidate for a shorter radiation course?",
+      "What would make a standard longer course recommended instead?",
+      "How do side effects and follow-up compare for the shorter option in my case?",
     ],
+    close:
+      "Ask about candidacy for your pathology — not whether “5-day radiation” exists somewhere online.",
+  },
+  whenStarts: {
+    lead: "Radiation usually starts after surgical healing — and is coordinated with any planned systemic therapy. There is often a window rather than a single fixed day.",
+    ask: [
+      "When would radiation typically start after my surgery?",
+      "Would chemo or other medicines come before, during, or after radiation?",
+      "How long can we safely wait if recovery or logistics are delayed?",
+    ],
+    close:
+      "Ask for a sequencing sketch — surgery → healing → medicines/radiation — instead of a single internet timeline.",
+  },
+  wait: {
+    lead: "There is usually a clinically acceptable window after surgery before radiation should start — not an unlimited delay. How long you can wait depends on healing, pathology, systemic therapy sequencing, and your risk features.",
+    ask: [
+      "What is the safe window from surgery to starting radiation for me?",
+      "What would make waiting longer unsafe?",
+      "If chemo comes first, when does the radiation clock start?",
+    ],
+    close:
+      "Ask for your personal window. “As soon as possible” and “whenever” are both too vague.",
+  },
+  during: {
+    lead: "During radiation, teams usually give skin-care and activity guidance. Common themes include protecting treated skin, managing fatigue, and knowing which products or habits to avoid — exact instructions vary by center and treatment area.",
+    ask: [
+      "What should I do — and avoid — for skin care during treatment?",
+      "Can I exercise, swim, or wear certain fabrics?",
+      "Which symptoms should make me call the radiation team?",
+    ],
+    close:
+      "Follow your center’s written instructions. Generic online “don’t lists” often conflict with real protocols.",
+  },
+  refuse: {
+    lead: "You can always discuss declining radiation. Whether that is reasonable depends on your surgery path, pathology, and risk. Declining after lumpectomy often changes the cancer-control package more than declining in a situation where radiation was already unlikely.",
+    ask: [
+      "If I decline radiation, how does my risk change?",
+      "Are there shorter courses or alternatives that still fit my goals?",
+      "If I cannot or will not do radiation, should we revisit lumpectomy vs mastectomy?",
+    ],
+    close:
+      "Saying no is a conversation with trade-offs — not a moral failure. Ask for your personal risk change in plain language.",
+  },
+  sideEffects: {
+    lead: "After lumpectomy, radiation side effects often include skin changes in the treated breast, temporary swelling or tenderness, and fatigue during the course. Longer-term effects are less common but worth asking about for your body and prior treatments.",
+    ask: [
+      "What side effects are most common after radiation following lumpectomy?",
+      "What should I watch for during and after treatment?",
+      "How might radiation affect the heart, lungs, or breast appearance over time?",
+    ],
+    close:
+      "Ask for your personal side-effect picture — photos online are a poor substitute for your plan.",
   },
   reconstruction: {
     lead: "Radiation can change reconstruction timing and method. If post-mastectomy radiation is likely, teams often adjust whether reconstruction is immediate, delayed, or staged differently.",

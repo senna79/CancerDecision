@@ -2,9 +2,19 @@
 
 export const BREAST_SEQUENCING_ENTRY_CARDS = {
   whatIs: {
-    lead: "Sequencing means deciding whether systemic therapy (medicines such as chemotherapy, HER2-targeted therapy, endocrine therapy, or immunotherapy in selected cases) should start before surgery or after surgery.",
+    lead: "Neoadjuvant chemotherapy (or neoadjuvant systemic therapy) means starting medicines — often chemotherapy, and sometimes other agents by subtype — before surgery. The other common path is adjuvant therapy after surgery. Sequencing is deciding which order fits your goals.",
     close:
-      "Doctors often call treatment before surgery “neoadjuvant,” and treatment after surgery “adjuvant.” The labels matter less than the goals of each sequence.",
+      "The labels matter less than what the sequence is trying to achieve: shrink, assess response, refine surgery, or treat after pathology is complete.",
+  },
+  chemoOrRadiation: {
+    lead: "After surgery, chemo and radiation are often both in the plan for some people — but they are usually sequenced, not chosen as “either/or.” Many plans complete systemic therapy first, then radiation; exact order depends on your pathology, reconstruction, and team practice.",
+    ask: [
+      "For my plan, does chemo come before radiation — or the reverse?",
+      "What would change that order?",
+      "How does reconstruction timing fit between them?",
+    ],
+    close:
+      "Ask for a written sequence sketch. Online “chemo vs radiation first” debates rarely match one pathology report.",
   },
   whyMatters: {
     lead: "Timing is not a minor calendar detail. The sequence can change:",
@@ -28,7 +38,7 @@ export const BREAST_SEQUENCING_ENTRY_CARDS = {
       "If subtype results are incomplete, ask whether sequencing should wait until the biology picture is clear.",
   },
   beforeSurgery: {
-    lead: "Starting systemic therapy before surgery (neoadjuvant) may be discussed when teams want to:",
+    lead: "“Chemo before surgery” usually means starting systemic therapy (often chemotherapy, and sometimes other medicines by subtype) before the operation. Teams may discuss this when they want to:",
     items: [
       "Shrink the cancer before an operation",
       "See how the cancer responds to medicines",
@@ -37,6 +47,36 @@ export const BREAST_SEQUENCING_ENTRY_CARDS = {
     ],
     close:
       "Ask what your team is trying to achieve with treatment before surgery — not only which drugs are named.",
+  },
+  normalBefore: {
+    lead: "Yes — for many people with certain subtypes, stages, or surgical goals, starting systemic therapy before surgery is a standard option, not an emergency-only path.",
+    items: [
+      "Especially common in some HER2+ and triple-negative plans, and selected higher-risk situations",
+      "“Normal” still means “fits your biology and goals” — not that everyone should do it",
+      "Surgery-first remains appropriate for many other people",
+    ],
+    close:
+      "Ask whether medicines-first is recommended for you — and what it is trying to achieve — rather than whether it sounds unusual.",
+  },
+  nodesClear: {
+    lead: "Clear lymph nodes are important information, but they do not automatically mean “no chemotherapy.” Doctors also weigh subtype, tumor size, genomic assays (when relevant), and overall recurrence risk.",
+    ask: [
+      "If my nodes are clear, what still drives a chemo recommendation — or against it?",
+      "Would a genomic assay change whether we discuss chemo?",
+      "Are we deciding adjuvant therapy after surgery, or neoadjuvant therapy before?",
+    ],
+    close:
+      "Ask what factors besides node status tip your plan — node status is one piece, not the whole decision.",
+  },
+  gapAfterSurgery: {
+    lead: "When chemotherapy is planned after surgery, it usually starts after enough healing — often measured in weeks, not the next day. Exact timing depends on wound healing, complications, pathology results, and the overall sequence.",
+    ask: [
+      "What is the usual window from surgery to starting chemo for me?",
+      "What would delay the start — and is that delay still safe?",
+      "Do we need final pathology before locking the chemo plan?",
+    ],
+    close:
+      "Ask for your personal window. Online “average days” rarely replace a healing- and pathology-based plan.",
   },
   afterSurgery: {
     lead: "Surgery first, then systemic therapy afterward (adjuvant), may be discussed when:",
