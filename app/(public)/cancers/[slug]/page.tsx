@@ -128,7 +128,7 @@ export default async function CancerDecisionCenterPage({
         {isLung
           ? "Lung cancer is our first complete cancer decision journey. Any stage — newly diagnosed, comparing options, second opinion, or care center expertise. Pick where you are; leave knowing your next step."
           : isBreast
-            ? "Breast cancer decision journey — start from your situation. Core guides cover newly diagnosed, subtype testing, sequencing, surgery, second opinion, and systemic options. More situations unlock as we ship."
+            ? "Breast cancer decision journey — start from your situation. The usual path runs diagnosis → subtype results → treatment timing → surgery or systemic choices. More situations unlock as guides ship."
             : "Start from the decision you are facing, then explore questions, treatments, and illustrative journeys for this cancer type."}
       </p>
 

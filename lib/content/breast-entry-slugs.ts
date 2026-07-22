@@ -14,14 +14,14 @@ export const BREAST_SUBTYPE_SLUG =
 export const BREAST_SEQUENCING_SLUG =
   "should-breast-cancer-treatment-start-before-or-after-surgery";
 
-/** Existing seed slug — rename only when Surgery Entry upgrades to Template v2. */
+/** Surgery Entry (P0 #4) — Template v2; slug kept for existing links. */
 export const BREAST_SURGERY_SLUG = "how-to-compare-lumpectomy-and-mastectomy";
 
-/** Existing seed slug — rename only when Second Opinion Entry upgrades. */
+/** Second Opinion Entry (P0 #5) — Template v2; slug kept for existing links. */
 export const BREAST_SECOND_OPINION_SLUG =
   "when-is-breast-cancer-second-opinion-most-useful";
 
-/** Existing seed slug — rename only when Systemic Entry upgrades. */
+/** Systemic Entry (P0 #6) — Template v2; slug kept for existing links. */
 export const BREAST_TREATMENT_COMPARE_SLUG =
   "choose-systemic-therapy-options-breast-cancer";
 

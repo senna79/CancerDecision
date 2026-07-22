@@ -17,12 +17,17 @@ import { RECURRENCE_ENTRY_CARDS } from "@/lib/content/recurrence-entry-cards";
 import { QUALITY_OF_LIFE_ENTRY_CARDS } from "@/lib/content/quality-of-life-entry-cards";
 import { FOLLOW_UP_ENTRY_CARDS } from "@/lib/content/follow-up-entry-cards";
 import { BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/breast-newly-diagnosed-entry-cards";
+import { BREAST_SECOND_OPINION_ENTRY_CARDS } from "@/lib/content/breast-second-opinion-entry-cards";
+import { BREAST_SEQUENCING_ENTRY_CARDS } from "@/lib/content/breast-sequencing-entry-cards";
 import { BREAST_SUBTYPE_ENTRY_CARDS } from "@/lib/content/breast-subtype-entry-cards";
+import { BREAST_SURGERY_ENTRY_CARDS } from "@/lib/content/breast-surgery-entry-cards";
+import { BREAST_SYSTEMIC_ENTRY_CARDS } from "@/lib/content/breast-systemic-entry-cards";
 import { NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/newly-diagnosed-entry-cards";
 import {
   BREAST_SECOND_OPINION_SLUG,
   BREAST_SEQUENCING_SLUG,
   BREAST_SUBTYPE_SLUG,
+  BREAST_SURGERY_SLUG,
 } from "@/lib/content/breast-entry-slugs";
 import { STAGE_IV_ENTRY_CARDS } from "@/lib/content/stage-iv-entry-cards";
 import { CARE_CENTER_ENTRY_CARDS } from "@/lib/content/care-center-entry-cards";
@@ -1751,6 +1756,498 @@ function DecisionPathCardDetailInner({
           <p>{BREAST_SUBTYPE_ENTRY_CARDS.mistakes.lead}</p>
           <ul className="space-y-3">
             {BREAST_SUBTYPE_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "bseq-what-is":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.whatIs.lead}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.whatIs.close}
+        />
+      );
+    case "bseq-why-matters":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.whyMatters.lead}
+          items={BREAST_SEQUENCING_ENTRY_CARDS.whyMatters.items}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.whyMatters.close}
+        />
+      );
+    case "bseq-not-stronger":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.notStronger.lead}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.notStronger.close}
+        />
+      );
+    case "bseq-subtype-first":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={BREAST_SEQUENCING_ENTRY_CARDS.subtypeFirst.lead}
+            close={BREAST_SEQUENCING_ENTRY_CARDS.subtypeFirst.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${BREAST_SUBTYPE_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Subtype testing guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "bseq-before":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.beforeSurgery.lead}
+          items={BREAST_SEQUENCING_ENTRY_CARDS.beforeSurgery.items}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.beforeSurgery.close}
+        />
+      );
+    case "bseq-after":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.afterSurgery.lead}
+          items={BREAST_SEQUENCING_ENTRY_CARDS.afterSurgery.items}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.afterSurgery.close}
+        />
+      );
+    case "bseq-what-changes":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.whatChanges.lead}
+          items={BREAST_SEQUENCING_ENTRY_CARDS.whatChanges.items}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.whatChanges.close}
+        />
+      );
+    case "bseq-response":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.response.lead}
+          ask={BREAST_SEQUENCING_ENTRY_CARDS.response.ask}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.response.close}
+        />
+      );
+    case "bseq-surgery-link":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={BREAST_SEQUENCING_ENTRY_CARDS.surgeryLink.lead}
+            close={BREAST_SEQUENCING_ENTRY_CARDS.surgeryLink.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${BREAST_SURGERY_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Lumpectomy vs mastectomy guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "bseq-timeline":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.timeline.lead}
+          ask={BREAST_SEQUENCING_ENTRY_CARDS.timeline.ask}
+        />
+      );
+    case "bseq-pending-info":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.pendingInfo.lead}
+          items={BREAST_SEQUENCING_ENTRY_CARDS.pendingInfo.items}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.pendingInfo.close}
+        />
+      );
+    case "bseq-life-fit":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.lifeFit.lead}
+          ask={BREAST_SEQUENCING_ENTRY_CARDS.lifeFit.ask}
+        />
+      );
+    case "bseq-this-week":
+      return (
+        <BulletCard
+          lead={BREAST_SEQUENCING_ENTRY_CARDS.thisWeek.lead}
+          items={BREAST_SEQUENCING_ENTRY_CARDS.thisWeek.steps}
+          close={BREAST_SEQUENCING_ENTRY_CARDS.thisWeek.close}
+        />
+      );
+    case "bseq-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{BREAST_SEQUENCING_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {BREAST_SEQUENCING_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "bsur-what-is":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.whatIs.lead}
+          close={BREAST_SURGERY_ENTRY_CARDS.whatIs.close}
+        />
+      );
+    case "bsur-similar-control":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.similarControl.lead}
+          close={BREAST_SURGERY_ENTRY_CARDS.similarControl.close}
+        />
+      );
+    case "bsur-not-only-cancer":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.notOnlyCancer.lead}
+          close={BREAST_SURGERY_ENTRY_CARDS.notOnlyCancer.close}
+        />
+      );
+    case "bsur-sequencing":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={BREAST_SURGERY_ENTRY_CARDS.sequencing.lead}
+            close={BREAST_SURGERY_ENTRY_CARDS.sequencing.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${BREAST_SEQUENCING_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Treatment sequencing guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "bsur-lumpectomy":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.lumpectomy.lead}
+          items={BREAST_SURGERY_ENTRY_CARDS.lumpectomy.items}
+          close={BREAST_SURGERY_ENTRY_CARDS.lumpectomy.close}
+        />
+      );
+    case "bsur-mastectomy":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.mastectomy.lead}
+          items={BREAST_SURGERY_ENTRY_CARDS.mastectomy.items}
+          close={BREAST_SURGERY_ENTRY_CARDS.mastectomy.close}
+        />
+      );
+    case "bsur-genetics":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.genetics.lead}
+          ask={BREAST_SURGERY_ENTRY_CARDS.genetics.ask}
+          close={BREAST_SURGERY_ENTRY_CARDS.genetics.close}
+        />
+      );
+    case "bsur-reconstruction":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.reconstruction.lead}
+          ask={BREAST_SURGERY_ENTRY_CARDS.reconstruction.ask}
+          close={BREAST_SURGERY_ENTRY_CARDS.reconstruction.close}
+        />
+      );
+    case "bsur-recurrence":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.recurrence.lead}
+          ask={BREAST_SURGERY_ENTRY_CARDS.recurrence.ask}
+          close={BREAST_SURGERY_ENTRY_CARDS.recurrence.close}
+        />
+      );
+    case "bsur-bilateral":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.bilateral.lead}
+          close={BREAST_SURGERY_ENTRY_CARDS.bilateral.close}
+        />
+      );
+    case "bsur-recovery":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.recovery.lead}
+          ask={BREAST_SURGERY_ENTRY_CARDS.recovery.ask}
+        />
+      );
+    case "bsur-radiation":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.radiation.lead}
+          ask={BREAST_SURGERY_ENTRY_CARDS.radiation.ask}
+        />
+      );
+    case "bsur-pending":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.pending.lead}
+          items={BREAST_SURGERY_ENTRY_CARDS.pending.items}
+          close={BREAST_SURGERY_ENTRY_CARDS.pending.close}
+        />
+      );
+    case "bsur-this-week":
+      return (
+        <BulletCard
+          lead={BREAST_SURGERY_ENTRY_CARDS.thisWeek.lead}
+          items={BREAST_SURGERY_ENTRY_CARDS.thisWeek.steps}
+          close={BREAST_SURGERY_ENTRY_CARDS.thisWeek.close}
+        />
+      );
+    case "bsur-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{BREAST_SURGERY_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {BREAST_SURGERY_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "bso-everyone":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.everyone.lead}
+          items={BREAST_SECOND_OPINION_ENTRY_CARDS.everyone.items}
+          close={BREAST_SECOND_OPINION_ENTRY_CARDS.everyone.close}
+        />
+      );
+    case "bso-why-breast":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.whyBreast.lead}
+          items={BREAST_SECOND_OPINION_ENTRY_CARDS.whyBreast.items}
+          close={BREAST_SECOND_OPINION_ENTRY_CARDS.whyBreast.close}
+        />
+      );
+    case "bso-delay":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.delay.lead}
+          ask={BREAST_SECOND_OPINION_ENTRY_CARDS.delay.ask}
+          close={BREAST_SECOND_OPINION_ENTRY_CARDS.delay.close}
+        />
+      );
+    case "bso-disrespect":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.disrespectful.lead}
+          close={BREAST_SECOND_OPINION_ENTRY_CARDS.disrespectful.close}
+        />
+      );
+    case "bso-change":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.canChange.lead}
+          items={BREAST_SECOND_OPINION_ENTRY_CARDS.canChange.items}
+          close={BREAST_SECOND_OPINION_ENTRY_CARDS.canChange.close}
+        />
+      );
+    case "bso-focus":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.focus.lead}
+          items={BREAST_SECOND_OPINION_ENTRY_CARDS.focus.items}
+          close={BREAST_SECOND_OPINION_ENTRY_CARDS.focus.close}
+        />
+      );
+    case "bso-two-doctors":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.twoDoctors.lead}
+          items={BREAST_SECOND_OPINION_ENTRY_CARDS.twoDoctors.items}
+          close={BREAST_SECOND_OPINION_ENTRY_CARDS.twoDoctors.close}
+        />
+      );
+    case "bso-pathology":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.pathology.lead}
+          ask={BREAST_SECOND_OPINION_ENTRY_CARDS.pathology.ask}
+        />
+      );
+    case "bso-records":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.records.lead}
+          items={BREAST_SECOND_OPINION_ENTRY_CARDS.records.items}
+          close={BREAST_SECOND_OPINION_ENTRY_CARDS.records.close}
+        />
+      );
+    case "bso-cost":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.cost.lead}
+          ask={BREAST_SECOND_OPINION_ENTRY_CARDS.cost.ask}
+        />
+      );
+    case "bso-this-week":
+      return (
+        <BulletCard
+          lead={BREAST_SECOND_OPINION_ENTRY_CARDS.thisWeek.lead}
+          items={BREAST_SECOND_OPINION_ENTRY_CARDS.thisWeek.steps}
+          close={BREAST_SECOND_OPINION_ENTRY_CARDS.thisWeek.close}
+        />
+      );
+    case "bso-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{BREAST_SECOND_OPINION_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {BREAST_SECOND_OPINION_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "bsys-what-is":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.whatIs.lead}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.whatIs.close}
+        />
+      );
+    case "bsys-subtype-forks":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={BREAST_SYSTEMIC_ENTRY_CARDS.subtypeForks.lead}
+            items={BREAST_SYSTEMIC_ENTRY_CARDS.subtypeForks.items}
+            close={BREAST_SYSTEMIC_ENTRY_CARDS.subtypeForks.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${BREAST_SUBTYPE_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Subtype testing guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "bsys-not-menu":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.notDrugMenu.lead}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.notDrugMenu.close}
+        />
+      );
+    case "bsys-sequencing":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={BREAST_SYSTEMIC_ENTRY_CARDS.sequencing.lead}
+            close={BREAST_SYSTEMIC_ENTRY_CARDS.sequencing.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${BREAST_SEQUENCING_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Treatment sequencing guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "bsys-hr":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.hrPositive.lead}
+          items={BREAST_SYSTEMIC_ENTRY_CARDS.hrPositive.items}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.hrPositive.close}
+        />
+      );
+    case "bsys-her2":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.her2Positive.lead}
+          items={BREAST_SYSTEMIC_ENTRY_CARDS.her2Positive.items}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.her2Positive.close}
+        />
+      );
+    case "bsys-tnbc":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.tnbc.lead}
+          items={BREAST_SYSTEMIC_ENTRY_CARDS.tnbc.items}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.tnbc.close}
+        />
+      );
+    case "bsys-goals":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.goals.lead}
+          items={BREAST_SYSTEMIC_ENTRY_CARDS.goals.items}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.goals.close}
+        />
+      );
+    case "bsys-genomic":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.genomic.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.genomic.ask}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.genomic.close}
+        />
+      );
+    case "bsys-side-effects":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.sideEffects.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.sideEffects.ask}
+        />
+      );
+    case "bsys-timeline":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.timeline.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.timeline.ask}
+        />
+      );
+    case "bsys-fertility":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.fertility.lead}
+          ask={BREAST_SYSTEMIC_ENTRY_CARDS.fertility.ask}
+        />
+      );
+    case "bsys-this-week":
+      return (
+        <BulletCard
+          lead={BREAST_SYSTEMIC_ENTRY_CARDS.thisWeek.lead}
+          items={BREAST_SYSTEMIC_ENTRY_CARDS.thisWeek.steps}
+          close={BREAST_SYSTEMIC_ENTRY_CARDS.thisWeek.close}
+        />
+      );
+    case "bsys-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{BREAST_SYSTEMIC_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {BREAST_SYSTEMIC_ENTRY_CARDS.mistakes.items.map((item) => (
               <li key={item.mistake}>
                 <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
                 <p className="mt-1">{item.why}</p>

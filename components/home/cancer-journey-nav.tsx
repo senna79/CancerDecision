@@ -162,8 +162,8 @@ export function CancerJourneyNav({
             <>
               {selectedSlug === BREAST_SLUG ? (
                 <>
-                  Breast journey is live for core decisions — more situations
-                  unlock as guides ship.{" "}
+                  Core path: diagnosis → subtype → sequencing → surgery. More
+                  situations unlock as guides ship.{" "}
                 </>
               ) : null}
               Want the full center?{" "}

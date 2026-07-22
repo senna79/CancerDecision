@@ -5,7 +5,11 @@
 
 import {
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_SECOND_OPINION_SLUG,
+  BREAST_SEQUENCING_SLUG,
   BREAST_SUBTYPE_SLUG,
+  BREAST_SURGERY_SLUG,
+  BREAST_TREATMENT_COMPARE_SLUG,
 } from "@/lib/content/breast-entry-slugs";
 
 export type EntryPathCard = {
@@ -74,7 +78,14 @@ export const BRAIN_METS_SLUG =
 export const GLOBAL_CARE_SLUG =
   "when-to-consider-lung-cancer-care-abroad";
 
-export { BREAST_NEWLY_DIAGNOSED_SLUG, BREAST_SUBTYPE_SLUG };
+export {
+  BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_SECOND_OPINION_SLUG,
+  BREAST_SEQUENCING_SLUG,
+  BREAST_SUBTYPE_SLUG,
+  BREAST_SURGERY_SLUG,
+  BREAST_TREATMENT_COMPARE_SLUG,
+};
 
 const BIOMARKER_PATH: EntryPathV2 = {
   pathTitle: "Biomarker Testing Decision Path",
@@ -2556,6 +2567,545 @@ const BREAST_SUBTYPE_PATH: EntryPathV2 = {
   ],
 };
 
+const BREAST_SEQUENCING_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Breast Cancer Treatment Sequencing Decision Path",
+  pathSubtitle:
+    "Why timing matters → before vs after surgery → practical timeline → what to ask.",
+  completedLabels: [
+    "Why sequencing matters",
+    "How before vs after surgery compare",
+    "What the timeline may involve",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Expected timeline for medicines-first vs surgery-first",
+    "Whether subtype, staging, or genetics are still pending",
+    "How sequencing may affect work, fertility, and recovery planning",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why does treatment sequencing matter?",
+      lead: "Patient question: why are doctors talking about before vs after surgery?",
+      main: "bseq-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When before-surgery vs after-surgery timing becomes a live fork.",
+        },
+        {
+          id: "bseq-what-is",
+          title: "What does treatment before or after surgery mean?",
+          summary: "Neoadjuvant vs adjuvant — goals, not jargon.",
+        },
+        {
+          id: "bseq-why-matters",
+          title: "Why does the sequence matter?",
+          summary: "Response assessment, surgery options, and timeline.",
+        },
+        {
+          id: "bseq-not-stronger",
+          title: "Is one sequence “stronger” than the other?",
+          summary: "Fit beats online aggressiveness.",
+        },
+        {
+          id: "bseq-subtype-first",
+          title: "Do I need subtype results before deciding the sequence?",
+          summary: "Biology often shapes whether medicines-first is on the table.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How should I compare before-surgery vs after-surgery paths?",
+      lead: "Patient question: what is each sequence trying to achieve for me?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "bseq-before",
+          title: "Why start systemic therapy before surgery?",
+          summary: "Shrink, assess response, refine surgery options.",
+        },
+        {
+          id: "bseq-after",
+          title: "Why have surgery first, then systemic therapy?",
+          summary: "When upfront surgery still leaves medicines afterward.",
+        },
+        {
+          id: "bseq-what-changes",
+          title: "What would change the sequencing recommendation?",
+          summary: "The question that clarifies the fork.",
+        },
+        {
+          id: "bseq-response",
+          title: "If medicines come first, how do we know they are working?",
+          summary: "Response assessment during neoadjuvant therapy.",
+        },
+        {
+          id: "bseq-surgery-link",
+          title: "How does sequencing relate to lumpectomy vs mastectomy?",
+          summary: "Connected decisions — not the same decision.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I know about timeline and logistics?",
+      lead: "Patient question: what will the next weeks actually look like?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "bseq-timeline",
+          title: "What is the expected timeline for each sequence?",
+          summary: "Calendar clarity before locking a path.",
+        },
+        {
+          id: "bseq-pending-info",
+          title: "What information should be clear before locking sequencing?",
+          summary: "Subtype, staging, genetics, second opinion.",
+        },
+        {
+          id: "bseq-life-fit",
+          title: "How does sequencing affect work, fertility, and daily life?",
+          summary: "Practical fit is part of the timing decision.",
+        },
+        {
+          id: "bseq-this-week",
+          title: "What should I do this week while deciding?",
+          summary: "Three focuses — not every drug name online.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bseq-mistakes",
+          title: "What are common mistakes around sequencing?",
+          summary: "Strength contests, locking too early, assuming no systemic therapy.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might clarify medicines-first vs surgery-first.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_SURGERY_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Lumpectomy vs Mastectomy Decision Path",
+  pathSubtitle:
+    "Why the choice matters → how the options compare → recovery and radiation → what to ask.",
+  completedLabels: [
+    "Why surgery choice matters",
+    "How lumpectomy and mastectomy compare",
+    "What recovery and radiation may involve",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Whether both operations are medically reasonable for you",
+    "Radiation expectations after lumpectomy (and after mastectomy if relevant)",
+    "Genetics and reconstruction questions that could change planning",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why does the surgery choice matter?",
+      lead: "Patient question: why am I being offered more than one operation?",
+      main: "bsur-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When lumpectomy and mastectomy are both on the table.",
+        },
+        {
+          id: "bsur-what-is",
+          title: "What is lumpectomy vs mastectomy?",
+          summary: "Plain-language difference — not a technique encyclopedia.",
+        },
+        {
+          id: "bsur-similar-control",
+          title: "Can both options offer similar cancer control?",
+          summary: "For many appropriate candidates — ask for your situation.",
+        },
+        {
+          id: "bsur-not-only-cancer",
+          title: "If cancer control is similar, what else matters?",
+          summary: "Personal priorities still tip a real decision.",
+        },
+        {
+          id: "bsur-sequencing",
+          title: "How does treatment before or after surgery affect this?",
+          summary: "Sequencing can change timing and sometimes options.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How should I compare lumpectomy and mastectomy?",
+      lead: "Patient question: what should I weigh before choosing?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "bsur-lumpectomy",
+          title: "What does choosing lumpectomy usually involve?",
+          summary: "Conservation plus radiation for most people.",
+        },
+        {
+          id: "bsur-mastectomy",
+          title: "What does choosing mastectomy usually involve?",
+          summary: "More tissue removed — reconstruction may follow.",
+        },
+        {
+          id: "bsur-genetics",
+          title: "Could genetic counseling change my surgery choice?",
+          summary: "Germline risk ≠ tumor subtype — ask early.",
+        },
+        {
+          id: "bsur-reconstruction",
+          title: "How do reconstruction timing and choices fit in?",
+          summary: "Hang-card context — not a separate Entry yet.",
+        },
+        {
+          id: "bsur-recurrence",
+          title: "What about local recurrence fears?",
+          summary: "Ask for numbers and follow-up plans, not fear alone.",
+        },
+        {
+          id: "bsur-bilateral",
+          title: "Should I also consider surgery on the other breast?",
+          summary: "A separate decision — not automatic.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I know about recovery, radiation, and timing?",
+      lead: "Patient question: what will this mean week to week?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "bsur-recovery",
+          title: "What does recovery look like for each option?",
+          summary: "First weeks, work, and restrictions.",
+        },
+        {
+          id: "bsur-radiation",
+          title: "How does radiation fit into each path?",
+          summary: "Usually after lumpectomy; situational after mastectomy.",
+        },
+        {
+          id: "bsur-pending",
+          title: "What information should be clear before locking surgery?",
+          summary: "Subtype, sequencing, genetics, imaging candidacy.",
+        },
+        {
+          id: "bsur-this-week",
+          title: "What should I do this week while deciding?",
+          summary: "Candidacy, tipping factors, and priorities.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bsur-mistakes",
+          title: "What are common mistakes around surgery choice?",
+          summary: "Safer-by-default myths, locking too early, skipping reconstruction talk.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might choose when both options are open.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_SYSTEMIC_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Breast Cancer Systemic Therapy Decision Path",
+  pathSubtitle:
+    "Why subtype forks options → HR+ / HER2+ / TNBC paths → practical fit → what to ask.",
+  completedLabels: [
+    "Why systemic options fork by subtype",
+    "How HR+, HER2+, and TNBC paths differ",
+    "What timeline and trade-offs may involve",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Your subtype in plain language (HR+ / HER2+ / TNBC — and combinations)",
+    "Goal of systemic therapy and whether it starts before or after surgery",
+    "Side effects, duration, fertility, and visit burden for the recommended plan",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why do systemic options depend on subtype?",
+      lead: "Patient question: why am I not comparing the same drug list as everyone else?",
+      main: "bsys-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When systemic medicines enter the breast cancer plan.",
+        },
+        {
+          id: "bsys-what-is",
+          title: "What is systemic therapy for breast cancer?",
+          summary: "Medicines that travel through the body — by family, not brand list.",
+        },
+        {
+          id: "bsys-subtype-forks",
+          title: "How does subtype change the options?",
+          summary: "HR+, HER2+, and TNBC open different conversations.",
+        },
+        {
+          id: "bsys-not-menu",
+          title: "Why isn’t this a menu of the strongest drugs?",
+          summary: "Fit and goals beat online aggressiveness.",
+        },
+        {
+          id: "bsys-sequencing",
+          title: "How does before-vs-after surgery timing fit in?",
+          summary: "Sequencing can change what systemic therapy means.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Which systemic path fits my subtype?",
+      lead: "Patient question: what should I compare inside my subtype fork?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "bsys-hr",
+          title: "What if my cancer is hormone receptor–positive (HR+)?",
+          summary: "Endocrine-led discussions — chemo is situational.",
+        },
+        {
+          id: "bsys-her2",
+          title: "What if my cancer is HER2-positive?",
+          summary: "HER2-targeted therapy usually belongs in the plan.",
+        },
+        {
+          id: "bsys-tnbc",
+          title: "What if my cancer is triple-negative?",
+          summary: "Chemo often leads; immunotherapy in selected cases.",
+        },
+        {
+          id: "bsys-goals",
+          title: "What goal is systemic therapy trying to achieve?",
+          summary: "Clarify purpose before comparing regimens.",
+        },
+        {
+          id: "bsys-genomic",
+          title: "Could a genomic assay change chemo discussions?",
+          summary: "Relevant for some early HR+ / HER2− cancers.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I know about living with the plan?",
+      lead: "Patient question: what will this mean week to week?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "bsys-side-effects",
+          title: "What side effects and monitoring should I expect?",
+          summary: "Ask by medicine family — not by fear alone.",
+        },
+        {
+          id: "bsys-timeline",
+          title: "What is the expected timeline and visit burden?",
+          summary: "Duration, weekly rhythm, and life logistics.",
+        },
+        {
+          id: "bsys-fertility",
+          title: "Could this plan affect fertility or menopause?",
+          summary: "Raise life-stage goals before locking therapy.",
+        },
+        {
+          id: "bsys-this-week",
+          title: "What should I do this week while deciding?",
+          summary: "Subtype, option families, goals, sequencing.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bsys-mistakes",
+          title: "What are common mistakes around systemic options?",
+          summary: "Drug-name races, max chemo myths, late fertility talk.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might compare options after subtype results.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_SECOND_OPINION_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Breast Cancer Second Opinion Decision Path",
+  pathSubtitle:
+    "When it may help → what it can change → how to prepare → what to ask.",
+  completedLabels: [
+    "When a second opinion may help",
+    "What another review can change",
+    "How to prepare a useful packet",
+    "Questions for the second-opinion visit",
+  ],
+  practicalPoints: [
+    "Pathology with receptors / HER2, imaging, and the current written plan",
+    "One named decision for review (surgery, sequencing, or systemic therapy)",
+    "How urgent the calendar is before the next irreversible step",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Is this a situation where another opinion could help?",
+      lead: "Patient question: when is a breast cancer second opinion most useful?",
+      main: "bso-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "Before major surgery or systemic therapy, when confidence is low.",
+        },
+        {
+          id: "bso-everyone",
+          title: "Does everyone with breast cancer need a second opinion?",
+          summary: "A support tool — not a sign something is wrong.",
+        },
+        {
+          id: "bso-why-breast",
+          title: "Why can a second opinion matter for breast cancer?",
+          summary: "Subtype, sequencing, and surgery often intersect.",
+        },
+        {
+          id: "bso-delay",
+          title: "Will a second opinion delay my treatment?",
+          summary: "Balance informed decisions with timely care.",
+        },
+        {
+          id: "bso-disrespect",
+          title: "Is asking for a second opinion disrespectful?",
+          summary: "Frame confidence — not distrust.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "What could another doctor tell me that I do not already know?",
+      lead: "Patient question: confirm, clarify, expand, or identify gaps?",
+      main: "second-compare",
+      cards: [
+        {
+          id: "bso-change",
+          title: "Can a second opinion change my treatment plan?",
+          summary: "Sometimes yes — confirmation can also be valuable.",
+        },
+        {
+          id: "bso-focus",
+          title: "What should the review focus on?",
+          summary: "Name one decision — surgery, sequencing, or systemic plan.",
+        },
+        {
+          id: "bso-two-doctors",
+          title: "What if two doctors recommend different plans?",
+          summary: "Compare reasoning — not who is “right.”",
+        },
+        {
+          id: "bso-pathology",
+          title: "Should pathology or imaging be reviewed again?",
+          summary: "When another specialist review may add confidence.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "How do I prepare so the review is useful?",
+      lead: "Patient question: what records and timing make this worth it?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "bso-records",
+          title: "What records should I bring?",
+          summary: "Pathology, imaging, plan, and one sentence question.",
+        },
+        {
+          id: "bso-cost",
+          title: "Cost and insurance for a second opinion",
+          summary: "Questions instead of guessing a price.",
+        },
+        {
+          id: "bso-this-week",
+          title: "What should I do this week while arranging a review?",
+          summary: "Name the decision, gather records, check urgency.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I ask so the appointment is useful?",
+      lead: "Patient question: how do I prepare for the conversation?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bso-mistakes",
+          title: "What are common mistakes when getting a second opinion?",
+          summary: "Timing, incomplete records, and seeking only agreement.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might review before locking surgery.",
+        },
+      ],
+    },
+  ],
+};
+
 const PATHS: Record<string, EntryPathV2> = {
   [BIOMARKER_SLUG]: BIOMARKER_PATH,
   [SECOND_OPINION_SLUG]: SECOND_OPINION_PATH,
@@ -2574,8 +3124,11 @@ const PATHS: Record<string, EntryPathV2> = {
   [GLOBAL_CARE_SLUG]: GLOBAL_CARE_PATH,
   [BREAST_NEWLY_DIAGNOSED_SLUG]: BREAST_NEWLY_DIAGNOSED_PATH,
   [BREAST_SUBTYPE_SLUG]: BREAST_SUBTYPE_PATH,
+  [BREAST_SEQUENCING_SLUG]: BREAST_SEQUENCING_PATH,
+  [BREAST_SURGERY_SLUG]: BREAST_SURGERY_PATH,
+  [BREAST_SECOND_OPINION_SLUG]: BREAST_SECOND_OPINION_PATH,
+  [BREAST_TREATMENT_COMPARE_SLUG]: BREAST_SYSTEMIC_PATH,
 };
-
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {
   return PATHS[slug] ?? null;

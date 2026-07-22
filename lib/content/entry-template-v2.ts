@@ -26,11 +26,19 @@ import {
 } from "./entry-path-v2";
 import {
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_SECOND_OPINION_SLUG,
+  BREAST_SEQUENCING_SLUG,
   BREAST_SUBTYPE_SLUG,
+  BREAST_SURGERY_SLUG,
+  BREAST_TREATMENT_COMPARE_SLUG,
 } from "./breast-entry-slugs";
 import { GLOBAL_CARE_DIRECT_ANSWER_GLOSS } from "./global-care-entry-cards";
 import { BREAST_NEWLY_DIAGNOSED_GLOSS } from "./breast-newly-diagnosed-entry-cards";
+import { BREAST_SECOND_OPINION_GLOSS } from "./breast-second-opinion-entry-cards";
+import { BREAST_SEQUENCING_GLOSS } from "./breast-sequencing-entry-cards";
 import { BREAST_SUBTYPE_GLOSS } from "./breast-subtype-entry-cards";
+import { BREAST_SURGERY_GLOSS } from "./breast-surgery-entry-cards";
+import { BREAST_SYSTEMIC_GLOSS } from "./breast-systemic-entry-cards";
 
 export type EntryTemplateV2Config = {
   /** One plain-language gloss (used in cards / SEO helpers) */
@@ -75,6 +83,50 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Wonder whether subtype results should arrive before surgery or systemic therapy",
       "Heard about genomic assays (Oncotype-class) and want to know if they matter",
       "Need to separate tumor subtype from germline genetic counseling",
+    ],
+  },
+  [BREAST_SEQUENCING_SLUG]: {
+    plainLanguageGloss: BREAST_SEQUENCING_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Were told treatment might start before or after breast cancer surgery",
+      "Want to understand neoadjuvant vs adjuvant sequencing in plain language",
+      "Need to know what would change the recommended sequence",
+      "Are connecting sequencing with subtype results or surgery options",
+    ],
+  },
+  [BREAST_SURGERY_SLUG]: {
+    plainLanguageGloss: BREAST_SURGERY_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Are choosing between lumpectomy and mastectomy",
+      "Wonder whether both options offer similar cancer control for your situation",
+      "Need to weigh genetics, radiation, reconstruction, or recurrence concerns",
+      "Want confidence before locking a surgery date",
+    ],
+  },
+  [BREAST_SECOND_OPINION_SLUG]: {
+    plainLanguageGloss: BREAST_SECOND_OPINION_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Want confidence before breast cancer surgery or major systemic therapy",
+      "Heard conflicting recommendations about sequencing or surgery",
+      "Wonder whether genetics, pathology, or imaging should be re-reviewed",
+      "Need to know how to prepare a focused second-opinion packet",
+    ],
+  },
+  [BREAST_TREATMENT_COMPARE_SLUG]: {
+    plainLanguageGloss: BREAST_SYSTEMIC_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Have subtype results (HR+ / HER2+ / TNBC) and need to compare medicine options",
+      "Want to understand option families instead of a flat drug menu",
+      "Need to connect systemic therapy with sequencing before or after surgery",
+      "Are weighing side effects, fertility, duration, and goals",
     ],
   },
   [STAGE_IV_SLUG]: {

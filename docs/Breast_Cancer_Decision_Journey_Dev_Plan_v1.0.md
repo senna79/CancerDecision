@@ -59,16 +59,16 @@ Same job as lung Types / Stage / Treatment map — **before** the six situations
 
 ## 4. Situation buckets (6)
 
-Align with lung’s identity-neutral situation layer. No seventh bucket.
+Same 6-slot shell as lung for cross-cancer literacy. Empty / P1 Moments stay in the shell but are hidden in the router until active. No seventh bucket. Clinical spine on the map: diagnosis → subtype → sequencing → surgery.
 
 | id | Label | Hint (draft) |
 |----|--------|----------------|
-| `recently-diagnosed` | Recently diagnosed | New diagnosis, or waiting on pathology / receptor / HER2 results and what comes first. |
-| `choosing-treatment` | Choosing a treatment | Comparing surgery, sequencing, or systemic options. |
-| `another-opinion` | Unsure about the plan or care team | Want more confidence, another review, or different expertise. |
-| `cancer-changed` | Cancer or treatment has changed | Metastatic disease, progression, or a plan that stopped working. |
-| `real-life` | Treatment feels hard on life or logistics | Daily life, side effects, time, cost, work, fertility, and whether the plan is workable. |
-| `after-treatment` | Finished treatment / in follow-up | Monitoring, late effects, and life after treatment. |
+| `recently-diagnosed` | Newly diagnosed or waiting for results | Your first decisions usually depend on confirming the cancer type, subtype, and what information is needed before treatment choices. |
+| `choosing-treatment` | Comparing treatment options | Understand how surgery, systemic therapy, and treatment timing may fit together. |
+| `another-opinion` | Unsure about your treatment plan or care team | When you want another perspective, more expertise, or a clearer understanding before moving forward. |
+| `cancer-changed` | Cancer or treatment has changed | Metastatic disease, progression, or a plan that stopped working. (P1 — hidden until Moments active) |
+| `real-life` | Balancing treatment with everyday life | Side effects, work, fertility, family, cost, day-to-day fit. (Hidden until Practical Fit / QoL Entry) |
+| `after-treatment` | Finished treatment / in follow-up | Monitoring, late effects, and life after treatment. (P1 — hidden until recurrence Moment) |
 
 Hang **decision marks** with the same four-mark language as lung (diagnosis · testing/subtype · treatment · follow-up).
 
@@ -94,10 +94,10 @@ P0 narrative and internal links follow this order. Engineering may still ship **
 |---|----------------------|-------------------|-------------------|--------------|
 | 1 | What decisions matter most after a new breast cancer diagnosis? | `newly-diagnosed` | recently-diagnosed | Upgrade `what-to-ask-after-new-breast-cancer-diagnosis` |
 | 2 | Do I need my breast cancer subtype results before choosing treatment? | `subtype-testing` | recently-diagnosed, choosing-treatment | **New** — breast analogue of biomarker; cover receptor / HER2 / genomic (e.g. Oncotype-class) in path + cards, not as an encyclopedia |
-| 3 | Should treatment start before or after breast cancer surgery? | `treatment-sequencing` | choosing-treatment | **New** — neoadjuvant vs adjuvant; breast-distinctive flagship |
-| 4 | How should I choose between lumpectomy and mastectomy? | `surgery-decision` | choosing-treatment | Upgrade `how-to-compare-lumpectomy-and-mastectomy`; hang cards for genetic risk, reconstruction timing, recurrence concerns — **do not** split reconstruction into a P0 Entry |
-| 5 | Should I get a second opinion before breast cancer surgery or systemic therapy? | `second-opinion` | another-opinion, recently-diagnosed | Upgrade `when-is-breast-cancer-second-opinion-most-useful` |
-| 6 | How do I choose among systemic therapy options for my breast cancer subtype? | `treatment-comparison` | choosing-treatment | Upgrade `choose-systemic-therapy-options-breast-cancer`; path must **fork by subtype** (HR+ / HER2+ / TNBC), not a flat drug menu |
+| 3 | Should treatment start before or after breast cancer surgery? | `treatment-sequencing` | choosing-treatment | **Shipped** Template v2 — neoadjuvant vs adjuvant; breast-distinctive flagship |
+| 4 | How should I choose between lumpectomy and mastectomy? | `surgery-decision` | choosing-treatment | **Shipped** Template v2 — hang cards for genetic risk, reconstruction timing, recurrence concerns — **do not** split reconstruction into a P0 Entry |
+| 5 | Should I get a second opinion before breast cancer surgery or systemic therapy? | `second-opinion` | another-opinion, recently-diagnosed | **Shipped** Template v2 — slug kept: `when-is-breast-cancer-second-opinion-most-useful` |
+| 6 | How do I choose among systemic therapy options for my breast cancer subtype? | `treatment-comparison` | choosing-treatment | **Shipped** Template v2 — forks HR+ / HER2+ / TNBC; not a flat drug menu |
 
 **SEO title examples (not always identical to H1):**
 

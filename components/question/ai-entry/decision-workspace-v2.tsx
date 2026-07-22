@@ -270,6 +270,46 @@ function StepMain({
           <WhyDecisionMatters modules={modules} embedded />
         </div>
       );
+    case "bseq-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Before locking surgery or a drug plan, clarify which sequence fits —
+            and what would change that recommendation.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "bsur-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            When both operations may be reasonable, compare medical fit and
+            personal priorities — not which surgery sounds stronger.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "bso-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Before an irreversible step, name the decision you want reviewed —
+            confirmation of the current plan can also be valuable.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "bsys-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Start from your subtype fork — then compare option families and
+            goals, not a ranked list of drug names.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
     case "why":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "surgery-understand":

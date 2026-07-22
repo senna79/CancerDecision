@@ -42,9 +42,9 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-second-opinion",
       ],
       patient_router: {
-        label: "Just diagnosed — not sure what comes first",
-        hint: "What to sort out first after a new breast cancer diagnosis.",
-        nextStep: "See what to do next",
+        label: "What should happen first after a breast cancer diagnosis?",
+        hint: "Confirm what is known, which results are still pending, and which decisions are time-sensitive.",
+        nextStep: "Start here",
       },
     },
     {
@@ -72,8 +72,8 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "Do I need subtype results before choosing treatment?",
-        hint: "Receptor / HER2 / genomic results and whether they change the first plan.",
-        nextStep: "See what to do next",
+        hint: "Receptor / HER2 / genomic results — and whether waiting changes the first plan.",
+        nextStep: "Start here",
       },
     },
     {
@@ -96,8 +96,8 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
       next_moment_ids: ["node-surgery", "node-compare", "node-second-opinion"],
       patient_router: {
         label: "Should treatment start before or after surgery?",
-        hint: "Neoadjuvant versus adjuvant sequencing for your situation.",
-        nextStep: "See what to do next",
+        hint: "Neoadjuvant versus adjuvant — a key fork before locking the local plan.",
+        nextStep: "Start here",
       },
     },
     {
@@ -119,9 +119,9 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
       story_slugs: ["comparing-lumpectomy-and-mastectomy-priorities"],
       next_moment_ids: ["node-compare", "node-second-opinion"],
       patient_router: {
-        label: "How should I choose between lumpectomy and mastectomy?",
-        hint: "Compare two surgery paths without ranking hospitals.",
-        nextStep: "See what to do next",
+        label: "How do I choose between lumpectomy and mastectomy?",
+        hint: "Compare two surgery paths — including what genetics and reconstruction may change.",
+        nextStep: "Start here",
       },
     },
     {
@@ -143,9 +143,10 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
       story_slugs: [],
       next_moment_ids: ["node-surgery", "node-compare", "node-sequencing"],
       patient_router: {
-        label: "Should I get a second opinion before major treatment?",
-        hint: "When another review may help before surgery or systemic therapy.",
-        nextStep: "See what to do next",
+        label:
+          "Should I get a second opinion before surgery or systemic therapy?",
+        hint: "When another review may help before an irreversible step.",
+        nextStep: "Start here",
       },
     },
     {
@@ -174,9 +175,10 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
         "Neoadjuvant vs adjuvant timing",
       ],
       patient_router: {
-        label: "How do I choose systemic therapy for my subtype?",
-        hint: "Compare options by subtype — not a ranking of drug names.",
-        nextStep: "See what to do next",
+        label:
+          "How do I choose systemic therapy for my breast cancer subtype?",
+        hint: "Compare HR+ / HER2+ / TNBC option families — not a drug ranking.",
+        nextStep: "Start here",
       },
     },
     // ——— P1 skeleton (planned) ———

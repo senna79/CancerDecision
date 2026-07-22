@@ -1,11 +1,18 @@
 import type { KnowledgeGraphStore } from "@/types/database";
 import {
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_SECOND_OPINION_SLUG,
   BREAST_SEQUENCING_SLUG,
   BREAST_SUBTYPE_SLUG,
+  BREAST_SURGERY_SLUG,
+  BREAST_TREATMENT_COMPARE_SLUG,
 } from "@/lib/content/breast-entry-slugs";
 import { BREAST_NEWLY_DIAGNOSED_DIRECT_ANSWER } from "@/lib/content/breast-newly-diagnosed-entry-cards";
+import { BREAST_SECOND_OPINION_DIRECT_ANSWER } from "@/lib/content/breast-second-opinion-entry-cards";
+import { BREAST_SEQUENCING_DIRECT_ANSWER } from "@/lib/content/breast-sequencing-entry-cards";
 import { BREAST_SUBTYPE_DIRECT_ANSWER } from "@/lib/content/breast-subtype-entry-cards";
+import { BREAST_SURGERY_DIRECT_ANSWER } from "@/lib/content/breast-surgery-entry-cards";
+import { BREAST_SYSTEMIC_DIRECT_ANSWER } from "@/lib/content/breast-systemic-entry-cards";
 import {
   GLOBAL_CARE_DIRECT_ANSWER_SUMMARY,
   GLOBAL_CARE_EXPLORE_REASONS,
@@ -614,11 +621,10 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 9,
       cancer: 3,
-      title: "How should I compare lumpectomy and mastectomy?",
-      slug: "how-to-compare-lumpectomy-and-mastectomy",
+      title: "How should I choose between lumpectomy and mastectomy?",
+      slug: BREAST_SURGERY_SLUG,
       category: "treatment",
-      summary:
-        "For many early breast cancers, lumpectomy plus radiation and mastectomy can offer similar cancer control when candidates are appropriately selected. The decision often hinges on tumor extent, genetics, reconstruction preferences, and radiation willingness.",
+      summary: BREAST_SURGERY_DIRECT_ANSWER,
       why: "Patients hear that both can be oncologically sound and need help weighing personal priorities.",
       factors: [
         "Tumor size relative to breast size",
@@ -684,8 +690,7 @@ export function createSeedData(): KnowledgeGraphStore {
         "Should breast cancer treatment start before or after surgery?",
       slug: BREAST_SEQUENCING_SLUG,
       category: "treatment",
-      summary:
-        "Some people start systemic therapy before surgery (neoadjuvant); others have surgery first. The better sequence depends on subtype, stage/extent, and what your team is trying to learn or achieve.\n\nThis is not about which approach is “stronger” in the abstract. It is about which sequence fits your cancer and goals.\n\nAsk: “For my subtype and stage, should treatment start before or after surgery — and what would change that recommendation?”",
+      summary: BREAST_SEQUENCING_DIRECT_ANSWER,
       why: "Sequencing is a breast-distinctive fork that patients often hear about without a clear comparison frame.",
       factors: [
         "Subtype and stage / nodal status",
@@ -703,22 +708,22 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 11,
       cancer: 3,
-      title: "When is a breast cancer second opinion most useful?",
-      slug: "when-is-breast-cancer-second-opinion-most-useful",
+      title:
+        "Should I get a second opinion before breast cancer surgery or systemic therapy?",
+      slug: BREAST_SECOND_OPINION_SLUG,
       category: "second_opinion",
-      summary:
-        "Second opinions are especially useful for borderline surgery decisions, neoadjuvant sequencing questions, reconstruction planning, or when clinical trial options may exist.",
-      why: "Patients want confidence before irreversible surgical choices.",
+      summary: BREAST_SECOND_OPINION_DIRECT_ANSWER,
+      why: "Patients want confidence before irreversible surgical or major systemic choices.",
       factors: [
         "Surgical pathway uncertainty",
-        "Interest in trials",
-        "Complex reconstruction decisions",
+        "Neoadjuvant vs adjuvant sequencing questions",
+        "Complex reconstruction or genetics decisions",
         "Discordant imaging/pathology",
         "Desire for high-volume specialist input",
       ],
       doctorQs: [
-        "Would another surgical opinion change options?",
-        "Are there trials I should evaluate before starting?",
+        "Would another opinion change surgery or sequencing options?",
+        "Is there time for a focused review before the next step?",
         "Can my imaging and pathology be re-reviewed?",
       ],
     },
@@ -971,23 +976,23 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 23,
       cancer: 3,
-      title: "How do I choose among systemic therapy options in breast cancer?",
-      slug: "choose-systemic-therapy-options-breast-cancer",
+      title:
+        "How do I choose among systemic therapy options for my breast cancer subtype?",
+      slug: BREAST_TREATMENT_COMPARE_SLUG,
       category: "treatment",
-      summary:
-        "Subtype, stage, genomic assays, and comorbidities guide systemic choices. Compare goals, duration, side effects, and whether therapy is neoadjuvant or adjuvant rather than focusing only on drug names.",
-      why: "Patients face dense information about chemo, endocrine therapy, targeted agents, and immunotherapy combinations.",
+      summary: BREAST_SYSTEMIC_DIRECT_ANSWER,
+      why: "Patients face dense information about chemo, endocrine therapy, targeted agents, and immunotherapy — and need a subtype fork first.",
       factors: [
-        "Receptor/HER2 status",
+        "Receptor/HER2 status (HR+ / HER2+ / TNBC)",
         "Stage and nodal involvement",
+        "Neoadjuvant vs adjuvant sequencing",
         "Genomic assay results when relevant",
-        "Fertility and comorbidity constraints",
-        "Side-effect priorities",
+        "Fertility, side effects, and practical fit",
       ],
       doctorQs: [
+        "For my subtype, which systemic option families fit?",
         "What is the goal of systemic therapy in my sequence?",
-        "Which options are equivalent, and which are clearly preferred?",
-        "How will we monitor benefit and toxicity?",
+        "Should therapy start before or after surgery?",
       ],
     },
     {

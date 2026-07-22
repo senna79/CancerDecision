@@ -58,18 +58,23 @@ export const BREAST_ORIENTATION_LINKS: OrientationLink[] = [
   },
 ];
 
+/**
+ * Breast keeps the same 6-slot shell as lung for cross-cancer literacy.
+ * Empty / planned Moments are filtered out in SituationGuidedRouter.
+ * Clinical spine on the map: diagnosis → subtype → sequencing → surgery.
+ */
 export const BREAST_SITUATION_BUCKETS: SituationBucket[] = [
   {
     id: "recently-diagnosed",
-    label: "Recently diagnosed",
-    hint: "New diagnosis, or waiting on pathology / receptor / HER2 results and what comes first.",
+    label: "Newly diagnosed or waiting for results",
+    hint: "Your first decisions usually depend on confirming the cancer type, subtype, and what information is needed before treatment choices.",
     momentIds: ["newly-diagnosed", "subtype-testing", "second-opinion"],
     alsoMomentIds: ["treatment-sequencing"],
   },
   {
     id: "choosing-treatment",
-    label: "Choosing a treatment",
-    hint: "Comparing surgery, sequencing, or systemic options.",
+    label: "Comparing treatment options",
+    hint: "Understand how surgery, systemic therapy, and treatment timing may fit together.",
     momentIds: [
       "treatment-sequencing",
       "surgery-decision",
@@ -79,28 +84,30 @@ export const BREAST_SITUATION_BUCKETS: SituationBucket[] = [
   },
   {
     id: "another-opinion",
-    label: "Unsure about the plan or care team",
-    hint: "Want more confidence, another review, or different expertise.",
-    momentIds: ["second-opinion", "surgery-decision"],
-    alsoMomentIds: ["treatment-sequencing"],
+    label: "Unsure about your treatment plan or care team",
+    hint: "When you want another perspective, more expertise, or a clearer understanding before moving forward.",
+    momentIds: ["second-opinion"],
+    alsoMomentIds: ["surgery-decision", "treatment-sequencing"],
   },
   {
     id: "cancer-changed",
     label: "Cancer or treatment has changed",
     hint: "Metastatic disease, progression, or a plan that stopped working.",
+    // P1 Moments — bucket stays in the shell, hidden until active.
     momentIds: ["stage-iv-options", "recurrence"],
   },
   {
     id: "real-life",
-    label: "Treatment feels hard on life or logistics",
-    hint: "Daily life, side effects, time, cost, work, fertility, and whether the plan is workable.",
-    momentIds: ["surgery-decision", "treatment-comparison"],
+    label: "Balancing treatment with everyday life",
+    hint: "Questions about side effects, work, fertility, family, cost, and whether the plan is workable day to day.",
+    // No Practical Fit / QoL Entry yet — hide until that Moment ships.
+    momentIds: [],
   },
   {
     id: "after-treatment",
     label: "Finished treatment / in follow-up",
     hint: "Monitoring, late effects, and life after treatment.",
-    // Recurrence guide is P1 — hide this bucket until that Moment is active.
+    // Recurrence guide is P1 — hide until that Moment is active.
     momentIds: ["recurrence"],
   },
 ];

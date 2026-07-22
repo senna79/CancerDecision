@@ -249,7 +249,7 @@ export function SituationGuidedRouter({
                         <TreeBranch key={item.moment.id} last={isLast}>
                           {showAlsoLabel ? (
                             <p className="mb-1 mt-2 px-2.5 text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-                              Also related
+                              You may also need to consider
                             </p>
                           ) : null}
                           <MomentLink

@@ -215,7 +215,7 @@ export const BREAST_NEWLY_DIAGNOSED_FLAGSHIP: AiEntryFlagshipModules = {
     },
     {
       title: "Comparing surgery options?",
-      question: "How should I compare lumpectomy and mastectomy?",
+      question: "How should I choose between lumpectomy and mastectomy?",
       cta: "Surgery choice",
       href: BREAST_SURGERY,
     },
@@ -449,9 +449,954 @@ export const BREAST_SUBTYPE_FLAGSHIP: AiEntryFlagshipModules = {
     },
     {
       title: "Comparing surgery options?",
-      question: "How should I compare lumpectomy and mastectomy?",
+      question: "How should I choose between lumpectomy and mastectomy?",
       cta: "Surgery choice",
       href: BREAST_SURGERY,
+    },
+  ],
+};
+
+/** Breast Cancer Entry — Treatment Sequencing (P0 #3) */
+export const BREAST_SEQUENCING_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Breast Cancer",
+  decisionMoment: "Whether treatment should start before or after surgery",
+  exploring: "Neoadjuvant vs adjuvant sequencing",
+  subtitle:
+    "Before locking surgery or a drug plan, clarify which sequence fits your subtype, stage, and goals — and what would change that recommendation.",
+  relatedDecisions: [
+    { label: "Subtype testing", href: BREAST_SUBTYPE },
+    { label: "Surgery choice", href: BREAST_SURGERY },
+    { label: "Systemic options", href: BREAST_SYSTEMIC },
+    { label: "Second opinion", href: BREAST_SECOND },
+  ],
+  journeyLabel: "Breast Cancer Decision Journey",
+  journeyPath: [
+    { label: "New Diagnosis", href: BREAST_NEW },
+    { label: "Subtype", href: BREAST_SUBTYPE },
+    { label: "Sequencing", current: true },
+  ],
+
+  triggersTitle: "When sequencing may matter most",
+  triggerGroups: [
+    {
+      heading: "After subtype results",
+      lead: "You may be asking:",
+      items: [
+        "Should medicines start before surgery?",
+        "Or should surgery happen first?",
+      ],
+    },
+    {
+      heading: "Comparing treatment options",
+      lead: "You may be asking:",
+      items: [
+        "What is my team trying to achieve with each sequence?",
+        "Would response before surgery change later decisions?",
+      ],
+    },
+    {
+      heading: "Unsure about the plan",
+      lead: "You may be asking:",
+      items: [
+        "Why was this sequence recommended for me?",
+        "Would a second opinion help before locking timing?",
+      ],
+    },
+  ],
+
+  whyTitle: "Why does treatment sequencing matter?",
+  whyLead:
+    "Many people hear “chemo before surgery” or “surgery first” without a clear comparison frame. Sequencing is a real fork — not a minor calendar detail.",
+  whyBody: [],
+  whyQuestions: [
+    "Some people start systemic therapy before surgery; others have surgery first",
+    "The sequence can affect response assessment, surgery options, and timeline",
+    "Subtype and stage often shape which sequence belongs in the discussion",
+  ],
+  whyNotLabel: "The important question is not:",
+  whyNotQuestion: "Which approach sounds stronger online?",
+  whyBetterLabel: "The more useful question is:",
+  whyBetterQuestion:
+    "For my subtype and stage, should treatment start before or after surgery — and what would change that?",
+  whyClose: [
+    "Ask your care team what each sequence is trying to achieve for you.",
+  ],
+
+  whoNeedsTitle: "Does everyone face the same sequencing decision?",
+  whoNeedsLead:
+    "Not every breast cancer plan includes a close call between medicines-first and surgery-first. Whether sequencing is a live decision depends on your situation.",
+  whoNeedsBody: [
+    "What matters is whether both sequences are realistic options — and what information would tip the choice.",
+  ],
+  whoNeedsDependsIntro: "Your care team may weigh factors such as:",
+  whoNeedsDependsOn: [
+    "Subtype (HR+, HER2+, triple-negative, and related biology)",
+    "Stage, tumor size, and nodal status",
+    "Goals — shrink, assess response, enable surgery options, or refine pathology first",
+    "Whether genetics could change the operation itself",
+    "Urgency, symptoms, and practical fit",
+  ],
+  whoNeedsClose:
+    "A useful question: “Is sequencing still open for me — and what would lock one path?”",
+
+  doesNotDecideTitle: "How should I compare before-surgery vs after-surgery paths?",
+  doesNotDecideLead:
+    "Compare sequences by goals and fit — not by fear or online “aggressiveness.” Both paths still consider:",
+  doesNotDecideItems: [
+    "What the sequence is trying to achieve",
+    "What information you gain (or wait for)",
+    "How surgery options may change",
+    "Timeline and daily-life burden",
+    "What would change the recommendation",
+  ],
+  doesNotDecideNotes: [
+    "Neoadjuvant therapy is not automatically “more treatment.”",
+    "Surgery first is not automatically “less cancer care” — systemic therapy often follows.",
+  ],
+  doesNotDecideClose:
+    "Sequencing improves the order of decisions — it does not replace a conversation with your care team.",
+
+  costTitle: "Timeline, logistics, and practical fit",
+  costLead:
+    "Sequencing changes when infusions, surgery, recovery, and time away from work happen. Ask about the calendar, not only the drug names.",
+  costItems: [
+    "What is the expected timeline for each sequence?",
+    "How would work, family, fertility, or travel be affected?",
+    "What support would I need during medicines-first vs surgery-first?",
+  ],
+
+  mistakesTitle: "Common mistakes around sequencing",
+  mistakes: [
+    {
+      mistake: "Treating before vs after as a strength contest",
+      why: "The better sequence fits goals and biology — not online aggression.",
+    },
+    {
+      mistake: "Locking surgery before subtype or sequencing is clear",
+      why: "Biology and timing often change what the operation means.",
+    },
+    {
+      mistake: "Assuming surgery first means no systemic therapy",
+      why: "Many people still need medicines after surgery.",
+    },
+  ],
+
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may be especially useful when:",
+  secondOpinionWhen: [
+    "Recommendations differ on before-surgery vs after-surgery sequencing",
+    "Subtype, stage, or genetics leave the fork unclear",
+    "You want confidence before locking an irreversible local plan",
+  ],
+  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionCtaLabel: "Breast second opinion guide",
+  secondOpinionHref: BREAST_SECOND,
+
+  doctorTitle: "Sequencing Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "For my subtype and stage, should treatment start before or after surgery?",
+    "What would change that recommendation?",
+    "How will we know if neoadjuvant therapy is working — if that path is chosen?",
+    "Is any key information still pending before we lock the sequence?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About the recommended sequence",
+      questions: [
+        "Why is this sequence recommended for my situation?",
+        "What is each path trying to achieve?",
+        "What would tip the decision the other way?",
+      ],
+    },
+    {
+      heading: "About information and timing",
+      questions: [
+        "Are subtype and staging results complete enough?",
+        "Should genetic counseling happen before a final surgery choice?",
+        "What is the expected timeline for each sequence?",
+      ],
+    },
+    {
+      heading: "About what comes next",
+      questions: [
+        "If medicines come first, how do we monitor response?",
+        "If surgery comes first, what systemic therapy may follow?",
+        "How does this sequence affect lumpectomy vs mastectomy options?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Clarifying medicines-first vs surgery-first",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person is told they may have chemo before surgery — or surgery soon.",
+    "Online searches make “more treatment first” sound automatically better.",
+    "Instead, they ask:",
+  ],
+  scenarioFocus: [
+    "For my subtype and stage, what is each sequence trying to achieve?",
+    "Would response before surgery change later decisions?",
+    "What information is still pending?",
+    "What would change the recommendation?",
+  ],
+  scenarioClose:
+    "The focus shifts from picking the “stronger” path to choosing the sequence that fits their cancer and goals.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If sequencing is still open:",
+  nextStepActions: [
+    {
+      label:
+        "Confirm subtype and staging information are complete enough for this fork.",
+    },
+    {
+      label:
+        "Ask which sequence is recommended — and what would change that recommendation.",
+    },
+    {
+      label:
+        "Clarify timeline and how the sequence affects surgery options next.",
+    },
+  ],
+  nextStepCtaLabel: "Surgery choice",
+  nextStepHref: BREAST_SURGERY,
+  nextStepCtaMeta: "Lumpectomy vs mastectomy",
+  nextStepSecondaryCtaLabel: "Systemic options by subtype",
+  nextStepSecondaryHref: BREAST_SYSTEMIC,
+  nextStepSecondaryMeta: "When the sequence is clearer",
+
+  relatedPathsTitle: "Continue your breast cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Still waiting on biology?",
+      question:
+        "Do I need breast cancer subtype results before choosing treatment?",
+      cta: "Subtype testing",
+      href: BREAST_SUBTYPE,
+    },
+    {
+      title: "Comparing surgery options?",
+      question: "How should I choose between lumpectomy and mastectomy?",
+      cta: "Surgery choice",
+      href: BREAST_SURGERY,
+    },
+    {
+      title: "Want more confidence?",
+      question:
+        "Should I get a second opinion before breast cancer surgery or systemic therapy?",
+      cta: "Second opinion",
+      href: BREAST_SECOND,
+    },
+  ],
+};
+
+/** Breast Cancer Entry — Surgery Choice (P0 #4) */
+export const BREAST_SURGERY_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Breast Cancer",
+  decisionMoment: "How to choose between lumpectomy and mastectomy",
+  exploring: "Breast-conserving surgery vs mastectomy",
+  subtitle:
+    "When both options may be medically reasonable, compare cancer fit and personal priorities — genetics, radiation, reconstruction, and how you want to live afterward.",
+  relatedDecisions: [
+    { label: "Treatment sequencing", href: BREAST_SEQUENCING },
+    { label: "Subtype testing", href: BREAST_SUBTYPE },
+    { label: "Second opinion", href: BREAST_SECOND },
+    { label: "Systemic options", href: BREAST_SYSTEMIC },
+  ],
+  journeyLabel: "Breast Cancer Decision Journey",
+  journeyPath: [
+    { label: "Subtype", href: BREAST_SUBTYPE },
+    { label: "Sequencing", href: BREAST_SEQUENCING },
+    { label: "Surgery", current: true },
+  ],
+
+  triggersTitle: "When surgery choice may matter most",
+  triggerGroups: [
+    {
+      heading: "Comparing treatment options",
+      lead: "You may be asking:",
+      items: [
+        "Am I a candidate for lumpectomy, mastectomy, or both?",
+        "Is one option safer — or do they offer similar control?",
+      ],
+    },
+    {
+      heading: "Genetics or reconstruction questions",
+      lead: "You may be asking:",
+      items: [
+        "Would genetic results change the operation?",
+        "When would reconstruction happen if I choose mastectomy?",
+      ],
+    },
+    {
+      heading: "Unsure about the plan",
+      lead: "You may be asking:",
+      items: [
+        "Should I get another surgical opinion before locking a date?",
+        "What would change the recommendation either way?",
+      ],
+    },
+  ],
+
+  whyTitle: "Why does the surgery choice matter?",
+  whyLead:
+    "People often hear that both operations can be “fine” — and still feel stuck. Two oncologically sound options can still feel very different personally.",
+  whyBody: [],
+  whyQuestions: [
+    "Lumpectomy usually keeps more of the breast and is typically followed by radiation",
+    "Mastectomy removes more breast tissue and may or may not need radiation afterward",
+    "Genetics, reconstruction timing, and personal priorities often tip the choice",
+  ],
+  whyNotLabel: "The important question is not:",
+  whyNotQuestion: "Which surgery sounds stronger online?",
+  whyBetterLabel: "The more useful question is:",
+  whyBetterQuestion:
+    "Am I a candidate for both — and which path fits my medical picture and priorities?",
+  whyClose: [
+    "Ask your care team what each option would achieve for you in plain language.",
+  ],
+
+  whoNeedsTitle: "Is everyone choosing between these two operations?",
+  whoNeedsLead:
+    "Not always. Some people are clearly better suited to one path. Others face a real fork between conservation and mastectomy.",
+  whoNeedsBody: [
+    "What matters is whether both options are medically reasonable for you — and what information would tip the choice.",
+  ],
+  whoNeedsDependsIntro: "Your care team may weigh factors such as:",
+  whoNeedsDependsOn: [
+    "Tumor size relative to breast size and extent of disease",
+    "Whether radiation after lumpectomy is feasible and acceptable",
+    "Genetic risk and future risk-reduction goals",
+    "Reconstruction preferences and timing",
+    "Whether sequencing (medicines before surgery) could change options",
+  ],
+  whoNeedsClose:
+    "A useful question: “Are both options on the table for me — or is one clearly preferred medically?”",
+
+  doesNotDecideTitle: "How should I compare lumpectomy and mastectomy?",
+  doesNotDecideLead:
+    "Compare by medical fit and lived priorities. For appropriate candidates, cancer control can be similar — decisions still consider:",
+  doesNotDecideItems: [
+    "Candidacy for breast-conserving surgery",
+    "Radiation course after lumpectomy (and whether mastectomy still needs radiation)",
+    "Genetic counseling results when relevant",
+    "Reconstruction timing and body-image priorities",
+    "Recovery, work, and daily-life trade-offs",
+  ],
+  doesNotDecideNotes: [
+    "Mastectomy is not automatically safer for every early breast cancer.",
+    "Lumpectomy is not automatically “less treatment” — radiation is usually part of the package.",
+  ],
+  doesNotDecideClose:
+    "Surgery choice improves the fit of the local plan — it does not replace a conversation with your care team.",
+
+  costTitle: "Recovery, radiation time, and practical fit",
+  costLead:
+    "The calendar differs: lumpectomy often means a shorter operation followed by weeks of radiation; mastectomy recovery may be longer, especially with reconstruction.",
+  costItems: [
+    "What does recovery look like for each option in the first weeks?",
+    "If I choose lumpectomy, what radiation schedule should I expect?",
+    "How would work, caregiving, or travel be affected?",
+  ],
+
+  mistakesTitle: "Common mistakes around surgery choice",
+  mistakes: [
+    {
+      mistake: "Assuming mastectomy is always safer",
+      why: "For many candidates, conservation plus radiation can offer similar control — ask for your situation.",
+    },
+    {
+      mistake: "Choosing before genetics or sequencing are clear",
+      why: "Either can change what operation makes sense.",
+    },
+    {
+      mistake: "Treating reconstruction as an afterthought only",
+      why: "Timing can affect planning — even if you are unsure about reconstructing.",
+    },
+  ],
+
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may be especially useful when:",
+  secondOpinionWhen: [
+    "You are a candidate for both operations and feel stuck",
+    "Genetics, reconstruction, or radiation advice conflicts",
+    "You want confidence before an irreversible local plan",
+  ],
+  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionCtaLabel: "Breast second opinion guide",
+  secondOpinionHref: BREAST_SECOND,
+
+  doctorTitle: "Surgery Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "Am I a candidate for lumpectomy, mastectomy, or both?",
+    "What would change the recommendation either way?",
+    "Do I need genetic counseling before a final surgery choice?",
+    "What would radiation and reconstruction look like for each path?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About candidacy",
+      questions: [
+        "Are both operations medically reasonable for me?",
+        "What tumor or imaging findings tip the choice?",
+        "Would medicines before surgery change my options?",
+      ],
+    },
+    {
+      heading: "About genetics and the other breast",
+      questions: [
+        "Do I need genetic counseling before locking surgery?",
+        "Is surgery on the other breast recommended, optional, or not needed?",
+        "How would a positive genetic result change the plan?",
+      ],
+    },
+    {
+      heading: "About recovery and next steps",
+      questions: [
+        "What does recovery look like for each option?",
+        "If I choose lumpectomy, what does radiation involve?",
+        "If I choose mastectomy, what reconstruction timing is realistic?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Choosing when both surgeries are options",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person is told both lumpectomy and mastectomy could be reasonable.",
+    "Fear pushes them toward “remove everything.”",
+    "Instead, they ask:",
+  ],
+  scenarioFocus: [
+    "Am I a true candidate for both — with similar cancer control?",
+    "What would radiation after lumpectomy involve?",
+    "Do I need genetics before locking the operation?",
+    "What are my priorities for body image, recovery, and risk reduction?",
+  ],
+  scenarioClose:
+    "The focus shifts from fear of the “weaker” surgery to a choice that matches medical fit and personal priorities.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If surgery choice is still open:",
+  nextStepActions: [
+    {
+      label:
+        "Confirm whether both lumpectomy and mastectomy are medically reasonable for you.",
+    },
+    {
+      label:
+        "Ask whether genetics, sequencing, or radiation details should be clear before locking a date.",
+    },
+    {
+      label:
+        "Write down your priorities — then use them in the next surgical conversation.",
+    },
+  ],
+  nextStepCtaLabel: "Second opinion",
+  nextStepHref: BREAST_SECOND,
+  nextStepCtaMeta: "Before locking major surgery",
+  nextStepSecondaryCtaLabel: "Treatment sequencing",
+  nextStepSecondaryHref: BREAST_SEQUENCING,
+  nextStepSecondaryMeta: "If timing before vs after surgery is still open",
+
+  relatedPathsTitle: "Continue your breast cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Unsure about timing?",
+      question:
+        "Should breast cancer treatment start before or after surgery?",
+      cta: "Treatment sequencing",
+      href: BREAST_SEQUENCING,
+    },
+    {
+      title: "Want more confidence?",
+      question:
+        "Should I get a second opinion before breast cancer surgery or systemic therapy?",
+      cta: "Second opinion",
+      href: BREAST_SECOND,
+    },
+    {
+      title: "Still clarifying biology?",
+      question:
+        "Do I need breast cancer subtype results before choosing treatment?",
+      cta: "Subtype testing",
+      href: BREAST_SUBTYPE,
+    },
+  ],
+};
+
+/** Breast Cancer Entry — Second Opinion (P0 #5) */
+export const BREAST_SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Breast Cancer",
+  decisionMoment: "Whether a second opinion may help before major treatment",
+  exploring: "Second opinion before surgery or systemic therapy",
+  subtitle:
+    "Before locking surgery or a major systemic plan, decide whether another focused review would add confidence — confirmation included.",
+  relatedDecisions: [
+    { label: "Surgery choice", href: BREAST_SURGERY },
+    { label: "Treatment sequencing", href: BREAST_SEQUENCING },
+    { label: "Subtype testing", href: BREAST_SUBTYPE },
+    { label: "Systemic options", href: BREAST_SYSTEMIC },
+  ],
+  journeyLabel: "Breast Cancer Decision Journey",
+  journeyPath: [
+    { label: "Sequencing", href: BREAST_SEQUENCING },
+    { label: "Surgery", href: BREAST_SURGERY },
+    { label: "Second opinion", current: true },
+  ],
+
+  triggersTitle: "When a second opinion may matter most",
+  triggerGroups: [
+    {
+      heading: "Before major surgery",
+      lead: "You may be asking:",
+      items: [
+        "Am I choosing the right operation?",
+        "Would genetics or reconstruction change the plan?",
+      ],
+    },
+    {
+      heading: "Unsure about sequencing or systemic therapy",
+      lead: "You may be asking:",
+      items: [
+        "Should medicines start before or after surgery?",
+        "Do the systemic options fit my subtype?",
+      ],
+    },
+    {
+      heading: "Conflicting advice",
+      lead: "You may be asking:",
+      items: [
+        "Why do two recommendations differ?",
+        "What information is each plan assuming?",
+      ],
+    },
+  ],
+
+  whyTitle: "Why consider a second opinion for breast cancer?",
+  whyLead:
+    "Breast cancer plans often combine subtype biology, sequencing, surgery, and personal priorities. Another review can add confidence before an irreversible step.",
+  whyBody: [],
+  whyQuestions: [
+    "Another opinion may confirm the current plan — confirmation is useful",
+    "It may identify missing subtype, genetics, or imaging information",
+    "It may clarify surgery or sequencing when recommendations conflict",
+  ],
+  whyNotLabel: "The important question is not:",
+  whyNotQuestion: "How do I prove my doctor is wrong?",
+  whyBetterLabel: "The more useful question is:",
+  whyBetterQuestion:
+    "What decision do I want reviewed before the next irreversible step?",
+  whyClose: [
+    "Name the decision. Then ask whether there is time for a focused review.",
+  ],
+
+  whoNeedsTitle: "Does everyone need a second opinion?",
+  whoNeedsLead:
+    "No. Many people move forward confidently with one clear multidisciplinary plan. A second opinion is most useful when uncertainty or irreversibility is high.",
+  whoNeedsBody: [
+    "What matters is whether another review would change what you understand — or what you would do next.",
+  ],
+  whoNeedsDependsIntro: "It may be especially useful when:",
+  whoNeedsDependsOn: [
+    "Surgery choice feels borderline or conflicting",
+    "Neoadjuvant vs adjuvant sequencing is unclear",
+    "Genetics or reconstruction could change the operation",
+    "Pathology, imaging, or subtype results leave open questions",
+    "You want confidence before locking a major step",
+  ],
+  whoNeedsClose:
+    "A useful question: “If I do not get another review, what uncertainty am I accepting?”",
+
+  doesNotDecideTitle: "What could another opinion change?",
+  doesNotDecideLead:
+    "A second opinion may confirm, clarify, expand options, or identify gaps. It still depends on:",
+  doesNotDecideItems: [
+    "The records and question you bring",
+    "Your subtype, stage, and surgical candidacy",
+    "Whether timing allows a careful review",
+    "Your goals and practical constraints",
+  ],
+  doesNotDecideNotes: [
+    "Changing the plan is not required for the review to be valuable.",
+    "A vague “look at everything” request is less useful than one named decision.",
+  ],
+  doesNotDecideClose:
+    "Second opinions improve confidence in the next step — they do not replace ongoing care conversations.",
+
+  costTitle: "Cost, coverage, and visit type",
+  costLead:
+    "Fees and coverage vary. Ask before you assume a second opinion is unaffordable — or free.",
+  costItems: [
+    "Is this visit covered as a consultation / second opinion?",
+    "Do slide or imaging re-reviews add cost?",
+    "Can a remote review answer my question, or do I need to travel?",
+  ],
+
+  mistakesTitle: "Common mistakes around second opinions",
+  mistakes: [
+    {
+      mistake: "Waiting until after irreversible surgery",
+      why: "Many breast reviews are most useful before locking the local plan.",
+    },
+    {
+      mistake: "Sending incomplete records",
+      why: "Without subtype, imaging, and the current plan, the review stays vague.",
+    },
+    {
+      mistake: "Seeking only agreement, not a clear question",
+      why: "Name what would change — confirmation is useful when the question is clear.",
+    },
+  ],
+
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "Consider a focused review when:",
+  secondOpinionWhen: [
+    "Surgery or sequencing recommendations conflict",
+    "The next step feels irreversible and you want confidence",
+    "Key information still seems incomplete",
+  ],
+  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionCtaLabel: "Surgery choice",
+  secondOpinionHref: BREAST_SURGERY,
+
+  doctorTitle: "Second Opinion Conversation Checklist",
+  doctorLeaveTitle: "Before leaving the review, ask:",
+  doctorLeaveItems: [
+    "Do you agree with the current plan — and why?",
+    "What would you change, if anything?",
+    "Is any key information still missing before surgery or systemic therapy?",
+    "How urgent is the next step on the calendar?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About the decision under review",
+      questions: [
+        "What decision are we focusing on today?",
+        "For my subtype and stage, is the recommended sequence/surgery reasonable?",
+        "What would tip you toward a different approach?",
+      ],
+    },
+    {
+      heading: "About information gaps",
+      questions: [
+        "Should pathology, imaging, or subtype reporting be re-reviewed?",
+        "Do I need genetic counseling before a final surgery choice?",
+        "Are clinical trial options relevant before I lock a plan?",
+      ],
+    },
+    {
+      heading: "About next steps",
+      questions: [
+        "Can I continue with my current team after this review?",
+        "What should I take back to my primary care team in writing?",
+        "How soon should treatment proceed if we confirm the plan?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Review before locking surgery",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person is offered a surgery date within two weeks.",
+    "They feel unsure whether lumpectomy or mastectomy fits better.",
+    "Instead of canceling care, they ask:",
+  ],
+  scenarioFocus: [
+    "What decision do I want reviewed before the date?",
+    "Is there time for a focused second opinion?",
+    "Which records does the reviewing team need?",
+    "What would change the recommendation either way?",
+  ],
+  scenarioClose:
+    "The focus shifts from rushing or distrusting to getting confidence before an irreversible step.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If you are considering another review:",
+  nextStepActions: [
+    {
+      label:
+        "Name the decision you want reviewed (surgery, sequencing, or systemic plan).",
+    },
+    {
+      label:
+        "Gather pathology, imaging, and the current recommendation — plus one sentence question.",
+    },
+    {
+      label:
+        "Ask how urgent the calendar is before booking the review.",
+    },
+  ],
+  nextStepCtaLabel: "Systemic options by subtype",
+  nextStepHref: BREAST_SYSTEMIC,
+  nextStepCtaMeta: "When the plan involves medicines",
+  nextStepSecondaryCtaLabel: "Surgery choice",
+  nextStepSecondaryHref: BREAST_SURGERY,
+  nextStepSecondaryMeta: "When the fork is lumpectomy vs mastectomy",
+
+  relatedPathsTitle: "Continue your breast cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Comparing surgery options?",
+      question: "How should I choose between lumpectomy and mastectomy?",
+      cta: "Surgery choice",
+      href: BREAST_SURGERY,
+    },
+    {
+      title: "Unsure about timing?",
+      question:
+        "Should breast cancer treatment start before or after surgery?",
+      cta: "Treatment sequencing",
+      href: BREAST_SEQUENCING,
+    },
+    {
+      title: "Still clarifying biology?",
+      question:
+        "Do I need breast cancer subtype results before choosing treatment?",
+      cta: "Subtype testing",
+      href: BREAST_SUBTYPE,
+    },
+  ],
+};
+
+/** Breast Cancer Entry — Systemic Therapy by Subtype (P0 #6) */
+export const BREAST_SYSTEMIC_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Breast Cancer",
+  decisionMoment: "How to choose systemic therapy for my subtype",
+  exploring: "Systemic options forked by HR+ / HER2+ / TNBC",
+  subtitle:
+    "Start from your subtype, then compare option families, goals, sequencing, and trade-offs — not a flat ranking of drug names.",
+  relatedDecisions: [
+    { label: "Subtype testing", href: BREAST_SUBTYPE },
+    { label: "Treatment sequencing", href: BREAST_SEQUENCING },
+    { label: "Surgery choice", href: BREAST_SURGERY },
+    { label: "Second opinion", href: BREAST_SECOND },
+  ],
+  journeyLabel: "Breast Cancer Decision Journey",
+  journeyPath: [
+    { label: "Subtype", href: BREAST_SUBTYPE },
+    { label: "Sequencing", href: BREAST_SEQUENCING },
+    { label: "Systemic options", current: true },
+  ],
+
+  triggersTitle: "When systemic options may matter most",
+  triggerGroups: [
+    {
+      heading: "Subtype results are in",
+      lead: "You may be asking:",
+      items: [
+        "Which medicines fit my HR+ / HER2+ / TNBC subtype?",
+        "Do I need chemo, endocrine therapy, targeted therapy, or a combination?",
+      ],
+    },
+    {
+      heading: "Comparing treatment options",
+      lead: "You may be asking:",
+      items: [
+        "What is each approach trying to achieve?",
+        "Should medicines start before or after surgery?",
+      ],
+    },
+    {
+      heading: "Unsure about the plan",
+      lead: "You may be asking:",
+      items: [
+        "Why this regimen and not another?",
+        "Would a second opinion help before locking systemic therapy?",
+      ],
+    },
+  ],
+
+  whyTitle: "Why do systemic options fork by subtype?",
+  whyLead:
+    "Breast cancer systemic therapy is not one conversation. Receptor and HER2 status usually decide which option families belong on the table.",
+  whyBody: [],
+  whyQuestions: [
+    "HR+, HER2+, and TNBC open different medicine families",
+    "Goals and sequencing still shape which option fits inside that family",
+    "Drug names matter less than fit until the subtype fork is clear",
+  ],
+  whyNotLabel: "The important question is not:",
+  whyNotQuestion: "Which drug is strongest online?",
+  whyBetterLabel: "The more useful question is:",
+  whyBetterQuestion:
+    "For my subtype, which systemic approaches fit — and what is each trying to achieve?",
+  whyClose: [
+    "Confirm your subtype in plain language, then compare option families with your team.",
+  ],
+
+  whoNeedsTitle: "Does everyone face the same systemic menu?",
+  whoNeedsLead:
+    "No. Your subtype, stage, overall health, fertility goals, and sequencing needs change which options are realistic.",
+  whoNeedsBody: [
+    "What matters is which families apply to you — and what trade-offs you are comparing inside that fork.",
+  ],
+  whoNeedsDependsIntro: "Your care team may weigh factors such as:",
+  whoNeedsDependsOn: [
+    "HR+ / HER2+ / TNBC (and combinations like HR+/HER2+)",
+    "Stage, nodes, and recurrence-risk context",
+    "Whether therapy is neoadjuvant or adjuvant",
+    "Genomic assays for some early HR+ cancers",
+    "Side effects, fertility, and daily-life fit",
+  ],
+  whoNeedsClose:
+    "A useful question: “Which option families apply to my subtype — and which can we set aside?”",
+
+  doesNotDecideTitle: "How should I compare systemic options?",
+  doesNotDecideLead:
+    "Compare by subtype fork, goals, and trade-offs. Decisions still consider:",
+  doesNotDecideItems: [
+    "Which medicine families fit your subtype",
+    "What each approach is trying to achieve",
+    "Before-surgery vs after-surgery sequencing",
+    "Side effects, monitoring, and duration",
+    "Fertility and practical fit",
+  ],
+  doesNotDecideNotes: [
+    "A longer or “stronger-sounding” regimen is not automatically better.",
+    "If subtype results are incomplete, ask whether major systemic choices should wait.",
+  ],
+  doesNotDecideClose:
+    "Systemic comparison improves the medicine plan — it does not replace a conversation with your care team.",
+
+  costTitle: "Duration, visits, and practical burden",
+  costLead:
+    "Systemic plans differ in visit load, lab monitoring, and how long therapy continues — especially endocrine therapy.",
+  costItems: [
+    "How long would each part of the plan last?",
+    "What does a typical treatment week look like?",
+    "How will costs and coverage questions be handled for this regimen?",
+  ],
+
+  mistakesTitle: "Common mistakes around systemic options",
+  mistakes: [
+    {
+      mistake: "Comparing drug names before knowing the subtype fork",
+      why: "HR+, HER2+, and TNBC open different option families.",
+    },
+    {
+      mistake: "Assuming more chemotherapy is always better care",
+      why: "Fit and goals matter more than maximum intensity.",
+    },
+    {
+      mistake: "Ignoring sequencing and fertility until after the plan is locked",
+      why: "Timing questions belong in the systemic decision.",
+    },
+  ],
+
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may be especially useful when:",
+  secondOpinionWhen: [
+    "Subtype-based recommendations conflict",
+    "Sequencing and systemic choices feel irreversible together",
+    "You want confidence before starting a major regimen",
+  ],
+  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionCtaLabel: "Breast second opinion guide",
+  secondOpinionHref: BREAST_SECOND,
+
+  doctorTitle: "Systemic Therapy Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "In plain language, what is my subtype — and which option families fit it?",
+    "What is the goal of the systemic plan you recommend?",
+    "Should therapy start before or after surgery?",
+    "What side effects and monitoring should I expect?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About my subtype fork",
+      questions: [
+        "Am I HR+, HER2+, TNBC — or a combination?",
+        "Which medicine families apply — and which do not?",
+        "Would a genomic assay change chemo discussions for me?",
+      ],
+    },
+    {
+      heading: "About goals and sequencing",
+      questions: [
+        "What is systemic therapy trying to achieve in my sequence?",
+        "Should medicines start before or after surgery?",
+        "What would change the recommended regimen?",
+      ],
+    },
+    {
+      heading: "About living with the plan",
+      questions: [
+        "What side effects are most important to watch for?",
+        "How long will treatment last, and what does a typical week look like?",
+        "Could this plan affect fertility or menopause timing?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Comparing options after subtype results",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person receives subtype results and a long list of drug names.",
+    "Online searches make every regimen sound mandatory.",
+    "Instead, they ask:",
+  ],
+  scenarioFocus: [
+    "Which option families fit my subtype?",
+    "What is each approach trying to achieve?",
+    "Should medicines start before or after surgery?",
+    "What would change the recommendation?",
+  ],
+  scenarioClose:
+    "The focus shifts from memorizing drug brands to choosing the systemic path that fits their subtype and goals.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If systemic options are still open:",
+  nextStepActions: [
+    {
+      label:
+        "Confirm your subtype in plain language and which option families apply.",
+    },
+    {
+      label:
+        "Ask the goal of the recommended plan and whether sequencing is settled.",
+    },
+    {
+      label:
+        "Write down side-effect, fertility, and calendar questions before the next visit.",
+    },
+  ],
+  nextStepCtaLabel: "Treatment sequencing",
+  nextStepHref: BREAST_SEQUENCING,
+  nextStepCtaMeta: "Before vs after surgery",
+  nextStepSecondaryCtaLabel: "Second opinion",
+  nextStepSecondaryHref: BREAST_SECOND,
+  nextStepSecondaryMeta: "Before locking a major regimen",
+
+  relatedPathsTitle: "Continue your breast cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Still clarifying biology?",
+      question:
+        "Do I need breast cancer subtype results before choosing treatment?",
+      cta: "Subtype testing",
+      href: BREAST_SUBTYPE,
+    },
+    {
+      title: "Unsure about timing?",
+      question:
+        "Should breast cancer treatment start before or after surgery?",
+      cta: "Treatment sequencing",
+      href: BREAST_SEQUENCING,
+    },
+    {
+      title: "Want more confidence?",
+      question:
+        "Should I get a second opinion before breast cancer surgery or systemic therapy?",
+      cta: "Second opinion",
+      href: BREAST_SECOND,
     },
   ],
 };
@@ -459,4 +1404,8 @@ export const BREAST_SUBTYPE_FLAGSHIP: AiEntryFlagshipModules = {
 export const BREAST_FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> = {
   [BREAST_NEWLY_DIAGNOSED_SLUG]: BREAST_NEWLY_DIAGNOSED_FLAGSHIP,
   [BREAST_SUBTYPE_SLUG]: BREAST_SUBTYPE_FLAGSHIP,
+  [BREAST_SEQUENCING_SLUG]: BREAST_SEQUENCING_FLAGSHIP,
+  [BREAST_SURGERY_SLUG]: BREAST_SURGERY_FLAGSHIP,
+  [BREAST_SECOND_OPINION_SLUG]: BREAST_SECOND_OPINION_FLAGSHIP,
+  [BREAST_TREATMENT_COMPARE_SLUG]: BREAST_SYSTEMIC_FLAGSHIP,
 };
