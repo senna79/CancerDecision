@@ -17,6 +17,7 @@ import {
 } from "@/lib/journey/decision-moments";
 import {
   BREAST_ORIENTATION_LINKS,
+  BREAST_QUICK_SCENARIOS,
   BREAST_SITUATION_BUCKETS,
   LUNG_ORIENTATION_LINKS,
   LUNG_SITUATION_BUCKETS,
@@ -132,7 +133,7 @@ export default async function CancerDecisionCenterPage({
         {isLung
           ? "Lung cancer is our first complete cancer decision journey. Any stage — newly diagnosed, comparing options, second opinion, or care center expertise. Pick where you are; leave knowing your next step."
           : isBreast
-            ? "Breast cancer decision journey — start from your situation. The usual path runs diagnosis → subtype results → treatment timing → surgery or systemic choices. More situations unlock as guides ship."
+            ? "A breast cancer diagnosis creates many questions at once. You do not need to solve them all today — start from the decision you are facing now. The usual path runs diagnosis → subtype → treatment order → surgery or systemic choices."
             : "Start from the decision you are facing, then explore questions, treatments, and illustrative journeys for this cancer type."}
       </p>
 
@@ -144,6 +145,7 @@ export default async function CancerDecisionCenterPage({
             orientationLinks={
               isBreast ? BREAST_ORIENTATION_LINKS : LUNG_ORIENTATION_LINKS
             }
+            quickScenarios={isBreast ? BREAST_QUICK_SCENARIOS : undefined}
             cancerLabel={isBreast ? "breast cancer" : "lung cancer"}
             activeId={activeMoment?.id}
             footer={
@@ -159,8 +161,8 @@ export default async function CancerDecisionCenterPage({
                 </>
               ) : (
                 <>
-                  Prefer a short orientation first? Use Subtype, Stage, or
-                  Treatment map above — then open a decision guide.
+                  Optional foundation guides are above if you want basics —
+                  otherwise pick a situation and open one decision guide.
                 </>
               )
             }

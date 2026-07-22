@@ -199,8 +199,7 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
         "Neoadjuvant vs adjuvant timing",
       ],
       patient_router: {
-        label:
-          "How do I choose systemic therapy for my breast cancer subtype?",
+        label: "What treatment options fit my breast cancer subtype?",
         hint: "Compare HR+ / HER2+ / TNBC option families — not a drug ranking.",
         nextStep: "Start here",
       },

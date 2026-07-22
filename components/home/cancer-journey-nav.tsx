@@ -7,9 +7,11 @@ import { SituationGuidedRouter } from "@/components/journey/situation-guided-rou
 import type { DecisionMoment } from "@/lib/journey/decision-moments";
 import {
   BREAST_ORIENTATION_LINKS,
+  BREAST_QUICK_SCENARIOS,
   BREAST_SITUATION_BUCKETS,
   LUNG_ORIENTATION_LINKS,
   LUNG_SITUATION_BUCKETS,
+  type SituationQuickScenario,
 } from "@/lib/journey/situation-buckets";
 import { cn } from "@/lib/utils";
 
@@ -34,6 +36,7 @@ type JourneyConfig = {
   cancerLabel: string;
   buckets: typeof LUNG_SITUATION_BUCKETS;
   orientationLinks: typeof LUNG_ORIENTATION_LINKS;
+  quickScenarios?: SituationQuickScenario[];
   mapHref: string;
 };
 
@@ -93,6 +96,7 @@ export function CancerJourneyNav({
       cancerLabel: "breast cancer",
       buckets: BREAST_SITUATION_BUCKETS,
       orientationLinks: BREAST_ORIENTATION_LINKS,
+      quickScenarios: BREAST_QUICK_SCENARIOS,
       mapHref: "/cancers/breast-cancer#decision-moment",
     },
   };
@@ -175,13 +179,14 @@ export function CancerJourneyNav({
           moments={journey.moments}
           buckets={journey.buckets}
           orientationLinks={journey.orientationLinks}
+          quickScenarios={journey.quickScenarios}
           cancerLabel={journey.cancerLabel}
           footer={
             <>
               {selectedSlug === BREAST_SLUG ? (
                 <>
-                  Core path: diagnosis → subtype → sequencing → surgery. More
-                  situations unlock as guides ship.{" "}
+                  Core path: diagnosis → subtype → treatment order → surgery.
+                  Open one guide, then come back for the next decision.{" "}
                 </>
               ) : null}
               Want the full center?{" "}

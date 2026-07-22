@@ -12,6 +12,7 @@ import {
   LUNG_SITUATION_BUCKETS,
   type OrientationLink,
   type SituationBucket,
+  type SituationQuickScenario,
 } from "@/lib/journey/situation-buckets";
 import { cn } from "@/lib/utils";
 
@@ -99,6 +100,7 @@ export function SituationGuidedRouter({
   moments,
   buckets = LUNG_SITUATION_BUCKETS,
   orientationLinks = LUNG_ORIENTATION_LINKS,
+  quickScenarios,
   activeId,
   footer,
   cancerLabel = "lung cancer",
@@ -108,6 +110,8 @@ export function SituationGuidedRouter({
   buckets?: SituationBucket[];
   /** Supporting guides — not a 7th situation. Pass [] to hide. */
   orientationLinks?: OrientationLink[];
+  /** Optional jump chips that scroll to existing situation buckets */
+  quickScenarios?: SituationQuickScenario[];
   activeId?: string | null;
   footer?: ReactNode;
   /** Used in the section title */
@@ -116,6 +120,10 @@ export function SituationGuidedRouter({
   variant?: "full" | "compact";
 }) {
   const compact = variant === "compact";
+  const bucketIds = new Set(buckets.map((b) => b.id));
+  const visibleQuickScenarios = (quickScenarios ?? []).filter((s) =>
+    bucketIds.has(s.bucketId)
+  );
 
   const momentsByBucket = buckets
     .map((bucket) => ({
@@ -151,7 +159,7 @@ export function SituationGuidedRouter({
       >
         {compact
           ? "Still deciding something else?"
-          : `Where is this ${cancerLabel} decision right now?`}
+          : `Find the ${cancerLabel} decision you are facing now`}
       </h2>
       <p
         className={cn(
@@ -161,22 +169,49 @@ export function SituationGuidedRouter({
       >
         {compact
           ? "Scan the map below and open the guide that fits — then come back here anytime for the next decision."
-          : "This is a navigation map, not a reading list. Find your situation, open one guide, and return when the next question comes up."}
+          : "A diagnosis creates many questions at once. You do not need to solve them all today. This is a navigation map, not a reading list — find the decision you are facing now, open one guide, then return when the next question comes up."}
       </p>
+
+      {!compact && visibleQuickScenarios.length ? (
+        <div className="mt-5 rounded-lg border border-[var(--line)] bg-[rgba(15,118,110,0.03)] p-4 md:p-5">
+          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+            Quick start
+          </p>
+          <h3 className="mt-1 font-heading text-lg font-semibold tracking-[-0.02em] text-[var(--ink)]">
+            Which sounds most like you?
+          </h3>
+          <p className="mt-1 text-sm text-[var(--ink-soft)]">
+            Jump to a situation below — same map, fewer steps to choose.
+          </p>
+          <ul className="mt-3 flex flex-wrap gap-2">
+            {visibleQuickScenarios.map((scenario) => (
+              <li key={scenario.bucketId + scenario.label}>
+                <a
+                  href={`#situation-${scenario.bucketId}`}
+                  className="inline-flex rounded-md border border-[var(--line)] bg-white px-3 py-2 text-sm font-medium text-[var(--ink)] transition hover:border-[var(--accent)]/50 hover:text-[var(--accent)]"
+                >
+                  {scenario.label}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : null}
 
       {!compact && orientationLinks.length ? (
         <div className="mt-6 rounded-lg border border-[var(--accent)]/25 bg-[rgba(15,118,110,0.04)] p-4 md:p-5">
           <div className="flex flex-wrap items-baseline justify-between gap-2">
             <div>
               <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-                Before the 6 situations
+                Optional foundation
               </p>
               <h3 className="mt-1 font-heading text-lg font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-xl">
-                Need orientation first?
+                Need a quick foundation first? (Optional)
               </h3>
               <p className="mt-1 max-w-2xl text-sm text-[var(--ink-soft)]">
-                Short knowledge guides — open one if you still need the basics
-                before picking a decision situation below.
+                You can start with a decision situation below even if you do not
+                know all the details yet. Open a short guide only if you want
+                basics first.
               </p>
             </div>
           </div>
@@ -187,7 +222,7 @@ export function SituationGuidedRouter({
                   href={link.href}
                   className="group flex h-full min-h-[7.5rem] flex-col rounded-md border border-[var(--line)] bg-white px-4 py-4 transition hover:border-[var(--accent)]/50 hover:bg-[rgba(15,118,110,0.05)]"
                 >
-                  <span className="font-heading text-lg font-semibold tracking-[-0.02em] text-[var(--ink)] group-hover:text-[var(--accent)]">
+                  <span className="font-heading text-base font-semibold tracking-[-0.02em] text-[var(--ink)] group-hover:text-[var(--accent)] md:text-lg">
                     {link.label}
                   </span>
                   <span className="mt-2 flex-1 text-sm leading-relaxed text-[var(--ink-soft)]">
