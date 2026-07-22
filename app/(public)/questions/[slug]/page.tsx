@@ -172,7 +172,13 @@ export default async function QuestionPage({
               question.category.replaceAll("_", " "),
               ...(entryMeta ? [entryMeta.decisionLabel] : []),
               ...(graphNode ? [graphNode.stateLabel, "decision navigation"] : []),
-              ...(flagship ? ["lung cancer decision journey"] : []),
+              ...(flagship
+                ? [
+                    cancer?.slug === "breast-cancer"
+                      ? "breast cancer decision journey"
+                      : "lung cancer decision journey",
+                  ]
+                : []),
               ...(aiEntry ? ["decision entry", "patient navigation"] : []),
             ],
             mentionEntities: [

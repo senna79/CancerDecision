@@ -1,18 +1,12 @@
-import Link from "next/link";
-import { TrackLink } from "@/components/analytics/track-link";
-import { DecisionMarkBadge } from "@/components/brand/decision-marks";
+import { Suspense } from "react";
 import { CancerJourneyNav } from "@/components/home/cancer-journey-nav";
-import { JOURNEY_PHASE_MARKS } from "@/lib/brand/situation-marks";
-import {
-  HOME_COMMON_DECISION_PATHS,
-  HOME_FEATURED_LUNG_JOURNEY,
-} from "@/lib/content/home-decision-paths";
+import { HomeCancerClosing } from "@/components/home/home-cancer-closing";
+import { HomeCancerFeatured } from "@/components/home/home-cancer-featured";
 import {
   BREAST_DECISION_MOMENTS,
-  cancerSituationMapHref,
   LUNG_DECISION_MOMENTS,
 } from "@/lib/journey/decision-moments";
-import { getCancers, getStories } from "@/lib/queries";
+import { getCancerBySlug, getCancers, getStories } from "@/lib/queries";
 import { buildMetadata } from "@/lib/seo/metadata";
 
 export const metadata = buildMetadata({
@@ -31,25 +25,48 @@ export const metadata = buildMetadata({
   ],
 });
 
+function toStoryCards(
+  stories: Awaited<ReturnType<typeof getStories>>
+) {
+  return stories.map((s) => ({
+    id: s.id,
+    slug: s.slug,
+    title: s.title,
+    country: s.country,
+    age_range: s.age_range,
+    decision_challenge: s.decision_challenge,
+  }));
+}
+
 export default async function HomePage({
   searchParams,
 }: {
   searchParams: Promise<{ cancer?: string }>;
 }) {
   const { cancer: cancerParam } = await searchParams;
-  const [cancers, stories] = await Promise.all([
+  const [cancers, lungCancer, breastCancer] = await Promise.all([
     getCancers(),
-    getStories({ limit: 3 }),
+    getCancerBySlug("lung-cancer"),
+    getCancerBySlug("breast-cancer"),
+  ]);
+  const [lungStories, breastStories] = await Promise.all([
+    lungCancer
+      ? getStories({ cancerId: lungCancer.id, limit: 3 })
+      : getStories({ limit: 3 }),
+    breastCancer
+      ? getStories({ cancerId: breastCancer.id, limit: 3 })
+      : Promise.resolve([]),
   ]);
 
   const cancerOptions = cancers.map((c) => ({
     slug: c.slug,
     name: c.name,
   }));
-  const orderedCancers = [
-    ...cancers.filter((c) => c.slug === "lung-cancer"),
-    ...cancers.filter((c) => c.slug !== "lung-cancer"),
-  ];
+  const closingCancers = cancers.map((c) => ({
+    id: c.id,
+    slug: c.slug,
+    name: c.name,
+  }));
   const initialJourneySlug =
     cancerParam === "breast-cancer" ? "breast-cancer" : "lung-cancer";
 
@@ -79,7 +96,7 @@ export default async function HomePage({
           </div>
 
           <div className="animate-rise-delay mt-10 border-t border-[var(--line)]/80 pt-8">
-            <h2 className="font-heading text-2xl font-semibold tracking-[-0.03em] text-[var(--ink)] md:text-3xl">
+            <h2 className="font-heading text-2xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
               Start from the situation.
             </h2>
             <p className="mt-2 max-w-2xl text-[var(--muted)] md:text-lg">
@@ -98,167 +115,18 @@ export default async function HomePage({
         </div>
       </section>
 
-      <section
-        id="common-decision-paths"
-        className="scroll-mt-20 mx-auto w-full max-w-6xl px-5 py-14 md:px-8"
-      >
-        <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-          <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-            Common decision questions
-          </h2>
-          <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
-            Lung · Complete
-          </span>
-        </div>
-        <p className="mt-2 max-w-2xl text-[var(--muted)]">
-          Start from the question — not the encyclopedia. These paths are live
-          for lung cancer today; the same question shapes will extend to other
-          cancers.
-        </p>
-        <ul className="mt-8 divide-y divide-[var(--line)] border-y border-[var(--line)]">
-          {HOME_COMMON_DECISION_PATHS.map((item) => (
-            <li key={item.href}>
-              <TrackLink
-                href={item.href}
-                event="home_question_click"
-                eventProps={{ href: item.href }}
-                className="group flex items-baseline justify-between gap-4 py-4 transition hover:bg-[rgba(15,118,110,0.04)]"
-              >
-                <span className="text-base font-semibold text-[var(--ink)] group-hover:text-[var(--accent)] md:text-[1.05rem]">
-                  {item.question}
-                </span>
-                <span className="shrink-0 text-sm font-semibold text-[var(--accent)]">
-                  Open →
-                </span>
-              </TrackLink>
-            </li>
-          ))}
-        </ul>
-      </section>
+      <Suspense fallback={null}>
+        <HomeCancerFeatured initialSlug={initialJourneySlug} />
+      </Suspense>
 
-      <section className="border-y border-[var(--line)] bg-[var(--paper-deep)]/40">
-        <div className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8">
-          <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
-            <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-              Lung cancer decision journey
-            </h2>
-            <span className="text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
-              Featured · Complete
-            </span>
-          </div>
-          <p className="mt-2 max-w-2xl text-[var(--muted)]">
-            The first complete Cancer Next Step guide — from first clarity to
-            follow-up.
-          </p>
-          <ol className="mt-8 grid gap-0 sm:grid-cols-2 lg:grid-cols-4">
-            {HOME_FEATURED_LUNG_JOURNEY.map((step, index) => {
-              const markId = JOURNEY_PHASE_MARKS[index] ?? "diagnosis";
-              return (
-                <li key={step.href} className="relative">
-                  <Link
-                    href={step.href}
-                    className="group flex items-center gap-3 border-b border-[var(--line)] py-4 lg:border-b-0 lg:border-l lg:border-[var(--line)] lg:px-5 lg:py-2 lg:first:border-l-0 lg:first:pl-0"
-                  >
-                    <DecisionMarkBadge
-                      id={markId}
-                      className="size-7 transition group-hover:border-[var(--accent)]/50"
-                    />
-                    <span className="font-heading text-lg font-semibold text-[var(--ink)] group-hover:text-[var(--accent)]">
-                      {step.label}
-                    </span>
-                  </Link>
-                </li>
-              );
-            })}
-          </ol>
-          <p className="mt-6">
-            <Link
-              href={cancerSituationMapHref("lung-cancer")}
-              className="text-sm font-semibold text-[var(--accent)] hover:underline"
-            >
-              See where decisions sit on the map →
-            </Link>
-          </p>
-        </div>
-      </section>
-
-      <section
-        id="journeys-in-development"
-        className="scroll-mt-20 mx-auto w-full max-w-6xl px-5 py-14 md:px-8"
-      >
-        <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-          Cancer journeys in development
-        </h2>
-        <p className="mt-2 max-w-2xl text-[var(--muted)]">
-          Same decision framework across cancers. Lung cancer is complete today;
-          others deepen over time — not a different product.
-        </p>
-        <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {orderedCancers.map((cancer) => {
-            const hasSituationMap =
-              cancer.slug === "lung-cancer" || cancer.slug === "breast-cancer";
-            const complete = cancer.slug === "lung-cancer";
-            return (
-              <Link
-                key={cancer.id}
-                href={
-                  hasSituationMap
-                    ? cancerSituationMapHref(cancer.slug)
-                    : `/cancers/${cancer.slug}`
-                }
-                className="group border-b border-[var(--line)] py-3 transition hover:border-[var(--accent)]"
-              >
-                <div className="flex items-baseline justify-between gap-2">
-                  <h3 className="font-heading text-lg font-semibold text-[var(--ink)] group-hover:text-[var(--accent)]">
-                    {cancer.name}
-                  </h3>
-                  <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.1em] text-[var(--muted)]">
-                    {complete ? "Complete" : "In development"}
-                  </span>
-                </div>
-                <p className="mt-1 line-clamp-2 text-sm text-[var(--muted)]">
-                  {complete
-                    ? "The first complete Cancer Next Step decision journey."
-                    : cancer.slug === "breast-cancer"
-                      ? "Situation map and P0 decision guides are live — more situations unlock next."
-                      : "Uses the same decision framework — depth coming next."}
-                </p>
-              </Link>
-            );
-          })}
-        </div>
-      </section>
-
-      <section className="border-y border-[var(--line)] bg-[var(--paper-deep)]/70">
-        <div className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8">
-          <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-            Illustrative decision journeys
-          </h2>
-          <p className="mt-2 max-w-2xl text-[var(--muted)]">
-            Product examples of how people compare options and prepare questions
-            — not miracle recoveries, and not verified testimonials.
-          </p>
-          <div className="mt-8 grid gap-6 md:grid-cols-3">
-            {stories.map((story) => (
-              <Link
-                key={story.id}
-                href={`/stories/${story.slug}`}
-                className="group block border-b border-[var(--line)] pb-4 transition hover:border-[var(--accent)]"
-              >
-                <p className="text-xs uppercase tracking-[0.14em] text-[var(--muted)]">
-                  Illustrative · {story.country} · {story.age_range}
-                </p>
-                <h3 className="mt-2 font-heading text-lg font-semibold text-[var(--ink)] group-hover:text-[var(--accent)]">
-                  {story.title}
-                </h3>
-                <p className="mt-2 line-clamp-3 text-sm text-[var(--muted)]">
-                  {story.decision_challenge}
-                </p>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Suspense fallback={null}>
+        <HomeCancerClosing
+          initialSlug={initialJourneySlug}
+          cancers={closingCancers}
+          lungStories={toStoryCards(lungStories)}
+          breastStories={toStoryCards(breastStories)}
+        />
+      </Suspense>
     </div>
   );
 }

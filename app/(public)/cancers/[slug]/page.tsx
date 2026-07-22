@@ -25,6 +25,7 @@ import {
 import { getCancerDecisionCenter, getCancers } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { isIndexableCancerSlug } from "@/lib/seo/indexing";
+import { BREAST_HUB_FAQS } from "@/lib/content/breast-hub-faq";
 import { isRetiredBreastQuestionSlug } from "@/lib/content/breast-entry-slugs";
 import { isRetiredLungQuestionSlug } from "@/lib/seo/retired-lung-questions";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -169,6 +170,46 @@ export default async function CancerDecisionCenterPage({
           />
           {isLung ? (
             <DecisionMapLocator activeNodeId={activeMoment?.nodeId} />
+          ) : null}
+
+          {isBreast ? (
+            <section
+              id="common-first-questions"
+              aria-label="Common first questions after a breast cancer diagnosis"
+              className="rounded-lg border border-[var(--line)] bg-white/90 p-5 md:p-6"
+            >
+              <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+                For search and first visits
+              </p>
+              <h2 className="mt-1 font-heading text-xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-2xl">
+                Common first questions after a breast cancer diagnosis
+              </h2>
+              <p className="mt-2 text-sm text-[var(--ink-soft)]">
+                Short answers that point to one decision guide — not a full
+                reading list.
+              </p>
+              <ul className="mt-5 space-y-4">
+                {BREAST_HUB_FAQS.map((item) => (
+                  <li
+                    key={item.question}
+                    className="border-t border-[var(--line)]/80 pt-4 first:border-t-0 first:pt-0"
+                  >
+                    <h3 className="font-heading text-base font-semibold tracking-[-0.02em] text-[var(--ink)]">
+                      {item.question}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-[var(--ink-soft)]">
+                      {item.answer}
+                    </p>
+                    <Link
+                      href={item.href}
+                      className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+                    >
+                      {item.cta}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </section>
           ) : null}
         </div>
       ) : null}
