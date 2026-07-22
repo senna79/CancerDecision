@@ -4,6 +4,11 @@ import Link from "next/link";
 import { useEffect, useMemo, useRef, useState } from "react";
 import type { AiEntryFlagshipModules } from "@/lib/content/ai-entry-modules";
 import {
+  BREAST_CARE_TEAM_SLUG,
+  BREAST_QOL_SLUG,
+  BREAST_TREATMENT_COMPARE_SLUG,
+} from "@/lib/content/breast-entry-slugs";
+import {
   getEntryPathV2,
   type EntryPathStep,
   type EntryPathV2,
@@ -348,6 +353,128 @@ function StepMain({
             returned and what changed, not with replaying the first plan.
           </p>
           <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "bqol-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The useful question is not treatment vs quality of life — it is how
+            the plan can support both cancer goals and the life you need to
+            protect.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "btrial-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            A clinical trial is another option to evaluate — not automatically
+            better than standard care, and not only for people who have run out
+            of options.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "bfu-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The end of treatment is not the end of care — ask what to monitor,
+            when to call, and who leads follow-up now.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "bgc-understand":
+      return (
+        <div className="space-y-3">
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Name the capability gap in one sentence before anyone books flights
+            — fame alone is not a reason to travel.
+          </p>
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
+    case "bfe-why":
+      return <WhyDecisionMatters modules={modules} embedded />;
+    case "bfe-where":
+      return (
+        <div className="space-y-4 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            This page is a pointer — not an insurance or price guide. Open the
+            decision that matches your concern:
+          </p>
+          <ul className="space-y-3 text-[var(--ink)]">
+            <li className="flex gap-2.5">
+              <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+              <span>
+                <span className="font-medium">Where care happens</span> — travel,
+                hybrid care, and who coordinates your network.{" "}
+                <Link
+                  href={`/questions/${BREAST_CARE_TEAM_SLUG}`}
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  Care team →
+                </Link>
+              </span>
+            </li>
+            <li className="flex gap-2.5">
+              <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+              <span>
+                <span className="font-medium">Which option fits a real week</span>{" "}
+                — visit load, recovery, and practical burden.{" "}
+                <Link
+                  href={`/questions/${BREAST_TREATMENT_COMPARE_SLUG}`}
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  Systemic options →
+                </Link>
+              </span>
+            </li>
+            <li className="flex gap-2.5">
+              <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+              <span>
+                <span className="font-medium">
+                  Whether the burden is sustainable
+                </span>{" "}
+                — daily life, symptoms, and what you can keep doing.{" "}
+                <Link
+                  href={`/questions/${BREAST_QOL_SLUG}`}
+                  className="font-semibold text-[var(--accent)] hover:underline"
+                >
+                  Quality of life →
+                </Link>
+              </span>
+            </li>
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Exact prices and insurance rules vary. Put constraints on the table
+            with your care team.
+          </p>
+        </div>
+      );
+    case "bfe-ask":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>Three questions help most:</p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "What will a normal treatment week look like?",
+              "What travel, time, or cost pressures should we plan for?",
+              "If this becomes too hard, what can we adjust?",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Raising practical limits is part of good decision-making — not
+            quitting care.
+          </p>
         </div>
       );
     case "bso-understand":

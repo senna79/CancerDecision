@@ -4,6 +4,11 @@ import {
   BREAST_GENETICS_SLUG,
   BREAST_METASTATIC_SLUG,
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_CLINICAL_TRIAL_SLUG,
+  BREAST_FOLLOW_UP_SLUG,
+  BREAST_GLOBAL_CARE_SLUG,
+  BREAST_PRACTICAL_FIT_SLUG,
+  BREAST_QOL_SLUG,
   BREAST_RECURRENCE_SLUG,
   BREAST_RADIATION_SLUG,
   BREAST_RECONSTRUCTION_SLUG,
@@ -15,7 +20,7 @@ import {
 } from "@/lib/content/breast-entry-slugs";
 
 /**
- * Breast Cancer Decision OS v1 — P0 + active P1 moments (including Metastatic + Recurrence).
+ * Breast Cancer Decision OS — P0/P1 + P2 (QoL, Practical Fit, Trial, Follow-up, Global care).
  * Clinical spine: Diagnosis → Subtype → Stage context → Surgery/local → Systemic sequencing.
  */
 export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
@@ -357,6 +362,154 @@ export const BREAST_CANCER_DECISION_OS: CancerDecisionOs = {
       patient_router: {
         label: "What should I sort out if breast cancer comes back?",
         hint: "A new decision point — location, prior therapy, and whether subtype should be re-checked.",
+        nextStep: "Start here",
+      },
+    },
+    {
+      id: "node-qol",
+      slug: "quality-of-life",
+      label: "Quality of life / personal goals",
+      state_label: "Personal goals",
+      summary:
+        "Bring personal goals, daily life, and priorities into breast cancer treatment conversations.",
+      why_this_matters:
+        "Cancer decisions are about your life, not only your cancer — priorities make trade-offs clearer.",
+      tier: 2,
+      status: "active",
+      stage: "supportive",
+      sort_order: 15,
+      optional: true,
+      ai_entry_slug: BREAST_QOL_SLUG,
+      question_slugs: [BREAST_QOL_SLUG],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: [
+        "node-compare",
+        "node-reconstruction",
+        "node-radiation",
+        "node-second-opinion",
+      ],
+      patient_router: {
+        label: "How should quality of life factor into my breast cancer plan?",
+        hint: "Support cancer goals and the daily life you need to protect — not treatment vs living.",
+        nextStep: "Start here",
+      },
+    },
+    {
+      id: "node-costs",
+      slug: "cost-logistics",
+      label: "Practical fit (cost & logistics pointer)",
+      state_label: "Practical fit",
+      summary:
+        "Pointer into Care Team, Systemic options, and Quality of Life — whether a plan can work with cost, travel, time, and support.",
+      why_this_matters:
+        "Practical factors belong in the conversation. Open the matching decision page rather than treating logistics as a separate encyclopedia.",
+      tier: 2,
+      status: "active",
+      stage: "practical",
+      sort_order: 16,
+      optional: true,
+      ai_entry_slug: BREAST_PRACTICAL_FIT_SLUG,
+      question_slugs: [BREAST_PRACTICAL_FIT_SLUG],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: [
+        "node-care-team",
+        "node-compare",
+        "node-qol",
+        "node-second-opinion",
+      ],
+      patient_router: {
+        label: "Can this breast cancer plan work with my real life?",
+        hint: "Practical fit — then Care Team, Systemic options, or Quality of Life.",
+        nextStep: "See where to go next",
+      },
+    },
+    {
+      id: "node-clinical-trial",
+      slug: "clinical-trial",
+      label: "Clinical trial decision",
+      state_label: "Clinical trial decision",
+      summary:
+        "Decide whether a clinical trial should be part of your discussion — compared with other options, not as a last resort.",
+      why_this_matters:
+        "Trials are a decision option at multiple points — evaluate purpose, evidence, risks, subtype fit, and practical burden.",
+      tier: 1,
+      status: "active",
+      stage: "treatment",
+      sort_order: 17,
+      ai_entry_slug: BREAST_CLINICAL_TRIAL_SLUG,
+      question_slugs: [BREAST_CLINICAL_TRIAL_SLUG],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: [
+        "node-compare",
+        "node-second-opinion",
+        "node-care-team",
+        "node-stage-iv",
+      ],
+      patient_router: {
+        label: "Should I consider a clinical trial for breast cancer?",
+        hint: "Another option to evaluate — not automatically better, not only last resort.",
+        nextStep: "Start here",
+      },
+    },
+    {
+      id: "node-follow-up",
+      slug: "follow-up-monitoring",
+      label: "Long-term monitoring & follow-up",
+      state_label: "Follow-up monitoring",
+      summary:
+        "After active treatment, clarify what to monitor, when to contact the team, and how ongoing medicines fit.",
+      why_this_matters:
+        "The end of treatment is not the end of care — patients need a clear plan for visits, symptoms, late effects, and life after cancer.",
+      tier: 2,
+      status: "active",
+      stage: "supportive",
+      sort_order: 18,
+      optional: true,
+      ai_entry_slug: BREAST_FOLLOW_UP_SLUG,
+      question_slugs: [BREAST_FOLLOW_UP_SLUG],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: [
+        "node-recurrence",
+        "node-qol",
+        "node-second-opinion",
+      ],
+      patient_router: {
+        label: "How do I monitor my health after breast cancer treatment?",
+        hint: "Follow-up plans, symptoms to report, ongoing medicines, and life after treatment.",
+        nextStep: "Start here",
+      },
+    },
+    {
+      id: "node-global",
+      slug: "global-care",
+      label: "Local vs international branch",
+      state_label: "International option",
+      summary:
+        "Only explore cross-border care when a specific capability, trial, or specialty review is missing locally.",
+      why_this_matters:
+        "This matters only when a specific capability is missing locally — not as a default upgrade.",
+      tier: 2,
+      status: "active",
+      stage: "global",
+      sort_order: 19,
+      optional: true,
+      ai_entry_slug: BREAST_GLOBAL_CARE_SLUG,
+      question_slugs: [BREAST_GLOBAL_CARE_SLUG],
+      treatment_slugs: [],
+      story_slugs: [],
+      next_moment_ids: [
+        "node-care-team",
+        "node-second-opinion",
+        "node-clinical-trial",
+        "node-costs",
+      ],
+      patient_router: {
+        label: "When should I consider breast cancer care abroad?",
+        hint: "Explore only when a capability gap is real — name it in one sentence.",
         nextStep: "Start here",
       },
     },

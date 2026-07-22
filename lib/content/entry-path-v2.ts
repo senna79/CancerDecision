@@ -8,6 +8,11 @@ import {
   BREAST_GENETICS_SLUG,
   BREAST_METASTATIC_SLUG,
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_CLINICAL_TRIAL_SLUG,
+  BREAST_FOLLOW_UP_SLUG,
+  BREAST_GLOBAL_CARE_SLUG,
+  BREAST_PRACTICAL_FIT_SLUG,
+  BREAST_QOL_SLUG,
   BREAST_RECURRENCE_SLUG,
   BREAST_RADIATION_SLUG,
   BREAST_RECONSTRUCTION_SLUG,
@@ -3500,6 +3505,591 @@ const BREAST_RECURRENCE_PATH: EntryPathV2 = {
   ],
 };
 
+const BREAST_QOL_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Breast Cancer Quality of Life Decision Path",
+  pathSubtitle:
+    "What matters most → manage symptoms → balance benefit and burden → questions for your team.",
+  completedLabels: [
+    "What your plan should help protect",
+    "How to manage symptoms during treatment",
+    "How to balance benefit and burden",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Priorities you want the plan to protect",
+    "Side effects and visit burden you can sustain",
+    "What supportive options or adjustments are available now",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "What should my treatment plan help me protect?",
+      lead: "Patient question: what matters most in my daily life?",
+      main: "bqol-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When quality of life becomes part of the breast cancer decision.",
+        },
+        {
+          id: "bqol-what-is",
+          title: "What does quality of life mean here?",
+          summary: "Energy, work, family, comfort, body image — not a soft side topic.",
+        },
+        {
+          id: "bqol-not-either-or",
+          title: "Is this treatment vs quality of life?",
+          summary: "No — the goal is a plan that supports both.",
+        },
+        {
+          id: "bqol-supportive",
+          title: "Does needing supportive care mean giving up?",
+          summary: "Supportive care can run alongside treatment at any stage.",
+        },
+        {
+          id: "bqol-tell-doctor",
+          title: "Should I tell my doctor what matters most?",
+          summary: "Your priorities are important medical information.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How should quality of life change the comparison?",
+      lead: "Patient question: can daily life affect which option I choose?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "bqol-affect-choice",
+          title: "Can quality of life affect which treatment I choose?",
+          summary: "Benefit, risks, and personal goals all count.",
+        },
+        {
+          id: "bqol-which-symptoms",
+          title: "Which symptoms should I tell my doctor about?",
+          summary: "Report changes that affect daily activities.",
+        },
+        {
+          id: "bqol-wait-appointment",
+          title: "Should I wait until my next appointment?",
+          summary: "Some symptoms need earlier attention.",
+        },
+        {
+          id: "bqol-adjust-treatment",
+          title: "Can treatment be adjusted if side effects are hard?",
+          summary: "Tell your team what is happening.",
+        },
+        {
+          id: "bqol-more-better",
+          title: "Is more treatment always better?",
+          summary: "More benefit can also mean more burden.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I clarify about daily life this week?",
+      lead: "Patient question: how do work, body image, and burden fit?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "bqol-body-image",
+          title: "Do body image and reconstruction belong in this talk?",
+          summary: "Yes — especially around surgery and radiation.",
+        },
+        {
+          id: "bqol-work",
+          title: "Can I work during breast cancer treatment?",
+          summary: "Often possible with planning — ask what a week looks like.",
+        },
+        {
+          id: "bqol-this-week",
+          title: "What should I do this week?",
+          summary: "Write priorities, list burdens, ask about supportive options.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bqol-mistakes",
+          title: "What are common quality-of-life mistakes?",
+          summary: "Assuming supportive care means giving up; waiting too long.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might balance treatment and daily life.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_PRACTICAL_FIT_PATH: EntryPathV2 = {
+  pathEyebrow: "Practical fit",
+  pathTitle: "Making Sure Your Breast Cancer Plan Can Work With Real Life",
+  pathSubtitle:
+    "Practical factors belong in the conversation — then go to the decision page that matches your question.",
+  completedLabels: [
+    "Why practical fit belongs in the decision",
+    "Which decision page to open next",
+    "What to ask your care team",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "What a normal treatment week may look like",
+    "Travel, time, or cost pressures to plan for",
+    "What could be adjusted if the plan becomes too hard",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why does practical fit matter?",
+      lead: "Patient question: can this plan work with my real life?",
+      main: "bfe-why",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When cost, travel, time, or support may affect the plan.",
+        },
+        {
+          id: "bfe-belongs",
+          title: "Do practical concerns belong in a medical conversation?",
+          summary: "Yes — they do not replace medical advice, but they matter.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Where should I go next?",
+      lead: "Patient question: which decision page matches my concern?",
+      main: "bfe-where",
+      cards: [
+        {
+          id: "bfe-not-prices",
+          title: "Will this page list prices or insurance rules?",
+          summary: "No — those vary. Name constraints with your team instead.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I ask about practical fit?",
+      lead: "Patient question: what three questions help most?",
+      main: "bfe-ask",
+      cards: [
+        {
+          id: "bfe-cost-ask",
+          title: "What cost and logistics questions should I ask?",
+          summary: "Name constraints early — without needing exact prices first.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "Prepare for the practical-fit conversation",
+      lead: "Patient question: how do I bring this up with my care team?",
+      main: "checklist",
+      cards: [
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might name practical limits early.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_CLINICAL_TRIAL_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Breast Cancer Clinical Trial Decision Path",
+  pathSubtitle:
+    "When trials enter the conversation → whether one fits → how to compare → what to ask.",
+  completedLabels: [
+    "When clinical trials become part of the conversation",
+    "Whether a trial fits your situation",
+    "How to compare a trial with standard care",
+    "Questions to ask your doctor",
+  ],
+  practicalPoints: [
+    "Goal — treat cancer, delay progression, relieve symptoms, or improve future options",
+    "What is known versus still uncertain",
+    "Impact — visits, travel, time, and daily life",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why would a clinical trial be mentioned for someone like me?",
+      lead: "Patient question: when do trials become part of the conversation?",
+      main: "btrial-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people start hearing about breast cancer clinical trials.",
+        },
+        {
+          id: "btrial-not-last",
+          title: "Are clinical trials only a last resort?",
+          summary: "Why “last resort” is a common misunderstanding.",
+        },
+        {
+          id: "btrial-ask-early",
+          title: "Should I ask about trials before locking treatment?",
+          summary: "Why earlier discussion can still help.",
+        },
+        {
+          id: "btrial-not-subject",
+          title: "Does joining a trial mean I am a test subject?",
+          summary: "Research with structure — and your choice to participate.",
+        },
+        {
+          id: "btrial-subtype",
+          title: "Does subtype affect which trials matter?",
+          summary: "HR+, HER2+, and TNBC may open different study doors.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How do I know if a trial is relevant to me?",
+      lead: "Patient question: what makes a trial a fit — or not?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "btrial-qualify",
+          title: "Why might I not qualify for a clinical trial?",
+          summary: "Eligibility protects safety and research accuracy.",
+        },
+        {
+          id: "btrial-replace",
+          title: "Can a trial replace my current treatment?",
+          summary: "Alternative, combination, or something else — depending on design.",
+        },
+        {
+          id: "btrial-better",
+          title: "Is a trial automatically better than standard care?",
+          summary: "Not automatically — fit and uncertainty both matter.",
+        },
+        {
+          id: "btrial-risks",
+          title: "What risks should I consider before joining?",
+          summary: "Unknowns, side effects, and extra appointments.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "How should I compare a trial with my other options?",
+      lead: "Patient question: goal, evidence, and impact — side by side.",
+      main: "practical-points",
+      cards: [
+        {
+          id: "btrial-daily-life",
+          title: "How would a trial affect daily life?",
+          summary: "Visits, travel, and what a normal week may look like.",
+        },
+        {
+          id: "btrial-if-not",
+          title: "What happens if the trial does not work?",
+          summary: "Options afterward — and whether you can stop.",
+        },
+        {
+          id: "btrial-this-week",
+          title: "What should I do this week?",
+          summary: "Ask about fit, compare with standard care, clarify logistics.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "btrial-mistakes",
+          title: "What are common mistakes around clinical trials?",
+          summary: "Waiting too long, assuming last-resort only, chasing “new.”",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might evaluate a trial against standard care.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_FOLLOW_UP_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Breast Cancer Follow-up Decision Path",
+  pathSubtitle:
+    "What happens after treatment → what follow-up watches for → when to act → how to move forward.",
+  completedLabels: [
+    "What happens after treatment ends",
+    "What follow-up is watching for",
+    "What to do between appointments",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Which symptoms deserve a call between visits",
+    "Who to contact first when something changes",
+    "How monitoring and ongoing medicines fit daily life",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Am I done with cancer care after treatment?",
+      lead: "Patient question: what happens when active treatment ends?",
+      main: "bfu-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people move into breast cancer follow-up care.",
+        },
+        {
+          id: "bfu-what-happens",
+          title: "What happens after breast cancer treatment ends?",
+          summary: "A milestone — and a reason follow-up continues.",
+        },
+        {
+          id: "bfu-not-waiting",
+          title: "Is follow-up just waiting for bad news?",
+          summary: "No — the goal is a clear plan you can act on.",
+        },
+        {
+          id: "bfu-first-visit",
+          title: "What should I expect at my first follow-up visit?",
+          summary: "Symptoms, recovery, results, medicines, and next monitoring.",
+        },
+        {
+          id: "bfu-who-manages",
+          title: "Who manages my care after treatment?",
+          summary: "Know who to contact for different concerns.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "What are doctors looking for during follow-up?",
+      lead: "Patient question: what is my follow-up plan watching for?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "bfu-schedule",
+          title: "What schedule should I expect?",
+          summary: "Appropriate monitoring — not simply more testing.",
+        },
+        {
+          id: "bfu-more-scans",
+          title: "Are more scans always better?",
+          summary: "Balance information, stress, cost, and procedures.",
+        },
+        {
+          id: "bfu-endocrine",
+          title: "How does long-term endocrine therapy fit follow-up?",
+          summary: "Side effects, adherence, and related health monitoring.",
+        },
+        {
+          id: "bfu-long-term",
+          title: "What late effects should we watch?",
+          summary: "Fatigue, lymphedema, menopausal symptoms, bone health, and more.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I do if something changes?",
+      lead: "Patient question: what actions should I take between appointments?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "bfu-which-symptoms",
+          title: "Which symptoms should I report after treatment?",
+          summary: "Ask which changes matter most for you.",
+        },
+        {
+          id: "bfu-between-visits",
+          title: "What if I notice something between appointments?",
+          summary: "Do not wait automatically — ask what to do.",
+        },
+        {
+          id: "bfu-fear",
+          title: "How do I handle fear of recurrence?",
+          summary: "A plan, clear signals, and support — not alone.",
+        },
+        {
+          id: "bfu-this-week",
+          title: "What should I do this week?",
+          summary: "Get the schedule, write call triggers, keep records.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bfu-mistakes",
+          title: "What are common follow-up mistakes?",
+          summary: "Assuming care is over, waiting too long, chasing more scans.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might build a clear follow-up plan.",
+        },
+      ],
+    },
+  ],
+};
+
+const BREAST_GLOBAL_CARE_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "When to Consider Breast Cancer Care Abroad",
+  pathSubtitle:
+    "Name the capability gap → compare remote review vs travel → check logistics → prepare questions before booking.",
+  completedLabels: [
+    "Why people explore care across borders",
+    "Remote review versus travel",
+    "Records, hybrid care, and written next steps",
+    "Questions to ask before you book",
+  ],
+  practicalPoints: [
+    "Your reason for exploring, in one sentence",
+    "Whether remote review can answer the question first",
+    "What written next steps the receiving center will provide",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "When should I consider care elsewhere?",
+      lead: "Patient question: is breast cancer care abroad worth it?",
+      main: "bgc-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people wonder about care in another city or country.",
+        },
+        {
+          id: "bgc-explore-reasons",
+          title: "Why do people explore care across borders?",
+          summary: "Access, confidence, reject plan, support, cost, missing path.",
+        },
+        {
+          id: "bgc-default-upgrade",
+          title: "Is care abroad automatically better?",
+          summary: "No — fame or country reputation alone is not a reason to travel.",
+        },
+        {
+          id: "bgc-capability-gap",
+          title: "What is a capability gap?",
+          summary: "A missing technique, trial, genetics/reconstruction path, or review.",
+        },
+        {
+          id: "bgc-vs-care-team",
+          title: "How is this different from choosing a care team?",
+          summary: "Care team = ongoing network; travel = a named access gap.",
+        },
+        {
+          id: "bgc-vs-second-opinion",
+          title: "How is this different from a second opinion?",
+          summary: "Review first; travel only if in-person access is required.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Compare remote review, travel, and staying local",
+      lead: "Patient question: do I need to fly, or can records be reviewed first?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "bgc-remote-first",
+          title: "Should I try remote review before travel?",
+          summary: "Often yes — clarify the gap before booking flights.",
+        },
+        {
+          id: "bgc-hybrid",
+          title: "Can I travel for one step and continue care locally?",
+          summary: "Many people build a hybrid plan — not one location only.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I prepare before exploring?",
+      lead: "Patient question: what records and asks matter most?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "bgc-records",
+          title: "What records should I prepare?",
+          summary: "Pathology, imaging, subtype, treatment history, genetics notes.",
+        },
+        {
+          id: "bgc-this-week",
+          title: "What should I do this week?",
+          summary: "Name the reason, ask about remote review, request a written plan.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I ask before booking?",
+      lead: "Patient question: how do I prepare the next conversation?",
+      main: "checklist",
+      cards: [
+        {
+          id: "bgc-mistakes",
+          title: "What are common mistakes around care abroad?",
+          summary: "Booking before naming the gap; skipping remote review; fame-chasing.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might name the gap before booking flights.",
+        },
+      ],
+    },
+  ],
+};
+
 const BREAST_CARE_TEAM_PATH: EntryPathV2 = {
   pathEyebrow: "Decision path",
   pathTitle: "Choosing Your Breast Cancer Care Team",
@@ -3931,6 +4521,11 @@ const PATHS: Record<string, EntryPathV2> = {
   [BREAST_CARE_TEAM_SLUG]: BREAST_CARE_TEAM_PATH,
   [BREAST_METASTATIC_SLUG]: BREAST_METASTATIC_PATH,
   [BREAST_RECURRENCE_SLUG]: BREAST_RECURRENCE_PATH,
+  [BREAST_QOL_SLUG]: BREAST_QOL_PATH,
+  [BREAST_PRACTICAL_FIT_SLUG]: BREAST_PRACTICAL_FIT_PATH,
+  [BREAST_CLINICAL_TRIAL_SLUG]: BREAST_CLINICAL_TRIAL_PATH,
+  [BREAST_FOLLOW_UP_SLUG]: BREAST_FOLLOW_UP_PATH,
+  [BREAST_GLOBAL_CARE_SLUG]: BREAST_GLOBAL_CARE_PATH,
 };
 
 export function getEntryPathV2(slug: string): EntryPathV2 | null {

@@ -24,6 +24,7 @@ import {
 import { getCancerDecisionCenter, getCancers } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { isIndexableCancerSlug } from "@/lib/seo/indexing";
+import { isRetiredBreastQuestionSlug } from "@/lib/content/breast-entry-slugs";
 import { isRetiredLungQuestionSlug } from "@/lib/seo/retired-lung-questions";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -74,7 +75,9 @@ export default async function CancerDecisionCenterPage({
   } = data;
 
   const visibleQuestions = questions.filter(
-    (q) => !isRetiredLungQuestionSlug(q.slug)
+    (q) =>
+      !isRetiredLungQuestionSlug(q.slug) &&
+      !isRetiredBreastQuestionSlug(q.slug)
   );
   const questionTitles = Object.fromEntries(
     visibleQuestions.map((q) => [q.slug, q.title])

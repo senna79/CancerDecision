@@ -4,6 +4,11 @@ import {
   BREAST_GENETICS_SLUG,
   BREAST_METASTATIC_SLUG,
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_CLINICAL_TRIAL_SLUG,
+  BREAST_FOLLOW_UP_SLUG,
+  BREAST_GLOBAL_CARE_SLUG,
+  BREAST_PRACTICAL_FIT_SLUG,
+  BREAST_QOL_SLUG,
   BREAST_RECURRENCE_SLUG,
   BREAST_RADIATION_SLUG,
   BREAST_RECONSTRUCTION_SLUG,
@@ -2832,6 +2837,1145 @@ export const BREAST_RECURRENCE_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 };
 
+/** Breast Cancer Entry — Quality of life (P2 #13) */
+export const BREAST_QOL_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Breast Cancer",
+  decisionMoment:
+    "How to balance treatment goals with the life you want to protect",
+  exploring: "Quality of life — not “treatment vs living”",
+  subtitle:
+    "Breast cancer decisions are not only about controlling cancer. They are also about helping you live as well as possible while receiving care — including symptoms, energy, work, and body image.",
+  relatedDecisions: [
+    { label: "Reconstruction", href: BREAST_RECONSTRUCTION },
+    { label: "Radiation", href: BREAST_RADIATION },
+    { label: "Systemic options", href: BREAST_SYSTEMIC },
+    { label: "Second opinion", href: BREAST_SECOND },
+  ],
+  journeyLabel: "Breast Cancer Decision Journey",
+  journeyPath: [
+    { label: "Systemic therapy", href: BREAST_SYSTEMIC },
+    { label: "Quality of life", current: true },
+    { label: "Reconstruction", href: BREAST_RECONSTRUCTION },
+  ],
+
+  triggersTitle: "When quality of life may belong in the decision",
+  triggerGroups: [
+    {
+      heading: "Side effects are affecting daily activities",
+      lead: "You may wonder:",
+      items: [
+        "Is this burden still worth it?",
+        "What can be adjusted without abandoning cancer goals?",
+      ],
+    },
+    {
+      heading: "Benefit and burden feel hard to weigh",
+      lead: "You may be asking:",
+      items: [
+        "Do the benefits outweigh what treatment asks of me?",
+        "What matters most right now — energy, work, family, comfort?",
+      ],
+    },
+    {
+      heading: "Body image, work, or caregiving is at stake",
+      lead: "You may want to protect:",
+      items: [
+        "Appearance, reconstruction timing, or intimacy",
+        "Work schedules and caregiving roles",
+        "Meaningful routines during chemo, endocrine therapy, or radiation",
+      ],
+    },
+  ],
+
+  whyTitle: "Why does quality of life belong in the plan?",
+  whyLead:
+    "Breast cancer treatment decisions are not only about controlling cancer. They are also about helping you live as well as possible while receiving care.",
+  whyBody: [],
+  whyQuestions: [
+    "Priorities (energy, work, family, body image) are medical information",
+    "Supportive care can run alongside active treatment at any stage",
+    "More intensity is not automatically a better fit",
+  ],
+  whyNotLabel: "The key question is not:",
+  whyNotQuestion: "Should I choose treatment or quality of life?",
+  whyBetterLabel: "It is:",
+  whyBetterQuestion:
+    "How can my treatment plan support both my cancer goals and my life goals?",
+  whyClose: [
+    "Your goals are not separate from medical decisions. They are part of the decision.",
+  ],
+
+  whoNeedsTitle: "Is talking about quality of life the same as stopping treatment?",
+  whoNeedsLead:
+    "No. Raising daily-life priorities usually means designing a more workable plan — supportive care, schedule adjustments, or a clearer trade-off — not ending cancer care.",
+  whoNeedsBody: [
+    "People bring QoL into the conversation at diagnosis, during systemic therapy, around surgery/radiation, and in metastatic or recurrence planning.",
+  ],
+  whoNeedsDependsIntro: "Your situation may weigh factors such as:",
+  whoNeedsDependsOn: [
+    "Which symptoms or side effects already affect daily life",
+    "Work, caregiving, and travel demands during treatment",
+    "Body image, reconstruction, or intimacy priorities",
+    "Whether the plan’s visit burden is sustainable",
+    "How goals may change as treatment unfolds",
+  ],
+  whoNeedsClose:
+    "A useful question: “What do I need this plan to protect — and what can we adjust if burden rises?”",
+
+  doesNotDecideTitle: "How should I bring quality of life into the comparison?",
+  doesNotDecideLead:
+    "Compare options by benefit and burden together — not by intensity alone. Weigh:",
+  doesNotDecideItems: [
+    "What the treatment is trying to achieve for the cancer",
+    "Side effects and visit burden you can realistically sustain",
+    "Priorities you need to protect (work, family, energy, body image)",
+    "Whether supportive care or schedule changes could reduce burden",
+    "When to call early instead of waiting for the next appointment",
+  ],
+  doesNotDecideNotes: [
+    "Supportive care is not the same as hospice.",
+    "Practical limits (time, cost, travel) may need a separate logistics conversation later — start with goals and symptoms here.",
+  ],
+  doesNotDecideClose:
+    "This frame clarifies life fit — it does not replace your care team’s clinical recommendations.",
+
+  costTitle: "Work, visits, and daily sustainability",
+  costLead:
+    "Ask what a treatment week looks like — and whether adjustments exist if work, caregiving, or recovery becomes hard.",
+  costItems: [
+    "How often would I need to be on-site?",
+    "Which side effects most often affect work or caregiving?",
+    "What supportive options can start now?",
+  ],
+
+  mistakesTitle: "Common mistakes when balancing treatment and daily life",
+  mistakes: [
+    {
+      mistake: "Thinking supportive care means giving up",
+      why: "Supportive care can run alongside cancer treatment at any stage.",
+    },
+    {
+      mistake: "Not telling doctors what matters most",
+      why: "Your priorities help the team recommend options that fit your life.",
+    },
+    {
+      mistake: "Assuming more treatment is always better",
+      why: "The right amount of treatment depends on benefit, burden, and your goals.",
+    },
+  ],
+
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may help when:",
+  secondOpinionWhen: [
+    "Benefit and burden feel badly mismatched",
+    "You want more confidence before locking a high-burden plan",
+    "Recommendations conflict with the life you need to protect",
+  ],
+  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionCtaLabel: "Breast second opinion guide",
+  secondOpinionHref: BREAST_SECOND,
+
+  doctorTitle: "Quality of Life Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What matters most to me during treatment — and how can we include those goals?",
+    "Which symptoms should I report, and what support is available?",
+    "Can side effects or visit burden be reduced?",
+    "How will we know if treatment is still right for me?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About my goals",
+      questions: [
+        "What matters most to me during treatment?",
+        "How can we include my goals in the treatment plan?",
+        "What trade-offs should I understand?",
+      ],
+    },
+    {
+      heading: "About symptoms and daily life",
+      questions: [
+        "Which symptoms should I report — and which need a same-day call?",
+        "What supportive care is available alongside treatment?",
+        "How might this plan affect work, caregiving, or body image?",
+      ],
+    },
+    {
+      heading: "About future decisions",
+      questions: [
+        "How will we know if treatment is still right for me?",
+        "What happens if my priorities change?",
+        "Who can help with these decisions?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Balancing treatment and daily life",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person on breast cancer treatment finds the plan helps control the cancer but leaves them too exhausted for work and family time.",
+    "Their first thought is: “Should I choose treatment or quality of life?”",
+    "Instead, they ask:",
+  ],
+  scenarioFocus: [
+    "What am I trying to protect in daily life?",
+    "Can symptoms or visit burden be reduced?",
+    "What trade-offs should I understand?",
+    "How can the plan support both cancer goals and life goals?",
+  ],
+  scenarioClose:
+    "The decision shifts from choosing one or the other to finding a plan that supports both.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If quality of life is part of the decision:",
+  nextStepActions: [
+    {
+      label: "Write 2–3 priorities you want the plan to protect.",
+    },
+    {
+      label:
+        "Tell your team about symptoms, side effects, and daily-life impact early.",
+    },
+    {
+      label:
+        "Ask what can be adjusted — supportive care, schedule, or approach — without abandoning cancer goals.",
+    },
+  ],
+  nextStepCtaLabel: "Systemic options by subtype",
+  nextStepHref: BREAST_SYSTEMIC,
+  nextStepCtaMeta: "When medicine choices are still open",
+  nextStepSecondaryCtaLabel: "Reconstruction",
+  nextStepSecondaryHref: BREAST_RECONSTRUCTION,
+  nextStepSecondaryMeta: "When body image and timing are part of the decision",
+
+  relatedPathsTitle: "Continue your breast cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Still comparing medicine families?",
+      question:
+        "How should I choose systemic therapy options for my breast cancer subtype?",
+      cta: "Systemic options",
+      href: BREAST_SYSTEMIC,
+    },
+    {
+      title: "Reconstruction timing open?",
+      question:
+        "How do breast reconstruction timing and choices fit the cancer plan?",
+      cta: "Reconstruction",
+      href: BREAST_RECONSTRUCTION,
+    },
+    {
+      title: "Want more confidence?",
+      question:
+        "Should I get a second opinion before breast cancer surgery or systemic therapy?",
+      cta: "Second opinion",
+      href: BREAST_SECOND,
+    },
+  ],
+};
+
+/** Breast Cancer Entry — Clinical trial (P2 #15) */
+export const BREAST_CLINICAL_TRIAL_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Breast Cancer",
+  decisionMoment:
+    "Whether a clinical trial should be part of your treatment discussion",
+  exploring: "Clinical trial — not only a last resort",
+  subtitle:
+    "A clinical trial is another option to evaluate — not automatically better than standard care, and not only for people who have run out of options.",
+  relatedDecisions: [
+    { label: "Systemic options", href: BREAST_SYSTEMIC },
+    { label: "Metastatic / Stage IV", href: `/questions/${BREAST_METASTATIC_SLUG}` },
+    { label: "Recurrence", href: `/questions/${BREAST_RECURRENCE_SLUG}` },
+    { label: "Second opinion", href: BREAST_SECOND },
+  ],
+  journeyLabel: "Breast Cancer Decision Journey",
+  journeyPath: [
+    { label: "Systemic therapy", href: BREAST_SYSTEMIC },
+    { label: "Clinical trial", current: true },
+    { label: "Second opinion", href: BREAST_SECOND },
+  ],
+
+  triggersTitle: "You may be considering a clinical trial if:",
+  triggerGroups: [
+    {
+      heading: "You are choosing an initial plan",
+      lead: "You may wonder:",
+      items: [
+        "Should I ask about trials before surgery or neoadjuvant therapy?",
+        "Are there studies related to my subtype?",
+      ],
+    },
+    {
+      heading: "You are comparing systemic options",
+      lead: "You may want to understand:",
+      items: [
+        "Should a trial sit alongside standard medicine families?",
+        "How do they compare for my goals?",
+      ],
+    },
+    {
+      heading: "Your situation has changed",
+      lead: "You may ask:",
+      items: [
+        "Are there additional options after recurrence or in metastatic planning?",
+        "Should I explore trials before the next decision?",
+      ],
+    },
+  ],
+
+  whyTitle: "Why would a clinical trial be mentioned for someone like me?",
+  whyLead:
+    "Clinical trials are considered when researchers are studying an approach that may help people with certain breast cancer situations.",
+  whyBody: [],
+  whyQuestions: [
+    "Trials may be discussed at diagnosis, during systemic planning, after recurrence, or in metastatic care",
+    "A trial is not only for people who have “run out of options”",
+    "Subtype and prior treatment often shape which studies are relevant",
+  ],
+  whyNotLabel: "The key question is not:",
+  whyNotQuestion: "Should I join a clinical trial?",
+  whyBetterLabel: "The better question is:",
+  whyBetterQuestion:
+    "Is there a clinical trial that fits my situation and is worth discussing with my care team?",
+  whyClose: [
+    "The right timing to discuss trials depends on your journey. Earlier discussion can help you understand whether any options may exist.",
+  ],
+
+  whoNeedsTitle: "Are clinical trials only for metastatic breast cancer?",
+  whoNeedsLead:
+    "No. Trials exist across the journey. Metastatic and recurrence settings often raise the question — but earlier settings can too, including before first treatment is locked.",
+  whoNeedsBody: [
+    "Fit depends on subtype, stage, prior therapy, health, goals, and practical burden — not only how advanced the cancer is.",
+  ],
+  whoNeedsDependsIntro: "Your situation may weigh factors such as:",
+  whoNeedsDependsOn: [
+    "Subtype (HR+ / HER2+ / TNBC) and other cancer features",
+    "Where you are in the journey (new plan, recurrence, metastatic)",
+    "Previous treatments and responses",
+    "Whether a study matches your goals",
+    "Visit load, travel, and what happens if the trial does not work",
+  ],
+  whoNeedsClose:
+    "A useful question: “For my subtype and timing, which trial families — if any — belong in the discussion now?”",
+
+  doesNotDecideTitle: "How do I know if a trial is relevant to me?",
+  doesNotDecideLead:
+    "Clinical trials have specific requirements. Your care team may consider subtype, stage, prior treatments, overall health, and goals.",
+  doesNotDecideItems: [
+    "A trial that is valuable for one person may not be appropriate for another",
+    "Finding a trial is not about finding the newest option",
+    "It is about finding a trial that matches your situation",
+    "Not qualifying for one trial does not end other options",
+  ],
+  doesNotDecideNotes: [
+    "Compare goal, evidence, uncertainty, and daily-life impact side by side with standard care.",
+  ],
+  doesNotDecideClose:
+    "Open the cards beside this step for eligibility, subtype fit, and whether a trial replaces or combines with standard care.",
+
+  costTitle: "Visits, travel, and practical burden",
+  costLead:
+    "Ask what a normal week would look like — trials may add testing, travel, or schedule demands.",
+  costItems: [
+    "How often would I need to be on-site?",
+    "Can some monitoring happen closer to home?",
+    "What support exists for travel or time away from work?",
+  ],
+
+  mistakesTitle: "Common mistakes when considering clinical trials",
+  mistakes: [
+    {
+      mistake: "Waiting too long to ask",
+      why: "Some opportunities require discussion before surgery or first medicines are locked.",
+    },
+    {
+      mistake: "Assuming trials are only for advanced cancer",
+      why: "Trials exist at different stages of the journey.",
+    },
+    {
+      mistake: "Choosing based only on “new”",
+      why: "New does not always mean appropriate for your subtype and goals.",
+    },
+  ],
+
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may help when:",
+  secondOpinionWhen: [
+    "The trial decision is complex",
+    "Multiple options exist and comparisons feel unclear",
+    "You want more confidence before deciding",
+  ],
+  secondOpinionClose:
+    "The goal is better understanding — not delaying care unnecessarily.",
+  secondOpinionCtaLabel: "Breast second opinion guide",
+  secondOpinionHref: BREAST_SECOND,
+
+  doctorTitle: "Clinical Trial Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What question is this trial trying to answer?",
+    "Why do you think I may be a candidate for my subtype?",
+    "How does this compare with standard treatment?",
+    "How might this affect my daily life?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About the trial",
+      questions: [
+        "What question is this trial trying to answer?",
+        "Why do you think I may be a candidate?",
+        "How does this compare with standard treatment for my subtype?",
+      ],
+    },
+    {
+      heading: "About benefits and risks",
+      questions: [
+        "What is known about this treatment so far?",
+        "What are the possible benefits?",
+        "What risks and uncertainties should I understand?",
+      ],
+    },
+    {
+      heading: "About my life and next steps",
+      questions: [
+        "How often would I need to visit — and is travel required?",
+        "What happens if the trial does not work?",
+        "Can I stop participating?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Deciding whether to explore a clinical trial",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person with breast cancer learns about a possible clinical trial.",
+    "Instead of immediately asking “Should I join?”, they ask:",
+  ],
+  scenarioFocus: [
+    "What question is this trial trying to answer?",
+    "How does it compare with my current options for my subtype?",
+    "What are the possible benefits and uncertainties?",
+    "Does it fit my goals and daily life?",
+  ],
+  scenarioClose:
+    "The trial becomes one option to evaluate — not a decision made without comparison.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If you are considering a clinical trial:",
+  nextStepActions: [
+    {
+      label:
+        "Ask whether any trials fit your subtype, stage, and prior treatment.",
+    },
+    {
+      label:
+        "Compare the trial with standard options — goal, evidence, and impact.",
+    },
+    {
+      label:
+        "Clarify practical requirements: visits, travel, and what happens if it does not work.",
+    },
+  ],
+  nextStepCtaLabel: "Systemic options by subtype",
+  nextStepHref: BREAST_SYSTEMIC,
+  nextStepCtaMeta: "Compare with standard medicine families",
+  nextStepSecondaryCtaLabel: "Second opinion",
+  nextStepSecondaryHref: BREAST_SECOND,
+  nextStepSecondaryMeta: "When the comparison feels complex",
+
+  relatedPathsTitle: "Continue your breast cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Comparing medicine families?",
+      question:
+        "How should I choose systemic therapy options for my breast cancer subtype?",
+      cta: "Systemic options",
+      href: BREAST_SYSTEMIC,
+    },
+    {
+      title: "Metastatic decisions open?",
+      question:
+        "What are my options for metastatic / Stage IV breast cancer?",
+      cta: "Metastatic options",
+      href: `/questions/${BREAST_METASTATIC_SLUG}`,
+    },
+    {
+      title: "Want more confidence?",
+      question:
+        "Should I get a second opinion before breast cancer surgery or systemic therapy?",
+      cta: "Second opinion",
+      href: BREAST_SECOND,
+    },
+  ],
+};
+
+/** Breast Cancer Entry — Practical fit pointer (P2 #14) */
+export const BREAST_PRACTICAL_FIT_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Breast Cancer",
+  decisionMoment: "Whether a treatment plan can work with real life",
+  exploring: "Practical fit — time, cost, travel, and support",
+  subtitle:
+    "Cost, travel, time, and support belong in the conversation — then open the decision page that matches your question.",
+  relatedDecisions: [
+    { label: "Care team / center", href: BREAST_CARE_TEAM },
+    { label: "Systemic options", href: BREAST_SYSTEMIC },
+    { label: "Quality of life", href: `/questions/${BREAST_QOL_SLUG}` },
+    { label: "Radiation", href: BREAST_RADIATION },
+  ],
+  journeyLabel: "Breast Cancer Decision Journey",
+  journeyPath: [
+    { label: "Care team", href: BREAST_CARE_TEAM },
+    { label: "Practical fit", current: true },
+    { label: "Quality of life", href: `/questions/${BREAST_QOL_SLUG}` },
+  ],
+
+  triggersTitle: "You may be facing this if:",
+  triggerGroups: [
+    {
+      heading: "The plan feels hard to live with",
+      lead: "You may be asking:",
+      items: [
+        "Can I keep up with surgery recovery, infusions, or daily radiation?",
+        "Will travel or cost make this unrealistic?",
+      ],
+    },
+    {
+      heading: "You are choosing where care happens",
+      lead: "You may wonder:",
+      items: [
+        "Stay local, go to a specialty center, or combine both?",
+      ],
+    },
+    {
+      heading: "You are comparing treatment options",
+      lead: "You may want to know:",
+      items: [
+        "Which option fits a normal week better — including radiation visit load?",
+      ],
+    },
+  ],
+
+  whyTitle: "Why does practical fit matter?",
+  whyLead:
+    "A good breast cancer plan needs to fit both your medical situation and your real life.",
+  whyBody: [
+    "Cost, travel, time, and support do not replace medical advice — but they belong in the conversation.",
+    "The better question is not only “Is this the strongest plan?” It is “Is this plan workable for my life — and if not, what can we adjust?”",
+  ],
+  whyQuestions: [],
+  whyNotLabel: "The goal is not:",
+  whyNotQuestion: "Finding the cheapest option on your own.",
+  whyBetterLabel: "The goal is:",
+  whyBetterQuestion:
+    "Naming practical limits early so your team can help shape a plan you can follow.",
+  whyClose: [
+    "A medically appropriate option also needs to be practical.",
+  ],
+
+  doesNotDecideTitle: "Where should I go next?",
+  doesNotDecideLead:
+    "This page is a pointer — not an insurance or price guide. Open the decision that matches your concern:",
+  doesNotDecideItems: [
+    "Where care happens — travel, hybrid care, and who coordinates your network → Care team",
+    "Which option fits a real week — visit load, recovery, and practical burden → Systemic options",
+    "Whether the burden is sustainable — daily life, symptoms, and what you can keep doing → Quality of life",
+  ],
+  doesNotDecideClose:
+    "Exact prices and insurance rules vary by place and plan. Put constraints on the table with your care team.",
+
+  mistakesTitle: "Common missteps with practical fit",
+  mistakes: [
+    {
+      mistake: "Waiting until the plan is locked to mention real-life limits",
+      why: "Early conversation makes adjustments more possible.",
+    },
+    {
+      mistake: "Assuming practical concerns are not medical enough to raise",
+      why: "Your team needs the full picture to recommend a workable plan.",
+    },
+    {
+      mistake: "Shopping only by cost or only by reputation",
+      why: "Medical fit and life fit both matter.",
+    },
+  ],
+
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may help when:",
+  secondOpinionWhen: [
+    "Practical limits and medical recommendations feel badly mismatched",
+    "You want more confidence before locking a high-travel or high-burden plan",
+  ],
+  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionCtaLabel: "Breast second opinion guide",
+  secondOpinionHref: BREAST_SECOND,
+
+  doctorTitle: "Practical Fit Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What will a normal treatment week look like?",
+    "What travel, time, or cost pressures should we plan for?",
+    "If this becomes too hard, what can we adjust?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About a normal week",
+      questions: [
+        "How often will I need appointments — including radiation if planned?",
+        "How long do visits usually take?",
+        "What recovery or downtime should I expect after surgery?",
+      ],
+    },
+    {
+      heading: "About location and support",
+      questions: [
+        "Do I need all care at this center?",
+        "Are some parts of care possible closer to home?",
+        "What help might I need from family or caregivers?",
+      ],
+    },
+    {
+      heading: "About cost and resources",
+      questions: [
+        "Who can help me understand expected costs at a high level across the pathway?",
+        "What support resources may be available?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Naming practical limits early",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person receives a breast cancer plan that looks medically strong but would require daily radiation far from home and unpaid time off work.",
+    "Instead of staying silent, they ask:",
+  ],
+  scenarioFocus: [
+    "What will a normal week look like?",
+    "Can some care happen closer to home?",
+    "If this schedule becomes too hard, what can we adjust?",
+  ],
+  scenarioClose:
+    "The conversation shifts from “Can I endure this?” to “What workable plan still fits my medical goals?”",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "Choose the decision that matches your concern:",
+  nextStepActions: [
+    { label: "Care team — where care happens, travel, and hybrid networks." },
+    {
+      label:
+        "Systemic options — compare visit load and practical burden alongside medical benefit.",
+    },
+    {
+      label:
+        "Quality of life — talk about daily life, symptoms, and sustainability.",
+    },
+  ],
+  nextStepCtaLabel: "Care team / center",
+  nextStepHref: BREAST_CARE_TEAM,
+  nextStepCtaMeta: "Where care happens",
+  nextStepSecondaryCtaLabel: "Quality of life",
+  nextStepSecondaryHref: `/questions/${BREAST_QOL_SLUG}`,
+  nextStepSecondaryMeta: "Whether the burden is sustainable",
+
+  relatedPathsTitle: "Continue where practical fit usually matters",
+  relatedPaths: [
+    {
+      title: "Where care happens?",
+      question: "How do I choose a breast cancer care team or center?",
+      cta: "Care team",
+      href: BREAST_CARE_TEAM,
+    },
+    {
+      title: "Which option fits a real week?",
+      question:
+        "How should I choose systemic therapy options for my breast cancer subtype?",
+      cta: "Systemic options",
+      href: BREAST_SYSTEMIC,
+    },
+    {
+      title: "Is the burden sustainable?",
+      question:
+        "How should quality of life factor into breast cancer decisions?",
+      cta: "Quality of life",
+      href: `/questions/${BREAST_QOL_SLUG}`,
+    },
+  ],
+};
+
+/** Breast Cancer Entry — Follow-up / monitoring (P2 #16) */
+export const BREAST_FOLLOW_UP_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Breast Cancer",
+  decisionMoment:
+    "How to monitor health and rebuild confidence after treatment",
+  exploring: "Follow-up — a clear plan, not endless waiting",
+  subtitle:
+    "Finishing treatment is an important milestone, but cancer care does not simply stop. Follow-up helps you know what to watch for and what to do next.",
+  relatedDecisions: [
+    { label: "Recurrence", href: `/questions/${BREAST_RECURRENCE_SLUG}` },
+    { label: "Quality of life", href: `/questions/${BREAST_QOL_SLUG}` },
+    { label: "Second opinion", href: BREAST_SECOND },
+    { label: "Systemic options", href: BREAST_SYSTEMIC },
+  ],
+  journeyLabel: "Breast Cancer Decision Journey",
+  journeyPath: [
+    { label: "Systemic therapy", href: BREAST_SYSTEMIC },
+    { label: "Follow-up", current: true },
+    { label: "Recurrence", href: `/questions/${BREAST_RECURRENCE_SLUG}` },
+  ],
+
+  triggersTitle: "You may be facing this decision if:",
+  triggerGroups: [
+    {
+      heading: "You recently completed active treatment",
+      lead: "You may wonder:",
+      items: [
+        "Am I done with cancer care?",
+        "What happens at the first follow-up visit?",
+      ],
+    },
+    {
+      heading: "You are on long-term endocrine therapy or other ongoing medicines",
+      lead: "You may want to understand:",
+      items: [
+        "What side effects to report",
+        "How monitoring fits years of medicine",
+      ],
+    },
+    {
+      heading: "You are worried about recurrence",
+      lead: "You may be asking:",
+      items: [
+        "Which symptoms matter?",
+        "How do I handle fear without constant worry?",
+      ],
+    },
+  ],
+
+  whyTitle: "Am I done with cancer care after treatment?",
+  whyLead:
+    "Completing active treatment does not mean your healthcare team stops paying attention.",
+  whyBody: [],
+  whyQuestions: [
+    "Care often shifts from treating known cancer to monitoring and recovery",
+    "Follow-up may include visits, imaging, symptom checks, and ongoing medicines",
+    "A plan is personalized by subtype, stage, treatments received, and risk",
+  ],
+  whyNotLabel: "The goal is not:",
+  whyNotQuestion: "To spend your life waiting for bad news.",
+  whyBetterLabel: "The goal is to have a clear plan:",
+  whyBetterQuestion:
+    "What should I monitor, when should I contact my team, and what happens if something changes?",
+  whyClose: [
+    "The end of treatment is not the end of care. It is the beginning of a different care phase.",
+  ],
+
+  whoNeedsTitle: "Is follow-up the same for everyone?",
+  whoNeedsLead:
+    "No. Schedules and imaging differ by situation — surgery type, radiation, systemic therapy, reconstruction, and risk assessment all shape the plan.",
+  whoNeedsBody: [
+    "People on long-term endocrine therapy often need medicine-related monitoring in addition to cancer surveillance.",
+  ],
+  whoNeedsDependsIntro: "Your situation may weigh factors such as:",
+  whoNeedsDependsOn: [
+    "Treatments you received (surgery, radiation, systemic therapy)",
+    "Whether you remain on endocrine or other long-term medicine",
+    "Imaging needs for the remaining breast tissue or reconstruction context",
+    "Symptoms and late effects that need management",
+    "Who leads follow-up — oncology, surgery, primary care, or a shared plan",
+  ],
+  whoNeedsClose:
+    "A useful question: “What is my schedule, which symptoms trigger a call, and who owns each concern?”",
+
+  doesNotDecideTitle: "What are doctors looking for during follow-up?",
+  doesNotDecideLead:
+    "Follow-up visits usually focus on three areas: cancer status, treatment effects, and overall health.",
+  doesNotDecideItems: [
+    "Looking for signs that cancer may have returned",
+    "Managing ongoing effects from surgery, radiation, or medicines",
+    "Supporting recovery and future health",
+    "Reviewing adherence and side effects of long-term therapy when relevant",
+  ],
+  doesNotDecideNotes: [
+    "Follow-up is not only about finding problems. It is also about helping you recover and live well.",
+    "More scans are not automatically better.",
+  ],
+  doesNotDecideClose:
+    "Open the cards beside this step for schedules, symptoms to report, and fear of recurrence.",
+
+  costTitle: "Records, visits, and practical continuity",
+  costLead:
+    "Keep a simple treatment summary and know who to call between visits — especially if care is shared across sites.",
+  costItems: [
+    "Who leads follow-up right now?",
+    "Which visits or imaging can stay local?",
+    "What records should I keep for future decisions?",
+  ],
+
+  mistakesTitle: "Common mistakes after treatment ends",
+  mistakes: [
+    {
+      mistake: "Assuming care is over when treatment ends",
+      why: "Follow-up is a different phase — monitoring, recovery, and ongoing medicines still matter.",
+    },
+    {
+      mistake: "Waiting for the next visit with a concerning new symptom",
+      why: "Some changes deserve a call between appointments.",
+    },
+    {
+      mistake: "Assuming more scans are always safer",
+      why: "The right schedule balances information, stress, cost, and procedures.",
+    },
+  ],
+
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may help when:",
+  secondOpinionWhen: [
+    "Follow-up recommendations feel unclear or conflicting",
+    "New concerns appear and you want more confidence",
+    "You face a major new decision after treatment",
+  ],
+  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionCtaLabel: "Breast second opinion guide",
+  secondOpinionHref: BREAST_SECOND,
+
+  doctorTitle: "Follow-up Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "What is my follow-up schedule — and why?",
+    "Which symptoms should trigger a call between visits?",
+    "Who do I contact first if something changes?",
+    "What late effects or medicine side effects should we watch?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About my plan",
+      questions: [
+        "What visits and imaging do I need — and how often?",
+        "Who leads my follow-up right now?",
+        "How long will this intensity of monitoring continue?",
+      ],
+    },
+    {
+      heading: "About symptoms and medicines",
+      questions: [
+        "Which symptoms matter most for my situation?",
+        "If I am on endocrine therapy, what side effects should I report?",
+        "What late effects should we manage proactively?",
+      ],
+    },
+    {
+      heading: "About next steps if something changes",
+      questions: [
+        "What happens if a scan or exam is concerning?",
+        "When would we talk about recurrence options?",
+        "What records should I keep?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Building a follow-up plan",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person finishes active breast cancer treatment and feels both relief and fear — unsure what “normal” means now.",
+    "Instead of waiting anxiously for the next scan, they ask:",
+  ],
+  scenarioFocus: [
+    "What is my follow-up schedule — and why?",
+    "Which symptoms should trigger a call?",
+    "Who do I contact first if something changes?",
+    "How do ongoing medicines fit into this phase?",
+  ],
+  scenarioClose:
+    "The focus shifts from endless waiting to a clear plan they can act on.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If you are entering follow-up:",
+  nextStepActions: [
+    {
+      label:
+        "Ask for your follow-up schedule, imaging plan, and who leads care now.",
+    },
+    {
+      label:
+        "Write down symptoms that should trigger a call — and who to contact.",
+    },
+    {
+      label:
+        "Keep a simple treatment summary and raise late effects or medicine side effects early.",
+    },
+  ],
+  nextStepCtaLabel: "Recurrence guide",
+  nextStepHref: `/questions/${BREAST_RECURRENCE_SLUG}`,
+  nextStepCtaMeta: "If cancer returns — a new decision frame",
+  nextStepSecondaryCtaLabel: "Quality of life",
+  nextStepSecondaryHref: `/questions/${BREAST_QOL_SLUG}`,
+  nextStepSecondaryMeta: "If daily life and late effects are the main concern",
+
+  relatedPathsTitle: "Continue your breast cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Worried cancer might return?",
+      question: "What should I sort out if breast cancer comes back?",
+      cta: "Recurrence",
+      href: `/questions/${BREAST_RECURRENCE_SLUG}`,
+    },
+    {
+      title: "Balancing daily life after treatment?",
+      question:
+        "How should quality of life factor into breast cancer decisions?",
+      cta: "Quality of life",
+      href: `/questions/${BREAST_QOL_SLUG}`,
+    },
+    {
+      title: "Want more confidence?",
+      question:
+        "Should I get a second opinion before breast cancer surgery or systemic therapy?",
+      cta: "Second opinion",
+      href: BREAST_SECOND,
+    },
+  ],
+};
+
+/** Breast Cancer Entry — Global care / abroad (P2 #17, optional) */
+export const BREAST_GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Breast Cancer",
+  decisionMoment: "When to consider care in another city or country",
+  exploring: "Care abroad — only for a named gap",
+  subtitle:
+    "Cross-border or distant care is worth exploring for access, trust, cost, or support reasons — not as a default upgrade to a more famous hospital or country.",
+  relatedDecisions: [
+    { label: "Care team / center", href: BREAST_CARE_TEAM },
+    { label: "Second opinion", href: BREAST_SECOND },
+    { label: "Clinical trial", href: `/questions/${BREAST_CLINICAL_TRIAL_SLUG}` },
+    { label: "Practical fit", href: `/questions/${BREAST_PRACTICAL_FIT_SLUG}` },
+  ],
+  journeyLabel: "Breast Cancer Decision Journey",
+  journeyPath: [
+    { label: "Care team", href: BREAST_CARE_TEAM },
+    { label: "Care abroad", current: true },
+    { label: "Second opinion", href: BREAST_SECOND },
+  ],
+
+  triggersTitle: "You may be facing this if:",
+  triggerGroups: [
+    {
+      heading: "Access looks different elsewhere",
+      lead: "You may be asking:",
+      items: [
+        "Is there a technique, trial, or path I cannot get where I am?",
+        "Would another center change what is possible for reconstruction, genetics, or complex sequencing?",
+      ],
+    },
+    {
+      heading: "Trust in the current plan is low",
+      lead: "You may be feeling:",
+      items: [
+        "I have already seen more than one team and still lack confidence",
+        "I do not accept the current recommendation and want an outside review",
+      ],
+    },
+    {
+      heading: "Cost or support is the blocker",
+      lead: "You may need:",
+      items: [
+        "A path that is hard to continue because of cost or coverage",
+        "International-patient coordination (records, language, written plan)",
+      ],
+    },
+  ],
+
+  whyTitle: "When should I consider care elsewhere?",
+  whyLead:
+    "People consider breast cancer care in another city or country when one or more of these are true — not because a hospital or country is simply more famous:",
+  whyBody: [
+    "Access where you are is limited (specialists, wait times, or coordinated review)",
+    "You have already seen more than one team and still lack confidence in the plan",
+    "You do not accept the current recommendation and want an outside review",
+    "You need coordinated international-patient support (records, language, written plan)",
+    "Cost or coverage makes the local path hard to continue",
+    "A technique, trial, or treatment path is not available locally",
+  ],
+  whyQuestions: [],
+  whyNotLabel: "The first question is not:",
+  whyNotQuestion: "Which country is best for breast cancer?",
+  whyBetterLabel: "The better question is:",
+  whyBetterQuestion:
+    "Which of these reasons is true for me — and what would travel actually change?",
+  whyClose: [
+    "Name your reason in plain language first. Then compare remote review versus travel, and ask the receiving center’s international desk for a written next-step plan.",
+    "Feeling that this is a “last try” is human — but desperation alone is not a clinical reason to book flights.",
+  ],
+
+  whoNeedsTitle: "Is care abroad the same as changing my care team?",
+  whoNeedsLead:
+    "Not exactly. Care-team choice is about who owns ongoing care. Care abroad asks whether a named capability requires leaving home — for a visit, procedure, or trial.",
+  whoNeedsBody: [
+    "Many people combine both: specialist or remote review first, then hybrid care closer to home.",
+  ],
+  whoNeedsDependsIntro: "Your situation may weigh factors such as:",
+  whoNeedsDependsOn: [
+    "Whether the gap is expertise, a trial, reconstruction, or confidence",
+    "Whether remote records review can answer the question first",
+    "Travel fitness and treatment urgency",
+    "How aftercare and written next steps would work after the visit",
+    "Cost of the whole episode — not only the first consult",
+  ],
+  whoNeedsClose:
+    "A useful question: “What am I looking for that I cannot get where I am — in one sentence?”",
+
+  doesNotDecideTitle: "Compare remote review, travel, and staying local",
+  doesNotDecideLead:
+    "Leaving home is one option among several. Match the path to the gap.",
+  doesNotDecideItems: [
+    "Remote international or specialist review — clarifies whether travel is needed",
+    "Travel for a specific procedure, trial, reconstruction consult, or in-person planning visit",
+    "Stay local when care already matches the gap",
+    "Hybrid — travel for a focused step; continue care where it fits your life",
+  ],
+  doesNotDecideNotes: [
+    "Remote review first is often the lowest-burden way to test whether a capability gap is real.",
+  ],
+  doesNotDecideClose:
+    "Choose the lightest path that answers the clinical question — not the farthest hospital by default.",
+
+  costTitle: "Episode cost, travel, and continuity",
+  costLead:
+    "Compare the whole episode — medical fees, lodging, companion costs, time away, and aftercare — not only the first invoice.",
+  costItems: [
+    "What does a typical full episode include at this center?",
+    "Can some care continue closer to home after the visit?",
+    "What written aftercare plan will the international desk provide?",
+  ],
+
+  mistakesTitle: "Common mistakes when considering care abroad",
+  mistakes: [
+    {
+      mistake: "Booking travel before naming the capability gap",
+      why: "Without a specific missing piece, distance rarely improves the decision.",
+    },
+    {
+      mistake: "Skipping remote review when it is available",
+      why: "Many questions can be answered with records before flights.",
+    },
+    {
+      mistake: "Choosing by fame or country ranking alone",
+      why: "Fit depends on your named gap, expertise, and continuity.",
+    },
+  ],
+
+  secondOpinionTitle: "When a second opinion belongs before travel",
+  secondOpinionLead:
+    "A second opinion reviews a decision. Travel moves your body. A remote or specialist second opinion may help when:",
+  secondOpinionWhen: [
+    "You need clarity before deciding whether to leave home",
+    "Family advice conflicts about going abroad",
+    "You want written reasoning you can use for your next step",
+  ],
+  secondOpinionClose:
+    "Use the second-opinion guide for the review — then return here if travel itself is still the open question.",
+  secondOpinionCtaLabel: "Breast second opinion guide",
+  secondOpinionHref: BREAST_SECOND,
+
+  doctorTitle: "Care Abroad Conversation Checklist",
+  doctorLeaveTitle: "Before leaving the conversation, ask:",
+  doctorLeaveItems: [
+    "Which reason am I exploring for — access, confidence, cost, or support?",
+    "Can records be reviewed remotely before I travel?",
+    "What written next-step / aftercare plan will the receiving center’s international desk provide?",
+    "How would ongoing breast cancer care continue after I return?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About my reason",
+      questions: [
+        "What am I looking for that I cannot get where I am?",
+        "Is this about a missing technique, trial, reconstruction path, or confidence?",
+        "Would an outside review change the next irreversible step?",
+      ],
+    },
+    {
+      heading: "About remote review vs travel",
+      questions: [
+        "Can pathology, imaging, and subtype results be reviewed remotely first?",
+        "When would an in-person visit actually be required?",
+        "Am I fit to travel safely right now?",
+      ],
+    },
+    {
+      heading: "About continuity",
+      questions: [
+        "What does the international desk put in writing after the visit?",
+        "Which parts of care can continue locally?",
+        "How are notes and imaging shared with me?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Naming the gap before booking",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A family feels pressure to “go abroad to the most famous hospital” after conflicting breast cancer recommendations.",
+    "Instead of booking flights first, they write one sentence:",
+  ],
+  scenarioFocus: [
+    "What am I looking for that I cannot get where I am?",
+    "Can remote review answer that question first?",
+    "What written next-step plan would make travel worth it?",
+  ],
+  scenarioClose:
+    "The decision shifts from chasing fame to testing a named gap with the lightest workable path.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If you are exploring care elsewhere:",
+  nextStepActions: [
+    {
+      label:
+        "Write your reason in one sentence — access, confidence, cost, or missing path.",
+    },
+    {
+      label:
+        "Ask whether remote review can answer that question before anyone travels.",
+    },
+    {
+      label:
+        "Request a written next-step plan from the receiving center’s international desk.",
+    },
+  ],
+  nextStepCtaLabel: "Care team / center",
+  nextStepHref: BREAST_CARE_TEAM,
+  nextStepCtaMeta: "When the question is ongoing ownership, not travel",
+  nextStepSecondaryCtaLabel: "Second opinion",
+  nextStepSecondaryHref: BREAST_SECOND,
+  nextStepSecondaryMeta: "When you need a focused review before flights",
+
+  relatedPathsTitle: "Continue your breast cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Choosing who owns ongoing care?",
+      question: "How do I choose a breast cancer care team or center?",
+      cta: "Care team",
+      href: BREAST_CARE_TEAM,
+    },
+    {
+      title: "Need clarity on one fork first?",
+      question:
+        "Should I get a second opinion before breast cancer surgery or systemic therapy?",
+      cta: "Second opinion",
+      href: BREAST_SECOND,
+    },
+    {
+      title: "Is a trial the missing path?",
+      question: "Should I consider a clinical trial for breast cancer?",
+      cta: "Clinical trial",
+      href: `/questions/${BREAST_CLINICAL_TRIAL_SLUG}`,
+    },
+  ],
+};
+
 export const BREAST_FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> = {
   [BREAST_NEWLY_DIAGNOSED_SLUG]: BREAST_NEWLY_DIAGNOSED_FLAGSHIP,
   [BREAST_SUBTYPE_SLUG]: BREAST_SUBTYPE_FLAGSHIP,
@@ -2845,4 +3989,9 @@ export const BREAST_FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> = {
   [BREAST_CARE_TEAM_SLUG]: BREAST_CARE_TEAM_FLAGSHIP,
   [BREAST_METASTATIC_SLUG]: BREAST_METASTATIC_FLAGSHIP,
   [BREAST_RECURRENCE_SLUG]: BREAST_RECURRENCE_FLAGSHIP,
+  [BREAST_QOL_SLUG]: BREAST_QOL_FLAGSHIP,
+  [BREAST_PRACTICAL_FIT_SLUG]: BREAST_PRACTICAL_FIT_FLAGSHIP,
+  [BREAST_CLINICAL_TRIAL_SLUG]: BREAST_CLINICAL_TRIAL_FLAGSHIP,
+  [BREAST_FOLLOW_UP_SLUG]: BREAST_FOLLOW_UP_FLAGSHIP,
+  [BREAST_GLOBAL_CARE_SLUG]: BREAST_GLOBAL_CARE_FLAGSHIP,
 };

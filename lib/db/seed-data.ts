@@ -4,6 +4,11 @@ import {
   BREAST_GENETICS_SLUG,
   BREAST_METASTATIC_SLUG,
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_CLINICAL_TRIAL_SLUG,
+  BREAST_FOLLOW_UP_SLUG,
+  BREAST_GLOBAL_CARE_SLUG,
+  BREAST_PRACTICAL_FIT_SLUG,
+  BREAST_QOL_SLUG,
   BREAST_RECURRENCE_SLUG,
   BREAST_RADIATION_SLUG,
   BREAST_RECONSTRUCTION_SLUG,
@@ -17,6 +22,11 @@ import { BREAST_CARE_TEAM_DIRECT_ANSWER } from "@/lib/content/breast-care-team-e
 import { BREAST_GENETICS_DIRECT_ANSWER } from "@/lib/content/breast-genetics-entry-cards";
 import { BREAST_METASTATIC_DIRECT_ANSWER } from "@/lib/content/breast-metastatic-entry-cards";
 import { BREAST_NEWLY_DIAGNOSED_DIRECT_ANSWER } from "@/lib/content/breast-newly-diagnosed-entry-cards";
+import { BREAST_CLINICAL_TRIAL_DIRECT_ANSWER } from "@/lib/content/breast-clinical-trial-entry-cards";
+import { BREAST_FOLLOW_UP_DIRECT_ANSWER } from "@/lib/content/breast-follow-up-entry-cards";
+import { BREAST_GLOBAL_CARE_DIRECT_ANSWER } from "@/lib/content/breast-global-care-entry-cards";
+import { BREAST_PRACTICAL_FIT_DIRECT_ANSWER } from "@/lib/content/breast-practical-fit-entry-cards";
+import { BREAST_QOL_DIRECT_ANSWER } from "@/lib/content/breast-qol-entry-cards";
 import { BREAST_RECURRENCE_DIRECT_ANSWER } from "@/lib/content/breast-recurrence-entry-cards";
 import { BREAST_RADIATION_DIRECT_ANSWER } from "@/lib/content/breast-radiation-entry-cards";
 import { BREAST_RECONSTRUCTION_DIRECT_ANSWER } from "@/lib/content/breast-reconstruction-entry-cards";
@@ -844,6 +854,112 @@ export function createSeedData(): KnowledgeGraphStore {
         "Where exactly has the cancer returned?",
         "Would re-testing subtype change the options we discuss?",
         "Given what we already used, which option families belong now?",
+      ],
+    },
+    {
+      n: 44,
+      cancer: 3,
+      title:
+        "How should quality of life factor into breast cancer decisions?",
+      slug: BREAST_QOL_SLUG,
+      category: "treatment",
+      summary: BREAST_QOL_DIRECT_ANSWER,
+      why: "Patients treat QoL as optional or as giving up; they need a frame for priorities, symptoms, and benefit–burden trade-offs alongside active care.",
+      factors: [
+        "Priorities to protect (work, family, energy, body image)",
+        "Side effects and visit burden",
+        "Supportive care alongside active treatment",
+        "Whether more intensity is the right fit",
+        "When to report symptoms early",
+      ],
+      doctorQs: [
+        "What matters most to me during treatment — and how can we include those goals?",
+        "Which symptoms should I report, and what support is available?",
+        "Can side effects or visit burden be reduced?",
+      ],
+    },
+    {
+      n: 45,
+      cancer: 3,
+      title: "Can my breast cancer treatment plan work with my real life?",
+      slug: BREAST_PRACTICAL_FIT_SLUG,
+      category: "cost",
+      summary: BREAST_PRACTICAL_FIT_DIRECT_ANSWER,
+      why: "Patients need a pointer for cost, travel, and time — not a price encyclopedia — then route to Care Team, Systemic, or QoL.",
+      factors: [
+        "Normal treatment-week visit load",
+        "Travel, time off work, and caregiver support",
+        "Pathway-level cost pressures (not isolated quotes)",
+        "Whether hybrid or local options can reduce burden",
+        "What can be adjusted if the plan becomes too hard",
+      ],
+      doctorQs: [
+        "What will a normal treatment week look like?",
+        "What travel, time, or cost pressures should we plan for?",
+        "If this becomes too hard, what can we adjust?",
+      ],
+    },
+    {
+      n: 46,
+      cancer: 3,
+      title: "Should I consider a clinical trial for breast cancer?",
+      slug: BREAST_CLINICAL_TRIAL_SLUG,
+      category: "treatment",
+      summary: BREAST_CLINICAL_TRIAL_DIRECT_ANSWER,
+      why: "Patients treat trials as last resort or as automatically better; they need a frame for subtype fit, timing, and comparison with standard care.",
+      factors: [
+        "Subtype and other cancer features",
+        "Timing relative to surgery or first systemic therapy",
+        "Comparison with standard options (goal, evidence, uncertainty)",
+        "Eligibility and prior treatment history",
+        "Visit load, travel, and exit options if the trial does not work",
+      ],
+      doctorQs: [
+        "What question is this trial trying to answer?",
+        "Why do you think I may be a candidate for my subtype?",
+        "How does this compare with standard treatment?",
+      ],
+    },
+    {
+      n: 47,
+      cancer: 3,
+      title: "How do I monitor my health after breast cancer treatment?",
+      slug: BREAST_FOLLOW_UP_SLUG,
+      category: "treatment",
+      summary: BREAST_FOLLOW_UP_DIRECT_ANSWER,
+      why: "Patients hear “treatment is over” and lose the plan; they need schedules, call triggers, late-effect monitoring, and ownership of follow-up.",
+      factors: [
+        "Follow-up visit and imaging schedule",
+        "Symptoms that should trigger a call",
+        "Who leads follow-up and shared care",
+        "Long-term endocrine therapy monitoring when relevant",
+        "Late effects and fear of recurrence support",
+      ],
+      doctorQs: [
+        "What is my follow-up schedule — and why?",
+        "Which symptoms should trigger a call between visits?",
+        "Who do I contact first if something changes?",
+      ],
+    },
+    {
+      n: 48,
+      cancer: 3,
+      title: "When should I consider breast cancer care abroad?",
+      slug: BREAST_GLOBAL_CARE_SLUG,
+      category: "global_care",
+      summary: BREAST_GLOBAL_CARE_DIRECT_ANSWER,
+      why: "Patients chase famous hospitals abroad; they need a frame for named capability gaps, remote review first, and written next steps.",
+      factors: [
+        "Named reason (access, confidence, cost, missing path)",
+        "Whether remote review can answer first",
+        "Travel fitness and urgency",
+        "Written next-step / aftercare plan from international desk",
+        "Hybrid continuity after returning home",
+      ],
+      doctorQs: [
+        "What am I looking for that I cannot get where I am?",
+        "Can records be reviewed remotely before I travel?",
+        "What written next-step plan will the receiving center provide?",
       ],
     },
     {

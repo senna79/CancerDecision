@@ -8,6 +8,11 @@ import {
   BREAST_GENETICS_SLUG,
   BREAST_METASTATIC_SLUG,
   BREAST_NEWLY_DIAGNOSED_SLUG,
+  BREAST_CLINICAL_TRIAL_SLUG,
+  BREAST_FOLLOW_UP_SLUG,
+  BREAST_GLOBAL_CARE_SLUG,
+  BREAST_PRACTICAL_FIT_SLUG,
+  BREAST_QOL_SLUG,
   BREAST_RECURRENCE_SLUG,
   BREAST_RADIATION_SLUG,
   BREAST_RECONSTRUCTION_SLUG,
@@ -30,7 +35,12 @@ export type BreastAiEntryId =
   | "breast-radiation"
   | "breast-care-team"
   | "breast-metastatic"
-  | "breast-recurrence";
+  | "breast-recurrence"
+  | "breast-quality-of-life"
+  | "breast-practical-fit"
+  | "breast-clinical-trial"
+  | "breast-follow-up"
+  | "breast-global-care";
 
 export type BreastAiEntry = {
   id: BreastAiEntryId;
@@ -269,6 +279,103 @@ export const BREAST_AI_ENTRY_PORTFOLIO: BreastAiEntry[] = [
       "breast-treatment-comparison",
       "breast-second-opinion",
       "breast-care-team",
+      "breast-quality-of-life",
+    ],
+  },
+  {
+    id: "breast-quality-of-life",
+    label: "Quality of life",
+    decisionLabel: "How quality of life factors into the plan",
+    slug: BREAST_QOL_SLUG,
+    momentId: "quality-of-life",
+    searchIntents: [
+      "how should quality of life factor into breast cancer decisions",
+      "breast cancer treatment side effects daily life",
+      "supportive care during breast cancer treatment",
+      "balancing breast cancer treatment and work",
+    ],
+    relatedEntryIds: [
+      "breast-treatment-comparison",
+      "breast-reconstruction",
+      "breast-radiation",
+      "breast-second-opinion",
+      "breast-practical-fit",
+    ],
+  },
+  {
+    id: "breast-practical-fit",
+    label: "Practical fit",
+    decisionLabel: "Whether the plan can work with real life",
+    slug: BREAST_PRACTICAL_FIT_SLUG,
+    momentId: "cost-logistics",
+    searchIntents: [
+      "can my breast cancer treatment plan work with my real life",
+      "breast cancer treatment cost travel time",
+      "breast cancer radiation schedule work",
+      "how breast cancer treatment costs accumulate",
+    ],
+    relatedEntryIds: [
+      "breast-care-team",
+      "breast-treatment-comparison",
+      "breast-quality-of-life",
+      "breast-radiation",
+    ],
+  },
+  {
+    id: "breast-clinical-trial",
+    label: "Clinical trial",
+    decisionLabel: "Whether a clinical trial belongs in the discussion",
+    slug: BREAST_CLINICAL_TRIAL_SLUG,
+    momentId: "clinical-trial",
+    searchIntents: [
+      "should I consider a clinical trial for breast cancer",
+      "breast cancer clinical trial options",
+      "are clinical trials only last resort breast cancer",
+      "clinical trial vs standard treatment breast cancer",
+    ],
+    relatedEntryIds: [
+      "breast-treatment-comparison",
+      "breast-metastatic",
+      "breast-recurrence",
+      "breast-second-opinion",
+    ],
+  },
+  {
+    id: "breast-follow-up",
+    label: "Follow-up",
+    decisionLabel: "How to monitor health after treatment",
+    slug: BREAST_FOLLOW_UP_SLUG,
+    momentId: "follow-up-monitoring",
+    searchIntents: [
+      "how do I monitor my health after breast cancer treatment",
+      "breast cancer follow-up schedule",
+      "what symptoms to report after breast cancer treatment",
+      "fear of recurrence after breast cancer",
+    ],
+    relatedEntryIds: [
+      "breast-recurrence",
+      "breast-quality-of-life",
+      "breast-second-opinion",
+      "breast-treatment-comparison",
+    ],
+  },
+  {
+    id: "breast-global-care",
+    label: "Care abroad",
+    decisionLabel: "When to consider care in another city or country",
+    slug: BREAST_GLOBAL_CARE_SLUG,
+    momentId: "global-care",
+    searchIntents: [
+      "when to consider breast cancer care abroad",
+      "breast cancer treatment in another country",
+      "should I travel for breast cancer treatment",
+      "remote second opinion before traveling for breast cancer",
+    ],
+    relatedEntryIds: [
+      "breast-care-team",
+      "breast-second-opinion",
+      "breast-clinical-trial",
+      "breast-practical-fit",
     ],
   },
 ];

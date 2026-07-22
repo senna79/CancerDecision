@@ -32,6 +32,11 @@ import {
   BREAST_GENETICS_SLUG,
   BREAST_METASTATIC_SLUG,
   BREAST_RADIATION_SLUG,
+  BREAST_CLINICAL_TRIAL_SLUG,
+  BREAST_FOLLOW_UP_SLUG,
+  BREAST_GLOBAL_CARE_SLUG,
+  BREAST_PRACTICAL_FIT_SLUG,
+  BREAST_QOL_SLUG,
   BREAST_RECURRENCE_SLUG,
   BREAST_RECONSTRUCTION_SLUG,
   BREAST_SUBTYPE_SLUG,
@@ -43,6 +48,11 @@ import { BREAST_CARE_TEAM_GLOSS } from "./breast-care-team-entry-cards";
 import { BREAST_GENETICS_GLOSS } from "./breast-genetics-entry-cards";
 import { BREAST_METASTATIC_GLOSS } from "./breast-metastatic-entry-cards";
 import { BREAST_NEWLY_DIAGNOSED_GLOSS } from "./breast-newly-diagnosed-entry-cards";
+import { BREAST_CLINICAL_TRIAL_GLOSS } from "./breast-clinical-trial-entry-cards";
+import { BREAST_FOLLOW_UP_GLOSS } from "./breast-follow-up-entry-cards";
+import { BREAST_GLOBAL_CARE_GLOSS } from "./breast-global-care-entry-cards";
+import { BREAST_PRACTICAL_FIT_GLOSS } from "./breast-practical-fit-entry-cards";
+import { BREAST_QOL_GLOSS } from "./breast-qol-entry-cards";
 import { BREAST_RECURRENCE_GLOSS } from "./breast-recurrence-entry-cards";
 import { BREAST_RADIATION_GLOSS } from "./breast-radiation-entry-cards";
 import { BREAST_RECONSTRUCTION_GLOSS } from "./breast-reconstruction-entry-cards";
@@ -205,6 +215,61 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Wonder whether the first plan simply repeats",
       "Need to know if subtype should be re-tested",
       "Want to separate local, regional, and distant recurrence frames",
+    ],
+  },
+  [BREAST_QOL_SLUG]: {
+    plainLanguageGloss: BREAST_QOL_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Feel treatment is helping the cancer but hard on daily life",
+      "Want to bring work, energy, family, or body image into the plan",
+      "Wonder whether supportive care means giving up",
+      "Need a way to weigh benefit and burden without choosing only intensity",
+    ],
+  },
+  [BREAST_PRACTICAL_FIT_SLUG]: {
+    plainLanguageGloss: BREAST_PRACTICAL_FIT_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Wonder whether a recommended plan can work with work, family, or travel",
+      "Feel stuck between medical fit and practical limits",
+      "Need language to raise cost, time, or support with your care team",
+      "Want to know which decision page to open next",
+    ],
+  },
+  [BREAST_CLINICAL_TRIAL_SLUG]: {
+    plainLanguageGloss: BREAST_CLINICAL_TRIAL_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Wonder whether a clinical trial belongs in your breast cancer discussion",
+      "Assume trials are only a last resort",
+      "Need to compare a trial with standard care for your subtype",
+      "Want to know what to ask about eligibility, risks, and daily life",
+    ],
+  },
+  [BREAST_FOLLOW_UP_SLUG]: {
+    plainLanguageGloss: BREAST_FOLLOW_UP_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Recently finished active breast cancer treatment",
+      "Are moving into follow-up or long-term endocrine therapy monitoring",
+      "Want to know which symptoms should trigger a call",
+      "Need a clearer plan than “just wait for the next scan”",
+    ],
+  },
+  [BREAST_GLOBAL_CARE_SLUG]: {
+    plainLanguageGloss: BREAST_GLOBAL_CARE_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Wonder whether care in another city or country is worth exploring",
+      "Feel pressure to travel to a famous hospital without a named gap",
+      "Need to separate remote review from booking flights",
+      "Want language for access, confidence, cost, or a missing local path",
     ],
   },
   [STAGE_IV_SLUG]: {

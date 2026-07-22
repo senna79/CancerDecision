@@ -49,13 +49,41 @@ export const BREAST_METASTATIC_SLUG =
 export const BREAST_RECURRENCE_SLUG =
   "what-should-i-sort-out-if-breast-cancer-comes-back";
 
-/** Old thin page → upgraded Newly Diagnosed Entry. */
+/** Quality of life Entry (P2 #13) — Template v2. */
+export const BREAST_QOL_SLUG =
+  "how-should-quality-of-life-factor-into-breast-cancer-decisions";
+
+/** Practical fit pointer (P2 #14) — Template v2 stub, like lung. */
+export const BREAST_PRACTICAL_FIT_SLUG =
+  "can-my-breast-cancer-treatment-plan-work-with-my-real-life";
+
+/** Clinical trial Entry (P2 #15) — Template v2. */
+export const BREAST_CLINICAL_TRIAL_SLUG =
+  "should-i-consider-a-clinical-trial-for-breast-cancer";
+
+/** Follow-up / monitoring Entry (P2 #16) — Template v2. */
+export const BREAST_FOLLOW_UP_SLUG =
+  "how-do-i-monitor-my-health-after-breast-cancer-treatment";
+
+/** Global care / abroad Entry (P2 #17, optional) — Template v2. */
+export const BREAST_GLOBAL_CARE_SLUG =
+  "when-to-consider-breast-cancer-care-abroad";
+
+/** Old thin pages → Decision Entries. */
 export const BREAST_LEGACY_QUESTION_REDIRECTS: Record<string, string> = {
   "what-to-ask-after-new-breast-cancer-diagnosis": `/questions/${BREAST_NEWLY_DIAGNOSED_SLUG}`,
+  "how-breast-cancer-treatment-costs-accumulate": `/questions/${BREAST_PRACTICAL_FIT_SLUG}`,
 };
 
 export function breastLegacyQuestionRedirect(
   slug: string
 ): string | undefined {
   return BREAST_LEGACY_QUESTION_REDIRECTS[slug];
+}
+
+export function isRetiredBreastQuestionSlug(slug: string): boolean {
+  return Object.prototype.hasOwnProperty.call(
+    BREAST_LEGACY_QUESTION_REDIRECTS,
+    slug
+  );
 }
