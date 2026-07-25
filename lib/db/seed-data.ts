@@ -42,9 +42,11 @@ import {
   GLOBAL_CARE_HUB_PRIMARY_SUMMARY,
 } from "@/lib/content/global-care-entry-cards";
 import { PROSTATE_NEWLY_DIAGNOSED_DIRECT_ANSWER } from "@/lib/content/prostate-newly-diagnosed-entry-cards";
+import { PROSTATE_SECOND_OPINION_DIRECT_ANSWER } from "@/lib/content/prostate-second-opinion-entry-cards";
 import { PROSTATE_SURVEILLANCE_DIRECT_ANSWER } from "@/lib/content/prostate-surveillance-entry-cards";
 import {
   PROSTATE_NEWLY_DIAGNOSED_SLUG,
+  PROSTATE_SECOND_OPINION_SLUG,
   PROSTATE_SURVEILLANCE_SLUG,
   PROSTATE_TREATMENT_COMPARE_SLUG,
 } from "@/lib/content/prostate-entry-slugs";
@@ -607,10 +609,9 @@ export function createSeedData(): KnowledgeGraphStore {
       n: 7,
       cancer: 2,
       title: "Should I get a second opinion for prostate cancer?",
-      slug: "should-i-get-second-opinion-for-prostate-cancer",
+      slug: PROSTATE_SECOND_OPINION_SLUG,
       category: "second_opinion",
-      summary:
-        "A second opinion can help confirm risk stratification and compare surveillance, surgery, and radiation. It is useful when recommendations diverge or when genomics/imaging interpretation is uncertain.",
+      summary: PROSTATE_SECOND_OPINION_DIRECT_ANSWER,
       why: "Prostate cancer has multiple guideline-supported pathways, so independent review can clarify fit for a patient's priorities.",
       factors: [
         "Discordant recommendations",

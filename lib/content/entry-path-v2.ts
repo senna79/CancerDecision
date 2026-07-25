@@ -24,6 +24,7 @@ import {
 } from "@/lib/content/breast-entry-slugs";
 import {
   PROSTATE_NEWLY_DIAGNOSED_SLUG,
+  PROSTATE_SECOND_OPINION_SLUG,
   PROSTATE_SURVEILLANCE_SLUG,
 } from "@/lib/content/prostate-entry-slugs";
 
@@ -2768,6 +2769,140 @@ const PROSTATE_SURVEILLANCE_PATH: EntryPathV2 = {
   ],
 };
 
+const PROSTATE_SECOND_OPINION_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Prostate Cancer Second Opinion Decision Path",
+  pathSubtitle:
+    "When it may help → what it can change → how to prepare → what to ask.",
+  completedLabels: [
+    "When a second opinion may help",
+    "What another review can change",
+    "How to prepare a useful packet",
+    "Questions for the second-opinion visit",
+  ],
+  practicalPoints: [
+    "Pathology, PSA history, MRI/imaging, and the current written plan",
+    "One named decision for review (surveillance, surgery vs radiation, or risk clarity)",
+    "How urgent the calendar is before locking a path",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Is this a situation where another opinion could help?",
+      lead: "Patient question: when is a prostate cancer second opinion most useful?",
+      main: "pso-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary:
+            "Before locking surveillance or treatment, when confidence is low.",
+        },
+        {
+          id: "pso-everyone",
+          title: "Does everyone with prostate cancer need a second opinion?",
+          summary: "A support tool — not a sign something is wrong.",
+        },
+        {
+          id: "pso-why-prostate",
+          title: "Should I get a second opinion before deciding?",
+          summary:
+            "Useful when recommendations diverge, or before locking a path.",
+        },
+        {
+          id: "pso-delay",
+          title: "Can I get a second opinion without delaying care?",
+          summary: "Ask urgency, what can continue, and what needs a pause.",
+        },
+        {
+          id: "pso-disrespect",
+          title: "Is asking for a second opinion disrespectful?",
+          summary: "Frame confidence — not distrust.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "What could another doctor tell me that I do not already know?",
+      lead: "Patient question: confirm, clarify, expand, or identify gaps?",
+      main: "second-compare",
+      cards: [
+        {
+          id: "pso-change",
+          title: "Can a second opinion change my treatment plan?",
+          summary: "Sometimes yes — confirmation can also be valuable.",
+        },
+        {
+          id: "pso-focus",
+          title: "What should the review focus on?",
+          summary:
+            "Name one decision — surveillance, surgery vs radiation, or risk clarity.",
+        },
+        {
+          id: "pso-two-doctors",
+          title: "What if two doctors recommend different plans?",
+          summary: "Compare reasoning — not who is “right.”",
+        },
+        {
+          id: "pso-pathology",
+          title: "Should pathology or MRI be reviewed again?",
+          summary: "When another specialist review may add confidence.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "How do I prepare so the review is useful?",
+      lead: "Patient question: what records and timing make this worth it?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "pso-how-to-get",
+          title: "How do I get a second opinion for prostate cancer?",
+          summary: "Name the decision, gather records, book a focused review.",
+        },
+        {
+          id: "pso-records",
+          title: "What records should I bring?",
+          summary: "Pathology, PSA, imaging, plan, and one sentence question.",
+        },
+        {
+          id: "pso-cost",
+          title: "Cost and insurance for a second opinion",
+          summary: "Questions instead of guessing a price.",
+        },
+        {
+          id: "pso-this-week",
+          title: "What should I do this week while arranging a review?",
+          summary: "Name the decision, gather records, check urgency.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I ask so the appointment is useful?",
+      lead: "Patient question: how do I prepare for the conversation?",
+      main: "checklist",
+      cards: [
+        {
+          id: "pso-mistakes",
+          title: "What are common mistakes when getting a second opinion?",
+          summary: "Timing, incomplete records, and seeking only agreement.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might review before locking the fork.",
+        },
+      ],
+    },
+  ],
+};
+
 const BREAST_SUBTYPE_PATH: EntryPathV2 = {
   pathEyebrow: "Decision path",
   pathTitle: "Breast Cancer Subtype Testing Decision Path",
@@ -5083,6 +5218,7 @@ const PATHS: Record<string, EntryPathV2> = {
   [BREAST_NEWLY_DIAGNOSED_SLUG]: BREAST_NEWLY_DIAGNOSED_PATH,
   [PROSTATE_NEWLY_DIAGNOSED_SLUG]: PROSTATE_NEWLY_DIAGNOSED_PATH,
   [PROSTATE_SURVEILLANCE_SLUG]: PROSTATE_SURVEILLANCE_PATH,
+  [PROSTATE_SECOND_OPINION_SLUG]: PROSTATE_SECOND_OPINION_PATH,
   [BREAST_SUBTYPE_SLUG]: BREAST_SUBTYPE_PATH,
   [BREAST_SEQUENCING_SLUG]: BREAST_SEQUENCING_PATH,
   [BREAST_SURGERY_SLUG]: BREAST_SURGERY_PATH,

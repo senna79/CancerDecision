@@ -450,8 +450,242 @@ export const PROSTATE_SURVEILLANCE_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 };
 
+/** Prostate Cancer Entry — Second Opinion (P0 confidence node) */
+export const PROSTATE_SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Prostate Cancer",
+  decisionMoment: "Whether a second opinion may help before locking a path",
+  exploring: "Second opinion before surveillance or definitive therapy",
+  subtitle:
+    "Before locking active surveillance or irreversible treatment, decide whether another focused review would add confidence — confirmation included.",
+  relatedDecisions: [
+    { label: "Newly diagnosed", href: `/questions/${PROSTATE_NEWLY_DIAGNOSED_SLUG}` },
+    { label: "Active surveillance", href: PROSTATE_SURVEILLANCE },
+    { label: "Surgery vs radiation", href: PROSTATE_COMPARE },
+  ],
+  journeyLabel: "Prostate Cancer Decision Journey",
+  journeyPath: [
+    { label: "New Diagnosis", href: `/questions/${PROSTATE_NEWLY_DIAGNOSED_SLUG}` },
+    { label: "Surveillance", href: PROSTATE_SURVEILLANCE },
+    { label: "Second opinion", current: true },
+  ],
+
+  triggersTitle: "When a second opinion may matter most",
+  triggerGroups: [
+    {
+      heading: "Before locking a path",
+      lead: "You may be asking:",
+      items: [
+        "Should I monitor or treat?",
+        "Am I ready to lock surgery or radiation?",
+      ],
+    },
+    {
+      heading: "Conflicting advice",
+      lead: "You may be asking:",
+      items: [
+        "Why do two recommendations differ?",
+        "What information is each plan assuming?",
+      ],
+    },
+    {
+      heading: "Borderline risk features",
+      lead: "You may be asking:",
+      items: [
+        "Should pathology or MRI be re-reviewed?",
+        "Would another specialist change the fork?",
+      ],
+    },
+  ],
+
+  whyTitle: "Why consider a second opinion for prostate cancer?",
+  whyLead:
+    "Prostate cancer plans often combine risk group, monitoring versus treatment, and surgery versus radiation. Another review can add confidence before locking a path.",
+  whyBody: [],
+  whyQuestions: [
+    "Another opinion may confirm the current plan — confirmation is useful",
+    "It may identify missing pathology, MRI, or risk-group information",
+    "It may clarify surveillance or treatment when recommendations conflict",
+  ],
+  whyNotLabel: "The important question is not:",
+  whyNotQuestion: "How do I prove my doctor is wrong?",
+  whyBetterLabel: "The more useful question is:",
+  whyBetterQuestion:
+    "What decision do I want reviewed before the next irreversible step?",
+  whyClose: [
+    "Name the decision. Then ask whether there is time for a focused review.",
+  ],
+
+  whoNeedsTitle: "Does everyone need a second opinion?",
+  whoNeedsLead:
+    "No. Many people move forward confidently with one clear multidisciplinary plan. A second opinion is most useful when uncertainty or irreversibility is high.",
+  whoNeedsBody: [
+    "What matters is whether another review would change what you understand — or what you would do next.",
+  ],
+  whoNeedsDependsIntro: "It may be especially useful when:",
+  whoNeedsDependsOn: [
+    "Recommendations diverge across specialists",
+    "Surveillance versus treatment still feels unclear",
+    "Surgery and radiation are both offered without a clear comparison",
+    "Pathology, MRI, or risk-group findings leave open questions",
+    "You want confidence before locking a major step",
+  ],
+  whoNeedsClose:
+    "A useful question: “If I do not get another review, what uncertainty am I accepting?”",
+
+  doesNotDecideTitle: "What could another opinion change?",
+  doesNotDecideLead:
+    "A second opinion may confirm, clarify, expand options, or identify gaps. It still depends on:",
+  doesNotDecideItems: [
+    "The records and question you bring",
+    "Your risk group and imaging picture",
+    "Whether timing allows a careful review",
+    "Your goals and function priorities",
+  ],
+  doesNotDecideNotes: [
+    "Changing the plan is not required for the review to be valuable.",
+    "A vague “look at everything” request is less useful than one named decision.",
+  ],
+  doesNotDecideClose:
+    "Second opinions improve confidence in the next step — they do not replace ongoing care conversations.",
+
+  costTitle: "Cost, coverage, and visit type",
+  costLead:
+    "Fees and coverage vary. Ask before you assume a second opinion is unaffordable — or free.",
+  costItems: [
+    "Is this visit covered as a consultation / second opinion?",
+    "Do slide or imaging re-reviews add cost?",
+    "Can a remote review answer my question, or do I need to travel?",
+  ],
+
+  mistakesTitle: "Common mistakes around second opinions",
+  mistakes: [
+    {
+      mistake: "Waiting until after irreversible treatment",
+      why: "Many prostate reviews are most useful before locking surveillance or definitive therapy.",
+    },
+    {
+      mistake: "Sending incomplete records",
+      why: "Without pathology, PSA, imaging, and the current plan, the review stays vague.",
+    },
+    {
+      mistake: "Seeking only agreement, not a clear question",
+      why: "Name what would change — confirmation is useful when the question is clear.",
+    },
+  ],
+
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "Consider a focused review when:",
+  secondOpinionWhen: [
+    "Surveillance and treatment recommendations conflict",
+    "The next step feels irreversible and you want confidence",
+    "Key information still seems incomplete",
+  ],
+  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionCtaLabel: "Active surveillance decision",
+  secondOpinionHref: PROSTATE_SURVEILLANCE,
+
+  doctorTitle: "Second Opinion Conversation Checklist",
+  doctorLeaveTitle: "Before leaving the review, ask:",
+  doctorLeaveItems: [
+    "Do you agree with the current plan — and why?",
+    "What would you change, if anything?",
+    "Is any key information still missing before locking monitoring or treatment?",
+    "How urgent is the next step on the calendar?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About the decision under review",
+      questions: [
+        "What decision are we focusing on today?",
+        "For my risk group, is the recommended path reasonable?",
+        "What would tip you toward a different approach?",
+      ],
+    },
+    {
+      heading: "About information gaps",
+      questions: [
+        "Should pathology, MRI, or risk-group reporting be re-reviewed?",
+        "Is active surveillance still on the table for me?",
+        "If we treat, how do surgery and radiation compare for my priorities?",
+      ],
+    },
+    {
+      heading: "About next steps",
+      questions: [
+        "Can I continue with my current team after this review?",
+        "What should I take back to my primary care team in writing?",
+        "How soon should monitoring or treatment proceed if we confirm the plan?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Review before locking the fork",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person is offered either active surveillance or a treatment date soon.",
+    "Urology and radiation oncology framed the options differently.",
+    "Instead of canceling care, they ask:",
+  ],
+  scenarioFocus: [
+    "What decision do I want reviewed before locking a path?",
+    "Is there time for a focused second opinion?",
+    "Should pathology or MRI be re-reviewed?",
+    "What should I take back to my current team in writing?",
+  ],
+  scenarioClose:
+    "The focus shifts from picking a “winning doctor” to clarifying the next irreversible step.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If a second opinion is still open:",
+  nextStepActions: [
+    {
+      label:
+        "Name the one decision you want reviewed — surveillance, surgery vs radiation, or risk clarity.",
+    },
+    {
+      label:
+        "Gather pathology, PSA, imaging, and the current recommendation in writing.",
+    },
+    {
+      label:
+        "Ask how urgent the calendar is — then return to the matching Decision Path.",
+    },
+  ],
+  nextStepCtaLabel: "Active surveillance decision",
+  nextStepHref: PROSTATE_SURVEILLANCE,
+  nextStepCtaMeta: "If monitor vs treat is still the open fork",
+  nextStepSecondaryCtaLabel: "Surgery vs radiation",
+  nextStepSecondaryHref: PROSTATE_COMPARE,
+  nextStepSecondaryMeta: "If definitive therapy is already on the table",
+
+  relatedPathsTitle: "Continue your prostate cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Still clarifying the diagnosis?",
+      question:
+        "What decisions matter most after a new prostate cancer diagnosis?",
+      cta: "Newly diagnosed",
+      href: `/questions/${PROSTATE_NEWLY_DIAGNOSED_SLUG}`,
+    },
+    {
+      title: "Wondering about monitoring?",
+      question: "Is active surveillance reasonable for prostate cancer?",
+      cta: "Active surveillance",
+      href: PROSTATE_SURVEILLANCE,
+    },
+    {
+      title: "Comparing treatments?",
+      question: "How do I compare surgery and radiation for prostate cancer?",
+      cta: "Surgery vs radiation",
+      href: PROSTATE_COMPARE,
+    },
+  ],
+};
+
 export const PROSTATE_FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> =
   {
     [PROSTATE_NEWLY_DIAGNOSED_SLUG]: PROSTATE_NEWLY_DIAGNOSED_FLAGSHIP,
     [PROSTATE_SURVEILLANCE_SLUG]: PROSTATE_SURVEILLANCE_FLAGSHIP,
+    [PROSTATE_SECOND_OPINION_SLUG]: PROSTATE_SECOND_OPINION_FLAGSHIP,
   };

@@ -45,6 +45,7 @@ import {
 } from "./breast-entry-slugs";
 import {
   PROSTATE_NEWLY_DIAGNOSED_SLUG,
+  PROSTATE_SECOND_OPINION_SLUG,
   PROSTATE_SURVEILLANCE_SLUG,
 } from "./prostate-entry-slugs";
 import { GLOBAL_CARE_DIRECT_ANSWER_GLOSS } from "./global-care-entry-cards";
@@ -53,6 +54,7 @@ import { BREAST_GENETICS_GLOSS } from "./breast-genetics-entry-cards";
 import { BREAST_METASTATIC_GLOSS } from "./breast-metastatic-entry-cards";
 import { BREAST_NEWLY_DIAGNOSED_GLOSS } from "./breast-newly-diagnosed-entry-cards";
 import { PROSTATE_NEWLY_DIAGNOSED_GLOSS } from "./prostate-newly-diagnosed-entry-cards";
+import { PROSTATE_SECOND_OPINION_GLOSS } from "./prostate-second-opinion-entry-cards";
 import { PROSTATE_SURVEILLANCE_GLOSS } from "./prostate-surveillance-entry-cards";
 import { BREAST_CLINICAL_TRIAL_GLOSS } from "./breast-clinical-trial-entry-cards";
 import { BREAST_FOLLOW_UP_GLOSS } from "./breast-follow-up-entry-cards";
@@ -122,6 +124,17 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Are deciding whether to monitor or treat prostate cancer now",
       "Want to know what follow-up and exit triggers look like",
       "Need a clearer comparison frame before locking surgery or radiation",
+    ],
+  },
+  [PROSTATE_SECOND_OPINION_SLUG]: {
+    plainLanguageGloss: PROSTATE_SECOND_OPINION_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Heard different recommendations about monitoring or treatment",
+      "Want confidence before locking active surveillance or definitive therapy",
+      "Are comparing surgery and radiation and still feel unsure",
+      "Wonder whether pathology or MRI should be re-reviewed",
     ],
   },
   [BREAST_SUBTYPE_SLUG]: {

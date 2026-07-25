@@ -483,6 +483,7 @@ function StepMain({
           </p>
         </div>
       );
+    case "pso-understand":
     case "bso-understand":
       return (
         <div className="space-y-3">

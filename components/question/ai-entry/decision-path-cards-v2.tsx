@@ -21,6 +21,7 @@ import { BREAST_GENETICS_ENTRY_CARDS } from "@/lib/content/breast-genetics-entry
 import { BREAST_METASTATIC_ENTRY_CARDS } from "@/lib/content/breast-metastatic-entry-cards";
 import { BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/breast-newly-diagnosed-entry-cards";
 import { PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/prostate-newly-diagnosed-entry-cards";
+import { PROSTATE_SECOND_OPINION_ENTRY_CARDS } from "@/lib/content/prostate-second-opinion-entry-cards";
 import { PROSTATE_SURVEILLANCE_ENTRY_CARDS } from "@/lib/content/prostate-surveillance-entry-cards";
 import { BREAST_CLINICAL_TRIAL_ENTRY_CARDS } from "@/lib/content/breast-clinical-trial-entry-cards";
 import { BREAST_FOLLOW_UP_ENTRY_CARDS } from "@/lib/content/breast-follow-up-entry-cards";
@@ -2037,6 +2038,114 @@ function DecisionPathCardDetailInner({
               Prostate second opinion guide →
             </Link>
           </p>
+        </div>
+      );
+    case "pso-everyone":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.everyone.lead}
+          items={PROSTATE_SECOND_OPINION_ENTRY_CARDS.everyone.items}
+          close={PROSTATE_SECOND_OPINION_ENTRY_CARDS.everyone.close}
+        />
+      );
+    case "pso-why-prostate":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.whyProstate.lead}
+          items={PROSTATE_SECOND_OPINION_ENTRY_CARDS.whyProstate.items}
+          close={PROSTATE_SECOND_OPINION_ENTRY_CARDS.whyProstate.close}
+        />
+      );
+    case "pso-delay":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.delay.lead}
+          ask={PROSTATE_SECOND_OPINION_ENTRY_CARDS.delay.ask}
+          close={PROSTATE_SECOND_OPINION_ENTRY_CARDS.delay.close}
+        />
+      );
+    case "pso-disrespect":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.disrespectful.lead}
+          close={PROSTATE_SECOND_OPINION_ENTRY_CARDS.disrespectful.close}
+        />
+      );
+    case "pso-change":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.canChange.lead}
+          items={PROSTATE_SECOND_OPINION_ENTRY_CARDS.canChange.items}
+          close={PROSTATE_SECOND_OPINION_ENTRY_CARDS.canChange.close}
+        />
+      );
+    case "pso-focus":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.focus.lead}
+          items={PROSTATE_SECOND_OPINION_ENTRY_CARDS.focus.items}
+          close={PROSTATE_SECOND_OPINION_ENTRY_CARDS.focus.close}
+        />
+      );
+    case "pso-two-doctors":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.twoDoctors.lead}
+          items={PROSTATE_SECOND_OPINION_ENTRY_CARDS.twoDoctors.items}
+          close={PROSTATE_SECOND_OPINION_ENTRY_CARDS.twoDoctors.close}
+        />
+      );
+    case "pso-pathology":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.pathology.lead}
+          ask={PROSTATE_SECOND_OPINION_ENTRY_CARDS.pathology.ask}
+        />
+      );
+    case "pso-how-to-get":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.howToGet.lead}
+          items={PROSTATE_SECOND_OPINION_ENTRY_CARDS.howToGet.steps}
+          close={PROSTATE_SECOND_OPINION_ENTRY_CARDS.howToGet.close}
+        />
+      );
+    case "pso-records":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.records.lead}
+          items={PROSTATE_SECOND_OPINION_ENTRY_CARDS.records.items}
+          close={PROSTATE_SECOND_OPINION_ENTRY_CARDS.records.close}
+          itemSection="bring"
+        />
+      );
+    case "pso-cost":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.cost.lead}
+          ask={PROSTATE_SECOND_OPINION_ENTRY_CARDS.cost.ask}
+        />
+      );
+    case "pso-this-week":
+      return (
+        <BulletCard
+          lead={PROSTATE_SECOND_OPINION_ENTRY_CARDS.thisWeek.lead}
+          items={PROSTATE_SECOND_OPINION_ENTRY_CARDS.thisWeek.steps}
+          close={PROSTATE_SECOND_OPINION_ENTRY_CARDS.thisWeek.close}
+        />
+      );
+    case "pso-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{PROSTATE_SECOND_OPINION_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {PROSTATE_SECOND_OPINION_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
         </div>
       );
     case "bst-what-is":

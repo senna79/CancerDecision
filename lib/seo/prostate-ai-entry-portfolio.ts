@@ -5,12 +5,14 @@
 
 import {
   PROSTATE_NEWLY_DIAGNOSED_SLUG,
+  PROSTATE_SECOND_OPINION_SLUG,
   PROSTATE_SURVEILLANCE_SLUG,
 } from "@/lib/content/prostate-entry-slugs";
 
 export type ProstateAiEntryId =
   | "prostate-newly-diagnosed"
-  | "prostate-active-surveillance";
+  | "prostate-active-surveillance"
+  | "prostate-second-opinion";
 
 export type ProstateAiEntry = {
   id: ProstateAiEntryId;
@@ -47,7 +49,10 @@ export const PROSTATE_AI_ENTRY_PORTFOLIO: ProstateAiEntry[] = [
       "is active surveillance an option after prostate cancer diagnosis",
       "first steps after prostate cancer diagnosis",
     ],
-    relatedEntryIds: ["prostate-active-surveillance"],
+    relatedEntryIds: [
+      "prostate-active-surveillance",
+      "prostate-second-opinion",
+    ],
   },
   {
     id: "prostate-active-surveillance",
@@ -71,7 +76,35 @@ export const PROSTATE_AI_ENTRY_PORTFOLIO: ProstateAiEntry[] = [
       "active surveillance triggers for treatment",
       "is it safe to delay prostate cancer treatment",
     ],
-    relatedEntryIds: ["prostate-newly-diagnosed"],
+    relatedEntryIds: [
+      "prostate-newly-diagnosed",
+      "prostate-second-opinion",
+    ],
+  },
+  {
+    id: "prostate-second-opinion",
+    label: "Second opinion",
+    decisionLabel: "Whether a second opinion may help before locking a path",
+    slug: PROSTATE_SECOND_OPINION_SLUG,
+    momentId: "second-opinion",
+    searchIntents: [
+      "should I get a second opinion for prostate cancer",
+      "second opinion before prostate cancer treatment",
+      "second opinion before active surveillance",
+      "prostate cancer recommendations differ",
+      "urology vs radiation oncology second opinion",
+      "is asking for second opinion disrespectful prostate cancer",
+      "what records for prostate cancer second opinion",
+      "can second opinion change prostate cancer treatment plan",
+      "should pathology be reviewed again prostate cancer",
+      "MRI second opinion prostate cancer",
+      "second opinion without delaying prostate cancer treatment",
+      "when to get second opinion prostate cancer",
+    ],
+    relatedEntryIds: [
+      "prostate-newly-diagnosed",
+      "prostate-active-surveillance",
+    ],
   },
 ];
 

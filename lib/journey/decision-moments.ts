@@ -50,7 +50,7 @@ export const BREAST_DECISION_MOMENTS: DecisionMoment[] = momentsFromOs(
   "breast-cancer"
 );
 
-/** Prostate Moments — Newly Diagnosed + Active Surveillance Entries live; more follow. */
+/** Prostate Moments — Newly Diagnosed, Active Surveillance, Second Opinion live; more follow. */
 export const PROSTATE_DECISION_MOMENTS: DecisionMoment[] = momentsFromOs(
   PROSTATE_CANCER_DECISION_OS,
   "prostate-cancer"
