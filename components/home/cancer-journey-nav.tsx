@@ -46,7 +46,7 @@ type JourneyConfig = {
 
 /**
  * Homepage nav: pick a cancer → open that cancer’s decision map.
- * Lung complete; breast live; prostate hub-first (Entries deferred).
+ * Lung complete; breast live; prostate live (Newly Diagnosed + Active Surveillance).
  */
 export function CancerJourneyNav({
   cancers,

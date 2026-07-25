@@ -22,6 +22,10 @@ import {
   BREAST_SURGERY_SLUG,
   BREAST_TREATMENT_COMPARE_SLUG,
 } from "@/lib/content/breast-entry-slugs";
+import {
+  PROSTATE_NEWLY_DIAGNOSED_SLUG,
+  PROSTATE_SURVEILLANCE_SLUG,
+} from "@/lib/content/prostate-entry-slugs";
 
 export type EntryPathCard = {
   id: string;
@@ -2462,6 +2466,308 @@ const BREAST_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
   ],
 };
 
+const PROSTATE_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
+  pathEyebrow: "Orientation path",
+  pathTitle: "Your First Steps After a Prostate Cancer Diagnosis",
+  pathSubtitle:
+    "You are not lost — you are at the start. Get clear on risk group, see whether monitoring or treatment comes first, then prepare for the conversation.",
+  orientationTrail: [
+    "Diagnosis",
+    "Risk & info",
+    "What comes next",
+    "Next conversation",
+  ],
+  completedLabels: [
+    "Clarity on your diagnosis",
+    "Whether risk-group information is complete",
+    "What decisions may come next",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "What you already know about risk group and stage",
+    "What information is still pending",
+    "Whether active surveillance may be on the table",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Get clear on your diagnosis",
+      lead: "Patient question: what exactly do I have?",
+      main: "pnd-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When people are newly diagnosed with prostate cancer.",
+        },
+        {
+          id: "pnd-more-tests",
+          title: "Why do I need more scans after a prostate cancer diagnosis?",
+          summary:
+            "A biopsy may confirm cancer — risk group and staging may still matter.",
+        },
+        {
+          id: "pnd-not-immediate",
+          title: "How soon do I need treatment after prostate cancer diagnosis?",
+          summary: "The best first path depends on a more complete picture.",
+        },
+        {
+          id: "pnd-diagnosis-to-treatment",
+          title: "How long from diagnosis to treatment?",
+          summary: "Often weeks, not days — ask what waits for key results.",
+        },
+        {
+          id: "pnd-risk-timeline",
+          title: "Does my risk group decide my treatment timeline?",
+          summary:
+            "Risk matters — but the monitoring-versus-treatment fork also sets the pace.",
+        },
+        {
+          id: "pnd-overwhelmed",
+          title: "Is it normal to feel overwhelmed after diagnosis?",
+          summary: "Yes — a next-step plan helps more than solving everything today.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "Make sure you have the information needed",
+      lead: "Patient question: do we know enough to choose a first path?",
+      main: "pnd-information",
+      cards: [
+        {
+          id: "pnd-risk-group",
+          title: "Could clarifying my risk group change my options?",
+          summary:
+            "PSA, Grade Group / Gleason, and imaging often shape monitoring versus treatment.",
+        },
+        {
+          id: "pnd-waiting",
+          title: "Can I wait a few weeks after a prostate cancer diagnosis?",
+          summary: "Waiting for key results ≠ delaying care without a plan.",
+        },
+        {
+          id: "pnd-start-right-away",
+          title: "Should I start treatment right away after diagnosis?",
+          summary: "Urgency varies — ask what must happen now vs after key results.",
+        },
+        {
+          id: "pnd-surveillance",
+          title: "Is active surveillance a reasonable option for me?",
+          summary:
+            "For some risk groups, structured monitoring can be a first path — not “doing nothing.”",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "Understand the decisions ahead",
+      lead: "Patient question: what decisions will I eventually need to make?",
+      main: "pnd-ahead",
+      cards: [
+        {
+          id: "pnd-focus-first",
+          title: "What decision should I focus on first?",
+          summary: "Your next decision matters more than every future one.",
+        },
+        {
+          id: "pnd-not-expert",
+          title: "Do I need to understand every treatment before my first appointment?",
+          summary: "No — know what you know, what you don’t, and what to ask.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "Prepare for your next important conversation",
+      lead: "Patient question: how can I make my appointments more useful?",
+      main: "checklist",
+      cards: [
+        {
+          id: "pnd-this-week",
+          title: "I just received a diagnosis. What should I do this week?",
+          summary: "Three focuses — not the whole journey at once.",
+        },
+        {
+          id: "pnd-ask-urologist",
+          title: "What should I expect at my first urology appointment?",
+          summary: "What happens in the visit — and a focused ask list.",
+        },
+        {
+          id: "pnd-ask-radiation",
+          title: "What should I ask about radiation if it is discussed?",
+          summary: "Fit, side-effect tradeoffs, and when to hear both specialties.",
+        },
+        {
+          id: "pnd-second-opinion",
+          title: "Should I get a second opinion after a prostate cancer diagnosis?",
+          summary: "About confidence — not distrust.",
+        },
+        {
+          id: "pnd-records",
+          title: "What information should I keep from the beginning?",
+          summary: "Reports and results that travel with you.",
+        },
+      ],
+    },
+  ],
+};
+
+const PROSTATE_SURVEILLANCE_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Prostate Cancer Active Surveillance Decision Path",
+  pathSubtitle:
+    "What monitoring means → whether it fits your risk group → follow-up and triggers → what to ask.",
+  completedLabels: [
+    "What active surveillance means",
+    "Whether monitoring may fit your situation",
+    "What follow-up and exit triggers look like",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Expected PSA / MRI / biopsy schedule",
+    "Whether risk-group or imaging results are still pending",
+    "How comfortable you are with monitoring uncertainty",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why does the surveillance decision matter?",
+      lead: "Patient question: what does “watching it” actually mean?",
+      main: "pas-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my situation?",
+          summary: "When monitoring versus treatment becomes a live fork.",
+        },
+        {
+          id: "pas-what-is",
+          title: "What is active surveillance?",
+          summary: "Structured monitoring — not ignoring the cancer.",
+        },
+        {
+          id: "pas-why-matters",
+          title: "Why does this decision matter?",
+          summary: "Side-effect timing, follow-up intensity, and next forks.",
+        },
+        {
+          id: "pas-not-nothing",
+          title: "Is active surveillance the same as doing nothing?",
+          summary: "No — it has a schedule and exit triggers.",
+        },
+        {
+          id: "pas-not-weaker",
+          title: "Is treatment automatically the “stronger” choice?",
+          summary: "Fit beats online aggressiveness.",
+        },
+        {
+          id: "pas-risk-first",
+          title: "Do I need risk-group clarity before deciding?",
+          summary: "Risk features often decide whether monitoring is on the table.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How should I compare monitoring vs treatment?",
+      lead: "Patient question: is surveillance reasonable for someone like me?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "pas-who-fits",
+          title: "When is active surveillance more often discussed?",
+          summary: "Lower-risk features, imaging, health, and follow-up access.",
+        },
+        {
+          id: "pas-who-may-not",
+          title: "When may treatment now be favored instead?",
+          summary: "Higher-risk features, concern on imaging/biopsy, or preference.",
+        },
+        {
+          id: "pas-triggers",
+          title: "What would end active surveillance?",
+          summary: "PSA, MRI, biopsy, or preference triggers — ask for yours.",
+        },
+        {
+          id: "pas-what-changes",
+          title: "What would change the monitoring-versus-treatment recommendation?",
+          summary: "The question that clarifies the fork.",
+        },
+        {
+          id: "pas-vs-treatment",
+          title: "If we treat instead, what comes next?",
+          summary: "Usually surgery vs radiation comparison — not every ranking.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I know about follow-up and daily life?",
+      lead: "Patient question: what will monitoring actually look like?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "pas-schedule",
+          title: "What does the follow-up schedule look like?",
+          summary: "PSA, exams, MRI, and possible repeat biopsy.",
+        },
+        {
+          id: "pas-pending-info",
+          title: "What information should be clear before locking this fork?",
+          summary: "Risk group, imaging, pathology review, second opinion.",
+        },
+        {
+          id: "pas-anxiety",
+          title: "What if living with monitoring feels too hard?",
+          summary: "Comfort with uncertainty is part of the decision.",
+        },
+        {
+          id: "pas-life-fit",
+          title: "How does surveillance fit travel, work, and appointments?",
+          summary: "Practical adherence is part of a real plan.",
+        },
+        {
+          id: "pas-this-week",
+          title: "What should I do this week while deciding?",
+          summary: "Three focuses — not every treatment side effect online.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "pas-mistakes",
+          title: "What are common mistakes around active surveillance?",
+          summary: "“Doing nothing,” urgency fear, and vague follow-up.",
+        },
+        {
+          id: "pas-second-opinion",
+          title: "Should I get a second opinion about surveillance?",
+          summary: "About confidence — not distrust.",
+        },
+        {
+          id: "scenario",
+          title: "An example scenario",
+          summary: "How someone might clarify monitor vs treat.",
+        },
+      ],
+    },
+  ],
+};
+
 const BREAST_SUBTYPE_PATH: EntryPathV2 = {
   pathEyebrow: "Decision path",
   pathTitle: "Breast Cancer Subtype Testing Decision Path",
@@ -4775,6 +5081,8 @@ const PATHS: Record<string, EntryPathV2> = {
   [BRAIN_METS_SLUG]: BRAIN_METS_PATH,
   [GLOBAL_CARE_SLUG]: GLOBAL_CARE_PATH,
   [BREAST_NEWLY_DIAGNOSED_SLUG]: BREAST_NEWLY_DIAGNOSED_PATH,
+  [PROSTATE_NEWLY_DIAGNOSED_SLUG]: PROSTATE_NEWLY_DIAGNOSED_PATH,
+  [PROSTATE_SURVEILLANCE_SLUG]: PROSTATE_SURVEILLANCE_PATH,
   [BREAST_SUBTYPE_SLUG]: BREAST_SUBTYPE_PATH,
   [BREAST_SEQUENCING_SLUG]: BREAST_SEQUENCING_PATH,
   [BREAST_SURGERY_SLUG]: BREAST_SURGERY_PATH,

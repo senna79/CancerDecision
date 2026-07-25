@@ -20,6 +20,8 @@ import { BREAST_CARE_TEAM_ENTRY_CARDS } from "@/lib/content/breast-care-team-ent
 import { BREAST_GENETICS_ENTRY_CARDS } from "@/lib/content/breast-genetics-entry-cards";
 import { BREAST_METASTATIC_ENTRY_CARDS } from "@/lib/content/breast-metastatic-entry-cards";
 import { BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/breast-newly-diagnosed-entry-cards";
+import { PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/prostate-newly-diagnosed-entry-cards";
+import { PROSTATE_SURVEILLANCE_ENTRY_CARDS } from "@/lib/content/prostate-surveillance-entry-cards";
 import { BREAST_CLINICAL_TRIAL_ENTRY_CARDS } from "@/lib/content/breast-clinical-trial-entry-cards";
 import { BREAST_FOLLOW_UP_ENTRY_CARDS } from "@/lib/content/breast-follow-up-entry-cards";
 import { BREAST_GLOBAL_CARE_ENTRY_CARDS } from "@/lib/content/breast-global-care-entry-cards";
@@ -47,6 +49,11 @@ import {
   BREAST_SURGERY_SLUG,
   BREAST_TREATMENT_COMPARE_SLUG,
 } from "@/lib/content/breast-entry-slugs";
+import {
+  PROSTATE_SECOND_OPINION_SLUG,
+  PROSTATE_SURVEILLANCE_SLUG,
+  PROSTATE_TREATMENT_COMPARE_SLUG,
+} from "@/lib/content/prostate-entry-slugs";
 import { STAGE_IV_ENTRY_CARDS } from "@/lib/content/stage-iv-entry-cards";
 import { CARE_CENTER_ENTRY_CARDS } from "@/lib/content/care-center-entry-cards";
 import {
@@ -1712,6 +1719,325 @@ function DecisionPathCardDetailInner({
           lead={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.overwhelmed.lead}
           close={BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS.overwhelmed.close}
         />
+      );
+    case "pnd-more-tests":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.moreTests.lead}
+          ask={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.moreTests.ask}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.moreTests.close}
+        />
+      );
+    case "pnd-not-immediate":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.notImmediate.lead}
+          items={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.notImmediate.factors}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.notImmediate.close}
+        />
+      );
+    case "pnd-diagnosis-to-treatment":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.diagnosisToTreatment.lead}
+          ask={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.diagnosisToTreatment.ask}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.diagnosisToTreatment.close}
+        />
+      );
+    case "pnd-risk-timeline":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.riskTimeline.lead}
+          ask={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.riskTimeline.ask}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.riskTimeline.close}
+        />
+      );
+    case "pnd-risk-group":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.riskGroup.lead}
+            close={`Ask: “${PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.riskGroup.ask}”`}
+          />
+          <p>
+            <Link
+              href="/cancers/prostate-cancer/understanding-risk"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Understanding prostate cancer risk →
+            </Link>
+          </p>
+        </div>
+      );
+    case "pnd-waiting":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.waiting.lead}
+          ask={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.waiting.ask}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.waiting.close}
+        />
+      );
+    case "pnd-start-right-away":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.startRightAway.lead}
+          ask={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.startRightAway.ask}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.startRightAway.close}
+        />
+      );
+    case "pnd-surveillance":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.surveillanceFork.lead}
+            ask={[PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.surveillanceFork.ask]}
+            close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.surveillanceFork.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${PROSTATE_SURVEILLANCE_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Active surveillance decision guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "pnd-focus-first":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.focusFirst.lead}
+          items={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.focusFirst.steps}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.focusFirst.close}
+        />
+      );
+    case "pnd-not-expert":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.notExpert.lead}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.notExpert.close}
+        />
+      );
+    case "pnd-this-week":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.thisWeek.lead}
+          items={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.thisWeek.steps}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.thisWeek.close}
+        />
+      );
+    case "pnd-ask-urologist":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.askUrologist.lead}
+          ask={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.askUrologist.ask}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.askUrologist.close}
+        />
+      );
+    case "pnd-ask-radiation":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.askRadiation.lead}
+          ask={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.askRadiation.ask}
+        />
+      );
+    case "pnd-second-opinion":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.secondOpinion.lead}
+            close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.secondOpinion.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${PROSTATE_SECOND_OPINION_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Prostate second opinion guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "pnd-records":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.records.lead}
+          items={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.records.items}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.records.close}
+          itemSection="bring"
+        />
+      );
+    case "pnd-overwhelmed":
+      return (
+        <BulletCard
+          lead={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.overwhelmed.lead}
+          close={PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS.overwhelmed.close}
+        />
+      );
+    case "pas-what-is":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whatIs.lead}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whatIs.close}
+        />
+      );
+    case "pas-why-matters":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whyMatters.lead}
+          items={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whyMatters.items}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whyMatters.close}
+        />
+      );
+    case "pas-not-nothing":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.notDoingNothing.lead}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.notDoingNothing.close}
+        />
+      );
+    case "pas-not-weaker":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.notWeaker.lead}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.notWeaker.close}
+        />
+      );
+    case "pas-risk-first":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.riskFirst.lead}
+            close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.riskFirst.close}
+          />
+          <p>
+            <Link
+              href="/cancers/prostate-cancer/understanding-risk"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Understanding prostate cancer risk →
+            </Link>
+          </p>
+        </div>
+      );
+    case "pas-who-fits":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whoFits.lead}
+          items={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whoFits.items}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whoFits.close}
+        />
+      );
+    case "pas-who-may-not":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whoMayNot.lead}
+          ask={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whoMayNot.ask}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whoMayNot.close}
+        />
+      );
+    case "pas-triggers":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.triggers.lead}
+          items={PROSTATE_SURVEILLANCE_ENTRY_CARDS.triggers.items}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.triggers.close}
+        />
+      );
+    case "pas-what-changes":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whatChanges.lead}
+          items={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whatChanges.items}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.whatChanges.close}
+        />
+      );
+    case "pas-vs-treatment":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.vsTreatment.lead}
+            close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.vsTreatment.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${PROSTATE_TREATMENT_COMPARE_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Surgery vs radiation guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "pas-schedule":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.schedule.lead}
+          ask={PROSTATE_SURVEILLANCE_ENTRY_CARDS.schedule.ask}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.schedule.close}
+        />
+      );
+    case "pas-pending-info":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.pendingInfo.lead}
+          items={PROSTATE_SURVEILLANCE_ENTRY_CARDS.pendingInfo.items}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.pendingInfo.close}
+        />
+      );
+    case "pas-anxiety":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.anxiety.lead}
+          ask={PROSTATE_SURVEILLANCE_ENTRY_CARDS.anxiety.ask}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.anxiety.close}
+        />
+      );
+    case "pas-life-fit":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.lifeFit.lead}
+          ask={PROSTATE_SURVEILLANCE_ENTRY_CARDS.lifeFit.ask}
+        />
+      );
+    case "pas-this-week":
+      return (
+        <BulletCard
+          lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.thisWeek.lead}
+          items={PROSTATE_SURVEILLANCE_ENTRY_CARDS.thisWeek.steps}
+          close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.thisWeek.close}
+        />
+      );
+    case "pas-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{PROSTATE_SURVEILLANCE_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {PROSTATE_SURVEILLANCE_ENTRY_CARDS.mistakes.items.map((item) => (
+              <li key={item.mistake}>
+                <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                <p className="mt-1">{item.why}</p>
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
+    case "pas-second-opinion":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.secondOpinion.lead}
+            close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.secondOpinion.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${PROSTATE_SECOND_OPINION_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Prostate second opinion guide →
+            </Link>
+          </p>
+        </div>
       );
     case "bst-what-is":
       return (

@@ -275,6 +275,12 @@ function StepMain({
           <WhyDecisionMatters modules={modules} embedded />
         </div>
       );
+    case "pas-understand":
+      return (
+        <div className="space-y-3">
+          <WhyDecisionMatters modules={modules} embedded />
+        </div>
+      );
     case "bseq-understand":
       return (
         <div className="space-y-3">
@@ -714,6 +720,7 @@ function StepMain({
       );
     case "nd-understand":
     case "bnd-understand":
+    case "pnd-understand":
       return <WhyDecisionMatters modules={modules} embedded />;
     case "nd-information":
       return (
@@ -808,6 +815,60 @@ function StepMain({
               "Sequencing — whether treatment starts before or after surgery",
               "Treatment — surgery and systemic options when the picture is clearer",
               "Planning — how care fits daily life, support, and priorities",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            Your next decision matters more than every future decision.
+          </p>
+        </div>
+      );
+    case "pnd-information":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            Many first paths depend on having enough information — risk group
+            (PSA, Grade Group / Gleason), imaging and stage, and your health and
+            priorities.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "What do we already know about risk group and stage?",
+              "What is still pending?",
+              "Would pending results change monitoring versus treatment?",
+              "How urgent is the next decision?",
+            ].map((item) => (
+              <li key={item} className="flex gap-2.5">
+                <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <p className="border-l-2 border-[var(--accent)]/40 pl-3 text-sm font-medium text-[var(--ink)]">
+            The useful question is not “Why are we waiting?” It is “Is there
+            important information that could change monitoring versus treatment?”
+          </p>
+        </div>
+      );
+    case "pnd-ahead":
+      return (
+        <div className="space-y-3 text-[var(--ink-soft)] leading-relaxed">
+          <p>
+            You will not make every decision today. Prostate cancer care is
+            usually a series of decisions — information, monitoring versus
+            treatment, surgery or radiation if treating, and planning that fits
+            your life.
+          </p>
+          <ul className="space-y-1.5 text-[var(--ink)]">
+            {[
+              "Information — risk group, stage, imaging when relevant",
+              "First path — whether active surveillance or treatment comes first",
+              "Treatment — surgery and radiation options when the picture is clearer",
+              "Planning — how care fits daily life, function priorities, and support",
             ].map((item) => (
               <li key={item} className="flex gap-2.5">
                 <span className="mt-2 size-1 shrink-0 rounded-full bg-[var(--accent)]" />

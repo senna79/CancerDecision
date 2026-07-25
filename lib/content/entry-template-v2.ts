@@ -43,11 +43,17 @@ import {
   BREAST_SURGERY_SLUG,
   BREAST_TREATMENT_COMPARE_SLUG,
 } from "./breast-entry-slugs";
+import {
+  PROSTATE_NEWLY_DIAGNOSED_SLUG,
+  PROSTATE_SURVEILLANCE_SLUG,
+} from "./prostate-entry-slugs";
 import { GLOBAL_CARE_DIRECT_ANSWER_GLOSS } from "./global-care-entry-cards";
 import { BREAST_CARE_TEAM_GLOSS } from "./breast-care-team-entry-cards";
 import { BREAST_GENETICS_GLOSS } from "./breast-genetics-entry-cards";
 import { BREAST_METASTATIC_GLOSS } from "./breast-metastatic-entry-cards";
 import { BREAST_NEWLY_DIAGNOSED_GLOSS } from "./breast-newly-diagnosed-entry-cards";
+import { PROSTATE_NEWLY_DIAGNOSED_GLOSS } from "./prostate-newly-diagnosed-entry-cards";
+import { PROSTATE_SURVEILLANCE_GLOSS } from "./prostate-surveillance-entry-cards";
 import { BREAST_CLINICAL_TRIAL_GLOSS } from "./breast-clinical-trial-entry-cards";
 import { BREAST_FOLLOW_UP_GLOSS } from "./breast-follow-up-entry-cards";
 import { BREAST_GLOBAL_CARE_GLOSS } from "./breast-global-care-entry-cards";
@@ -94,6 +100,28 @@ export const ENTRY_TEMPLATE_V2_BY_SLUG: Record<string, EntryTemplateV2Config> = 
       "Are waiting on subtype (receptor / HER2) or staging results",
       "Feel pressure to choose surgery before the sequence is clear",
       "Want a clear next step — not the whole journey at once",
+    ],
+  },
+  [PROSTATE_NEWLY_DIAGNOSED_SLUG]: {
+    plainLanguageGloss: PROSTATE_NEWLY_DIAGNOSED_GLOSS,
+    oneMinuteLabel: "What should we do first?",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Are facing a new prostate cancer diagnosis — as the patient or a family member",
+      "Are waiting on risk-group clarity (PSA, Grade Group / Gleason, MRI)",
+      "Feel pressure to choose surgery or radiation before the first path is clear",
+      "Want a clear next step — not the whole journey at once",
+    ],
+  },
+  [PROSTATE_SURVEILLANCE_SLUG]: {
+    plainLanguageGloss: PROSTATE_SURVEILLANCE_GLOSS,
+    oneMinuteLabel: "Direct answer",
+    audienceTitle: "This page may help if you:",
+    audienceItems: [
+      "Were told active surveillance (monitoring) may be an option",
+      "Are deciding whether to monitor or treat prostate cancer now",
+      "Want to know what follow-up and exit triggers look like",
+      "Need a clearer comparison frame before locking surgery or radiation",
     ],
   },
   [BREAST_SUBTYPE_SLUG]: {

@@ -199,14 +199,14 @@ export const HOME_FEATURED_BY_CANCER: Record<
   },
   "prostate-cancer": {
     slug: "prostate-cancer",
-    commonBadge: "Prostate · Hub live",
+    commonBadge: "Prostate · Live",
     commonIntro:
       "Start from the question — not the encyclopedia. Usual order: risk clarity → monitor or treat → surgery vs radiation if treating.",
     commonPaths: HOME_COMMON_PROSTATE_DECISION_PATHS,
     journeyTitle: "Prostate cancer decision journey",
-    journeyBadge: "Featured · Hub live",
+    journeyBadge: "Featured · Live",
     journeyIntro:
-      "Risk clarity → active surveillance vs treatment → surgery or radiation (if treating) → second opinion. Full Entry pages come next; the map is live now.",
+      "Risk clarity → active surveillance vs treatment → surgery or radiation (if treating) → second opinion. Start with the newly diagnosed Entry, then come back for the next decision.",
     journeySteps: HOME_FEATURED_PROSTATE_JOURNEY,
     mapHrefSlug: "prostate-cancer",
   },

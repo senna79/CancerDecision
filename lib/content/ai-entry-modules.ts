@@ -5,6 +5,7 @@
 
 import { BREAST_FLAGSHIP_BY_SLUG } from "@/lib/content/breast-ai-entry-modules";
 import { GLOBAL_CARE_EXPLORE_REASONS } from "@/lib/content/global-care-entry-cards";
+import { PROSTATE_FLAGSHIP_BY_SLUG } from "@/lib/content/prostate-ai-entry-modules";
 
 export type AiEntryDecisionCard = {
   title: string;
@@ -3788,5 +3789,10 @@ const FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> = {
 export function getAiEntryFlagshipModules(
   slug: string
 ): AiEntryFlagshipModules | null {
-  return FLAGSHIP_BY_SLUG[slug] ?? BREAST_FLAGSHIP_BY_SLUG[slug] ?? null;
+  return (
+    FLAGSHIP_BY_SLUG[slug] ??
+    BREAST_FLAGSHIP_BY_SLUG[slug] ??
+    PROSTATE_FLAGSHIP_BY_SLUG[slug] ??
+    null
+  );
 }

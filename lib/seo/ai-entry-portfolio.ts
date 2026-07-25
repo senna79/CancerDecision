@@ -24,6 +24,12 @@ import {
   isBreastAiEntrySlug,
   type BreastAiEntry,
 } from "@/lib/seo/breast-ai-entry-portfolio";
+import {
+  getProstateAiEntryBySlug,
+  getRelatedProstateAiEntries,
+  isProstateAiEntrySlug,
+  type ProstateAiEntry,
+} from "@/lib/seo/prostate-ai-entry-portfolio";
 
 export type AiEntryId =
   | "newly-diagnosed"
@@ -479,21 +485,31 @@ const byId = Object.fromEntries(
 ) as Record<AiEntryId, AiEntry>;
 
 export function isAiEntrySlug(slug: string): boolean {
-  return slugSet.has(slug) || isBreastAiEntrySlug(slug);
+  return (
+    slugSet.has(slug) ||
+    isBreastAiEntrySlug(slug) ||
+    isProstateAiEntrySlug(slug)
+  );
 }
 
-export function getAiEntryBySlug(slug: string): AiEntry | BreastAiEntry | null {
+export function getAiEntryBySlug(
+  slug: string
+): AiEntry | BreastAiEntry | ProstateAiEntry | null {
   return (
     LUNG_AI_ENTRY_PORTFOLIO.find((e) => e.slug === slug) ??
-    getBreastAiEntryBySlug(slug)
+    getBreastAiEntryBySlug(slug) ??
+    getProstateAiEntryBySlug(slug)
   );
 }
 
 export function getRelatedAiEntries(
-  entry: AiEntry | BreastAiEntry
-): Array<AiEntry | BreastAiEntry> {
+  entry: AiEntry | BreastAiEntry | ProstateAiEntry
+): Array<AiEntry | BreastAiEntry | ProstateAiEntry> {
   if ("id" in entry && String(entry.id).startsWith("breast-")) {
     return getRelatedBreastAiEntries(entry as BreastAiEntry);
+  }
+  if ("id" in entry && String(entry.id).startsWith("prostate-")) {
+    return getRelatedProstateAiEntries(entry as ProstateAiEntry);
   }
   return (entry as AiEntry).relatedEntryIds
     .map((id) => byId[id])

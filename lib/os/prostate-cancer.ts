@@ -13,11 +13,11 @@ import {
 } from "@/lib/content/prostate-entry-slugs";
 
 /**
- * Prostate Cancer Decision OS — hub-first.
+ * Prostate Cancer Decision OS — hub + Entries as they ship.
  * Distinctive patient path:
  *   risk clarity → active surveillance vs treatment → surgery vs radiation
  *   → function / practical fit → second look when unsure.
- * Full Template v2 Entries deferred; active nodes link to seed question pages.
+ * Newly Diagnosed + Active Surveillance ship as Template v2; other active nodes may still be thin Q pages.
  */
 export const PROSTATE_CANCER_DECISION_OS: CancerDecisionOs = {
   cancer_slug: "prostate-cancer",

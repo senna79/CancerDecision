@@ -1,6 +1,6 @@
 /**
- * Prostate Cancer Entry slugs — hub P0 uses existing seed questions + thin stubs.
- * Full Template v2 Entries are deferred (hub-first).
+ * Prostate Cancer Entry slugs — hub P0 moments + Template v2 Entries as they ship.
+ * Newly Diagnosed is the first full Entry; other active moments may still be thin Q pages.
  */
 
 export const PROSTATE_NEWLY_DIAGNOSED_SLUG =

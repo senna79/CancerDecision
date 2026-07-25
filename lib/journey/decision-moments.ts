@@ -50,7 +50,7 @@ export const BREAST_DECISION_MOMENTS: DecisionMoment[] = momentsFromOs(
   "breast-cancer"
 );
 
-/** Prostate hub-first Moments — Template v2 Entries deferred. */
+/** Prostate Moments — Newly Diagnosed + Active Surveillance Entries live; more follow. */
 export const PROSTATE_DECISION_MOMENTS: DecisionMoment[] = momentsFromOs(
   PROSTATE_CANCER_DECISION_OS,
   "prostate-cancer"

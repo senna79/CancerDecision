@@ -41,8 +41,11 @@ import {
   GLOBAL_CARE_HUB_PRIMARY_BODY,
   GLOBAL_CARE_HUB_PRIMARY_SUMMARY,
 } from "@/lib/content/global-care-entry-cards";
+import { PROSTATE_NEWLY_DIAGNOSED_DIRECT_ANSWER } from "@/lib/content/prostate-newly-diagnosed-entry-cards";
+import { PROSTATE_SURVEILLANCE_DIRECT_ANSWER } from "@/lib/content/prostate-surveillance-entry-cards";
 import {
   PROSTATE_NEWLY_DIAGNOSED_SLUG,
+  PROSTATE_SURVEILLANCE_SLUG,
   PROSTATE_TREATMENT_COMPARE_SLUG,
 } from "@/lib/content/prostate-entry-slugs";
 import { buildDecisionMapFromOs } from "@/lib/os/build-decision-map";
@@ -583,10 +586,9 @@ export function createSeedData(): KnowledgeGraphStore {
       n: 6,
       cancer: 2,
       title: "Is active surveillance a reasonable option for prostate cancer?",
-      slug: "is-active-surveillance-reasonable-for-prostate-cancer",
+      slug: PROSTATE_SURVEILLANCE_SLUG,
       category: "treatment",
-      summary:
-        "For selected lower-risk prostate cancers, active surveillance can defer treatment side effects while monitoring for change. Reasonableness depends on risk group, life expectancy, MRI/biopsy findings, and comfort with follow-up intensity.",
+      summary: PROSTATE_SURVEILLANCE_DIRECT_ANSWER,
       why: "Patients often fear undertreatment and need clarity on when surveillance is evidence-aligned versus when definitive therapy is favored.",
       factors: [
         "Risk classification and PSA kinetics",
@@ -1547,8 +1549,7 @@ export function createSeedData(): KnowledgeGraphStore {
         "What decisions matter most after a new prostate cancer diagnosis?",
       slug: PROSTATE_NEWLY_DIAGNOSED_SLUG,
       category: "diagnosis",
-      summary:
-        "After a prostate cancer diagnosis, you usually do not need to choose surgery or radiation on day one. First clarify risk group (PSA, Grade Group / Gleason, MRI and staging), what results are still pending, and whether active surveillance could be reasonable — then prepare a short question list for your care team.",
+      summary: PROSTATE_NEWLY_DIAGNOSED_DIRECT_ANSWER,
       why: "Patients feel pressure to treat immediately. Risk clarity and the surveillance fork often belong before an irreversible treatment choice.",
       factors: [
         "PSA, Grade Group / Gleason, and imaging completeness",
