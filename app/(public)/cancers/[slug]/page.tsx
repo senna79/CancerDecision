@@ -395,6 +395,56 @@ export default async function CancerDecisionCenterPage({
             </li>
           </ul>
         </Section>
+      ) : isProstate ? (
+        <Section title="Supporting guides">
+          <ul className="space-y-4">
+            <li>
+              <p className="font-semibold text-[var(--ink)]">
+                Understanding prostate cancer risk group
+              </p>
+              <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
+                Orient to PSA, Grade Group / Gleason, and MRI — why risk shapes
+                monitoring versus treatment, not a prognosis table.
+              </p>
+              <Link
+                href="/cancers/prostate-cancer/understanding-risk"
+                className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+              >
+                Open Understanding Risk Group →
+              </Link>
+            </li>
+            <li>
+              <p className="font-semibold text-[var(--ink)]">
+                Understanding prostate cancer stage
+              </p>
+              <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
+                Orient to localized, locally advanced, and metastatic extent —
+                why stage changes options, not a prognosis table.
+              </p>
+              <Link
+                href="/cancers/prostate-cancer/understanding-stage"
+                className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+              >
+                Open Understanding Stage →
+              </Link>
+            </li>
+            <li>
+              <p className="font-semibold text-[var(--ink)]">
+                Treatment Landscape
+              </p>
+              <p className="mt-1 max-w-2xl text-sm text-[var(--muted)]">
+                Orient to surveillance, surgery, radiation, and hormone therapy —
+                so later comparisons make sense.
+              </p>
+              <Link
+                href="/cancers/prostate-cancer/treatment-landscape"
+                className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+              >
+                Open Treatment Landscape →
+              </Link>
+            </li>
+          </ul>
+        </Section>
       ) : (
         <Section title="Treatment Options">
           <div className="grid gap-3 md:grid-cols-2">

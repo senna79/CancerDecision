@@ -223,8 +223,24 @@ export const PROSTATE_QUICK_SCENARIOS: SituationQuickScenario[] = [
   },
 ];
 
-/** Prostate orientation deferred until dedicated pages ship. */
-export const PROSTATE_ORIENTATION_LINKS: OrientationLink[] = [];
+/** Prostate orientation — same strip as breast/lung: risk → stage → landscape. */
+export const PROSTATE_ORIENTATION_LINKS: OrientationLink[] = [
+  {
+    label: "What is my prostate cancer risk group?",
+    href: "/cancers/prostate-cancer/understanding-risk",
+    hint: "PSA, Grade Group / Gleason, and MRI — why risk shapes monitoring vs treatment.",
+  },
+  {
+    label: "How far has it spread?",
+    href: "/cancers/prostate-cancer/understanding-stage",
+    hint: "Localized, locally advanced, or metastatic — for options, not a prognosis table.",
+  },
+  {
+    label: "What treatment paths might be discussed?",
+    href: "/cancers/prostate-cancer/treatment-landscape",
+    hint: "Surveillance, surgery, radiation, and hormone therapy — so later comparisons make sense.",
+  },
+];
 
 export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
   {

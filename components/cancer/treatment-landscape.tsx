@@ -2,10 +2,12 @@ import Link from "next/link";
 import { DoctorChecklistTakeaway } from "@/components/question/ai-entry/doctor-checklist-takeaway";
 import { BREAST_TREATMENT_LANDSCAPE } from "@/lib/content/breast-treatment-landscape";
 import { LUNG_TREATMENT_LANDSCAPE } from "@/lib/content/lung-treatment-landscape";
+import { PROSTATE_TREATMENT_LANDSCAPE } from "@/lib/content/prostate-treatment-landscape";
 
 export type TreatmentLandscapeContent =
   | typeof LUNG_TREATMENT_LANDSCAPE
-  | typeof BREAST_TREATMENT_LANDSCAPE;
+  | typeof BREAST_TREATMENT_LANDSCAPE
+  | typeof PROSTATE_TREATMENT_LANDSCAPE;
 
 function BulletList({ items }: { items: readonly string[] }) {
   return (

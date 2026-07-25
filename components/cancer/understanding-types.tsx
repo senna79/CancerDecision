@@ -2,10 +2,12 @@ import Link from "next/link";
 import { DoctorChecklistTakeaway } from "@/components/question/ai-entry/doctor-checklist-takeaway";
 import { BREAST_UNDERSTANDING_SUBTYPE } from "@/lib/content/breast-understanding-subtype";
 import { LUNG_UNDERSTANDING_TYPES } from "@/lib/content/lung-understanding-types";
+import { PROSTATE_UNDERSTANDING_RISK } from "@/lib/content/prostate-understanding-risk";
 
 export type UnderstandingTypesContent =
   | typeof LUNG_UNDERSTANDING_TYPES
-  | typeof BREAST_UNDERSTANDING_SUBTYPE;
+  | typeof BREAST_UNDERSTANDING_SUBTYPE
+  | typeof PROSTATE_UNDERSTANDING_RISK;
 
 function BulletList({ items }: { items: readonly string[] }) {
   return (
