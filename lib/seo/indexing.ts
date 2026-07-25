@@ -1,11 +1,21 @@
 /**
- * Indexation policy: only the complete lung journey is meant for broad crawl.
- * Thin “in development” cancers and personal tools stay reachable but noindex.
+ * Indexation policy: lung, breast, and prostate journeys are open for crawl.
+ * Other “in development” cancers and personal tools stay reachable but noindex.
  */
 
+import { isRetiredBreastQuestionSlug } from "@/lib/content/breast-entry-slugs";
 import { isRetiredLungQuestionSlug } from "@/lib/seo/retired-lung-questions";
 
+/** @deprecated Prefer INDEXABLE_CANCER_SLUGS — kept for older call sites. */
 export const INDEXABLE_CANCER_SLUG = "lung-cancer";
+
+export const INDEXABLE_CANCER_SLUGS = [
+  "lung-cancer",
+  "breast-cancer",
+  "prostate-cancer",
+] as const;
+
+export type IndexableCancerSlug = (typeof INDEXABLE_CANCER_SLUGS)[number];
 
 export const LUNG_SUPPORTING_GUIDE_PATHS = [
   "/cancers/lung-cancer/understanding-types",
@@ -13,16 +23,41 @@ export const LUNG_SUPPORTING_GUIDE_PATHS = [
   "/cancers/lung-cancer/treatment-landscape",
 ] as const;
 
-export function isIndexableCancerSlug(slug: string | null | undefined): boolean {
-  return slug === INDEXABLE_CANCER_SLUG;
+export const BREAST_SUPPORTING_GUIDE_PATHS = [
+  "/cancers/breast-cancer/understanding-subtype",
+  "/cancers/breast-cancer/understanding-stage",
+  "/cancers/breast-cancer/treatment-landscape",
+] as const;
+
+export const PROSTATE_SUPPORTING_GUIDE_PATHS = [
+  "/cancers/prostate-cancer/understanding-risk",
+  "/cancers/prostate-cancer/understanding-stage",
+  "/cancers/prostate-cancer/treatment-landscape",
+] as const;
+
+/** All orientation / supporting guides that should appear in sitemap. */
+export const SUPPORTING_GUIDE_PATHS = [
+  ...LUNG_SUPPORTING_GUIDE_PATHS,
+  ...BREAST_SUPPORTING_GUIDE_PATHS,
+  ...PROSTATE_SUPPORTING_GUIDE_PATHS,
+] as const;
+
+export function isIndexableCancerSlug(
+  slug: string | null | undefined
+): slug is IndexableCancerSlug {
+  return (
+    slug != null &&
+    (INDEXABLE_CANCER_SLUGS as readonly string[]).includes(slug)
+  );
 }
 
-/** Lung cancer pages are indexable except retired orphan question slugs. */
+/** Indexable question pages for lung / breast / prostate (minus retired orphans). */
 export function isIndexableQuestionSlug(
   questionSlug: string,
   cancerSlug: string | null | undefined
 ): boolean {
   if (!isIndexableCancerSlug(cancerSlug)) return false;
   if (isRetiredLungQuestionSlug(questionSlug)) return false;
+  if (isRetiredBreastQuestionSlug(questionSlug)) return false;
   return true;
 }

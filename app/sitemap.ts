@@ -1,8 +1,9 @@
 import type { MetadataRoute } from "next";
+import { isRetiredBreastQuestionSlug } from "@/lib/content/breast-entry-slugs";
 import { getSitemapEntries } from "@/lib/queries";
 import {
-  INDEXABLE_CANCER_SLUG,
-  LUNG_SUPPORTING_GUIDE_PATHS,
+  INDEXABLE_CANCER_SLUGS,
+  SUPPORTING_GUIDE_PATHS,
 } from "@/lib/seo/indexing";
 import { isAiEntrySlug } from "@/lib/seo/ai-entry-portfolio";
 import { isRetiredLungQuestionSlug } from "@/lib/seo/retired-lung-questions";
@@ -11,26 +12,30 @@ import { absoluteUrl } from "@/lib/seo/metadata";
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { cancers, questions, treatments, stories } = await getSitemapEntries();
 
-  const lung = cancers.find((c) => c.slug === INDEXABLE_CANCER_SLUG);
-  const lungQuestions = questions.filter(
-    (q) =>
-      lung != null &&
-      q.cancer_id === lung.id &&
-      !isRetiredLungQuestionSlug(q.slug)
+  const indexableCancers = cancers.filter((c) =>
+    (INDEXABLE_CANCER_SLUGS as readonly string[]).includes(c.slug)
   );
-  const lungStories = stories.filter(
-    (s) => lung != null && s.cancer_id === lung.id
+  const indexableCancerIds = new Set(indexableCancers.map((c) => c.id));
+
+  const indexableQuestions = questions.filter(
+    (q) =>
+      indexableCancerIds.has(q.cancer_id) &&
+      !isRetiredLungQuestionSlug(q.slug) &&
+      !isRetiredBreastQuestionSlug(q.slug)
+  );
+  const indexableStories = stories.filter((s) =>
+    indexableCancerIds.has(s.cancer_id)
   );
 
   const staticRoutes: MetadataRoute.Sitemap = [
     { url: absoluteUrl("/"), changeFrequency: "weekly", priority: 1 },
     { url: absoluteUrl("/cancers"), changeFrequency: "weekly", priority: 0.85 },
-    {
-      url: absoluteUrl("/cancers/lung-cancer"),
-      lastModified: lung?.updated_at,
-      changeFrequency: "weekly",
+    ...indexableCancers.map((cancer) => ({
+      url: absoluteUrl(`/cancers/${cancer.slug}`),
+      lastModified: cancer.updated_at,
+      changeFrequency: "weekly" as const,
       priority: 0.95,
-    },
+    })),
     {
       url: absoluteUrl("/global-care"),
       changeFrequency: "monthly",
@@ -40,18 +45,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: absoluteUrl("/llms.txt"), changeFrequency: "weekly", priority: 0.4 },
   ];
 
-  const supportingGuides: MetadataRoute.Sitemap =
-    LUNG_SUPPORTING_GUIDE_PATHS.map((path) => ({
+  const supportingGuides: MetadataRoute.Sitemap = SUPPORTING_GUIDE_PATHS.map(
+    (path) => ({
       url: absoluteUrl(path),
       changeFrequency: "monthly" as const,
       priority: 0.8,
-    }));
+    })
+  );
 
   return [
     ...staticRoutes,
     ...supportingGuides,
-    // Portfolio AI Entries first-class; other lung questions still listed slightly lower
-    ...lungQuestions.map((q) => ({
+    ...indexableQuestions.map((q) => ({
       url: absoluteUrl(`/questions/${q.slug}`),
       lastModified: q.updated_at,
       changeFrequency: "weekly" as const,
@@ -63,7 +68,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       priority: 0.7,
     })),
-    ...lungStories.map((s) => ({
+    ...indexableStories.map((s) => ({
       url: absoluteUrl(`/stories/${s.slug}`),
       lastModified: s.updated_at,
       changeFrequency: "monthly" as const,

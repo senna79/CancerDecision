@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
   description:
     "A prostate cancer treatment map — active surveillance, surgery, radiation, hormone therapy — plus how doctors choose, questions to ask, and which Decision Path to open next.",
   path,
-  index: false,
+  index: true,
   keywords: [
     "prostate cancer treatment options",
     "prostate cancer treatment landscape",

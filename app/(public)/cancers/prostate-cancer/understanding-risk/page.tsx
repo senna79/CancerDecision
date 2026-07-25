@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
   description:
     "Understand prostate cancer risk group in plain language — PSA, Grade Group / Gleason, and MRI — why risk shapes monitoring versus treatment, and questions to ask your doctor.",
   path,
-  index: false,
+  index: true,
   keywords: [
     "prostate cancer risk group",
     "Grade Group Gleason patient guide",

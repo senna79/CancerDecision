@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
   description:
     "Understand what prostate cancer stage means in plain language — localized, locally advanced, and metastatic — why stage changes options, and questions to ask your doctor.",
   path,
-  index: false,
+  index: true,
   keywords: [
     "what does my prostate cancer stage mean",
     "localized vs metastatic prostate cancer",

@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
   description:
     "A breast cancer treatment map — surgery, radiation, endocrine, chemo, targeted/immuno, reconstruction — plus how doctors choose, questions to ask, and which Decision Path to open next.",
   path,
-  index: false,
+  index: true,
   keywords: [
     "breast cancer treatment options",
     "breast cancer treatment landscape",

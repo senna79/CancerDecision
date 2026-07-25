@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
   description:
     "Understand what breast cancer stage means in plain language — early, locally advanced / nodes, and advanced — why stage changes options and sequencing, and questions to ask your doctor.",
   path,
-  index: false,
+  index: true,
   keywords: [
     "what does my breast cancer stage mean",
     "breast cancer stage explained for patients",

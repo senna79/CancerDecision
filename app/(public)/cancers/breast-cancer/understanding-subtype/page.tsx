@@ -12,7 +12,7 @@ export const metadata = buildMetadata({
   description:
     "Understand HR+, HER2+, and triple-negative breast cancer in plain language — why subtype shapes the first plan, what to find on your pathology report, and questions to ask your doctor.",
   path,
-  index: false,
+  index: true,
   keywords: [
     "breast cancer subtype",
     "HR+ HER2+ triple-negative patient guide",
