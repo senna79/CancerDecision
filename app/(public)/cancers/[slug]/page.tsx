@@ -30,6 +30,7 @@ import { getCancerDecisionCenter, getCancers } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { isIndexableCancerSlug } from "@/lib/seo/indexing";
 import { BREAST_HUB_FAQS } from "@/lib/content/breast-hub-faq";
+import { PROSTATE_HUB_FAQS } from "@/lib/content/prostate-hub-faq";
 import { isRetiredBreastQuestionSlug } from "@/lib/content/breast-entry-slugs";
 import { isRetiredLungQuestionSlug } from "@/lib/seo/retired-lung-questions";
 import { buildMetadata } from "@/lib/seo/metadata";
@@ -163,7 +164,7 @@ export default async function CancerDecisionCenterPage({
           : isBreast
             ? "A breast cancer diagnosis creates many questions at once. You do not need to solve them all today — start from the decision you are facing now. The usual path runs diagnosis → subtype → treatment order → surgery or systemic choices."
             : isProstate
-              ? "A prostate cancer diagnosis often starts with risk clarity — then the distinctive fork: active surveillance versus treatment. You do not need every answer today. Start from the decision you are facing now."
+              ? "You do not need to choose surgery or radiation on day one. First clarify risk group, then decide whether monitoring or treatment fits — and only then compare surgery versus radiation. Start from the decision you are facing now."
               : "Start from the decision you are facing, then explore questions, treatments, and illustrative journeys for this cancer type."}
       </p>
 
@@ -189,9 +190,9 @@ export default async function CancerDecisionCenterPage({
                 </>
               ) : isProstate ? (
                 <>
-                  Core path: risk clarity → surveillance vs treatment → surgery
-                  or radiation. Open one guide, then come back for the next
-                  decision.
+                  Usual order: risk clarity → monitor or treat → surgery vs
+                  radiation (if treating). Open one guide, then return when the
+                  next question comes up.
                 </>
               ) : (
                 <>
@@ -205,42 +206,50 @@ export default async function CancerDecisionCenterPage({
             <DecisionMapLocator activeNodeId={activeMoment?.nodeId} />
           ) : null}
 
-          {isBreast ? (
+          {isBreast || isProstate ? (
             <section
               id="common-first-questions"
-              aria-label="Common first questions after a breast cancer diagnosis"
+              aria-label={
+                isProstate
+                  ? "Common first questions after a prostate cancer diagnosis"
+                  : "Common first questions after a breast cancer diagnosis"
+              }
               className="rounded-lg border border-[var(--line)] bg-white/90 p-5 md:p-6"
             >
               <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
                 For search and first visits
               </p>
               <h2 className="mt-1 font-heading text-xl font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-2xl">
-                Common first questions after a breast cancer diagnosis
+                {isProstate
+                  ? "Common first questions after a prostate cancer diagnosis"
+                  : "Common first questions after a breast cancer diagnosis"}
               </h2>
               <p className="mt-2 text-sm text-[var(--ink-soft)]">
                 Short answers that point to one decision guide — not a full
                 reading list.
               </p>
               <ul className="mt-5 space-y-4">
-                {BREAST_HUB_FAQS.map((item) => (
-                  <li
-                    key={item.question}
-                    className="border-t border-[var(--line)]/80 pt-4 first:border-t-0 first:pt-0"
-                  >
-                    <h3 className="font-heading text-base font-semibold tracking-[-0.02em] text-[var(--ink)]">
-                      {item.question}
-                    </h3>
-                    <p className="mt-1.5 text-sm leading-relaxed text-[var(--ink-soft)]">
-                      {item.answer}
-                    </p>
-                    <Link
-                      href={item.href}
-                      className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+                {(isProstate ? PROSTATE_HUB_FAQS : BREAST_HUB_FAQS).map(
+                  (item) => (
+                    <li
+                      key={item.question}
+                      className="border-t border-[var(--line)]/80 pt-4 first:border-t-0 first:pt-0"
                     >
-                      {item.cta}
-                    </Link>
-                  </li>
-                ))}
+                      <h3 className="font-heading text-base font-semibold tracking-[-0.02em] text-[var(--ink)]">
+                        {item.question}
+                      </h3>
+                      <p className="mt-1.5 text-sm leading-relaxed text-[var(--ink-soft)]">
+                        {item.answer}
+                      </p>
+                      <Link
+                        href={item.href}
+                        className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
+                      >
+                        {item.cta}
+                      </Link>
+                    </li>
+                  )
+                )}
               </ul>
             </section>
           ) : null}

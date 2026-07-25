@@ -205,9 +205,9 @@ export function CancerJourneyNav({
               ) : null}
               {selectedSlug === PROSTATE_SLUG ? (
                 <>
-                  Core path: risk clarity → surveillance vs treatment → surgery
-                  or radiation. Open one guide, then come back for the next
-                  decision.{" "}
+                  Usual order: risk clarity → monitor or treat → surgery vs
+                  radiation if treating. Open one guide, then come back for the
+                  next decision.{" "}
                 </>
               ) : null}
               Want the full center?{" "}

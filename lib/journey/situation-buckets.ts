@@ -144,41 +144,41 @@ export const BREAST_QUICK_SCENARIOS: SituationQuickScenario[] = [
 ];
 
 /**
- * Prostate keeps the same 6-slot shell; labels follow the surveillance-first fork.
- * Hub UX: ≤3 primary + ≤2 also. Planned moments stay hidden until Entries ship.
+ * Prostate keeps the same 6-slot shell as lung/breast for cross-cancer literacy.
+ * Patient timeline (not a treatment menu):
+ *   risk clarity → monitor vs treat → (if treating) surgery vs radiation
+ *   → function/daily life → confidence/second look → later PSA change / follow-up
+ * Hub UX: ≤3 primary + ≤2 also; dedupe each Moment onto its best situation.
+ * Planned moments (recurrence / follow-up / QoL) stay hidden until Entries ship.
  */
 export const PROSTATE_SITUATION_BUCKETS: SituationBucket[] = [
   {
     id: "recently-diagnosed",
-    label: "Newly diagnosed or sorting risk",
-    hint: "Your first decisions usually depend on risk group (PSA, Grade Group, MRI) and what information is still pending.",
-    momentIds: ["newly-diagnosed", "active-surveillance", "second-opinion"],
-    alsoMomentIds: ["treatment-comparison"],
+    label: "Newly diagnosed or waiting on risk results",
+    hint: "First clarify risk group (PSA, Grade Group / Gleason, MRI) and what is still pending — before locking monitoring or treatment.",
+    momentIds: ["newly-diagnosed", "second-opinion"],
+    alsoMomentIds: ["active-surveillance"],
   },
   {
     id: "choosing-treatment",
-    label: "Choosing monitoring or treatment",
-    hint: "Decide whether active surveillance fits — or compare surgery and radiation when treatment is on the table.",
-    momentIds: [
-      "active-surveillance",
-      "treatment-comparison",
-      "second-opinion",
-    ],
-    alsoMomentIds: ["cost-logistics"],
-  },
-  {
-    id: "another-opinion",
-    label: "Unsure about your plan or specialty advice",
-    hint: "When you want another review, or urology and radiation oncology frame options differently.",
-    momentIds: ["second-opinion", "care-center-expertise"],
-    alsoMomentIds: ["global-care", "treatment-comparison"],
+    label: "Deciding whether to monitor or treat",
+    hint: "Active surveillance is often the first prostate-specific fork. If definitive therapy is recommended, compare surgery and radiation next.",
+    momentIds: ["active-surveillance", "treatment-comparison"],
+    alsoMomentIds: ["second-opinion", "cost-logistics"],
   },
   {
     id: "real-life",
     label: "Balancing treatment with everyday life",
-    hint: "Cost, time, and practical fit across surveillance, surgery, and radiation.",
+    hint: "Urinary, sexual, and bowel tradeoffs — plus cost, time, and whether a plan is workable day to day.",
     momentIds: ["cost-logistics"],
-    alsoMomentIds: ["active-surveillance", "treatment-comparison"],
+    alsoMomentIds: ["treatment-comparison", "active-surveillance"],
+  },
+  {
+    id: "another-opinion",
+    label: "Unsure about your plan or care team",
+    hint: "When you want another review, more confidence, or specialists frame the same options differently.",
+    momentIds: ["second-opinion", "care-center-expertise"],
+    alsoMomentIds: ["global-care"],
   },
   {
     id: "cancer-changed",
@@ -191,32 +191,35 @@ export const PROSTATE_SITUATION_BUCKETS: SituationBucket[] = [
     id: "after-treatment",
     label: "On surveillance or in follow-up",
     hint: "Monitoring plans, triggers for change, and life after treatment.",
-    momentIds: ["follow-up-monitoring", "recurrence"],
-    alsoMomentIds: ["active-surveillance", "second-opinion"],
+    momentIds: ["follow-up-monitoring"],
+    alsoMomentIds: ["active-surveillance", "recurrence"],
   },
 ];
 
-/** Prostate hub — anchors to existing situation buckets. */
+/**
+ * Prostate hub quick selector — only anchors to situations that currently have
+ * visible (active) Moments. PSA-rising / follow-up chips wait until Entries ship.
+ */
 export const PROSTATE_QUICK_SCENARIOS: SituationQuickScenario[] = [
   {
     label: "I was just told I have prostate cancer",
     bucketId: "recently-diagnosed",
   },
   {
-    label: "I am deciding between monitoring and treatment",
+    label: "I am deciding whether to watch it or treat",
     bucketId: "choosing-treatment",
   },
   {
-    label: "Specialists gave me different recommendations",
+    label: "I am choosing between surgery and radiation",
+    bucketId: "choosing-treatment",
+  },
+  {
+    label: "My doctor recommended a plan and I am unsure",
     bucketId: "another-opinion",
   },
   {
-    label: "I am weighing side effects, cost, or daily life",
+    label: "Side effects, function, or daily life feel hard",
     bucketId: "real-life",
-  },
-  {
-    label: "My PSA is rising or something changed",
-    bucketId: "cancer-changed",
   },
 ];
 

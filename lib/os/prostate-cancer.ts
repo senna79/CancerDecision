@@ -14,15 +14,16 @@ import {
 
 /**
  * Prostate Cancer Decision OS — hub-first.
- * Distinctive spine: risk clarity → active surveillance vs treatment →
- * surgery vs radiation → second opinion / specialty framing.
+ * Distinctive patient path:
+ *   risk clarity → active surveillance vs treatment → surgery vs radiation
+ *   → function / practical fit → second look when unsure.
  * Full Template v2 Entries deferred; active nodes link to seed question pages.
  */
 export const PROSTATE_CANCER_DECISION_OS: CancerDecisionOs = {
   cancer_slug: "prostate-cancer",
   title: "Prostate Cancer Decision Map",
   intro:
-    "A branching journey from newly diagnosed to the next decision. Risk group and active surveillance versus treatment often sit before locking surgery or radiation. Each active node links to a decision guide — not a personal care plan.",
+    "A branching journey from newly diagnosed to the next decision. Risk clarity and the surveillance-versus-treatment fork usually sit before locking surgery or radiation. Each active node links to a decision guide — not a personal care plan.",
   moments: [
     {
       id: "node-diagnosis",
@@ -48,7 +49,7 @@ export const PROSTATE_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "What should happen first after a prostate cancer diagnosis?",
-        hint: "Confirm risk information, what is still pending, and which decisions are time-sensitive.",
+        hint: "Confirm risk group, what results are still pending, and which decisions are time-sensitive.",
         nextStep: "Start here",
       },
     },
@@ -77,7 +78,7 @@ export const PROSTATE_CANCER_DECISION_OS: CancerDecisionOs = {
       ],
       patient_router: {
         label: "Is active surveillance a reasonable option for me?",
-        hint: "Risk group, MRI/biopsy findings, follow-up intensity, and comfort with monitoring.",
+        hint: "Risk group, MRI/biopsy findings, follow-up intensity, and comfort with monitoring instead of immediate treatment.",
         nextStep: "Start here",
       },
     },
@@ -105,8 +106,8 @@ export const PROSTATE_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-costs",
       ],
       patient_router: {
-        label: "How do I compare surgery and radiation for prostate cancer?",
-        hint: "Outcomes, urinary/sexual/bowel tradeoffs, and what would change the recommendation.",
+        label: "How should I compare surgery and radiation?",
+        hint: "Cancer-control expectations, urinary/sexual/bowel tradeoffs, and what would change the recommendation.",
         nextStep: "Start here",
       },
     },
@@ -133,8 +134,8 @@ export const PROSTATE_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-compare",
       ],
       patient_router: {
-        label: "Should I get a second opinion for prostate cancer?",
-        hint: "When recommendations diverge, or you want more confidence before an irreversible step.",
+        label: "Should I get a second opinion before deciding?",
+        hint: "Useful when recommendations diverge, or before locking surveillance or irreversible treatment.",
         nextStep: "Start here",
       },
     },
@@ -162,9 +163,8 @@ export const PROSTATE_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-global",
       ],
       patient_router: {
-        label:
-          "What if urology and radiation oncology give different advice?",
-        hint: "Where they disagree, side-effect priorities, and whether a joint consult helps.",
+        label: "What if specialists give different recommendations?",
+        hint: "Where urology and radiation oncology disagree — and whether a joint consult helps.",
         nextStep: "Start here",
       },
     },
@@ -192,8 +192,8 @@ export const PROSTATE_CANCER_DECISION_OS: CancerDecisionOs = {
         "node-qol",
       ],
       patient_router: {
-        label: "How do prostate cancer treatment costs typically differ?",
-        hint: "Upfront versus ongoing costs across surveillance, surgery, and radiation.",
+        label: "How do cost and practical burden differ across options?",
+        hint: "Upfront versus ongoing costs, time, and logistics across surveillance, surgery, and radiation.",
         nextStep: "Start here",
       },
     },

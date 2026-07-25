@@ -201,12 +201,12 @@ export const HOME_FEATURED_BY_CANCER: Record<
     slug: "prostate-cancer",
     commonBadge: "Prostate · Hub live",
     commonIntro:
-      "Start from the question — not the encyclopedia. The prostate spine centers on risk clarity and the surveillance-versus-treatment fork.",
+      "Start from the question — not the encyclopedia. Usual order: risk clarity → monitor or treat → surgery vs radiation if treating.",
     commonPaths: HOME_COMMON_PROSTATE_DECISION_PATHS,
     journeyTitle: "Prostate cancer decision journey",
     journeyBadge: "Featured · Hub live",
     journeyIntro:
-      "Diagnosis → active surveillance vs treatment → surgery or radiation → second opinion. Full Entry pages come next; the map is live now.",
+      "Risk clarity → active surveillance vs treatment → surgery or radiation (if treating) → second opinion. Full Entry pages come next; the map is live now.",
     journeySteps: HOME_FEATURED_PROSTATE_JOURNEY,
     mapHrefSlug: "prostate-cancer",
   },
@@ -279,24 +279,24 @@ export const HOME_BREAST_ILLUSTRATIVE_CARDS: HomeIllustrativeCard[] = [
 
 export const HOME_PROSTATE_SITUATION_DESTINATIONS: HomeSituationDestination[] = [
   {
-    label: "Newly diagnosed or sorting risk",
-    hint: "What comes first, risk group clarity, and whether surveillance belongs in the first conversation.",
+    label: "Newly diagnosed or waiting on risk results",
+    hint: "What comes first, risk group clarity, and what can wait before locking a path.",
     href: cancerSituationMapHref("prostate-cancer", "newly-diagnosed"),
   },
   {
-    label: "Choosing monitoring or treatment",
-    hint: "Active surveillance versus definitive therapy — then surgery vs radiation if treating.",
+    label: "Deciding whether to monitor or treat",
+    hint: "Active surveillance first — then surgery vs radiation if treatment is recommended.",
     href: cancerSituationMapHref("prostate-cancer", "active-surveillance"),
   },
   {
-    label: "Unsure about plan or specialty advice",
-    hint: "Second opinion, and when urology and radiation oncology frame options differently.",
-    href: cancerSituationMapHref("prostate-cancer", "second-opinion"),
+    label: "Balancing treatment with everyday life",
+    hint: "Function tradeoffs, cost, time, and whether a plan is workable day to day.",
+    href: cancerSituationMapHref("prostate-cancer", "cost-logistics"),
   },
   {
-    label: "Balancing treatment with everyday life",
-    hint: "Cost, time, and practical fit across surveillance, surgery, and radiation.",
-    href: cancerSituationMapHref("prostate-cancer", "cost-logistics"),
+    label: "Unsure about your plan or care team",
+    hint: "Second opinion, and when specialists frame the same options differently.",
+    href: cancerSituationMapHref("prostate-cancer", "second-opinion"),
   },
 ];
 
