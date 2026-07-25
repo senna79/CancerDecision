@@ -143,6 +143,86 @@ export const BREAST_QUICK_SCENARIOS: SituationQuickScenario[] = [
   },
 ];
 
+/**
+ * Prostate keeps the same 6-slot shell; labels follow the surveillance-first fork.
+ * Hub UX: ≤3 primary + ≤2 also. Planned moments stay hidden until Entries ship.
+ */
+export const PROSTATE_SITUATION_BUCKETS: SituationBucket[] = [
+  {
+    id: "recently-diagnosed",
+    label: "Newly diagnosed or sorting risk",
+    hint: "Your first decisions usually depend on risk group (PSA, Grade Group, MRI) and what information is still pending.",
+    momentIds: ["newly-diagnosed", "active-surveillance", "second-opinion"],
+    alsoMomentIds: ["treatment-comparison"],
+  },
+  {
+    id: "choosing-treatment",
+    label: "Choosing monitoring or treatment",
+    hint: "Decide whether active surveillance fits — or compare surgery and radiation when treatment is on the table.",
+    momentIds: [
+      "active-surveillance",
+      "treatment-comparison",
+      "second-opinion",
+    ],
+    alsoMomentIds: ["cost-logistics"],
+  },
+  {
+    id: "another-opinion",
+    label: "Unsure about your plan or specialty advice",
+    hint: "When you want another review, or urology and radiation oncology frame options differently.",
+    momentIds: ["second-opinion", "care-center-expertise"],
+    alsoMomentIds: ["global-care", "treatment-comparison"],
+  },
+  {
+    id: "real-life",
+    label: "Balancing treatment with everyday life",
+    hint: "Cost, time, and practical fit across surveillance, surgery, and radiation.",
+    momentIds: ["cost-logistics"],
+    alsoMomentIds: ["active-surveillance", "treatment-comparison"],
+  },
+  {
+    id: "cancer-changed",
+    label: "PSA rising or cancer has changed",
+    hint: "When monitoring or post-treatment PSA changes and you need the next decision frame.",
+    momentIds: ["recurrence"],
+    alsoMomentIds: ["second-opinion", "treatment-comparison"],
+  },
+  {
+    id: "after-treatment",
+    label: "On surveillance or in follow-up",
+    hint: "Monitoring plans, triggers for change, and life after treatment.",
+    momentIds: ["follow-up-monitoring", "recurrence"],
+    alsoMomentIds: ["active-surveillance", "second-opinion"],
+  },
+];
+
+/** Prostate hub — anchors to existing situation buckets. */
+export const PROSTATE_QUICK_SCENARIOS: SituationQuickScenario[] = [
+  {
+    label: "I was just told I have prostate cancer",
+    bucketId: "recently-diagnosed",
+  },
+  {
+    label: "I am deciding between monitoring and treatment",
+    bucketId: "choosing-treatment",
+  },
+  {
+    label: "Specialists gave me different recommendations",
+    bucketId: "another-opinion",
+  },
+  {
+    label: "I am weighing side effects, cost, or daily life",
+    bucketId: "real-life",
+  },
+  {
+    label: "My PSA is rising or something changed",
+    bucketId: "cancer-changed",
+  },
+];
+
+/** Prostate orientation deferred until dedicated pages ship. */
+export const PROSTATE_ORIENTATION_LINKS: OrientationLink[] = [];
+
 export const LUNG_SITUATION_BUCKETS: SituationBucket[] = [
   {
     id: "recently-diagnosed",

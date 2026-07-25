@@ -11,6 +11,9 @@ import {
   BREAST_SITUATION_BUCKETS,
   LUNG_ORIENTATION_LINKS,
   LUNG_SITUATION_BUCKETS,
+  PROSTATE_ORIENTATION_LINKS,
+  PROSTATE_QUICK_SCENARIOS,
+  PROSTATE_SITUATION_BUCKETS,
   type SituationQuickScenario,
 } from "@/lib/journey/situation-buckets";
 import { cn } from "@/lib/utils";
@@ -22,6 +25,7 @@ type CancerOption = {
 
 const LUNG_SLUG = "lung-cancer";
 const BREAST_SLUG = "breast-cancer";
+const PROSTATE_SLUG = "prostate-cancer";
 
 /** First-viewport order on the homepage */
 const HERO_SLUGS = [
@@ -42,18 +46,20 @@ type JourneyConfig = {
 
 /**
  * Homepage nav: pick a cancer → open that cancer’s decision map.
- * Lung is complete; breast P0 navigation is live (orientation pages deferred).
+ * Lung complete; breast live; prostate hub-first (Entries deferred).
  */
 export function CancerJourneyNav({
   cancers,
   lungMoments,
   breastMoments,
+  prostateMoments,
   initialSlug = LUNG_SLUG,
 }: {
   cancers: CancerOption[];
   lungMoments: DecisionMoment[];
   breastMoments: DecisionMoment[];
-  /** From `/?cancer=` so returning from a breast Entry keeps the breast map */
+  prostateMoments: DecisionMoment[];
+  /** From `/?cancer=` so returning from an Entry keeps the matching map */
   initialSlug?: string;
 }) {
   const router = useRouter();
@@ -98,6 +104,14 @@ export function CancerJourneyNav({
       orientationLinks: BREAST_ORIENTATION_LINKS,
       quickScenarios: BREAST_QUICK_SCENARIOS,
       mapHref: "/cancers/breast-cancer#decision-moment",
+    },
+    [PROSTATE_SLUG]: {
+      moments: prostateMoments,
+      cancerLabel: "prostate cancer",
+      buckets: PROSTATE_SITUATION_BUCKETS,
+      orientationLinks: PROSTATE_ORIENTATION_LINKS,
+      quickScenarios: PROSTATE_QUICK_SCENARIOS,
+      mapHref: "/cancers/prostate-cancer#decision-moment",
     },
   };
 
@@ -187,6 +201,13 @@ export function CancerJourneyNav({
                 <>
                   Core path: diagnosis → subtype → treatment order → surgery.
                   Open one guide, then come back for the next decision.{" "}
+                </>
+              ) : null}
+              {selectedSlug === PROSTATE_SLUG ? (
+                <>
+                  Core path: risk clarity → surveillance vs treatment → surgery
+                  or radiation. Open one guide, then come back for the next
+                  decision.{" "}
                 </>
               ) : null}
               Want the full center?{" "}

@@ -8,6 +8,7 @@ export type {
 } from "@/lib/os/types";
 export { LUNG_CANCER_DECISION_OS } from "@/lib/os/lung-cancer";
 export { BREAST_CANCER_DECISION_OS } from "@/lib/os/breast-cancer";
+export { PROSTATE_CANCER_DECISION_OS } from "@/lib/os/prostate-cancer";
 export {
   buildDecisionMapFromOs,
   getActiveMoments,

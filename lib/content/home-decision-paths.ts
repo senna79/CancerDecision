@@ -10,6 +10,12 @@ import {
   BREAST_SUBTYPE_SLUG,
   BREAST_SURGERY_SLUG,
 } from "@/lib/content/breast-entry-slugs";
+import {
+  PROSTATE_NEWLY_DIAGNOSED_SLUG,
+  PROSTATE_SECOND_OPINION_SLUG,
+  PROSTATE_SURVEILLANCE_SLUG,
+  PROSTATE_TREATMENT_COMPARE_SLUG,
+} from "@/lib/content/prostate-entry-slugs";
 import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
 
 export type HomeDecisionPath = {
@@ -110,8 +116,47 @@ export const HOME_FEATURED_BREAST_JOURNEY: HomeFeaturedJourneyStep[] = [
   },
 ];
 
+export const HOME_COMMON_PROSTATE_DECISION_PATHS: HomeDecisionPath[] = [
+  {
+    question: "Is active surveillance reasonable for me?",
+    href: `/questions/${PROSTATE_SURVEILLANCE_SLUG}`,
+  },
+  {
+    question: "How do I compare surgery and radiation?",
+    href: `/questions/${PROSTATE_TREATMENT_COMPARE_SLUG}`,
+  },
+  {
+    question: "Should I get a second opinion?",
+    href: `/questions/${PROSTATE_SECOND_OPINION_SLUG}`,
+  },
+  {
+    question: "What should happen first after diagnosis?",
+    href: `/questions/${PROSTATE_NEWLY_DIAGNOSED_SLUG}`,
+  },
+];
+
+/** Prostate spine: diagnosis → surveillance fork → treatment compare → second opinion */
+export const HOME_FEATURED_PROSTATE_JOURNEY: HomeFeaturedJourneyStep[] = [
+  {
+    label: "Diagnosis",
+    href: `/questions/${PROSTATE_NEWLY_DIAGNOSED_SLUG}`,
+  },
+  {
+    label: "Surveillance",
+    href: `/questions/${PROSTATE_SURVEILLANCE_SLUG}`,
+  },
+  {
+    label: "Treatment compare",
+    href: `/questions/${PROSTATE_TREATMENT_COMPARE_SLUG}`,
+  },
+  {
+    label: "Second opinion",
+    href: `/questions/${PROSTATE_SECOND_OPINION_SLUG}`,
+  },
+];
+
 export type HomeCancerFeaturedConfig = {
-  slug: "lung-cancer" | "breast-cancer";
+  slug: "lung-cancer" | "breast-cancer" | "prostate-cancer";
   commonBadge: string;
   commonIntro: string;
   commonPaths: HomeDecisionPath[];
@@ -119,11 +164,11 @@ export type HomeCancerFeaturedConfig = {
   journeyBadge: string;
   journeyIntro: string;
   journeySteps: HomeFeaturedJourneyStep[];
-  mapHrefSlug: "lung-cancer" | "breast-cancer";
+  mapHrefSlug: "lung-cancer" | "breast-cancer" | "prostate-cancer";
 };
 
 export const HOME_FEATURED_BY_CANCER: Record<
-  "lung-cancer" | "breast-cancer",
+  "lung-cancer" | "breast-cancer" | "prostate-cancer",
   HomeCancerFeaturedConfig
 > = {
   "lung-cancer": {
@@ -151,6 +196,19 @@ export const HOME_FEATURED_BY_CANCER: Record<
       "Diagnosis → subtype → treatment before or after surgery → follow-up. Open one guide, then come back for the next decision.",
     journeySteps: HOME_FEATURED_BREAST_JOURNEY,
     mapHrefSlug: "breast-cancer",
+  },
+  "prostate-cancer": {
+    slug: "prostate-cancer",
+    commonBadge: "Prostate · Hub live",
+    commonIntro:
+      "Start from the question — not the encyclopedia. The prostate spine centers on risk clarity and the surveillance-versus-treatment fork.",
+    commonPaths: HOME_COMMON_PROSTATE_DECISION_PATHS,
+    journeyTitle: "Prostate cancer decision journey",
+    journeyBadge: "Featured · Hub live",
+    journeyIntro:
+      "Diagnosis → active surveillance vs treatment → surgery or radiation → second opinion. Full Entry pages come next; the map is live now.",
+    journeySteps: HOME_FEATURED_PROSTATE_JOURNEY,
+    mapHrefSlug: "prostate-cancer",
   },
 };
 
@@ -216,5 +274,52 @@ export const HOME_BREAST_ILLUSTRATIVE_CARDS: HomeIllustrativeCard[] = [
     summary:
       "When family history or age means genetics could change bilateral or reconstruction timing questions.",
     href: `/questions/${BREAST_GENETICS_SLUG}`,
+  },
+];
+
+export const HOME_PROSTATE_SITUATION_DESTINATIONS: HomeSituationDestination[] = [
+  {
+    label: "Newly diagnosed or sorting risk",
+    hint: "What comes first, risk group clarity, and whether surveillance belongs in the first conversation.",
+    href: cancerSituationMapHref("prostate-cancer", "newly-diagnosed"),
+  },
+  {
+    label: "Choosing monitoring or treatment",
+    hint: "Active surveillance versus definitive therapy — then surgery vs radiation if treating.",
+    href: cancerSituationMapHref("prostate-cancer", "active-surveillance"),
+  },
+  {
+    label: "Unsure about plan or specialty advice",
+    hint: "Second opinion, and when urology and radiation oncology frame options differently.",
+    href: cancerSituationMapHref("prostate-cancer", "second-opinion"),
+  },
+  {
+    label: "Balancing treatment with everyday life",
+    hint: "Cost, time, and practical fit across surveillance, surgery, and radiation.",
+    href: cancerSituationMapHref("prostate-cancer", "cost-logistics"),
+  },
+];
+
+export const HOME_PROSTATE_ILLUSTRATIVE_CARDS: HomeIllustrativeCard[] = [
+  {
+    title: "Weighing active surveillance for prostate cancer",
+    meta: "Illustrative · United Kingdom · 65-74",
+    summary:
+      "Choosing structured monitoring versus early definitive therapy when function priorities were central.",
+    href: "/stories/weighing-active-surveillance-prostate-cancer",
+  },
+  {
+    title: "Comparing surgery and radiation tradeoffs",
+    meta: "Illustrative path · Treatment",
+    summary:
+      "When both paths may be reasonable — ask what would change the recommendation for your risk group.",
+    href: `/questions/${PROSTATE_TREATMENT_COMPARE_SLUG}`,
+  },
+  {
+    title: "When specialty recommendations differ",
+    meta: "Illustrative path · Care team",
+    summary:
+      "Urology and radiation oncology can frame the same options differently — clarify where they disagree.",
+    href: "/questions/when-prostate-recommendations-differ-across-specialists",
   },
 ];

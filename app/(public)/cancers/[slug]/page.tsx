@@ -14,6 +14,7 @@ import {
   BREAST_DECISION_MOMENTS,
   getDecisionMoment,
   LUNG_DECISION_MOMENTS,
+  PROSTATE_DECISION_MOMENTS,
 } from "@/lib/journey/decision-moments";
 import {
   BREAST_ORIENTATION_LINKS,
@@ -21,6 +22,9 @@ import {
   BREAST_SITUATION_BUCKETS,
   LUNG_ORIENTATION_LINKS,
   LUNG_SITUATION_BUCKETS,
+  PROSTATE_ORIENTATION_LINKS,
+  PROSTATE_QUICK_SCENARIOS,
+  PROSTATE_SITUATION_BUCKETS,
 } from "@/lib/journey/situation-buckets";
 import { getCancerDecisionCenter, getCancers } from "@/lib/queries";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
@@ -91,12 +95,35 @@ export default async function CancerDecisionCenterPage({
 
   const isLung = cancer.slug === "lung-cancer";
   const isBreast = cancer.slug === "breast-cancer";
-  const hasSituationNav = isLung || isBreast;
+  const isProstate = cancer.slug === "prostate-cancer";
+  const hasSituationNav = isLung || isBreast || isProstate;
   const journeyMoments = isBreast
     ? BREAST_DECISION_MOMENTS
-    : isLung
-      ? LUNG_DECISION_MOMENTS
-      : [];
+    : isProstate
+      ? PROSTATE_DECISION_MOMENTS
+      : isLung
+        ? LUNG_DECISION_MOMENTS
+        : [];
+  const situationBuckets = isBreast
+    ? BREAST_SITUATION_BUCKETS
+    : isProstate
+      ? PROSTATE_SITUATION_BUCKETS
+      : LUNG_SITUATION_BUCKETS;
+  const orientationLinks = isBreast
+    ? BREAST_ORIENTATION_LINKS
+    : isProstate
+      ? PROSTATE_ORIENTATION_LINKS
+      : LUNG_ORIENTATION_LINKS;
+  const quickScenarios = isBreast
+    ? BREAST_QUICK_SCENARIOS
+    : isProstate
+      ? PROSTATE_QUICK_SCENARIOS
+      : undefined;
+  const cancerLabel = isBreast
+    ? "breast cancer"
+    : isProstate
+      ? "prostate cancer"
+      : "lung cancer";
   const activeMoment = hasSituationNav
     ? getDecisionMoment(momentParam, cancer.slug)
     : null;
@@ -135,19 +162,19 @@ export default async function CancerDecisionCenterPage({
           ? "Lung cancer is our first complete cancer decision journey. Any stage — newly diagnosed, comparing options, second opinion, or care center expertise. Pick where you are; leave knowing your next step."
           : isBreast
             ? "A breast cancer diagnosis creates many questions at once. You do not need to solve them all today — start from the decision you are facing now. The usual path runs diagnosis → subtype → treatment order → surgery or systemic choices."
-            : "Start from the decision you are facing, then explore questions, treatments, and illustrative journeys for this cancer type."}
+            : isProstate
+              ? "A prostate cancer diagnosis often starts with risk clarity — then the distinctive fork: active surveillance versus treatment. You do not need every answer today. Start from the decision you are facing now."
+              : "Start from the decision you are facing, then explore questions, treatments, and illustrative journeys for this cancer type."}
       </p>
 
       {hasSituationNav ? (
         <div className="mt-8 max-w-3xl space-y-5">
           <SituationGuidedRouter
             moments={journeyMoments}
-            buckets={isBreast ? BREAST_SITUATION_BUCKETS : LUNG_SITUATION_BUCKETS}
-            orientationLinks={
-              isBreast ? BREAST_ORIENTATION_LINKS : LUNG_ORIENTATION_LINKS
-            }
-            quickScenarios={isBreast ? BREAST_QUICK_SCENARIOS : undefined}
-            cancerLabel={isBreast ? "breast cancer" : "lung cancer"}
+            buckets={situationBuckets}
+            orientationLinks={orientationLinks}
+            quickScenarios={quickScenarios}
+            cancerLabel={cancerLabel}
             activeId={activeMoment?.id}
             footer={
               isLung ? (
@@ -159,6 +186,12 @@ export default async function CancerDecisionCenterPage({
                   >
                     See nearby decisions
                   </a>
+                </>
+              ) : isProstate ? (
+                <>
+                  Core path: risk clarity → surveillance vs treatment → surgery
+                  or radiation. Open one guide, then come back for the next
+                  decision.
                 </>
               ) : (
                 <>

@@ -8,19 +8,23 @@ import { JOURNEY_PHASE_MARKS } from "@/lib/brand/situation-marks";
 import { HOME_FEATURED_BY_CANCER } from "@/lib/content/home-decision-paths";
 import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
 
+type FeaturedSlug = keyof typeof HOME_FEATURED_BY_CANCER;
+
 /**
- * Homepage strips under the situation map — switch lung ↔ breast with
- * `?cancer=` (same param CancerJourneyNav writes on select).
+ * Homepage strips under the situation map — switch with `?cancer=`
+ * (same param CancerJourneyNav writes on select).
  */
 export function HomeCancerFeatured({
   initialSlug = "lung-cancer",
 }: {
-  initialSlug?: "lung-cancer" | "breast-cancer";
+  initialSlug?: FeaturedSlug;
 }) {
   const searchParams = useSearchParams();
   const param = searchParams.get("cancer");
-  const slug =
-    param === "breast-cancer" || param === "lung-cancer"
+  const slug: FeaturedSlug =
+    param === "breast-cancer" ||
+    param === "lung-cancer" ||
+    param === "prostate-cancer"
       ? param
       : initialSlug;
   const config = HOME_FEATURED_BY_CANCER[slug];

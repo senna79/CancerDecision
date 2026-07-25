@@ -6,6 +6,7 @@
 import { getActiveMoments } from "@/lib/os/build-decision-map";
 import { BREAST_CANCER_DECISION_OS } from "@/lib/os/breast-cancer";
 import { LUNG_CANCER_DECISION_OS } from "@/lib/os/lung-cancer";
+import { PROSTATE_CANCER_DECISION_OS } from "@/lib/os/prostate-cancer";
 import type { CancerDecisionOs } from "@/lib/os/types";
 
 export type DecisionMoment = {
@@ -43,38 +44,47 @@ export const LUNG_DECISION_MOMENTS: DecisionMoment[] = momentsFromOs(
   "lung-cancer"
 );
 
-/** Breast P0 active Moments — hub situation router when breast journey is marked complete. */
+/** Breast active Moments — hub situation router. */
 export const BREAST_DECISION_MOMENTS: DecisionMoment[] = momentsFromOs(
   BREAST_CANCER_DECISION_OS,
   "breast-cancer"
 );
+
+/** Prostate hub-first Moments — Template v2 Entries deferred. */
+export const PROSTATE_DECISION_MOMENTS: DecisionMoment[] = momentsFromOs(
+  PROSTATE_CANCER_DECISION_OS,
+  "prostate-cancer"
+);
+
+const MOMENTS_BY_CANCER: Record<string, DecisionMoment[]> = {
+  "lung-cancer": LUNG_DECISION_MOMENTS,
+  "breast-cancer": BREAST_DECISION_MOMENTS,
+  "prostate-cancer": PROSTATE_DECISION_MOMENTS,
+};
 
 export function getDecisionMoment(
   id: string | null | undefined,
   cancerSlug?: string | null
 ) {
   if (!id) return null;
-  if (cancerSlug === "breast-cancer") {
-    return BREAST_DECISION_MOMENTS.find((m) => m.id === id) ?? null;
+  if (cancerSlug && MOMENTS_BY_CANCER[cancerSlug]) {
+    return MOMENTS_BY_CANCER[cancerSlug].find((m) => m.id === id) ?? null;
   }
-  if (cancerSlug === "lung-cancer") {
-    return LUNG_DECISION_MOMENTS.find((m) => m.id === id) ?? null;
+  for (const moments of Object.values(MOMENTS_BY_CANCER)) {
+    const hit = moments.find((m) => m.id === id);
+    if (hit) return hit;
   }
-  return (
-    LUNG_DECISION_MOMENTS.find((m) => m.id === id) ??
-    BREAST_DECISION_MOMENTS.find((m) => m.id === id) ??
-    null
-  );
+  return null;
 }
 
 /** Look up the situation Moment id for an Entry question slug. */
 export function momentIdForEntrySlug(slug: string): string | null {
   const href = `/questions/${slug}`;
-  return (
-    LUNG_DECISION_MOMENTS.find((m) => m.href === href)?.id ??
-    BREAST_DECISION_MOMENTS.find((m) => m.href === href)?.id ??
-    null
-  );
+  for (const moments of Object.values(MOMENTS_BY_CANCER)) {
+    const hit = moments.find((m) => m.href === href);
+    if (hit) return hit.id;
+  }
+  return null;
 }
 
 /**

@@ -41,9 +41,14 @@ import {
   GLOBAL_CARE_HUB_PRIMARY_BODY,
   GLOBAL_CARE_HUB_PRIMARY_SUMMARY,
 } from "@/lib/content/global-care-entry-cards";
+import {
+  PROSTATE_NEWLY_DIAGNOSED_SLUG,
+  PROSTATE_TREATMENT_COMPARE_SLUG,
+} from "@/lib/content/prostate-entry-slugs";
 import { buildDecisionMapFromOs } from "@/lib/os/build-decision-map";
 import { BREAST_CANCER_DECISION_OS } from "@/lib/os/breast-cancer";
 import { LUNG_CANCER_DECISION_OS } from "@/lib/os/lung-cancer";
+import { PROSTATE_CANCER_DECISION_OS } from "@/lib/os/prostate-cancer";
 import {
   LUNG_FLAGSHIP_QUESTION_NS,
   LUNG_FLAGSHIP_SOURCES_BY_QUESTION_N,
@@ -84,14 +89,14 @@ export function createSeedData(): KnowledgeGraphStore {
       name: "Prostate Cancer",
       slug: "prostate-cancer",
       overview:
-        "Prostate cancer decisions frequently center on active surveillance versus treatment, side-effect tradeoffs, and whether genomics or imaging should change the next step. Use this center to compare options and learn from real decision journeys.",
+        "Prostate cancer decisions often follow risk clarity → active surveillance versus treatment → surgery or radiation. This center is a situation-based Decision Journey so patients can leave with a clear next step — not an encyclopedia. Full Entry guides deepen next; the map is live now.",
       status: "published" as const,
       content_reviewed_at: reviewed,
       created_at: ts,
       updated_at: ts,
       ...seo(
         "Prostate Cancer Decision Center",
-        "Compare prostate cancer treatment options, surveillance decisions, and global care pathways.",
+        "Prostate cancer decision map: risk clarity, active surveillance vs treatment, surgery vs radiation, and second opinions.",
         ["prostate cancer", "active surveillance", "treatment comparison"]
       ),
     },
@@ -1533,6 +1538,54 @@ export function createSeedData(): KnowledgeGraphStore {
         "What is the goal for treating the brain findings — and for cancer elsewhere?",
         "Which options are realistic for me, and how do they compare?",
         "What would change the recommendation if we learned one more piece of information?",
+      ],
+    },
+    {
+      n: 49,
+      cancer: 2,
+      title:
+        "What decisions matter most after a new prostate cancer diagnosis?",
+      slug: PROSTATE_NEWLY_DIAGNOSED_SLUG,
+      category: "diagnosis",
+      summary:
+        "After a prostate cancer diagnosis, you usually do not need to choose surgery or radiation on day one. First clarify risk group (PSA, Grade Group / Gleason, MRI and staging), what results are still pending, and whether active surveillance could be reasonable — then prepare a short question list for your care team.",
+      why: "Patients feel pressure to treat immediately. Risk clarity and the surveillance fork often belong before an irreversible treatment choice.",
+      factors: [
+        "PSA, Grade Group / Gleason, and imaging completeness",
+        "Whether staging results could change the first plan",
+        "Whether active surveillance is even on the table",
+        "Which decisions are time-sensitive this week",
+        "Personal priorities around urinary and sexual function",
+      ],
+      doctorQs: [
+        "What is my risk group in plain language — and what is still missing?",
+        "Is active surveillance a reasonable option for someone like me?",
+        "What must happen this week versus what can wait?",
+        "Would a second opinion change the first step?",
+      ],
+    },
+    {
+      n: 50,
+      cancer: 2,
+      title:
+        "How do I compare surgery and radiation for prostate cancer?",
+      slug: PROSTATE_TREATMENT_COMPARE_SLUG,
+      category: "treatment",
+      summary:
+        "When definitive therapy is recommended, surgery and radiation can both be reasonable for many risk groups. Compare cancer-control expectations, urinary/sexual/bowel tradeoffs, recovery time, and what would change the recommendation for your situation — not a single “best” treatment for everyone.",
+      why: "Patients often hear specialty-framed options without a shared comparison frame across surgery and radiation.",
+      factors: [
+        "Risk group and life expectancy",
+        "Urinary, sexual, and bowel priorities",
+        "Recovery time and caregiver support",
+        "Center experience with each modality",
+        "What additional test or review would change advice",
+      ],
+      doctorQs: [
+        "For my risk group, how do outcomes compare between surgery and radiation?",
+        "Which side effects differ most — and which matter most for my priorities?",
+        "What would make you recommend one path over the other for me?",
+        "Should I hear both urology and radiation oncology before deciding?",
       ],
     },
   ];
@@ -3300,6 +3353,11 @@ Common lung-cancer examples of a missing local path include a complex thoracic p
       BREAST_CANCER_DECISION_OS,
       id("cancer", 3),
       id("map", 2)
+    ),
+    buildDecisionMapFromOs(
+      PROSTATE_CANCER_DECISION_OS,
+      id("cancer", 2),
+      id("map", 3)
     ),
   ];
 

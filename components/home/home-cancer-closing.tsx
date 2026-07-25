@@ -5,6 +5,8 @@ import { useSearchParams } from "next/navigation";
 import {
   HOME_BREAST_ILLUSTRATIVE_CARDS,
   HOME_BREAST_SITUATION_DESTINATIONS,
+  HOME_PROSTATE_ILLUSTRATIVE_CARDS,
+  HOME_PROSTATE_SITUATION_DESTINATIONS,
 } from "@/lib/content/home-decision-paths";
 import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
 
@@ -23,58 +25,93 @@ type CancerOption = {
   name: string;
 };
 
+type JourneySlug = "lung-cancer" | "breast-cancer" | "prostate-cancer";
+
 /**
- * Homepage closing strips — switch lung ↔ breast with `?cancer=`.
+ * Homepage closing strips — switch with `?cancer=`.
  */
 export function HomeCancerClosing({
   initialSlug = "lung-cancer",
   cancers,
   lungStories,
   breastStories,
+  prostateStories = [],
 }: {
-  initialSlug?: "lung-cancer" | "breast-cancer";
+  initialSlug?: JourneySlug;
   cancers: CancerOption[];
   lungStories: HomeStoryCard[];
   breastStories: HomeStoryCard[];
+  prostateStories?: HomeStoryCard[];
 }) {
   const searchParams = useSearchParams();
   const param = searchParams.get("cancer");
-  const slug =
-    param === "breast-cancer" || param === "lung-cancer"
+  const slug: JourneySlug =
+    param === "breast-cancer" ||
+    param === "lung-cancer" ||
+    param === "prostate-cancer"
       ? param
       : initialSlug;
   const isBreast = slug === "breast-cancer";
+  const isProstate = slug === "prostate-cancer";
 
   const orderedCancers = [
     ...cancers.filter((c) => c.slug === "lung-cancer"),
     ...cancers.filter((c) => c.slug !== "lung-cancer"),
   ];
 
+  const situationDestinations = isBreast
+    ? HOME_BREAST_SITUATION_DESTINATIONS
+    : isProstate
+      ? HOME_PROSTATE_SITUATION_DESTINATIONS
+      : null;
+
   const illustrativeCards = isBreast
     ? HOME_BREAST_ILLUSTRATIVE_CARDS
-    : lungStories.map((story) => ({
-        title: story.title,
-        meta: `Illustrative · ${story.country} · ${story.age_range}`,
-        summary: story.decision_challenge,
-        href: `/stories/${story.slug}`,
-      }));
+    : isProstate
+      ? HOME_PROSTATE_ILLUSTRATIVE_CARDS
+      : lungStories.map((story) => ({
+          title: story.title,
+          meta: `Illustrative · ${story.country} · ${story.age_range}`,
+          summary: story.decision_challenge,
+          href: `/stories/${story.slug}`,
+        }));
+
+  const situationTitle = isBreast
+    ? "Breast cancer decision situations"
+    : "Prostate cancer decision situations";
+  const situationIntro = isBreast
+    ? "Same framework as the map above — jump to the situation that matches where you are now, then open one guide."
+    : "Same framework as the map above — risk clarity and the surveillance-versus-treatment fork sit first.";
+  const centerLabel = isBreast
+    ? "Open the full Breast Cancer Decision Center →"
+    : "Open the full Prostate Cancer Decision Center →";
+  const centerHref = cancerSituationMapHref(
+    isBreast ? "breast-cancer" : "prostate-cancer"
+  );
+  const illustrativeTitle = isBreast
+    ? "Illustrative breast cancer journeys"
+    : isProstate
+      ? "Illustrative prostate cancer journeys"
+      : "Illustrative decision journeys";
+  const illustrativeIntro = isBreast
+    ? "Product examples of how people compare breast cancer options and prepare questions — not miracle recoveries, and not verified testimonials."
+    : isProstate
+      ? "Product examples of how people compare monitoring versus treatment and prepare questions — not miracle recoveries, and not verified testimonials."
+      : "Product examples of how people compare options and prepare questions — not miracle recoveries, and not verified testimonials.";
 
   return (
     <>
-      {isBreast ? (
+      {situationDestinations ? (
         <section
-          id="breast-decision-situations"
+          id={`${slug}-decision-situations`}
           className="scroll-mt-20 mx-auto w-full max-w-6xl px-5 py-14 md:px-8"
         >
           <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-            Breast cancer decision situations
+            {situationTitle}
           </h2>
-          <p className="mt-2 max-w-2xl text-[var(--muted)]">
-            Same framework as the map above — jump to the situation that matches
-            where you are now, then open one guide.
-          </p>
+          <p className="mt-2 max-w-2xl text-[var(--muted)]">{situationIntro}</p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {HOME_BREAST_SITUATION_DESTINATIONS.map((item) => (
+            {situationDestinations.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -89,10 +126,10 @@ export function HomeCancerClosing({
           </div>
           <p className="mt-6 text-sm">
             <Link
-              href={cancerSituationMapHref("breast-cancer")}
+              href={centerHref}
               className="font-semibold text-[var(--accent)] hover:underline"
             >
-              Open the full Breast Cancer Decision Center →
+              {centerLabel}
             </Link>
             {" · "}
             <Link
@@ -112,21 +149,24 @@ export function HomeCancerClosing({
             Cancer journeys in development
           </h2>
           <p className="mt-2 max-w-2xl text-[var(--muted)]">
-            Same decision framework across cancers. Lung and breast have live
-            situation maps today; others deepen over time — not a different
-            product.
+            Same decision framework across cancers. Lung, breast, and prostate
+            have live situation maps today; others deepen over time — not a
+            different product.
           </p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
             {orderedCancers.map((cancer) => {
               const hasSituationMap =
                 cancer.slug === "lung-cancer" ||
-                cancer.slug === "breast-cancer";
+                cancer.slug === "breast-cancer" ||
+                cancer.slug === "prostate-cancer";
               const statusLabel =
                 cancer.slug === "lung-cancer"
                   ? "Complete"
                   : cancer.slug === "breast-cancer"
                     ? "Live"
-                    : "In development";
+                    : cancer.slug === "prostate-cancer"
+                      ? "Hub live"
+                      : "In development";
               return (
                 <Link
                   key={cancer.id}
@@ -150,7 +190,9 @@ export function HomeCancerClosing({
                       ? "The first complete Cancer Next Step decision journey."
                       : cancer.slug === "breast-cancer"
                         ? "Situation map and core decision guides are live — diagnosis → subtype → treatment order."
-                        : "Uses the same decision framework — depth coming next."}
+                        : cancer.slug === "prostate-cancer"
+                          ? "Situation map is live — risk clarity → surveillance vs treatment. Full Entries next."
+                          : "Uses the same decision framework — depth coming next."}
                   </p>
                 </Link>
               );
@@ -162,14 +204,10 @@ export function HomeCancerClosing({
       <section className="border-y border-[var(--line)] bg-[var(--paper-deep)]/70">
         <div className="mx-auto w-full max-w-6xl px-5 py-14 md:px-8">
           <h2 className="font-heading text-3xl font-semibold tracking-[-0.03em] text-[var(--ink)]">
-            {isBreast
-              ? "Illustrative breast cancer journeys"
-              : "Illustrative decision journeys"}
+            {illustrativeTitle}
           </h2>
           <p className="mt-2 max-w-2xl text-[var(--muted)]">
-            {isBreast
-              ? "Product examples of how people compare breast cancer options and prepare questions — not miracle recoveries, and not verified testimonials."
-              : "Product examples of how people compare options and prepare questions — not miracle recoveries, and not verified testimonials."}
+            {illustrativeIntro}
           </p>
           <div className="mt-8 grid gap-6 md:grid-cols-3">
             {illustrativeCards.map((card) => (
@@ -190,14 +228,17 @@ export function HomeCancerClosing({
               </Link>
             ))}
           </div>
-          {isBreast && breastStories.length > 0 ? (
+          {(isBreast && breastStories.length > 0) ||
+          (isProstate && prostateStories.length > 0) ? (
             <p className="mt-6 text-sm text-[var(--muted)]">
               Prefer the full map?{" "}
               <Link
-                href={cancerSituationMapHref("breast-cancer")}
+                href={centerHref}
                 className="font-semibold text-[var(--accent)] hover:underline"
               >
-                Open Breast Cancer Decision Center →
+                {isBreast
+                  ? "Open Breast Cancer Decision Center →"
+                  : "Open Prostate Cancer Decision Center →"}
               </Link>
             </p>
           ) : null}

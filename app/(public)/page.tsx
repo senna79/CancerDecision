@@ -5,9 +5,17 @@ import { HomeCancerFeatured } from "@/components/home/home-cancer-featured";
 import {
   BREAST_DECISION_MOMENTS,
   LUNG_DECISION_MOMENTS,
+  PROSTATE_DECISION_MOMENTS,
 } from "@/lib/journey/decision-moments";
 import { getCancerBySlug, getCancers, getStories } from "@/lib/queries";
 import { buildMetadata } from "@/lib/seo/metadata";
+
+type JourneyCancerSlug = "lung-cancer" | "breast-cancer" | "prostate-cancer";
+
+function resolveJourneySlug(param?: string): JourneyCancerSlug {
+  if (param === "breast-cancer" || param === "prostate-cancer") return param;
+  return "lung-cancer";
+}
 
 export const metadata = buildMetadata({
   title: "Navigate Cancer Decisions — Know Your Next Step",
@@ -44,17 +52,23 @@ export default async function HomePage({
   searchParams: Promise<{ cancer?: string }>;
 }) {
   const { cancer: cancerParam } = await searchParams;
-  const [cancers, lungCancer, breastCancer] = await Promise.all([
-    getCancers(),
-    getCancerBySlug("lung-cancer"),
-    getCancerBySlug("breast-cancer"),
-  ]);
-  const [lungStories, breastStories] = await Promise.all([
+  const [cancers, lungCancer, breastCancer, prostateCancer] = await Promise.all(
+    [
+      getCancers(),
+      getCancerBySlug("lung-cancer"),
+      getCancerBySlug("breast-cancer"),
+      getCancerBySlug("prostate-cancer"),
+    ]
+  );
+  const [lungStories, breastStories, prostateStories] = await Promise.all([
     lungCancer
       ? getStories({ cancerId: lungCancer.id, limit: 3 })
       : getStories({ limit: 3 }),
     breastCancer
       ? getStories({ cancerId: breastCancer.id, limit: 3 })
+      : Promise.resolve([]),
+    prostateCancer
+      ? getStories({ cancerId: prostateCancer.id, limit: 3 })
       : Promise.resolve([]),
   ]);
 
@@ -67,8 +81,7 @@ export default async function HomePage({
     slug: c.slug,
     name: c.name,
   }));
-  const initialJourneySlug =
-    cancerParam === "breast-cancer" ? "breast-cancer" : "lung-cancer";
+  const initialJourneySlug = resolveJourneySlug(cancerParam);
 
   return (
     <div>
@@ -108,6 +121,7 @@ export default async function HomePage({
                 cancers={cancerOptions}
                 lungMoments={LUNG_DECISION_MOMENTS}
                 breastMoments={BREAST_DECISION_MOMENTS}
+                prostateMoments={PROSTATE_DECISION_MOMENTS}
                 initialSlug={initialJourneySlug}
               />
             </div>
@@ -125,6 +139,7 @@ export default async function HomePage({
           cancers={closingCancers}
           lungStories={toStoryCards(lungStories)}
           breastStories={toStoryCards(breastStories)}
+          prostateStories={toStoryCards(prostateStories)}
         />
       </Suspense>
     </div>
