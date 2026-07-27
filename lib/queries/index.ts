@@ -341,14 +341,27 @@ export async function getQuestionPage(slug: string) {
   };
 }
 
+export async function getCancerSlugsForTreatment(
+  treatmentId: string
+): Promise<string[]> {
+  const store = await readStore();
+  const cancerIds = store.cancer_treatments
+    .filter((ct) => ct.treatment_id === treatmentId)
+    .map((ct) => ct.cancer_id);
+  return store.cancers
+    .filter((c) => cancerIds.includes(c.id))
+    .map((c) => c.slug);
+}
+
 export async function getTreatmentPage(slug: string) {
   const treatment = await getTreatmentBySlug(slug);
   if (!treatment) return null;
-  const [countries, sources] = await Promise.all([
+  const [countries, sources, cancerSlugs] = await Promise.all([
     getCountriesForTreatment(treatment.id),
     getSourcesForEntity("treatment", treatment.id),
+    getCancerSlugsForTreatment(treatment.id),
   ]);
-  return { treatment, countries, sources };
+  return { treatment, countries, sources, cancerSlugs };
 }
 
 export async function getStoryPage(slug: string) {
@@ -399,6 +412,7 @@ export async function getStoryPage(slug: string) {
 }
 
 export async function getSitemapEntries() {
+  const store = await readStore();
   const [cancers, questions, treatments, stories, globalCare] =
     await Promise.all([
       getCancers(),
@@ -408,12 +422,23 @@ export async function getSitemapEntries() {
       getGlobalCareOptions(),
     ]);
 
+  const cancerSlugById = new Map(cancers.map((c) => [c.id, c.slug]));
+  const treatmentCancerSlugs = new Map<string, string[]>();
+  for (const link of store.cancer_treatments) {
+    const slug = cancerSlugById.get(link.cancer_id);
+    if (!slug) continue;
+    const list = treatmentCancerSlugs.get(link.treatment_id) ?? [];
+    list.push(slug);
+    treatmentCancerSlugs.set(link.treatment_id, list);
+  }
+
   return {
     cancers,
     questions,
     treatments,
     stories,
     globalCare,
+    treatmentCancerSlugs,
   };
 }
 

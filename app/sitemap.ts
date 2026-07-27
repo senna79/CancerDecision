@@ -4,13 +4,15 @@ import { getSitemapEntries } from "@/lib/queries";
 import {
   INDEXABLE_CANCER_SLUGS,
   SUPPORTING_GUIDE_PATHS,
+  isIndexableTreatmentForCancers,
 } from "@/lib/seo/indexing";
 import { isAiEntrySlug } from "@/lib/seo/ai-entry-portfolio";
 import { isRetiredLungQuestionSlug } from "@/lib/seo/retired-lung-questions";
 import { absoluteUrl } from "@/lib/seo/metadata";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const { cancers, questions, treatments, stories } = await getSitemapEntries();
+  const { cancers, questions, treatments, stories, treatmentCancerSlugs } =
+    await getSitemapEntries();
 
   const indexableCancers = cancers.filter((c) =>
     (INDEXABLE_CANCER_SLUGS as readonly string[]).includes(c.slug)
@@ -25,6 +27,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   );
   const indexableStories = stories.filter((s) =>
     indexableCancerIds.has(s.cancer_id)
+  );
+  const indexableTreatments = treatments.filter((t) =>
+    isIndexableTreatmentForCancers(treatmentCancerSlugs.get(t.id) ?? [])
   );
 
   const staticRoutes: MetadataRoute.Sitemap = [
@@ -42,6 +47,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.75,
     },
     { url: absoluteUrl("/about"), changeFrequency: "yearly", priority: 0.5 },
+    {
+      url: absoluteUrl("/transparency"),
+      changeFrequency: "yearly",
+      priority: 0.45,
+    },
     { url: absoluteUrl("/llms.txt"), changeFrequency: "weekly", priority: 0.4 },
   ];
 
@@ -62,7 +72,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "weekly" as const,
       priority: isAiEntrySlug(q.slug) ? 0.95 : 0.8,
     })),
-    ...treatments.map((t) => ({
+    ...indexableTreatments.map((t) => ({
       url: absoluteUrl(`/treatments/${t.slug}`),
       lastModified: t.updated_at,
       changeFrequency: "monthly" as const,

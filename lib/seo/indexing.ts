@@ -61,3 +61,13 @@ export function isIndexableQuestionSlug(
   if (isRetiredBreastQuestionSlug(questionSlug)) return false;
   return true;
 }
+
+/**
+ * A treatment is indexable when linked to at least one indexable cancer
+ * via cancer_treatments (shared modalities may still index if used by lung/breast/prostate).
+ */
+export function isIndexableTreatmentForCancers(
+  linkedCancerSlugs: readonly string[]
+): boolean {
+  return linkedCancerSlugs.some((slug) => isIndexableCancerSlug(slug));
+}

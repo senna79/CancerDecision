@@ -6,6 +6,7 @@ import { JsonLd } from "@/components/seo/json-ld";
 import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
 import { TrustStrip } from "@/components/trust/trust-strip";
 import { getTreatmentPage, getTreatments } from "@/lib/queries";
+import { isIndexableTreatmentForCancers } from "@/lib/seo/indexing";
 import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
 import { buildMetadata } from "@/lib/seo/metadata";
 
@@ -28,6 +29,7 @@ export async function generateMetadata({
       data.treatment.seo_description || data.treatment.description.slice(0, 160),
     path: `/treatments/${slug}`,
     keywords: data.treatment.seo_keywords,
+    index: isIndexableTreatmentForCancers(data.cancerSlugs),
   });
 }
 

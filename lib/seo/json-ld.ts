@@ -28,8 +28,11 @@ export function organizationWebSiteJsonLd() {
         publishingPrinciples: SITE_ORGANIZATION.publishingPrinciples,
         knowsAbout: [
           "Lung cancer decision making",
+          "Breast cancer decision making",
+          "Prostate cancer decision making",
           "Cancer patient education",
           "Second opinion preparation",
+          "Active surveillance decisions",
           "Treatment option comparison",
         ],
       },
@@ -115,14 +118,22 @@ export function faqJsonLd(
 export function questionAnswerJsonLd(input: {
   question: string;
   answer: string;
+  /** Page path — binds Question/Answer to the visible Direct Answer (`#citation-answer`). */
+  path: string;
 }) {
+  const answerUrl = absoluteUrl(`${input.path}#citation-answer`);
   return {
     "@context": "https://schema.org",
     "@type": "Question",
+    "@id": `${absoluteUrl(input.path)}#question`,
     name: input.question,
+    url: answerUrl,
+    mainEntityOfPage: absoluteUrl(input.path),
     acceptedAnswer: {
       "@type": "Answer",
+      "@id": answerUrl,
       text: input.answer,
+      url: answerUrl,
     },
   };
 }
@@ -147,6 +158,8 @@ export function medicalWebPageJsonLd(input: {
   relatedLinks?: Array<{ name: string; url: string }>;
   /** Primary next-step URL on the Decision Graph */
   significantLinkUrl?: string | null;
+  /** @id of the primary Question (usually page `#question`) */
+  mainEntityId?: string | null;
 }) {
   const mentions = [
     ...(input.mentions ?? []).map((name) => ({
@@ -179,6 +192,9 @@ export function medicalWebPageJsonLd(input: {
           "@type": "MedicalCondition",
           name: input.aboutName,
         }
+      : undefined,
+    mainEntity: input.mainEntityId
+      ? { "@id": input.mainEntityId }
       : undefined,
     mentions: mentions.length > 0 ? mentions : undefined,
     isPartOf:

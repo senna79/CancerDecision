@@ -46,7 +46,7 @@ import {
   momentIdForEntrySlug,
 } from "@/lib/journey/decision-moments";
 import { retiredLungQuestionRedirect } from "@/lib/seo/retired-lung-questions";
-import { buildMetadata } from "@/lib/seo/metadata";
+import { absoluteUrl, buildMetadata } from "@/lib/seo/metadata";
 
 function legacyQuestionRedirect(slug: string): string | undefined {
   return (
@@ -168,6 +168,9 @@ export default async function QuestionPage({
             path: `/questions/${question.slug}`,
             dateModified: question.content_reviewed_at,
             aboutName: cancer?.name,
+            mainEntityId: absoluteUrl(
+              `/questions/${question.slug}#question`
+            ),
             mentions: [
               question.category.replaceAll("_", " "),
               ...(entryMeta ? [entryMeta.decisionLabel] : []),
@@ -218,6 +221,7 @@ export default async function QuestionPage({
           questionAnswerJsonLd({
             question: question.title,
             answer: question.summary,
+            path: `/questions/${question.slug}`,
           }),
         ]}
       />
@@ -350,8 +354,9 @@ export default async function QuestionPage({
         </p>
       ) : null}
 
-      {aiEntry && (entryMeta || graphNode) && cancer && !entryV2 ? (
+      {aiEntry && (entryMeta || graphNode) && cancer ? (
         <RelationshipStrip
+          compact={entryV2}
           about={{
             href: `/cancers/${cancer.slug}`,
             label: cancer.name,

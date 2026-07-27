@@ -11,12 +11,69 @@ export function RelationshipStrip({
   decision,
   partOf,
   related,
+  compact = false,
 }: {
   about: RelationLink | null;
   decision: string;
   partOf: RelationLink | null;
   related: RelationLink[];
+  /** Quieter strip for Template v2 heroes */
+  compact?: boolean;
 }) {
+  const relatedPreview = compact ? related.slice(0, 4) : related;
+
+  if (compact) {
+    return (
+      <aside
+        id="knowledge-relations"
+        className="mt-5 border-t border-[var(--line)] pt-4 text-sm text-[var(--ink-soft)]"
+      >
+        <p className="text-xs font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+          Part of your decision journey
+        </p>
+        <p className="mt-2 leading-relaxed">
+          {about ? (
+            <>
+              <Link
+                href={about.href}
+                className="font-medium text-[var(--accent)] hover:underline"
+              >
+                {about.label}
+              </Link>
+              {" · "}
+            </>
+          ) : null}
+          <span className="text-[var(--ink)]">{decision}</span>
+          {partOf ? (
+            <>
+              {" · "}
+              <Link
+                href={partOf.href}
+                className="font-medium text-[var(--accent)] hover:underline"
+              >
+                {partOf.label}
+              </Link>
+            </>
+          ) : null}
+        </p>
+        {relatedPreview.length > 0 ? (
+          <p className="mt-2 flex flex-wrap gap-x-3 gap-y-1">
+            <span className="text-xs text-[var(--muted)]">Related</span>
+            {relatedPreview.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="font-medium text-[var(--accent)] hover:underline"
+              >
+                {item.label}
+              </Link>
+            ))}
+          </p>
+        ) : null}
+      </aside>
+    );
+  }
+
   return (
     <aside
       id="knowledge-relations"
@@ -30,7 +87,10 @@ export function RelationshipStrip({
           <dt className="text-xs text-[var(--muted)]">About</dt>
           <dd className="font-medium text-[var(--ink)]">
             {about ? (
-              <Link href={about.href} className="text-[var(--accent)] hover:underline">
+              <Link
+                href={about.href}
+                className="text-[var(--accent)] hover:underline"
+              >
                 {about.label}
               </Link>
             ) : (
@@ -46,7 +106,10 @@ export function RelationshipStrip({
           <dt className="text-xs text-[var(--muted)]">Part of</dt>
           <dd className="font-medium text-[var(--ink)]">
             {partOf ? (
-              <Link href={partOf.href} className="text-[var(--accent)] hover:underline">
+              <Link
+                href={partOf.href}
+                className="text-[var(--accent)] hover:underline"
+              >
                 {partOf.label}
               </Link>
             ) : (
