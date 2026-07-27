@@ -302,6 +302,24 @@
   color: var(--ink);
 }
 
+/*
+ * Closed hang-card answers remain in the document for AI/search crawlers.
+ * Visually removed from layout; opened card drops this class.
+ */
+.path-hang-card-answer--closed {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+  box-shadow: none;
+  pointer-events: none;
+}
+
 .path-step--holds-open > .grid > div:first-child {
   border-radius: 0.5rem;
   background: linear-gradient(

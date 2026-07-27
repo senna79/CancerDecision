@@ -10,6 +10,7 @@ import {
 } from "@/lib/content/breast-entry-slugs";
 import {
   getEntryPathV2,
+  type EntryPathCard,
   type EntryPathStep,
   type EntryPathV2,
 } from "@/lib/content/entry-path-v2";
@@ -145,7 +146,7 @@ function StepCards({
               <button
                 type="button"
                 aria-expanded={open}
-                aria-controls={open ? `card-answer-${card.id}` : undefined}
+                aria-controls={`card-answer-${card.id}`}
                 onClick={() => onToggle(card.id)}
                 className="flex w-full items-start gap-2 px-2 py-2.5 text-left transition hover:bg-white/70"
               >
@@ -190,45 +191,59 @@ function StepCards({
   );
 }
 
-/** Open hang-card answer — main path width (left column). */
+/**
+ * Hang-card answer body.
+ * Always mounted in the HTML (for AI/search crawlers) even when visually closed.
+ * Open card uses the interactive panel chrome; closed cards stay in the DOM with `hidden`.
+ */
 function StepAnswerPanel({
-  step,
-  openId,
-  landedId,
+  card,
+  isOpen,
+  fromLanding,
   onClose,
   slug,
   modules,
 }: {
-  step: EntryPathStep & { number: number };
-  openId: string;
-  landedId: string | null;
+  card: EntryPathCard;
+  isOpen: boolean;
+  fromLanding: boolean;
   onClose: () => void;
   slug: string;
   modules: AiEntryFlagshipModules;
 }) {
-  const card = step.cards.find((c) => c.id === openId);
-  if (!card) return null;
-  const fromLanding = landedId === openId;
-
   return (
-    <div
+    <article
       id={`card-answer-${card.id}`}
-      className="path-question-answer-panel mt-5 scroll-mt-28"
-      role="region"
+      className={cn(
+        "path-question-answer-panel mt-5 scroll-mt-28",
+        !isOpen && "path-hang-card-answer--closed"
+      )}
       aria-label={card.title}
+      aria-hidden={!isOpen}
+      data-hang-card={card.id}
+      data-hang-card-open={isOpen ? "true" : "false"}
     >
-      {fromLanding ? (
-        <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
-          Answering your question
-        </p>
+      {isOpen ? (
+        fromLanding ? (
+          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--accent)]">
+            Answering your question
+          </p>
+        ) : (
+          <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
+            From questions beside this step
+          </p>
+        )
       ) : (
         <p className="text-[0.65rem] font-semibold uppercase tracking-[0.14em] text-[var(--muted)]">
-          From questions beside this step
+          Path question
         </p>
       )}
       <h3 className="mt-1 font-heading text-lg font-semibold tracking-[-0.02em] text-[var(--ink)] md:text-xl">
         {card.title}
       </h3>
+      {card.summary ? (
+        <p className="mt-1 text-sm text-[var(--muted)]">{card.summary}</p>
+      ) : null}
       <div className="path-question-answer mt-3 text-[0.95rem] leading-relaxed text-[var(--ink)] md:text-base">
         <DecisionPathCardDetail
           id={card.id}
@@ -236,19 +251,21 @@ function StepAnswerPanel({
           modules={modules}
         />
       </div>
-      <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[var(--accent)]/15 pt-3">
-        <button
-          type="button"
-          onClick={onClose}
-          className="text-sm font-semibold text-[var(--accent)] hover:underline"
-        >
-          Close answer
-        </button>
-        <span className="text-sm text-[var(--muted)]">
-          Or pick another question in the list
-        </span>
-      </div>
-    </div>
+      {isOpen ? (
+        <div className="mt-4 flex flex-wrap items-center gap-x-4 gap-y-2 border-t border-[var(--accent)]/15 pt-3">
+          <button
+            type="button"
+            onClick={onClose}
+            className="text-sm font-semibold text-[var(--accent)] hover:underline"
+          >
+            Close answer
+          </button>
+          <span className="text-sm text-[var(--muted)]">
+            Or pick another question in the list
+          </span>
+        </div>
+      ) : null}
+    </article>
   );
 }
 
@@ -1580,20 +1597,22 @@ export function DecisionWorkspaceV2({
                       slug={slug}
                     />
                   </div>
-                  {stepHoldsOpen && openId ? (
+                  {/*
+                    Mount every hang-card answer in the initial HTML so AI/search
+                    crawlers can read full Q&A. Only the open card is visible;
+                    closed cards use path-hang-card-answer--closed (still in DOM).
+                  */}
+                  {step.cards.map((card) => (
                     <StepAnswerPanel
-                      step={step}
-                      openId={openId}
-                      landedId={
-                        step.cards.some((c) => c.id === landedId)
-                          ? landedId
-                          : null
-                      }
-                      onClose={() => toggleCard(openId)}
+                      key={card.id}
+                      card={card}
+                      isOpen={openId === card.id}
+                      fromLanding={landedId === card.id}
+                      onClose={() => toggleCard(card.id)}
                       slug={slug}
                       modules={modules}
                     />
-                  ) : null}
+                  ))}
                 </div>
 
                 <div className="min-w-0 overflow-visible pl-11 lg:sticky lg:top-24 lg:pl-0 lg:pt-7 lg:self-start">
