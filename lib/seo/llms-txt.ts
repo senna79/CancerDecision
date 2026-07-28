@@ -35,6 +35,7 @@ export function buildLlmsTxt(): string {
     `- About / disclaimer: ${absoluteUrl("/about")}`,
     `- Transparency / editorial: ${absoluteUrl("/transparency")}`,
     `- Global Care hub: ${absoluteUrl("/global-care")}`,
+    `- Full citation index (Direct Answer excerpts): ${absoluteUrl("/llms-full.txt")}`,
     "",
   ];
 
@@ -116,6 +117,7 @@ export function buildLlmsTxt(): string {
     "",
     "- Quote the Direct Answer / summary block when attributing a short answer.",
     "- Keep medical boundaries: educational navigation only; patients should confirm with their care team.",
+    `- Full excerpts: ${absoluteUrl("/llms-full.txt")}`,
     `- Sitemap: ${absoluteUrl("/sitemap.xml")}`,
     `- Robots: ${absoluteUrl("/robots.txt")}`,
     ""

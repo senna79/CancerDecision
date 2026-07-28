@@ -25,6 +25,7 @@ export const PROSTATE_UNDERSTANDING_STAGE = {
   },
 
   anchors: [
+    { label: "Next decision", href: "#decision-meaning" },
     { label: "What stage describes", href: "#what-stage-describes" },
     { label: "Stage map", href: "#stage-map" },
     { label: "Why it matters", href: "#why-it-matters" },
@@ -48,6 +49,32 @@ export const PROSTATE_UNDERSTANDING_STAGE = {
     bodyClose: null as string | null,
     close:
       "The useful question is not “What number am I?” It is “What does my stage — together with risk group — mean for monitoring versus treatment next?”",
+  },
+
+  decisionMeaning: {
+    id: "decision-meaning",
+    title: "What this means for your next prostate cancer decision",
+    lead: "Stage describes extent. Risk group describes aggressiveness. Many first-plan decisions need both.",
+    passages: [
+      {
+        id: "meaning-surveillance",
+        body: "Localized lower-risk disease more often keeps active surveillance on the table. Locally advanced or metastatic extent usually reframes the conversation toward treatment — ask which fork is still open for you.",
+        ctaLabel: "Active surveillance decision",
+        ctaHref: `/questions/${PROSTATE_SURVEILLANCE_SLUG}`,
+      },
+      {
+        id: "meaning-compare",
+        body: "When definitive local therapy is recommended, stage and nodal status help frame surgery versus radiation — alongside risk group and function priorities.",
+        ctaLabel: "Surgery vs radiation",
+        ctaHref: `/questions/${PROSTATE_TREATMENT_COMPARE_SLUG}`,
+      },
+      {
+        id: "meaning-risk",
+        body: "If stage is clearer than risk group — or the reverse — ask what is still missing before locking monitor-versus-treat or surgery-versus-radiation.",
+        ctaLabel: "Understanding risk group",
+        ctaHref: "/cancers/prostate-cancer/understanding-risk",
+      },
+    ],
   },
 
   whatStageDescribes: {

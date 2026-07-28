@@ -18,7 +18,8 @@ import {
  *   risk clarity → active surveillance vs treatment → surgery vs radiation
  *   → function / practical fit → second look when unsure.
  * Newly Diagnosed + Active Surveillance + Surgery vs Radiation + Second Opinion
- * ship as Template v2; other active nodes may still be thin Q pages.
+ * ship as Template v2. Care-team / cost / global remain thin hub nodes but are
+ * noindex until upgraded (see PROSTATE_THIN_QUESTION_SLUGS).
  */
 export const PROSTATE_CANCER_DECISION_OS: CancerDecisionOs = {
   cancer_slug: "prostate-cancer",

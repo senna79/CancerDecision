@@ -1,7 +1,8 @@
 /**
  * Prostate Cancer Entry slugs — hub P0 moments + Template v2 Entries as they ship.
  * Newly Diagnosed, Active Surveillance, Surgery vs Radiation, and Second Opinion
- * ship as full Entries; other active moments may still be thin Q pages.
+ * ship as full Entries. Thin active Q pages stay reachable from the hub but are
+ * noindex until they ship as Template v2 (see PROSTATE_THIN_QUESTION_SLUGS).
  */
 
 export const PROSTATE_NEWLY_DIAGNOSED_SLUG =
@@ -24,6 +25,20 @@ export const PROSTATE_COST_SLUG =
 
 export const PROSTATE_GLOBAL_CARE_SLUG =
   "evaluate-treatment-abroad-for-prostate-cancer";
+
+/**
+ * Indexable-but-thin prostate Q pages — reachable for humans, excluded from
+ * sitemap/index until upgraded to Template v2 + AI portfolio.
+ */
+export const PROSTATE_THIN_QUESTION_SLUGS = [
+  PROSTATE_CARE_TEAM_SLUG,
+  PROSTATE_COST_SLUG,
+  PROSTATE_GLOBAL_CARE_SLUG,
+] as const;
+
+export function isThinProstateQuestionSlug(slug: string): boolean {
+  return (PROSTATE_THIN_QUESTION_SLUGS as readonly string[]).includes(slug);
+}
 
 /** Planned — not on hub until Entries ship */
 export const PROSTATE_QOL_SLUG =

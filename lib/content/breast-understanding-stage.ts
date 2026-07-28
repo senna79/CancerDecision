@@ -28,6 +28,7 @@ export const BREAST_UNDERSTANDING_STAGE = {
   },
 
   anchors: [
+    { label: "Next decision", href: "#decision-meaning" },
     { label: "What stage describes", href: "#what-stage-describes" },
     { label: "Stage map", href: "#stage-map" },
     { label: "Why it matters", href: "#why-it-matters" },
@@ -49,6 +50,32 @@ export const BREAST_UNDERSTANDING_STAGE = {
     bodyClose: null as string | null,
     close:
       "The useful question is not “What number am I?” It is “What does my stage — and nodal status — mean for the options we should discuss next?”",
+  },
+
+  decisionMeaning: {
+    id: "decision-meaning",
+    title: "What this means for your next breast cancer decision",
+    lead: "Stage and nodal status shape sequencing and local options — together with subtype, not instead of it.",
+    passages: [
+      {
+        id: "meaning-sequencing",
+        body: "Extent often decides whether treatment should start before or after surgery. Ask what neoadjuvant therapy would change — tumor response, surgical options, or both — before locking a date.",
+        ctaLabel: "Treatment sequencing decision",
+        ctaHref: `/questions/${BREAST_SEQUENCING_SLUG}`,
+      },
+      {
+        id: "meaning-surgery",
+        body: "For many early situations, stage helps explain whether lumpectomy and mastectomy can both be reasonable. Compare cancer fit and personal priorities — not which operation sounds stronger.",
+        ctaLabel: "Lumpectomy vs mastectomy",
+        ctaHref: `/questions/${BREAST_SURGERY_SLUG}`,
+      },
+      {
+        id: "meaning-subtype",
+        body: "Stage without subtype is incomplete for systemic planning. If receptor or HER2 results are still pending, ask whether the next irreversible step should wait.",
+        ctaLabel: "Understanding subtype",
+        ctaHref: "/cancers/breast-cancer/understanding-subtype",
+      },
+    ],
   },
 
   whatStageDescribes: {

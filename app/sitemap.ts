@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { isRetiredBreastQuestionSlug } from "@/lib/content/breast-entry-slugs";
+import { isThinProstateQuestionSlug } from "@/lib/content/prostate-entry-slugs";
 import { getSitemapEntries } from "@/lib/queries";
 import {
   INDEXABLE_CANCER_SLUGS,
@@ -23,7 +24,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     (q) =>
       indexableCancerIds.has(q.cancer_id) &&
       !isRetiredLungQuestionSlug(q.slug) &&
-      !isRetiredBreastQuestionSlug(q.slug)
+      !isRetiredBreastQuestionSlug(q.slug) &&
+      !isThinProstateQuestionSlug(q.slug)
   );
   const indexableStories = stories.filter((s) =>
     indexableCancerIds.has(s.cancer_id)
@@ -53,6 +55,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.45,
     },
     { url: absoluteUrl("/llms.txt"), changeFrequency: "weekly", priority: 0.4 },
+    {
+      url: absoluteUrl("/llms-full.txt"),
+      changeFrequency: "weekly",
+      priority: 0.4,
+    },
   ];
 
   const supportingGuides: MetadataRoute.Sitemap = SUPPORTING_GUIDE_PATHS.map(

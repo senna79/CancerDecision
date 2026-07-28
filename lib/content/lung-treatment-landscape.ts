@@ -19,6 +19,7 @@ export const LUNG_TREATMENT_LANDSCAPE = {
   },
 
   anchors: [
+    { label: "Next decision", href: "#decision-meaning" },
     { label: "Treatment map", href: "#treatment-map" },
     { label: "How doctors choose", href: "#how-doctors-choose" },
     { label: "Approaches", href: "#approaches" },
@@ -38,6 +39,35 @@ export const LUNG_TREATMENT_LANDSCAPE = {
     ],
     close:
       "The right discussion depends on your situation — not on which treatment name sounds strongest.",
+  },
+
+  decisionMeaning: {
+    id: "decision-meaning",
+    title: "What this means for your next lung cancer decision",
+    lead: "Use this map to enter a Decision Path — not to pick a treatment name from a menu.",
+    passages: [
+      {
+        id: "meaning-compare",
+        body: "When more than one direction is open, the next useful page is usually a structured comparison of surgery and systemic therapy for your situation — including what would tip the recommendation.",
+        ctaLabel: "Compare treatment options",
+        ctaHref:
+          "/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer",
+      },
+      {
+        id: "meaning-biomarkers",
+        body: "Before locking a systemic plan, ask whether biomarker results could change which medicine families belong in the discussion. Landscape names are not a substitute for that test decision.",
+        ctaLabel: "Biomarker testing decision",
+        ctaHref:
+          "/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment",
+      },
+      {
+        id: "meaning-second",
+        body: "If recommendations differ across specialists or centers, a focused second opinion can clarify which landscape direction fits — confirmation included.",
+        ctaLabel: "Second opinion guide",
+        ctaHref:
+          "/questions/should-i-get-second-opinion-after-lung-cancer-diagnosis",
+      },
+    ],
   },
 
   orientFirst: {

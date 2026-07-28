@@ -27,6 +27,7 @@ export const BREAST_UNDERSTANDING_SUBTYPE = {
   },
 
   anchors: [
+    { label: "Next decision", href: "#decision-meaning" },
     { label: "Subtypes", href: "#type-map" },
     { label: "Why it matters", href: "#why-it-matters" },
     { label: "Pathology", href: "#pathology-report" },
@@ -47,6 +48,32 @@ export const BREAST_UNDERSTANDING_SUBTYPE = {
       "Subtype is one important piece of the decision — not the whole plan. Stage, health, goals, and personal priorities still matter.",
     close:
       "The useful next step is not memorizing every assay name. It is confirming your receptor and HER2 status — and asking whether pending results would change the next decision.",
+  },
+
+  decisionMeaning: {
+    id: "decision-meaning",
+    title: "What this means for your next breast cancer decision",
+    lead: "Subtype opens medicine families and sequencing questions — it does not choose surgery by itself.",
+    passages: [
+      {
+        id: "meaning-systemic",
+        body: "Once receptor and HER2 status are clear, the next useful fork is often which systemic option families fit your subtype — not a ranked list of drug brand names.",
+        ctaLabel: "Systemic options by subtype",
+        ctaHref: `/questions/${BREAST_TREATMENT_COMPARE_SLUG}`,
+      },
+      {
+        id: "meaning-sequencing",
+        body: "Subtype and stage together often decide whether medicines should start before surgery or after. Ask what sequencing is trying to achieve before locking an operation date.",
+        ctaLabel: "Treatment sequencing decision",
+        ctaHref: `/questions/${BREAST_SEQUENCING_SLUG}`,
+      },
+      {
+        id: "meaning-waiting",
+        body: "If subtype results are still pending, ask whether major sequencing or surgery decisions should wait. Waiting for biology that changes the plan is different from delaying care without a reason.",
+        ctaLabel: "Subtype testing decision",
+        ctaHref: `/questions/${BREAST_SUBTYPE_SLUG}`,
+      },
+    ],
   },
 
   typeMap: {

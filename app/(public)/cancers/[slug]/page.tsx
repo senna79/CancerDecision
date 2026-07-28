@@ -27,7 +27,11 @@ import {
   PROSTATE_SITUATION_BUCKETS,
 } from "@/lib/journey/situation-buckets";
 import { getCancerDecisionCenter, getCancers } from "@/lib/queries";
-import { articleJsonLd, breadcrumbJsonLd } from "@/lib/seo/json-ld";
+import {
+  articleJsonLd,
+  breadcrumbJsonLd,
+  faqJsonLd,
+} from "@/lib/seo/json-ld";
 import { isIndexableCancerSlug } from "@/lib/seo/indexing";
 import { BREAST_HUB_FAQS } from "@/lib/content/breast-hub-faq";
 import { PROSTATE_HUB_FAQS } from "@/lib/content/prostate-hub-faq";
@@ -128,6 +132,11 @@ export default async function CancerDecisionCenterPage({
   const activeMoment = hasSituationNav
     ? getDecisionMoment(momentParam, cancer.slug)
     : null;
+  const hubFaqs = isProstate
+    ? PROSTATE_HUB_FAQS
+    : isBreast
+      ? BREAST_HUB_FAQS
+      : null;
 
   return (
     <div className="mx-auto w-full max-w-6xl px-5 py-10 md:px-8">
@@ -145,6 +154,16 @@ export default async function CancerDecisionCenterPage({
             dateModified: cancer.content_reviewed_at,
             datePublished: cancer.created_at,
           }),
+          ...(hubFaqs
+            ? [
+                faqJsonLd(
+                  hubFaqs.map((item) => ({
+                    question: item.question,
+                    answer: item.answer,
+                  }))
+                ),
+              ]
+            : []),
         ]}
       />
       <Breadcrumbs
@@ -229,27 +248,25 @@ export default async function CancerDecisionCenterPage({
                 reading list.
               </p>
               <ul className="mt-5 space-y-4">
-                {(isProstate ? PROSTATE_HUB_FAQS : BREAST_HUB_FAQS).map(
-                  (item) => (
-                    <li
-                      key={item.question}
-                      className="border-t border-[var(--line)]/80 pt-4 first:border-t-0 first:pt-0"
+                {(hubFaqs ?? []).map((item) => (
+                  <li
+                    key={item.question}
+                    className="border-t border-[var(--line)]/80 pt-4 first:border-t-0 first:pt-0"
+                  >
+                    <h3 className="font-heading text-base font-semibold tracking-[-0.02em] text-[var(--ink)]">
+                      {item.question}
+                    </h3>
+                    <p className="mt-1.5 text-sm leading-relaxed text-[var(--ink-soft)]">
+                      {item.answer}
+                    </p>
+                    <Link
+                      href={item.href}
+                      className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
                     >
-                      <h3 className="font-heading text-base font-semibold tracking-[-0.02em] text-[var(--ink)]">
-                        {item.question}
-                      </h3>
-                      <p className="mt-1.5 text-sm leading-relaxed text-[var(--ink-soft)]">
-                        {item.answer}
-                      </p>
-                      <Link
-                        href={item.href}
-                        className="mt-2 inline-block text-sm font-semibold text-[var(--accent)] hover:underline"
-                      >
-                        {item.cta}
-                      </Link>
-                    </li>
-                  )
-                )}
+                      {item.cta}
+                    </Link>
+                  </li>
+                ))}
               </ul>
             </section>
           ) : null}

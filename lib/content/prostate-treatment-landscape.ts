@@ -28,6 +28,7 @@ export const PROSTATE_TREATMENT_LANDSCAPE = {
   },
 
   anchors: [
+    { label: "Next decision", href: "#decision-meaning" },
     { label: "Treatment map", href: "#treatment-map" },
     { label: "How doctors choose", href: "#how-doctors-choose" },
     { label: "Approaches", href: "#approaches" },
@@ -47,6 +48,32 @@ export const PROSTATE_TREATMENT_LANDSCAPE = {
     ],
     close:
       "The right discussion depends on your situation — not on which treatment name sounds strongest.",
+  },
+
+  decisionMeaning: {
+    id: "decision-meaning",
+    title: "What this means for your next prostate cancer decision",
+    lead: "Enter one Decision Path from this map — do not try to choose every modality at once.",
+    passages: [
+      {
+        id: "meaning-surveillance",
+        body: "If monitoring could still fit, settle the surveillance-versus-treatment fork before diving into surgery-versus-radiation technique names. Skipping that fork is a common source of overwhelm.",
+        ctaLabel: "Active surveillance decision",
+        ctaHref: `/questions/${PROSTATE_SURVEILLANCE_SLUG}`,
+      },
+      {
+        id: "meaning-compare",
+        body: "When definitive therapy is on the table, compare surgery and radiation by cancer control, function tradeoffs, and recovery calendar — not by which option sounds stronger online.",
+        ctaLabel: "Surgery vs radiation",
+        ctaHref: `/questions/${PROSTATE_TREATMENT_COMPARE_SLUG}`,
+      },
+      {
+        id: "meaning-second",
+        body: "If urology and radiation oncology frame the same landscape differently, a focused second opinion can clarify where they disagree — confirmation included.",
+        ctaLabel: "Second opinion guide",
+        ctaHref: `/questions/${PROSTATE_SECOND_OPINION_SLUG}`,
+      },
+    ],
   },
 
   orientFirst: {

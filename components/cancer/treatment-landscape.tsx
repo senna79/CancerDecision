@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DecisionMeaningSection } from "@/components/cancer/decision-meaning-section";
 import { DoctorChecklistTakeaway } from "@/components/question/ai-entry/doctor-checklist-takeaway";
 import { BREAST_TREATMENT_LANDSCAPE } from "@/lib/content/breast-treatment-landscape";
 import { LUNG_TREATMENT_LANDSCAPE } from "@/lib/content/lung-treatment-landscape";
@@ -91,6 +92,8 @@ export function TreatmentLandscape({
           </p>
         </div>
       </section>
+
+      <DecisionMeaningSection content={content.decisionMeaning} />
 
       <section
         id={content.orientFirst.id}

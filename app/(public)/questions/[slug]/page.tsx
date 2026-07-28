@@ -118,7 +118,10 @@ export default async function QuestionPage({
   const relatedEntries = entryMeta ? getRelatedAiEntries(entryMeta) : [];
   const flagship = getAiEntryFlagshipModules(question.slug);
   const entryV2 = usesEntryTemplateV2(question.slug);
-  const graphNode = getDecisionGraphNodeByAiEntrySlug(question.slug);
+  const graphNode = getDecisionGraphNodeByAiEntrySlug(
+    question.slug,
+    cancer?.slug
+  );
   const pageDescription =
     question.seo_description || question.summary.slice(0, 160);
   const graphRelatedLinks = graphNode
@@ -179,7 +182,9 @@ export default async function QuestionPage({
                 ? [
                     cancer?.slug === "breast-cancer"
                       ? "breast cancer decision journey"
-                      : "lung cancer decision journey",
+                      : cancer?.slug === "prostate-cancer"
+                        ? "prostate cancer decision journey"
+                        : "lung cancer decision journey",
                   ]
                 : []),
               ...(aiEntry ? ["decision entry", "patient navigation"] : []),

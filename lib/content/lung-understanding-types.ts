@@ -19,6 +19,7 @@ export const LUNG_UNDERSTANDING_TYPES = {
   },
 
   anchors: [
+    { label: "Next decision", href: "#decision-meaning" },
     { label: "Types", href: "#type-map" },
     { label: "Why it matters", href: "#why-it-matters" },
     { label: "Pathology", href: "#pathology-report" },
@@ -39,6 +40,35 @@ export const LUNG_UNDERSTANDING_TYPES = {
       "Your cancer type is one important piece of the decision — not the only one.",
     close:
       "The useful next step is not memorizing every subtype. It is confirming your type and asking how it shapes the conversation ahead.",
+  },
+
+  decisionMeaning: {
+    id: "decision-meaning",
+    title: "What this means for your next lung cancer decision",
+    lead: "Type is orientation — not a treatment choice. Use it to ask better next questions.",
+    passages: [
+      {
+        id: "meaning-biomarkers",
+        body: "For many non-small cell lung cancers, knowing the type should trigger a clear ask about biomarker testing before locking systemic therapy — type alone does not decide which drug family fits.",
+        ctaLabel: "Biomarker testing decision",
+        ctaHref:
+          "/questions/do-i-need-biomarker-testing-before-lung-cancer-treatment",
+      },
+      {
+        id: "meaning-compare",
+        body: "Once type and stage are clearer, the useful comparison is often surgery versus systemic therapy for your situation — not which option sounds strongest online.",
+        ctaLabel: "Compare treatment options",
+        ctaHref:
+          "/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer",
+      },
+      {
+        id: "meaning-first-steps",
+        body: "If you were just diagnosed, confirm type and what results are still pending before choosing a full treatment plan. Orientation first reduces rushing the wrong fork.",
+        ctaLabel: "Newly diagnosed guide",
+        ctaHref:
+          "/questions/what-decisions-matter-most-after-new-lung-cancer-diagnosis",
+      },
+    ],
   },
 
   typeMap: {

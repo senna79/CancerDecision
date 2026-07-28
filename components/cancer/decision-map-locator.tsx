@@ -84,17 +84,17 @@ export function DecisionMapLocator({
   const graph = LUNG_DECISION_GRAPH;
   const fallbackId = graph.nodes[0]?.id ?? "node-diagnosis";
   const current =
-    getDecisionGraphNodeById(activeNodeId ?? fallbackId) ??
-    getDecisionGraphNodeById(fallbackId);
+    getDecisionGraphNodeById(activeNodeId ?? fallbackId, graph) ??
+    getDecisionGraphNodeById(fallbackId, graph);
 
   if (!current) return null;
 
   const previous = current.previous[0]
-    ? getDecisionGraphNodeById(current.previous[0].id)
+    ? getDecisionGraphNodeById(current.previous[0].id, graph)
     : null;
   const nextNodes = current.next
     .slice(0, 2)
-    .map((link) => getDecisionGraphNodeById(link.id))
+    .map((link) => getDecisionGraphNodeById(link.id, graph))
     .filter((n): n is DecisionGraphNode => Boolean(n));
 
   const cards: Array<{

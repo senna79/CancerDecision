@@ -26,6 +26,7 @@ export const PROSTATE_UNDERSTANDING_RISK = {
   },
 
   anchors: [
+    { label: "Next decision", href: "#decision-meaning" },
     { label: "Risk map", href: "#type-map" },
     { label: "Why it matters", href: "#why-it-matters" },
     { label: "Your report", href: "#pathology-report" },
@@ -46,6 +47,32 @@ export const PROSTATE_UNDERSTANDING_RISK = {
       "Risk group is one important piece of the decision — not the whole plan. Health, life expectancy, function priorities, and personal goals still matter.",
     close:
       "The useful next step is not memorizing every risk label. It is confirming your risk group in plain language — and asking whether pending results would change monitoring versus treatment.",
+  },
+
+  decisionMeaning: {
+    id: "decision-meaning",
+    title: "What this means for your next prostate cancer decision",
+    lead: "Risk group points to the first fork — monitor or treat — not to a single “best” treatment name.",
+    passages: [
+      {
+        id: "meaning-surveillance",
+        body: "Lower-risk and some favorable intermediate features more often put active surveillance on the table. Ask whether structured monitoring fits your risk group — and what would end it — before locking surgery or radiation.",
+        ctaLabel: "Active surveillance decision",
+        ctaHref: `/questions/${PROSTATE_SURVEILLANCE_SLUG}`,
+      },
+      {
+        id: "meaning-compare",
+        body: "When definitive therapy is recommended, risk group frames how urgently to compare surgery and radiation — including urinary, sexual, and bowel tradeoffs that matter to you.",
+        ctaLabel: "Surgery vs radiation",
+        ctaHref: `/questions/${PROSTATE_TREATMENT_COMPARE_SLUG}`,
+      },
+      {
+        id: "meaning-waiting",
+        body: "If MRI, pathology review, or staging is still pending, ask whether the monitoring-versus-treatment decision should wait until the risk picture is clear enough.",
+        ctaLabel: "Newly diagnosed guide",
+        ctaHref: `/questions/${PROSTATE_NEWLY_DIAGNOSED_SLUG}`,
+      },
+    ],
   },
 
   typeMap: {

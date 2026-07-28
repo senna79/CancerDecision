@@ -29,6 +29,7 @@ export const BREAST_TREATMENT_LANDSCAPE = {
   },
 
   anchors: [
+    { label: "Next decision", href: "#decision-meaning" },
     { label: "Treatment map", href: "#treatment-map" },
     { label: "How doctors choose", href: "#how-doctors-choose" },
     { label: "Approaches", href: "#approaches" },
@@ -48,6 +49,32 @@ export const BREAST_TREATMENT_LANDSCAPE = {
     ],
     close:
       "The right discussion depends on your situation — not on which treatment name sounds strongest.",
+  },
+
+  decisionMeaning: {
+    id: "decision-meaning",
+    title: "What this means for your next breast cancer decision",
+    lead: "Use this landscape to enter one Decision Path — not to collect every treatment name at once.",
+    passages: [
+      {
+        id: "meaning-sequencing",
+        body: "Before comparing every drug or operation, ask whether treatment should start before or after surgery for your subtype and stage. That order often changes what local options look like.",
+        ctaLabel: "Treatment sequencing decision",
+        ctaHref: `/questions/${BREAST_SEQUENCING_SLUG}`,
+      },
+      {
+        id: "meaning-surgery",
+        body: "When both conservation and mastectomy may be reasonable, compare medical fit, radiation, reconstruction, and personal priorities — not which surgery sounds stronger online.",
+        ctaLabel: "Lumpectomy vs mastectomy",
+        ctaHref: `/questions/${BREAST_SURGERY_SLUG}`,
+      },
+      {
+        id: "meaning-systemic",
+        body: "Systemic choices usually start from subtype. Open the systemic Decision Path when you need option families and trade-offs — not a flat drug ranking.",
+        ctaLabel: "Systemic options by subtype",
+        ctaHref: `/questions/${BREAST_TREATMENT_COMPARE_SLUG}`,
+      },
+    ],
   },
 
   orientFirst: {

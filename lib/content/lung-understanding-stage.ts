@@ -19,6 +19,7 @@ export const LUNG_UNDERSTANDING_STAGE = {
   },
 
   anchors: [
+    { label: "Next decision", href: "#decision-meaning" },
     { label: "What stage describes", href: "#what-stage-describes" },
     { label: "Stage map", href: "#stage-map" },
     { label: "Why it matters", href: "#why-it-matters" },
@@ -40,6 +41,35 @@ export const LUNG_UNDERSTANDING_STAGE = {
     bodyClose: null as string | null,
     close:
       "The useful question is not “What number am I?” It is “What does my stage mean for the options we should discuss?”",
+  },
+
+  decisionMeaning: {
+    id: "decision-meaning",
+    title: "What this means for your next lung cancer decision",
+    lead: "Stage shapes which option families enter the conversation — it does not pick a single treatment by itself.",
+    passages: [
+      {
+        id: "meaning-surgery",
+        body: "Earlier-stage discussions often ask whether surgery can be part of the plan. That depends on location, fitness, and whether removal is realistic — not on stage number alone.",
+        ctaLabel: "Surgery decision",
+        ctaHref:
+          "/questions/should-surgery-be-part-of-my-lung-cancer-treatment-plan",
+      },
+      {
+        id: "meaning-compare",
+        body: "When local and systemic options are both on the table, compare what each path is trying to achieve for your stage — not which name sounds more aggressive.",
+        ctaLabel: "Compare treatment options",
+        ctaHref:
+          "/questions/how-to-compare-surgery-and-systemic-therapy-lung-cancer",
+      },
+      {
+        id: "meaning-stage-iv",
+        body: "If stage describes advanced or metastatic disease, the next decision is usually goal clarity and option families for Stage IV — not repeating an early-stage playbook.",
+        ctaLabel: "Stage IV decision guide",
+        ctaHref:
+          "/questions/how-to-choose-treatment-options-for-stage-iv-lung-cancer",
+      },
+    ],
   },
 
   whatStageDescribes: {

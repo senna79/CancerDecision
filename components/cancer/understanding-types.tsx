@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DecisionMeaningSection } from "@/components/cancer/decision-meaning-section";
 import { DoctorChecklistTakeaway } from "@/components/question/ai-entry/doctor-checklist-takeaway";
 import { BREAST_UNDERSTANDING_SUBTYPE } from "@/lib/content/breast-understanding-subtype";
 import { LUNG_UNDERSTANDING_TYPES } from "@/lib/content/lung-understanding-types";
@@ -98,6 +99,8 @@ export function UnderstandingTypes({
           </p>
         </div>
       </section>
+
+      <DecisionMeaningSection content={content.decisionMeaning} />
 
       <section
         id={content.typeMap.id}

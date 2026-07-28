@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DecisionMeaningSection } from "@/components/cancer/decision-meaning-section";
 import { DoctorChecklistTakeaway } from "@/components/question/ai-entry/doctor-checklist-takeaway";
 import { BREAST_UNDERSTANDING_STAGE } from "@/lib/content/breast-understanding-stage";
 import { LUNG_UNDERSTANDING_STAGE } from "@/lib/content/lung-understanding-stage";
@@ -91,6 +92,8 @@ export function UnderstandingStage({
           </p>
         </div>
       </section>
+
+      <DecisionMeaningSection content={content.decisionMeaning} />
 
       <section
         id={content.whatStageDescribes.id}

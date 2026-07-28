@@ -4,6 +4,7 @@
  */
 
 import { isRetiredBreastQuestionSlug } from "@/lib/content/breast-entry-slugs";
+import { isThinProstateQuestionSlug } from "@/lib/content/prostate-entry-slugs";
 import { isRetiredLungQuestionSlug } from "@/lib/seo/retired-lung-questions";
 
 /** @deprecated Prefer INDEXABLE_CANCER_SLUGS — kept for older call sites. */
@@ -51,7 +52,10 @@ export function isIndexableCancerSlug(
   );
 }
 
-/** Indexable question pages for lung / breast / prostate (minus retired orphans). */
+/**
+ * Indexable question pages for lung / breast / prostate
+ * (minus retired orphans and thin prostate stubs awaiting Template v2).
+ */
 export function isIndexableQuestionSlug(
   questionSlug: string,
   cancerSlug: string | null | undefined
@@ -59,6 +63,7 @@ export function isIndexableQuestionSlug(
   if (!isIndexableCancerSlug(cancerSlug)) return false;
   if (isRetiredLungQuestionSlug(questionSlug)) return false;
   if (isRetiredBreastQuestionSlug(questionSlug)) return false;
+  if (isThinProstateQuestionSlug(questionSlug)) return false;
   return true;
 }
 
