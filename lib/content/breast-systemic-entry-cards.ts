@@ -17,17 +17,17 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "Start with your subtype label in plain language before comparing drug names online.",
   },
   notDrugMenu: {
-    lead: "A useful systemic decision is not “pick the strongest drug from a menu.” It is “which option families fit my subtype, stage, and goals — and what trade-offs am I accepting?”",
+    lead: "A useful systemic decision is not “pick the strongest drug from a menu in breast cancer.” It is “which option families fit my subtype, stage, and goals — and what trade-offs am I accepting?”",
     close:
       "Ask what each recommendation is trying to achieve, not only what it is called.",
   },
   sequencing: {
-    lead: "Systemic therapy may start before surgery (neoadjuvant) or after surgery (adjuvant). Timing can change what you learn and when surgery happens.",
+    lead: "Systemic therapy may start before surgery (neoadjuvant) or after surgery (adjuvant) in breast cancer. Timing can change what you learn and when surgery happens.",
     close:
       "If before-vs-after surgery timing is still open, clarify sequencing alongside which systemic families are being discussed.",
   },
   hrPositive: {
-    lead: "ER+/PR+/HER2− (hormone receptor–positive, HER2-negative) usually means endocrine therapy is central. Chemotherapy, ovarian suppression, CDK4/6 inhibitors, or other agents may still enter depending on stage and risk — HER2-targeted therapy is not the lead fork here.",
+    lead: "ER+/PR+/HER2− (hormone receptor–positive, HER2-negative) usually means endocrine therapy is central in breast cancer. Chemotherapy, ovarian suppression, CDK4/6 inhibitors, or other agents may still enter depending on stage and risk — HER2-targeted therapy is not the lead fork here.",
     items: [
       "Endocrine therapy is often a long-duration backbone",
       "Chemotherapy may or may not add enough benefit — ask why it is or is not recommended",
@@ -48,7 +48,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "Ask whether CDK4/6 therapy fits your subtype, stage, and goals — not whether the drug class exists in general.",
   },
   erGoodOrBad: {
-    lead: "Estrogen receptor–positive (ER+) is not simply “good” or “bad.” It usually means endocrine (hormone) therapy belongs in the conversation — which can be a helpful treatment path — while stage, grade, HER2 status, and genomic risk still shape how serious the situation is and whether chemotherapy is added.",
+    lead: "Estrogen receptor–positive (ER+) is not simply “good” or “bad in breast cancer.” It usually means endocrine (hormone) therapy belongs in the conversation — which can be a helpful treatment path — while stage, grade, HER2 status, and genomic risk still shape how serious the situation is and whether chemotherapy is added.",
     ask: [
       "For my ER status, what does that open or change in the plan?",
       "Does PR and HER2 status change how we interpret ER+?",
@@ -78,7 +78,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "Ask for your eligibility and goal in plain language — “TNBC” alone does not mean immunotherapy is next.",
   },
   her2Positive: {
-    lead: "HER2-positive treatment usually includes HER2-targeted therapy as a core part of the systemic plan, often combined with chemotherapy, and sometimes sequenced before or after surgery. Exact protocol names and durations vary by stage and response.",
+    lead: "HER2-positive treatment usually includes HER2-targeted therapy as a core part of the systemic plan, often combined with chemotherapy, and sometimes sequenced before or after surgery in breast cancer. Exact protocol names and durations vary by stage and response.",
     items: [
       "HER2-targeted therapy is not the same as generic “chemo”",
       "Duration, combinations, and heart monitoring differ by stage and response",
@@ -89,7 +89,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "Ask: “What is the HER2-targeted part trying to achieve — and how will we know if the plan is working?” — not only for a protocol name online.",
   },
   whenChemo: {
-    lead: "Chemotherapy is recommended when the expected benefit outweighs the burden for your situation. Doctors weigh subtype, stage/nodes, tumor features, genomic assays (when relevant), and overall health — not a single internet rule.",
+    lead: "Chemotherapy is recommended when the expected benefit outweighs the burden for your situation in breast cancer. Doctors weigh subtype, stage/nodes, tumor features, genomic assays (when relevant), and overall health — not a single internet rule.",
     ask: [
       "For my subtype and stage, what tips a chemo recommendation — or against it?",
       "Would a genomic assay change whether chemo is discussed?",
@@ -99,7 +99,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "Ask what factors tip your plan. Stage alone or a neighbor’s story is not enough.",
   },
   stage1Chemo: {
-    lead: "Stage 1 does not automatically mean “no chemo” or “must have chemo.” Some Stage 1 cancers are treated with surgery and endocrine or HER2-targeted therapy without chemo; others still include chemo based on subtype, size, grade, nodes, and genomic risk.",
+    lead: "Stage 1 does not automatically mean “no chemo” or “must have chemo in breast cancer.” Some Stage 1 cancers are treated with surgery and endocrine or HER2-targeted therapy without chemo; others still include chemo based on subtype, size, grade, nodes, and genomic risk.",
     ask: [
       "For my Stage 1 cancer, what tips chemo yes vs no?",
       "Does my subtype (HR+, HER2+, TNBC) change that answer?",
@@ -119,7 +119,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "Ask whether it applies to your age, subtype, and risk — not whether the term appears in general articles.",
   },
   skipEndocrine: {
-    lead: "If your cancer is hormone receptor–positive, endocrine (hormone) therapy is often part of the plan after lumpectomy — alongside surgery and usually radiation. Skipping it is a risk-tradeoff conversation, not a routine default.",
+    lead: "If your breast cancer is hormone receptor–positive, endocrine (hormone) therapy is often part of the plan after lumpectomy — alongside surgery and usually radiation. Skipping it is a risk-tradeoff conversation, not a routine default.",
     ask: [
       "If I skip endocrine therapy after lumpectomy, how does my risk change?",
       "Are there side-effect or fertility reasons to adjust duration or medicine?",
@@ -149,7 +149,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "Ask what tips your Stage 1 TNBC plan — subtype still matters more than the Stage number alone.",
   },
   tnbc: {
-    lead: "If your cancer is triple-negative (ER, PR, and HER2 negative), chemotherapy often leads the systemic discussion. Immunotherapy may be added in selected situations — ask whether it applies to you.",
+    lead: "If your breast cancer is triple-negative (ER, PR, and HER2 negative), chemotherapy often leads the systemic discussion. Immunotherapy may be added in selected situations — ask whether it applies to you.",
     items: [
       "Chemo regimens and sequencing (before vs after surgery) are common decision points",
       "Immunotherapy is not automatic for every TNBC diagnosis",
@@ -160,7 +160,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "Ask: “For my TNBC, which systemic approach is recommended — and is immunotherapy or a trial part of the discussion?”",
   },
   goals: {
-    lead: "Before comparing drug names, clarify the goal of systemic therapy in your sequence:",
+    lead: "For breast cancer, before comparing drug names, clarify the goal of systemic therapy in your sequence:",
     items: [
       "Cure-intent / reduce recurrence risk after local treatment",
       "Shrink disease before surgery and assess response",
@@ -171,7 +171,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "The same medicine family can serve different goals depending on stage and timing.",
   },
   genomic: {
-    lead: "For some early HR+ / HER2− cancers, genomic assays (often discussed as Oncotype DX–class and similar tests) help estimate whether chemotherapy adds enough benefit beyond endocrine therapy.",
+    lead: "For some early HR+ / HER2− cancers, genomic assays (often discussed as Oncotype DX–class and similar tests) help estimate whether chemotherapy adds enough benefit beyond endocrine therapy in breast cancer.",
     ask: [
       "Is Oncotype or another genomic assay relevant for my situation?",
       "Would the result change whether we discuss chemotherapy?",
@@ -181,7 +181,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "Not everyone needs this assay. Ask whether it would change your chemo decision — not whether the brand name exists.",
   },
   sideEffects: {
-    lead: "Side-effect profiles differ by family — endocrine symptoms, chemo effects, HER2-therapy heart monitoring, immunotherapy immune-related effects.",
+    lead: "Side-effect profiles differ by family — endocrine symptoms, chemo effects, HER2-therapy heart monitoring, immunotherapy immune-related effects in breast cancer.",
     ask: [
       "What side effects are most common for the plan you recommend?",
       "Which effects should make me call urgently?",
@@ -189,7 +189,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
     ],
   },
   timeline: {
-    lead: "Ask for a plain-language calendar: how long therapy lasts, visit frequency, and how it fits around surgery if relevant.",
+    lead: "Ask for a plain-language calendar: how long therapy lasts, visit frequency, and how it fits around surgery if relevant in breast cancer.",
     ask: [
       "How long would each part of the plan last?",
       "What does a typical treatment week look like?",
@@ -197,7 +197,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
     ],
   },
   fertility: {
-    lead: "If future pregnancy matters to you, fertility preservation is often discussed before chemotherapy, ovarian suppression, or other treatments that can affect fertility. Timing matters — raise it before locking the first systemic step.",
+    lead: "If future pregnancy matters to you, fertility preservation is often discussed before chemotherapy, ovarian suppression, or other treatments that can affect fertility in breast cancer. Timing matters — raise it before locking the first systemic step.",
     ask: [
       "Should I see a fertility specialist before starting treatment?",
       "What preservation options fit my timeline and cancer plan?",
@@ -207,7 +207,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "Ask early. Fertility goals are medical information — not a side conversation after treatment starts.",
   },
   thisWeek: {
-    lead: "If systemic options are the decision in front of you, focus on:",
+    lead: "For breast cancer, if systemic options are the decision in front of you, focus on:",
     steps: [
       "Confirm your subtype in plain language (HR+ / HER2+ / TNBC — and combinations)",
       "Ask which option families fit that subtype — and the goal of each",
@@ -217,7 +217,7 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
       "Subtype + goal + sequence beats memorizing every drug brand name.",
   },
   mistakes: {
-    lead: "Common systemic-therapy mistakes include:",
+    lead: "For breast cancer, common systemic-therapy mistakes include:",
     items: [
       {
         mistake: "Comparing drug names without knowing your subtype fork",

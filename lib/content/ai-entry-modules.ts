@@ -531,19 +531,19 @@ export const NEWLY_DIAGNOSED_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Need cancer-type orientation?",
+      title: "Need lung cancer type orientation?",
       question: "What type of lung cancer do I have?",
       cta: "Understanding Types",
       href: "/cancers/lung-cancer/understanding-types",
     },
     {
-      title: "Wondering about biomarkers?",
+      title: "Wondering about lung cancer biomarkers?",
       question: "Do I need biomarker testing before choosing treatment?",
       cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a lung cancer decision?",
       question: "Should I get a second opinion after lung cancer diagnosis?",
       cta: "Second opinion",
       href: SECOND_OPINION,
@@ -766,19 +766,19 @@ export const SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Need more information first?",
+      title: "Need more lung cancer information first?",
       question: "Do I need biomarker testing before lung cancer treatment?",
       cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
-      title: "Comparing treatments?",
+      title: "Comparing lung cancer treatments?",
       question: "How should I compare lung cancer treatment options?",
       cta: "Treatment options",
       href: TREATMENT_COMPARE,
     },
     {
-      title: "Considering surgery?",
+      title: "Considering lung cancer surgery?",
       question: "Should surgery be part of my lung cancer treatment plan?",
       cta: "Surgery decision",
       href: SURGERY,
@@ -1127,19 +1127,19 @@ export const BIOMARKER_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Related decisions",
   relatedPaths: [
     {
-      title: "Recently diagnosed?",
+      title: "Recently diagnosed with lung cancer?",
       question: "What should I do first after a lung cancer diagnosis?",
       cta: "New diagnosis next steps",
       href: NEW_DIAGNOSIS,
     },
     {
-      title: "Unsure about your current plan?",
+      title: "Unsure about your current lung cancer plan?",
       question: "Should I get a second opinion after lung cancer diagnosis?",
       cta: "Second opinion",
       href: SECOND_OPINION,
     },
     {
-      title: "Comparing treatments?",
+      title: "Comparing lung cancer treatments?",
       question: "How should I compare lung cancer treatment options?",
       cta: "Treatment options",
       href: TREATMENT_COMPARE,
@@ -1373,19 +1373,19 @@ export const TREATMENT_COMPARISON_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Need more information first?",
+      title: "Need more lung cancer information first?",
       question: "Do I need biomarker testing before lung cancer treatment?",
       cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
-      title: "Wondering about surgery?",
+      title: "Wondering about lung cancer surgery?",
       question: "Should surgery be part of my lung cancer treatment plan?",
       cta: "Surgery decision",
       href: SURGERY,
     },
     {
-      title: "Wondering about a trial?",
+      title: "Wondering about a lung cancer trial?",
       question: "Should I consider a clinical trial for lung cancer?",
       cta: "Clinical trials",
       href: CLINICAL_TRIAL,
@@ -1594,25 +1594,25 @@ export const CARE_CENTER_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Need more confidence on a specific plan?",
+      title: "Need more confidence on a specific lung cancer plan?",
       question: "Should I get a second opinion after lung cancer diagnosis?",
       cta: "Second opinion",
       href: SECOND_OPINION,
     },
     {
-      title: "Wondering about biomarkers?",
+      title: "Wondering about lung cancer biomarkers?",
       question: "Do I need biomarker testing before choosing treatment?",
       cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
-      title: "Ready to compare approaches?",
+      title: "Ready to compare lung cancer approaches?",
       question: "How should I compare lung cancer treatment options?",
       cta: "Treatment options",
       href: TREATMENT_COMPARE,
     },
     {
-      title: "Considering a trial?",
+      title: "Considering a lung cancer trial?",
       question: "Should I consider a clinical trial for lung cancer?",
       cta: "Clinical trials",
       href: CLINICAL_TRIAL,
@@ -1812,25 +1812,25 @@ export const STAGE_IV_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Wondering about biomarkers?",
+      title: "Wondering about lung cancer biomarkers?",
       question: "Do I need biomarker testing before choosing treatment?",
       cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
-      title: "Ready to compare approaches?",
+      title: "Ready to compare lung cancer approaches?",
       question: "How should I compare lung cancer treatment options?",
       cta: "Treatment options",
       href: TREATMENT_COMPARE,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a lung cancer decision?",
       question: "Should I get a second opinion after lung cancer diagnosis?",
       cta: "Second opinion",
       href: SECOND_OPINION,
     },
     {
-      title: "Want daily life in the decision?",
+      title: "Want daily life in the lung cancer decision?",
       question: "How should quality of life factor into lung cancer decisions?",
       cta: "Quality of life",
       href: QUALITY_OF_LIFE,
@@ -2025,19 +2025,19 @@ export const CLINICAL_TRIAL_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Comparing treatments?",
+      title: "Comparing lung cancer treatments?",
       question: "How should I compare lung cancer treatment options?",
       cta: "Treatment options",
       href: TREATMENT_COMPARE,
     },
     {
-      title: "Need more information first?",
+      title: "Need more lung cancer information first?",
       question: "Do I need biomarker testing before lung cancer treatment?",
       cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
-      title: "Facing a treatment change?",
+      title: "Facing a lung cancer treatment change?",
       question:
         "What are my options if lung cancer treatment is no longer working?",
       cta: "Treatment changes",
@@ -2237,20 +2237,20 @@ export const RECURRENCE_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Facing a treatment change?",
+      title: "Facing a lung cancer treatment change?",
       question:
         "What are my options if lung cancer treatment is no longer working?",
       cta: "Treatment change",
       href: TREATMENT_PROGRESSION,
     },
     {
-      title: "Wondering about a trial?",
+      title: "Wondering about a lung cancer trial?",
       question: "Should I consider a clinical trial for lung cancer?",
       cta: "Clinical trials",
       href: CLINICAL_TRIAL,
     },
     {
-      title: "Need more confidence?",
+      title: "Need more confidence in a lung cancer decision?",
       question: "Should I get a second opinion after lung cancer diagnosis?",
       cta: "Second opinion",
       href: SECOND_OPINION,
@@ -2450,19 +2450,19 @@ export const TREATMENT_PROGRESSION_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Wondering about a trial?",
+      title: "Wondering about a lung cancer trial?",
       question: "Should I consider a clinical trial for lung cancer?",
       cta: "Clinical trials",
       href: CLINICAL_TRIAL,
     },
     {
-      title: "Need more confidence?",
+      title: "Need more confidence in a lung cancer decision?",
       question: "Should I get a second opinion after lung cancer diagnosis?",
       cta: "Second opinion",
       href: SECOND_OPINION,
     },
     {
-      title: "Need updated information?",
+      title: "Need updated lung cancer information?",
       question: "Do I need biomarker testing before lung cancer treatment?",
       cta: "Biomarker testing",
       href: BIOMARKER,
@@ -2686,19 +2686,19 @@ export const SURGERY_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Need more information first?",
+      title: "Need more lung cancer information first?",
       question: "Do I need biomarker testing before lung cancer treatment?",
       cta: "Biomarker testing",
       href: BIOMARKER,
     },
     {
-      title: "Comparing treatments?",
+      title: "Comparing lung cancer treatments?",
       question: "How should I compare lung cancer treatment options?",
       cta: "Treatment options",
       href: TREATMENT_COMPARE,
     },
     {
-      title: "Wondering about a trial?",
+      title: "Wondering about a lung cancer trial?",
       question: "Should I consider a clinical trial for lung cancer?",
       cta: "Clinical trials",
       href: CLINICAL_TRIAL,
@@ -2892,19 +2892,19 @@ export const QUALITY_OF_LIFE_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Finished treatment?",
+      title: "Finished lung cancer treatment?",
       question: "How do I monitor my health after lung cancer treatment?",
       cta: "Follow-up",
       href: FOLLOW_UP,
     },
     {
-      title: "Facing recurrence?",
+      title: "Facing lung cancer recurrence?",
       question: "What are my options if lung cancer comes back?",
       cta: "Recurrence",
       href: RECURRENCE,
     },
     {
-      title: "Need more confidence?",
+      title: "Need more confidence in a lung cancer decision?",
       question: "Should I get a second opinion after lung cancer diagnosis?",
       cta: "Second opinion",
       href: SECOND_OPINION,
@@ -3096,20 +3096,20 @@ export const FOLLOW_UP_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Facing recurrence?",
+      title: "Facing lung cancer recurrence?",
       question: "What are my options if lung cancer comes back?",
       cta: "Recurrence",
       href: RECURRENCE,
     },
     {
-      title: "Treatment changing?",
+      title: "Lung cancer treatment changing?",
       question:
         "What are my options if lung cancer treatment is no longer working?",
       cta: "Treatment change",
       href: TREATMENT_PROGRESSION,
     },
     {
-      title: "Balancing daily life?",
+      title: "Balancing daily life with lung cancer treatment?",
       question: "How do I balance lung cancer treatment and quality of life?",
       cta: "Quality of life",
       href: QUALITY_OF_LIFE,
@@ -3278,19 +3278,19 @@ export const TREATMENT_FEASIBILITY_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue where practical fit usually matters",
   relatedPaths: [
     {
-      title: "Where care happens?",
+      title: "Where should lung cancer care happen?",
       question: "How do I choose the right lung cancer care team?",
       cta: "Care Team",
       href: CARE_CENTER,
     },
     {
-      title: "Which option fits a real week?",
+      title: "Which lung cancer option fits a real week?",
       question: "How should I compare lung cancer treatment options?",
       cta: "Treatment Options",
       href: TREATMENT_COMPARE,
     },
     {
-      title: "Is the burden sustainable?",
+      title: "Is the lung cancer treatment burden sustainable?",
       question: "How should quality of life factor into lung cancer decisions?",
       cta: "Quality of Life",
       href: QUALITY_OF_LIFE,
@@ -3513,19 +3513,19 @@ export const BRAIN_METS_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Facing advanced disease choices?",
+      title: "Facing Stage IV lung cancer choices?",
       question: "How do I choose treatment options for Stage IV lung cancer?",
       cta: "Stage IV options",
       href: STAGE_IV,
     },
     {
-      title: "Need another review?",
+      title: "Need another lung cancer review?",
       question: "Should I get a second opinion after lung cancer diagnosis?",
       cta: "Second opinion",
       href: SECOND_OPINION,
     },
     {
-      title: "Balancing daily life?",
+      title: "Balancing daily life with lung cancer treatment?",
       question:
         "How should quality of life factor into lung cancer decisions?",
       cta: "Quality of life",
@@ -3729,25 +3729,25 @@ export const GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your lung cancer decision journey",
   relatedPaths: [
     {
-      title: "Choosing who coordinates care?",
+      title: "Choosing who coordinates lung cancer care?",
       question: "Do I need a different lung cancer center or specialized expertise?",
       cta: "Care team",
       href: CARE_CENTER,
     },
     {
-      title: "Need confidence on a specific plan?",
+      title: "Need confidence on a specific lung cancer plan?",
       question: "Should I get a second opinion after lung cancer diagnosis?",
       cta: "Second opinion",
       href: SECOND_OPINION,
     },
     {
-      title: "Considering a trial?",
+      title: "Considering a lung cancer trial?",
       question: "Should I consider a clinical trial for lung cancer?",
       cta: "Clinical trials",
       href: CLINICAL_TRIAL,
     },
     {
-      title: "Worried about travel and real life?",
+      title: "Worried about travel and real life with lung cancer?",
       question: "Can my lung cancer treatment plan work with my real life?",
       cta: "Treatment fit",
       href: COST_LOGISTICS,

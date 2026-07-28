@@ -7,7 +7,7 @@ export const BREAST_PRACTICAL_FIT_ENTRY_CARDS = {
       "A medically appropriate option also needs to be one you can realistically follow through surgery, medicines, radiation, and recovery.",
   },
   notPrices: {
-    lead: "This guide does not list prices, insurance rules, or hospital rankings. Those change by place and plan.",
+    lead: "This guide does not list prices, insurance rules, or hospital rankings in breast cancer. Those change by place and plan.",
     close:
       "The useful step is naming constraints early with your care team — then opening the decision page that fits your question.",
   },

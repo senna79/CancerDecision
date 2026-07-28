@@ -2,7 +2,7 @@
 
 export const CLINICAL_TRIAL_ENTRY_CARDS = {
   notLastResort: {
-    lead: "Many people believe a trial means standard treatment has failed. That is a common misunderstanding.",
+    lead: "Many people believe a trial means standard treatment has failed in lung cancer. That is a common misunderstanding.",
     when: [
       "Newly diagnosed",
       "Comparing initial treatments",
@@ -12,11 +12,11 @@ export const CLINICAL_TRIAL_ENTRY_CARDS = {
     close: "The right time depends on your situation — not only on “running out of options.”",
   },
   askEarly: {
-    lead: "For some patients, discussing trials early may help identify possible options before decisions are locked.",
+    lead: "For some patients, discussing trials early may help identify possible options before decisions are locked in lung cancer.",
     ask: "Are there clinical trials that should be considered before choosing my treatment plan?",
   },
   notTestSubject: {
-    lead: "Clinical trials involve research, but they follow structured safety processes.",
+    lead: "Clinical trials involve research, but they follow structured safety processes in lung cancer.",
     understand: [
       "What is being studied",
       "What is known",
@@ -26,7 +26,7 @@ export const CLINICAL_TRIAL_ENTRY_CARDS = {
     close: "You decide whether participation fits your situation.",
   },
   notQualify: {
-    lead: "Clinical trials have eligibility requirements designed for safety and research accuracy.",
+    lead: "Clinical trials have eligibility requirements designed for safety and research accuracy in lung cancer.",
     mayInvolve: [
       "Cancer type",
       "Biomarker results",
@@ -36,11 +36,11 @@ export const CLINICAL_TRIAL_ENTRY_CARDS = {
     close: "Not qualifying does not mean there are no other options.",
   },
   biomarkers: {
-    lead: "Some trials look for specific cancer characteristics. Biomarker results may help determine whether certain trials are relevant.",
+    lead: "Some trials look for specific cancer characteristics in lung cancer. Biomarker results may help determine whether certain trials are relevant.",
     ask: "Are there biomarkers that could affect my trial options?",
   },
   replaceCurrent: {
-    lead: "Sometimes a trial is studied as an alternative approach. Sometimes it is combined with standard treatment.",
+    lead: "Sometimes a trial is studied as an alternative approach in lung cancer. Sometimes it is combined with standard treatment.",
     depends: [
       "Trial design",
       "Your cancer situation",
@@ -48,7 +48,7 @@ export const CLINICAL_TRIAL_ENTRY_CARDS = {
     ],
   },
   notAutomaticallyBetter: {
-    lead: "A clinical trial is not automatically better than standard treatment.",
+    lead: "A clinical trial is not automatically better than standard treatment in lung cancer.",
     mayOffer: [
       "Access to a treatment being studied",
       "Another possible option",
@@ -57,7 +57,7 @@ export const CLINICAL_TRIAL_ENTRY_CARDS = {
     close: "It may also involve uncertainty. Ask: “Does this option make sense for me?”",
   },
   risks: {
-    lead: "Possible considerations include:",
+    lead: "For lung cancer, possible considerations include:",
     items: [
       "Unknown effectiveness",
       "Side effects",
@@ -67,11 +67,11 @@ export const CLINICAL_TRIAL_ENTRY_CARDS = {
     close: "Your team should explain what is known and what remains uncertain.",
   },
   dailyLife: {
-    lead: "Participation may involve more visits, additional scans or tests, travel, and schedule changes.",
+    lead: "Participation may involve more visits, additional scans or tests, travel, and schedule changes in lung cancer.",
     ask: "What would my normal week look like during this trial?",
   },
   ifNotWorking: {
-    lead: "Before joining, understand what happens next.",
+    lead: "Before joining, understand what happens next in lung cancer.",
     ask: [
       "What happens if the treatment is not effective?",
       "What options remain afterward?",
@@ -80,7 +80,7 @@ export const CLINICAL_TRIAL_ENTRY_CARDS = {
     close: "Understanding the next step is part of the decision.",
   },
   mistakes: {
-    lead: "Common mistakes include:",
+    lead: "For lung cancer, common mistakes include:",
     items: [
       {
         mistake: "Waiting too long to ask",
@@ -97,15 +97,15 @@ export const CLINICAL_TRIAL_ENTRY_CARDS = {
     ],
   },
   family: {
-    lead: "Many patients discuss trials with family because decisions may involve travel, schedules, support needs, and uncertainty.",
+    lead: "Many patients discuss trials with family because decisions may involve travel, schedules, support needs, and uncertainty in lung cancer.",
     close: "Your care team can help explain the practical impact.",
   },
   secondOpinion: {
-    lead: "A second opinion may help when the trial decision is complex, multiple options exist, or you want more confidence.",
+    lead: "A second opinion may help when the trial decision is complex, multiple options exist, or you want more confidence in lung cancer.",
     close: "The goal is better understanding — not delaying care unnecessarily.",
   },
   nearMe: {
-    lead: "Start with your care team — they often know which trials fit your situation and which centers are practical.",
+    lead: "Start with your care team — they often know which trials fit your situation and which centers are practical in lung cancer.",
     items: [
       "Ask what trials are open at your center or partner hospitals",
       "Ask whether travel or hybrid participation is required",

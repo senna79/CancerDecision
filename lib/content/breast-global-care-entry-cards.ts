@@ -12,7 +12,7 @@ export const BREAST_GLOBAL_CARE_ENTRY_CARDS = {
       "Desperation alone (“one last try”) is understandable — but it is not a reason to book flights. Tie the next step to a clear question an outside center can answer.",
   },
   defaultUpgrade: {
-    lead: "No. Care in another city or country is not automatically better because a hospital or country is more famous. It is worth exploring when access, trust, cost, or support makes the current path hard to continue.",
+    lead: "For breast cancer, no. Care in another city or country is not automatically better because a hospital or country is more famous. It is worth exploring when access, trust, cost, or support makes the current path hard to continue.",
     close:
       "If you cannot name your reason in one sentence, pause before booking travel.",
   },
@@ -28,16 +28,16 @@ export const BREAST_GLOBAL_CARE_ENTRY_CARDS = {
       "Write it as: “I am looking for ___ because where I am we cannot ___.”",
   },
   vsCareTeam: {
-    lead: "Choosing a care team asks who should coordinate ongoing care. Considering another city or country asks whether a specific capability requires leaving home — for a visit, a procedure, or a trial.",
+    lead: "Choosing a care team asks who should coordinate ongoing care in breast cancer. Considering another city or country asks whether a specific capability requires leaving home — for a visit, a procedure, or a trial.",
     close:
       "You may use both: evaluate local vs specialist teams first, then decide whether travel is needed for a named gap.",
   },
   vsSecondOpinion: {
-    lead: "A second opinion is another expert review of a decision. Travel is a logistics choice after you know whether the review (or treatment) must happen in person.",
+    lead: "A second opinion is another expert review of a decision in breast cancer. Travel is a logistics choice after you know whether the review (or treatment) must happen in person.",
     close: "Remote second opinion often comes before flights — not after.",
   },
   remoteFirst: {
-    lead: "When clinically safe, start with remote review of records and imaging. Many centers will tell you whether an in-person visit would change options.",
+    lead: "When clinically safe, start with remote review of records and imaging in breast cancer. Many centers will tell you whether an in-person visit would change options.",
     items: [
       "Lower cost and burden than immediate travel",
       "Clarifies whether the access gap is real",
@@ -47,7 +47,7 @@ export const BREAST_GLOBAL_CARE_ENTRY_CARDS = {
       "Travel is most useful after remote review suggests a concrete next step you cannot get where you are.",
   },
   hybrid: {
-    lead: "Many people travel for planning, a procedure, trial screening, or reconstruction consult — then continue infusions, radiation, or follow-up where it fits their life.",
+    lead: "Many people travel for planning, a procedure, trial screening, or reconstruction consult — then continue infusions, radiation, or follow-up where it fits their life in breast cancer.",
     items: [
       "Receiving center — focused review, complex decision, or procedure",
       "Ongoing care — systemic therapy, radiation, or monitoring arranged where practical",
@@ -56,7 +56,7 @@ export const BREAST_GLOBAL_CARE_ENTRY_CARDS = {
       "Ask the receiving center’s international desk what they own after the visit and what they put in writing.",
   },
   records: {
-    lead: "For an international or remote review, incomplete files are a common reason the center cannot help. Aim for a package that includes:",
+    lead: "For an international or remote review, incomplete files are a common reason the center cannot help in breast cancer. Aim for a package that includes:",
     items: [
       "Pathology and biopsy reports (and slides if requested)",
       "Imaging reports plus scan images when available",
@@ -69,7 +69,7 @@ export const BREAST_GLOBAL_CARE_ENTRY_CARDS = {
       "A complete packet answers more than a famous hospital name.",
   },
   thisWeek: {
-    lead: "If you are exploring care elsewhere, focus on:",
+    lead: "For breast cancer, if you are exploring care elsewhere, focus on:",
     steps: [
       "Write your reason in one sentence (access, confidence, cost, or missing path)",
       "Ask whether remote review can answer that question first",
@@ -79,7 +79,7 @@ export const BREAST_GLOBAL_CARE_ENTRY_CARDS = {
       "Name the gap before anyone books flights.",
   },
   mistakes: {
-    lead: "Common mistakes when considering care abroad include:",
+    lead: "For breast cancer, common mistakes when considering care abroad include:",
     items: [
       {
         mistake: "Booking travel before naming the capability gap",

@@ -7,12 +7,12 @@ export const BRAIN_METS_ENTRY_CARDS = {
       "It is a new piece of information about where the cancer is, not an automatic verdict about what happens next. The next decision starts with understanding the brain findings and the rest of your situation together.",
   },
   stillOptions: {
-    lead: "Not necessarily. Brain involvement changes the conversation, but it does not automatically mean there are no options.",
+    lead: "Not necessarily in lung cancer. Brain involvement changes the conversation, but it does not automatically mean there are no options.",
     close:
       "Doctors often still discuss local treatment for the brain when appropriate, systemic therapy for cancer elsewhere, clinical trials, supportive care for symptoms, or a combination. The useful question is which approaches fit your situation now — not whether any path exists.",
   },
   scanVsSymptoms: {
-    lead: "Not always the same decision. Some people learn about brain findings from a scan before symptoms appear. Others notice neurologic symptoms first.",
+    lead: "Not always the same decision in lung cancer. Some people learn about brain findings from a scan before symptoms appear. Others notice neurologic symptoms first.",
     items: [
       "Scan findings without major symptoms — timing and goals may still matter",
       "Symptoms such as headache, weakness, speech changes, or seizures — symptom control may be urgent even while treatment options are compared",
@@ -22,7 +22,7 @@ export const BRAIN_METS_ENTRY_CARDS = {
       "Ask: “Are we deciding about symptoms, about cancer control, or both right now?”",
   },
   urgent: {
-    lead: "Some neurologic changes need urgent medical attention first — before a longer decision conversation.",
+    lead: "Some neurologic changes need urgent medical attention first — before a longer decision conversation in lung cancer.",
     items: [
       "Sudden severe headache, confusion, or loss of consciousness",
       "New weakness, facial droop, or trouble speaking",
@@ -33,7 +33,7 @@ export const BRAIN_METS_ENTRY_CARDS = {
       "This page helps you prepare for the next planned conversation. It is not a substitute for emergency care when symptoms are sudden or severe.",
   },
   whatMatters: {
-    lead: "Before choosing a path, teams usually want a clear picture of:",
+    lead: "For lung cancer, before choosing a path, teams usually want a clear picture of:",
     items: [
       "How many brain lesions are present, and where",
       "Whether there are symptoms that need prompt control",
@@ -46,17 +46,17 @@ export const BRAIN_METS_ENTRY_CARDS = {
       "Sometimes the most important next step is not picking a treatment immediately — it is making sure the team has the information that would change the options.",
   },
   numberLocation: {
-    lead: "Yes. Number, size, and location of brain findings often affect which local approaches are discussed — and whether local treatment is the main focus or part of a broader plan.",
+    lead: "For lung cancer, yes. Number, size, and location of brain findings often affect which local approaches are discussed — and whether local treatment is the main focus or part of a broader plan.",
     close:
       "You do not need to memorize every technique. Ask what the imaging shows in plain language, and how that picture changes the options on the table.",
   },
   bodyDisease: {
-    lead: "Often, yes. A brain-directed plan and a plan for cancer elsewhere in the body are frequently considered together.",
+    lead: "For lung cancer, often, yes. A brain-directed plan and a plan for cancer elsewhere in the body are frequently considered together.",
     close:
       "Controlling disease outside the brain may matter as much as treating the brain findings. Ask how the team is balancing both.",
   },
   biomarkers: {
-    lead: "They still can. Biomarker or molecular results may affect systemic options even when brain metastases are present.",
+    lead: "They still can. Biomarker or molecular results may affect systemic options even when lung cancer brain metastases are present.",
     ask: [
       "Do we already have biomarker results that guide treatment?",
       "Would updated testing change the options we discuss now?",
@@ -64,7 +64,7 @@ export const BRAIN_METS_ENTRY_CARDS = {
     ],
   },
   whoInvolved: {
-    lead: "Brain metastases decisions often involve more than one specialty. Depending on the situation, your team may include:",
+    lead: "lung cancer brain metastases decisions often involve more than one specialty. Depending on the situation, your team may include:",
     items: [
       "Medical oncology — systemic treatment and overall plan",
       "Radiation oncology — focused or broader brain radiation discussions",
@@ -75,17 +75,17 @@ export const BRAIN_METS_ENTRY_CARDS = {
       "Ask who is coordinating the plan, and who decides if recommendations differ.",
   },
   localOptions: {
-    lead: "Local treatments aim at the brain findings themselves. Doctors may discuss approaches such as focused radiation, broader brain radiation, or surgery in selected situations.",
+    lead: "Local treatments aim at the brain findings themselves in lung cancer. Doctors may discuss approaches such as focused radiation, broader brain radiation, or surgery in selected situations.",
     close:
       "Which option is considered depends on the imaging, symptoms, overall disease, and goals — not on a single “best” technique for everyone. Ask what local options are realistic for you, and why.",
   },
   systemicOptions: {
-    lead: "Systemic treatments treat cancer through the bloodstream and may be discussed for disease outside the brain — and sometimes for brain involvement, depending on the cancer and available therapies.",
+    lead: "Systemic treatments treat cancer through the bloodstream and may be discussed for disease outside the brain — and sometimes for brain involvement, depending on lung cancer and available therapies.",
     close:
       "Ask whether the next systemic option is expected to help the brain findings, disease elsewhere, or both — and what that means for sequencing with local treatment.",
   },
   howCompare: {
-    lead: "Compare each realistic approach with the same questions:",
+    lead: "For lung cancer, compare each realistic approach with the same questions:",
     items: [
       "Goal — control growth, relieve symptoms, protect function, or buy time for another option?",
       "Expected benefit — for the brain, for the rest of the body, or both?",
@@ -97,7 +97,7 @@ export const BRAIN_METS_ENTRY_CARDS = {
       "The goal is not “find the strongest treatment.” It is “find the approach that best fits my situation now.”",
   },
   dailyLife: {
-    lead: "Brain-directed care can affect daily life even when it is the right medical discussion. Common practical topics include:",
+    lead: "Brain-directed care can affect daily life even when it is the right medical discussion in lung cancer. Common practical topics include:",
     items: [
       "Steroids — why they are used, side effects, and the plan to taper",
       "Thinking, memory, fatigue, or mood changes during treatment",
@@ -108,7 +108,7 @@ export const BRAIN_METS_ENTRY_CARDS = {
       "These topics belong in the decision — not only after a plan is chosen.",
   },
   trial: {
-    lead: "Clinical trials may be worth discussing when brain metastases are part of the picture — especially if standard options are limited or your cancer has specific features.",
+    lead: "Clinical trials may be worth discussing when brain metastases are part of the picture — especially if standard options are limited or your lung cancer has specific features.",
     ask: [
       "Does this trial allow people with brain metastases?",
       "How does it compare with the standard options we are discussing?",
@@ -116,7 +116,7 @@ export const BRAIN_METS_ENTRY_CARDS = {
     ],
   },
   mistakes: {
-    lead: "Common challenges include:",
+    lead: "For lung cancer, common challenges include:",
     items: [
       {
         mistake: "Assuming brain involvement means there are no options",
@@ -137,7 +137,7 @@ export const BRAIN_METS_ENTRY_CARDS = {
     ],
   },
   family: {
-    lead: "Families often want clarity on:",
+    lead: "For lung cancer, families often want clarity on:",
     topics: [
       "What the brain findings mean in plain language",
       "What decisions are needed now versus later",
@@ -148,7 +148,7 @@ export const BRAIN_METS_ENTRY_CARDS = {
       "It can help to name one priority together: control cancer, relieve symptoms, protect independence — or a balance of these.",
   },
   records: {
-    lead: "Bring what you can so the discussion stays concrete:",
+    lead: "For lung cancer, bring what you can so the discussion stays concrete:",
     items: [
       "Brain imaging reports (and images if available)",
       "Recent body staging scans",
@@ -159,7 +159,7 @@ export const BRAIN_METS_ENTRY_CARDS = {
     close: "These records help the team compare options instead of guessing.",
   },
   secondOpinion: {
-    lead: "A second opinion can be useful when brain metastases decisions involve several specialties, unclear sequencing, or major trade-offs.",
+    lead: "A second opinion can be useful when lung cancer brain metastases decisions involve several specialties, unclear sequencing, or major trade-offs.",
     mayHelp: [
       "Clarify whether local treatment, systemic therapy, or both should lead",
       "Review whether key information is already complete",

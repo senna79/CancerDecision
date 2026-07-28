@@ -2,7 +2,7 @@
 
 export const TREATMENT_OPTIONS_ENTRY_CARDS = {
   approaches: {
-    lead: "Treatment approaches generally fall into several categories. The relevant options depend on your individual situation.",
+    lead: "Treatment approaches generally fall into several categories in lung cancer. The relevant options depend on your individual situation.",
     types: [
       {
         name: "Surgery",
@@ -31,7 +31,7 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     ],
   },
   combined: {
-    lead: "Doctors may combine treatments because different approaches can serve different purposes.",
+    lead: "Doctors may combine treatments because different approaches can serve different purposes in lung cancer.",
     examples: [
       "One treatment may reduce visible cancer",
       "Another may address cancer cells that cannot be seen",
@@ -40,7 +40,7 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     ask: "What role does each treatment play in my plan?",
   },
   newer: {
-    lead: "Newer does not always mean better for every person.",
+    lead: "Newer does not always mean better for every person in lung cancer.",
     match: [
       "Your cancer characteristics",
       "Expected benefit",
@@ -50,7 +50,7 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     ask: "Why is this treatment a good fit for me?",
   },
   differentPeople: {
-    lead: "Treatment decisions depend on more than cancer type. Differences may include:",
+    lead: "Treatment decisions depend on more than cancer type in lung cancer. Differences may include:",
     factors: [
       "Stage",
       "Biomarkers",
@@ -66,12 +66,12 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     ask: "Could biomarker results change the options we are comparing?",
   },
   lessAggressive: {
-    lead: "More treatment is not always better.",
+    lead: "More treatment is not always better in lung cancer.",
     body: "Doctors consider whether the expected benefit outweighs side effects, recovery burden, and impact on quality of life.",
     close: "The goal is appropriate treatment, not simply maximum treatment.",
   },
   compareTradeoffs: {
-    lead: "A useful comparison includes:",
+    lead: "For lung cancer, a useful comparison includes:",
     points: [
       "Benefit — what outcome is expected?",
       "Risk — what challenges or side effects may occur?",
@@ -80,7 +80,7 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     close: "Ask your care team to explain the tradeoffs clearly.",
   },
   qualityOfLife: {
-    lead: "Yes. Treatment decisions often consider:",
+    lead: "For lung cancer, yes. Treatment decisions often consider:",
     factors: [
       "Ability to work",
       "Family responsibilities",
@@ -91,18 +91,18 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     close: "Your priorities are part of the decision.",
   },
   practicalCompare: {
-    lead: "For each option, also ask about visit frequency, travel, recovery time, work impact, and support needed at home.",
+    lead: "For each option, also ask about visit frequency, travel, recovery time, work impact, and support needed at home in lung cancer.",
     close:
       "Two medically reasonable options can differ a lot in how livable they are week to week.",
   },
   cantManage: {
-    lead: "Say so early. Teams may discuss local treatment, schedule changes, supportive services, or another approach that still fits your goals.",
+    lead: "Say so early in lung cancer. Teams may discuss local treatment, schedule changes, supportive services, or another approach that still fits your goals.",
     close: "A plan only works if it can be followed.",
     nextHref: "/questions/can-my-lung-cancer-treatment-plan-work-with-my-real-life",
     nextLabel: "Open Practical Fit — cost, travel, time, and support →",
   },
   ifNotWorking: {
-    lead: "Treatment decisions can change over time. If a treatment is not working as expected, doctors may consider:",
+    lead: "Treatment decisions can change over time in lung cancer. If a treatment is not working as expected, doctors may consider:",
     options: [
       "Another treatment approach",
       "Additional testing",
@@ -112,7 +112,7 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     close: "The first decision is not always the last decision.",
   },
   takeTime: {
-    lead: "The timing depends on your specific situation.",
+    lead: "The timing depends on your specific situation in lung cancer.",
     ask: [
       "How urgent is this decision?",
       "What information are we waiting for?",
@@ -121,7 +121,7 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     close: "Understanding the timeline can help you decide with confidence.",
   },
   mistakes: {
-    lead: "Common challenges include:",
+    lead: "For lung cancer, common challenges include:",
     items: [
       {
         mistake: "Choosing based only on what worked for someone else",
@@ -139,7 +139,7 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     close: "A good decision considers the whole picture.",
   },
   secondOpinion: {
-    lead: "A second opinion may help you better understand available options, the reasons behind the recommendation, and possible alternatives.",
+    lead: "A second opinion may help you better understand available options, the reasons behind the recommendation, and possible alternatives in lung cancer.",
     when: [
       "Multiple treatments seem possible",
       "The decision feels complex",
@@ -147,7 +147,7 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     ],
   },
   clinicalTrial: {
-    lead: "Clinical trials may provide access to treatments being studied.",
+    lead: "Clinical trials may provide access to treatments being studied in lung cancer.",
     ask: [
       "Are there trials suitable for my situation?",
       "What are the possible benefits and risks?",
@@ -155,7 +155,7 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     ],
   },
   chemoVsImmuno: {
-    lead: "Chemotherapy and immunotherapy are different tools — not simply “stronger” vs “gentler.”",
+    lead: "Chemotherapy and immunotherapy are different tools — not simply “stronger” vs “gentler in lung cancer.”",
     items: [
       "Chemotherapy uses medicines that affect rapidly dividing cells, including cancer cells",
       "Immunotherapy helps the immune system recognize and attack cancer cells",
@@ -167,7 +167,7 @@ export const TREATMENT_OPTIONS_ENTRY_CARDS = {
     ],
   },
   targetedVsImmuno: {
-    lead: "Targeted therapy and immunotherapy also work differently.",
+    lead: "Targeted therapy and immunotherapy also work differently in lung cancer.",
     items: [
       "Targeted therapy uses specific cancer features (biomarkers) to guide medicine choice",
       "Immunotherapy engages the immune system; biomarkers such as PD-L1 may affect discussion",

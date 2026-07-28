@@ -2,11 +2,11 @@
 
 export const NEWLY_DIAGNOSED_ENTRY_CARDS = {
   moreTests: {
-    lead: "A biopsy may confirm cancer, but additional information may be needed to understand cancer type, stage, and which options should be discussed.",
+    lead: "A biopsy may confirm cancer, but additional information may be needed to understand cancer type, stage, and which options should be discussed in lung cancer.",
     close: "Different decisions require different information.",
   },
   notImmediate: {
-    lead: "Because the best treatment depends on a more complete picture. Doctors may need information about:",
+    lead: "Because the best treatment depends on a more complete picture in lung cancer. Doctors may need information about:",
     factors: [
       "Cancer characteristics",
       "How far the cancer has spread",
@@ -15,16 +15,16 @@ export const NEWLY_DIAGNOSED_ENTRY_CARDS = {
     close: "Waiting for key information is not the same as having no plan.",
   },
   biomarker: {
-    lead: "For some patients, biomarker information may affect which treatments are discussed.",
+    lead: "For some patients, biomarker information may affect which treatments are discussed in lung cancer.",
     ask: "Would biomarker results change the options we consider?",
   },
   waiting: {
-    lead: "Not every delay is the same. Doctors balance the need for information with the urgency of treatment.",
+    lead: "Not every delay is the same in lung cancer. Doctors balance the need for information with the urgency of treatment.",
     ask: "How urgent is my situation?",
     close: "Ask what needs to happen quickly — and what can wait for results.",
   },
   focusFirst: {
-    lead: "Usually the first focus is:",
+    lead: "For lung cancer, usually the first focus is:",
     steps: [
       "Understand your diagnosis",
       "Complete important testing",
@@ -33,12 +33,12 @@ export const NEWLY_DIAGNOSED_ENTRY_CARDS = {
     close: "Your care team can help identify the next step for you.",
   },
   notExpert: {
-    lead: "No. Your first goal is not to become an expert.",
+    lead: "For lung cancer, no. Your first goal is not to become an expert.",
     close:
       "Your goal is to understand what you know, what you don’t know, and what questions to ask.",
   },
   thisWeek: {
-    lead: "Focus on three things:",
+    lead: "For lung cancer, focus on three things:",
     steps: [
       "Understand your diagnosis",
       "Collect your medical information",
@@ -47,11 +47,11 @@ export const NEWLY_DIAGNOSED_ENTRY_CARDS = {
     close: "You do not need to solve the entire journey immediately.",
   },
   secondOpinion: {
-    lead: "A second opinion can be helpful, especially when decisions are complex, surgery is being considered, or multiple options exist.",
+    lead: "A second opinion can be helpful, especially when decisions are complex, surgery is being considered, or multiple options exist in lung cancer.",
     close: "It is about confidence, not distrust.",
   },
   records: {
-    lead: "Keep copies of:",
+    lead: "For lung cancer, keep copies of:",
     items: [
       "Pathology report",
       "Imaging reports",
@@ -62,12 +62,12 @@ export const NEWLY_DIAGNOSED_ENTRY_CARDS = {
     close: "These records help throughout your cancer journey.",
   },
   overwhelmed: {
-    lead: "Yes. A diagnosis brings medical uncertainty and emotional stress.",
+    lead: "For lung cancer, yes. A diagnosis brings medical uncertainty and emotional stress.",
     close:
       "A structured next-step plan can help reduce the feeling of being lost.",
   },
   startRightAway: {
-    lead: "Not always. Some situations need prompt action; others benefit from waiting for key information first.",
+    lead: "For lung cancer, not always. Some situations need prompt action; others benefit from waiting for key information first.",
     ask: [
       "How urgent is my situation?",
       "What needs to happen this week?",
@@ -77,7 +77,7 @@ export const NEWLY_DIAGNOSED_ENTRY_CARDS = {
       "Ask for a clear timeline — rushing and waiting both have trade-offs.",
   },
   askOncologist: {
-    lead: "Focus on questions that clarify your next decision — not every possible detail.",
+    lead: "Focus on questions that clarify your next decision — not every possible detail in lung cancer.",
     ask: [
       "What type and stage of lung cancer do I have?",
       "What additional information do we still need?",
@@ -89,7 +89,7 @@ export const NEWLY_DIAGNOSED_ENTRY_CARDS = {
     close: "Bring a written list. One clear next step beats fifty unanswered questions.",
   },
   askThoracic: {
-    lead: "If surgery is being discussed, a thoracic surgeon conversation should clarify fit — not only technique.",
+    lead: "If surgery is being discussed, a thoracic surgeon conversation should clarify fit — not only technique in lung cancer.",
     ask: [
       "Is surgery appropriate for my situation, and what is the goal?",
       "What are the alternatives if I do not have surgery?",

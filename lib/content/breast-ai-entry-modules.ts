@@ -218,21 +218,21 @@ export const BREAST_NEWLY_DIAGNOSED_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Waiting on biology results?",
+      title: "Waiting on breast cancer biology results?",
       question:
         "Do I need breast cancer subtype results before choosing treatment?",
       cta: "Subtype testing",
       href: BREAST_SUBTYPE,
     },
     {
-      title: "Wondering about daily life?",
+      title: "Wondering how breast cancer treatment affects daily life?",
       question:
         "How should quality of life factor into breast cancer decisions?",
       cta: "Quality of life",
       href: BREAST_QOL,
     },
     {
-      title: "Unsure about timing?",
+      title: "Unsure about breast cancer treatment timing?",
       question:
         "Should breast cancer treatment start before or after surgery?",
       cta: "Treatment sequencing",
@@ -454,21 +454,21 @@ export const BREAST_SUBTYPE_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Still orienting after diagnosis?",
+      title: "Still orienting after a breast cancer diagnosis?",
       question:
         "What decisions matter most after a new breast cancer diagnosis?",
       cta: "Newly diagnosed",
       href: BREAST_NEW,
     },
     {
-      title: "Unsure about timing?",
+      title: "Unsure about breast cancer treatment timing?",
       question:
         "Should breast cancer treatment start before or after surgery?",
       cta: "Treatment sequencing",
       href: BREAST_SEQUENCING,
     },
     {
-      title: "Comparing surgery options?",
+      title: "Comparing breast cancer surgery options?",
       question: "How should I choose between lumpectomy and mastectomy?",
       cta: "Surgery choice",
       href: BREAST_SURGERY,
@@ -690,20 +690,20 @@ export const BREAST_SEQUENCING_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Still waiting on biology?",
+      title: "Still waiting on breast cancer biology?",
       question:
         "Do I need breast cancer subtype results before choosing treatment?",
       cta: "Subtype testing",
       href: BREAST_SUBTYPE,
     },
     {
-      title: "Comparing surgery options?",
+      title: "Comparing breast cancer surgery options?",
       question: "How should I choose between lumpectomy and mastectomy?",
       cta: "Surgery choice",
       href: BREAST_SURGERY,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
@@ -929,21 +929,21 @@ export const BREAST_SURGERY_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Unsure about timing?",
+      title: "Unsure about breast cancer treatment timing?",
       question:
         "Should breast cancer treatment start before or after surgery?",
       cta: "Treatment sequencing",
       href: BREAST_SEQUENCING,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
       href: BREAST_SECOND,
     },
     {
-      title: "Still clarifying biology?",
+      title: "Still clarifying breast cancer biology?",
       question:
         "Do I need breast cancer subtype results before choosing treatment?",
       cta: "Subtype testing",
@@ -1166,19 +1166,19 @@ export const BREAST_SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Choosing who coordinates care?",
+      title: "Choosing who coordinates breast cancer care?",
       question: "How do I choose a breast cancer care team or center?",
       cta: "Care team / center",
       href: BREAST_CARE_TEAM,
     },
     {
-      title: "Comparing surgery options?",
+      title: "Comparing breast cancer surgery options?",
       question: "How should I choose between lumpectomy and mastectomy?",
       cta: "Surgery choice",
       href: BREAST_SURGERY,
     },
     {
-      title: "Unsure about timing?",
+      title: "Unsure about breast cancer treatment timing?",
       question:
         "Should breast cancer treatment start before or after surgery?",
       cta: "Treatment sequencing",
@@ -1401,21 +1401,21 @@ export const BREAST_SYSTEMIC_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Still clarifying biology?",
+      title: "Still clarifying breast cancer biology?",
       question:
         "Do I need breast cancer subtype results before choosing treatment?",
       cta: "Subtype testing",
       href: BREAST_SUBTYPE,
     },
     {
-      title: "Unsure about timing?",
+      title: "Unsure about breast cancer treatment timing?",
       question:
         "Should breast cancer treatment start before or after surgery?",
       cta: "Treatment sequencing",
       href: BREAST_SEQUENCING,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
@@ -1639,20 +1639,20 @@ export const BREAST_GENETICS_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Choosing the operation?",
+      title: "Choosing the breast cancer operation?",
       question: "How should I compare lumpectomy and mastectomy?",
       cta: "Surgery decision",
       href: BREAST_SURGERY,
     },
     {
-      title: "Still sorting biology?",
+      title: "Still sorting breast cancer biology?",
       question:
         "Do I need my breast cancer subtype results before choosing treatment?",
       cta: "Subtype testing",
       href: BREAST_SUBTYPE,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
@@ -1876,20 +1876,20 @@ export const BREAST_RECONSTRUCTION_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Still choosing the operation?",
+      title: "Still choosing the breast cancer operation?",
       question: "How should I compare lumpectomy and mastectomy?",
       cta: "Surgery decision",
       href: BREAST_SURGERY,
     },
     {
-      title: "Genetics still open?",
+      title: "Is breast cancer genetics counseling still open?",
       question:
         "Do I need genetic counseling before breast cancer surgery?",
       cta: "Genetic counseling",
       href: BREAST_GENETICS,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
@@ -2112,20 +2112,20 @@ export const BREAST_RADIATION_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Still choosing the operation?",
+      title: "Still choosing the breast cancer operation?",
       question: "How should I compare lumpectomy and mastectomy?",
       cta: "Surgery decision",
       href: BREAST_SURGERY,
     },
     {
-      title: "Reconstruction still open?",
+      title: "Is breast reconstruction still an open decision?",
       question:
         "How do breast reconstruction timing and choices fit into the cancer decision?",
       cta: "Reconstruction timing",
       href: BREAST_RECONSTRUCTION,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
@@ -2347,20 +2347,20 @@ export const BREAST_CARE_TEAM_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Need clarity on one decision?",
+      title: "Need clarity on one breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
       href: BREAST_SECOND,
     },
     {
-      title: "Still choosing the operation?",
+      title: "Still choosing the breast cancer operation?",
       question: "How should I compare lumpectomy and mastectomy?",
       cta: "Surgery decision",
       href: BREAST_SURGERY,
     },
     {
-      title: "Genetics still open?",
+      title: "Is breast cancer genetics counseling still open?",
       question:
         "Do I need genetic counseling before breast cancer surgery?",
       cta: "Genetic counseling",
@@ -2582,21 +2582,21 @@ export const BREAST_METASTATIC_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Ready to compare medicine families?",
+      title: "Ready to compare breast cancer medicine families?",
       question:
         "How should I choose systemic therapy options for my breast cancer subtype?",
       cta: "Systemic options",
       href: BREAST_SYSTEMIC,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
       href: BREAST_SECOND,
     },
     {
-      title: "Unsure about the care setup?",
+      title: "Unsure about the breast cancer care setup?",
       question: "How do I choose a breast cancer care team or center?",
       cta: "Care team / center",
       href: BREAST_CARE_TEAM,
@@ -2817,21 +2817,21 @@ export const BREAST_RECURRENCE_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Distant recurrence or Stage IV frame?",
+      title: "Distant recurrence or Stage IV breast cancer frame?",
       question:
         "What are my options for metastatic / Stage IV breast cancer?",
       cta: "Metastatic options",
       href: `/questions/${BREAST_METASTATIC_SLUG}`,
     },
     {
-      title: "Ready to compare medicine families?",
+      title: "Ready to compare breast cancer medicine families?",
       question:
         "How should I choose systemic therapy options for my breast cancer subtype?",
       cta: "Systemic options",
       href: BREAST_SYSTEMIC,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
@@ -3055,21 +3055,21 @@ export const BREAST_QOL_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Still comparing medicine families?",
+      title: "Still comparing breast cancer medicine families?",
       question:
         "How should I choose systemic therapy options for my breast cancer subtype?",
       cta: "Systemic options",
       href: BREAST_SYSTEMIC,
     },
     {
-      title: "Reconstruction timing open?",
+      title: "Is breast reconstruction timing still open?",
       question:
         "How do breast reconstruction timing and choices fit the cancer plan?",
       cta: "Reconstruction",
       href: BREAST_RECONSTRUCTION,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
@@ -3291,21 +3291,21 @@ export const BREAST_CLINICAL_TRIAL_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Comparing medicine families?",
+      title: "Comparing breast cancer medicine families?",
       question:
         "How should I choose systemic therapy options for my breast cancer subtype?",
       cta: "Systemic options",
       href: BREAST_SYSTEMIC,
     },
     {
-      title: "Metastatic decisions open?",
+      title: "Are metastatic breast cancer decisions still open?",
       question:
         "What are my options for metastatic / Stage IV breast cancer?",
       cta: "Metastatic options",
       href: `/questions/${BREAST_METASTATIC_SLUG}`,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
@@ -3485,20 +3485,20 @@ export const BREAST_PRACTICAL_FIT_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue where practical fit usually matters",
   relatedPaths: [
     {
-      title: "Where care happens?",
+      title: "Where should breast cancer care happen?",
       question: "How do I choose a breast cancer care team or center?",
       cta: "Care team",
       href: BREAST_CARE_TEAM,
     },
     {
-      title: "Which option fits a real week?",
+      title: "Which breast cancer option fits a real week?",
       question:
         "How should I choose systemic therapy options for my breast cancer subtype?",
       cta: "Systemic options",
       href: BREAST_SYSTEMIC,
     },
     {
-      title: "Is the burden sustainable?",
+      title: "Is the breast cancer treatment burden sustainable?",
       question:
         "How should quality of life factor into breast cancer decisions?",
       cta: "Quality of life",
@@ -3720,20 +3720,20 @@ export const BREAST_FOLLOW_UP_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Worried cancer might return?",
+      title: "Worried breast cancer might return?",
       question: "What should I sort out if breast cancer comes back?",
       cta: "Recurrence",
       href: `/questions/${BREAST_RECURRENCE_SLUG}`,
     },
     {
-      title: "Balancing daily life after treatment?",
+      title: "Balancing daily life after breast cancer treatment?",
       question:
         "How should quality of life factor into breast cancer decisions?",
       cta: "Quality of life",
       href: `/questions/${BREAST_QOL_SLUG}`,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a breast cancer decision?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
@@ -3958,20 +3958,20 @@ export const BREAST_GLOBAL_CARE_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your breast cancer decision journey",
   relatedPaths: [
     {
-      title: "Choosing who owns ongoing care?",
+      title: "Choosing who owns ongoing breast cancer care?",
       question: "How do I choose a breast cancer care team or center?",
       cta: "Care team",
       href: BREAST_CARE_TEAM,
     },
     {
-      title: "Need clarity on one fork first?",
+      title: "Need clarity on one breast cancer fork first?",
       question:
         "Should I get a second opinion before breast cancer surgery or systemic therapy?",
       cta: "Second opinion",
       href: BREAST_SECOND,
     },
     {
-      title: "Is a trial the missing path?",
+      title: "Is a breast cancer trial the missing path?",
       question: "Should I consider a clinical trial for breast cancer?",
       cta: "Clinical trial",
       href: `/questions/${BREAST_CLINICAL_TRIAL_SLUG}`,

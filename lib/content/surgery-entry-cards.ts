@@ -2,7 +2,7 @@
 
 export const SURGERY_ENTRY_CARDS = {
   candidate: {
-    lead: "Doctors consider surgery when they believe removing the cancer may provide meaningful benefit.",
+    lead: "Doctors consider surgery when they believe removing lung cancer may provide meaningful benefit.",
     factors: [
       "Cancer location",
       "Cancer stage",
@@ -23,7 +23,7 @@ export const SURGERY_ENTRY_CARDS = {
     close: "Each person’s situation is different.",
   },
   cancerGone: {
-    lead: "Surgery aims to remove cancer that can be safely removed.",
+    lead: "Surgery aims to remove cancer that can be safely removed in lung cancer.",
     points: [
       "Some people need additional treatment",
       "Cancer behavior can vary",
@@ -33,7 +33,7 @@ export const SURGERY_ENTRY_CARDS = {
       "Ask your doctor what outcome surgery is expected to achieve in your plan.",
   },
   beforeSurgery: {
-    lead: "Some people receive treatment before surgery.",
+    lead: "Some people receive treatment before surgery in lung cancer.",
     reasons: [
       "Shrink the cancer",
       "Treat cancer cells that may not be visible",
@@ -52,7 +52,7 @@ export const SURGERY_ENTRY_CARDS = {
     ask: "Could biomarker results change the treatment plan we are considering?",
   },
   whenNot: {
-    lead: "Surgery may not be recommended when:",
+    lead: "For lung cancer, surgery may not be recommended when:",
     reasons: [
       "Cancer cannot be safely removed",
       "Another treatment approach may provide more benefit",
@@ -88,7 +88,7 @@ export const SURGERY_ENTRY_CARDS = {
     ],
   },
   recovery: {
-    lead: "Recovery depends on surgery type, surgical approach, and your health before surgery.",
+    lead: "Recovery depends on surgery type, surgical approach, and your health before surgery in lung cancer.",
     ask: [
       "When can I return to normal activities?",
       "What restrictions should I expect?",
@@ -105,7 +105,7 @@ export const SURGERY_ENTRY_CARDS = {
     close: "Your care team can help set realistic expectations.",
   },
   careCenter: {
-    lead: "Expertise can be part of a major surgery decision. Questions you may consider:",
+    lead: "Expertise can be part of a major surgery decision in lung cancer. Questions you may consider:",
     ask: [
       "Does the center regularly treat lung cancer?",
       "Does the team have experience with my type of surgery?",
@@ -113,7 +113,7 @@ export const SURGERY_ENTRY_CARDS = {
     ],
   },
   sbrt: {
-    lead: "SBRT (stereotactic body radiation therapy) is a focused radiation approach sometimes discussed as an alternative to surgery for selected early cancers.",
+    lead: "SBRT (stereotactic body radiation therapy) is a focused radiation approach sometimes discussed as an alternative to surgery for selected early cancers in lung cancer.",
     items: [
       "Surgery removes tissue; SBRT treats a target area with radiation",
       "Fitness for surgery, tumor location, and overall health affect which is discussed",
@@ -125,7 +125,7 @@ export const SURGERY_ENTRY_CARDS = {
     ],
   },
   askSurgeon: {
-    lead: "Before deciding, make the surgery conversation concrete.",
+    lead: "Before deciding, make the surgery conversation concrete in lung cancer.",
     ask: [
       "What is the goal of surgery in my plan?",
       "What are my alternatives if I do not have surgery?",

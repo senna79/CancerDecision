@@ -7,7 +7,7 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
       "It is tumor biology, not a personality label — and it is not the same as germline genetic counseling (BRCA-class testing).",
   },
   lookFor: {
-    lead: "Common pieces of the subtype picture include:",
+    lead: "For breast cancer, common pieces of the subtype picture include:",
     items: [
       "Hormone receptors (ER and/or PR) — whether the cancer may respond to endocrine approaches",
       "HER2 status — whether HER2-targeted options belong in the conversation",
@@ -18,7 +18,7 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
       "You do not need a textbook of every assay name. You need to know which results are back, which are pending, and whether they change the next decision.",
   },
   prPositive: {
-    lead: "PR-positive means the cancer cells have progesterone receptors. Doctors usually interpret PR together with ER and HER2 — not as a stand-alone label. Many PR+ cancers are also ER+ and fall into hormone receptor–positive planning.",
+    lead: "PR-positive means breast cancer cells have progesterone receptors. Doctors usually interpret PR together with ER and HER2 — not as a stand-alone label. Many PR+ cancers are also ER+ and fall into hormone receptor–positive planning.",
     ask: [
       "For my report, what do ER, PR, and HER2 each mean for the plan?",
       "If PR and ER differ, how does that change options?",
@@ -32,12 +32,12 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
     ask: "For my situation, which subtype results matter before we choose a plan — and which can wait?",
   },
   vsGenetics: {
-    lead: "Tumor subtype (ER/PR/HER2) describes the cancer. Germline genetics (for example BRCA-related counseling) describes inherited risk and can change surgery choices for some people.",
+    lead: "Tumor subtype (ER/PR/HER2) describes breast cancer. Germline genetics (for example BRCA-related counseling) describes inherited risk and can change surgery choices for some people.",
     close:
       "Ask about both if either could change your next step — but do not treat them as the same test. Open the genetics guide when surgery timing depends on inherited-risk results.",
   },
   changeOptions: {
-    lead: "Yes, often. Subtype results may change:",
+    lead: "For breast cancer, yes, often. Subtype results may change:",
     items: [
       "Which systemic families are discussed (endocrine, HER2-targeted, chemo, immuno in selected cases)",
       "Whether treatment should start before or after surgery",
@@ -47,7 +47,7 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
       "A result does not automatically pick one drug. It shapes which options belong on the table.",
   },
   biopsyNotEnough: {
-    lead: "A biopsy confirms cancer, but treatment decisions often need more information about the cancer’s biology and extent before locking a first plan.",
+    lead: "A biopsy confirms cancer, but treatment decisions often need more information about breast cancer’s biology and extent before locking a first plan.",
     ask: [
       "What does my biopsy already tell us?",
       "What information is still missing?",
@@ -57,7 +57,7 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
       "Confirming cancer and choosing a full plan are different steps — ask what still needs to be clear.",
   },
   subtypeMeans: {
-    lead: "ER-positive, HER2-positive, and triple-negative describe different cancer biology. They are not a ranking of “better” or “worse” by themselves — they change which decisions come next.",
+    lead: "ER-positive, HER2-positive, and triple-negative describe different cancer biology in breast cancer. They are not a ranking of “better” or “worse” by themselves — they change which decisions come next.",
     items: [
       "Which systemic treatment families are usually discussed",
       "Whether treatment before surgery is more often on the table",
@@ -67,7 +67,7 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
       "Ask: “What does my subtype mean for the decisions I need to make next?” — not only what the label is called.",
   },
   genomic: {
-    lead: "For some early hormone receptor–positive cancers, doctors discuss genomic assays (Oncotype-class and similar) to refine whether chemotherapy adds enough benefit beyond endocrine therapy.",
+    lead: "For some early hormone receptor–positive cancers, doctors discuss genomic assays (Oncotype-class and similar) to refine whether chemotherapy adds enough benefit beyond endocrine therapy in breast cancer.",
     ask: [
       "Is a genomic assay relevant for my situation?",
       "Would the result change whether we discuss chemotherapy?",
@@ -87,7 +87,7 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
       "Waiting for key subtype information is not automatically an unsafe delay.",
   },
   incomplete: {
-    lead: "If receptor or HER2 status is missing or unclear, ask what happens next:",
+    lead: "For breast cancer, if receptor or HER2 status is missing or unclear, ask what happens next:",
     items: [
       "Can existing tissue be re-tested?",
       "Is another sample needed?",
@@ -97,7 +97,7 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
       "Incomplete subtype information is a reason to pause and clarify — not to guess.",
   },
   howDone: {
-    lead: "Subtype information usually comes from pathology testing on biopsy or surgical tissue. Additional assays may use the same sample when enough material remains.",
+    lead: "Subtype information usually comes from pathology testing on biopsy or surgical tissue in breast cancer. Additional assays may use the same sample when enough material remains.",
     items: [
       "Pathology report — ER, PR, HER2 (and related details)",
       "Sometimes repeat or reflex testing if results are borderline",
@@ -106,7 +106,7 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
     close: "Ask what was ordered, what is back, and what is still pending.",
   },
   cost: {
-    lead: "Costs vary by test, lab, and coverage. Use questions instead of guessing a price:",
+    lead: "Costs vary by test, lab, and coverage in breast cancer. Use questions instead of guessing a price:",
     ask: [
       "Which subtype or genomic tests are ordered, and why for this decision?",
       "What is usually covered, and what might we pay out of pocket?",
@@ -114,7 +114,7 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
     ],
   },
   mistakes: {
-    lead: "Common early mistakes include:",
+    lead: "For breast cancer, common early mistakes include:",
     items: [
       {
         mistake: "Locking surgery or systemic therapy before subtype is clear",
@@ -131,7 +131,7 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
     ],
   },
   thisWeek: {
-    lead: "If you are waiting on subtype results, focus on:",
+    lead: "For breast cancer, if you are waiting on subtype results, focus on:",
     steps: [
       "Confirm which tests were ordered and when results are expected",
       "Ask whether pending results would change sequencing or surgery timing",

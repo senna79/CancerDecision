@@ -7,12 +7,12 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "Reconstruction is optional. Choosing not to reconstruct is a valid path when it fits your goals and medical plan.",
   },
   whyInCancerPlan: {
-    lead: "Timing and method can affect recovery, radiation planning, and how many operations you need. Discussing reconstruction early helps the surgical plan fit together — even if you are unsure what you want.",
+    lead: "Timing and method can affect recovery, radiation planning, and how many operations you need in breast cancer. Discussing reconstruction early helps the surgical plan fit together — even if you are unsure what you want.",
     close:
       "You do not need a final aesthetic preference on day one. You do need to know what options exist and what must wait for cancer treatment.",
   },
   whoFaces: {
-    lead: "Reconstruction questions come up most often with mastectomy. After lumpectomy, the conversation is usually different (shape change, oncoplastic techniques) — ask what applies to your operation.",
+    lead: "Reconstruction questions come up most often with mastectomy in breast cancer. After lumpectomy, the conversation is usually different (shape change, oncoplastic techniques) — ask what applies to your operation.",
     items: [
       "Choosing mastectomy and wondering about immediate vs delayed reconstruction",
       "Unsure whether to reconstruct at all",
@@ -23,12 +23,12 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "Ask: “For my cancer plan, which reconstruction paths are realistic — and which should wait?”",
   },
   notRequired: {
-    lead: "Reconstruction is a choice, not a requirement for completing cancer treatment. Some people reconstruct later; some never do; some use a prosthesis externally.",
+    lead: "Reconstruction is a choice, not a requirement for completing breast cancer treatment. Some people reconstruct later; some never do; some use a prosthesis externally.",
     close:
       "A good decision matches medical timing and your priorities — not pressure to “finish” the look immediately.",
   },
   immediateVsDelayed: {
-    lead: "Immediate reconstruction starts at the same operation as mastectomy; delayed reconstruction waits until healing — and often until radiation or other treatments are clearer. Neither is automatically better.",
+    lead: "Immediate reconstruction starts at the same operation as mastectomy; delayed reconstruction waits until healing — and often until radiation or other treatments are clearer in breast cancer. Neither is automatically better.",
     items: [
       "Immediate — fewer separate major operations for some people; needs a radiation-aware plan",
       "Delayed — cancer treatment and healing first; reconstruction later is still possible",
@@ -38,7 +38,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "Ask which timing paths are realistic for your cancer plan — then dig into the detail cards for each option.",
   },
   immediate: {
-    lead: "Immediate reconstruction starts at the same operation as mastectomy (sometimes as a first stage, such as a tissue expander).",
+    lead: "Immediate reconstruction starts at the same operation as mastectomy (sometimes as a first stage, such as a tissue expander) in breast cancer.",
     items: [
       "Can reduce the number of separate major operations for some people",
       "May involve plastic surgery and breast surgery teams coordinating the same day",
@@ -48,7 +48,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "Ask whether immediate reconstruction is oncologically and surgically appropriate for you — not only whether it is available.",
   },
   delayed: {
-    lead: "Delayed reconstruction happens after mastectomy healing — and often after radiation or other treatments that would complicate an immediate build.",
+    lead: "Delayed reconstruction happens after mastectomy healing — and often after radiation or other treatments that would complicate an immediate build in breast cancer.",
     items: [
       "Can let cancer treatment and recovery come first",
       "May mean living with a flat closure for a period of time",
@@ -58,7 +58,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "Delayed does not mean “you missed your chance.” Ask what the realistic window looks like in your plan.",
   },
   methods: {
-    lead: "Two large families are discussed most often — implants and autologous (using your own tissue). Many plans are staged.",
+    lead: "Two large families are discussed most often — implants and autologous (using your own tissue) in breast cancer. Many plans are staged.",
     items: [
       "Implant-based — often with an expander first, then exchange",
       "Autologous / flap — tissue from another part of the body",
@@ -68,7 +68,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "You do not need to pick a brand or flap name online. Ask which families fit your body, cancer timeline, and goals.",
   },
   expanders: {
-    lead: "A tissue expander is a temporary implant placed under the skin/muscle and gradually filled to stretch the tissue — often as the first stage of implant-based reconstruction, either at mastectomy or later.",
+    lead: "A tissue expander is a temporary implant placed under the skin/muscle and gradually filled to stretch the tissue — often as the first stage of implant-based reconstruction, either at mastectomy or later in breast cancer.",
     ask: [
       "Would my plan use an expander first — and when would the exchange happen?",
       "How does radiation change expander timing or whether expanders are used?",
@@ -88,7 +88,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "Ask for a stage-by-stage sketch. “Reconstruction” is rarely one single day.",
   },
   implantsRadiation: {
-    lead: "Radiation can affect skin and tissue quality around implants and may raise risks such as firmness (including capsular contracture), wound issues, or the need to change timing/method. Teams often plan reconstruction differently when radiation is likely.",
+    lead: "Radiation can affect skin and tissue quality around implants and may raise risks such as firmness (including capsular contracture), wound issues, or the need to change timing/method in breast cancer. Teams often plan reconstruction differently when radiation is likely.",
     ask: [
       "If radiation is likely, should we delay final implants?",
       "How does radiation change implant vs flap recommendations for me?",
@@ -98,7 +98,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "Ask before locking immediate permanent implants when radiation is still uncertain.",
   },
   radiation: {
-    lead: "Radiation can change tissue quality and reconstruction timing. If post-mastectomy radiation is likely, teams often adjust whether reconstruction is immediate, delayed, or staged differently.",
+    lead: "Radiation can change tissue quality and reconstruction timing in breast cancer. If post-mastectomy radiation is likely, teams often adjust whether reconstruction is immediate, delayed, or staged differently.",
     ask: [
       "Am I likely to need radiation after mastectomy?",
       "If yes, how does that change reconstruction timing or method?",
@@ -108,7 +108,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "Get a radiation-aware answer before locking an immediate reconstruction plan — then open the radiation guide if the local plan is still unclear.",
   },
   afterRadiation: {
-    lead: "If radiation is part of the plan — or already completed — reconstruction is often delayed until tissues have healed enough for a durable result. There is no single universal waiting period; plastic surgery and radiation teams set a window for your situation.",
+    lead: "If radiation is part of the plan — or already completed — reconstruction is often delayed until tissues have healed enough for a durable result in breast cancer. There is no single universal waiting period; plastic surgery and radiation teams set a window for your situation.",
     ask: [
       "How long after radiation would reconstruction usually wait in my case?",
       "Would an expander or temporary approach change that timing?",
@@ -118,7 +118,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "Ask for your personal window. Online “wait X months” rules rarely replace a radiation-aware surgical plan.",
   },
   geneticsBilateral: {
-    lead: "Genetics or bilateral mastectomy can change reconstruction planning — symmetry, staging, and recovery load may differ when both sides are involved.",
+    lead: "Genetics or bilateral mastectomy can change reconstruction planning — symmetry, staging, and recovery load may differ when both sides are involved in breast cancer.",
     ask: [
       "If both breasts are operated on, how does reconstruction planning change?",
       "Should genetics results be clear before locking reconstruction timing?",
@@ -127,7 +127,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "Bilateral planning is a coordination decision — not automatic “twice the same operation.”",
   },
   recovery: {
-    lead: "Recovery depends on mastectomy extent, reconstruction method, lymph-node surgery, and whether treatment continues afterward.",
+    lead: "Recovery depends on mastectomy extent, reconstruction method, lymph-node surgery, and whether treatment continues afterward in breast cancer.",
     ask: [
       "What does the first 2–6 weeks look like for each path?",
       "How many operations might the full reconstruction sequence involve?",
@@ -135,7 +135,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
     ],
   },
   systemicTiming: {
-    lead: "Chemotherapy, HER2-targeted therapy, or other systemic treatment may start before or after surgery. Reconstruction timing should fit that sequence — not fight it.",
+    lead: "Chemotherapy, HER2-targeted therapy, or other systemic treatment may start before or after surgery in breast cancer. Reconstruction timing should fit that sequence — not fight it.",
     ask: [
       "Would reconstruction delay a needed systemic therapy?",
       "If medicines start first, when would reconstruction be reconsidered?",
@@ -143,7 +143,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
     ],
   },
   pending: {
-    lead: "Before locking reconstruction timing, confirm:",
+    lead: "For breast cancer, before locking reconstruction timing, confirm:",
     items: [
       "Whether mastectomy is the local plan (vs conservation)",
       "Whether radiation is likely afterward",
@@ -154,7 +154,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "Clear answers here prevent locking a cosmetic timeline that cancer treatment would reverse.",
   },
   thisWeek: {
-    lead: "If reconstruction is part of your decision, focus on:",
+    lead: "For breast cancer, if reconstruction is part of your decision, focus on:",
     steps: [
       "Ask whether immediate, delayed, or no reconstruction fits your cancer plan",
       "Ask how radiation and systemic therapy would change timing",
@@ -164,7 +164,7 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
       "A short timing answer beats researching every implant or flap technique alone.",
   },
   mistakes: {
-    lead: "Common reconstruction-timing mistakes include:",
+    lead: "For breast cancer, common reconstruction-timing mistakes include:",
     items: [
       {
         mistake: "Treating reconstruction as an afterthought only",

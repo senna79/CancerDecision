@@ -2,7 +2,7 @@
 
 export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
   everyone: {
-    lead: "Not everyone needs a second opinion. It is especially worth considering before irreversible surgery or a major systemic plan when:",
+    lead: "Not everyone needs a second opinion in breast cancer. It is especially worth considering before irreversible surgery or a major systemic plan when:",
     items: [
       "Surgery choices feel borderline or conflicting",
       "Before-vs-after surgery sequencing is unclear",
@@ -25,7 +25,7 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
       "Confirmation of the current plan is also a useful outcome.",
   },
   delay: {
-    lead: "A second opinion is valuable when it helps clarify a major decision. Timing depends on urgency — ask what must move now and what can continue while you seek another review.",
+    lead: "A second opinion is valuable when it helps clarify a major decision in breast cancer. Timing depends on urgency — ask what must move now and what can continue while you seek another review.",
     ask: [
       "How urgent is my next treatment step?",
       "Is there time for a focused second opinion?",
@@ -40,7 +40,7 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
       "Frame it as: “I want to understand my options clearly before moving forward.” That is about confidence — not distrust.",
   },
   canChange: {
-    lead: "Yes, but not always. A second opinion may:",
+    lead: "Yes, but not always in breast cancer. A second opinion may:",
     items: [
       "Confirm the current plan",
       "Suggest additional testing or genetics before surgery",
@@ -51,7 +51,7 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
       "The goal is not to change treatment for its own sake. The goal is to understand whether the plan fits your situation.",
   },
   twoDoctors: {
-    lead: "Different recommendations can feel confusing. Instead of asking “Which doctor is right?”, compare the reasoning behind each plan.",
+    lead: "Different recommendations can feel confusing in breast cancer. Instead of asking “Which doctor is right?”, compare the reasoning behind each plan.",
     items: [
       "Expected benefit for your subtype and stage",
       "Risks and side effects",
@@ -62,7 +62,7 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
       "Write the differences down side by side before choosing.",
   },
   pathology: {
-    lead: "In some situations, another review of pathology, imaging, or subtype reporting may add confidence — especially when results are borderline or recommendations conflict.",
+    lead: "In some situations, another review of pathology, imaging, or subtype reporting may add confidence — especially when results are borderline or recommendations conflict in breast cancer.",
     ask: [
       "Was my diagnosis and subtype reporting confirmed?",
       "Are there uncertain findings that another specialist should re-review?",
@@ -92,7 +92,7 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
       "A clear question plus complete records beats “please look at everything.”",
   },
   records: {
-    lead: "Bring the complete picture when you can:",
+    lead: "For breast cancer, bring the complete picture when you can:",
     items: [
       "Pathology reports (including receptors / HER2)",
       "Imaging reports and scans when available",
@@ -105,7 +105,7 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
       "Incomplete records often produce incomplete opinions.",
   },
   cost: {
-    lead: "Costs and coverage vary by clinic, visit type (in-person vs remote), and insurance. Use questions instead of guessing a price:",
+    lead: "Costs and coverage vary by clinic, visit type (in-person vs remote), and insurance in breast cancer. Use questions instead of guessing a price:",
     ask: [
       "Is this visit covered as a second opinion / consultation?",
       "What records or slide reviews add extra fees?",
@@ -113,7 +113,7 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
     ],
   },
   thisWeek: {
-    lead: "If you are arranging a second opinion, focus on:",
+    lead: "For breast cancer, if you are arranging a second opinion, focus on:",
     steps: [
       "Name the decision you want reviewed (surgery, sequencing, or systemic plan)",
       "Gather pathology, imaging, and the current recommendation in writing",
@@ -123,7 +123,7 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
       "A focused packet beats a vague request for “another look.”",
   },
   mistakes: {
-    lead: "Common second-opinion mistakes include:",
+    lead: "For breast cancer, common second-opinion mistakes include:",
     items: [
       {
         mistake: "Waiting until after irreversible surgery to ask for review",

@@ -2,7 +2,7 @@
 
 export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
   notLastResort: {
-    lead: "Many people believe a trial means standard treatment has failed. That is a common misunderstanding.",
+    lead: "Many people believe a trial means standard treatment has failed in breast cancer. That is a common misunderstanding.",
     items: [
       "Newly diagnosed — before locking surgery or neoadjuvant therapy",
       "Comparing first systemic options by subtype",
@@ -23,7 +23,7 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
       "Earlier discussion can still help even if you stay with standard care. Ask whether joining fits your goals — not only whether a trial exists.",
   },
   notImmediately: {
-    lead: "Not everyone needs a trial search immediately after diagnosis. First understand your subtype, stage, and standard options — then ask whether trials add meaningful alternatives for you.",
+    lead: "Not everyone needs a trial search immediately after diagnosis in breast cancer. First understand your subtype, stage, and standard options — then ask whether trials add meaningful alternatives for you.",
     ask: [
       "Do I need to look for trials right now, or after key results are back?",
       "For my subtype and stage, when would a trial discussion be most useful?",
@@ -33,7 +33,7 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
       "Skipping an early trial search is not the same as missing every opportunity. Ask for the right timing for your situation.",
   },
   notTestSubject: {
-    lead: "Clinical trials involve research, but they follow structured safety processes. You should understand:",
+    lead: "Clinical trials involve research, but they follow structured safety processes in breast cancer. You should understand:",
     items: [
       "What is being studied",
       "What is already known",
@@ -52,7 +52,7 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
       "Ask how your subtype results connect to trial eligibility — not only to standard medicines.",
   },
   notQualify: {
-    lead: "Clinical trials have eligibility requirements designed for safety and research accuracy. They may involve:",
+    lead: "Clinical trials have eligibility requirements designed for safety and research accuracy in breast cancer. They may involve:",
     items: [
       "Breast cancer subtype and stage",
       "Previous treatments and responses",
@@ -62,7 +62,7 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
     close: "Not qualifying for one trial does not mean there are no other options.",
   },
   replaceCurrent: {
-    lead: "Sometimes a trial is studied as an alternative approach. Sometimes it is added to standard treatment. Sometimes it is offered after a plan changes.",
+    lead: "Sometimes a trial is studied as an alternative approach in breast cancer. Sometimes it is added to standard treatment. Sometimes it is offered after a plan changes.",
     items: [
       "Trial design (what is being compared)",
       "Your cancer situation and goals",
@@ -71,7 +71,7 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
     close: "Ask how the trial would sit next to — or instead of — the current plan.",
   },
   notAutomaticallyBetter: {
-    lead: "A clinical trial is not automatically better than standard treatment.",
+    lead: "A clinical trial is not automatically better than standard treatment in breast cancer.",
     items: [
       "Access to a treatment being studied",
       "Another option to compare with standard care",
@@ -81,7 +81,7 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
       "It may also involve uncertainty. Ask: “Does this option make sense for me compared with standard care?”",
   },
   risks: {
-    lead: "Possible considerations include:",
+    lead: "For breast cancer, possible considerations include:",
     items: [
       "Unknown effectiveness compared with standard care",
       "Side effects — known and unknown",
@@ -91,7 +91,7 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
     close: "Your team should explain what is known and what remains uncertain.",
   },
   dailyLife: {
-    lead: "Participation may involve more visits, additional scans or tests, travel, and schedule changes.",
+    lead: "Participation may involve more visits, additional scans or tests, travel, and schedule changes in breast cancer.",
     ask: [
       "What would my normal week look like during this trial?",
       "Can some visits happen closer to home?",
@@ -99,7 +99,7 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
     close: "Practical fit belongs in the trial decision — not only medical novelty.",
   },
   ifNotWorking: {
-    lead: "Before joining, understand what happens next.",
+    lead: "Before joining, understand what happens next in breast cancer.",
     ask: [
       "What happens if the treatment is not effective?",
       "What options remain afterward?",
@@ -108,7 +108,7 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
     close: "Understanding the next step is part of the decision.",
   },
   thisWeek: {
-    lead: "If a clinical trial is in the conversation, focus on:",
+    lead: "For breast cancer, if a clinical trial is in the conversation, focus on:",
     steps: [
       "Ask whether any trials fit your subtype, stage, and prior treatment",
       "Compare the trial with standard options — goal, evidence, and impact",

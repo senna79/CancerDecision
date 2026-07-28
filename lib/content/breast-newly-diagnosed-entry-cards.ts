@@ -2,7 +2,7 @@
 
 export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
   moreTests: {
-    lead: "A biopsy may confirm cancer, but more scans or staging tests are often ordered so the team understands extent — for example lymph nodes or distant sites — before locking a first plan. Subtype testing (ER/PR/HER2) is also part of that clearer picture.",
+    lead: "A biopsy may confirm cancer, but more scans or staging tests are often ordered so the team understands extent — for example lymph nodes or distant sites — before locking a first plan in breast cancer. Subtype testing (ER/PR/HER2) is also part of that clearer picture.",
     ask: [
       "Why is this scan or test being ordered for my next decision?",
       "What would a positive or negative finding change?",
@@ -12,7 +12,7 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
       "Different decisions require different information — ask what each test is for, not only what it is called.",
   },
   diagnosisToSurgery: {
-    lead: "There is no single universal number of days from diagnosis to surgery. Many people have weeks while subtype, imaging, genetics, or sequencing decisions become clear — and that wait is often intentional, not neglect.",
+    lead: "There is no single universal number of days from diagnosis to surgery in breast cancer. Many people have weeks while subtype, imaging, genetics, or sequencing decisions become clear — and that wait is often intentional, not neglect.",
     ask: [
       "What is a safe timeline to surgery for my situation?",
       "What results should be back before we lock a date?",
@@ -22,7 +22,7 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
       "Ask for your personal window — internet “average days” rarely match a real plan.",
   },
   stageTimeline: {
-    lead: "Stage helps describe how far cancer appears to have spread — but it does not produce a fixed “Stage X = Y weeks of treatment” calendar. Timeline also depends on subtype, whether medicines come before surgery, radiation plans, and your health.",
+    lead: "Stage helps describe how far cancer appears to have spread — but it does not produce a fixed “Stage X = Y weeks of treatment” calendar in breast cancer. Timeline also depends on subtype, whether medicines come before surgery, radiation plans, and your health.",
     ask: [
       "What stage do you think I have so far — and what could still change it?",
       "For my stage and subtype, what usually sets the pace: surgery first, medicines first, or more testing?",
@@ -32,7 +32,7 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
       "Ask for your path’s pacing factors. One stage label is not a treatment schedule by itself.",
   },
   notImmediate: {
-    lead: "Because the best sequence depends on a more complete picture. Doctors may need information about:",
+    lead: "Because the best sequence depends on a more complete picture in breast cancer. Doctors may need information about:",
     factors: [
       "Cancer subtype (ER, PR, HER2 — and related biology)",
       "How far the cancer has spread (stage / nodes / imaging)",
@@ -42,11 +42,11 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
     close: "Waiting for key information is not the same as having no plan.",
   },
   subtype: {
-    lead: "For many people, receptor and HER2 results affect which systemic options and sequencing are discussed first.",
+    lead: "For many people, receptor and HER2 results affect which systemic options and sequencing are discussed first in breast cancer.",
     ask: "Would subtype results change the options we consider — or when surgery should happen?",
   },
   waiting: {
-    lead: "Many people worry that waiting for test results means the cancer is being left untreated. The useful question is whether the information being collected could change your treatment plan — and whether that wait is safe for you.",
+    lead: "Many people worry that waiting for test results means breast cancer is being left untreated. The useful question is whether the information being collected could change your treatment plan — and whether that wait is safe for you.",
     ask: [
       "What results are we waiting for?",
       "Could these results change surgery or treatment order?",
@@ -56,7 +56,7 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
       "Waiting for important information is different from delaying care without a plan.",
   },
   focusFirst: {
-    lead: "Usually the first focus is:",
+    lead: "For breast cancer, usually the first focus is:",
     steps: [
       "Understand your diagnosis and what is still pending",
       "Complete important subtype / staging information",
@@ -65,12 +65,12 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
     close: "Your care team can help identify the next step for you.",
   },
   notExpert: {
-    lead: "No. Your first goal is not to become an expert on every drug name.",
+    lead: "For breast cancer, no. Your first goal is not to become an expert on every drug name.",
     close:
       "Your goal is to understand what you know, what you don’t know, and what questions to ask.",
   },
   thisWeek: {
-    lead: "Focus on three things:",
+    lead: "For breast cancer, focus on three things:",
     steps: [
       "Understand your diagnosis and subtype status",
       "Collect your medical information",
@@ -79,17 +79,17 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
     close: "You do not need to solve the entire journey immediately.",
   },
   secondOpinion: {
-    lead: "A second opinion can be helpful, especially when surgery choices feel irreversible, sequencing is unclear, or multiple options exist.",
+    lead: "A second opinion can be helpful, especially when surgery choices feel irreversible, sequencing is unclear, or multiple options exist in breast cancer.",
     close: "It is about confidence, not distrust.",
   },
   geneticsCard: {
-    lead: "Some people need genetic counseling before a final surgery choice — especially with family history or other risk factors. Tumor subtype is not the same as germline genetics.",
+    lead: "Some people need genetic counseling before a final surgery choice — especially with family history or other risk factors in breast cancer. Tumor subtype is not the same as germline genetics.",
     ask: "Do I need genetic counseling before surgery — and would results change the operation?",
     close:
       "Ask early if it might change lumpectomy vs mastectomy — then open the genetics decision guide for the full path.",
   },
   records: {
-    lead: "Keep copies of:",
+    lead: "For breast cancer, keep copies of:",
     items: [
       "Pathology report",
       "Receptor / HER2 results (and genomic assay results when available)",
@@ -100,12 +100,12 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
     close: "These records help throughout your cancer journey.",
   },
   overwhelmed: {
-    lead: "Yes. A diagnosis brings medical uncertainty and emotional stress.",
+    lead: "For breast cancer, yes. A diagnosis brings medical uncertainty and emotional stress.",
     close:
       "A structured next-step plan can help reduce the feeling of being lost.",
   },
   startRightAway: {
-    lead: "Not always. Some situations need prompt action; others benefit from waiting for subtype, staging, or genetics results first.",
+    lead: "For breast cancer, not always. Some situations need prompt action; others benefit from waiting for subtype, staging, or genetics results first.",
     ask: [
       "How urgent is my situation?",
       "What needs to happen this week?",
@@ -115,7 +115,7 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
       "Ask for a clear timeline — rushing and waiting both have trade-offs.",
   },
   askOncologist: {
-    lead: "A first oncology visit usually reviews what is known so far, what is still pending, and which decisions come next — not a final lifelong plan in one hour. Expect talk about subtype, stage/extent, sequencing, and near-term options.",
+    lead: "A first oncology visit usually reviews what is known so far, what is still pending, and which decisions come next — not a final lifelong plan in one hour in breast cancer. Expect talk about subtype, stage/extent, sequencing, and near-term options.",
     ask: [
       "What subtype of breast cancer do I have — and what stage is it?",
       "What additional information do we still need?",
@@ -128,7 +128,7 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
       "Bring records and a written list. One clear next step beats fifty unanswered questions.",
   },
   askSurgeon: {
-    lead: "If surgery is being discussed, clarify fit and sequencing — not only technique.",
+    lead: "If surgery is being discussed, clarify fit and sequencing — not only technique in breast cancer.",
     ask: [
       "Is surgery appropriate now, or should systemic therapy come first?",
       "Am I a candidate for lumpectomy, mastectomy, or both?",

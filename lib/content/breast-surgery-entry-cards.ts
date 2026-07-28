@@ -12,17 +12,17 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "Ask whether both options are oncologically reasonable for you — before comparing recovery, radiation, reconstruction, and personal priorities.",
   },
   notOnlyCancer: {
-    lead: "Even when cancer control looks similar, the operations can feel very different. People weigh body image, radiation willingness, reconstruction timing, genetics, and how they want to live afterward.",
+    lead: "Even when cancer control looks similar, the operations can feel very different in breast cancer. People weigh body image, radiation willingness, reconstruction timing, genetics, and how they want to live afterward.",
     close:
       "A good surgery decision matches medical fit and personal priorities — not only a survival headline.",
   },
   sequencing: {
-    lead: "Sometimes systemic therapy starts before surgery. That sequence can change timing — and occasionally what surgery options are realistic later.",
+    lead: "Sometimes systemic therapy starts before surgery in breast cancer. That sequence can change timing — and occasionally what surgery options are realistic later.",
     close:
       "If before-vs-after surgery timing is still open, clarify sequencing enough to know whether surgery options may change.",
   },
   prosCons: {
-    lead: "When both operations are medically reasonable, people often weigh trade-offs like these — ask which apply to you:",
+    lead: "For breast cancer, when both operations are medically reasonable, people often weigh trade-offs like these — ask which apply to you:",
     items: [
       "Lumpectomy — usually keeps more breast shape; typically followed by radiation; may need another surgery if margins are not clear",
       "Mastectomy — removes more breast tissue; radiation is situational afterward; reconstruction may be immediate, delayed, or not chosen",
@@ -43,7 +43,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "Ask: “Am I a candidate for lumpectomy — and what would radiation involve for me?”",
   },
   mastectomy: {
-    lead: "Mastectomy may be discussed when conservation is not a good fit, when genetics or personal goals point that way, or when someone prefers to avoid radiation that would accompany lumpectomy.",
+    lead: "Mastectomy may be discussed when conservation is not a good fit, when genetics or personal goals point that way, or when someone prefers to avoid radiation that would accompany lumpectomy in breast cancer.",
     items: [
       "Removes more breast tissue on the operated side",
       "Radiation is not always required afterward — ask for your situation",
@@ -64,7 +64,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "Ask early if genetics might change the operation — then open the genetics decision guide for the full timing path.",
   },
   subtype: {
-    lead: "Tumor subtype (ER/PR/HER2, including triple-negative) mainly shapes systemic therapy and sequencing. It does not automatically pick lumpectomy or mastectomy the way genetics sometimes can.",
+    lead: "Tumor subtype (ER/PR/HER2, including triple-negative) mainly shapes systemic therapy and sequencing in breast cancer. It does not automatically pick lumpectomy or mastectomy the way genetics sometimes can.",
     ask: [
       "For my subtype, are both lumpectomy and mastectomy still reasonable?",
       "Would HER2-positive or triple-negative disease change surgery — or mainly medicines and timing?",
@@ -74,7 +74,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "Ask what subtype changes for you: medicines and order first — then whether the surgery options themselves move.",
   },
   reconstruction: {
-    lead: "Reconstruction timing (immediate vs delayed) and whether to reconstruct at all are part of many mastectomy conversations — and sometimes affect surgical planning.",
+    lead: "Reconstruction timing (immediate vs delayed) and whether to reconstruct at all are part of many mastectomy conversations — and sometimes affect surgical planning in breast cancer.",
     ask: [
       "If I choose mastectomy, what reconstruction options exist?",
       "Would reconstruction happen at the same time or later?",
@@ -99,7 +99,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "Ask whether the other breast is a medical recommendation, an option, or something that can wait.",
   },
   doubleRecovery: {
-    lead: "Recovery after double (bilateral) mastectomy is often longer and more physically demanding than one-sided surgery — especially with immediate reconstruction, drains, and restrictions on lifting or driving.",
+    lead: "Recovery after double (bilateral) mastectomy is often longer and more physically demanding than one-sided surgery — especially with immediate reconstruction, drains, and restrictions on lifting or driving in breast cancer.",
     ask: [
       "What does the first 2–4 weeks usually look like after bilateral mastectomy?",
       "How does reconstruction change recovery and help needed at home?",
@@ -109,7 +109,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "Plan support early. Bilateral recovery is a logistics decision as well as a surgical one.",
   },
   lymphedema: {
-    lead: "Lymphedema is swelling that can develop in the arm or chest area after lymph-node surgery or radiation. Risk varies by how many nodes are removed, radiation fields, infection, and body factors — it is not inevitable for everyone.",
+    lead: "Lymphedema is swelling that can develop in the arm or chest area after lymph-node surgery or radiation in breast cancer. Risk varies by how many nodes are removed, radiation fields, infection, and body factors — it is not inevitable for everyone.",
     ask: [
       "What is my lymphedema risk with the axillary surgery planned?",
       "What early signs should I watch for?",
@@ -119,7 +119,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "Ask before surgery when possible — early recognition is easier than waiting for severe swelling.",
   },
   recovery: {
-    lead: "Recovery often differs by path. Lumpectomy recovery is frequently shorter in the first weeks, but radiation adds its own course afterward. Mastectomy recovery is often longer — especially with reconstruction or axillary surgery — and radiation may or may not follow.",
+    lead: "Recovery often differs by path in breast cancer. Lumpectomy recovery is frequently shorter in the first weeks, but radiation adds its own course afterward. Mastectomy recovery is often longer — especially with reconstruction or axillary surgery — and radiation may or may not follow.",
     ask: [
       "What does recovery look like for lumpectomy vs mastectomy in the first weeks?",
       "When could I return to work or caregiving after each option?",
@@ -129,7 +129,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "Compare recovery as part of the full local package — not only the operating-room day.",
   },
   radiation: {
-    lead: "Most people who choose lumpectomy need radiation afterward. After mastectomy, radiation depends on stage, nodes, and other factors.",
+    lead: "Most people who choose lumpectomy need radiation afterward in breast cancer. After mastectomy, radiation depends on stage, nodes, and other factors.",
     ask: [
       "If I choose lumpectomy, what would radiation involve — schedule and side effects?",
       "If I choose mastectomy, am I likely to need radiation anyway?",
@@ -139,7 +139,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "Ask for expected / maybe / unlikely answers by surgery path — then open the radiation decision guide for the full path.",
   },
   pending: {
-    lead: "Before locking surgery, confirm whether key information is still pending:",
+    lead: "For breast cancer, before locking surgery, confirm whether key information is still pending:",
     items: [
       "Subtype / biology results that affect sequencing",
       "Whether treatment should start before or after surgery",
@@ -150,7 +150,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "Waiting for information that would change the operation is not automatically an unsafe delay — ask how urgent your situation is.",
   },
   thisWeek: {
-    lead: "If surgery choice is the decision in front of you, focus on:",
+    lead: "For breast cancer, if surgery choice is the decision in front of you, focus on:",
     steps: [
       "Ask whether both lumpectomy and mastectomy are medically reasonable for you",
       "Clarify genetics, radiation, and reconstruction questions that could change the choice",
@@ -160,7 +160,7 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
       "A short priority list beats researching every surgical technique online.",
   },
   mistakes: {
-    lead: "Common surgery-choice mistakes include:",
+    lead: "For breast cancer, common surgery-choice mistakes include:",
     items: [
       {
         mistake: "Assuming mastectomy is always the safer choice",

@@ -27,7 +27,7 @@ export const BREAST_CARE_TEAM_ENTRY_CARDS = {
       "Rankings do not tell you whether a team fits your fork. Capabilities and coordination do.",
   },
   vsSecondOpinion: {
-    lead: "A second opinion is another expert review of a specific decision — surgery, sequencing, or systemic options. Choosing a care team is about where and how care is organized over time.",
+    lead: "A second opinion is another expert review of a specific decision — surgery, sequencing, or systemic options in breast cancer. Choosing a care team is about where and how care is organized over time.",
     close:
       "You may use both: a second opinion for clarity on one fork, and a care-team decision for who coordinates the journey.",
   },
@@ -55,12 +55,12 @@ export const BREAST_CARE_TEAM_ENTRY_CARDS = {
       "Experience with your fork and clear communication usually matter more than the most famous name alone.",
   },
   multidisciplinary: {
-    lead: "Multidisciplinary care means key specialists review your situation together (or in a coordinated sequence) so surgery, medicines, radiation, and reconstruction do not conflict.",
+    lead: "Multidisciplinary care means key specialists review your situation together (or in a coordinated sequence) so surgery, medicines, radiation, and reconstruction do not conflict in breast cancer.",
     close:
       "Ask: “Will my case be reviewed by a team when the plan is complex — and who brings the recommendation back to me?”",
   },
   hybrid: {
-    lead: "Many people build a care network rather than choosing one location. For example:",
+    lead: "Many people build a care network rather than choosing one location in breast cancer. For example:",
     items: [
       "Specialized center — complex planning, genetics, reconstruction, or trial access",
       "Local center — infusions, radiation courses, monitoring, and follow-up closer to home",
@@ -69,7 +69,7 @@ export const BREAST_CARE_TEAM_ENTRY_CARDS = {
       "The best approach is not always one building. It is a workable network with clear ownership.",
   },
   whenHelps: {
-    lead: "Another team or higher-volume center may help when:",
+    lead: "For breast cancer, another team or higher-volume center may help when:",
     items: [
       "Surgery, sequencing, or reconstruction recommendations conflict",
       "Genetics or bilateral planning feels high-stakes",
@@ -80,7 +80,7 @@ export const BREAST_CARE_TEAM_ENTRY_CARDS = {
       "Name the gap you are trying to fix — expertise, coordination, or confidence — before traveling for reputation alone.",
   },
   capabilities: {
-    lead: "Match capabilities to your decision — not brand names. Look for:",
+    lead: "Match capabilities to your decision — not brand names in breast cancer. Look for:",
     items: [
       "Breast multidisciplinary clinic or tumor-board access",
       "Timely subtype / pathology and imaging review",
@@ -92,17 +92,17 @@ export const BREAST_CARE_TEAM_ENTRY_CARDS = {
       "Ask what happens if you need a capability this team does not offer — that answer often matters more than reputation.",
   },
   famous: {
-    lead: "Not necessarily. The best team is the one that provides appropriate expertise, clear communication, and access to the care you need.",
+    lead: "Not necessarily in breast cancer. The best team is the one that provides appropriate expertise, clear communication, and access to the care you need.",
     close:
       "Reputation alone does not tell you whether a team fits your situation or will coordinate with local care.",
   },
   travel: {
-    lead: "Consider decision complexity, expertise available locally, how often visits are needed, and family support.",
+    lead: "Consider decision complexity, expertise available locally, how often visits are needed, and family support in breast cancer.",
     close:
       "Some people travel for planning or complex surgery, then receive systemic therapy or radiation closer to home.",
   },
   records: {
-    lead: "Prepare copies of:",
+    lead: "For breast cancer, prepare copies of:",
     items: [
       "Pathology and receptor / HER2 results",
       "Imaging reports and scan images when available",
@@ -113,7 +113,7 @@ export const BREAST_CARE_TEAM_ENTRY_CARDS = {
       "Also write one sentence: what expertise or clarity you are hoping another team can provide.",
   },
   coordination: {
-    lead: "If more than one site is involved, ask who owns each part:",
+    lead: "For breast cancer, if more than one site is involved, ask who owns each part:",
     items: [
       "Who schedules surgery and reconstruction?",
       "Who orders and interprets key tests?",
@@ -124,7 +124,7 @@ export const BREAST_CARE_TEAM_ENTRY_CARDS = {
       "A named coordinator often matters more than an impressive brochure.",
   },
   thisWeek: {
-    lead: "If care-team choice is the decision in front of you, focus on:",
+    lead: "For breast cancer, if care-team choice is the decision in front of you, focus on:",
     steps: [
       "Name the gap: expertise, coordination, or confidence on a specific fork",
       "Ask whether a second opinion, a new primary team, or a hybrid setup fits",
@@ -134,7 +134,7 @@ export const BREAST_CARE_TEAM_ENTRY_CARDS = {
       "A clear ask beats touring hospitals without a decision question.",
   },
   mistakes: {
-    lead: "Common care-team mistakes include:",
+    lead: "For breast cancer, common care-team mistakes include:",
     items: [
       {
         mistake: "Choosing by reputation alone",

@@ -2,7 +2,7 @@
 
 export const SECOND_OPINION_ENTRY_CARDS = {
   everyone: {
-    lead: "Not everyone needs a second opinion. However, it is common to consider one when:",
+    lead: "Not everyone needs a second opinion in lung cancer. However, it is common to consider one when:",
     when: [
       "The decision is complex",
       "Treatment choices may differ",
@@ -13,7 +13,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
       "A second opinion is a decision-support tool, not a sign that something is wrong.",
   },
   delay: {
-    lead: "The timing depends on your situation. Ask your care team:",
+    lead: "The timing depends on your situation in lung cancer. Ask your care team:",
     ask: [
       "How urgent is my treatment decision?",
       "What information are we waiting for?",
@@ -23,7 +23,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
       "The goal is to balance informed decision-making with timely care.",
   },
   disrespectful: {
-    lead: "Most cancer specialists understand that patients want confidence before major decisions.",
+    lead: "Most cancer specialists understand that patients want confidence before major decisions in lung cancer.",
     frame:
       "I want to understand all my options and make the best-informed decision.",
     close:
@@ -41,7 +41,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
       "A second opinion can confirm the current plan — confirmation is also a useful outcome.",
   },
   canChange: {
-    lead: "Yes, but not always. A second opinion may:",
+    lead: "Yes, but not always in lung cancer. A second opinion may:",
     outcomes: [
       "Confirm the current plan",
       "Suggest additional testing",
@@ -51,7 +51,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
       "The goal is not to change treatment. The goal is to understand whether the plan fits your situation.",
   },
   twoDoctors: {
-    lead: "Different recommendations can feel confusing. Instead of asking “Which doctor is right?”, ask what information and reasoning led to each recommendation.",
+    lead: "Different recommendations can feel confusing in lung cancer. Instead of asking “Which doctor is right?”, ask what information and reasoning led to each recommendation.",
     compare: [
       "Expected benefit",
       "Risks",
@@ -60,7 +60,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
     ],
   },
   pathologyReview: {
-    lead: "In some situations, another review of pathology or imaging may provide additional confidence.",
+    lead: "In some situations, another review of pathology or imaging may provide additional confidence in lung cancer.",
     ask: [
       "Was my diagnosis confirmed?",
       "Are there any uncertain findings?",
@@ -68,7 +68,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
     ],
   },
   records: {
-    lead: "Bring the complete picture when you can:",
+    lead: "For lung cancer, bring the complete picture when you can:",
     items: [
       "Pathology reports",
       "Biopsy information",
@@ -80,12 +80,12 @@ export const SECOND_OPINION_ENTRY_CARDS = {
     ],
   },
   specialist: {
-    lead: "A specialist or experienced cancer center may provide focused expertise, multidisciplinary review, and access to clinical trials.",
+    lead: "A specialist or experienced lung cancer center may provide focused expertise, multidisciplinary review, and access to clinical trials.",
     close:
       "The best choice depends on your situation, location, and access.",
   },
   cost: {
-    lead: "Costs vary depending on the healthcare system, insurance coverage, and type of consultation.",
+    lead: "Costs vary depending on the healthcare system, insurance coverage, and type of consultation in lung cancer.",
     ask: [
       "Is this covered?",
       "Are record reviews included?",
@@ -93,7 +93,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
     ],
   },
   mistakes: {
-    lead: "Common mistakes include:",
+    lead: "For lung cancer, common mistakes include:",
     items: [
       {
         mistake: "Waiting until after a major decision",
@@ -110,7 +110,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
     ],
   },
   chooseBetween: {
-    lead: "When opinions differ, compare:",
+    lead: "For lung cancer, when opinions differ, compare:",
     points: [
       "Why each doctor recommends the approach",
       "What evidence supports it",
@@ -121,7 +121,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
     close: "A good decision comes from understanding the tradeoffs.",
   },
   againLater: {
-    lead: "A new opinion may be useful when:",
+    lead: "For lung cancer, a new opinion may be useful when:",
     when: [
       "Cancer changes",
       "Treatment stops working",
@@ -131,11 +131,11 @@ export const SECOND_OPINION_ENTRY_CARDS = {
     close: "Cancer care involves multiple decisions over time.",
   },
   family: {
-    lead: "Many patients involve family because they may help with remembering information, asking questions, and discussing practical concerns.",
+    lead: "Many patients involve family because they may help with remembering information, asking questions, and discussing practical concerns in lung cancer.",
     close: "Choose the support that helps you make decisions comfortably.",
   },
   vsTravel: {
-    lead: "A second opinion is another expert review of a decision. Traveling for care is a logistics choice after you know whether review or treatment must happen in person.",
+    lead: "A second opinion is another expert review of a decision in lung cancer. Traveling for care is a logistics choice after you know whether review or treatment must happen in person.",
     items: [
       "Start with a records-based (often remote) second opinion when the question can be answered from pathology, imaging, and the current plan",
       "Consider travel when the outside review says an exam, procedure, trial screening, or in-person planning visit is required",
@@ -145,7 +145,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
       "Remote second opinion often comes before flights — not after. If travel is the real question, open the care-abroad decision guide next.",
   },
   afterTwoHospitals: {
-    lead: "Two opinions can still leave you unsure. Another review may still help when something concrete remains unfinished:",
+    lead: "Two opinions can still leave you unsure in lung cancer. Another review may still help when something concrete remains unfinished:",
     items: [
       "The two plans disagree on goal, treatment type, timing, or major trade-offs — and you need the reasoning compared in writing",
       "Important testing (pathology, imaging, or biomarkers) looks incomplete or was never re-reviewed",
@@ -156,7 +156,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
       "More opinions are useful when they answer a named gap — not when you are only hoping someone will finally “agree with you.”",
   },
   recordsPackage: {
-    lead: "A second opinion is only as usable as the file you send. Aim for a package that lets another doctor reconstruct the full picture:",
+    lead: "A second opinion is only as usable as the file you send in lung cancer. Aim for a package that lets another doctor reconstruct the full picture:",
     items: [
       "Pathology and biopsy reports (and slides if requested)",
       "Imaging reports plus scan images when available",
@@ -169,7 +169,7 @@ export const SECOND_OPINION_ENTRY_CARDS = {
       "Incomplete records are a common reason outside reviews cannot help. Ask the reviewing team for their preferred checklist before the appointment.",
   },
   disagreePlan: {
-    lead: "Disagreeing with the current plan is a valid reason for an outside review. Focus the review — do not only ask someone to “pick a side”:",
+    lead: "Disagreeing with the current plan is a valid reason for an outside review in lung cancer. Focus the review — do not only ask someone to “pick a side”:",
     items: [
       "Which part you reject — the goal, the treatment type, the timing, or the trade-offs",
       "What decision you want re-examined in writing",

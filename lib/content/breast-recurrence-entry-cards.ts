@@ -7,12 +7,12 @@ export const BREAST_RECURRENCE_ENTRY_CARDS = {
       "Where it returned, how long after treatment, and what has changed all shape the next conversation.",
   },
   notFailed: {
-    lead: "Not necessarily. Prior treatment may have controlled cancer for a period, removed visible disease, or reduced cancer burden.",
+    lead: "Not necessarily in breast cancer. Prior treatment may have controlled cancer for a period, removed visible disease, or reduced cancer burden.",
     close:
       "Recurrence means the situation needs to be reassessed — not that “everything failed” or that options have ended.",
   },
   localVsDistant: {
-    lead: "“Recurrence” is not one situation. Doctors often distinguish:",
+    lead: "“Recurrence” is not one situation in breast cancer. Doctors often distinguish:",
     items: [
       "Local — in the breast, chest wall, or nearby surgical area",
       "Regional — in nearby lymph nodes",
@@ -27,7 +27,7 @@ export const BREAST_RECURRENCE_ENTRY_CARDS = {
       "Ask where it returned. Location usually changes which option families come first — not the word “recurrence” alone.",
   },
   retest: {
-    lead: "Cancer biology can change over time. Doctors may consider whether subtype / receptor and HER2 status should be re-checked, especially when it could change medicine options.",
+    lead: "Cancer biology can change over time in breast cancer. Doctors may consider whether subtype / receptor and HER2 status should be re-checked, especially when it could change medicine options.",
     ask: [
       "Would another biopsy or receptor test change the options we discuss?",
       "Is prior subtype information still enough for the next plan?",
@@ -35,7 +35,7 @@ export const BREAST_RECURRENCE_ENTRY_CARDS = {
     close: "Not everyone needs a new biopsy — ask when it would change decisions.",
   },
   priorTreatment: {
-    lead: "Your treatment history is part of the new decision. Doctors usually review:",
+    lead: "Your treatment history is part of the new decision in breast cancer. Doctors usually review:",
     items: [
       "What surgery, radiation, and medicines you already received",
       "How long treatment worked",
@@ -55,7 +55,7 @@ export const BREAST_RECURRENCE_ENTRY_CARDS = {
       "Ask for location + history + goals. “After mastectomy” alone does not pick the path.",
   },
   stillTreatable: {
-    lead: "Yes — many people receive active treatment after recurrence. Goals may include:",
+    lead: "Yes — many people receive active treatment after recurrence in breast cancer. Goals may include:",
     items: [
       "Controlling or removing disease where possible",
       "Reducing symptoms so daily life is more manageable",
@@ -65,22 +65,22 @@ export const BREAST_RECURRENCE_ENTRY_CARDS = {
       "Ask what goals are realistic for your situation — in plain language.",
   },
   samePlan: {
-    lead: "Usually not. Repeating the exact same package is often not the default after recurrence.",
+    lead: "For breast cancer, usually not. Repeating the exact same package is often not the default after recurrence.",
     close:
       "The useful question is: “Given where cancer returned and what we already used, which options belong in the discussion now?”",
   },
   secondOpinion: {
-    lead: "A second opinion may be especially useful after recurrence because decisions can become more complex — location, prior therapy, and re-testing all interact.",
+    lead: "A second opinion may be especially useful after recurrence because decisions can become more complex — location, prior therapy, and re-testing all interact in breast cancer.",
     close:
       "It is about confidence, not distrust. Confirmation of a clear plan can also be valuable.",
   },
   clinicalTrial: {
-    lead: "A clinical trial may be worth discussing after recurrence, depending on subtype, prior treatment, and eligibility. Trials are not only “last resort.”",
+    lead: "A clinical trial may be worth discussing after recurrence, depending on subtype, prior treatment, and eligibility in breast cancer. Trials are not only “last resort.”",
     close:
       "Ask whether any trials fit — and how they compare with standard options.",
   },
   thisWeek: {
-    lead: "If recurrence decisions are in front of you, focus on:",
+    lead: "For breast cancer, if recurrence decisions are in front of you, focus on:",
     steps: [
       "Confirm where cancer returned and what doctors know so far",
       "Ask whether re-testing subtype would change options",
@@ -90,7 +90,7 @@ export const BREAST_RECURRENCE_ENTRY_CARDS = {
       "A clear picture of what changed beats researching every drug name alone.",
   },
   mistakes: {
-    lead: "Common recurrence-decision mistakes include:",
+    lead: "For breast cancer, common recurrence-decision mistakes include:",
     items: [
       {
         mistake: "Assuming there are no options",

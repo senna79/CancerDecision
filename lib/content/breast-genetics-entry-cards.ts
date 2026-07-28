@@ -12,7 +12,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
       "If a result could change an irreversible surgery choice, ask whether counseling should happen before you lock a date.",
   },
   whoMayNeed: {
-    lead: "Counseling is more often discussed when risk factors are present — but criteria evolve, and your team may still recommend it without a dramatic family history.",
+    lead: "Counseling is more often discussed when risk factors are present — but criteria evolve, and your team may still recommend it without a dramatic family history in breast cancer.",
     items: [
       "Personal or family history that raises hereditary risk questions",
       "Younger age at diagnosis (criteria vary — ask for your situation)",
@@ -34,7 +34,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
       "Ask whether TNBC alone tips counseling for you — and what a result would change.",
   },
   brcaShows: {
-    lead: "A BRCA test (often as part of a broader panel) looks for inherited gene changes that can raise lifetime cancer risk and, when positive, may change surgery and family counseling. It does not report tumor ER/PR/HER2 subtype.",
+    lead: "A BRCA test (often as part of a broader panel) looks for inherited gene changes that can raise lifetime cancer risk and, when positive, may change surgery and family counseling in breast cancer. It does not report tumor ER/PR/HER2 subtype.",
     ask: [
       "What would a positive BRCA (or related gene) result change for my surgery?",
       "What does a negative result mean — and what does it not mean?",
@@ -44,7 +44,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
       "Ask what the test can and cannot answer before treating it like a tumor-biology report.",
   },
   vsSubtype: {
-    lead: "Tumor subtype describes the cancer’s biology. Germline genetics describes inherited risk that can affect surgery and family implications.",
+    lead: "Tumor subtype describes breast cancer’s biology. Germline genetics describes inherited risk that can affect surgery and family implications.",
     close:
       "You may need both conversations. Do not treat a pathology receptor result as a BRCA answer.",
   },
@@ -59,7 +59,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
       "Ask what a positive result would change for your operation — in plain language — before assuming one path.",
   },
   onlyBrca: {
-    lead: "BRCA1 and BRCA2 are the genes people hear about most — but they are not the only ones that can matter. Many counseling conversations use a multi-gene panel that may include other high- or moderate-risk genes.",
+    lead: "BRCA1 and BRCA2 are the genes people hear about most — but they are not the only ones that can matter in breast cancer. Many counseling conversations use a multi-gene panel that may include other high- or moderate-risk genes.",
     ask: [
       "Are we testing only BRCA, or a broader panel — and why for my situation?",
       "Which results would change surgery vs only change screening or family counseling?",
@@ -69,7 +69,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
       "You do not need to memorize gene names. Ask which genes are on the panel and which results would change the surgery decision.",
   },
   negativeOrVus: {
-    lead: "A negative result does not mean “zero risk,” and a VUS (variant of uncertain significance) is not the same as a positive result.",
+    lead: "A negative result does not mean “zero risk,” and a VUS (variant of uncertain significance) is not the same as a positive result in breast cancer.",
     ask: [
       "If testing is negative, what does that mean for my surgery choice?",
       "If we get a VUS, will we treat it as actionable for surgery?",
@@ -79,7 +79,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
       "Do not redesign surgery around a VUS unless your genetics and surgical teams agree it should change the plan.",
   },
   waitOrNot: {
-    lead: "Waiting for genetics can be appropriate when results would change the operation. Waiting is not automatic for everyone — urgency depends on your cancer situation.",
+    lead: "Waiting for genetics can be appropriate when results would change the operation. Waiting is not automatic for everyone — urgency depends on your breast cancer situation.",
     ask: [
       "Would a genetic result change lumpectomy vs mastectomy for me?",
       "Is it safe to wait for counseling/results before locking surgery?",
@@ -114,7 +114,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
       "Ask for a counseling referral when history is concerning — do not self-calculate lifetime risk from one relative’s story.",
   },
   timeline: {
-    lead: "Counseling and testing can take days to weeks depending on access, prior records, and lab turnaround.",
+    lead: "Counseling and testing can take days to weeks depending on access, prior records, and lab turnaround in breast cancer.",
     ask: [
       "How soon can I see genetic counseling?",
       "How long do results usually take?",
@@ -122,7 +122,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
     ],
   },
   process: {
-    lead: "A typical path: referral → counseling discussion → decide whether to test → sample → results visit → update the surgical plan if needed.",
+    lead: "A typical path: referral → counseling discussion → decide whether to test → sample → results visit → update the surgical plan if needed in breast cancer.",
     items: [
       "Bring family-history details you know (even if incomplete)",
       "Bring pathology and imaging summaries",
@@ -132,7 +132,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
       "Counseling is a conversation first — testing is not automatic at every visit.",
   },
   pending: {
-    lead: "Before locking surgery, confirm whether genetics is still open:",
+    lead: "For breast cancer, before locking surgery, confirm whether genetics is still open:",
     items: [
       "Whether counseling is recommended for you",
       "Whether a result would change the operation",
@@ -143,7 +143,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
       "Clear answers here prevent locking a date that genetics would reverse.",
   },
   thisWeek: {
-    lead: "If genetics may affect surgery, focus on:",
+    lead: "For breast cancer, if genetics may affect surgery, focus on:",
     steps: [
       "Ask whether you should have genetic counseling before a final surgery choice",
       "Ask whether a positive result would change lumpectomy vs mastectomy (or the other breast)",
@@ -153,7 +153,7 @@ export const BREAST_GENETICS_ENTRY_CARDS = {
       "A short “wait / don’t wait” answer from your team beats researching gene lists alone.",
   },
   mistakes: {
-    lead: "Common genetics-before-surgery mistakes include:",
+    lead: "For breast cancer, common genetics-before-surgery mistakes include:",
     items: [
       {
         mistake: "Treating tumor subtype as germline genetics",

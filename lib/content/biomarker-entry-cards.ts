@@ -2,7 +2,7 @@
 
 export const BIOMARKER_ENTRY_CARDS = {
   comprehensive: {
-    lead: "“Comprehensive” usually means a broad panel that looks for many cancer features at once — not only one or two markers.",
+    lead: "“Comprehensive” usually means a broad panel that looks for many cancer features at once — not only one or two markers in lung cancer.",
     items: [
       "Limited testing may miss options that a broader panel could surface",
       "Tissue amount, cancer type, and stage can affect what is ordered",

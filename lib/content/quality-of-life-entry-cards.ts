@@ -2,7 +2,7 @@
 
 export const QUALITY_OF_LIFE_ENTRY_CARDS = {
   supportiveWorse: {
-    lead: "No. Supportive care can be part of cancer treatment at any stage.",
+    lead: "No. Supportive care can be part of lung cancer treatment at any stage.",
     helps: [
       "Symptoms",
       "Side effects",
@@ -12,7 +12,7 @@ export const QUALITY_OF_LIFE_ENTRY_CARDS = {
     close: "It can be provided while you are receiving cancer treatment.",
   },
   tellDoctor: {
-    lead: "Yes. Your priorities are important medical information.",
+    lead: "For lung cancer, yes. Your priorities are important medical information.",
     examples: [
       "Staying independent",
       "Attending family events",
@@ -23,11 +23,11 @@ export const QUALITY_OF_LIFE_ENTRY_CARDS = {
       "Doctors can make better recommendations when they understand your goals.",
   },
   affectChoice: {
-    lead: "Yes. Treatment decisions often consider expected benefit, possible risks, and your personal goals.",
+    lead: "For lung cancer, yes. Treatment decisions often consider expected benefit, possible risks, and your personal goals.",
     close: "The best option is not always the most aggressive option.",
   },
   whichSymptoms: {
-    lead: "Tell your care team about changes such as:",
+    lead: "For lung cancer, tell your care team about changes such as:",
     symptoms: [
       "Worsening fatigue",
       "Breathing difficulties",
@@ -39,16 +39,16 @@ export const QUALITY_OF_LIFE_ENTRY_CARDS = {
     close: "Do not assume you should simply tolerate symptoms.",
   },
   waitAppointment: {
-    lead: "Not always. Some symptoms need earlier attention.",
+    lead: "For lung cancer, not always. Some symptoms need earlier attention.",
     ask: "Which symptoms should I call about immediately?",
     close: "Knowing this beforehand can reduce stress.",
   },
   adjustTreatment: {
-    lead: "Sometimes doctors may consider adjustments depending on treatment goals, side effects, and your overall situation.",
+    lead: "Sometimes doctors may consider adjustments depending on treatment goals, side effects, and your overall situation in lung cancer.",
     close: "The important step is telling your team what is happening.",
   },
   burdenTooMuch: {
-    lead: "Consider discussing:",
+    lead: "For lung cancer, consider discussing:",
     factors: [
       "Are side effects preventing daily activities?",
       "Is treatment helping achieve my goals?",
@@ -58,12 +58,12 @@ export const QUALITY_OF_LIFE_ENTRY_CARDS = {
       "A treatment decision should be reviewed when your situation changes.",
   },
   moreBetter: {
-    lead: "Not necessarily. More treatment may bring more possible benefit — but also more burden.",
+    lead: "Not necessarily in lung cancer. More treatment may bring more possible benefit — but also more burden.",
     close:
       "The right choice depends on your cancer, health, and priorities.",
   },
   goalsChange: {
-    lead: "Yes. Goals may change as circumstances change. For example:",
+    lead: "For lung cancer, yes. Goals may change as circumstances change. For example:",
     examples: [
       "Focusing more on cancer control",
       "Focusing more on daily function",
@@ -72,23 +72,23 @@ export const QUALITY_OF_LIFE_ENTRY_CARDS = {
     close: "Your goals can be revisited.",
   },
   planTooHard: {
-    lead: "Tell your team what is becoming hard: work, caregiving, travel frequency, side-effect burden, or money stress.",
+    lead: "Tell your team what is becoming hard: work, caregiving, travel frequency, side-effect burden, or money stress in lung cancer.",
     ask: "Can we adjust the schedule, location, supportive care, or approach so this plan is more sustainable?",
     close:
       "Raising practical limits is part of good decision-making — not quitting care.",
   },
   costConversation: {
-    lead: "Yes — at a high level. Ask what costs and time commitments to expect, what support resources exist, and whether another workable option has a lighter practical burden.",
+    lead: "Yes — at a high level in lung cancer. Ask what costs and time commitments to expect, what support resources exist, and whether another workable option has a lighter practical burden.",
     close:
       "Exact prices vary; the useful step is putting affordability and time on the table with your team.",
   },
   hospice: {
-    lead: "Supportive care focuses on improving quality of life during cancer care. It can happen during active treatment, alongside cancer therapy.",
+    lead: "Supportive care focuses on improving quality of life during lung cancer care. It can happen during active treatment, alongside cancer therapy.",
     close:
       "Hospice care is a specific type of care focused on comfort when treatment goals are different. They are not the same thing.",
   },
   family: {
-    lead: "Families can help by:",
+    lead: "For lung cancer, families can help by:",
     ways: [
       "Attending appointments",
       "Helping organize information",
@@ -98,7 +98,7 @@ export const QUALITY_OF_LIFE_ENTRY_CARDS = {
     close: "Your preferences should remain central.",
   },
   services: {
-    lead: "Depending on your needs, ask about:",
+    lead: "For lung cancer, depending on your needs, ask about:",
     items: [
       "Symptom management",
       "Nutrition",
@@ -109,7 +109,7 @@ export const QUALITY_OF_LIFE_ENTRY_CARDS = {
     ],
   },
   whoHelps: {
-    lead: "Decision support may involve:",
+    lead: "For lung cancer, decision support may involve:",
     people: [
       "Oncologists",
       "Nurses",
@@ -120,7 +120,7 @@ export const QUALITY_OF_LIFE_ENTRY_CARDS = {
     close: "You do not have to make every decision alone.",
   },
   workDuring: {
-    lead: "Many people continue some work during treatment — others need time off for parts of care. It depends on treatment type, side effects, and job demands.",
+    lead: "Many people continue some work during treatment — others need time off for parts of care in lung cancer. It depends on treatment type, side effects, and job demands.",
     ask: [
       "What does a typical treatment week look like for my plan?",
       "Which side effects most often affect work?",
@@ -130,7 +130,7 @@ export const QUALITY_OF_LIFE_ENTRY_CARDS = {
       "Tell your team what your work requires — planning is part of the decision, not a separate problem.",
   },
   palliativeHome: {
-    lead: "Palliative or supportive care at home focuses on comfort, symptoms, and daily function where you live. It can run alongside cancer treatment.",
+    lead: "Palliative or supportive care at home focuses on comfort, symptoms, and daily function where you live. It can run alongside lung cancer treatment.",
     items: [
       "Symptom and medication support",
       "Nursing or home-care visits when available",

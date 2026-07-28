@@ -12,7 +12,7 @@ export const STAGE_IV_ENTRY_CARDS = {
       "Your doctor can explain what goals are realistic for your situation — and what options fit those goals.",
   },
   differentPlans: {
-    lead: "Because every cancer situation is different. Doctors usually consider:",
+    lead: "Because every cancer situation is different in lung cancer. Doctors usually consider:",
     items: [
       "Cancer biology and biomarkers",
       "Previous treatments",
@@ -22,12 +22,12 @@ export const STAGE_IV_ENTRY_CARDS = {
     close: "The same Stage label does not mean the same plan.",
   },
   goalsNotGivingUp: {
-    lead: "No. Different treatment goals do not mean less care. They mean your plan is designed around your situation.",
+    lead: "For lung cancer, no. Different treatment goals do not mean less care. They mean your plan is designed around your situation.",
     close:
       "Your medical team is still actively making decisions with you — including which treatments may help and what trade-offs matter.",
   },
   strongest: {
-    lead: "Not always. A good treatment choice balances:",
+    lead: "For lung cancer, not always. A good treatment choice balances:",
     items: [
       "Possible benefit",
       "Possible risks and side effects",
@@ -41,7 +41,7 @@ export const STAGE_IV_ENTRY_CARDS = {
     ask: "Has my cancer been tested for information that could change my options?",
   },
   secondOpinion: {
-    lead: "Many patients find a second opinion helpful when:",
+    lead: "For lung cancer, many patients find a second opinion helpful when:",
     when: [
       "Decisions feel complex",
       "They want more confidence",
@@ -50,12 +50,12 @@ export const STAGE_IV_ENTRY_CARDS = {
     close: "It is about confidence, not distrust.",
   },
   clinicalTrial: {
-    lead: "A clinical trial may be another option depending on cancer type, previous treatment, and eligibility.",
+    lead: "A clinical trial may be another option depending on cancer type, previous treatment, and eligibility in lung cancer.",
     close:
       "Ask whether any trials fit your situation — and how they compare with standard options.",
   },
   first: {
-    lead: "Start with three focuses:",
+    lead: "For lung cancer, start with three focuses:",
     steps: [
       "Understand what doctors have confirmed about your cancer",
       "Make sure important information is available or in progress",
@@ -64,12 +64,12 @@ export const STAGE_IV_ENTRY_CARDS = {
     close: "You do not need to solve everything at once.",
   },
   statistics: {
-    lead: "If you already looked up numbers online, remember: statistics describe groups of people. Your situation depends on cancer characteristics, treatment response, and overall health.",
+    lead: "If you already looked up numbers online, remember: statistics describe groups of people in lung cancer. Your situation depends on cancer characteristics, treatment response, and overall health.",
     ask: "What factors matter most in my situation?",
     close: "A useful conversation is about your picture — not a chart average.",
   },
   family: {
-    lead: "Start with what you know:",
+    lead: "For lung cancer, start with what you know:",
     items: [
       "What doctors have confirmed",
       "What tests are still pending",
@@ -79,15 +79,15 @@ export const STAGE_IV_ENTRY_CARDS = {
       "You do not need every answer before talking with family. Sharing the next step is often enough for now.",
   },
   worthIt: {
-    lead: "Discuss expected benefit, possible side effects, impact on daily life, and your personal priorities.",
+    lead: "Discuss expected benefit, possible side effects, impact on daily life, and your personal priorities in lung cancer.",
     close: "The best decision is one that fits your goals — not only the strongest-sounding option.",
   },
   haveSay: {
-    lead: "Yes. Your preferences matter. Good cancer care includes discussing medical options, expected benefits, risks, and what matters most to you.",
+    lead: "Yes. Your preferences matter. Good lung cancer care includes discussing medical options, expected benefits, risks, and what matters most to you.",
     close: "You are part of the decision — not only the recipient of a plan.",
   },
   askList: {
-    lead: "After a Stage IV diagnosis, focus questions on the next useful decision.",
+    lead: "After a Stage IV diagnosis, focus questions on the next useful decision in lung cancer.",
     ask: [
       "What are the goals of treatment in my situation?",
       "Has comprehensive biomarker testing been done?",

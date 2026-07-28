@@ -7,7 +7,7 @@ export const BREAST_QOL_ENTRY_CARDS = {
       "It is not a separate “soft” topic. Priorities belong in the same conversation as surgery, medicines, and radiation.",
   },
   notEitherOr: {
-    lead: "The useful question is rarely “treatment or quality of life?” It is: how can this plan support both cancer goals and the life you want to protect?",
+    lead: "The useful question is rarely “treatment or quality of life in breast cancer?” It is: how can this plan support both cancer goals and the life you want to protect?",
     close:
       "Talking about daily life does not mean you are refusing care — it helps the team design a workable plan.",
   },
@@ -23,7 +23,7 @@ export const BREAST_QOL_ENTRY_CARDS = {
       "Needing supportive care does not mean doctors are giving up.",
   },
   tellDoctor: {
-    lead: "Yes. Your priorities are important medical information. Examples:",
+    lead: "For breast cancer, yes. Your priorities are important medical information. Examples:",
     items: [
       "Staying at work or caregiving for family",
       "Protecting energy for children or parents",
@@ -39,7 +39,7 @@ export const BREAST_QOL_ENTRY_CARDS = {
       "The strongest-sounding option is not automatically the best fit.",
   },
   whichSymptoms: {
-    lead: "Tell your care team about changes such as:",
+    lead: "For breast cancer, tell your care team about changes such as:",
     items: [
       "Worsening fatigue, pain, or sleep problems",
       "Nausea, appetite changes, or mouth sores",
@@ -50,7 +50,7 @@ export const BREAST_QOL_ENTRY_CARDS = {
     close: "Do not assume you should simply tolerate symptoms.",
   },
   waitAppointment: {
-    lead: "Not always. Some symptoms need earlier attention.",
+    lead: "For breast cancer, not always. Some symptoms need earlier attention.",
     ask: [
       "Which symptoms should I call about immediately?",
       "Which ones can wait until the next visit?",
@@ -58,17 +58,17 @@ export const BREAST_QOL_ENTRY_CARDS = {
     close: "Knowing this beforehand can reduce stress.",
   },
   adjustTreatment: {
-    lead: "Sometimes doctors may adjust dose, schedule, supportive medicines, or the overall approach depending on goals and side effects.",
+    lead: "Sometimes doctors may adjust dose, schedule, supportive medicines, or the overall approach depending on goals and side effects in breast cancer.",
     close:
       "The important step is telling your team what is happening before burden becomes a crisis.",
   },
   moreBetter: {
-    lead: "Not necessarily. More treatment may bring more possible benefit — and more burden on energy, work, fertility plans, or recovery.",
+    lead: "Not necessarily in breast cancer. More treatment may bring more possible benefit — and more burden on energy, work, fertility plans, or recovery.",
     close:
       "The right amount of treatment depends on your cancer, health, and priorities.",
   },
   bodyImage: {
-    lead: "Body image, reconstruction timing, and intimacy concerns are valid decision inputs — especially around surgery and radiation.",
+    lead: "Body image, reconstruction timing, and intimacy concerns are valid decision inputs — especially around surgery and radiation in breast cancer.",
     ask: [
       "How might this plan affect appearance, sensation, or recovery timeline?",
       "If reconstruction matters to me, how should timing fit the cancer plan?",
@@ -77,7 +77,7 @@ export const BREAST_QOL_ENTRY_CARDS = {
       "Raising these topics early helps avoid locking a path that fights your priorities.",
   },
   work: {
-    lead: "Many people continue some work during chemotherapy — others need partial or full time off around infusion weeks, low blood counts, or side effects. It depends on the regimen, your job’s physical/cognitive demands, and support at work.",
+    lead: "Many people continue some work during chemotherapy — others need partial or full time off around infusion weeks, low blood counts, or side effects in breast cancer. It depends on the regimen, your job’s physical/cognitive demands, and support at work.",
     ask: [
       "What does a typical chemo week look like for my plan?",
       "Which side effects most often affect work or caregiving?",
@@ -87,7 +87,7 @@ export const BREAST_QOL_ENTRY_CARDS = {
       "Tell your team what your week requires — planning is part of the decision.",
   },
   timeOff: {
-    lead: "There is no universal “average time off” that fits everyone. Surgery recovery, chemotherapy cycles, daily radiation courses, and reconstruction each add different windows — and many people mix work with treatment rather than taking one continuous leave.",
+    lead: "There is no universal “average time off” that fits everyone in breast cancer. Surgery recovery, chemotherapy cycles, daily radiation courses, and reconstruction each add different windows — and many people mix work with treatment rather than taking one continuous leave.",
     ask: [
       "For my planned surgery, chemo, and/or radiation, what time-off windows are typical?",
       "Which phases usually need full leave vs reduced hours?",
@@ -107,7 +107,7 @@ export const BREAST_QOL_ENTRY_CARDS = {
       "A return-to-work plan is part of survivorship — not proof that everything is finished overnight.",
   },
   thisWeek: {
-    lead: "If quality of life is part of the decision, focus on:",
+    lead: "For breast cancer, if quality of life is part of the decision, focus on:",
     steps: [
       "Write 2–3 priorities you want the plan to protect",
       "List symptoms or burdens that already affect daily life",
@@ -117,7 +117,7 @@ export const BREAST_QOL_ENTRY_CARDS = {
       "A short priority list beats researching every side effect alone.",
   },
   mistakes: {
-    lead: "Common quality-of-life decision mistakes include:",
+    lead: "For breast cancer, common quality-of-life decision mistakes include:",
     items: [
       {
         mistake: "Thinking supportive care means giving up",
