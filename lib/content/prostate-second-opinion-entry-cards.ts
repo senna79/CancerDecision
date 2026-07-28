@@ -2,7 +2,7 @@
 
 export const PROSTATE_SECOND_OPINION_ENTRY_CARDS = {
   everyone: {
-    lead: "Not everyone needs a second opinion. It is especially worth considering before locking active surveillance or irreversible treatment when:",
+    lead: "Not everyone needs a second opinion. It is especially worth considering before locking active surveillance for prostate cancer or irreversible treatment when:",
     items: [
       "Recommendations diverge across specialists",
       "Surveillance versus treatment still feels unclear",
@@ -24,7 +24,7 @@ export const PROSTATE_SECOND_OPINION_ENTRY_CARDS = {
     close: "Confirmation of the current plan is also a useful outcome.",
   },
   delay: {
-    lead: "A second opinion is valuable when it helps clarify a major decision. Timing depends on urgency — ask what must move now and what can continue while you seek another review.",
+    lead: "A second opinion is valuable when it helps clarify a major decision in prostate cancer. Timing depends on urgency — ask what must move now and what can continue while you seek another review.",
     ask: [
       "How urgent is my next decision — monitoring or treatment?",
       "Is there time for a focused second opinion?",
@@ -34,12 +34,12 @@ export const PROSTATE_SECOND_OPINION_ENTRY_CARDS = {
       "The goal is informed decision-making without unsafe delay.",
   },
   disrespectful: {
-    lead: "Most cancer specialists understand that patients want confidence before locking surveillance or irreversible treatment.",
+    lead: "Most cancer specialists understand that patients want confidence before locking surveillance or irreversible treatment in prostate cancer.",
     close:
       "Frame it as: “I want to understand my options clearly before moving forward.” That is about confidence — not distrust.",
   },
   canChange: {
-    lead: "Yes, but not always. A second opinion may:",
+    lead: "Yes, but not always in prostate cancer. A second opinion may:",
     items: [
       "Confirm the current plan",
       "Suggest additional imaging or pathology review before deciding",
@@ -50,7 +50,7 @@ export const PROSTATE_SECOND_OPINION_ENTRY_CARDS = {
       "The goal is not to change treatment for its own sake. The goal is to understand whether the plan fits your situation.",
   },
   twoDoctors: {
-    lead: "Different recommendations can feel confusing — especially when urology and radiation oncology frame options differently. Instead of asking “Which doctor is right?”, compare the reasoning behind each plan.",
+    lead: "Different recommendations can feel confusing — especially when urology and radiation oncology frame options differently in prostate cancer. Instead of asking “Which doctor is right?”, compare the reasoning behind each plan.",
     items: [
       "Expected cancer-control fit for your risk group",
       "Urinary, sexual, and bowel tradeoffs",
@@ -61,7 +61,7 @@ export const PROSTATE_SECOND_OPINION_ENTRY_CARDS = {
       "Write the differences down side by side before choosing.",
   },
   pathology: {
-    lead: "In some situations, another review of pathology, MRI, or risk-group reporting may add confidence — especially when results are borderline or recommendations conflict.",
+    lead: "In some situations, another review of pathology, MRI, or risk-group reporting may add confidence — especially when results are borderline or recommendations conflict in prostate cancer.",
     ask: [
       "Was my Grade Group / Gleason and risk summary confirmed?",
       "Are there uncertain MRI or biopsy findings that another specialist should re-review?",
@@ -91,7 +91,7 @@ export const PROSTATE_SECOND_OPINION_ENTRY_CARDS = {
       "A clear question plus complete records beats “please look at everything.”",
   },
   records: {
-    lead: "Bring the complete picture when you can:",
+    lead: "For prostate cancer, bring the complete picture when you can:",
     items: [
       "Pathology report (including Grade Group / Gleason)",
       "PSA history and recent values",
@@ -103,7 +103,7 @@ export const PROSTATE_SECOND_OPINION_ENTRY_CARDS = {
       "Incomplete records often produce incomplete opinions.",
   },
   cost: {
-    lead: "Costs and coverage vary by clinic, visit type (in-person vs remote), and insurance. Use questions instead of guessing a price:",
+    lead: "Costs and coverage vary by clinic, visit type (in-person vs remote), and insurance in prostate cancer. Use questions instead of guessing a price:",
     ask: [
       "Is this visit covered as a second opinion / consultation?",
       "What records or slide reviews add extra fees?",
@@ -111,7 +111,7 @@ export const PROSTATE_SECOND_OPINION_ENTRY_CARDS = {
     ],
   },
   thisWeek: {
-    lead: "If you are arranging a second opinion, focus on:",
+    lead: "For prostate cancer, if you are arranging a second opinion, focus on:",
     steps: [
       "Name the decision you want reviewed (surveillance, surgery vs radiation, or risk clarity)",
       "Gather pathology, PSA, imaging, and the current recommendation in writing",
@@ -121,7 +121,7 @@ export const PROSTATE_SECOND_OPINION_ENTRY_CARDS = {
       "A focused packet beats a vague request for “another look.”",
   },
   mistakes: {
-    lead: "Common second-opinion mistakes include:",
+    lead: "For prostate cancer, common second-opinion mistakes include:",
     items: [
       {
         mistake: "Waiting until after irreversible treatment to ask for review",
@@ -140,10 +140,6 @@ export const PROSTATE_SECOND_OPINION_ENTRY_CARDS = {
 } as const;
 
 export const PROSTATE_SECOND_OPINION_GLOSS =
-  "A prostate cancer second opinion is most useful before locking active surveillance or irreversible treatment when recommendations diverge, risk features are borderline, or you want confidence — not as a sign that something is wrong.";
+  "A prostate cancer second opinion is most useful before locking active surveillance or irreversible treatment when recommendations diverge or you want confidence — not as a sign that something is wrong.";
 
-export const PROSTATE_SECOND_OPINION_DIRECT_ANSWER = `A second opinion is especially useful before locking active surveillance or irreversible prostate cancer treatment when recommendations diverge, risk features are borderline, or surgery and radiation are both offered without a clear comparison.
-
-It may confirm the current plan, suggest missing information, or discuss another reasonable path. Confirmation is also a useful outcome.
-
-Ask: “What decision do I want reviewed — and is there time for a focused second opinion before the next irreversible step?”`;
+export const PROSTATE_SECOND_OPINION_DIRECT_ANSWER = `Often a second opinion helps before locking active surveillance or irreversible prostate cancer treatment when recommendations diverge, risk features are borderline, or surgery and radiation are both offered without a clear comparison. Value depends on timing, what you need clarified, and how complete your records are. It is not always necessary if the plan feels clear and concordant. Ask: what decision do I want reviewed, and is there time for a focused second opinion before the next irreversible step?`;

@@ -633,7 +633,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "how-prostate-cancer-treatment-costs-differ",
       category: "cost",
       summary:
-        "Surveillance usually has lower upfront cost but ongoing testing. Surgery and radiation concentrate costs differently over time. Ask for episode-of-care estimates including complications and follow-up.",
+        "Prostate cancer treatment costs often differ by pathway — active surveillance usually has lower upfront cost with ongoing testing, while surgery and radiation concentrate costs differently over time. What you need to ask depends on insurance, the proposed plan, and follow-up burden. Cost alone should not decide care, but it belongs in the conversation. Ask: can we estimate episode-of-care costs including complications and follow-up for each realistic path?",
       why: "Cost conversations help patients compare pathways that may be clinically similar for their risk group.",
       factors: [
         "Upfront versus longitudinal costs",
@@ -1103,11 +1103,11 @@ export function createSeedData(): KnowledgeGraphStore {
     {
       n: 17,
       cancer: 2,
-      title: "What if recommendations differ between urology and radiation oncology?",
+      title: "What if prostate cancer recommendations differ between urology and radiation oncology?",
       slug: "when-prostate-recommendations-differ-across-specialists",
       category: "second_opinion",
       summary:
-        "Differing recommendations are common because multiple options can be reasonable. Ask each specialist to explain goals, side-effect profiles, and what would change their advice. A joint consult or second opinion can reconcile framing differences.",
+        "Differing prostate cancer recommendations between urology and radiation oncology are common because more than one option can be reasonable. How to resolve them depends on risk-group agreement, side-effect priorities, life expectancy, and what each team would change with new information. Discordance does not automatically mean someone is wrong. Ask: where exactly do you disagree, and would a joint consult or second opinion help finalize the plan?",
       why: "Patients often interpret specialty differences as conflict rather than complementary perspectives.",
       factors: [
         "Risk group agreement",
@@ -1221,7 +1221,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "evaluate-treatment-abroad-for-prostate-cancer",
       category: "global_care",
       summary:
-        "Abroad care may be considered for specialized radiation platforms or high-volume surgery. Compare outcomes evidence, follow-up requirements, and whether equivalent care exists closer to home.",
+        "Sometimes people consider prostate cancer care in another city or country when a named capability — such as a specialized radiation platform or high-volume surgery — is hard to get locally. Whether travel helps depends on the specific gap, follow-up after return, fitness for travel, and total cost. Moving for a famous name alone usually does not improve care. Ask: is the abroad capability meaningfully different for my risk group, and can remote review answer that first?",
       why: "Marketing for overseas programs can outpace clarity about continuity and evidence.",
       factors: [
         "Specific technology or surgeon experience sought",
@@ -1574,7 +1574,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: PROSTATE_TREATMENT_COMPARE_SLUG,
       category: "treatment",
       summary:
-        "When definitive therapy is recommended, surgery and radiation can both be reasonable for many risk groups. Compare cancer-control expectations, urinary/sexual/bowel tradeoffs, recovery time, and what would change the recommendation for your situation — not a single “best” treatment for everyone.",
+        "The choice between surgery and radiation for prostate cancer depends on risk group, life expectancy, and what you want to protect — urinary, sexual, and bowel function. Both can be reasonable for many situations; paths differ by recovery, side-effect profiles, and center experience. Neither option is automatically right for everyone. Ask: for my risk group, how do outcomes and side effects compare — and what would change the recommendation either way?",
       why: "Patients often hear specialty-framed options without a shared comparison frame across surgery and radiation.",
       factors: [
         "Risk group and life expectancy",

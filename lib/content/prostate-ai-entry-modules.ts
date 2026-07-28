@@ -195,19 +195,19 @@ export const PROSTATE_NEWLY_DIAGNOSED_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your prostate cancer decision journey",
   relatedPaths: [
     {
-      title: "Wondering about monitoring?",
+      title: "Wondering about prostate cancer active surveillance?",
       question: "Is active surveillance reasonable for prostate cancer?",
       cta: "Active surveillance",
       href: PROSTATE_SURVEILLANCE,
     },
     {
-      title: "Comparing treatments?",
+      title: "Comparing prostate cancer surgery and radiation?",
       question: "How do I compare surgery and radiation for prostate cancer?",
       cta: "Surgery vs radiation",
       href: PROSTATE_COMPARE,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a prostate cancer decision?",
       question: "Should I get a second opinion for prostate cancer?",
       cta: "Second opinion",
       href: PROSTATE_SECOND,
@@ -429,20 +429,20 @@ export const PROSTATE_SURVEILLANCE_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your prostate cancer decision journey",
   relatedPaths: [
     {
-      title: "Still clarifying the diagnosis?",
+      title: "Still clarifying the prostate cancer diagnosis?",
       question:
         "What decisions matter most after a new prostate cancer diagnosis?",
       cta: "Newly diagnosed",
       href: `/questions/${PROSTATE_NEWLY_DIAGNOSED_SLUG}`,
     },
     {
-      title: "Comparing treatments?",
+      title: "Comparing prostate cancer surgery and radiation?",
       question: "How do I compare surgery and radiation for prostate cancer?",
       cta: "Surgery vs radiation",
       href: PROSTATE_COMPARE,
     },
     {
-      title: "Want more confidence?",
+      title: "Want more confidence in a prostate cancer decision?",
       question: "Should I get a second opinion for prostate cancer?",
       cta: "Second opinion",
       href: PROSTATE_SECOND,
@@ -662,20 +662,20 @@ export const PROSTATE_SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
   relatedPathsTitle: "Continue your prostate cancer decision journey",
   relatedPaths: [
     {
-      title: "Still clarifying the diagnosis?",
+      title: "Still clarifying the prostate cancer diagnosis?",
       question:
         "What decisions matter most after a new prostate cancer diagnosis?",
       cta: "Newly diagnosed",
       href: `/questions/${PROSTATE_NEWLY_DIAGNOSED_SLUG}`,
     },
     {
-      title: "Wondering about monitoring?",
+      title: "Wondering about prostate cancer active surveillance?",
       question: "Is active surveillance reasonable for prostate cancer?",
       cta: "Active surveillance",
       href: PROSTATE_SURVEILLANCE,
     },
     {
-      title: "Comparing treatments?",
+      title: "Comparing prostate cancer surgery and radiation?",
       question: "How do I compare surgery and radiation for prostate cancer?",
       cta: "Surgery vs radiation",
       href: PROSTATE_COMPARE,

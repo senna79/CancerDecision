@@ -2493,13 +2493,13 @@ const PROSTATE_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
     {
       id: "understand",
       stage: STAGES.understand,
-      title: "Get clear on your diagnosis",
+      title: "Get clear on your prostate cancer diagnosis",
       lead: "Patient question: what exactly do I have?",
       main: "pnd-understand",
       cards: [
         {
           id: "my-situation",
-          title: "Is this my situation?",
+          title: "Is this my prostate cancer situation?",
           summary: "When people are newly diagnosed with prostate cancer.",
         },
         {
@@ -2515,18 +2515,18 @@ const PROSTATE_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
         },
         {
           id: "pnd-diagnosis-to-treatment",
-          title: "How long from diagnosis to treatment?",
+          title: "How long from prostate cancer diagnosis to treatment?",
           summary: "Often weeks, not days — ask what waits for key results.",
         },
         {
           id: "pnd-risk-timeline",
-          title: "Does my risk group decide my treatment timeline?",
+          title: "Does my prostate cancer risk group decide my treatment timeline?",
           summary:
             "Risk matters — but the monitoring-versus-treatment fork also sets the pace.",
         },
         {
           id: "pnd-overwhelmed",
-          title: "Is it normal to feel overwhelmed after diagnosis?",
+          title: "Is it normal to feel overwhelmed after a prostate cancer diagnosis?",
           summary: "Yes — a next-step plan helps more than solving everything today.",
         },
       ],
@@ -2534,13 +2534,13 @@ const PROSTATE_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
     {
       id: "compare",
       stage: STAGES.compare,
-      title: "Make sure you have the information needed",
+      title: "Make sure you have the information needed for prostate cancer decisions",
       lead: "Patient question: do we know enough to choose a first path?",
       main: "pnd-information",
       cards: [
         {
           id: "pnd-risk-group",
-          title: "Could clarifying my risk group change my options?",
+          title: "Could clarifying my prostate cancer risk group change my options?",
           summary:
             "PSA, Grade Group / Gleason, and imaging often shape monitoring versus treatment.",
         },
@@ -2551,12 +2551,12 @@ const PROSTATE_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
         },
         {
           id: "pnd-start-right-away",
-          title: "Should I start treatment right away after diagnosis?",
+          title: "Should I start prostate cancer treatment right away after diagnosis?",
           summary: "Urgency varies — ask what must happen now vs after key results.",
         },
         {
           id: "pnd-surveillance",
-          title: "Is active surveillance a reasonable option for me?",
+          title: "Is active surveillance a reasonable option for my prostate cancer?",
           summary:
             "For some risk groups, structured monitoring can be a first path — not “doing nothing.”",
         },
@@ -2565,18 +2565,18 @@ const PROSTATE_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
     {
       id: "practical",
       stage: STAGES.practical,
-      title: "Understand the decisions ahead",
+      title: "Understand the prostate cancer decisions ahead",
       lead: "Patient question: what decisions will I eventually need to make?",
       main: "pnd-ahead",
       cards: [
         {
           id: "pnd-focus-first",
-          title: "What decision should I focus on first?",
+          title: "What prostate cancer decision should I focus on first?",
           summary: "Your next decision matters more than every future one.",
         },
         {
           id: "pnd-not-expert",
-          title: "Do I need to understand every treatment before my first appointment?",
+          title: "Do I need to understand every prostate cancer treatment before my first appointment?",
           summary: "No — know what you know, what you don’t, and what to ask.",
         },
       ],
@@ -2584,23 +2584,23 @@ const PROSTATE_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
     {
       id: "conversation",
       stage: STAGES.conversation,
-      title: "Prepare for your next important conversation",
+      title: "Prepare for your next important prostate cancer conversation",
       lead: "Patient question: how can I make my appointments more useful?",
       main: "checklist",
       cards: [
         {
           id: "pnd-this-week",
-          title: "I just received a diagnosis. What should I do this week?",
+          title: "I just received a prostate cancer diagnosis. What should I do this week?",
           summary: "Three focuses — not the whole journey at once.",
         },
         {
           id: "pnd-ask-urologist",
-          title: "What should I expect at my first urology appointment?",
+          title: "What should I expect at my first prostate cancer urology appointment?",
           summary: "What happens in the visit — and a focused ask list.",
         },
         {
           id: "pnd-ask-radiation",
-          title: "What should I ask about radiation if it is discussed?",
+          title: "What should I ask about prostate cancer radiation if it is discussed?",
           summary: "Fit, side-effect tradeoffs, and when to hear both specialties.",
         },
         {
@@ -2610,7 +2610,7 @@ const PROSTATE_NEWLY_DIAGNOSED_PATH: EntryPathV2 = {
         },
         {
           id: "pnd-records",
-          title: "What information should I keep from the beginning?",
+          title: "What prostate cancer information should I keep from the beginning?",
           summary: "Reports and results that travel with you.",
         },
       ],
@@ -2638,38 +2638,38 @@ const PROSTATE_SURVEILLANCE_PATH: EntryPathV2 = {
     {
       id: "understand",
       stage: STAGES.understand,
-      title: "Why does the surveillance decision matter?",
+      title: "Why does the prostate cancer surveillance decision matter?",
       lead: "Patient question: what does “watching it” actually mean?",
       main: "pas-understand",
       cards: [
         {
           id: "my-situation",
-          title: "Is this my situation?",
+          title: "Is this my prostate cancer situation?",
           summary: "When monitoring versus treatment becomes a live fork.",
         },
         {
           id: "pas-what-is",
-          title: "What is active surveillance?",
+          title: "What is active surveillance for prostate cancer?",
           summary: "Structured monitoring — not ignoring the cancer.",
         },
         {
           id: "pas-why-matters",
-          title: "Why does this decision matter?",
+          title: "Why does this prostate cancer decision matter?",
           summary: "Side-effect timing, follow-up intensity, and next forks.",
         },
         {
           id: "pas-not-nothing",
-          title: "Is active surveillance the same as doing nothing?",
+          title: "Is prostate cancer active surveillance the same as doing nothing?",
           summary: "No — it has a schedule and exit triggers.",
         },
         {
           id: "pas-not-weaker",
-          title: "Is treatment automatically the “stronger” choice?",
+          title: "Is prostate cancer treatment automatically the “stronger” choice?",
           summary: "Fit beats online aggressiveness.",
         },
         {
           id: "pas-risk-first",
-          title: "Do I need risk-group clarity before deciding?",
+          title: "Do I need prostate cancer risk-group clarity before deciding?",
           summary: "Risk features often decide whether monitoring is on the table.",
         },
       ],
@@ -2677,33 +2677,33 @@ const PROSTATE_SURVEILLANCE_PATH: EntryPathV2 = {
     {
       id: "compare",
       stage: STAGES.compare,
-      title: "How should I compare monitoring vs treatment?",
+      title: "How should I compare prostate cancer monitoring vs treatment?",
       lead: "Patient question: is surveillance reasonable for someone like me?",
       main: "does-not-decide",
       cards: [
         {
           id: "pas-who-fits",
-          title: "When is active surveillance more often discussed?",
+          title: "When is prostate cancer active surveillance more often discussed?",
           summary: "Lower-risk features, imaging, health, and follow-up access.",
         },
         {
           id: "pas-who-may-not",
-          title: "When may treatment now be favored instead?",
+          title: "When may prostate cancer treatment now be favored instead?",
           summary: "Higher-risk features, concern on imaging/biopsy, or preference.",
         },
         {
           id: "pas-triggers",
-          title: "What would end active surveillance?",
+          title: "What would end prostate cancer active surveillance?",
           summary: "PSA, MRI, biopsy, or preference triggers — ask for yours.",
         },
         {
           id: "pas-what-changes",
-          title: "What would change the monitoring-versus-treatment recommendation?",
+          title: "What would change the prostate cancer monitoring-versus-treatment recommendation?",
           summary: "The question that clarifies the fork.",
         },
         {
           id: "pas-vs-treatment",
-          title: "If we treat instead, what comes next?",
+          title: "If we treat prostate cancer instead, what comes next?",
           summary: "Usually surgery vs radiation comparison — not every ranking.",
         },
       ],
@@ -2711,33 +2711,33 @@ const PROSTATE_SURVEILLANCE_PATH: EntryPathV2 = {
     {
       id: "practical",
       stage: STAGES.practical,
-      title: "What should I know about follow-up and daily life?",
+      title: "What should I know about prostate cancer follow-up and daily life?",
       lead: "Patient question: what will monitoring actually look like?",
       main: "practical-points",
       cards: [
         {
           id: "pas-schedule",
-          title: "What does the follow-up schedule look like?",
+          title: "What does the prostate cancer follow-up schedule look like?",
           summary: "PSA, exams, MRI, and possible repeat biopsy.",
         },
         {
           id: "pas-pending-info",
-          title: "What information should be clear before locking this fork?",
+          title: "What information should be clear before locking this prostate cancer fork?",
           summary: "Risk group, imaging, pathology review, second opinion.",
         },
         {
           id: "pas-anxiety",
-          title: "What if living with monitoring feels too hard?",
+          title: "What if living with prostate cancer monitoring feels too hard?",
           summary: "Comfort with uncertainty is part of the decision.",
         },
         {
           id: "pas-life-fit",
-          title: "How does surveillance fit travel, work, and appointments?",
+          title: "How does prostate cancer surveillance fit travel, work, and appointments?",
           summary: "Practical adherence is part of a real plan.",
         },
         {
           id: "pas-this-week",
-          title: "What should I do this week while deciding?",
+          title: "What should I do this week while deciding about prostate cancer?",
           summary: "Three focuses — not every treatment side effect online.",
         },
       ],
@@ -2745,23 +2745,23 @@ const PROSTATE_SURVEILLANCE_PATH: EntryPathV2 = {
     {
       id: "conversation",
       stage: STAGES.conversation,
-      title: "What should I discuss with my doctor?",
+      title: "What should I discuss with my doctor about prostate cancer?",
       lead: "Patient question: what should I ask at the next visit?",
       main: "checklist",
       cards: [
         {
           id: "pas-mistakes",
-          title: "What are common mistakes around active surveillance?",
+          title: "What are common mistakes around prostate cancer active surveillance?",
           summary: "“Doing nothing,” urgency fear, and vague follow-up.",
         },
         {
           id: "pas-second-opinion",
-          title: "Should I get a second opinion about surveillance?",
+          title: "Should I get a second opinion about prostate cancer surveillance?",
           summary: "About confidence — not distrust.",
         },
         {
           id: "scenario",
-          title: "An example scenario",
+          title: "An example prostate cancer decision scenario",
           summary: "How someone might clarify monitor vs treat.",
         },
       ],
@@ -2789,13 +2789,13 @@ const PROSTATE_SECOND_OPINION_PATH: EntryPathV2 = {
     {
       id: "understand",
       stage: STAGES.understand,
-      title: "Is this a situation where another opinion could help?",
+      title: "Is this a situation where another prostate cancer opinion could help?",
       lead: "Patient question: when is a prostate cancer second opinion most useful?",
       main: "pso-understand",
       cards: [
         {
           id: "my-situation",
-          title: "Is this my situation?",
+          title: "Is this my prostate cancer situation?",
           summary:
             "Before locking surveillance or treatment, when confidence is low.",
         },
@@ -2806,18 +2806,18 @@ const PROSTATE_SECOND_OPINION_PATH: EntryPathV2 = {
         },
         {
           id: "pso-why-prostate",
-          title: "Should I get a second opinion before deciding?",
+          title: "Should I get a prostate cancer second opinion before deciding?",
           summary:
             "Useful when recommendations diverge, or before locking a path.",
         },
         {
           id: "pso-delay",
-          title: "Can I get a second opinion without delaying care?",
+          title: "Can I get a prostate cancer second opinion without delaying care?",
           summary: "Ask urgency, what can continue, and what needs a pause.",
         },
         {
           id: "pso-disrespect",
-          title: "Is asking for a second opinion disrespectful?",
+          title: "Is asking for a prostate cancer second opinion disrespectful?",
           summary: "Frame confidence — not distrust.",
         },
       ],
@@ -2825,29 +2825,29 @@ const PROSTATE_SECOND_OPINION_PATH: EntryPathV2 = {
     {
       id: "compare",
       stage: STAGES.compare,
-      title: "What could another doctor tell me that I do not already know?",
+      title: "What could another doctor tell me about my prostate cancer that I do not already know?",
       lead: "Patient question: confirm, clarify, expand, or identify gaps?",
       main: "second-compare",
       cards: [
         {
           id: "pso-change",
-          title: "Can a second opinion change my treatment plan?",
+          title: "Can a second opinion change my prostate cancer treatment plan?",
           summary: "Sometimes yes — confirmation can also be valuable.",
         },
         {
           id: "pso-focus",
-          title: "What should the review focus on?",
+          title: "What should the prostate cancer second-opinion review focus on?",
           summary:
             "Name one decision — surveillance, surgery vs radiation, or risk clarity.",
         },
         {
           id: "pso-two-doctors",
-          title: "What if two doctors recommend different plans?",
+          title: "What if two doctors recommend different prostate cancer plans?",
           summary: "Compare reasoning — not who is “right.”",
         },
         {
           id: "pso-pathology",
-          title: "Should pathology or MRI be reviewed again?",
+          title: "Should prostate cancer pathology or MRI be reviewed again?",
           summary: "When another specialist review may add confidence.",
         },
       ],
@@ -2855,7 +2855,7 @@ const PROSTATE_SECOND_OPINION_PATH: EntryPathV2 = {
     {
       id: "practical",
       stage: STAGES.practical,
-      title: "How do I prepare so the review is useful?",
+      title: "How do I prepare so the prostate cancer review is useful?",
       lead: "Patient question: what records and timing make this worth it?",
       main: "practical-points",
       cards: [
@@ -2866,17 +2866,17 @@ const PROSTATE_SECOND_OPINION_PATH: EntryPathV2 = {
         },
         {
           id: "pso-records",
-          title: "What records should I bring?",
+          title: "What records should I bring for a prostate cancer second opinion?",
           summary: "Pathology, PSA, imaging, plan, and one sentence question.",
         },
         {
           id: "pso-cost",
-          title: "Cost and insurance for a second opinion",
+          title: "Cost and insurance for a prostate cancer second opinion",
           summary: "Questions instead of guessing a price.",
         },
         {
           id: "pso-this-week",
-          title: "What should I do this week while arranging a review?",
+          title: "What should I do this week while arranging a prostate cancer review?",
           summary: "Name the decision, gather records, check urgency.",
         },
       ],
@@ -2884,18 +2884,18 @@ const PROSTATE_SECOND_OPINION_PATH: EntryPathV2 = {
     {
       id: "conversation",
       stage: STAGES.conversation,
-      title: "What should I ask so the appointment is useful?",
+      title: "What should I ask so the prostate cancer appointment is useful?",
       lead: "Patient question: how do I prepare for the conversation?",
       main: "checklist",
       cards: [
         {
           id: "pso-mistakes",
-          title: "What are common mistakes when getting a second opinion?",
+          title: "What are common mistakes when getting a prostate cancer second opinion?",
           summary: "Timing, incomplete records, and seeking only agreement.",
         },
         {
           id: "scenario",
-          title: "An example scenario",
+          title: "An example prostate cancer decision scenario",
           summary: "How someone might review before locking the fork.",
         },
       ],
