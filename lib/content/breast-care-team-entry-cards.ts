@@ -159,8 +159,4 @@ export const BREAST_CARE_TEAM_ENTRY_CARDS = {
 export const BREAST_CARE_TEAM_GLOSS =
   "Choosing a breast cancer care team is about expertise, multidisciplinary coordination, and practical fit — not picking the most famous hospital. You may combine specialist planning with local treatment.";
 
-export const BREAST_CARE_TEAM_DIRECT_ANSWER = `You do not automatically need a major cancer center. Many people get excellent breast cancer care close to home. Consider another team — or a hybrid setup — when decisions are complex, recommendations conflict, specialized expertise is missing, or coordination feels fragmented.
-
-Ask: “What gap am I trying to fix — expertise, coordination, or confidence — and who will own my next decisions?”
-
-A second opinion reviews a specific fork. A care-team choice decides who coordinates the journey. You may need one, both, or neither.`;
+export const BREAST_CARE_TEAM_DIRECT_ANSWER = `Choosing the right breast cancer care team usually means finding the expertise and coordination your situation requires, not simply the most famous hospital. Many people do well close to home; another team or a hybrid setup may help when decisions are complex, recommendations conflict, specialized expertise is missing, or coordination feels fragmented. A bigger name is not automatically better. Ask: what gap am I trying to fix — expertise, coordination, or confidence — and who will own my next decisions?`;

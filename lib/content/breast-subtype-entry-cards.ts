@@ -142,12 +142,6 @@ export const BREAST_SUBTYPE_ENTRY_CARDS = {
 } as const;
 
 export const BREAST_SUBTYPE_GLOSS =
-  "Breast cancer subtype testing (receptors / HER2, and sometimes genomic assays) helps decide which systemic options and sequencing to discuss — before locking a first plan. It is tumor biology, not germline genetics.";
+  "Breast cancer subtype results (ER/PR, HER2, and sometimes genomic assays) should often be considered before choosing a treatment plan. Subtype is tumor biology, not germline genetics.";
 
-export const BREAST_SUBTYPE_DIRECT_ANSWER = `A biopsy can confirm breast cancer, but doctors often still need subtype results — ER/PR and HER2, and sometimes genomic assays — before choosing systemic options or treatment order.
-
-For many people, those results change which medicine families are discussed and whether treatment should start before or after surgery. Ask whether pending subtype results would change the plan before locking surgery or systemic therapy.
-
-Subtype is tumor biology. It is not the same as germline genetic counseling (BRCA-class testing), which may separately affect surgery choices.
-
-A useful question: “What does my subtype mean for the decisions I need to make next?”`;
+export const BREAST_SUBTYPE_DIRECT_ANSWER = `Often subtype results — ER/PR, HER2, and sometimes genomic assays — should be considered before choosing a breast cancer treatment plan. The importance and timing depend on which decisions are next and what information is still missing. Subtype is tumor biology; it is not the same as germline genetic counseling. Ask: what does my subtype mean for the decisions I need to make next, and should we wait for results before locking a plan?`;

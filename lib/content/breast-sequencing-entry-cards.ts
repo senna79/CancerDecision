@@ -174,10 +174,4 @@ export const BREAST_SEQUENCING_ENTRY_CARDS = {
 export const BREAST_SEQUENCING_GLOSS =
   "Breast cancer treatment sequencing asks whether systemic therapy should start before surgery (neoadjuvant) or after surgery (adjuvant) — based on subtype, stage/extent, and goals, not on which path sounds stronger.";
 
-export const BREAST_SEQUENCING_DIRECT_ANSWER = `A core early decision is treatment order: whether medicines start before surgery, or surgery comes first and medicines follow. Doctors call this sequencing (neoadjuvant vs adjuvant).
-
-Some people start systemic therapy before breast cancer surgery; others have surgery first, then medicines afterward. The better order depends on subtype, stage/extent, and what your team is trying to learn or achieve — not which approach sounds “stronger.”
-
-Ask: “For my subtype and stage, should treatment start before or after surgery — and what would change that recommendation?”
-
-If subtype results are still pending, ask whether that information should arrive before locking the treatment order.`;
+export const BREAST_SEQUENCING_DIRECT_ANSWER = `The choice of whether breast cancer treatment starts before or after surgery depends on subtype, stage and extent, and what your team is trying to learn or achieve. Some people start medicines first; others have surgery first, then systemic therapy. Neither order is automatically stronger for everyone. Ask: for my subtype and stage, should treatment start before or after surgery — and what would change that recommendation?`;

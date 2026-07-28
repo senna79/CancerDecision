@@ -156,8 +156,4 @@ export const BREAST_METASTATIC_ENTRY_CARDS = {
 export const BREAST_METASTATIC_GLOSS =
   "Metastatic (Stage IV) breast cancer decisions focus on control, symptoms, and quality of life — shaped by subtype, prior treatment, and personal goals. It is not the same as “nothing can be done.”";
 
-export const BREAST_METASTATIC_DIRECT_ANSWER = `Metastatic breast cancer means disease has spread beyond the breast and regional nodes. Decisions usually focus on controlling cancer, easing symptoms, and protecting quality of life — not on a single curative package like many early-stage plans.
-
-Ask: “What is the goal of the next treatment for my subtype — and what trade-offs matter most for my life right now?”
-
-You do not need every answer today. Start with what is known, what is pending, and which decision is time-sensitive.`;
+export const BREAST_METASTATIC_DIRECT_ANSWER = `After a metastatic or Stage IV breast cancer diagnosis, the first useful step is usually clarifying what treatment is trying to achieve for your subtype — control, symptoms, and quality of life — not assuming care is ending. Goals and options differ by subtype, prior treatments, symptoms, and priorities for daily life. You do not need to settle every future decision today. Ask: what is the goal of the next treatment for my subtype, and what trade-offs matter most for my life right now?`;

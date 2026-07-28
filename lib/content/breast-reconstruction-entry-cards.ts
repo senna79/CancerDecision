@@ -189,8 +189,4 @@ export const BREAST_RECONSTRUCTION_ENTRY_CARDS = {
 export const BREAST_RECONSTRUCTION_GLOSS =
   "Reconstruction timing (immediate, delayed, or none) and method families (implant vs tissue) should fit the cancer plan — especially mastectomy, radiation, and recovery — not be chosen as a separate cosmetic project.";
 
-export const BREAST_RECONSTRUCTION_DIRECT_ANSWER = `Reconstruction after mastectomy can be immediate, delayed, or not chosen at all. The useful question is not “Which result looks best online?” It is “Which timing and method family fit my cancer plan, radiation likelihood, recovery, and personal goals?”
-
-Ask: “Is immediate reconstruction appropriate for me — or should we wait — and how would radiation or systemic therapy change that?”
-
-You can decide later. What matters now is not locking a mastectomy date that ignores reconstruction timing you still need to understand.`;
+export const BREAST_RECONSTRUCTION_DIRECT_ANSWER = `Reconstruction after mastectomy can be immediate, delayed, or not chosen at all — the useful choice depends on cancer plan, radiation likelihood, recovery, and personal goals, not which result looks best online. Timing and method family should fit the cancer treatment plan, not the other way around. You can decide later; what matters now is not locking a date that ignores reconstruction questions you still need answered. Ask: is immediate reconstruction appropriate for me, or should we wait — and how would radiation or systemic therapy change that?`;

@@ -143,8 +143,4 @@ export const BREAST_CLINICAL_TRIAL_ENTRY_CARDS = {
 export const BREAST_CLINICAL_TRIAL_GLOSS =
   "A breast cancer clinical trial is another option to evaluate — not automatically better than standard care, and not only for people who have run out of options. Fit depends on subtype, prior treatment, goals, and practical burden.";
 
-export const BREAST_CLINICAL_TRIAL_DIRECT_ANSWER = `A clinical trial is another option to evaluate alongside standard breast cancer care — not automatically better, and not only a last resort.
-
-Ask: “Is there a trial that fits my subtype and situation — and how does it compare with standard options on goal, evidence, and daily-life impact?”
-
-Discuss trials early enough that you are not locked out by timing. Not qualifying for one study does not mean other options have ended.`;
+export const BREAST_CLINICAL_TRIAL_DIRECT_ANSWER = `A clinical trial may be worth discussing for breast cancer alongside standard care — before starting treatment, while comparing options, or when the plan is changing. Fit depends on subtype, stage, prior treatments, eligibility, and how a specific trial compares with standard options. A trial is not automatically better than standard treatment, and not only a last resort. Ask: is there a trial that fits my subtype and situation, and how does it compare with standard options on goal, evidence, and daily life?`;

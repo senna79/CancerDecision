@@ -18,15 +18,11 @@ const EXPLORE_REASONS_BULLETS = GLOBAL_CARE_EXPLORE_REASONS.map(
 ).join("\n");
 
 /** Care abroad Entry Direct Answer (`question.summary`) — shared with seed/store. */
-export const GLOBAL_CARE_DIRECT_ANSWER_SUMMARY = `People consider lung cancer care in another city or country for one or more of these reasons — not because a hospital or country is simply more famous:
-
-${EXPLORE_REASONS_BULLETS}
-
-Name your reason in one sentence. When safe, try remote review before travel. Ask the receiving center’s international desk for a written next-step plan. Desperation alone is not a clinical reason to book flights.`;
+export const GLOBAL_CARE_DIRECT_ANSWER_SUMMARY = `Sometimes people consider lung cancer care in another city or country when a named capability, second review, or support path is hard to get locally. Whether travel helps depends on the specific gap, fitness for travel, record quality, follow-up after return, and total cost. Moving for a famous name alone usually does not improve care. Ask: is there a capability abroad that changes my options, and can remote review answer that first?`;
 
 /** Compact gloss for Entry Template v2 config (hero-adjacent copy). */
 export const GLOBAL_CARE_DIRECT_ANSWER_GLOSS =
-  "People consider care in another city or country for access limits, lost confidence, rejecting the current plan, international-patient support, cost or coverage pressure, or a path not available locally — not because a country or hospital is simply more famous. Name your reason, try remote review when safe, and ask the receiving center’s international desk for a written next-step plan.";
+  "Sometimes people consider lung cancer care in another city or country when a named capability, second review, or support path is hard to get locally. Whether travel helps depends on the specific gap, fitness for travel, record quality, follow-up after return, and total cost. Moving for a famous name alone usually does not improve care. Ask: is there a capability abroad that changes my options, and can remote review answer that first?";
 
 /** Primary `/global-care` hub article summary + body (CMS seed). */
 export const GLOBAL_CARE_HUB_PRIMARY_SUMMARY =

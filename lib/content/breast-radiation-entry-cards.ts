@@ -192,10 +192,4 @@ export const BREAST_RADIATION_ENTRY_CARDS = {
 export const BREAST_RADIATION_GLOSS =
   "Radiation often follows lumpectomy and is sometimes needed after mastectomy. Ask how radiation fits each surgery path, reconstruction timing, schedule, and side effects — before locking a local plan.";
 
-export const BREAST_RADIATION_DIRECT_ANSWER = `Many people ask whether they will need radiation after breast cancer surgery. After lumpectomy, radiation is often part of the plan. After mastectomy, it is situational — not automatically zero.
-
-The useful question is not “Is radiation the strongest option?” It is “How does radiation fit my surgery path, reconstruction timing, calendar, and goals?”
-
-Ask: “If I choose lumpectomy, what radiation would I need? If I choose mastectomy, am I still likely to need radiation — and how would that change reconstruction?”
-
-Clarify the expected schedule and side effects early enough that surgery and life plans are made with eyes open.`;
+export const BREAST_RADIATION_DIRECT_ANSWER = `After breast cancer surgery, radiation is often part of the plan after lumpectomy; after mastectomy it is situational, not automatically zero. Whether and how it fits depends on your surgery path, reconstruction timing, calendar, side effects, and goals. Radiation is not automatically the “strongest” add-on for everyone. Ask: if I choose lumpectomy, what radiation would I need — and if I choose mastectomy, am I still likely to need it, and how would that change reconstruction?`;

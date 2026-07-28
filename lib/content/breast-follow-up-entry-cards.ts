@@ -173,8 +173,4 @@ export const BREAST_FOLLOW_UP_ENTRY_CARDS = {
 export const BREAST_FOLLOW_UP_GLOSS =
   "Finishing breast cancer treatment is a milestone, not the end of care. Follow-up helps you know what to monitor, when to contact your team, how ongoing medicines fit, and what happens if something changes.";
 
-export const BREAST_FOLLOW_UP_DIRECT_ANSWER = `Finishing active breast cancer treatment is an important milestone, but care does not simply stop. Follow-up helps monitor for possible changes, manage long-term effects, support recovery, and guide ongoing medicines such as endocrine therapy when relevant.
-
-Ask: “What is my follow-up schedule, which symptoms should trigger a call, and who do I contact if something changes?”
-
-The goal is not to live waiting for bad news. The goal is a clear plan you can act on.`;
+export const BREAST_FOLLOW_UP_DIRECT_ANSWER = `After breast cancer treatment, follow-up usually means a personalized plan for visits, imaging, symptom watch, long-term effects, and ongoing medicines such as endocrine therapy when relevant — not waiting endlessly for bad news. What you need depends on cancer type and stage, treatments received, recurrence risk, and current health. Not every change on a scan means the same next step. Ask: what is my follow-up schedule, which symptoms should trigger a call, and who do I contact if something changes?`;

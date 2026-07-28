@@ -103,15 +103,6 @@ export const BREAST_GLOBAL_CARE_ENTRY_CARDS = {
 } as const;
 
 export const BREAST_GLOBAL_CARE_GLOSS =
-  "People consider breast cancer care in another city or country for access limits, lost confidence, rejecting the current plan, international-patient support, cost pressure, or a path not available locally — not because a country or hospital is simply more famous. Name your reason, try remote review when safe, and ask for a written next-step plan.";
+  "Sometimes people consider breast cancer care in another city or country when a named capability, second review, or support path is hard to get locally — not because a hospital is simply more famous. Name your reason, try remote review when safe, and ask for a written next-step plan.";
 
-export const BREAST_GLOBAL_CARE_DIRECT_ANSWER = `People consider breast cancer care in another city or country for one or more of these reasons — not because a hospital or country is simply more famous:
-
-- Access where you are is limited (specialists, wait times, or coordinated review)
-- You have already seen more than one team and still lack confidence in the plan
-- You do not accept the current recommendation and want an outside review
-- You need coordinated international-patient support (records, language, written plan)
-- Cost or coverage makes the local path hard to continue
-- A technique, trial, or treatment path is not available locally
-
-Name your reason in one sentence. When safe, try remote review before travel. Ask the receiving center’s international desk for a written next-step plan. Desperation alone is not a clinical reason to book flights.`;
+export const BREAST_GLOBAL_CARE_DIRECT_ANSWER = `Sometimes people consider breast cancer care in another city or country when a named capability, second review, or support path is hard to get locally. Whether travel helps depends on the specific gap, fitness for travel, record quality, follow-up after return, and total cost. Moving for a famous name alone usually does not improve care. Ask: is there a capability abroad that changes my options, and can remote review answer that first?`;

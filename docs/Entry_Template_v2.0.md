@@ -8,7 +8,8 @@
 Only two jobs:
 
 1. **H1** — Is this my question?  
-2. **Direct Answer** — 2–3 sentences (compact; no repeated H1)  
+2. **Direct Answer** — follow **Direct Answer Standard v1.0** (`docs/Cancer_Next_Step_Direct_Answer_Standard_v1.0.md`): 3–4 sentences, 40–90 words, answer → factors → boundary → next ask (compact; no repeated H1)  
+
 
 The Decision Path begins immediately below with a **prominent path title** (h2) — no “start path” button or jump CTA in the hero.
 

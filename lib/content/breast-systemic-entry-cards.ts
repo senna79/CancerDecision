@@ -238,8 +238,4 @@ export const BREAST_SYSTEMIC_ENTRY_CARDS = {
 export const BREAST_SYSTEMIC_GLOSS =
   "Breast cancer systemic therapy choices fork by subtype (HR+ / HER2+ / TNBC): endocrine, chemo, HER2-targeted, and immunotherapy in selected cases — compared by goals, sequencing, and trade-offs, not as a flat drug menu.";
 
-export const BREAST_SYSTEMIC_DIRECT_ANSWER = `Systemic therapy options for breast cancer depend first on subtype — hormone receptor–positive, HER2-positive, or triple-negative — then on stage, goals, and whether medicines start before or after surgery.
-
-Compare option families and trade-offs for your subtype. Do not start from a ranked list of drug names.
-
-Ask: “For my subtype, which systemic approaches fit — what is each trying to achieve — and what would change the recommendation?”`;
+export const BREAST_SYSTEMIC_DIRECT_ANSWER = `Choosing among systemic therapy options for breast cancer usually starts with subtype — hormone receptor–positive, HER2-positive, or triple-negative — then stage, goals, and whether medicines start before or after surgery. Compare option families and trade-offs for your subtype rather than a ranked list of drug names. No single regimen is automatically right for everyone. Ask: for my subtype, which systemic approaches fit, what is each trying to achieve, and what would change the recommendation?`;

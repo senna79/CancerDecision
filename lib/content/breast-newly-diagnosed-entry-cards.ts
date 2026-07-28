@@ -142,14 +142,4 @@ export const BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS = {
 export const BREAST_NEWLY_DIAGNOSED_GLOSS =
   "After a breast cancer diagnosis, you do not need every answer immediately — first understand subtype and stage, whether treatment should start before or after surgery, and how to prepare for the next conversation.";
 
-export const BREAST_NEWLY_DIAGNOSED_DIRECT_ANSWER = `After a new breast cancer diagnosis, you do not need every answer immediately.
-
-In the first days and weeks, the focus is usually:
-1. Confirm your breast cancer subtype (ER/PR/HER2)
-2. Understand stage and extent
-3. Know whether treatment should start before or after surgery
-4. Prepare questions for your care team
-
-Ask what must happen this week, what can wait for results, and whether genetic counseling could change a surgery choice. Keep your key reports together.
-
-Your next step is clarity and treatment order — not choosing every treatment today. Doctors call this “sequencing”: deciding what happens first, such as medicine before surgery or surgery before medicine.`;
+export const BREAST_NEWLY_DIAGNOSED_DIRECT_ANSWER = `After a new breast cancer diagnosis, the first step is usually clarifying subtype, stage, and whether treatment should start before or after surgery. Paths differ based on what results are still pending, how urgent the next decision feels, and whether genetic counseling could change an operation. You do not need to choose every treatment today. Ask your care team: what must happen this week, what can wait for results, and what decision comes next?`;

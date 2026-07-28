@@ -142,8 +142,4 @@ export const BREAST_QOL_ENTRY_CARDS = {
 export const BREAST_QOL_GLOSS =
   "Quality of life belongs in breast cancer decisions — not as “treatment vs life,” but as how the plan can support cancer goals and the daily life you need to protect, including symptoms, energy, work, and body image.";
 
-export const BREAST_QOL_DIRECT_ANSWER = `Breast cancer decisions include both cancer control and the life you need to protect while receiving care — energy, work, family roles, comfort, and body image all belong in the conversation.
-
-Ask: “How can this plan support both my cancer goals and the life I need to protect right now?”
-
-Supportive care can run alongside active treatment. You do not need to wait until symptoms become severe to speak up.`;
+export const BREAST_QOL_DIRECT_ANSWER = `Often quality of life should shape breast cancer decisions because benefit, burden, energy, work, family roles, comfort, and body image belong in the same plan as cancer control. How much weight it carries depends on symptoms, side effects, treatment intensity, and personal priorities. Focusing more on symptom support is not the same as giving up care. Ask: how can this plan support both my cancer goals and the life I need to protect right now?`;

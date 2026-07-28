@@ -476,7 +476,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "should-i-get-second-opinion-after-lung-cancer-diagnosis",
       category: "second_opinion",
       summary:
-        "A second opinion is another expert review of your diagnosis, treatment options, or care plan. It does not mean your current doctor is wrong — many patients seek one because cancer decisions are complex and can affect future care.\n\nIt may help you confirm that important information has been considered, understand whether other options should be discussed, and feel more confident before a major decision — especially before choices that may be difficult to reverse.\n\nThe better question is not “Do I trust my doctor?” It is “Do I have enough information to feel confident about this decision?”",
+        "Often a second opinion helps before a major or hard-to-reverse lung cancer decision when diagnosis, stage, or options still feel uncertain. Value depends on timing, how complete your records are, and whether you need confirmation, more options, or gap-finding. It is not always necessary if the plan feels clear and records support the recommendation. Ask: what specifically should another review clarify before we decide?",
       why: "A second opinion is about confidence and complete information, not distrust. Value is highest before a major decision — and preparation with full records makes the review useful.",
       factors: [
         "Whether a major or hard-to-reverse decision is ahead",
@@ -500,7 +500,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "what-decisions-matter-most-after-new-lung-cancer-diagnosis",
       category: "diagnosis",
       summary:
-        "After a lung cancer diagnosis, you do not need to know every answer immediately.\n\nThe first steps are to understand what type of lung cancer you have, what stage it is, whether more information is needed before treatment discussions, and what to ask your care team next.\n\nA good treatment decision starts with understanding your cancer — not rushing into a choice. You are not lost; you are at the start of a journey.",
+        "After a new lung cancer diagnosis, the first step is usually clarifying the cancer type, stage, and information that could change treatment decisions. Paths differ based on how complete staging is, whether biomarker results could change options, and how urgent the next decision feels. Not every pending test must delay every conversation. Ask your care team: what do we already know, what are we waiting for, and what decision comes next?",
       why: "A new diagnosis brings confusion before clear questions. The goal is to lower overwhelm, build direction, and take the next step — not to choose every treatment today.",
       factors: [
         "Cancer type and stage — or what is still pending",
@@ -524,7 +524,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "how-to-compare-surgery-and-systemic-therapy-lung-cancer",
       category: "treatment",
       summary:
-        "Choosing a lung cancer treatment is not about finding the “strongest” treatment. It is about the approach that best fits your cancer characteristics, how the cancer is behaving, biomarker information when relevant, your overall health, and your goals.\n\nOptions may include surgery, radiation, chemotherapy, immunotherapy, targeted therapy, or clinical trials — alone, combined, or in sequence.\n\nThe key question is not “Which treatment is the best?” It is “Which treatment plan makes the most sense for my situation, and why?”",
+        "The choice among lung cancer treatment options depends on cancer type and stage, biomarker information when relevant, overall health, and what you want treatment to achieve. Surgery, radiation, systemic therapy, or trials may be alone, combined, or sequenced for different reasons. No single option is automatically right for everyone. Ask: why this plan fits my situation, and how do the realistic alternatives compare for benefit, risk, and daily life?",
       why: "Treatment decisions are choices, not just recommendations. Compare goal, timing, and life impact — not only which option sounds most aggressive.",
       factors: [
         "Cancer type, stage, and spread pattern",
@@ -1196,7 +1196,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "do-i-need-biomarker-testing-before-lung-cancer-treatment",
       category: "diagnosis",
       summary:
-        "Biomarker testing looks for features of your cancer that may affect which treatments your care team discusses. It helps make sure important information is available before treatment decisions are made.\n\nIt does not decide your treatment by itself.",
+        "Often biomarker testing should be considered before lung cancer treatment decisions when results could change which options your team discusses. The importance and timing of testing depend on cancer type, stage, treatment options being considered, and what information is still missing. It may not change the plan if results are already complete or would not alter the next step. Ask: which tests matter for my cancer, and should we wait for results before choosing treatment?",
       why: "Treatment decisions depend on having the right information. The useful question is not whether you need every possible test — it is whether you have the information needed to make a treatment decision.",
       factors: [
         "Whether important information about the cancer may still be missing",
@@ -1309,7 +1309,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "do-i-need-different-lung-cancer-center-or-specialized-expertise",
       category: "hospital_selection",
       summary:
-        "Choosing lung cancer care is not only about finding a famous hospital. It is about finding a team with the right expertise, coordination, access to needed services, and clear communication.\n\nMany people receive excellent care close to home. A specialized team may help when decisions are complex, local experience feels limited, or you need multidisciplinary review or trial access. Some patients combine specialist planning with local treatment.\n\nThe best care team is the one that fits your cancer, your situation, and your goals — not the one with the biggest name.",
+        "Choosing the right lung cancer care team usually means finding the expertise and coordination your situation requires, not simply the most famous hospital. A specialized team may help when decisions are complex, local experience feels limited, or you need multidisciplinary review or trial access; many people still do well close to home. A bigger name is not automatically better. Ask: what expertise gap am I trying to close, and how would follow-up work with my local team?",
       why: "The useful question is not “Where is the most famous hospital?” It is “What expertise and coordination do I need — and can a care network, not only one building, provide it?”",
       factors: [
         "What expertise gap or decision you are trying to improve",
@@ -1333,7 +1333,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "how-to-choose-treatment-options-for-stage-iv-lung-cancer",
       category: "treatment",
       summary:
-        "A Stage IV diagnosis can feel overwhelming. You do not need to answer everything today.\n\nFirst understand what Stage IV means in your situation, clarify what treatment may aim for with your care team, make sure key information is available, and prepare for the next conversation.\n\nA Stage IV diagnosis changes the conversation. It does not end the conversation. Different treatment goals do not mean less care — they mean care designed around your situation.",
+        "After a Stage IV lung cancer diagnosis, the first useful step is usually clarifying what Stage IV means in your case, what treatment is trying to achieve, and which information still matters before the next choice. Goals and options differ by cancer type, biomarkers, symptoms, and priorities for daily life. You do not need to settle every future decision today. Ask: what is the goal of the treatment we are discussing, and what decision comes next?",
       why: "Stage IV care is usually a journey, not one single choice. The useful focus is understanding your situation, clarifying goals, and taking the next important step — not solving every future decision at once.",
       factors: [
         "What doctors have confirmed about your cancer so far",
@@ -1357,7 +1357,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "should-i-consider-a-clinical-trial-for-lung-cancer",
       category: "treatment",
       summary:
-        "A clinical trial is a research study that evaluates a possible new treatment approach or a new way of using existing treatments. For some people with lung cancer, a trial may be worth discussing before starting treatment, while comparing options, or when plans are changing.\n\nA clinical trial is not automatically better than standard treatment. Evaluate it based on your cancer type and stage, biomarker information, previous treatments, expected benefits and risks, and your personal goals.\n\nThe better question is not “Should I join a clinical trial?” It is “Is there a clinical trial that fits my situation and is worth discussing with my care team?”",
+        "A clinical trial may be worth discussing for lung cancer before starting treatment, while comparing options, or when the plan is changing. Fit depends on cancer type and stage, biomarkers, prior treatments, eligibility, and how a specific trial compares with standard care. A trial is not automatically better than standard treatment. Ask: is there a trial that fits my situation, and how does it compare with the standard options?",
       why: "A clinical trial is a decision option, not a last resort and not a test-subject trap. Compare a specific trial with standard options — goal, evidence, and life impact.",
       factors: [
         "When in your journey a trial is being discussed",
@@ -1381,7 +1381,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "what-are-my-options-if-lung-cancer-comes-back",
       category: "treatment",
       summary:
-        "If lung cancer comes back after treatment, it does not mean there are no options. A recurrence means cancer has returned after a period when it was controlled or not detectable.\n\nThe next decision depends on where the cancer has returned, how much is present, how it has changed, previous treatments, biomarker information, and your health and goals. Doctors may discuss another treatment approach, local treatments in selected situations, clinical trials, or supportive care.\n\nThe more useful question is not “Why did this happen?” It is “What information do we need now to understand my next options?”",
+        "If lung cancer comes back, the next options depend on where it returned, how much is present, prior treatments, biomarkers, and your health and goals. The next plan is usually a reassessment — not simply repeating the last treatment. Recurrence does not mean there are no options left. Ask: what information do we need now to understand my next realistic options?",
       why: "Recurrence is a new decision point — not automatic treatment failure and not the end of choices. Reassess what changed, then compare options against your goals.",
       factors: [
         "Where cancer returned and how much is present",
@@ -1406,7 +1406,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "what-are-my-options-if-lung-cancer-treatment-no-longer-working",
       category: "treatment",
       summary:
-        "When lung cancer treatment stops working as expected, it does not mean there are no more options. Cancer treatment often involves multiple decisions over time.\n\nYour care team may review new test information, understand how the cancer has changed, consider another treatment approach, or discuss clinical trials or supportive care — depending on previous treatment, how the cancer changed, biomarker information, your health, and your goals.\n\nThe key question is not “Did my treatment fail?” It is “What information do we need now to understand the next best option?”",
+        "When lung cancer treatment is no longer working as expected, the next step is usually reassessing what changed and which options remain realistic. Choices depend on prior therapy, how the cancer changed, biomarkers, urgency, and goals for control versus symptom focus. This is a new decision point, not proof that nothing else can help. Ask: what information do we need now to choose the next option?",
       why: "A treatment change is a new decision point — reassessing, not assuming options are gone. Start with what changed, then compare next options against your goals.",
       factors: [
         "Why the current approach is changing — and how urgent it is",
@@ -1430,7 +1430,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "should-surgery-be-part-of-my-lung-cancer-treatment-plan",
       category: "treatment",
       summary:
-        "Surgery can be an important treatment option for some people with lung cancer, especially when doctors believe the cancer can be safely removed and that surgery may provide meaningful benefit.\n\nWhether surgery makes sense depends on more than the tumor alone — type and stage, location, whether it can be completely removed, and your overall health and ability to recover. Surgery is not always the best choice for every person.\n\nThe goal is not simply to remove a tumor. The goal is to choose the approach that best matches your cancer, your health, and your treatment goals.",
+        "Surgery may be part of a lung cancer treatment plan when the cancer can be safely removed and removal may offer meaningful benefit given stage, location, and overall health. Whether it belongs in your plan also depends on alternatives, possible treatment before or after surgery, and recovery capacity. Surgery is not the right choice for everyone who has a tumor. Ask: can surgery meaningfully help in my situation, and how does it compare with the other realistic options?",
       why: "Surgery is considered when removing the cancer may offer meaningful benefit — not automatically because a tumor can be removed. Compare benefit, risk, alternatives, and recovery for your situation.",
       factors: [
         "Cancer type, stage, and location",
@@ -1454,7 +1454,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "how-should-quality-of-life-factor-into-lung-cancer-decisions",
       category: "treatment",
       summary:
-        "Lung cancer treatment decisions are not only about controlling cancer. They are also about helping you live as well as possible while receiving care.\n\nQuality of life may include staying independent, spending time with family, continuing meaningful activities, managing symptoms, and maintaining the ability to do things that matter to you. Supportive care helps with these challenges — and it does not mean treatment has failed or care is ending.\n\nThe key question is not “Should I choose treatment or quality of life?” It is: “How can my treatment plan support both my cancer goals and my life goals?”",
+        "Often quality of life should shape lung cancer decisions because benefit, burden, independence, and what matters day to day belong in the same plan as cancer control. How much weight it carries depends on symptoms, side effects, treatment intensity, and personal priorities. Focusing more on symptom support is not the same as giving up care. Ask: how can this plan support both my cancer goals and the life goals that matter most to me?",
       why: "Your goals are part of the medical decision — not separate from it. The right amount of treatment depends on benefit, burden, and what matters most to you.",
       factors: [
         "What your plan should help protect in daily life",
@@ -1478,7 +1478,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "can-my-lung-cancer-treatment-plan-work-with-my-real-life",
       category: "cost",
       summary:
-        "A good treatment plan needs to fit both your medical situation and your real life. Cost, travel, time, and support do not replace medical advice — but they belong in the conversation, so the plan you choose is one you can realistically follow.\n\nThis page points you to the decisions where practical fit usually matters most: your care team setup, treatment comparison, and quality-of-life tradeoffs.\n\nAsk: “What will a normal treatment week look like — and if this becomes too hard, what can we adjust?”",
+        "A lung cancer treatment plan is easier to follow when it fits real life — including travel, time, cost, and support. What to adjust depends on visit burden, caregiver help, and whether care can be coordinated across sites. Practical limits do not replace medical advice, but they belong in the conversation. Ask: what will a normal treatment week look like, and what can we change if it becomes too hard?",
       why: "The better question is not only “Is this the strongest plan?” It is “Is this plan workable for my life — and if not, what can we adjust?”",
       factors: [
         "What a normal treatment week may look like",
@@ -1502,7 +1502,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "how-do-i-monitor-my-health-after-lung-cancer-treatment",
       category: "treatment",
       summary:
-        "Finishing treatment is an important milestone, but cancer care does not simply stop. Follow-up care helps you and your medical team monitor for possible changes, manage long-term effects of treatment, address new symptoms, and support your health after cancer.\n\nA follow-up plan is personalized based on your cancer type and stage, treatments you received, your risk of recurrence, and your current health. It may include appointments, imaging tests, symptom discussions, and long-term health management.\n\nThe goal is not to spend your life waiting for bad news. The goal is to have a clear plan: “What should I monitor, when should I contact my team, and what happens if something changes?”",
+        "After lung cancer treatment, follow-up usually means a personalized plan for visits, imaging, symptom watch, and long-term effects — not waiting endlessly for bad news. What you need depends on cancer type and stage, treatments received, recurrence risk, and current health. Not every change on a scan means the same next step. Ask: what should I monitor, when should I call, and what happens if something changes?",
       why: "The end of treatment is not the end of care — it is the beginning of a different care phase. A clear follow-up plan helps you know what to watch for and when to act.",
       factors: [
         "Your follow-up schedule and why those tests are recommended",
@@ -1527,7 +1527,7 @@ export function createSeedData(): KnowledgeGraphStore {
       slug: "what-are-my-options-if-lung-cancer-spreads-to-the-brain",
       category: "treatment",
       summary:
-        "When lung cancer is found in the brain, the next step is not one standard plan for everyone. Doctors usually look at how many lesions are present, whether you have symptoms, how much cancer is active elsewhere, prior treatments, and your goals — then compare local brain-directed options, systemic therapy, clinical trials, and supportive care.\n\nBrain involvement changes the conversation. It does not automatically mean there are no options left.\n\nA useful first question for your care team is: “What is the goal for these brain findings, which options are realistic for me, and what information should guide that choice?”",
+        "When lung cancer spreads to the brain, the next plan depends on how many lesions are present, symptoms, disease outside the brain, prior treatments, and your goals. Local brain-directed options, systemic therapy, trials, and supportive care may be combined differently for different people. Brain involvement changes the conversation; it does not automatically end options. Ask: what is the goal for these brain findings, and which options are realistic for me?",
       why: "Brain metastases create fear and fragmented advice across specialties. Patients need a clear decision path that holds brain findings and whole-body options together.",
       factors: [
         "What the brain imaging shows in plain language",
@@ -1645,7 +1645,7 @@ export function createSeedData(): KnowledgeGraphStore {
   > = {
     2: {
       summary:
-        "After a lung cancer diagnosis, you do not need to know every answer immediately.\n\nThe first steps are to understand what type of lung cancer you have, what stage it is, whether more information is needed before treatment discussions, and what to ask your care team next.\n\nA good treatment decision starts with understanding your cancer — not rushing into a choice. You are not lost; you are at the start of a journey.",
+        "After a new lung cancer diagnosis, the first step is usually clarifying the cancer type, stage, and information that could change treatment decisions. Paths differ based on how complete staging is, whether biomarker results could change options, and how urgent the next decision feels. Not every pending test must delay every conversation. Ask your care team: what do we already know, what are we waiting for, and what decision comes next?",
       decision_triggers: [
         "You were just told you have lung cancer",
         "You feel pressure to choose a treatment before you understand your situation",
@@ -1717,7 +1717,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     21: {
       summary:
-        "Biomarker testing looks for features of your cancer that may affect which treatments your care team discusses. It helps make sure important information is available before treatment decisions are made.\n\nIt does not decide your treatment by itself.",
+        "Often biomarker testing should be considered before lung cancer treatment decisions when results could change which options your team discusses. The importance and timing of testing depend on cancer type, stage, treatment options being considered, and what information is still missing. It may not change the plan if results are already complete or would not alter the next step. Ask: which tests matter for my cancer, and should we wait for results before choosing treatment?",
       decision_triggers: [
         "You recently received a lung cancer diagnosis and wonder if information is still missing",
         "You have been offered treatment options and wonder if testing could change them",
@@ -1786,7 +1786,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     3: {
       summary:
-        "Comparing lung cancer treatment options is not about finding one “best” treatment. Compare each option by goal, expected benefit, trade-offs, what it requires, and how it fits your priorities.\n\nIt does not replace a conversation with your care team.",
+        "The choice among lung cancer treatment options depends on cancer type and stage, biomarker information when relevant, overall health, and what you want treatment to achieve. Surgery, radiation, systemic therapy, or trials may be alone, combined, or sequenced for different reasons. No single option is automatically right for everyone. Ask: why this plan fits my situation, and how do the realistic alternatives compare for benefit, risk, and daily life?",
       decision_triggers: [
         "You have received a treatment recommendation and want to understand why",
         "You have more than one possible option to compare",
@@ -1855,7 +1855,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     1: {
       summary:
-        "A second opinion is another specialist review of your diagnosis and options. It is often about confidence and clarity — not about proving your first doctor wrong.\n\nIt may confirm a plan, surface alternatives, or show where more information is still needed.",
+        "Often a second opinion helps before a major or hard-to-reverse lung cancer decision when diagnosis, stage, or options still feel uncertain. Value depends on timing, how complete your records are, and whether you need confirmation, more options, or gap-finding. It is not always necessary if the plan feels clear and records support the recommendation. Ask: what specifically should another review clarify before we decide?",
       decision_triggers: [
         "Received a new diagnosis and want to confirm accuracy, type, and stage",
         "Received a treatment recommendation and want to understand alternatives",
@@ -1984,7 +1984,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     26: {
       summary:
-        "Choosing lung cancer care is not only about finding a famous hospital. It is about finding a team with the right expertise, coordination, access to needed services, and clear communication.\n\nMany people receive excellent care close to home. A specialized team may help when decisions are complex, local experience feels limited, or you need multidisciplinary review or trial access. Some patients combine specialist planning with local treatment.\n\nThe best care team is the one that fits your cancer, your situation, and your goals — not the one with the biggest name.",
+        "Choosing the right lung cancer care team usually means finding the expertise and coordination your situation requires, not simply the most famous hospital. A specialized team may help when decisions are complex, local experience feels limited, or you need multidisciplinary review or trial access; many people still do well close to home. A bigger name is not automatically better. Ask: what expertise gap am I trying to close, and how would follow-up work with my local team?",
       decision_triggers: [
         "You wonder whether local care is enough for your lung cancer decision",
         "Your decision feels complex and you want multidisciplinary review",
@@ -2054,7 +2054,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     27: {
       summary:
-        "A Stage IV diagnosis can feel overwhelming. You do not need to answer everything today.\n\nFirst understand what Stage IV means in your situation, clarify what treatment may aim for with your care team, make sure key information is available, and prepare for the next conversation.\n\nA Stage IV diagnosis changes the conversation. It does not end the conversation. Different treatment goals do not mean less care — they mean care designed around your situation.",
+        "After a Stage IV lung cancer diagnosis, the first useful step is usually clarifying what Stage IV means in your case, what treatment is trying to achieve, and which information still matters before the next choice. Goals and options differ by cancer type, biomarkers, symptoms, and priorities for daily life. You do not need to settle every future decision today. Ask: what is the goal of the treatment we are discussing, and what decision comes next?",
       decision_triggers: [
         "You were told you have Stage IV or advanced lung cancer",
         "You feel lost in too much information and want a clear next step",
@@ -2121,7 +2121,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     28: {
       summary:
-        "A clinical trial may be worth discussing when you want to understand additional treatment options, especially if your situation is complex, your treatment choices are changing, or you want to explore approaches being studied by researchers.\n\nA clinical trial is not automatically better than standard treatment, and considering one does not mean giving up other options. Whether a trial is appropriate depends on your cancer situation, available choices, possible benefits and risks, and your personal goals.\n\nA useful question to ask your care team is: “Are there clinical trials that may be relevant to my situation, and how would they compare with my current options?”",
+        "A clinical trial may be worth discussing for lung cancer before starting treatment, while comparing options, or when the plan is changing. Fit depends on cancer type and stage, biomarkers, prior treatments, eligibility, and how a specific trial compares with standard care. A trial is not automatically better than standard treatment. Ask: is there a trial that fits my situation, and how does it compare with the standard options?",
       decision_triggers: [
         "You were recently diagnosed and wonder whether to ask about trials early",
         "You are comparing treatment options and want to know if trials belong in the discussion",
@@ -2190,7 +2190,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     29: {
       summary:
-        "If lung cancer comes back, the next step is usually not simply repeating the previous treatment. Doctors typically reassess the current situation, including where the cancer has returned, previous treatments, new information about the cancer, and your personal goals.\n\nOptions after recurrence may depend on factors such as the location of recurrence, timing, previous treatment response, biomarker information, overall health, and what matters most to you.\n\nA useful first question for your care team is: “What has changed, what options do I have now, and what information should guide my next decision?”",
+        "If lung cancer comes back, the next options depend on where it returned, how much is present, prior treatments, biomarkers, and your health and goals. The next plan is usually a reassessment — not simply repeating the last treatment. Recurrence does not mean there are no options left. Ask: what information do we need now to understand my next realistic options?",
       decision_triggers: [
         "Your scans show the cancer has returned",
         "Your doctor recommends a new treatment plan",
@@ -2260,7 +2260,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     30: {
       summary:
-        "If lung cancer treatment is no longer working as expected, the next step is usually to reassess the situation rather than assume that there are no options left.\n\nDoctors may review what has changed, how the cancer is responding, what treatments have already been used, whether additional information is needed, and what matters most to you.\n\nDepending on the situation, the next decision may involve comparing different treatment approaches, reviewing new information, considering another opinion, or discussing clinical trials.\n\nA useful question to ask your care team is: “What has changed, what options do I have now, and how should we decide the next step?”",
+        "When lung cancer treatment is no longer working as expected, the next step is usually reassessing what changed and which options remain realistic. Choices depend on prior therapy, how the cancer changed, biomarkers, urgency, and goals for control versus symptom focus. This is a new decision point, not proof that nothing else can help. Ask: what information do we need now to choose the next option?",
       decision_triggers: [
         "Your scans show the cancer is growing",
         "Your doctor recommends changing treatment",
@@ -2330,7 +2330,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     31: {
       summary:
-        "Surgery may be an option for some people with lung cancer, but whether it should be part of your treatment plan depends on many factors, including the type and stage of cancer, where the cancer is located, your overall health, and your treatment goals.\n\nSurgery is not automatically the best choice for everyone, and it is usually considered alongside other approaches that may include radiation, systemic treatments, or observation depending on the situation.\n\nA useful question to ask your care team is: “Is surgery appropriate for my situation, and how does it compare with my other available options?”",
+        "Surgery may be part of a lung cancer treatment plan when the cancer can be safely removed and removal may offer meaningful benefit given stage, location, and overall health. Whether it belongs in your plan also depends on alternatives, possible treatment before or after surgery, and recovery capacity. Surgery is not the right choice for everyone who has a tumor. Ask: can surgery meaningfully help in my situation, and how does it compare with the other realistic options?",
       decision_triggers: [
         "You were recently diagnosed and wonder if surgery is possible",
         "Your doctor mentioned surgery as an option",
@@ -2399,7 +2399,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     32: {
       summary:
-        "Quality of life is an important part of lung cancer decisions because treatment choices involve more than medical outcomes alone. Patients and care teams often consider treatment goals, daily activities, possible benefits, potential burdens, and personal priorities.\n\nThe best decision is not always the option with the most treatment or the least treatment. It is the option that best fits your medical situation and what matters most to you.\n\nA useful question to ask your care team is: “How might each option affect both my health and the life I want to maintain?”",
+        "Often quality of life should shape lung cancer decisions because benefit, burden, independence, and what matters day to day belong in the same plan as cancer control. How much weight it carries depends on symptoms, side effects, treatment intensity, and personal priorities. Focusing more on symptom support is not the same as giving up care. Ask: how can this plan support both my cancer goals and the life goals that matter most to me?",
       decision_triggers: [
         "You are comparing treatments and wonder about daily-life impact",
         "Treatment has significant burdens such as side effects or travel",
@@ -2470,7 +2470,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     33: {
       summary:
-        "A good treatment plan needs to fit both your medical situation and your real life. Cost, travel, time, and support do not replace medical advice — but they belong in the conversation, so the plan you choose is one you can realistically follow.\n\nThis page points you to the decisions where practical fit usually matters most: your care team setup, treatment comparison, and quality-of-life tradeoffs.\n\nAsk: “What will a normal treatment week look like — and if this becomes too hard, what can we adjust?”",
+        "A lung cancer treatment plan is easier to follow when it fits real life — including travel, time, cost, and support. What to adjust depends on visit burden, caregiver help, and whether care can be coordinated across sites. Practical limits do not replace medical advice, but they belong in the conversation. Ask: what will a normal treatment week look like, and what can we change if it becomes too hard?",
       decision_triggers: [
         "The plan feels hard to live with because of schedule, travel, or cost",
         "You are choosing where care happens and wonder about hybrid or local options",
@@ -2533,7 +2533,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     34: {
       summary:
-        "Finishing treatment is an important milestone, but cancer care does not simply stop. Follow-up care helps you and your medical team monitor for possible changes, manage long-term effects of treatment, address new symptoms, and support your health after cancer.\n\nA follow-up plan is personalized based on your cancer type and stage, treatments you received, your risk of recurrence, and your current health. It may include appointments, imaging tests, symptom discussions, and long-term health management.\n\nThe goal is not to spend your life waiting for bad news. The goal is to have a clear plan: “What should I monitor, when should I contact my team, and what happens if something changes?”",
+        "After lung cancer treatment, follow-up usually means a personalized plan for visits, imaging, symptom watch, and long-term effects — not waiting endlessly for bad news. What you need depends on cancer type and stage, treatments received, recurrence risk, and current health. Not every change on a scan means the same next step. Ask: what should I monitor, when should I call, and what happens if something changes?",
       decision_triggers: [
         "You recently completed lung cancer treatment",
         "You are moving from active treatment into follow-up care",
@@ -2599,7 +2599,7 @@ export function createSeedData(): KnowledgeGraphStore {
     },
     35: {
       summary:
-        "When lung cancer is found in the brain, the next step is not one standard plan for everyone. Doctors usually look at how many lesions are present, whether you have symptoms, how much cancer is active elsewhere, prior treatments, and your goals — then compare local brain-directed options, systemic therapy, clinical trials, and supportive care.\n\nBrain involvement changes the conversation. It does not automatically mean there are no options left.\n\nA useful first question for your care team is: “What is the goal for these brain findings, which options are realistic for me, and what information should guide that choice?”",
+        "When lung cancer spreads to the brain, the next plan depends on how many lesions are present, symptoms, disease outside the brain, prior treatments, and your goals. Local brain-directed options, systemic therapy, trials, and supportive care may be combined differently for different people. Brain involvement changes the conversation; it does not automatically end options. Ask: what is the goal for these brain findings, and which options are realistic for me?",
       decision_triggers: [
         "Scans show lung cancer in the brain",
         "You were told you have brain metastases",

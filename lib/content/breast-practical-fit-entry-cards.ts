@@ -37,10 +37,6 @@ export const BREAST_PRACTICAL_FIT_ENTRY_CARDS = {
 } as const;
 
 export const BREAST_PRACTICAL_FIT_GLOSS =
-  "A good breast cancer plan needs to fit both your medical situation and your real life. Cost, travel, time, and support belong in the conversation — then open the decision page that matches your question.";
+  "A breast cancer treatment plan is easier to follow when it fits real life — travel, time, cost, and support. Name what is hard to sustain, then open the decision page that matches your question.";
 
-export const BREAST_PRACTICAL_FIT_DIRECT_ANSWER = `A good breast cancer treatment plan needs to fit both your medical situation and your real life. Cost, travel, time off work, radiation schedules, and caregiver support belong in the conversation — they do not replace medical advice.
-
-Ask: “Is this plan workable for my life — and if not, what can we adjust?”
-
-This page is a pointer, not a price list. Next, open Care Team (where care happens), Systemic options (which plan fits a real week), or Quality of Life (whether the burden is sustainable).`;
+export const BREAST_PRACTICAL_FIT_DIRECT_ANSWER = `A breast cancer treatment plan is easier to follow when it fits real life — including travel, time off work, radiation schedules, cost, and support. Visit burden, caregiver help, and whether care can be coordinated across sites often decide what to adjust. Ask: is this plan workable for my life — and if not, what can we change?`;

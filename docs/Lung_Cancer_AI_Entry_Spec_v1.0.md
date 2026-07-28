@@ -67,23 +67,16 @@ Deeper reading never precedes Citation Block + What to do next.
 
 ---
 
-## 5. Citation Block rules (mandatory 4-sentence form)
+## 5. Citation Block rules (Direct Answer)
 
-**Source field:** `summary`  
-**JSON-LD:** `Question.acceptedAnswer` = same text  
+**Canonical standard:** [`Cancer_Next_Step_Direct_Answer_Standard_v1.0.md`](./Cancer_Next_Step_Direct_Answer_Standard_v1.0.md)  
+**Source field:** `summary` · **JSON-LD:** `Question.acceptedAnswer` = same text  
 
-| Sentence | Job |
-|---|---|
-| 1 | Direct answer to the H1 question |
-| 2 | When this decision matters most |
-| 3 | When it may *not* change the plan / not for everyone |
-| 4 | Concrete next step (records, ask, or continue journey) |
-
-**Must not:** personalized treatment orders, outcome guarantees, attacking the current doctor.
+Summary of v1.0: 3–4 sentences, 40–90 words (max 110) — (1) direct answer with H1 keywords, (2) decision factors, (3) boundary / when it may not change the plan, (4) next question to ask the care team. No lists, disclaimers, brand, or treatment orders in the block.
 
 **Example (second opinion):**
 
-> A second opinion can be valuable after a lung cancer diagnosis, especially when treatment decisions are complex or major procedures are being considered. It can help confirm the diagnosis and understand available options. However, it may not change the plan in every situation — especially when data are complete and multidisciplinary advice already agrees. The next step is to gather pathology, staging, and the current plan in writing before seeking another review.
+> A second opinion can be valuable after a lung cancer diagnosis, especially when treatment decisions are complex or major procedures are being considered. It can help confirm the diagnosis and understand available options. However, it may not change the plan in every situation — especially when data are complete and multidisciplinary advice already agrees. Ask what decision you want reviewed and gather pathology, staging, and the current plan in writing before another evaluation.
 
 ---
 

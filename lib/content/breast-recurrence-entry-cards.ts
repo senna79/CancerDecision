@@ -115,8 +115,4 @@ export const BREAST_RECURRENCE_ENTRY_CARDS = {
 export const BREAST_RECURRENCE_GLOSS =
   "If breast cancer returns after treatment, it is a new decision point — not an automatic replay of the first plan. Location, prior therapy, and whether subtype should be re-checked shape the next options.";
 
-export const BREAST_RECURRENCE_DIRECT_ANSWER = `If breast cancer comes back after treatment, the first job is to understand what changed — where it returned, how long after treatment, and whether subtype or other biology should be re-checked.
-
-Recurrence does not automatically mean previous care failed or that options have ended. Ask: “Given where cancer returned and what we already used, which option families belong in the discussion now?”
-
-You do not need every answer today. Start with what is known, what is pending, and which decision is time-sensitive.`;
+export const BREAST_RECURRENCE_DIRECT_ANSWER = `If breast cancer comes back, the next options depend on where it returned, how long after treatment, prior therapies, and whether subtype or other biology should be re-checked. The next plan is usually a reassessment — not simply repeating the last treatment. Recurrence does not mean previous care failed or that options have ended. Ask: given where cancer returned and what we already used, which option families belong in the discussion now?`;

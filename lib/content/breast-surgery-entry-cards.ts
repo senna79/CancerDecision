@@ -181,8 +181,4 @@ export const BREAST_SURGERY_ENTRY_CARDS = {
 export const BREAST_SURGERY_GLOSS =
   "Lumpectomy (usually with radiation) and mastectomy can both be reasonable for many early breast cancers. Choose by medical fit plus personal priorities — genetics, radiation, reconstruction, and recurrence concerns — not by which operation sounds stronger.";
 
-export const BREAST_SURGERY_DIRECT_ANSWER = `For many early breast cancers, lumpectomy plus radiation and mastectomy can offer similar cancer control when you are a candidate for either. The decision often hinges on tumor extent, genetics, radiation willingness, reconstruction preferences, and personal priorities — not on picking the “stronger” surgery.
-
-Ask: “Am I a candidate for both options — and what would change the recommendation either way?”
-
-If genetic counseling or treatment sequencing could change the operation, ask whether those should be clear before you lock a surgery date.`;
+export const BREAST_SURGERY_DIRECT_ANSWER = `For many early breast cancers, the choice between lumpectomy plus radiation and mastectomy depends on whether both can offer similar cancer control when you are a candidate for either option. Factors include tumor extent, genetics, radiation willingness, reconstruction preferences, and personal priorities — not which surgery sounds stronger. Neither option is automatically right for every candidate. Ask: am I a candidate for both options, and what would change the recommendation either way?`;

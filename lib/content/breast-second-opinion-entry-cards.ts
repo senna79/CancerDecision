@@ -144,8 +144,4 @@ export const BREAST_SECOND_OPINION_ENTRY_CARDS = {
 export const BREAST_SECOND_OPINION_GLOSS =
   "A breast cancer second opinion is most useful before major surgery or systemic therapy when the plan feels irreversible, recommendations conflict, or key information (subtype, genetics, sequencing) still needs confidence — not as a sign that something is wrong.";
 
-export const BREAST_SECOND_OPINION_DIRECT_ANSWER = `A second opinion is especially useful before breast cancer surgery or major systemic therapy when the choice feels irreversible, recommendations conflict, sequencing is unclear, or genetics/reconstruction could change the operation.
-
-It may confirm the current plan, suggest missing information, or discuss another reasonable approach. Confirmation is also a useful outcome.
-
-Ask: “What decision do I want reviewed — and is there time for a focused second opinion before the next irreversible step?”`;
+export const BREAST_SECOND_OPINION_DIRECT_ANSWER = `Often a second opinion helps before breast cancer surgery or major systemic therapy when the choice feels irreversible, recommendations conflict, sequencing is unclear, or genetics or reconstruction could change the operation. Value depends on timing, what you need clarified, and how complete your records are. It is not always necessary if the plan feels clear and concordant. Ask: what decision do I want reviewed, and is there time for a focused second opinion before the next irreversible step?`;
