@@ -1,6 +1,7 @@
 /**
  * Prostate Cancer Entry slugs — hub P0 moments + Template v2 Entries as they ship.
- * Newly Diagnosed is the first full Entry; other active moments may still be thin Q pages.
+ * Newly Diagnosed, Active Surveillance, Surgery vs Radiation, and Second Opinion
+ * ship as full Entries; other active moments may still be thin Q pages.
  */
 
 export const PROSTATE_NEWLY_DIAGNOSED_SLUG =

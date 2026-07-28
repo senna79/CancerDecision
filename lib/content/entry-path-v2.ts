@@ -26,6 +26,7 @@ import {
   PROSTATE_NEWLY_DIAGNOSED_SLUG,
   PROSTATE_SECOND_OPINION_SLUG,
   PROSTATE_SURVEILLANCE_SLUG,
+  PROSTATE_TREATMENT_COMPARE_SLUG,
 } from "@/lib/content/prostate-entry-slugs";
 
 export type EntryPathCard = {
@@ -2769,6 +2770,152 @@ const PROSTATE_SURVEILLANCE_PATH: EntryPathV2 = {
   ],
 };
 
+const PROSTATE_TREATMENT_COMPARE_PATH: EntryPathV2 = {
+  pathEyebrow: "Decision path",
+  pathTitle: "Prostate Cancer Surgery vs Radiation Decision Path",
+  pathSubtitle:
+    "Why the choice matters → how the paths compare → practical fit → what to ask.",
+  completedLabels: [
+    "Why surgery vs radiation matters",
+    "How the two paths compare",
+    "What practical fit and pending info look like",
+    "Questions for your next conversation",
+  ],
+  practicalPoints: [
+    "Whether you are a candidate for both surgery and radiation",
+    "Urinary, sexual, and bowel priorities",
+    "Whether both specialties have reviewed the case",
+  ],
+  steps: [
+    {
+      id: "understand",
+      stage: STAGES.understand,
+      title: "Why does the prostate cancer surgery-versus-radiation decision matter?",
+      lead: "Patient question: why am I being offered more than one local treatment?",
+      main: "ptc-understand",
+      cards: [
+        {
+          id: "my-situation",
+          title: "Is this my prostate cancer situation?",
+          summary: "When definitive therapy is on the table and both paths may be open.",
+        },
+        {
+          id: "ptc-what-is",
+          title: "What do surgery and radiation mean for prostate cancer?",
+          summary: "Two common local options — different recovery and side-effect patterns.",
+        },
+        {
+          id: "ptc-why-matters",
+          title: "Why does this prostate cancer decision matter?",
+          summary: "Function, recovery, specialty input, and follow-up.",
+        },
+        {
+          id: "ptc-both-reasonable",
+          title: "Can both surgery and radiation be reasonable for prostate cancer?",
+          summary: "Often yes — which is why framing can sound conflicting.",
+        },
+        {
+          id: "ptc-not-stronger",
+          title: "Is one prostate cancer treatment automatically “stronger”?",
+          summary: "Fit beats online aggressiveness.",
+        },
+        {
+          id: "ptc-risk-first",
+          title: "Does prostate cancer risk group still matter for this choice?",
+          summary: "Risk, life expectancy, and health still shape the comparison.",
+        },
+      ],
+    },
+    {
+      id: "compare",
+      stage: STAGES.compare,
+      title: "How should I compare prostate cancer surgery and radiation?",
+      lead: "Patient question: what should I weigh before choosing?",
+      main: "does-not-decide",
+      cards: [
+        {
+          id: "ptc-surgery",
+          title: "What does choosing prostate cancer surgery usually involve?",
+          summary: "Removal, early recovery, and pathology that can refine risk.",
+        },
+        {
+          id: "ptc-radiation",
+          title: "What does choosing prostate cancer radiation usually involve?",
+          summary: "A planned course over weeks — prostate stays in place.",
+        },
+        {
+          id: "ptc-side-effects",
+          title: "How do urinary, sexual, and bowel tradeoffs compare?",
+          summary: "Compare by domain — not a single “worse” label.",
+        },
+        {
+          id: "ptc-recovery",
+          title: "How do recovery and calendar differ for prostate cancer?",
+          summary: "Front-loaded surgery recovery vs multi-week radiation schedule.",
+        },
+        {
+          id: "ptc-what-changes",
+          title: "What would change the prostate cancer recommendation either way?",
+          summary: "The question that clarifies the fork.",
+        },
+      ],
+    },
+    {
+      id: "practical",
+      stage: STAGES.practical,
+      title: "What should I know before locking prostate cancer surgery or radiation?",
+      lead: "Patient question: what still needs to be clear?",
+      main: "practical-points",
+      cards: [
+        {
+          id: "ptc-both-specialties",
+          title: "Should I hear both urology and radiation oncology?",
+          summary: "Often useful when both options are still reasonable.",
+        },
+        {
+          id: "ptc-pending-info",
+          title: "What information should be clear before locking this prostate cancer fork?",
+          summary: "Risk group, imaging, hormone therapy role, second look.",
+        },
+        {
+          id: "ptc-life-fit",
+          title: "How do travel, work, and support fit each prostate cancer path?",
+          summary: "Practical fit belongs in the medical conversation.",
+        },
+        {
+          id: "ptc-this-week",
+          title: "What should I do this week while deciding about prostate cancer?",
+          summary: "Three focuses — not every technique ranking online.",
+        },
+      ],
+    },
+    {
+      id: "conversation",
+      stage: STAGES.conversation,
+      title: "What should I discuss with my doctor about prostate cancer?",
+      lead: "Patient question: what should I ask at the next visit?",
+      main: "checklist",
+      cards: [
+        {
+          id: "ptc-mistakes",
+          title: "What are common mistakes around prostate cancer surgery vs radiation?",
+          summary: "“Stronger” myths, one specialty only, skipping function priorities.",
+        },
+        {
+          id: "ptc-second-opinion",
+          title: "Should I get a second opinion about prostate cancer surgery vs radiation?",
+          summary: "About confidence — not distrust.",
+        },
+        {
+          id: "scenario",
+          title: "An example prostate cancer decision scenario",
+          summary: "How someone might clarify surgery vs radiation.",
+        },
+      ],
+    },
+  ],
+};
+
 const PROSTATE_SECOND_OPINION_PATH: EntryPathV2 = {
   pathEyebrow: "Decision path",
   pathTitle: "Prostate Cancer Second Opinion Decision Path",
@@ -5218,6 +5365,7 @@ const PATHS: Record<string, EntryPathV2> = {
   [BREAST_NEWLY_DIAGNOSED_SLUG]: BREAST_NEWLY_DIAGNOSED_PATH,
   [PROSTATE_NEWLY_DIAGNOSED_SLUG]: PROSTATE_NEWLY_DIAGNOSED_PATH,
   [PROSTATE_SURVEILLANCE_SLUG]: PROSTATE_SURVEILLANCE_PATH,
+  [PROSTATE_TREATMENT_COMPARE_SLUG]: PROSTATE_TREATMENT_COMPARE_PATH,
   [PROSTATE_SECOND_OPINION_SLUG]: PROSTATE_SECOND_OPINION_PATH,
   [BREAST_SUBTYPE_SLUG]: BREAST_SUBTYPE_PATH,
   [BREAST_SEQUENCING_SLUG]: BREAST_SEQUENCING_PATH,

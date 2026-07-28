@@ -7,11 +7,13 @@ import {
   PROSTATE_NEWLY_DIAGNOSED_SLUG,
   PROSTATE_SECOND_OPINION_SLUG,
   PROSTATE_SURVEILLANCE_SLUG,
+  PROSTATE_TREATMENT_COMPARE_SLUG,
 } from "@/lib/content/prostate-entry-slugs";
 
 export type ProstateAiEntryId =
   | "prostate-newly-diagnosed"
   | "prostate-active-surveillance"
+  | "prostate-surgery-vs-radiation"
   | "prostate-second-opinion";
 
 export type ProstateAiEntry = {
@@ -51,6 +53,7 @@ export const PROSTATE_AI_ENTRY_PORTFOLIO: ProstateAiEntry[] = [
     ],
     relatedEntryIds: [
       "prostate-active-surveillance",
+      "prostate-surgery-vs-radiation",
       "prostate-second-opinion",
     ],
   },
@@ -78,6 +81,35 @@ export const PROSTATE_AI_ENTRY_PORTFOLIO: ProstateAiEntry[] = [
     ],
     relatedEntryIds: [
       "prostate-newly-diagnosed",
+      "prostate-surgery-vs-radiation",
+      "prostate-second-opinion",
+    ],
+  },
+  {
+    id: "prostate-surgery-vs-radiation",
+    label: "Surgery vs radiation",
+    decisionLabel: "How to compare surgery and radiation",
+    slug: PROSTATE_TREATMENT_COMPARE_SLUG,
+    momentId: "treatment-comparison",
+    searchIntents: [
+      "how to compare surgery and radiation for prostate cancer",
+      "surgery vs radiation prostate cancer",
+      "prostatectomy vs radiation which is better",
+      "should I choose surgery or radiation for prostate cancer",
+      "prostate cancer surgery side effects vs radiation",
+      "urinary and sexual side effects surgery vs radiation prostate",
+      "external beam radiation vs prostatectomy",
+      "brachytherapy vs surgery prostate cancer",
+      "recovery after prostate cancer surgery vs radiation",
+      "should I see radiation oncologist before prostate surgery",
+      "what would change surgery vs radiation recommendation prostate",
+      "prostate cancer treatment options surgery radiation",
+      "is radiation as good as surgery for prostate cancer",
+      "how to choose between prostatectomy and radiation",
+    ],
+    relatedEntryIds: [
+      "prostate-newly-diagnosed",
+      "prostate-active-surveillance",
       "prostate-second-opinion",
     ],
   },
@@ -104,6 +136,7 @@ export const PROSTATE_AI_ENTRY_PORTFOLIO: ProstateAiEntry[] = [
     relatedEntryIds: [
       "prostate-newly-diagnosed",
       "prostate-active-surveillance",
+      "prostate-surgery-vs-radiation",
     ],
   },
 ];

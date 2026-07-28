@@ -293,6 +293,7 @@ function StepMain({
         </div>
       );
     case "pas-understand":
+    case "ptc-understand":
       return (
         <div className="space-y-3">
           <WhyDecisionMatters modules={modules} embedded />

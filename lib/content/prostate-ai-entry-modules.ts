@@ -450,6 +450,240 @@ export const PROSTATE_SURVEILLANCE_FLAGSHIP: AiEntryFlagshipModules = {
   ],
 };
 
+/** Prostate Cancer Entry — Surgery vs Radiation (P0 treatment comparison) */
+export const PROSTATE_TREATMENT_COMPARE_FLAGSHIP: AiEntryFlagshipModules = {
+  cancerLabel: "Prostate Cancer",
+  decisionMoment: "How to compare surgery and radiation",
+  exploring: "Surgery vs radiation when definitive therapy is needed",
+  subtitle:
+    "When definitive therapy is recommended, surgery and radiation can both be reasonable. Compare cancer control, urinary/sexual/bowel tradeoffs, and recovery — not a single “best” treatment.",
+  relatedDecisions: [
+    { label: "Newly diagnosed", href: `/questions/${PROSTATE_NEWLY_DIAGNOSED_SLUG}` },
+    { label: "Active surveillance", href: PROSTATE_SURVEILLANCE },
+    { label: "Second opinion", href: PROSTATE_SECOND },
+  ],
+  journeyLabel: "Prostate Cancer Decision Journey",
+  journeyPath: [
+    { label: "New Diagnosis", href: `/questions/${PROSTATE_NEWLY_DIAGNOSED_SLUG}` },
+    { label: "Surveillance", href: PROSTATE_SURVEILLANCE },
+    { label: "Surgery vs radiation", current: true },
+  ],
+
+  triggersTitle: "When this decision may matter most",
+  triggerGroups: [
+    {
+      heading: "Definitive therapy is on the table",
+      lead: "You may be asking:",
+      items: [
+        "Am I choosing between surgery and radiation?",
+        "Is monitoring already off the table for my risk group?",
+      ],
+    },
+    {
+      heading: "Comparing paths",
+      lead: "You may be asking:",
+      items: [
+        "Which side effects differ most for someone like me?",
+        "How do recovery and calendar compare?",
+      ],
+    },
+    {
+      heading: "Unsure about the plan",
+      lead: "You may be asking:",
+      items: [
+        "Should I hear both urology and radiation oncology?",
+        "What would change the recommendation either way?",
+      ],
+    },
+  ],
+
+  whyTitle: "Why does surgery vs radiation matter?",
+  whyLead:
+    "People often hear specialty-framed options without a shared comparison. Two guideline-supported paths can still feel very different in recovery and function.",
+  whyBody: [],
+  whyQuestions: [
+    "Surgery removes the prostate and concentrates recovery early",
+    "Radiation treats the prostate over a planned course without removing it",
+    "Urinary, sexual, and bowel priorities often tip a real decision",
+  ],
+  whyNotLabel: "The important question is not:",
+  whyNotQuestion: "Which prostate cancer treatment sounds stronger online?",
+  whyBetterLabel: "The more useful question is:",
+  whyBetterQuestion:
+    "For my risk group, how do outcomes and side effects compare — and what would change the recommendation?",
+  whyClose: [
+    "Ask your care team what each path would achieve for you in plain language.",
+  ],
+
+  whoNeedsTitle: "Does everyone face this surgery-versus-radiation choice?",
+  whoNeedsLead:
+    "Not always. Some men are clearly better suited to one path. Others face a real fork when definitive therapy is needed.",
+  whoNeedsBody: [
+    "What matters is whether both options are medically reasonable for you — and what information would tip the choice.",
+  ],
+  whoNeedsDependsIntro: "Your care team may weigh factors such as:",
+  whoNeedsDependsOn: [
+    "Risk group, PSA pattern, and staging details",
+    "Life expectancy and other health conditions",
+    "Urinary, sexual, and bowel priorities",
+    "Ability to complete surgery recovery or a multi-week radiation schedule",
+    "Prior pelvic surgery or bowel disease that changes feasibility",
+  ],
+  whoNeedsClose:
+    "A useful question: “Am I a candidate for both — or is one clearly preferred medically?”",
+
+  doesNotDecideTitle: "How should I compare surgery and radiation?",
+  doesNotDecideLead:
+    "Compare by medical fit and lived priorities. For many situations both can be reasonable — decisions still consider:",
+  doesNotDecideItems: [
+    "Cancer-control expectations for your risk group",
+    "Urinary, sexual, and bowel side-effect patterns",
+    "Recovery time versus multi-week treatment calendar",
+    "Whether hormone therapy would be part of a radiation plan",
+    "What would change the recommendation either way",
+  ],
+  doesNotDecideNotes: [
+    "Neither option is automatically right for every man who needs definitive therapy.",
+    "Hearing only one specialty can leave the comparison incomplete.",
+  ],
+  doesNotDecideClose:
+    "This fork improves the fit of local therapy — it does not replace a conversation with your care team.",
+
+  costTitle: "Recovery, calendar, and practical fit",
+  costLead:
+    "Surgery and radiation load time differently. Ask what a normal week looks like during each path — not only the modality name.",
+  costItems: [
+    "What does recovery look like after surgery in the first 6–12 weeks?",
+    "What radiation schedule and travel would I need?",
+    "How would work, caregiving, or support at home be affected?",
+  ],
+
+  mistakesTitle: "Common mistakes around surgery vs radiation",
+  mistakes: [
+    {
+      mistake: "Picking the “stronger” option from online rankings",
+      why: "Both paths can be reasonable — fit and priorities matter more than aggressiveness branding.",
+    },
+    {
+      mistake: "Hearing only one specialty before locking the plan",
+      why: "Urology and radiation oncology often frame tradeoffs differently; both views can help.",
+    },
+    {
+      mistake: "Ignoring urinary, sexual, and bowel priorities until after treatment",
+      why: "Those domains are often the real decision — bring them into the comparison early.",
+    },
+  ],
+
+  secondOpinionTitle: "When another perspective may help",
+  secondOpinionLead: "A second opinion may be especially useful when:",
+  secondOpinionWhen: [
+    "Surgery and radiation are both offered without a clear comparison",
+    "Specialty recommendations differ",
+    "You want confidence before an irreversible local plan",
+  ],
+  secondOpinionClose: "It is about confidence, not distrust.",
+  secondOpinionCtaLabel: "Prostate second opinion guide",
+  secondOpinionHref: PROSTATE_SECOND,
+
+  doctorTitle: "Surgery vs Radiation Conversation Checklist",
+  doctorLeaveTitle: "Before leaving your appointment, ask:",
+  doctorLeaveItems: [
+    "For my risk group, how do outcomes compare between surgery and radiation?",
+    "Which side effects differ most — and which matter most for my priorities?",
+    "What would make you recommend one path over the other for me?",
+    "Should I hear both urology and radiation oncology before deciding?",
+  ],
+  doctorGroups: [
+    {
+      heading: "About candidacy",
+      questions: [
+        "Am I a candidate for both surgery and radiation?",
+        "What risk or imaging findings tip the choice?",
+        "Is any key information still pending before locking a modality?",
+      ],
+    },
+    {
+      heading: "About side effects and recovery",
+      questions: [
+        "How do urinary, sexual, and bowel outcomes typically compare for someone like me?",
+        "What does recovery look like after surgery?",
+        "What does the radiation calendar and hormone-therapy role look like if relevant?",
+      ],
+    },
+    {
+      heading: "About next steps",
+      questions: [
+        "What would change the recommendation either way?",
+        "Would a second opinion help before locking this fork?",
+        "What should I do this week while deciding?",
+      ],
+    },
+  ],
+
+  scenarioTitle: "Example: Clarifying surgery vs radiation",
+  scenarioTag: "Illustrative decision scenario",
+  scenarioDisclaimer: "Not a real patient story",
+  scenarioBody: [
+    "A person is told both surgery and radiation could control their prostate cancer.",
+    "Online searches push them toward whichever option sounds more aggressive.",
+    "Instead, they ask:",
+  ],
+  scenarioFocus: [
+    "Am I a candidate for both — with similar cancer-control goals?",
+    "Which side-effect domains matter most to me?",
+    "How do recovery and calendar compare?",
+    "What would change the recommendation either way?",
+  ],
+  scenarioClose:
+    "The focus shifts from fear of the “weaker” option to a choice that matches medical fit and function priorities.",
+
+  nextStepTitle: "Your next step",
+  nextStepLead: "If surgery versus radiation is still open:",
+  nextStepActions: [
+    {
+      label:
+        "Confirm you are comparing for definitive therapy — and whether both options are still reasonable.",
+    },
+    {
+      label:
+        "Rank urinary, sexual, and bowel priorities, then ask how each path typically affects them for you.",
+    },
+    {
+      label:
+        "Hear both specialties if needed — and ask what would tip the recommendation either way.",
+    },
+  ],
+  nextStepCtaLabel: "Second opinion",
+  nextStepHref: PROSTATE_SECOND,
+  nextStepCtaMeta: "When recommendations differ or you want confidence",
+  nextStepSecondaryCtaLabel: "Active surveillance",
+  nextStepSecondaryHref: PROSTATE_SURVEILLANCE,
+  nextStepSecondaryMeta: "If monitoring versus treatment is still open",
+
+  relatedPathsTitle: "Continue your prostate cancer decision journey",
+  relatedPaths: [
+    {
+      title: "Still clarifying the prostate cancer diagnosis?",
+      question:
+        "What decisions matter most after a new prostate cancer diagnosis?",
+      cta: "Newly diagnosed",
+      href: `/questions/${PROSTATE_NEWLY_DIAGNOSED_SLUG}`,
+    },
+    {
+      title: "Wondering about prostate cancer active surveillance?",
+      question: "Is active surveillance reasonable for prostate cancer?",
+      cta: "Active surveillance",
+      href: PROSTATE_SURVEILLANCE,
+    },
+    {
+      title: "Want more confidence in a prostate cancer decision?",
+      question: "Should I get a second opinion for prostate cancer?",
+      cta: "Second opinion",
+      href: PROSTATE_SECOND,
+    },
+  ],
+};
+
 /** Prostate Cancer Entry — Second Opinion (P0 confidence node) */
 export const PROSTATE_SECOND_OPINION_FLAGSHIP: AiEntryFlagshipModules = {
   cancerLabel: "Prostate Cancer",
@@ -687,5 +921,6 @@ export const PROSTATE_FLAGSHIP_BY_SLUG: Record<string, AiEntryFlagshipModules> =
   {
     [PROSTATE_NEWLY_DIAGNOSED_SLUG]: PROSTATE_NEWLY_DIAGNOSED_FLAGSHIP,
     [PROSTATE_SURVEILLANCE_SLUG]: PROSTATE_SURVEILLANCE_FLAGSHIP,
+    [PROSTATE_TREATMENT_COMPARE_SLUG]: PROSTATE_TREATMENT_COMPARE_FLAGSHIP,
     [PROSTATE_SECOND_OPINION_SLUG]: PROSTATE_SECOND_OPINION_FLAGSHIP,
   };

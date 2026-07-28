@@ -23,6 +23,7 @@ import { BREAST_NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/breast-newly-d
 import { PROSTATE_NEWLY_DIAGNOSED_ENTRY_CARDS } from "@/lib/content/prostate-newly-diagnosed-entry-cards";
 import { PROSTATE_SECOND_OPINION_ENTRY_CARDS } from "@/lib/content/prostate-second-opinion-entry-cards";
 import { PROSTATE_SURVEILLANCE_ENTRY_CARDS } from "@/lib/content/prostate-surveillance-entry-cards";
+import { PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS } from "@/lib/content/prostate-treatment-compare-entry-cards";
 import { BREAST_CLINICAL_TRIAL_ENTRY_CARDS } from "@/lib/content/breast-clinical-trial-entry-cards";
 import { BREAST_FOLLOW_UP_ENTRY_CARDS } from "@/lib/content/breast-follow-up-entry-cards";
 import { BREAST_GLOBAL_CARE_ENTRY_CARDS } from "@/lib/content/breast-global-care-entry-cards";
@@ -348,7 +349,9 @@ export function DecisionPathCardDetail({
       ? "breast-cancer"
       : modules.cancerLabel === "Lung Cancer"
         ? "lung-cancer"
-        : undefined;
+        : modules.cancerLabel === "Prostate Cancer"
+          ? "prostate-cancer"
+          : undefined;
 
   return (
     <PrepSourceProvider
@@ -2029,6 +2032,157 @@ function DecisionPathCardDetailInner({
           <BulletCard
             lead={PROSTATE_SURVEILLANCE_ENTRY_CARDS.secondOpinion.lead}
             close={PROSTATE_SURVEILLANCE_ENTRY_CARDS.secondOpinion.close}
+          />
+          <p>
+            <Link
+              href={`/questions/${PROSTATE_SECOND_OPINION_SLUG}`}
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Prostate second opinion guide →
+            </Link>
+          </p>
+        </div>
+      );
+    case "ptc-what-is":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.whatIs.lead}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.whatIs.close}
+        />
+      );
+    case "ptc-why-matters":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.whyMatters.lead}
+          items={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.whyMatters.items}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.whyMatters.close}
+        />
+      );
+    case "ptc-both-reasonable":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.bothReasonable.lead}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.bothReasonable.close}
+        />
+      );
+    case "ptc-not-stronger":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.notStronger.lead}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.notStronger.close}
+        />
+      );
+    case "ptc-risk-first":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.riskFirst.lead}
+            ask={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.riskFirst.ask}
+            close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.riskFirst.close}
+          />
+          <p>
+            <Link
+              href="/cancers/prostate-cancer/understanding-risk"
+              className="font-semibold text-[var(--accent)] hover:underline"
+            >
+              Understanding prostate cancer risk →
+            </Link>
+          </p>
+        </div>
+      );
+    case "ptc-surgery":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.surgery.lead}
+          items={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.surgery.items}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.surgery.close}
+        />
+      );
+    case "ptc-radiation":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.radiation.lead}
+          items={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.radiation.items}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.radiation.close}
+        />
+      );
+    case "ptc-side-effects":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.sideEffects.lead}
+          items={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.sideEffects.items}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.sideEffects.close}
+        />
+      );
+    case "ptc-recovery":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.recovery.lead}
+          ask={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.recovery.ask}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.recovery.close}
+        />
+      );
+    case "ptc-what-changes":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.whatChanges.lead}
+          items={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.whatChanges.items}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.whatChanges.close}
+        />
+      );
+    case "ptc-both-specialties":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.bothSpecialties.lead}
+          ask={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.bothSpecialties.ask}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.bothSpecialties.close}
+        />
+      );
+    case "ptc-pending-info":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.pendingInfo.lead}
+          items={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.pendingInfo.items}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.pendingInfo.close}
+        />
+      );
+    case "ptc-life-fit":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.lifeFit.lead}
+          ask={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.lifeFit.ask}
+        />
+      );
+    case "ptc-this-week":
+      return (
+        <BulletCard
+          lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.thisWeek.lead}
+          items={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.thisWeek.steps}
+          close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.thisWeek.close}
+        />
+      );
+    case "ptc-mistakes":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <p>{PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.mistakes.lead}</p>
+          <ul className="space-y-3">
+            {PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.mistakes.items.map(
+              (item) => (
+                <li key={item.mistake}>
+                  <p className="font-medium text-[var(--ink)]">{item.mistake}</p>
+                  <p className="mt-1">{item.why}</p>
+                </li>
+              )
+            )}
+          </ul>
+        </div>
+      );
+    case "ptc-second-opinion":
+      return (
+        <div className="space-y-3 text-sm leading-relaxed text-[var(--ink-soft)]">
+          <BulletCard
+            lead={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.secondOpinion.lead}
+            close={PROSTATE_TREATMENT_COMPARE_ENTRY_CARDS.secondOpinion.close}
           />
           <p>
             <Link

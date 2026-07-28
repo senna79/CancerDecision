@@ -44,6 +44,7 @@ import {
 import { PROSTATE_NEWLY_DIAGNOSED_DIRECT_ANSWER } from "@/lib/content/prostate-newly-diagnosed-entry-cards";
 import { PROSTATE_SECOND_OPINION_DIRECT_ANSWER } from "@/lib/content/prostate-second-opinion-entry-cards";
 import { PROSTATE_SURVEILLANCE_DIRECT_ANSWER } from "@/lib/content/prostate-surveillance-entry-cards";
+import { PROSTATE_TREATMENT_COMPARE_DIRECT_ANSWER } from "@/lib/content/prostate-treatment-compare-entry-cards";
 import {
   PROSTATE_NEWLY_DIAGNOSED_SLUG,
   PROSTATE_SECOND_OPINION_SLUG,
@@ -1573,8 +1574,7 @@ export function createSeedData(): KnowledgeGraphStore {
         "How do I compare surgery and radiation for prostate cancer?",
       slug: PROSTATE_TREATMENT_COMPARE_SLUG,
       category: "treatment",
-      summary:
-        "The choice between surgery and radiation for prostate cancer depends on risk group, life expectancy, and what you want to protect — urinary, sexual, and bowel function. Both can be reasonable for many situations; paths differ by recovery, side-effect profiles, and center experience. Neither option is automatically right for everyone. Ask: for my risk group, how do outcomes and side effects compare — and what would change the recommendation either way?",
+      summary: PROSTATE_TREATMENT_COMPARE_DIRECT_ANSWER,
       why: "Patients often hear specialty-framed options without a shared comparison frame across surgery and radiation.",
       factors: [
         "Risk group and life expectancy",
