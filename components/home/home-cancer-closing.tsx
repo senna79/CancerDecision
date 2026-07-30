@@ -8,7 +8,10 @@ import {
   HOME_PROSTATE_ILLUSTRATIVE_CARDS,
   HOME_PROSTATE_SITUATION_DESTINATIONS,
 } from "@/lib/content/home-decision-paths";
-import { cancerSituationMapHref } from "@/lib/journey/decision-moments";
+import {
+  cancerSituationMapHref,
+  homeCancerChooserHref,
+} from "@/lib/journey/decision-moments";
 
 export type HomeStoryCard = {
   id: string;
@@ -133,7 +136,7 @@ export function HomeCancerClosing({
             </Link>
             {" · "}
             <Link
-              href="/?cancer=lung-cancer#choose-cancer"
+              href={homeCancerChooserHref("lung-cancer")}
               className="font-semibold text-[var(--ink-soft)] hover:text-[var(--accent)] hover:underline"
             >
               Switch to lung cancer

@@ -1,10 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
 import { SituationGuidedRouter } from "@/components/journey/situation-guided-router";
 import type { DecisionMoment } from "@/lib/journey/decision-moments";
+import { homeCancerChooserHref } from "@/lib/journey/decision-moments";
 import {
   BREAST_ORIENTATION_LINKS,
   BREAST_QUICK_SCENARIOS,
@@ -63,6 +64,13 @@ export function CancerJourneyNav({
   initialSlug?: string;
 }) {
   const router = useRouter();
+  const searchParams = useSearchParams();
+  const param = searchParams.get("cancer");
+  const urlSlug =
+    param === BREAST_SLUG || param === PROSTATE_SLUG || param === LUNG_SLUG
+      ? param
+      : initialSlug;
+
   const bySlug = new Map(cancers.map((c) => [c.slug, c]));
   const heroCancers = HERO_SLUGS.map((slug) => bySlug.get(slug)).filter(
     (c): c is CancerOption => Boolean(c)
@@ -71,22 +79,40 @@ export function CancerJourneyNav({
     (c) => !(HERO_SLUGS as readonly string[]).includes(c.slug)
   );
 
-  const [selectedSlug, setSelectedSlug] = useState(initialSlug);
+  const [selectedSlug, setSelectedSlug] = useState(urlSlug);
   const [showMore, setShowMore] = useState(false);
   const selected =
     cancers.find((c) => c.slug === selectedSlug) ?? heroCancers[0];
 
   useEffect(() => {
-    setSelectedSlug(initialSlug);
-  }, [initialSlug]);
+    setSelectedSlug(urlSlug);
+  }, [urlSlug]);
+
+  // Repair stacked hashes from older builds: #choose-cancer#choose-cancer
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (!window.location.hash.includes("choose-cancer#")) return;
+    const cleaned = homeCancerChooserHref(urlSlug);
+    window.history.replaceState(null, "", cleaned);
+  }, [urlSlug]);
 
   function selectCancer(slug: string) {
     setSelectedSlug(slug);
-    const href =
-      slug === LUNG_SLUG
-        ? "/#choose-cancer"
-        : `/?cancer=${encodeURIComponent(slug)}#choose-cancer`;
-    router.replace(href, { scroll: false });
+    const href = homeCancerChooserHref(slug);
+    const next = new URL(href, window.location.origin);
+    const pathAndQuery = `${next.pathname}${next.search}`;
+    // Update search via App Router without a hash (hash stacking bug),
+    // then set the fragment once through the History API.
+    router.replace(pathAndQuery, { scroll: false });
+    queueMicrotask(() => {
+      if (window.location.hash !== "#choose-cancer") {
+        window.history.replaceState(
+          null,
+          "",
+          `${pathAndQuery}#choose-cancer`
+        );
+      }
+    });
   }
 
   const journeyBySlug: Record<string, JourneyConfig> = {

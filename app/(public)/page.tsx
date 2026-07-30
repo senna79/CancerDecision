@@ -10,12 +10,9 @@ import {
 import { getCancerBySlug, getCancers, getStories } from "@/lib/queries";
 import { buildMetadata } from "@/lib/seo/metadata";
 
-type JourneyCancerSlug = "lung-cancer" | "breast-cancer" | "prostate-cancer";
-
-function resolveJourneySlug(param?: string): JourneyCancerSlug {
-  if (param === "breast-cancer" || param === "prostate-cancer") return param;
-  return "lung-cancer";
-}
+/** Static HTML for crawlers — `?cancer=` is applied client-side. */
+export const dynamic = "force-static";
+export const revalidate = 86400;
 
 export const metadata = buildMetadata({
   title: "Navigate Cancer Decisions — Know Your Next Step",
@@ -46,12 +43,7 @@ function toStoryCards(
   }));
 }
 
-export default async function HomePage({
-  searchParams,
-}: {
-  searchParams: Promise<{ cancer?: string }>;
-}) {
-  const { cancer: cancerParam } = await searchParams;
+export default async function HomePage() {
   const [cancers, lungCancer, breastCancer, prostateCancer] = await Promise.all(
     [
       getCancers(),
@@ -81,7 +73,7 @@ export default async function HomePage({
     slug: c.slug,
     name: c.name,
   }));
-  const initialJourneySlug = resolveJourneySlug(cancerParam);
+  const initialJourneySlug = "lung-cancer" as const;
 
   return (
     <div>
@@ -117,13 +109,15 @@ export default async function HomePage({
               now.
             </p>
             <div className="mt-6 max-w-3xl">
-              <CancerJourneyNav
-                cancers={cancerOptions}
-                lungMoments={LUNG_DECISION_MOMENTS}
-                breastMoments={BREAST_DECISION_MOMENTS}
-                prostateMoments={PROSTATE_DECISION_MOMENTS}
-                initialSlug={initialJourneySlug}
-              />
+              <Suspense fallback={null}>
+                <CancerJourneyNav
+                  cancers={cancerOptions}
+                  lungMoments={LUNG_DECISION_MOMENTS}
+                  breastMoments={BREAST_DECISION_MOMENTS}
+                  prostateMoments={PROSTATE_DECISION_MOMENTS}
+                  initialSlug={initialJourneySlug}
+                />
+              </Suspense>
             </div>
           </div>
         </div>

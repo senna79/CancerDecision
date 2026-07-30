@@ -21,6 +21,8 @@ const AI_CRAWLER_USER_AGENTS = [
   "PerplexityBot",
   "Perplexity-User",
   "Google-Extended",
+  "bingbot",
+  "BingPreview",
 ] as const;
 
 export default function robots(): MetadataRoute.Robots {

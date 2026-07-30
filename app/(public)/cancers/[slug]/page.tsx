@@ -1,18 +1,17 @@
 import Link from "next/link";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
+import { CancerHubSituation } from "@/components/cancer/cancer-hub-situation";
 import { DecisionMapFold } from "@/components/cancer/decision-map-fold";
-import { DecisionMapLocator } from "@/components/cancer/decision-map-locator";
 import { DecisionMapView } from "@/components/cancer/decision-map";
 import { Markdown } from "@/components/content/markdown";
 import { Section } from "@/components/content/section";
-import { SituationGuidedRouter } from "@/components/journey/situation-guided-router";
 import { Breadcrumbs } from "@/components/layout/breadcrumbs";
 import { JsonLd } from "@/components/seo/json-ld";
 import { MedicalDisclaimer } from "@/components/trust/medical-disclaimer";
 import { TrustStrip } from "@/components/trust/trust-strip";
 import {
   BREAST_DECISION_MOMENTS,
-  getDecisionMoment,
   LUNG_DECISION_MOMENTS,
   PROSTATE_DECISION_MOMENTS,
 } from "@/lib/journey/decision-moments";
@@ -39,6 +38,10 @@ import { isRetiredBreastQuestionSlug } from "@/lib/content/breast-entry-slugs";
 import { isRetiredLungQuestionSlug } from "@/lib/seo/retired-lung-questions";
 import { buildMetadata } from "@/lib/seo/metadata";
 
+/** Static HTML for crawlers — `?moment=` is applied in CancerHubSituation. */
+export const dynamic = "force-static";
+export const revalidate = 86400;
+
 export async function generateStaticParams() {
   const cancers = await getCancers();
   return cancers.map((c) => ({ slug: c.slug }));
@@ -64,13 +67,10 @@ export async function generateMetadata({
 
 export default async function CancerDecisionCenterPage({
   params,
-  searchParams,
 }: {
   params: Promise<{ slug: string }>;
-  searchParams: Promise<{ moment?: string }>;
 }) {
   const { slug } = await params;
-  const { moment: momentParam } = await searchParams;
   const data = await getCancerDecisionCenter(slug);
   if (!data) notFound();
 
@@ -129,9 +129,6 @@ export default async function CancerDecisionCenterPage({
     : isProstate
       ? "prostate cancer"
       : "lung cancer";
-  const activeMoment = hasSituationNav
-    ? getDecisionMoment(momentParam, cancer.slug)
-    : null;
   const hubFaqs = isProstate
     ? PROSTATE_HUB_FAQS
     : isBreast
@@ -189,41 +186,41 @@ export default async function CancerDecisionCenterPage({
 
       {hasSituationNav ? (
         <div className="mt-8 max-w-3xl space-y-5">
-          <SituationGuidedRouter
-            moments={journeyMoments}
-            buckets={situationBuckets}
-            orientationLinks={orientationLinks}
-            quickScenarios={quickScenarios}
-            cancerLabel={cancerLabel}
-            activeId={activeMoment?.id}
-            footer={
-              isLung ? (
-                <>
-                  Unsure where you are on the map?{" "}
-                  <a
-                    href="#map-locator"
-                    className="font-semibold text-[var(--accent)] hover:underline"
-                  >
-                    See nearby decisions
-                  </a>
-                </>
-              ) : isProstate ? (
-                <>
-                  Usual order: risk clarity → monitor or treat → surgery vs
-                  radiation (if treating). Open one guide, then return when the
-                  next question comes up.
-                </>
-              ) : (
-                <>
-                  Optional foundation guides are above if you want basics —
-                  otherwise pick a situation and open one decision guide.
-                </>
-              )
-            }
-          />
-          {isLung ? (
-            <DecisionMapLocator activeNodeId={activeMoment?.nodeId} />
-          ) : null}
+          <Suspense fallback={null}>
+            <CancerHubSituation
+              cancerSlug={cancer.slug}
+              moments={journeyMoments}
+              buckets={situationBuckets}
+              orientationLinks={orientationLinks}
+              quickScenarios={quickScenarios}
+              cancerLabel={cancerLabel}
+              showMapLocator={isLung}
+              footer={
+                isLung ? (
+                  <>
+                    Unsure where you are on the map?{" "}
+                    <a
+                      href="#map-locator"
+                      className="font-semibold text-[var(--accent)] hover:underline"
+                    >
+                      See nearby decisions
+                    </a>
+                  </>
+                ) : isProstate ? (
+                  <>
+                    Usual order: risk clarity → monitor or treat → surgery vs
+                    radiation (if treating). Open one guide, then return when the
+                    next question comes up.
+                  </>
+                ) : (
+                  <>
+                    Optional foundation guides are above if you want basics —
+                    otherwise pick a situation and open one decision guide.
+                  </>
+                )
+              }
+            />
+          </Suspense>
 
           {isBreast || isProstate ? (
             <section

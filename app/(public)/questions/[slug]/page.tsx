@@ -43,6 +43,7 @@ import { isIndexableQuestionSlug } from "@/lib/seo/indexing";
 import { breastLegacyQuestionRedirect } from "@/lib/content/breast-entry-slugs";
 import {
   cancerSituationMapHref,
+  homeCancerChooserHref,
   momentIdForEntrySlug,
 } from "@/lib/journey/decision-moments";
 import { retiredLungQuestionRedirect } from "@/lib/seo/retired-lung-questions";
@@ -235,11 +236,7 @@ export default async function QuestionPage({
         items={[
           {
             label: "Home",
-            href: cancer
-              ? cancer.slug === "lung-cancer"
-                ? "/#choose-cancer"
-                : `/?cancer=${cancer.slug}#choose-cancer`
-              : "/",
+            href: cancer ? homeCancerChooserHref(cancer.slug) : "/",
           },
           ...(cancer
             ? [

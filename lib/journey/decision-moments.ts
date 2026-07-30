@@ -102,6 +102,14 @@ export function cancerSituationMapHref(
   return `/cancers/${cancerSlug}${hash}`;
 }
 
+/**
+ * Homepage cancer chooser URL — always one `#choose-cancer` hash (never stacked).
+ * Lung uses `?cancer=lung-cancer` too so replace/select never builds `/#…#…`.
+ */
+export function homeCancerChooserHref(cancerSlug: string): string {
+  return `/?cancer=${encodeURIComponent(cancerSlug)}#choose-cancer`;
+}
+
 export function filterMomentsByIds(
   moments: DecisionMoment[],
   ids: string[]

@@ -28,9 +28,6 @@ export function SiteFooter() {
           <Link href="/cancers" className="hover:text-[var(--accent)]">
             Cancer Library
           </Link>
-          <Link href="/admin" className="hover:text-[var(--accent)]">
-            Admin
-          </Link>
         </div>
       </div>
     </footer>

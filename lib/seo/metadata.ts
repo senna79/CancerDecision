@@ -45,7 +45,9 @@ export function buildMetadata(input: {
   const ogType = input.ogType ?? "article";
 
   return {
-    title,
+    // absolute — root layout also has `title.template: "%s | Cancer Next Step"`;
+    // without absolute, every page becomes "... | Cancer Next Step | Cancer Next Step".
+    title: { absolute: title },
     description: input.description,
     keywords: input.keywords,
     metadataBase: new URL(SITE_URL),
